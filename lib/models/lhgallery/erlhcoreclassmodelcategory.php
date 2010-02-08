@@ -1,0 +1,286 @@
+<?
+
+class erLhcoreClassModelGalleryCategory {
+        
+    public function getState()
+   {
+       return array(
+               'cid'         => $this->cid,
+               'owner_id'    => $this->owner_id,             
+               'name'        => $this->name,             
+               'description' => $this->description,             
+               'pos'         => $this->pos,             
+               'parent'      => $this->parent,             
+               'hide_frontpage' => $this->hide_frontpage           
+       );
+   }
+   
+   public function setState( array $properties )
+   {
+       foreach ( $properties as $key => $val )
+       {
+           $this->$key = $val;
+       }
+   }
+   
+   public static function fetch($cid)
+   {
+       $Category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$cid );
+       return $Category;
+   }
+    
+   public function clearCategoryCache()
+   {
+       $cache = CSCacheAPC::getMem();
+       $cache->increaseCacheVersion('category_'.$this->cid); 
+       $cache->increaseCacheVersion('category_0'); 
+       $cache->delete(md5('index_page')); 
+             
+       $pathObjects = array();       
+       erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$this->cid);
+       foreach ($pathObjects as $category)
+       {
+            $cache->increaseCacheVersion('category_'.$category->cid);          
+       }       
+   }
+    
+   public static function getParentCategories($category_id = 0)
+   {
+      $cache = CSCacheAPC::getMem();
+            
+      if (($objects = $cache->restore(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id))) === false)
+      {
+          $session = erLhcoreClassGallery::getSession();
+           $q = $session->createFindQuery( 'erLhcoreClassModelGalleryCategory' );  
+           
+           $q->where( 
+            $q->expr->eq( 'parent', $q->bindValue($category_id) )        
+           );
+           
+           $q->orderBy( 'pos' ); 
+                  
+          $objects = $session->find( $q, 'erLhcoreClassModelGalleryCategory' );
+                    
+          $cache->store(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id),$objects);
+      }
+      
+                
+      return $objects; 
+   }
+   
+   
+   public static function fetchCategoryColumn($params = array(),$column = 'COUNT(cid)')
+   {
+       $session = erLhcoreClassGallery::getSession();
+       $q = $session->database->createSelectQuery();  
+       $q->select( $column )->from( "lh_gallery_categorys" );     
+         
+       $conditions = array();
+       
+       if (isset($params['filter']) && count($params['filter']) > 0)
+       {
+           foreach ($params['filter'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->eq( $field, $fieldValue );
+           } 
+      }  
+      
+      if (isset($params['filterin']) && count($params['filterin']) > 0)
+       {
+           foreach ($params['filterin'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->in( $field, $fieldValue );
+           } 
+      }     
+       
+      if (isset($params['filterlt']) && count($params['filterlt']) > 0)
+       {
+           foreach ($params['filterlt'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->lt( $field, $fieldValue );
+           } 
+      }
+      
+      if (isset($params['filtergt']) && count($params['filtergt']) > 0)
+       {
+           foreach ($params['filtergt'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->gt( $field, $fieldValue );
+           } 
+      }
+      
+      if (count($conditions) > 0)
+      {
+          $q->where( 
+                     $conditions   
+          );
+      }         
+      
+      if (!isset($params['disable_sql_cache']))
+      {
+          $sql = $q->__toString();        
+          $cache = CSCacheAPC::getMem();          
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('sit_version').$sql);
+                             
+          if (($result = $cache->restore($cacheKey)) === false)
+          {
+              $stmt = $q->prepare();       
+              $stmt->execute();   
+              $result = $stmt->fetchColumn();            
+              $cache->store($cacheKey,$result);
+          }  
+      } else {
+              $stmt = $q->prepare();       
+              $stmt->execute();
+              $result = $stmt->fetchColumn(); 
+      }                         
+      
+      return $result; 
+   }
+        
+   
+   public static function getCategoryPath(& $array,$category_id)
+   {     
+      $cache = CSCacheAPC::getMem();     
+      if (($path = $cache->restore(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_path_'.$category_id))) === false)
+      {     
+         erLhcoreClassModelGalleryCategory::calculatePath($array,$category_id);
+         $cache->store(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_path_'.$category_id),$array);
+      } else {
+         $array = $path;        
+      } 
+   }
+   
+   public static function getCategoryPathURL(& $array,$category_id)
+   {     
+      $cache = CSCacheAPC::getMem();     
+      if (($path = $cache->restore(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_path_url'.$category_id))) === false)
+      {     
+         erLhcoreClassModelGalleryCategory::calculatePathURL($array,$category_id);
+         $cache->store(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_path_url'.$category_id),$array);
+      } else {
+         $array = $path;        
+      } 
+   }
+   
+   public static function calculatePath(& $array,$category_id){
+       static $recursionProtect = 0;
+       
+       $category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
+       
+       $array[] = array('url' => $category->path_url,'title' => $category->name);   
+           
+       if ($category->parent != 0){
+          erLhcoreClassModelGalleryCategory::calculatePath($array,$category->parent); 
+       } else {
+          $array = array_reverse($array); 
+       }
+       $recursionProtect++; 
+       
+       if ($recursionProtect > 500) exit;
+   }
+
+   public static function calculatePathObjects(& $array,$category_id){
+       static $recursionProtect = 0;
+       
+       $category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
+       
+       $array[] = $category;   
+           
+       if ($category->parent != 0){
+          erLhcoreClassModelGalleryCategory::calculatePathObjects($array,$category->parent); 
+       } else {
+          $array = array_reverse($array); 
+       }
+       $recursionProtect++; 
+       
+       if ($recursionProtect > 500) exit;
+   } 
+   
+   public static function calculatePathURL(& $array,$category_id){
+       static $recursionProtect = 0;
+       
+       $category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
+       
+       $array[] = array('title' => $category->name);   
+           
+       if ($category->parent != 0){
+          erLhcoreClassModelGalleryCategory::calculatePathURL($array,$category->parent); 
+       } else {
+          $array = array_reverse($array); 
+       }
+       $recursionProtect++; 
+       
+       if ($recursionProtect > 500) exit;
+   }
+   
+   public function __get($variable)
+   {
+       switch ($variable) {
+       	case 'albums_count':       	    
+       	    $albums = 0;
+       	    foreach (erLhcoreClassModelGalleryCategory::getParentCategories($this->cid) as $category)
+       	    {
+       	        $albums += erLhcoreClassModelGalleryAlbum::getAlbumCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('category_'.$category->cid),'filter' => array('category' => $category->cid)));
+       	        
+       	    }
+       	    $albums += erLhcoreClassModelGalleryAlbum::getAlbumCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('category_'.$this->cid),'filter' => array('category' => $this->cid)));
+       	    
+       		$this->albums_count = $albums;
+       		return  $this->albums_count;
+       		break;
+       	
+       	case 'path_url':
+       	    
+       	    if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+       	    {    
+           	    $pathElements = array();           	    
+           	    $arrayPath = array();
+           	    erLhcoreClassModelGalleryCategory::getCategoryPathURL($arrayPath,$this->cid);
+           	    foreach ($arrayPath as $item){
+           	        $pathElements[] = erLhcoreClassCharTransform::TransformToURL($item['title']);
+           	    }       	    
+           	    $this->path_url = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->cid.'c.html');    
+           	    return $this->path_url;
+       	    } else {
+       	        return erLhcoreClassDesign::baseurl('/gallery/category/'.$this->cid);
+       	    } 
+       	    break;	
+       			
+       	case 'images_count':       	    
+       	    $imagesCount = 0;
+       	    foreach (erLhcoreClassModelGalleryCategory::getParentCategories($this->cid) as $category)
+       	    {
+       	        $albums = erLhcoreClassModelGalleryAlbum::getAlbumsIDByFilter(array('filter' => array('category' => $category->cid)));
+       	        if (is_array($albums) && count($albums) > 0){
+       	            $imagesCount += erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('category_'.$this->cid),'filterin' => array('aid' => $albums)));
+       	        }
+       	    }       	    
+       	    $albums = erLhcoreClassModelGalleryAlbum::getAlbumsIDByFilter(array('filter' => array('category' => $this->cid)));
+       	           	    
+       	    $imagesAppend = 0;
+       	    if (is_array($albums) && count($albums) > 0)
+       	    $imagesAppend = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'category_'.CSCacheAPC::getMem()->getCacheVersion('category_'.$this->cid), 'filterin' => array('aid' => $albums)));
+       	           	    
+       	    $this->images_count = $imagesAppend+$imagesCount;      	    
+       	    return $this->images_count;
+       	    
+       		break;
+       
+       	default:
+       		break;
+       }
+   }
+   
+   public $cid = null;
+   public $owner_id = '';
+   public $name = '';
+   public $description = '';
+   public $pos = '';
+   public $parent = '';
+   public $hide_frontpage = 0;
+
+}
+
+
+?>

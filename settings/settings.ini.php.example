@@ -1,0 +1,37 @@
+<?php
+
+define('SITE_CACHE_PREPEND','devhppg_site');
+
+return array (
+  'settings' => 
+  array (
+    'site' => 
+    array (
+      'title' => 'Site title',
+      'locale' => 'en_EN',
+      'theme' => 'defaulttheme',
+      'site_admin_email' => 'remdex@gmail.com',
+      'templatecache' => false,
+      'templatecompile' => false,      
+      'classCompile' => false,
+      'installed' => true,
+      'nice_url_enabled' => true,
+      'secrethash' => '48447454',
+      'available_locales' => 
+      array (
+        0 => 'en_EN',
+        1 => 'lt_LT',
+      ),
+    ),
+    'db' => 
+    array (
+      'host' => 'localhost',
+      'user' => 'username',
+      'password' => 'password',
+      'database' => 'database',
+      'port' => 3306,
+    ),
+  ),
+  'comments' => NULL,
+);
+?>

@@ -1,0 +1,734 @@
+<!DOCTYPE TS><TS>
+<context>
+    <name>user/login</name>
+    <message>
+        <source>Please login</source>
+        <translation>Prašome prisijungti</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Vartotojo vardas</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Slaptažodis</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Prisijungti</translation>
+    </message>
+    <message>
+        <source>Incorrect username or password</source>
+        <translation>Nekorektiškas prisijungimo vardas arba slaptažodis</translation>
+    </message>
+</context>
+<context>
+    <name>install/install</name>
+    <message>
+        <source>Installation of software</source>
+        <translation>Programinės įrangos diegimas</translation>
+    </message>
+</context>
+
+<context>
+    <name>pagelayout/pagelayout</name>
+    <message>
+        <source>Logged user</source>
+        <translation>Prisijungęs vartotojas</translation>
+    </message>  
+    <message>
+        <source>Home</source>
+        <translation>Titulinis puslapis</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation>Atsijungti</translation>
+    </message>
+    <message>
+        <source>Clean cache</source>
+        <translation>Išvalyti podėlius</translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation>Paskyra</translation>
+    </message>
+    <message>
+        <source>Configuration</source>
+        <translation>Konfigūracija</translation>
+    </message>
+</context>
+<context>
+    <name>user/newgroup</name>
+    <message>
+        <source>New group</source>
+        <translation>Nauja grupė</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Saugoti</translation>
+    </message>
+    <message>
+        <source>Save and assign user</source>
+        <translation>Saugoti ir priskirti vartotoją</translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <translation>Grupės</translation>
+    </message>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+</context>
+<context>
+    <name>user/grouplist</name>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <translation>Grupės</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Edit group</source>
+        <translation>Redaguoti grupę</translation>
+    </message>
+    <message>
+        <source>Delete group</source>
+        <translation>Trinti grupę</translation>
+    </message>
+    <message>
+        <source>New group</source>
+        <translation>Nauja grupė</translation>
+    </message>
+</context>
+<context>
+    <name>user/groupassignuser</name>
+    <message>
+        <source>Username</source>
+        <translation>Vartotojo vardas</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El-paštas</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Vardas</translation>
+    </message>
+    <message>
+        <source>Surname</source>
+        <translation>Pavardė</translation>
+    </message> 
+    <message>
+        <source>Assign</source>
+        <translation>Priskirti</translation>
+    </message>
+</context>
+<context>
+    <name>permission/editrole</name>
+    <message>
+        <source>Please choose module</source>
+        <translation>Prašome pasirinkti modulį</translation>
+    </message>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+    <message>
+        <source>Please choose module function</source>
+        <translation>Prašome pasirinkti modulio funkciją</translation>
+    </message>
+    <message>
+        <source>List of roles</source>
+        <translation>Rolių sąrašas</translation>
+    </message>
+    <message>
+        <source>Please enter role name</source>
+        <translation>Prašome įvesti rolės pavadinimą</translation>
+    </message>
+    <message>
+        <source>Role edit</source>
+        <translation>Rolės redagavimas</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message> 
+    <message>
+        <source>Assigned functions</source>
+        <translation>Priskirtos funkcijos</translation>
+    </message>
+    <message>
+        <source>Module</source>
+        <translation>Modulis</translation>
+    </message>
+    <message>
+        <source>Function</source>
+        <translation>Funkcija</translation>
+    </message>
+    <message>
+        <source>Role assigned groups</source>
+        <translation>Rolei priskirtos grupės</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Atšaukti</translation>
+    </message>
+    <message>
+        <source>New policy</source>
+        <translation>Nauja teisė</translation>
+    </message>
+    <message>
+        <source>Remove selected</source>
+        <translation>Šalinti pasirinktas</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Assign group</source>
+        <translation>Priskirti grupę</translation>
+    </message>
+    <message>
+        <source>Group assignement to role</source>
+        <translation>Grupės priskyrimas rolei</translation>
+    </message>
+</context>
+<context>
+    <name>permission/newrole</name>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+    <message>
+        <source>List of roles</source>
+        <translation>Rolių sąrašas</translation>
+    </message>
+    <message>
+        <source>Please enter role name</source>
+        <translation>Prašome įvesti rolės pavadinimą</translation>
+    </message>
+    <message>
+        <source>New role</source>
+        <translation>Nauja rolė</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Policy list</source>
+        <translation>Teisių sąrašas</translation>
+    </message>
+    <message>
+        <source>Module</source>
+        <translation>Modulis</translation>
+    </message>
+    <message>
+        <source>Function</source>
+        <translation>Funkcija</translation>
+    </message> 
+    <message>
+        <source>New policy</source>
+        <translation>Nauja teisė</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Saugoti</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Atšaukti</translation>
+    </message>
+</context>
+<context>
+    <name>permission/modulefunctions</name>
+    <message>
+        <source>All functions</source>
+        <translation>Visos funkcijos</translation>
+    </message>
+</context>
+<context>
+    <name>kernel/nopermission</name>
+    <message>
+        <source>You do not have permission to access module</source>
+        <translation>Jūs neturite teisės naudotis moduliu</translation>
+    </message>
+    <message>
+        <source>and use</source>
+        <translation>ir naudotis</translation>
+    </message>
+    <message>
+        <source>function</source>
+        <translation>funkcija</translation>
+    </message>
+    <message>
+        <source>You do not have permission to access current object</source>
+        <translation>Jūs neturite teisės redaguoti pasirinktą objektą</translation>
+    </message>
+</context>
+<context>
+    <name>permission/roles</name>
+    <message>
+        <source>List of roles</source>
+        <translation>Rolių sąrašas</translation>
+    </message>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>New role</source>
+        <translation>Nauja rolė</translation>
+    </message>
+    <message>
+        <source>Edit role</source>
+        <translation>Redaguoti rolę</translation>
+    </message>
+    <message>
+        <source>Delete role</source>
+        <translation>Trinti rolę</translation>
+    </message>
+</context>
+<context>
+    <name>permission/roleassigngroup</name>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Assign</source>
+        <translation>Priskirti</translation>
+    </message>
+</context>
+<context>
+    <name>permission/newpolicy</name>
+    <message>
+        <source>New policy</source>
+        <translation>Nauja teisė</translation>
+    </message>
+    <message>
+        <source>Assigned functions</source>
+        <translation>Priskirtos funkcijos</translation>
+    </message>
+    <message>
+        <source>Choose module</source>
+        <translation>Pasirinkite modulį</translation>
+    </message>
+    <message>
+        <source>All modules</source>
+        <translation>Visi moduliai</translation>
+    </message>
+    <message>
+        <source>Choose module function</source>
+        <translation>Pasirinkite modulio funkciją</translation>
+    </message>
+    <message>
+        <source>All functions</source>
+        <translation>Visos funkcijos</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Saugoti</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Atšaukti</translation>
+    </message>
+</context>
+<context>
+    <name>permission/groupassignrole</name>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Assign</source>
+        <translation>Priskirti</translation>
+    </message>
+</context>
+<context>
+    <name>user/editgroup</name>
+    <message>
+        <source>Group edit</source>
+        <translation>Grupės redagavimas</translation>
+    </message>
+    <message>
+        <source>Groups</source>
+        <translation>Grupės</translation>
+    </message>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Assigned users</source>
+        <translation>Priskirti vartotojai</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Vartotojo vardas</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Vardas</translation>
+    </message>
+    <message>
+        <source>Surname</source>
+        <translation>Pavardė</translation>
+    </message>
+    <message>
+        <source>Assign user</source>
+        <translation>Priskirti vartotoją</translation>
+    </message>
+    <message>
+        <source>User assignment</source>
+        <translation>Vartotojo priskyrimas</translation>
+    </message>
+    <message>
+        <source>Assigned roles</source>
+        <translation>Priskirtos rolės</translation>
+    </message>
+    <message>
+        <source>Assign role</source>
+        <translation>Priskirti rolę</translation>
+    </message>
+    <message>
+        <source>Role assignment</source>
+        <translation>Rolės priskyrimas</translation>
+    </message>
+    <message>
+        <source>Remove role from group</source>
+        <translation>Pašalinti rolę iš grupės</translation>
+    </message>
+    <message>
+        <source>Remove user from group</source>
+        <translation>Pašalinti vartotoją iš grupės</translation>
+    </message>
+    <message>
+        <source>Please enter group name</source>
+        <translation>Prašome įvesti grupės pavadinimą</translation>
+    </message>
+</context>
+<context>
+    <name>system/index</name>
+    <message>
+        <source>System administration panel</source>
+        <translation>Sistemos administravimo panelė</translation>
+    </message>
+</context>
+<context>
+    <name>system/configuration</name>
+    <message>
+        <source>Users</source>
+        <translation>Vartotojai</translation>
+    </message>
+    <message>
+        <source>List of groups</source>
+        <translation>Grupių sąrašas</translation>
+    </message>
+    <message>
+        <source>List of roles</source>
+        <translation>Rolių sąrašas</translation>
+    </message>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message> 
+</context>
+<context>
+    <name>user/userlist</name>
+    <message>
+        <source>Username</source>
+        <translation>Vartotojo vardas</translation>
+    </message> 
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Vartotojai</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El-paštas</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Vardas</translation>
+    </message>
+    <message>
+        <source>Surname</source>
+        <translation>Pavardė</translation>
+    </message>
+    <message>
+        <source>Edit user</source>
+        <translation>Redaguoti vartotoją</translation>
+    </message>
+    <message>
+        <source>Delete user</source>
+        <translation>Trinti vartotoją</translation>
+    </message>
+    <message>
+        <source>New user</source>
+        <translation>Naujas vartotojas</translation>
+    </message>
+</context>
+<context>
+    <name>user/edit</name>
+     <message>
+        <source>Assigned departments</source>
+        <translation>Priskirti departamentai</translation>
+    </message>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Vartotojai</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Vartotojo vardas</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Slaptažodis</translation>
+    </message>
+    <message>
+        <source>Repeat password</source>
+        <translation>Pakartokite slaptažodį</translation>
+    </message> 
+    <message>
+        <source>Contact information</source>
+        <translation>Kontaktinė informacija</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El. paštas</translation>
+    </message>
+    <message>
+        <source>User edit</source>
+        <translation>Vartotojo redagavimas</translation>
+    </message>
+    <message>
+        <source>Login information</source>
+        <translation>Prisijungimo informacija</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Vardas</translation>
+    </message>
+    <message>
+        <source>Surname</source>
+        <translation>Pavardė</translation>
+    </message>
+    <message>
+        <source>Do not enter password unless you want to change it</source>
+        <translation>Neveskite slaptažodžio nebent norite jį pakeisti</translation>
+    </message>
+    <message>
+        <source>Please enter name</source>
+        <translation>Prašome įvesti vardą</translation>
+    </message>
+    <message>
+        <source>Please enter surname</source>
+        <translation>Prašome įvesti pavardę</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Wrong email address</source>
+        <translation>Nekorektiškas e-pašto adresas</translation>
+    </message>
+    <message>
+        <source>Passwords mismatch</source>
+        <translation>Slaptažodžiai nesutampa</translation>
+    </message>
+</context>
+<context>
+    <name>user/new</name>
+    <message>
+        <source>System configuration</source>
+        <translation>Sistemos konfigūracija</translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation>Vartotojai</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Vartotojo vardas</translation>
+    </message>
+    <message>
+        <source>Assigned departments</source>
+        <translation>Priskirti departamentai</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Slaptažodis</translation>
+    </message>
+    <message>
+        <source>Repeat password</source>
+        <translation>Pakartokite slaptažodį</translation>
+    </message> 
+    <message>
+        <source>Contact information</source>
+        <translation>Kontaktinė informacija</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El. paštas</translation>
+    </message>
+    <message>
+        <source>New user</source>
+        <translation>Naujas vartotojas</translation>
+    </message>
+    <message>
+        <source>Login information</source>
+        <translation>Prisijungimo informacija</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Vardas</translation>
+    </message>
+    <message>
+        <source>Surname</source>
+        <translation>Pavardė</translation>
+    </message>
+    <message>
+        <source>Please enter name</source>
+        <translation>Prašome įvesti vardą</translation>
+    </message>
+    <message>
+        <source>Please enter surname</source>
+        <translation>Prašome įvesti pavardę</translation>
+    </message>
+    <message>
+        <source>Please enter username</source>
+        <translation>Prašome įvesti vartotojo vardą</translation>
+    </message>
+    <message>
+        <source>User exists</source>
+        <translation>Vartotojas egzistuoja</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Saugoti</translation>
+    </message>
+    <message>
+        <source>Wrong email address</source>
+        <translation>Nekorektiškas e-pašto adresas</translation>
+    </message>
+    <message>
+        <source>Passwords mismatch</source>
+        <translation>Slaptažodžiai nesutampa</translation>
+    </message>
+</context>
+<context>
+    <name>user/account</name>
+    <message>
+        <source>Logged user</source>
+        <translation>Prisijungęs vartotojas</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <translation>Atsijungti</translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation>Paskyra</translation>
+    </message>
+    <message>
+        <source>Do not enter password unless you want to change it</source>
+        <translation>Neveskite slaptažodžio nebent norite jį pakeisti</translation>
+    </message>
+    <message>
+        <source>Login information</source>
+        <translation>Prisijungimo informacija</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Vartotojo vardas</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Slaptažodis</translation>
+    </message>
+    <message>
+        <source>Repeat password</source>
+        <translation>Pakartokite slaptažodį</translation>
+    </message> 
+    <message>
+        <source>Contact information</source>
+        <translation>Kontaktinė informacija</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El. paštas</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Account updated</source>
+        <translation>Paskyros duomenys buvo atnaujinti</translation>
+    </message>
+    <message>
+        <source>Wrong email address</source>
+        <translation>Nekorektiškas e-pašto adresas</translation>
+    </message>
+    <message>
+        <source>Passwords mismatch</source>
+        <translation>Slaptažodžiai nesutampa</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Vardas</translation>
+    </message>
+    <message>
+        <source>Surname</source>
+        <translation>Pavardė</translation>
+    </message>
+    <message>
+        <source>Please enter name</source>
+        <translation>Prašome įvesti vardą</translation>
+    </message>
+    <message>
+        <source>Please enter surname</source>
+        <translation>Prašome įvesti pavardę</translation>
+    </message>
+</context>
+</TS>
