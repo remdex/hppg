@@ -1,0 +1,28 @@
+<? if (!isset($noAds)) : ?>
+<div class="right">
+adds right
+</div>
+<?endif;?>
+<?php if (isset($pages)) : ?> 
+    <div class="navigator"><?if ($pages->num_pages > 1) : ?><?=$pages->display_pages();?><?php endif;?> <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('rss/category',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, Found - <?=$pages->items_total?></div></div>
+<? endif;?>
+<div class="float-break">
+<? foreach ($items as $key => $item) : ?>
+    <div class="album-thumb">
+        <div class="content">
+        <div class="albthumb-img"><?=$item->album_thumb_path;?></div>
+       <h2><a href="<?=$item->url_path?>"><?=htmlspecialchars($item->title)?></a></h2>
+       <?=$item->images_count;?> files.          
+       
+       </div>
+    </div>   
+<?endforeach; ?>   
+<? if (!isset($noAds)) : ?>
+<div class="c-left">
+adds bottom
+</div>
+<?endif;?>
+<?php if (isset($pages) && $pages->num_pages > 1 && !isset($noBottom)) : ?>
+    <div class="navigator" style="clear:left;"><?=$pages->display_pages();?></div>
+<? endif;?> 
+</div>
