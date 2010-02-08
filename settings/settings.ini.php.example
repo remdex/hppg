@@ -15,7 +15,7 @@ return array (
       'templatecompile' => false,      
       'classCompile' => false,
       'installed' => true,
-      'nice_url_enabled' => true,
+      'nice_url_enabled' => false,
       'secrethash' => '48447454',
       'available_locales' => 
       array (
