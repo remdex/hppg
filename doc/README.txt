@@ -1,5 +1,5 @@
 /*************************
-  Framework of eZ Components framework
+  HPPG - High perfomance photo gallery
   ************************
   Copyright (c) 2009 Remdex
   Written by Remigijus Kiminas
@@ -9,6 +9,6 @@
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
   ********************************************
-  Version 1.1
+  Version 0.1
   Date 2009-09-22
 **********************************************/
