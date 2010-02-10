@@ -16,6 +16,7 @@ return array (
       'classCompile' => false,
       'installed' => true,
       'nice_url_enabled' => false,
+      'etag_caching_enabled' => true,
       'secrethash' => '48447454',
       'available_locales' => 
       array (
