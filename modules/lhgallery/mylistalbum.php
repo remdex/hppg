@@ -6,7 +6,7 @@ $Album = $Params['user_object'];
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)));
 $pages->translationContext = 'gallery/album';
-$pages->serverURL = 'gallery/mylistalbum/'.$Album->aid;
+$pages->serverURL = '/gallery/mylistalbum/'.$Album->aid;
 $pages->paginate();
 
 $tpl->set('pages',$pages);
