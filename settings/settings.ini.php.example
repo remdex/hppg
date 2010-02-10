@@ -24,6 +24,12 @@ return array (
         1 => 'lt_LT',
       ),
     ),
+    'sphinx' => 
+    array (
+      'host' => 'localhost',
+      'port' => 3312,     
+      'index' => 'index_name',     
+    ),
     'db' => 
     array (
       'host' => 'localhost',

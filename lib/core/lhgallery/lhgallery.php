@@ -25,7 +25,7 @@ class erLhcoreClassGallery{
    public static function searchSphinx($params = array('SearchLimit' => 20))  
    {
       $cl = new SphinxClient();
-      $cl->SetServer( "localhost", 3312 );
+      $cl->SetServer( erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'host' ), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'port' ) );
       $cl->SetMatchMode( SPH_MATCH_ALL  );
       $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit']);
                     
@@ -59,16 +59,10 @@ class erLhcoreClassGallery{
         $cl->SetSelect ( $params['custom_filter']['filter'] );
         $cl->SetFilter ( $params['custom_filter']['filter_name'], array(1) );
       }
-
       
       $cl->SetSortMode(SPH_SORT_EXTENDED, isset($params['sort']) ? $params['sort'] : '@id DESC');
                      
-      $result = $cl->Query( isset($params['keyword']) ? trim($params['keyword']) : '', 'test3' );
-//      if ($_SERVER['REMOTE_ADDR'] == '62.80.233.34')
-//      {
-//          print_r($result);
-//      }
-//      echo   $cl->GetLastError();
+      $result = $cl->Query( isset($params['keyword']) ? trim($params['keyword']) : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
       
       if ($result['total_found'] == 0)
       return array('total_found' => 0,'list' => null);

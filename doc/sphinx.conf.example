@@ -1,0 +1,29 @@
+source anifofsrc
+{
+	type					= mysql
+	sql_host				= <host>
+	sql_user				= <username>
+	sql_pass				= <password>
+	sql_db					= <database>
+	sql_port				= 3306	# optional, default is 3306
+
+	sql_query				= \
+		SELECT * FROM sphinxseearch
+
+	sql_query_info			= SELECT * FROM lh_gallery_images WHERE id=$id
+	sql_attr_uint   = pid
+	sql_attr_uint   = hits
+	sql_attr_uint   = mtime
+	sql_attr_uint   = comtime
+	sql_attr_uint   = pic_rating
+	sql_attr_uint   = votes
+}
+
+index anifof
+{
+	source					= anifofsrc
+	path					= /var/data/anifofsrc
+	docinfo					= extern
+	charset_type=utf-8
+	charset_table   = 0..9, A..Z->a..z, _-> , a..z
+}
