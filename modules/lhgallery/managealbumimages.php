@@ -15,12 +15,12 @@ $tpl->set('album',$Album);
 $Result['content'] = $tpl->fetch();
 
 $path = array();
-$path[] = array('url' => '/gallery/admincategorys/','title' => 'Home'); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/'),'title' => 'Home'); 
 $pathObjects = array();
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Album->category);        
 foreach ($pathObjects as $pathItem)
 {
-   $path[] = array('url' => '/gallery/admincategorys/'.$pathItem->cid,'title' => $pathItem->name); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
 }
 
 $Result['path'] = $path;
