@@ -30,7 +30,7 @@ $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('filter' => array('category' => $category->cid)));
 $pages->translationContext = 'gallery/managealbum';
 $pages->default_ipp = 8;
-$pages->serverURL = '/gallery/managealbum/'.$category->cid;
+$pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/managealbum/').$category->cid;
 $pages->paginate();
 
 if ($pages->items_total > 0) :                   

@@ -278,7 +278,7 @@ reset($imagesAjax);
 $lastImages = current($imagesAjax);
 ?>
 <div class="left-ajax">
-<a href="#" rel="/gallery/ajaximages/<?=$lastImages->pid?><?=$urlAppend?>"></a>
+<a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
 </div>
 <? 
 endif;
@@ -299,7 +299,7 @@ end($imagesAjax);
 $lastImages = current($imagesAjax);
 ?> 
 <div class="right-ajax">
-<a href="#" rel="/gallery/ajaximages/<?=$lastImages->pid?><?=$urlAppend?>"></a>
+<a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
 </div>
 <?php endif;?>
 </div>

@@ -98,7 +98,7 @@ if (count($imagesAjax) > 0) :
 $lastImages = current($imagesAjax);
 ?>
 <div class="left-ajax">
-<a href="#" rel="/gallery/ajaximages/<?=$lastImages->pid?><?=$urlAppend?>"></a>
+<a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
 </div>
 <? foreach ($imagesAjax as $key => $item) : ?>
     <div class="image-thumb thumb-pic-small">
@@ -116,7 +116,7 @@ end($imagesAjax);
 $lastImages = current($imagesAjax);
 ?> 
 <div class="right-ajax">
-<a href="#" rel="/gallery/ajaximages/<?=$lastImages->pid?><?=$urlAppend?>"></a>
+<a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
 </div>
 <script type="text/javascript">
 $('.right-ajax a').click(function(){

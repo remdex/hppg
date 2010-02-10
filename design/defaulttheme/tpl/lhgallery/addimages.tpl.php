@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>Add images to album - <a href="/gallery/myalbums"><?=htmlspecialchars($album->title)?></a></h1>
+<h1>Add images to album - <a href="<?=erLhcoreClassDesign::baseurl('/gallery/myalbums')?>"><?=htmlspecialchars($album->title)?></a></h1>
 </div>
 <? if (isset($errArr)) : ?>
 <div class="error-list">

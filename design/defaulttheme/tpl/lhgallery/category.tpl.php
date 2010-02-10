@@ -1,9 +1,6 @@
-
-
 <div class="header-list">
 <h1>Category - <a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1>
 </div>
-<!--<script language="javascript" type="text/javascript" charset="utf-8" src="http://pages.etology.com/js2/66974.php"></script>-->
 
 <? $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories($category->cid);
 if (count($subcategorys) > 0) : 

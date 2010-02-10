@@ -1,7 +1,7 @@
 <ul>
 <?php 
 foreach ($directoryList  as $directory) : ?>
-<li><a href="/gallery/batchadd/?directory=<?=urlencode($directory);?>"><?=$directory?></a> | <a href="/gallery/batchadd/?directory=<?=urlencode($directory);?>&import=1">Import</a></li>
+<li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd/')?>?directory=<?=urlencode($directory);?>"><?=$directory?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd/')?>?directory=<?=urlencode($directory);?>&import=1">Import</a></li>
 <?endforeach;?>
 </ul>
 
