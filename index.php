@@ -1,7 +1,5 @@
 <?php
 
-//if ($_SERVER['REMOTE_ADDR'] != '62.80.233.34') exit;
-
 $star_microtile = microtime();
 function set_time ( $start_time, $end_time )
 {
@@ -10,8 +8,6 @@ function set_time ( $start_time, $end_time )
 	return  $time = $end[0] + $end[1] - $start[0] - $start[1];
 }
 /* DEBUG END */
-
-
 
 //ini_set('error_reporting', E_ALL);
 //ini_set('display_errors', 1);
@@ -24,8 +20,6 @@ function __autoload( $className )
 }
 
 ezcBase::addClassRepository( './lib','./lib/autoloads'); 
-
-//print_r($_SERVER);
 
 // your code here
 ezcBaseInit::setCallback(
@@ -45,7 +39,6 @@ if (!is_null($url->getParam( 'module' )) && file_exists('modules/lh'.$url->getPa
 	$ViewToRun = 'index';
 }
     
-//erLhcoreClassCacheSystem::includeCompiledClasses($ModuleToRun,$ViewToRun);
 include_once('modules/lh'.$ModuleToRun.'/module.php');
 
 $Result = erLhcoreClassModule::runModule($ViewList,$FunctionList);
@@ -58,10 +51,5 @@ if (isset($Result['pagelayout']))
 }
 
 echo $tpl->fetch();
-//erLhcoreClassCacheSystem::compileClass($ModuleToRun,$ViewToRun);
-
-
-
-//print_r($_SERVER);
 
 ?>
