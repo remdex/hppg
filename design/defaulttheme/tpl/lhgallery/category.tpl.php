@@ -4,7 +4,6 @@
 
 <? $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories($category->cid);
 if (count($subcategorys) > 0) : 
-$noAds = true;
 
 ?>
  <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list_full.tpl.php'));?> 

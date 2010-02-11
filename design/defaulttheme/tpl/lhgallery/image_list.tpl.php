@@ -1,9 +1,3 @@
-<? if (!isset($noAds)) : ?>
-<div class="right">
-ads right
-</div>
-<?endif;?>
-
 <?php if (isset($pages)) : ?>
     <div class="navigator">
     <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('rss/category',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, Found - <?=$pages->items_total?></div>
@@ -27,16 +21,10 @@ ads right
         </div>
     </div>   
 <?endforeach; ?>    
- <? if (!isset($noAds)) : ?>
-<div class="c-left">
-bottom banner
-</div>
- <?endif;?>
  <?php if (isset($pages)) : ?>
     <div class="navigator" style="clear:left;"><?=$pages->display_pages();?></div>
 <? endif;?>
 </div>
-
 <script type="text/javascript">
 $('.thumb-attr a').each(function(index) {	
 	$(this).colorbox({href:$(this).attr('rel')});	

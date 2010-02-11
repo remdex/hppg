@@ -19,9 +19,13 @@
 <h1>Hentai wallpapers</h1>
 <p>All materials published are the property of their owners!</p></div>
 
+<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
+
 <div class="search-box">
-<form action="<?=erLhcoreClassDesign::baseurl('/gallery/search')?>"><input type="text" title="Enter keyword or phrase" id="searchtext" onfocus="Javascript: if ( $('input#searchtext').val() == 'Search...') { $('input#searchtext').val('');}" onblur="Javascript: if ($('input#searchtext').val() == '') { $('input#searchtext').val('Search...'); }" class="keywordField" name="SearchText" value="<?=isset($Result['keyword']) ? htmlspecialchars($Result['keyword']) : 'Search...'?>" /> <input type="submit" class="default-button" name="doSearch" value="Search entire gallery"/></form>
+    <form action="<?=erLhcoreClassDesign::baseurl('/gallery/search')?>"><input type="text" title="Enter keyword or phrase" id="searchtext" onfocus="Javascript: if ( $('input#searchtext').val() == 'Search...') { $('input#searchtext').val('');}" onblur="Javascript: if ($('input#searchtext').val() == '') { $('input#searchtext').val('Search...'); }" class="keywordField" name="SearchText" value="<?=isset($Result['keyword']) ? htmlspecialchars($Result['keyword']) : 'Search...'?>" /> <input type="submit" class="default-button" name="doSearch" value="Search entire gallery"/></form>
 </div>
+
+<?php endif; ?>
 
 </div>
 
@@ -89,7 +93,7 @@
 		<div id="rightmenucont">		
 			<div id="rightpadding">		
 
-					
+					<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
 					<div class="right-infobox">
     					<div class="last-search-infobox">
         					<h3>Last searches</h3>
@@ -100,11 +104,8 @@
         					</ul>
     					</div>					
                     </div>	
-                    
-                    <div align="center">
-                    <a href="http://www.ero-advertising.com/ads/ref.php?id=13463" target="_blank"><img src="http://banners.ero-advertising.com/getban.php?size=180x150&id=13463" border="0" alt="Ero-advertising" /></a>
-		          </div>
-                    
+                    <?php endif; ?>
+                                                         
                     <div class="right-infobox">
                     <div class="last-search-infobox">
                         <h3>Last viewed images</h3>

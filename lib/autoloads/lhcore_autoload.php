@@ -49,8 +49,9 @@ return array (
         'erLhcoreClassModelGalleryUpload' 	=> 'models/lhgallery/erlhcoreclassmodelupload.php',
         'erLhcoreClassGallery' 	            => 'core/lhgallery/lhgallery.php',
         'erLhcoreClassModelGalleryLastSearch' => 'models/lhgallery/erlhcoreclassmodellastsearch.php',
-        'erLhcoreClassImageConverter'       => 'core/lhgallery/lhimageconverter.php',        
-        'erLhcoreClassGalleryBatch'       => 'core/lhgallery/lhbatch.php',
+        'erLhcoreClassImageConverter'         => 'core/lhgallery/lhimageconverter.php',        
+        'erLhcoreClassGalleryBatch'           => 'core/lhgallery/lhbatch.php',
+        'erLhcoreClassLhMemcache'             => 'core/lhcore/lhmemcache.php',
 );
     
 ?>

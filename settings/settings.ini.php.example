@@ -1,7 +1,5 @@
 <?php
 
-define('SITE_CACHE_PREPEND','devhppg_site');
-
 return array (
   'settings' => 
   array (
@@ -28,7 +26,18 @@ return array (
     array (
       'host' => 'localhost',
       'port' => 3312,     
-      'index' => 'index_name',     
+      'index' => 'index_name',
+      'enabled' => false,      
+    ),    
+    'cacheEngine' => array(
+        'cache_global_key'  => 'hppghentai_wallapers',
+        'className'         => false //'erLhcoreClassLhMemcache' //false if none
+    ),
+    'memecache' => 
+    array (
+      'servers' => array( array('host' => '127.0.0.1',
+                                'port' => '11211',     
+                                'weight' => 1 ) )     
     ),
     'db' => 
     array (

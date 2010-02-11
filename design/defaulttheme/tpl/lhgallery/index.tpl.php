@@ -22,7 +22,6 @@ $pages->paginate();
 if ($pages->items_total > 0) :
 
 $items=erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $category->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page));
-$noAds = true;
 ?>  
 
 <?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php'));

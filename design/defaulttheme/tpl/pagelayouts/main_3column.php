@@ -27,9 +27,12 @@
 <h1>Hentai wallpapers</h1>
 <p>All materials published are the property of their owners!</p></div>
 
-<div class="search-box">
-<form action="<?=erLhcoreClassDesign::baseurl('/gallery/search')?>"><input type="text" title="Enter keyword or phrase" id="searchtext" onfocus="Javascript: if ( $('input#searchtext').val() == 'Search...') { $('input#searchtext').val('');}" onblur="Javascript: if ($('input#searchtext').val() == '') { $('input#searchtext').val('Search...'); }" class="keywordField" name="SearchText" value="<?=isset($Result['keyword']) ? htmlspecialchars($Result['keyword']) : 'Search...'?>" /> <input type="submit" class="default-button" name="doSearch" value="Search entire gallery"/></form>
-</div>
+<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
+    <div class="search-box">
+        <form action="<?=erLhcoreClassDesign::baseurl('/gallery/search')?>"><input type="text" title="Enter keyword or phrase" id="searchtext" onfocus="Javascript: if ( $('input#searchtext').val() == 'Search...') { $('input#searchtext').val('');}" onblur="Javascript: if ($('input#searchtext').val() == '') { $('input#searchtext').val('Search...'); }" class="keywordField" name="SearchText" value="<?=isset($Result['keyword']) ? htmlspecialchars($Result['keyword']) : 'Search...'?>" /> <input type="submit" class="default-button" name="doSearch" value="Search entire gallery"/></form>
+    </div>
+<?php endif; ?>
+
 
 </div>
 
@@ -107,18 +110,20 @@
 		
 		<div id="rightmenucont">
 		
-			<div id="rightpadding">									
-					<div class="right-infobox">
-					<div class="last-search-infobox">
-					<h3>Last searches</h3>
-					<ul>
-					<?php foreach (erLhcoreClassModelGalleryLastSearch::getSearches() as $search) : ?>									
-					   <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/search/')?>(keyword)/<?=urlencode($search->keyword);?>">&raquo; <?=htmlspecialchars($search->keyword);?> (<?=$search->countresult;?>)</a></li>
-					<?endforeach;?>
-					</ul>
-					</div>					
-                    </div>									
-		    </div>	
+    		<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
+    			<div id="rightpadding">									
+    					<div class="right-infobox">
+    					<div class="last-search-infobox">
+    					<h3>Last searches</h3>
+    					<ul>
+    					<?php foreach (erLhcoreClassModelGalleryLastSearch::getSearches() as $search) : ?>									
+    					   <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/search/')?>(keyword)/<?=urlencode($search->keyword);?>">&raquo; <?=htmlspecialchars($search->keyword);?> (<?=$search->countresult;?>)</a></li>
+    					<?endforeach;?>
+    					</ul>
+    					</div>					
+                        </div>									
+    		    </div>	
+    		<?php endif; ?>		   
 		    
 		    <div class="right-infobox">
                     <div class="last-search-infobox">
@@ -143,29 +148,8 @@
                         }
                         echo $Result;
                         ?>
-
-            </div>
-            
-            <script language="javascript" type="text/javascript">
-<!--
-var _hey_lt_w = "", _hey_lt_h = "", _hey_lt_c = "";
-//-->
-</script>
-<script language="javascript1.2" type="text/javascript">
-<!--
-_hey_lt_w = screen.width; _hey_lt_h = screen.height; _hey_lt_c = navigator.appName.indexOf("Microsoft") >= 0 ? screen.colorDepth : screen.pixelDepth;
-//-->
-</script>
-<script language="javascript" type="text/javascript">
-<!--
-document.write("<a target='_blank' href='http://www.hey.lt/details.php?id=hentaiwalls'><img width=88 height=31 border=0 src='//www.hey.lt/count.php?id=hentaiwalls&width=" + _hey_lt_w + "&height=" + _hey_lt_h + "&color=" + _hey_lt_c + "&referer=" + escape(document.referrer) + "' alt='Hey.lt - Nemokamas lankytojų skaitliukas'><\/a>");
-//-->
-</script>
-<noscript>
-<a target="_blank" href="http://www.hey.lt/details.php?id=hentaiwalls"><img width=88 height=31 border=0 src="//www.hey.lt/count.php?id=hentaiwalls" alt="Hey.lt - Nemokamas lankytojų skaitliukas"></a>
-</noscript>
-            								
-            </div>
+                    </div>  				
+              </div>
 		    
 		</div>
 		

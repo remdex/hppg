@@ -100,9 +100,11 @@ class erLhcoreClassCacheSystem implements ezcBaseConfigurationInitializer
      
 }
 
-class CSCacheAPC extends Memcache {
+class CSCacheAPC {
 
     static private $m_objMem = NULL;
+    public $cacheEngine = null;
+    public $cacheGlobalKey = null;
 
     public $cacheKeys = array(
     'last_hits_version',        // Last visited pages
@@ -124,31 +126,48 @@ class CSCacheAPC extends Memcache {
         $this->delete(md5('index_page'));
     }
     
-    function __construct(){
-
+    function __construct() {  
+              
+        $cacheEngineClassName = erConfigClassLhConfig::getInstance()->conf->getSetting( 'cacheEngine', 'className' );        
+        $this->cacheGlobalKey = erConfigClassLhConfig::getInstance()->conf->getSetting( 'cacheEngine', 'cache_global_key' );
+                    
+        if ($cacheEngineClassName !== false)
+        {
+            $this->cacheEngine = new $cacheEngineClassName();
+        }
     }
-    
+         
     function __destruct() {
-        self::$m_objMem->close();
+        
     }
     
     static function getMem() {
         if (self::$m_objMem == NULL) {
             self::$m_objMem = new CSCacheAPC();
-            self::$m_objMem->connect('127.0.0.1', '11211') 
-                        or die ("The memcached server");
         }
         return self::$m_objMem;
     }
 
     function delete($key) {
         if (isset($GLOBALS[$key])) unset($GLOBALS[$key]);
-        $this->set(SITE_CACHE_PREPEND.$key,false,0);
+        
+        if ( $this->cacheEngine != null )
+        {
+            $this->cacheEngine->set($this->cacheGlobalKey.$key,false,0);
+        }
     }
 
     function restore($key) {
-        if (isset($GLOBALS[$key]) && $GLOBALS[$key] !== false) return $GLOBALS[$key];        
-        $GLOBALS[$key] = $this->get(SITE_CACHE_PREPEND.$key);        
+        
+        if (isset($GLOBALS[$key]) && $GLOBALS[$key] !== false) return $GLOBALS[$key];
+
+        if ( $this->cacheEngine != null )
+        {       
+            $GLOBALS[$key] = $this->cacheEngine->get($this->cacheGlobalKey.$key);
+        } else {
+            $GLOBALS[$key] = false;
+        }
+               
         return $GLOBALS[$key];
     }
 
@@ -156,31 +175,45 @@ class CSCacheAPC extends Memcache {
     {
         if (isset($GLOBALS['CacheKeyVersion_'.$cacheVariable])) return $GLOBALS['CacheKeyVersion_'.$cacheVariable];
         
-        if (($version = $this->get(SITE_CACHE_PREPEND.$cacheVariable)) == false){
+        if ( $this->cacheEngine != null )
+        {
+            if (($version = $this->cacheEngine->get($this->cacheGlobalKey.$cacheVariable)) == false){
+                $version = $valuedefault;
+                $this->cacheEngine->set($this->cacheGlobalKey.$cacheVariable,$version,0,$ttl);
+                $GLOBALS['CacheKeyVersion_'.$cacheVariable] = $valuedefault;
+            } else $GLOBALS['CacheKeyVersion_'.$cacheVariable] = $version;
+            
+        } else {
             $version = $valuedefault;
-            $this->set(SITE_CACHE_PREPEND.$cacheVariable,$version,0,$ttl);
             $GLOBALS['CacheKeyVersion_'.$cacheVariable] = $valuedefault;
-        } else $GLOBALS['CacheKeyVersion_'.$cacheVariable] = $version;
+        }
         
         return $version;        
     }
     
     function increaseCacheVersion($cacheVariable)
     {
-        if (($version = $this->get(SITE_CACHE_PREPEND.$cacheVariable)) == false){
-             $this->set(SITE_CACHE_PREPEND.$cacheVariable,1);
-             $GLOBALS['CacheKeyVersion_'.$cacheVariable] = 1;
-        } else {$this->increment(SITE_CACHE_PREPEND.$cacheVariable);$GLOBALS['CacheKeyVersion_'.$cacheVariable] = $version+1;}
-        
+        if ( $this->cacheEngine != null )
+        {            
+            if (($version = $this->get($this->cacheGlobalKey.$cacheVariable)) == false){
+                 $this->set($this->cacheGlobalKey.$cacheVariable,1);
+                 $GLOBALS['CacheKeyVersion_'.$cacheVariable] = 1;
+            } else {$this->increment($this->cacheGlobalKey.$cacheVariable);$GLOBALS['CacheKeyVersion_'.$cacheVariable] = $version+1;}
+            
+        } else {
+            $GLOBALS['CacheKeyVersion_'.$cacheVariable] = 1;
+        }        
     }
     
-    function store($key, $value, $ttl = 36000) {
-        $GLOBALS[$key] = $value;
-        $this->set(SITE_CACHE_PREPEND.$key,$value,0,$ttl);
-    } 
-    
-      
-    
+    function store($key, $value, $ttl = 36000) {        
+        if ( $this->cacheEngine != null )
+        {
+            $GLOBALS[$key] = $value;
+            $this->cacheEngine->set($this->cacheGlobalKey.$key,$value,0,$ttl);
+        } else {
+           $GLOBALS[$key] = $value; 
+        }
+    }      
 }
 
 

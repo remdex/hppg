@@ -29,7 +29,7 @@ class erLhcoreClassDesign
     {
         $instance = erLhcoreClassSystem::instance();
                 
-        return $instance->WWWDir .  $instance->WWWDirLang  . '/' . ltrim($link,'/');
+        return $instance->WWWDir . '/index.php' .  $instance->WWWDirLang  . '/' . ltrim($link,'/');
     }
 }
 

@@ -20,7 +20,7 @@ foreach ($directoryList  as $directory) : ?>
 if (!preg_match('/^(normal_|thumb_)/i',basename($file))) :
 ?>
     <tr>
-        <td>dd<?=$file?><img class="image_import" rel="<?=base64_encode($file);?>" src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>"/></td>
+        <td><?=$file?><img class="image_import" rel="<?=base64_encode($file);?>" src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>"/></td>
     </tr>
 <?
 endif;
@@ -34,33 +34,14 @@ endforeach;?>
 <script type="text/javascript">
 function startImport()
 {
-
     if ($('.image_import').eq(0).attr('rel') != undefined)
     {
-        $.getJSON("/gallery/addimagesbatch/"+$('#AlbumID').val()+"/?image="+$('.image_import').eq(0).attr('rel'), {} , function(data){	
+        $.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/addimagesbatch/')?>"+$('#AlbumID').val()+"/?image="+$('.image_import').eq(0).attr('rel'), {} , function(data){	
               $('.image_import').eq(0).attr('src','/design/defaulttheme/images/icons/accept.png');
               $('.image_import').eq(0).removeClass('image_import');	
     		   startImport();        
-    	});
-    	
-    }
-	
-   /*$(".image_import").each(function (i) {
-       
-       $('#status').prepend($(this).attr('rel'));
-       
-       $.getJSON("/gallery/addimagesbatch/?images="+$(this).attr('rel'), {} , function(data){	
-			if (data.error == 'false')
-			{	
-				$('#image_status_'+photo_id).html(data.result); 
-				$('#image_status_'+photo_id).addClass('ok');
-				
-			}
-           return true;	          
-		});
-             
-  });*/
-
+    	});    	
+    }  
 
 }
 </script>
