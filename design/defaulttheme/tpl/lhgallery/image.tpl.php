@@ -324,29 +324,29 @@ $('.left-ajax a').click(function(){
 
 
 <div class="picture-details">
-<h3>Picture details</h3>
+<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Picture details')?></h3>
 <ul>
-    <li>Filename: <?=htmlspecialchars($image->filename);?></li>
-    <li>File Size: <?=$image->filesize_user;?></li>
-    <li>Image rating<?=$image->votes > 0 ? ' ('.$image->votes.' votes)' : ''?>: <img align="absmiddle" src="<?=erLhcoreClassDesign::design('images/gallery/rating');?><?=round($image->pic_rating/2000)?>.gif" alt=""/></li>
-    <li>Date added: <?=date('Y-m-d H:i:s',$image->ctime);?></li>
-    <li>Dimensions: <?=$image->pwidth?>x<?=$image->pheight?></li>
-    <li>Displayed: <?=$image->hits?> times</li>
-    <li>URL: <a href="http://<?=$_SERVER['HTTP_HOST']?><?=$image->url_path?>">http://<?=$_SERVER['HTTP_HOST']?><?=$image->url_path?></a></li>
+    <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Filename')?>: <?=htmlspecialchars($image->filename);?></li>
+    <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','File Size')?>: <?=$image->filesize_user;?></li>
+    <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Image rating')?><?=$image->votes > 0 ? ' ('.$image->votes.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','votes').')' : ''?>: <img align="absmiddle" src="<?=erLhcoreClassDesign::design('images/gallery/rating');?><?=round($image->pic_rating/2000)?>.gif" alt=""/></li>
+    <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Date added')?>: <?=date('Y-m-d H:i:s',$image->ctime);?></li>
+    <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Dimensions')?>: <?=$image->pwidth?>x<?=$image->pheight?></li>
+    <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Displayed')?>: <?=$image->hits?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','times')?></li>
+    <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','URL')?>: <a href="http://<?=$_SERVER['HTTP_HOST']?><?=$image->url_path?>">http://<?=$_SERVER['HTTP_HOST']?><?=$image->url_path?></a></li>
 </ul>
 </div>
 
 <div class="picture-voting">
-<h3>Rate this picture</h3>
+<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Rate this picture')?></h3>
 <div id="vote-content">
-    <label><input type="radio" checked="checked" value="1" name="Voting" />(1 stars)</label> <label><input type="radio" value="2" name="Voting" /> (2 stars)</label> <label><input type="radio" value="3" name="Voting" />(3 stars)</label> <label><input type="radio" value="4" name="Voting" />(4 stars)</label> <label><input type="radio" value="5" name="Voting" />(5 stars)</label>
-    <input type="button" class="default-button" name="AddVote" value="Vote!" onclick="hw.vote(<?=$image->pid?>,$('input[name=Voting]:checked').val())"/>
+    <label><input type="radio" checked="checked" value="1" name="Voting" />(1 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','star')?>)</label> <label><input type="radio" value="2" name="Voting" /> (2 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','stars')?>)</label> <label><input type="radio" value="3" name="Voting" />(3 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','stars')?>)</label> <label><input type="radio" value="4" name="Voting" />(4 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','stars')?>)</label> <label><input type="radio" value="5" name="Voting" />(5 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','stars')?>)</label>
+    <input type="button" class="default-button" name="AddVote" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Vote!')?>" onclick="hw.vote(<?=$image->pid?>,$('input[name=Voting]:checked').val())"/>
 </div>
 </div>
 
 
 <div class="picture-comments" id="comment-container">
-<h3>Picture comments</h3>
+<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Picture comments')?></h3>
 <?php $comments = erLhcoreClassModelGalleryComment::getComments(array('cache_key' => 'comments_'.$image->pid,'filter' => array('pid' => $image->pid))); 
 
 if (count($comments) > 0) :
@@ -361,7 +361,7 @@ if (count($comments) > 0) :
 <?php endforeach;?>
 </ul>
 <?else:?>
-<p>No comments</p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','No comments')?></p>
 <?endif;?>
 
 
@@ -377,28 +377,28 @@ if (count($comments) > 0) :
 
 <? if (isset($commentStored)) : ?>
 <ul class="ok">
-    <li>Comment stored</li>
+    <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Comment stored')?></li>
 </ul>
 <?endif;?>
 
 <form action="#comment-container" method="post" >
-    <h4>Leave a reply</h4>
+    <h4><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Leave a reply')?></h4>
     <div class="in-blk">
-    <label>Nick:</label>
-    <input type="text" name="Name" value="<?=htmlspecialchars($comment_new->msg_author)?>" maxlength="25" class="inputfield"/><i> Max 25 characters</i>
+    <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Nick')?>:</label>
+    <input type="text" name="Name" value="<?=htmlspecialchars($comment_new->msg_author)?>" maxlength="25" class="inputfield"/><i> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Max 25 characters')?></i>
     </div>
 
     <div class="in-blk">
-    <label>Message:</label>
+    <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Message')?>:</label>
     <textarea name="CommentBody" rows="5" class="default-textarea" ><?=htmlspecialchars($comment_new->msg_body)?></textarea>
     </div>
 
     <div class="in-blk">
-    <label>Safe code</label>
+    <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Safe code')?></label>
     <input type="text" class="inputfield" name="CaptchaCode" value="" /><br />
     <img src="<?=erLhcoreClassDesign::baseurl('/captcha/image/comment')?>" alt="" />
     </div>    
-    <input type="submit" class="default-button" name="StoreComment" value="Comment"/>
+    <input type="submit" class="default-button" name="StoreComment" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Comment')?>"/>
 </form>
 </div>
 

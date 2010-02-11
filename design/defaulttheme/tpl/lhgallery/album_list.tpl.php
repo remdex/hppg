@@ -7,7 +7,7 @@
         <div class="content">
         <div class="albthumb-img"><?=$item->album_thumb_path;?></div>
        <h2><a href="<?=$item->url_path?>"><?=htmlspecialchars($item->title)?></a></h2>
-       <?=$item->images_count;?> files.          
+       <?=$item->images_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list','files')?>.
        
        </div>
     </div>   

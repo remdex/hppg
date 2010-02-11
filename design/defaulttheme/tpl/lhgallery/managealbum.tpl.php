@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>Category - <?= $category !== false ? htmlspecialchars($category->name) : 'Home'?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','Home')?></h1>
 </div>
 
 <? if ($pages->items_total > 0) { ?>         
@@ -11,6 +11,6 @@
           
 <? } else { ?>
 
-<p>Nėra įrašų.</p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','No records.')?></p>
 
 <? } ?>

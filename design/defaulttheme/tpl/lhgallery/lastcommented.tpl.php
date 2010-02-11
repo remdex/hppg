@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>Last commented images</h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images')?></h1>
 </div>
 <? if ($pages->items_total > 0) { ?>
          
@@ -13,7 +13,7 @@
           
 <? } else { ?>
 
-<p>Nėra įrašų.</p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','No records.')?></p>
 
 <? } ?>
 

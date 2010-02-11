@@ -103,11 +103,11 @@ $lastImages = current($imagesAjax);
 <? foreach ($imagesAjax as $key => $item) : ?>
     <div class="image-thumb thumb-pic-small">
         <div class="thumb-pic">
-            <a href="<?=$item->url_path?><?=isset($urlAppend) ? $urlAppend : ''?>"><img title="See full size" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename))?>" alt="<?=htmlspecialchars($item->name_user);?>" /></a>
+            <a href="<?=$item->url_path?><?=isset($urlAppend) ? $urlAppend : ''?>"><img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','See full size');?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename))?>" alt="<?=htmlspecialchars($item->name_user);?>" /></a>
         </div>
         <div class="thumb-attr">
         <ul>            
-            <li><h3><?=($title = $item->name_user) == '' ? 'preview version' : $title;?></h3></li>
+            <li><h3><?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/ajaximages','preview version') : $title;?></h3></li>
         </ul>
         </div>
     </div>   

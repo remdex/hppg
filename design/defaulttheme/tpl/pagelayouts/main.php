@@ -13,11 +13,11 @@
 <div id="container">
 
 <div id="main-header-bg"><div id="topcontainer">
-<div id="logo"><h1><a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><img src="<?=erLhcoreClassDesign::design('images/general/hentai-wallpapers.jpg');?>" alt="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" title="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" /></a></h1></div>
+<div id="logo"><h1><a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?></a></h1></div>
 
 <div class="title-gallery">
-<h1>Hentai wallpapers</h1>
-<p>All materials published are the property of their owners!</p></div>
+<h1>High perfomance photo gallery</h1>
+</div>
 
 <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
 
@@ -66,7 +66,7 @@
 		$pathElementCount = count($Result['path'])-1;
 		?>			
     		<div id="path">
-    		  <a href="/">Home &raquo;</a>
+    		  <a href="/"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?> &raquo;</a>
     		  
     		  <? foreach ($Result['path'] as $key => $pathItem) : ?>
     		      <? 
@@ -96,7 +96,7 @@
 					<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
 					<div class="right-infobox">
     					<div class="last-search-infobox">
-        					<h3>Last searches</h3>
+        					<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last searches')?></h3>
         					<ul>
         					<?php foreach (erLhcoreClassModelGalleryLastSearch::getSearches() as $search) : ?>									
         					   <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/search/')?>(keyword)/<?=urlencode($search->keyword);?>">&raquo; <?=htmlspecialchars($search->keyword);?> (<?=$search->countresult;?>)</a></li>
@@ -108,7 +108,7 @@
                                                          
                     <div class="right-infobox">
                     <div class="last-search-infobox">
-                        <h3>Last viewed images</h3>
+                        <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last viewed images')?></h3>
                         <?php 
                         $cache = CSCacheAPC::getMem(); 
                         $cacheVersion = $cache->getCacheVersion('last_hits_version',time(),600);
@@ -130,26 +130,7 @@
                         echo $Result;
                         ?>
                     </div>	
-                    
-<script language="javascript" type="text/javascript">
-<!--
-var _hey_lt_w = "", _hey_lt_h = "", _hey_lt_c = "";
-//-->
-</script>
-<script language="javascript1.2" type="text/javascript">
-<!--
-_hey_lt_w = screen.width; _hey_lt_h = screen.height; _hey_lt_c = navigator.appName.indexOf("Microsoft") >= 0 ? screen.colorDepth : screen.pixelDepth;
-//-->
-</script>
-<script language="javascript" type="text/javascript">
-<!--
-document.write("<a target='_blank' href='http://www.hey.lt/details.php?id=hentaiwalls'><img width=88 height=31 border=0 src='//www.hey.lt/count.php?id=hentaiwalls&width=" + _hey_lt_w + "&height=" + _hey_lt_h + "&color=" + _hey_lt_c + "&referer=" + escape(document.referrer) + "' alt='Hey.lt - Nemokamas lankytojų skaitliukas'><\/a>");
-//-->
-</script>
-<noscript>
-<a target="_blank" href="http://www.hey.lt/details.php?id=hentaiwalls"><img width=88 height=31 border=0 src="//www.hey.lt/count.php?id=hentaiwalls" alt="Hey.lt - Nemokamas lankytojų skaitliukas" /></a>
-</noscript>
-                    							
+                      							
             </div>								
 		    </div>	
 		    

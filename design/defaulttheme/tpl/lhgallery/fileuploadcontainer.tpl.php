@@ -9,7 +9,7 @@
 					<?=htmlspecialchars($fileName)?>
 				</div>
 				<div class="progressBarStatus" id="progresStatus<?=$fileID?>">
-					<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/fileuploadcontainer','Waiting')?>...
+					<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Waiting')?>...
 				</div>
 				<div class="progressBarInProgress" id="progressBarInProgress<?=$fileID?>">
 					
@@ -17,13 +17,13 @@
 			</div>		
 			
 			<div class="right-progresbar">
-				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/fileuploadcontainer','Photo title')?></div>				
+				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Photo title')?></div>				
 				<input type="text" id="PhotoTitle<?=$fileID?>" value="" class="inputfield" />
 
-				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/fileuploadcontainer','Photo keywords')?></div>	
+				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Photo keywords')?></div>	
 				<input type="text" id="PhotoKeyword<?=$fileID?>" value="" class="inputfield" />	
 				
-				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/fileuploadcontainer','Caption')?></div>			
+				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Caption')?></div>			
 				<textarea class="default-textarea" id="PhotoDescription<?=$fileID?>"></textarea>						
 			</div>
 			
@@ -39,7 +39,7 @@
 					<?=$fileName?>
 				</div>
 				<div class="progressBarStatus" id="progresStatus<?=$fileID?>">
-					<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/fileuploadcontainer','Waiting')?>...
+					<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Waiting')?>...
 				</div>
 				<div class="progressBarInProgress" id="progressBarInProgress<?=$fileID?>">
 					
@@ -47,7 +47,7 @@
 			</div>
 			
 			<div class="right-progresbar">
-				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/fileuploadcontainer','Sutch file already exists')?>...</div>				
+				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Sutch file already exists')?>...</div>				
 			</div>
 	</div>
 </div>

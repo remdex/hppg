@@ -21,11 +21,11 @@
 <div id="container" class="columns-3-site">
 
 <div id="main-header-bg"><div id="topcontainer">
-<div id="logo"><h1><a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><img src="<?=erLhcoreClassDesign::design('images/general/hentai-wallpapers.jpg');?>" alt="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" title="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>"></a></h1></div>
+<div id="logo"><h1><a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?></a></h1></div>
 
 <div class="title-gallery">
-<h1>Hentai wallpapers</h1>
-<p>All materials published are the property of their owners!</p></div>
+<h1>High perfomance photo gallery</h1>
+</div>
 
 <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
     <div class="search-box">
@@ -43,14 +43,14 @@
 <div class="top-menu float-break">
 <ul>
                     <?php
-                    $currentUser = erLhcoreClassUser::instance();                       
-                    if ($currentUser->isLogged()) : 
+                    $currentUser = erLhcoreClassUser::instance();
+                    if ($currentUser->isLogged()) :
                     $UserData = $currentUser->getUserData();
                     ?>                                       	
                     	<li><a href="<?=erLhcoreClassDesign::baseurl('/user/index/')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Account');?> - (<?echo $UserData->username?>)</li> 
                     	<li><a href="<?=erLhcoreClassDesign::baseurl('/user/logout/')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Logout');?></a></li>                  
                     <? 
-                    unset($UserData);                    
+                    unset($UserData);
                     else : ?>                                    	
                     	<li><a href="<?=erLhcoreClassDesign::baseurl('/user/login/')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Login');?></a></li>                          
                     	<li><a href="<?=erLhcoreClassDesign::baseurl('/user/registration/')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Register');?></a></li>                          
@@ -67,10 +67,10 @@
                     </ul>
 </div>
 	<? if (isset($Result['path'])) : 		
-		$pathElementCount = count($Result['path'])-1;
+	$pathElementCount = count($Result['path'])-1;
 		?>			
     		<div id="path" class="float-break">
-    		  <a href="/">Home &raquo;</a>
+    		  <a href="/"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?> &raquo;</a>
     		  
     		  <? foreach ($Result['path'] as $key => $pathItem) : ?>
     		      <? 
@@ -102,7 +102,7 @@
 			<div id="mainartcont">			 		 
 			 <div style="padding:2px">
 			<?
-			 echo $Result['content'];		
+			echo $Result['content'];
 			?>						
 			</div>
 			</div>
@@ -114,7 +114,7 @@
     			<div id="rightpadding">									
     					<div class="right-infobox">
     					<div class="last-search-infobox">
-    					<h3>Last searches</h3>
+    					<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last searches')?></h3>
     					<ul>
     					<?php foreach (erLhcoreClassModelGalleryLastSearch::getSearches() as $search) : ?>									
     					   <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/search/')?>(keyword)/<?=urlencode($search->keyword);?>">&raquo; <?=htmlspecialchars($search->keyword);?> (<?=$search->countresult;?>)</a></li>
@@ -127,24 +127,24 @@
 		    
 		    <div class="right-infobox">
                     <div class="last-search-infobox">
-                        <h3>Last viewed images</h3>
+                        <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last viewed images')?></h3>
                         <?php 
-                        $cache = CSCacheAPC::getMem(); 
+                        $cache = CSCacheAPC::getMem();
                         $cacheVersion = $cache->getCacheVersion('last_hits_version',time(),600);
                         if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_infobox'))) === false)
                         {
                             $items = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'sort' => 'mtime DESC, pid DESC','offset' => 0, 'limit' => 2));
                             $appendImageMode = '/(mode)/lasthits';
-                            $Result = '<ul class="last-hits-infobox">';                                                        
+                            $Result = '<ul class="last-hits-infobox">';
                             foreach ($items as $item)
-                            {                                
-                               $title = ($title = $item->name_user) == '' ? 'preview version' : $title;
-                               $Result .= '<li><a href="'.$item->url_path.$appendImageMode.'"><img title="See full size" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename)).'" alt="'.htmlspecialchars($item->name_user).'" /></a></li>';
-                            }                            
+                            {
+                                $title = ($title = $item->name_user) == '' ? 'preview version' : $title;
+                                $Result .= '<li><a href="'.$item->url_path.$appendImageMode.'"><img title="See full size" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename)).'" alt="'.htmlspecialchars($item->name_user).'" /></a></li>';
+                            }
                             $Result .= '</ul>';
-                            
+
                             $cache->store(md5($cacheVersion.'_lasthits_infobox'),$Result);
-                         
+
                         }
                         echo $Result;
                         ?>

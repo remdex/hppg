@@ -34,7 +34,7 @@
 				</tr>												
 				<tr>
 					<td></td>
-					<td><input type="submit" class="default-button" name="Update_Category" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Update');?>"/> &laquo; <a href="/gallery/admincategorys/<?=$category->parent?>">back</a></td>
+					<td><input type="submit" class="default-button" name="Update_Category" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Update');?>"/> &laquo; <a href="/gallery/admincategorys/<?=$category->parent?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editcategory','back')?></a></td>
 				</tr>
 			</table>		
 		</form>

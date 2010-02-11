@@ -15,7 +15,7 @@
             <li><?=$item->pwidth?>x<?=$item->pheight?></li>
             <li><?=$item->hits?> watched</li>
             <li><a class="thmb" rel="<?=($item->pwidth < 450) ? erLhcoreClassDesign::imagePath($item->filepath.urlencode($item->filename)) : erLhcoreClassDesign::imagePath($item->filepath.'normal_'.urlencode($item->filename))?>" title="<?=htmlspecialchars($item->name_user);?>" href="<?=erLhcoreClassDesign::imagePath($item->filepath.$item->filename)?>"><h3>
-            <?=($title = $item->name_user) == '' ? 'preview version' : $title;?></h3>          
+            <?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','preview version') : $title;?></h3>          
             </a></li>
         </ul>
         </div>

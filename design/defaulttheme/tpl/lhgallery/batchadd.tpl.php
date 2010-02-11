@@ -26,7 +26,7 @@ if (!preg_match('/^(normal_|thumb_)/i',basename($file))) :
 endif;
 endforeach;?>
 </table>
-<input type="button" value="Add images" onclick="startImport()" />
+<input type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Add images')?>" onclick="startImport()" />
 <div id="status">
 
 </div>

@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>Top rated images</h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated images')?></h1>
 </div>
 <? if ($pages->items_total > 0) { ?>
          
@@ -13,7 +13,7 @@
           
 <? } else { ?>
 
-<p>No records.</p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','No records')?>.</p>
 
 <? } ?>
 

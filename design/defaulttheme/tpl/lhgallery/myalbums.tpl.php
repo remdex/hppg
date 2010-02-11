@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>My albums</h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','My albums')?></h1>
 </div>
 <? if ($pages->items_total > 0) { ?>         
   <?             
@@ -8,11 +8,11 @@
    
   <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/my_albums_list.tpl.php'));?> 
     
-  <p><a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>">Create a new album.</a></p>
+  <p><a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Create a new album.')?></a></p>
           
 <? } else { ?>
 
-<p>You do not have any album. <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>">Create an album.</a></p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','You do not have any album.')?> <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Create an album.')?></a></p>
 
 <? } ?>
 

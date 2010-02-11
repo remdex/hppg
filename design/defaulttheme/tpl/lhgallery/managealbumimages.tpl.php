@@ -12,7 +12,7 @@
           
 <? } else { ?>
 
-<p>Nėra įrašų.</p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','No records.')?></p>
 
 <? } ?>
 

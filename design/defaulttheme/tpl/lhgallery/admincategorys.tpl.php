@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>Category - <?= $category !== false ? $category->name : 'Home'?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category')?> - <?= $category !== false ? $category->name : 'Home'?></h1>
 </div>
 <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
 <tr>
@@ -19,7 +19,7 @@
 </table><br />
 <br />
 <div class="header-list">
-<h3>Albums category <?= $category !== false ? ' - '.htmlspecialchars($category->name) : ' - Home'?></h3>
+<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Albums category');?> <?= $category !== false ? ' - '.htmlspecialchars($category->name) : ' - '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></h3>
 </div>
 
 <? 
