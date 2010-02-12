@@ -44,11 +44,11 @@ class erLhcoreClassModelGalleryCategory {
        }       
    }
     
-   public static function getParentCategories($category_id = 0)
+   public static function getParentCategories($category_id = 0,$limit = 100, $offset = 0)
    {
       $cache = CSCacheAPC::getMem();
             
-      if (($objects = $cache->restore(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id))) === false)
+      if (($objects = $cache->restore(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id.'limit_'.$limit.'_offset'.$offset))) === false)
       {
           $session = erLhcoreClassGallery::getSession();
            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryCategory' );  
@@ -58,6 +58,7 @@ class erLhcoreClassModelGalleryCategory {
            );
            
            $q->orderBy( 'pos' ); 
+           $q->limit($limit,$offset);
                   
           $objects = $session->find( $q, 'erLhcoreClassModelGalleryCategory' );
                     

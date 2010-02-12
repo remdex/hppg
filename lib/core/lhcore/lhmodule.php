@@ -49,7 +49,7 @@ class erLhcoreClassModule{
             if (isset($Params['module']['functions']))
             {   
                 if (!$currentUser->isLogged()){
-                    header('Location: '. erLhcoreClassSystem::instance()->WWWDir . '/user/login');
+                    header('Location: '. erLhcoreClassSystem::instance()->WWWDir . '/index.php'.erLhcoreClassSystem::instance()->WWWDirLang.'/user/login');
                     return ;
                 }
                 
@@ -93,7 +93,7 @@ class erLhcoreClassModule{
     
     static function redirect($url = '/')
     {        
-        header('Location: '. erLhcoreClassSystem::instance()->WWWDir . erLhcoreClassSystem::instance()->WWWDirLang . '/' .ltrim($url,'/') );
+        header('Location: '. erLhcoreClassSystem::instance()->WWWDir . '/index.php'. erLhcoreClassSystem::instance()->WWWDirLang . '/' .ltrim($url,'/') );
     }
 }
 

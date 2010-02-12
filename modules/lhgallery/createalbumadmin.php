@@ -57,10 +57,17 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
          
     }  else {         
         $tpl->set('errArr',$Errors);
-    }
-        
+    }        
 }
 
-$tpl->set('album',$AlbumData);
+$tpl->set('album',$AlbumData);$pathObjects = array();
+
+$path = array();
+erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$CategoryData->cid);        
+foreach ($pathObjects as $pathItem)
+{
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+}
 
 $Result['content'] = $tpl->fetch();
+$Result['path'] = $path;

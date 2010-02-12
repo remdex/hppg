@@ -14,3 +14,6 @@
 <p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','No records.')?></p>
 
 <? } ?>
+<div>
+<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$category->cid?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Create an album');?></a>
+</div>
