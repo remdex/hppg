@@ -15,7 +15,15 @@ $tpl->set('category',$Category);
 
 $Result['content'] = $tpl->fetch();
 $path = array();
-erLhcoreClassModelGalleryCategory::getCategoryPath($path,$Category->cid);
+
+$pathObjects = array();
+erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Category->cid);        
+foreach ($pathObjects as $pathItem)
+{
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+}
+
+
 $Result['path'] = $path;
 
 ?>
