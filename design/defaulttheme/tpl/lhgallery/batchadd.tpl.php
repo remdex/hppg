@@ -6,30 +6,48 @@ foreach ($directoryList  as $directory) : ?>
 </ul>
 
 
-<select id="AlbumID">
-<? foreach (erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 5000,'offset' => 0,'sort' =>'title ASC')) as $album): ?>
-    <option value="<?=$album->aid?>"><?    
-    foreach ($album->path_album as $pathItem) {
-        echo $pathItem['title'].'/';
-    }
-    ?></option>
+<select id="AlbumID"><? 
+$previousCategory='';
+foreach (erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 5000,'offset' => 0,'sort' =>'category ASC')) as $album): ?>
+    <?if ($previousCategory != $album->category): ?>
+        <optgroup label="<? $previousCategory = $album->category;$pathReduced = $album->path_album;array_pop($pathReduced); foreach ($pathReduced as $pathItem){ echo $pathItem['title'].'/'; } ?>">
+    <?endif;?>
+    <option value="<?=$album->aid?>"><?=$album->title?></option>
+    <?if ($previousCategory != $album->category): ?>
+    </optgroup>
+    <?endif;?>    
 <?endforeach;?>
 </select>
+
+
+<?if (isset($writable) && $writable == false) : ?>
+<p class="error">I cannot write this directory</p>
+<?endif;?>
+
+<? if (isset($filesList)) : ?>
 <table>
 <? foreach ($filesList as $file) : 
 if (!preg_match('/^(normal_|thumb_)/i',basename($file))) :
 ?>
     <tr>
-        <td><?=$file?><img class="image_import" rel="<?=base64_encode($file);?>" src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>"/></td>
+        <td><?=$file?><img class="image_import" rel="<?=base64_encode($file);?>" src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>"/></td>
     </tr>
 <?
 endif;
 endforeach;?>
 </table>
-<input type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Add images')?>" onclick="startImport()" />
-<div id="status">
 
-</div>
+<?if (isset($writable) && $writable == true) : ?>
+<input type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Add images')?>" onclick="startImport()" />
+<? else : ?>
+<input type="button" disabled="disabled" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Add images')?>" />
+<? endif;?>
+
+
+<?endif;?>
+
+
+<div id="status"></div>
 
 <script type="text/javascript">
 function startImport()

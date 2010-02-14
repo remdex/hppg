@@ -7,7 +7,16 @@ $tpl->set('directoryList',$directoryList);
 
 if (isset($_GET['import']) && $_GET['import'] == 1)
 {
-    $tpl->set('filesList',erLhcoreClassGalleryBatch::listDirectory(isset($_GET['directory']) ? urldecode($_GET['directory']) : 'albums',true));
+    $directory = isset($_GET['directory']) ? urldecode($_GET['directory']) : 'albums';
+    
+    if (is_writable($directory)) 
+        $tpl->set('writable',true);        
+    else
+        $tpl->set('writable',false);
+        
+    $tpl->set('filesList',erLhcoreClassGalleryBatch::listDirectory($directory,true));
+    
+    
 }
 
 if (isset($_GET['importrecur']) && $_GET['importrecur'] == 1)

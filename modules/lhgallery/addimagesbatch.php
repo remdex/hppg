@@ -38,7 +38,7 @@ if (isset($_GET["image"]) && file_exists($imagePath) && erLhcoreClassImageConver
            $image->filename = $fileName;
                   
            $session->save($image);
-           //$image->clearCache();       
+           $image->clearCache();       
        }
        
     } catch (Exception $e) {

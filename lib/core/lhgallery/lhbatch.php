@@ -37,10 +37,11 @@ class erLhcoreClassGalleryBatch{
          $data = ezcBaseFile::findRecursive(
          $dir,
          array( '@(jpg|png|jpeg|JPEG)$@' )
-         );
-//          print_r($data);       
+         );     
        return $data;
    }
+   
+
 
 }
 
