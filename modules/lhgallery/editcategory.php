@@ -57,3 +57,14 @@ if (isset($_POST['Update_Category']))
 $tpl->set('category',$CategoryData);
 
 $Result['content'] = $tpl->fetch();
+
+$pathObjects = array();
+erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$CategoryData->cid);        
+foreach ($pathObjects as $pathItem)
+{
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+}
+ 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$CategoryData->cid,'title' => $pathItem->name); 
+ 
+$Result['path'] = $path;
