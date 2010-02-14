@@ -210,6 +210,12 @@ $ViewList['deletealbum'] = array(
     'params' => array('album_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
     ); 
+                             
+$ViewList['deletealbumadmin'] = array( 
+    'script' => 'deletealbumadmin.php',
+    'params' => array('album_id'),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
+    ); 
 
 $ViewList['publicupload'] = array( 
     'script' => 'publicupload.php',

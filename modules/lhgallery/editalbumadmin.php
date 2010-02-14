@@ -66,6 +66,6 @@ foreach ($pathObjects as $pathItem)
    $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
 }
  
-$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/managealbumimages/').$AlbumData->aid,'title' => $pathItem->title); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/managealbumimages/').$AlbumData->aid,'title' => $AlbumData->title); 
  
 $Result['path'] = $path;
