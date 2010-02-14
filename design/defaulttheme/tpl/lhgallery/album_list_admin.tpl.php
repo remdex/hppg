@@ -12,7 +12,7 @@
 </tr>
 <? foreach ($items as $key => $item) : ?>
     <tr>
-        <td width="1%"><?=$category->cid?></td>
+        <td width="1%"><?=$item->aid?></td>
         <td>
         <div class="albthumb-img right"><?=$item->album_thumb_path;?></div>
         <a href="<?=erLhcoreClassDesign::baseurl('gallery/managealbumimages/')?><?=$item->aid?>"><?=htmlspecialchars($item->title)?></a></td>

@@ -28,6 +28,20 @@ class erLhcoreClassModelGalleryCategory {
        $Category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$cid );
        return $Category;
    }
+   
+   
+   public static function isCategoryOwner($aid,$skipChecking = false)
+   {
+       $category = erLhcoreClassModelGalleryCategory::fetch($aid);
+       
+       if ($skipChecking==true) return $category;
+       
+       $currentUser = erLhcoreClassUser::instance();              
+       if ($category->owner_id == $currentUser->getUserID()) return $category;
+        
+       return false;  
+   }
+   
     
    public function clearCategoryCache()
    {
@@ -68,6 +82,25 @@ class erLhcoreClassModelGalleryCategory {
                 
       return $objects; 
    }
+   
+   public function removeThis()
+   {
+       $albums = erLhcoreClassGallery::getSession()->getRelatedObjects( $this, "erLhcoreClassModelGalleryAlbum" );
+       foreach ($albums as $album) 
+       {
+           $image->removeThis();
+       }
+        
+       $parentCategorys = erLhcoreClassGallery::getSession()->getRelatedObjects( $this, "erLhcoreClassModelGalleryCategory" ); 
+       foreach ($parentCategorys as $category) 
+       {
+           $category->removeThis();
+       } 
+                   
+       erLhcoreClassGallery::getSession()->delete($this);        
+       CSCacheAPC::getMem()->increaseImageManipulationCache();
+   }
+   
    
    
    public static function fetchCategoryColumn($params = array(),$column = 'COUNT(cid)')

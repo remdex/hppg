@@ -39,6 +39,30 @@ $def->properties['hide_frontpage']->columnName   = 'hide_frontpage';
 $def->properties['hide_frontpage']->propertyName = 'hide_frontpage';
 $def->properties['hide_frontpage']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
 
+$def->relations["erLhcoreClassModelGalleryAlbum"] = new ezcPersistentOneToManyRelation(
+	"lh_gallery_albums",
+	"lh_gallery_categorys"
+);
+
+$def->relations["erLhcoreClassModelGalleryAlbum"]->columnMap = array(
+	new ezcPersistentSingleTableMap(
+	"cid",
+	"category"
+	)
+);
+
+$def->relations["erLhcoreClassModelGalleryCategory"] = new ezcPersistentOneToManyRelation(
+	"lh_gallery_categorys",
+	"lh_gallery_categorys"
+);
+
+$def->relations["erLhcoreClassModelGalleryCategory"]->columnMap = array(
+	new ezcPersistentSingleTableMap(
+	"cid",
+	"parent"
+	)
+);
+
 return $def; 
 
 ?>

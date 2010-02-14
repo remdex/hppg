@@ -23,17 +23,7 @@ if (isset($_POST['Update_account']))
     {
         $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Wrong email address');
     } 
-    
-    if ( !$form->hasValidData( 'Name' ) || $form->Name == '' )
-    {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Please enter name');
-    }
-    
-    if ( !$form->hasValidData( 'Surname' ) || $form->Surname == '')
-    {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Please enter surname');
-    }
-    
+        
     if ( $form->hasInputField( 'Password' ) && (!$form->hasInputField( 'Password1' ) || $form->Password != $form->Password1  ) ) // check for optional field
     {
         $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Passwords mismatch');
@@ -88,7 +78,7 @@ array('url' => erLhcoreClassDesign::baseurl('system/configuration'),'title' => e
 
 array('url' => erLhcoreClassDesign::baseurl('user/userlist'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Users')),
 
-array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','User edit').' - '.$UserData->name.' '.$UserData->surname)
+array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','User edit').' - '.$UserData->username)
 
 
 )
