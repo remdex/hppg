@@ -51,6 +51,8 @@ class erLhcoreClassModelGalleryAlbum {
    {
        $album = erLhcoreClassModelGalleryAlbum::fetch($aid);
        
+       if ($skipChecking==true) return $album;
+       
        $currentUser = erLhcoreClassUser::instance();              
        if ($album->public == 1 || ($currentUser->isLogged() && $album->owner_id == $currentUser->getUserID()) ) return $album;
         

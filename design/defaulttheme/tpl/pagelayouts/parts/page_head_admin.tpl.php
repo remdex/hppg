@@ -21,3 +21,4 @@ WWW_DIR_JAVASCRIPT = '<?=erLhcoreClassDesign::baseurl()?>';
 <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
 <script type="text/javascript" language="javascript" src="<?=erLhcoreClassDesign::design('js/lh.js');?>"></script>
 <script type="text/javascript" language="javascript" src="<?=erLhcoreClassDesign::design('js/hw.js');?>"></script>
+<?=isset($Result['additional_js']) ? $Result['additional_js'] : ''?>

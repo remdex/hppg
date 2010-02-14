@@ -127,6 +127,13 @@ $ViewList['addimages'] = array(
     'pagelayout' => 'main_3column',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
     );
+        
+$ViewList['addimagesadmin'] = array( 
+    'script' => 'addimagesadmin.php',
+    'params' => array('album_id'),
+    'pagelayout' => 'admin',
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
+    );
     
 $ViewList['fileuploadcontainer'] = array( 
     'script' => 'fileuploadcontainer.php',
