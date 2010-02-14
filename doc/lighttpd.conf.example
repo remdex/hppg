@@ -1,0 +1,17 @@
+$HTTP["host"] =~ "(^|\.)(example\.com)" {
+expire.url = ( "/images/" => "access 10 years",
+               "/albums/" => "access 10 years" )
+url.rewrite-once = (
+"^/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php/gallery/category/$2$4",
+"^/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php/gallery/album/$2$4",
+"^/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php/gallery/image/$2$4",
+"^/design/defaulttheme/js/(.*)" =>  "/design/defaulttheme/js/$1",
+"^/ads/(.*)" =>  "/ads/$1",
+"^/.*\.(css|html|htm|pdf|txt|js|bmp|ico|png|JPG|PNG|gif|jpe?g|swf)$" => "$0",
+"^/(.+)/?$" => "/index.php/$1"
+)
+server.document-root = "/site/directory/root"
+server.errorlog = "/var/log/lighttpd/error.log"
+accesslog.filename = "/var/log/lighttpd/access.log"
+server.error-handler-404 = "/e404.php"
+}
