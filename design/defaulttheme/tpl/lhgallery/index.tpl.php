@@ -1,9 +1,3 @@
-<h1>News</h1>
-Need static article implementation here.
-
-<div id="front-banner">
-</div>
-
 <?php foreach (erLhcoreClassModelGalleryCategory::getParentCategories() as $category) : ?>
 <div class="category">
 <div class="header-list"><h1><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1></div>
