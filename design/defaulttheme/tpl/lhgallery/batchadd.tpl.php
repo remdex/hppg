@@ -1,10 +1,18 @@
+<? if (count($directoryList) > 0) :?>
 <ul>
 <?php 
 foreach ($directoryList  as $directory) : ?>
-<li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd/')?>?directory=<?=urlencode($directory);?>"><?=$directory?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd/')?>?directory=<?=urlencode($directory);?>&import=1">Import</a></li>
+<li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd/')?>?directory=<?=urlencode($directory);?>"><?=$directory?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd/')?>?directory=<?=urlencode($directory);?>&import=1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import')?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd/')?>?directory=<?=urlencode($directory);?>&importrecur=1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import recursive this directory')?></a></li>
 <?endforeach;?>
 </ul>
+<br />
+<?endif;?>
 
+<?if (isset($writable) && $writable == false) : ?>
+<p class="error">I cannot write this directory</p>
+<?endif;?>
+
+<? if (isset($filesList)) : ?>
 
 <select id="AlbumID"><? 
 $previousCategory='';
@@ -20,11 +28,6 @@ foreach (erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 50
 </select>
 
 
-<?if (isset($writable) && $writable == false) : ?>
-<p class="error">I cannot write this directory</p>
-<?endif;?>
-
-<? if (isset($filesList)) : ?>
 <table>
 <? foreach ($filesList as $file) : 
 if (!preg_match('/^(normal_|thumb_)/i',basename($file))) :
