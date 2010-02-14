@@ -27,7 +27,13 @@ switch ((int)$Params['user_parameters']['step_id']) {
 	       $Errors[] = "cache/translations is not writable"; 
 	       	           
 		if (!is_writable("cache/userinfo"))
-	       $Errors[] = "cache/userinfo is not writable";	
+	       $Errors[] = "cache/userinfo is not writable";
+	          	           
+		if (!is_writable("albums"))
+	       $Errors[] = "albums is not writable";
+	             	           
+		if (!is_writable("albums/userpics"))
+	       $Errors[] = "albums/userpics is not writable";	
 	       
 	       if (count($Errors) == 0)
 	           $tpl->setFile('lhinstall/install2.tpl.php');	              
@@ -224,8 +230,6 @@ switch ((int)$Params['user_parameters']['step_id']) {
                       `password` varchar(40) NOT NULL,
                       `email` varchar(100) NOT NULL,
                       `lastactivity` int(11) NOT NULL,
-                      `name` varchar(100) NOT NULL,
-                      `surname` varchar(100) NOT NULL,
                       PRIMARY KEY (`id`)
                     ) TYPE=MyISAM");
                
@@ -239,11 +243,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                       KEY `user_id` (`user_id`),
                       KEY `hash` (`hash`)
                     ) ENGINE=MyISAM");
-               
-               
-               
-               
-               
+                              
                 $UserData = new erLhcoreClassModelUser();
 
                 $UserData->setPassword($form->AdminPassword);
