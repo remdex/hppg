@@ -73,14 +73,16 @@ $tpl->set('category',$CategoryData);
 
 $Result['content'] = $tpl->fetch();
 
-
-$pathObjects = array();
-erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$CategoryDataParent->cid);        
-foreach ($pathObjects as $pathItem)
-{
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+if (isset($CategoryDataParent)) {
+    $pathObjects = array();
+    erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$CategoryDataParent->cid);        
+    foreach ($pathObjects as $pathItem)
+    {
+       $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+    } 
+} else {
+    $path[] =  array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createcategory','Home')); 
+    
 }
- 
-$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$CategoryData->cid,'title' => $pathItem->name); 
- 
+
 $Result['path'] = $path;

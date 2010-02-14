@@ -3,7 +3,7 @@
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/admincategorys.tpl.php');
 
 $path = array(); 
-$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/'),'title' => 'Home'); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')); 
 
 if (is_numeric($Params['user_parameters']['category_id']) && $Params['user_parameters']['category_id'] > 0)
 {
