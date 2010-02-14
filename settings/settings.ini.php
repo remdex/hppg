@@ -1,5 +1,4 @@
 <?php
-
 return array (
   'settings' => 
   array (
@@ -8,14 +7,14 @@ return array (
       'title' => 'Site title',
       'locale' => 'en_EN',
       'theme' => 'defaulttheme',
-      'site_admin_email' => 'remdex@gmail.com',
+      'site_admin_email' => '',
       'templatecache' => false,
-      'templatecompile' => false,      
+      'templatecompile' => false,
       'classCompile' => false,
-      'installed' => true,
       'nice_url_enabled' => false,
-      'etag_caching_enabled' => true,
-      'secrethash' => '48447454',
+      'etag_caching_enabled' => false,
+      'installed' => false,
+      'secrethash' => '',
       'available_locales' => 
       array (
         0 => 'en_EN',
@@ -28,9 +27,9 @@ return array (
       'port' => 3312,     
       'index' => 'index_name',
       'enabled' => false,      
-    ),    
+    ),
     'cacheEngine' => array(
-        'cache_global_key'  => 'hppghentai_wallapers',
+        'cache_global_key'  => 'global_site_cache_key',
         'className'         => false //'erLhcoreClassLhMemcache' //false if none
     ),
     'memecache' => 
@@ -38,16 +37,17 @@ return array (
       'servers' => array( array('host' => '127.0.0.1',
                                 'port' => '11211',     
                                 'weight' => 1 ) )     
-    ),
+    ), 
     'db' => 
     array (
       'host' => 'localhost',
-      'user' => 'username',
-      'password' => 'password',
-      'database' => 'database',
+      'user' => '',
+      'password' => '',
+      'database' => '',
       'port' => 3306,
     ),
   ),
   'comments' => NULL,
 );
+
 ?>
