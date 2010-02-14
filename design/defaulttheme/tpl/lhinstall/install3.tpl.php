@@ -29,14 +29,6 @@
         <td>E-mail*</td>
         <td><input type="text" name="AdminEmail" value="<?=isset($admin_email) ? $admin_email : ''?>"></td>
     </tr>
-    <tr>
-        <td>Your name</td>
-        <td><input type="text" name="AdminName" value="<?=isset($admin_name) ? $admin_name : ''?>"></td>
-    </tr>
-    <tr>
-        <td>Your surname</td>
-        <td><input type="text" name="AdminSurname" value="<?=isset($admin_surname) ? $admin_surname : ''?>"></td>
-    </tr>
 </table>
 </fieldset>
 <br>

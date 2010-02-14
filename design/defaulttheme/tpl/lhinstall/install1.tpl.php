@@ -20,6 +20,14 @@
         <td>I can write to &quot;settings/settings.ini.php&quot; directory</td>
         <td><?=is_writable("settings/settings.ini.php") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
     </tr>
+    <tr>
+        <td>I can write to &quot;albums&quot; directory</td>
+        <td><?=is_writable("albums") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
+    </tr>
+    <tr>
+        <td>I can write to &quot;albums/userpics&quot; directory</td>
+        <td><?=is_writable("albums/userpics") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
+    </tr>
 </table>
 </fieldset>
 <br>
