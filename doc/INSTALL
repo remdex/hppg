@@ -1,2 +1,7 @@
 /*************************
-Currently there are no install instructions. This is early versions of source code. Not for production use.
+1. Make sure that script can write to cache/cacheconfig directory.
+chmod 664 cache/cacheconfig
+Or better chmod -R 664 cache/*
+2. Create database choosing utf-8 charset.
+3. Enter in browser /index.php/install/install
+4. Follow instruction.
