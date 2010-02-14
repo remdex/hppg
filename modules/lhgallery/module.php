@@ -98,6 +98,13 @@ $ViewList['createalbumadmin'] = array(
     'params' => array('category_id'),
     'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
+    ); 
+                    
+$ViewList['createcategory'] = array( 
+    'script' => 'createcategory.php',
+    'params' => array('category_id'),
+    'pagelayout' => 'admin',
+    'functions' => array( 'administrate' ),
     );
     
 $ViewList['editalbum'] = array( 

@@ -1,8 +1,13 @@
 <div class="header-list">
 <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category');?> - <?= $category !== false ? $category->name : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></h1>
 </div>
-<? 
+<?php
 $categoryID = $category !== false ? $category->cid : 0;
+?>
+<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createcategory/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Create a category');?></a>
+
+<? 
+
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $categoryID)));
 $pages->translationContext = 'gallery/album';
