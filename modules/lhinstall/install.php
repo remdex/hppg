@@ -8,7 +8,7 @@ if ($cfgSite->conf->getSetting( 'site', 'installed' ) == true)
     include_once('modules/lhkernel/nopermission.php'); 
      
     $Result['pagelayout'] = 'install';
-    $Result['path'] = array(array('title' => 'Live helper chat installation'));
+    $Result['path'] = array(array('title' => 'High perfomance photo gallery install'));
     return $Result;
     
     exit;
@@ -136,12 +136,6 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 ),
                 'AdminEmail' => new ezcInputFormDefinitionElement(
                     ezcInputFormDefinitionElement::REQUIRED, 'validate_email'
-                ),
-                'AdminName' => new ezcInputFormDefinitionElement(
-                    ezcInputFormDefinitionElement::OPTIONAL, 'string'
-                ),
-                'AdminSurname' => new ezcInputFormDefinitionElement(
-                    ezcInputFormDefinitionElement::OPTIONAL, 'string'
                 )
             );
     	
@@ -182,9 +176,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
             if (count($Errors) == 0) {
                 
                $tpl->set('admin_username',$form->AdminUsername);               
-               if ( $form->hasValidData( 'AdminEmail' ) ) $tpl->set('admin_email',$form->AdminEmail);                      
-    	       $tpl->set('admin_name',$form->AdminName);
-    	       $tpl->set('admin_surname',$form->AdminSurname);	       
+               if ( $form->hasValidData( 'AdminEmail' ) ) $tpl->set('admin_email',$form->AdminEmail);                     
+    	      
     	        
     	       $db = ezcDbInstance::get();	       
     	                      
@@ -236,17 +229,29 @@ switch ((int)$Params['user_parameters']['step_id']) {
                       PRIMARY KEY (`id`)
                     ) TYPE=MyISAM");
                
+               // Forgot password table
+               $db->query("CREATE TABLE IF NOT EXISTS `lh_forgotpasswordhash` (
+                      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                      `user_id` int(11) NOT NULL,
+                      `hash` varchar(100) NOT NULL,
+                      `created` int(11) NOT NULL,
+                      PRIMARY KEY (`id`),
+                      KEY `user_id` (`user_id`),
+                      KEY `hash` (`hash`)
+                    ) ENGINE=MyISAM");
+               
+               
+               
+               
+               
                 $UserData = new erLhcoreClassModelUser();
 
                 $UserData->setPassword($form->AdminPassword);
-                $UserData->email   = $form->AdminEmail;
-                $UserData->name    = $form->AdminName;
-                $UserData->surname = $form->AdminSurname;
+                $UserData->email   = $form->AdminEmail;             
                 $UserData->username = $form->AdminUsername;
         
                 erLhcoreClassUser::getSession()->save($UserData);
-        
-                                
+                                        
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_groupuser` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `group_id` int(11) NOT NULL,
@@ -272,7 +277,115 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `role_id` (`role_id`)
                 ) TYPE=MyISAM");
                 
+                // Gallery queries
                 
+                // Albums table
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_albums` (
+                  `aid` int(11) NOT NULL AUTO_INCREMENT,
+                  `title` varchar(255) NOT NULL DEFAULT '',
+                  `description` text NOT NULL,
+                  `pos` int(11) NOT NULL DEFAULT '0',
+                  `category` int(11) NOT NULL DEFAULT '0',
+                  `keyword` varchar(50) DEFAULT NULL,
+                  `owner_id` int(11) NOT NULL,
+                  `public` int(11) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`aid`),
+                  KEY `alb_category` (`category`),
+                  KEY `owner_id` (`owner_id`)
+                ) ENGINE=MyISAM");
+                
+                // Categorys
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_categorys` (
+                          `cid` int(11) NOT NULL AUTO_INCREMENT,
+                          `owner_id` int(11) NOT NULL DEFAULT '0',
+                          `name` varchar(255) NOT NULL DEFAULT '',
+                          `description` text NOT NULL,
+                          `pos` int(11) NOT NULL DEFAULT '0',
+                          `parent` int(11) NOT NULL DEFAULT '0',
+                          `hide_frontpage` int(11) NOT NULL,
+                          PRIMARY KEY (`cid`),
+                          KEY `cat_parent` (`parent`),
+                          KEY `cat_pos` (`pos`),
+                          KEY `cat_owner_id` (`owner_id`)
+                        ) ENGINE=MyISAM");
+                
+                // Comments
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_comments` (
+                          `pid` mediumint(10) NOT NULL DEFAULT '0',
+                          `msg_id` mediumint(10) NOT NULL AUTO_INCREMENT,
+                          `msg_author` varchar(25) NOT NULL DEFAULT '',
+                          `msg_body` text NOT NULL,
+                          `msg_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+                          `msg_raw_ip` tinytext,
+                          `msg_hdr_ip` tinytext,
+                          `author_md5_id` varchar(32) NOT NULL DEFAULT '',
+                          `author_id` int(11) NOT NULL DEFAULT '0',
+                          PRIMARY KEY (`msg_id`),
+                          KEY `com_pic_id` (`pid`)
+                        ) ENGINE=MyISAM");
+                
+                // Images table
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_images` (
+                          `pid` int(11) NOT NULL AUTO_INCREMENT,
+                          `aid` int(11) NOT NULL DEFAULT '0',
+                          `filepath` varchar(255) NOT NULL DEFAULT '',
+                          `filename` varchar(255) NOT NULL DEFAULT '',
+                          `filesize` int(11) NOT NULL DEFAULT '0',
+                          `total_filesize` int(11) NOT NULL DEFAULT '0',
+                          `pwidth` smallint(6) NOT NULL DEFAULT '0',
+                          `pheight` smallint(6) NOT NULL DEFAULT '0',
+                          `hits` int(10) NOT NULL DEFAULT '0',
+                          `ctime` int(11) NOT NULL DEFAULT '0',
+                          `owner_id` int(11) NOT NULL DEFAULT '0',
+                          `pic_rating` int(11) NOT NULL DEFAULT '0',
+                          `votes` int(11) NOT NULL DEFAULT '0',
+                          `title` varchar(255) NOT NULL DEFAULT '',
+                          `caption` text NOT NULL,
+                          `keywords` varchar(255) NOT NULL DEFAULT '',
+                          `pic_raw_ip` tinytext,
+                          `approved` int(11) NOT NULL DEFAULT '0',
+                          `mtime` int(11) NOT NULL,
+                          `comtime` int(11) NOT NULL,
+                          `sort_rated` text NOT NULL,
+                          PRIMARY KEY (`pid`),
+                          KEY `owner_id` (`owner_id`),
+                          KEY `pic_hits` (`hits`),
+                          KEY `pic_rate` (`pic_rating`),
+                          KEY `pic_aid` (`aid`),
+                          KEY `mtime` (`mtime`),
+                          KEY `comtime` (`comtime`,`pid`),
+                          KEY `pid_4` (`hits`,`pid`),
+                          KEY `pid_5` (`pic_rating`,`votes`,`pid`),
+                          KEY `pid` (`mtime`,`pid`),
+                          KEY `pid_3` (`ctime`),
+                          KEY `pid_2` (`ctime`,`pid`),
+                          KEY `pid_6` (`aid`,`pid`),
+                          KEY `pid_7` (`aid`,`hits`,`pid`),
+                          KEY `pid_8` (`aid`,`mtime`,`pid`),
+                          KEY `pid_9` (`aid`,`pic_rating`,`votes`,`pid`),
+                          KEY `pid_10` (`aid`,`comtime`,`pid`)
+                        ) ENGINE=MyISAM");
+                
+                
+                // Last search table
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_lastsearch` (
+                          `id` int(11) NOT NULL AUTO_INCREMENT,
+                          `countresult` int(11) NOT NULL,
+                          `keyword` varchar(255) NOT NULL,
+                          PRIMARY KEY (`id`)
+                        ) ENGINE=MyISAM");
+                
+                // Public upload sessions
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_upload` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `album_id` int(11) NOT NULL,
+                  `hash` varchar(40) NOT NULL,
+                  `created` int(11) NOT NULL,
+                  `user_id` int(11) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=MyISAM");
+                 
+                                
                 $RoleFunction = new erLhcoreClassModelRoleFunction();
                 $RoleFunction->role_id = $Role->id;
                 $RoleFunction->module = '*';
@@ -316,6 +429,6 @@ switch ((int)$Params['user_parameters']['step_id']) {
 
 $Result['content'] = $tpl->fetch();
 $Result['pagelayout'] = 'install';
-$Result['path'] = array(array('title' => 'Framework of eZ Components framework installation3'))
+$Result['path'] = array(array('title' => 'High performance photo gallery install'))
 
 ?>
