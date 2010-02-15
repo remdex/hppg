@@ -53,10 +53,7 @@
         ?>
 	<?break;
 	
-	case 'search':	    
-	//$urlAppend = '/(mode)/search/(keyword)/'.urlencode($keyword);
-	//$imagesLeft = array();		 			
-	//$totalPhotos = erLhcoreClassGallery::searchSphinx(array('SearchLimit' => 2,'keyword' => $keyword,'sort' => '@id ASC','filtergt' => array('pid' => $image->pid)));		
+	case 'search':	
 	if (count($imagesLeft) > 0) :
     $next_image = current($imagesLeft);
     $imagesLeft = array_reverse($imagesLeft);             

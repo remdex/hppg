@@ -16,11 +16,11 @@ if (isset($_POST['StoreComment']))
 {      
     $definition = array(
         'Name' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::REQUIRED, 'string'
+            ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
         ),
         
         'CommentBody' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::REQUIRED, 'string'
+            ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
         ),   
             
         'CaptchaCode' => new ezcInputFormDefinitionElement(
