@@ -31,10 +31,14 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $tpl->set('pages',$pages);
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => 'Top rated images'));
-    
+    $Result['path'] = array(array('title' => 'Top rated images'));    
+    $Result['rss']['title'] = 'Top rated images';
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/topratedrss/');
+
     $cache->store($cacheKey,$Result,0);
 
 }
+
+
 
 ?>

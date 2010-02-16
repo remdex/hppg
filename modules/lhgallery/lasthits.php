@@ -4,7 +4,6 @@ $cache = CSCacheAPC::getMem();
 
 // All cache will expire at once, subpages expires every 10 minits.
 // Total image expiration  
-
 $cacheVersion = $cache->getCacheVersion('last_hits_version',time(),600);
 
 if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$Params['user_parameters_unordered']['page']))) === false)
@@ -18,8 +17,10 @@ if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$
     
     $tpl->set('pages',$pages);
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => 'Last viewed images'));
-    
+    $Result['path'] = array(array('title' => 'Last viewed images'));    
+    $Result['rss']['title'] = 'Last viewed images';
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lasthitsrss/');
+
     $cache->store(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$Params['user_parameters_unordered']['page']),$Result);
 }
 

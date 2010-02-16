@@ -31,8 +31,10 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $tpl->set('pages',$pages);
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => 'Last commented images'));
-    
+    $Result['path'] = array(array('title' => 'Last commented images'));    
+    $Result['rss']['title'] = 'Last commented images';
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastcommentedrss/');
+
     $cache->store($cacheKey,$Result);
 }
 

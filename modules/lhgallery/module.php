@@ -56,12 +56,20 @@ $ViewList['toprated'] = array(
     'script' => 'toprated.php',
     'params' => array()
     );   
-           
+$ViewList['topratedrss'] = array( 
+    'script' => 'topratedrss.php',
+    'params' => array()
+    ); 
+               
 $ViewList['lasthits'] = array( 
     'script' => 'lasthits.php',
     'params' => array()
     );    
-            
+$ViewList['lasthitsrss'] = array( 
+    'script' => 'lasthitsrss.php',
+    'params' => array()
+    ); 
+                
 $ViewList['tagphoto'] = array( 
     'script' => 'tagphoto.php',
     'params' => array()
@@ -82,7 +90,12 @@ $ViewList['lastcommented'] = array(
     'script' => 'lastcommented.php',
     'params' => array()
     );   
-       
+    
+$ViewList['lastcommentedrss'] = array( 
+    'script' => 'lastcommentedrss.php',
+    'params' => array()
+    ); 
+          
 $ViewList['search'] = array( 
     'script' => 'search.php',
     'params' => array(),
