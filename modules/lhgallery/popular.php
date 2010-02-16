@@ -15,8 +15,8 @@ if (($Result = $cache->restore(md5('version_'.$cacheVersion.'popular_view_url'.'
     
     $tpl->set('pages',$pages);
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => 'Most popular images'));
-
+    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images')));
+    
     $cache->store(md5('version_'.$cacheVersion.'popular_view_url'.'_page_'.$Params['user_parameters_unordered']['page']),$Result);
 }
 

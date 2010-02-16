@@ -13,11 +13,11 @@ $searchResult = erLhcoreClassGallery::searchSphinx($searchParams);
 foreach ($searchResult['list'] as $itemRecord)
 {		
 	    $item = $feed->add( 'item' ); 
-	    $item->title = ($title = $itemRecord->name_user) == '' ? 'View image' : $title;
+	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','View image') : $title;
 	    $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />').	    
 	   '<ul>
             <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
-            <li>'.$itemRecord->hits.' watched</li>                    
+            <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','watched').'</li>                    
             </a></li>
         </ul>';;
 	    $item->published = $itemRecord->ctime; 

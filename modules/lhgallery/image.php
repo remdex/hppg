@@ -509,15 +509,15 @@ $Image->mtime = time();
 erLhcoreClassGallery::getSession()->update($Image);
 
 if ($mode == 'lastuploads') {	
-    $Result['title_path'] = array(array('title' => 'Last additions'),array('title' => $Image->name_user));
+    $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last additions')),array('title' => $Image->name_user));
 }elseif ($mode == 'lasthits') {	
-    $Result['title_path'] = array(array('title' => 'Last viewed images'),array('title' => $Image->name_user));
+    $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last viewed images')),array('title' => $Image->name_user));
 }elseif ($mode == 'lastcommented') {	
-    $Result['title_path'] = array(array('title' => 'Last commented images'),array('title' => $Image->name_user));
+    $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last commented images')),array('title' => $Image->name_user));
 }elseif ($mode == 'toprated') {	
-    $Result['title_path'] = array(array('title' => 'Top rated images'),array('title' => $Image->name_user));
+    $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated images')),array('title' => $Image->name_user));
 }elseif ($mode == 'popular') {	
-    $Result['title_path'] = array(array('title' => 'Most popular images'),array('title' => $Image->name_user));
+    $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most popular images')),array('title' => $Image->name_user));
 }elseif ($mode == 'search') {	
     $Result['title_path'] = array(array('title' => urldecode($Params['user_parameters_unordered']['keyword']).' - search results'),array('title' => $Image->name_user));
     $Result['keyword'] =urldecode($Params['user_parameters_unordered']['keyword']);

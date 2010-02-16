@@ -3,7 +3,6 @@
 $cache = CSCacheAPC::getMem(); 
 $cacheKey = md5('version_'.$cache->getCacheVersion('last_uploads').'lastuploads_view_url'.'_page_'.$Params['user_parameters_unordered']['page']);
     
-
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {
     $ExpireTime = 3600;
@@ -31,8 +30,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $tpl->set('pages',$pages);
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => 'Last uploaded images'));    
-    $Result['rss']['title'] = 'Last uploaded images';
+    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images')));    
+    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss/');
 
     $cache->store($cacheKey,$Result);

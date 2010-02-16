@@ -25,14 +25,14 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true));
-    $pages->translationContext = 'gallery/album';
+    $pages->translationContext = 'gallery/lastcommented';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/lastcommented');
     $pages->paginate();
     
     $tpl->set('pages',$pages);
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => 'Last commented images'));    
-    $Result['rss']['title'] = 'Last commented images';
+    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images')));    
+    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastcommentedrss/');
 
     $cache->store($cacheKey,$Result);

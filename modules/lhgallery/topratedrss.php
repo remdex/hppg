@@ -7,7 +7,7 @@ $cacheVersion = $cache->getCacheVersion('top_rated');
 if (($xml = $cache->restore(md5($cacheVersion.'_rss_top_rated'))) === false)
 {         
     $feed = new ezcFeed(); 
-    $feed->title = 'Top rated images';
+    $feed->title = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/topratedrss','Top rated images');
     $feed->description = '';
     $feed->published = time(); 
     $link = $feed->add( 'link' );
@@ -17,11 +17,11 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_top_rated'))) === false)
     {	
     	
     	    $item = $feed->add( 'item' ); 
-    	    $item->title = ($title = $itemRecord->name_user) == '' ? 'View image' : $title;
+    	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/topratedrss','View image') : $title;
     	    $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />').	    
     	   '<ul>
                 <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
-                <li>'.$itemRecord->hits.' watched</li>                    
+                <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/topratedrss','watched').'</li>                    
                 </a></li>
             </ul>';;
     	    $item->published = $itemRecord->ctime; 

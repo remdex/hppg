@@ -15,7 +15,7 @@ $tpl->set('album',$Album);
 $Result['content'] = $tpl->fetch();
 
 $path = array();
-$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/'),'title' => 'Home'); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbumimages','Home')); 
 $pathObjects = array();
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Album->category);        
 foreach ($pathObjects as $pathItem)

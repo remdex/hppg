@@ -17,8 +17,8 @@ if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$
     
     $tpl->set('pages',$pages);
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => 'Last viewed images'));    
-    $Result['rss']['title'] = 'Last viewed images';
+    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Last viewed images')));    
+    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Last viewed images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lasthitsrss/');
 
     $cache->store(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$Params['user_parameters_unordered']['page']),$Result);
