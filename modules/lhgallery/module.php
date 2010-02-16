@@ -64,7 +64,8 @@ $ViewList['topratedrss'] = array(
 $ViewList['lasthits'] = array( 
     'script' => 'lasthits.php',
     'params' => array()
-    );    
+    );   
+     
 $ViewList['lasthitsrss'] = array( 
     'script' => 'lasthitsrss.php',
     'params' => array()
