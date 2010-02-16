@@ -1,8 +1,5 @@
 <?php
 
-$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/search.tpl.php');
-
-
 $definition = array(
 'SearchText' => new ezcInputFormDefinitionElement(
     ezcInputFormDefinitionElement::OPTIONAL, 'unsafe_raw'
@@ -44,67 +41,56 @@ $userParams .= $appendImageModeSorting;
 $appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting;
 /* SORTING */
 
-
-
 $firstSearch = false;
-
-$pages = new lhPaginator();
 $searchParams['SearchLimit'] = 20;
 $searchParams['SearchOffset'] = 0;
 
-if (($totalItems = $Params['user_parameters_unordered']['total']) == null)
+$cache = CSCacheAPC::getMem();        
+$cacheKey =  md5('SphinxSearchPage_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$searchParams).'page_'.$Params['user_parameters_unordered']['page']);
+      
+if (($Result = $cache->restore($cacheKey)) === false)
 {
-    $searchResult = erLhcoreClassGallery::searchSphinx($searchParams);
-    $totalItems = $searchResult['total_found'];
-    $firstSearch = true;
-    $userParams .= '/(total)/'.$totalItems;    
-    if ($Params['user_parameters_unordered']['page'] !== null ) $firstSearch = false;
-    elseif ($totalItems > 0) {        
-      erLhcoreClassModelGalleryLastSearch::addSearch($searchParams['keyword'],$totalItems);  
+    if (($totalItems = $Params['user_parameters_unordered']['total']) == null)
+    {
+        $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
+        $totalItems = $searchResult['total_found'];
+        $firstSearch = true;
+        $userParams .= '/(total)/'.$totalItems;    
+        if ($Params['user_parameters_unordered']['page'] !== null ) $firstSearch = false;
+        elseif ($totalItems > 0) {        
+          erLhcoreClassModelGalleryLastSearch::addSearch($searchParams['keyword'],$totalItems);  
+        }
+        
+    } else {
+        $userParams .= '/(total)/'.$totalItems; 
     }
     
-} else {
-    $userParams .= '/(total)/'.$totalItems; 
-}
-
-
-
-$pages->items_total = $totalItems;
-$pages->translationContext = 'rss/category';
-$pages->serverURL = '/gallery/search'.$userParams;
-$pages->paginate();
-
-$searchParams['SearchOffset'] = $pages->low;
-
-
-if ($firstSearch == false){
-$searchResult = erLhcoreClassGallery::searchSphinx($searchParams);
-}
-
-$sortModesTitle = array(    
-    'newdesc' => '',
-    'newasc' => 'Last uploaded last',    
-    'popular' => 'Most popular first',
-    'popularasc' => 'Most popular last',    
-    'lasthits' => 'Last hits first',
-    'lasthitsasc' => 'Last hits last',    
-    'lastcommented' => 'Last commented first',
-    'lastcommentedasc' => 'Last commented last',    
-    'toprated' => 'Top rated first',
-    'topratedasc' => 'Top rated last Last');
+    $pages = new lhPaginator();
+    $pages->items_total = $totalItems;
+    $pages->translationContext = 'rss/category';
+    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/search').$userParams;
+    $pages->paginate();
+    $searchParams['SearchOffset'] = $pages->low;
     
+    if ($firstSearch == false){
+    $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
+    }
+    
+    $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/search.tpl.php');
+    $tpl->set('pages',$pages);
+    $tpl->set('items',$searchResult['list']);
+    $tpl->set('keyword',$searchParams['keyword']);
+    $tpl->set('appendImageMode',$appendImageMode);
+    $tpl->set('mode',$mode);
+    
+    $Result['content'] = $tpl->fetch();
+    $Result['path'] = array(array('title' => 'search result'));
+    $Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; search result'));
+    $Result['keyword'] = $searchParams['keyword'];
+    $Result['rss']['title'] = 'Search rss by keyword - '.htmlspecialchars($searchParams['keyword']);
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/searchrss/').'(keyword)/'.urlencode($searchParams['keyword']); 
+    $cache->store($cacheKey,$Result,12000);
+}
 
-$tpl->set('pages',$pages);
-$tpl->set('items',$searchResult['list']);
-$tpl->set('keyword',$searchParams['keyword']);
-$tpl->set('appendImageMode',$appendImageMode);
-$tpl->set('mode',$mode);
-
-$Result['tittle_prepend'] = $sortModesTitle[$mode];
-$Result['content'] = $tpl->fetch();
-$Result['path'] = array(array('title' => 'search result'));
-$Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; search result'));
-
-$Result['keyword'] = $searchParams['keyword'];
 
 ?>

@@ -22,8 +22,33 @@ class erLhcoreClassGallery{
         return self::$persistentSession;
    }
    
-   public static function searchSphinx($params = array('SearchLimit' => 20))  
+   public static function multi_implode($glue, $pieces)
    {
+       $string='';
+
+       if(is_array($pieces))
+       {
+           reset($pieces);
+           while(list($key,$value)=each($pieces))
+           {
+               $string.=$glue.erLhcoreClassGallery::multi_implode($glue, $value);
+           }
+       }
+       else
+       {
+           return $pieces;
+       }
+
+       return trim($string, $glue);
+   }
+   
+   public static function searchSphinx($params = array('SearchLimit' => 20),$cacheEnabled = true)  
+   {
+      $cache = CSCacheAPC::getMem();        
+      $cacheKey =  md5('SphinxSearch_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$params));
+      if ($cacheEnabled == false || ($resultReturn = $cache->restore($cacheKey)) === false)
+      {
+      
       $cl = new SphinxClient();
       $cl->SetServer( erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'host' ), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'port' ) );
       $cl->SetMatchMode( SPH_MATCH_ALL  );
@@ -82,7 +107,13 @@ class erLhcoreClassGallery{
           $idMatch[$object->pid] = $object;
       }     
        
-      return array('total_found' => $result['total_found'],'list' => $idMatch);   
+        $resultReturn = array('total_found' => $result['total_found'],'list' => $idMatch);
+        if ($cacheEnabled == true)
+        $cache->store($cacheKey,$resultReturn,12000);
+      }
+      
+      return $resultReturn;
+       
    }
         
    private static $persistentSession;

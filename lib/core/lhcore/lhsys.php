@@ -114,6 +114,7 @@ class CSCacheAPC {
     'last_commented',           // Last commented images
     'site_version',             // Global site version
     'album_count_version',      // Album count version
+    'sphinx_cache_version',     // Sphinx search cache version
     );
     
     public function increaseImageManipulationCache()
@@ -123,6 +124,7 @@ class CSCacheAPC {
         $this->increaseCacheVersion('last_uploads');
         $this->increaseCacheVersion('top_rated');
         $this->increaseCacheVersion('last_commented');        
+        $this->increaseCacheVersion('sphinx_cache_version');        
         $this->delete(md5('index_page'));
     }
     

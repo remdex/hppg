@@ -5,3 +5,9 @@ chmod 664 cache/cacheconfig, or better chmod -R 664 cache/*
 3. Download eZ Components from http://ezcomponents.org/download and extract to ezcomponents directory
 4. Enter in browser /index.php/install/install
 5. Follow instruction.
+6. Sphinx index must be recreated after image modification
+
+Example:
+/etc/init.d/sphinx stop
+/usr/local/bin/indexer --config /usr/local/etc/sphinx.conf --all
+/etc/init.d/sphinx start
