@@ -7,7 +7,7 @@ if (isset($_POST['photo']) && isset($_POST['tags']) && $_POST['tags'] != '')
     erLhcoreClassGallery::getSession()->update($image); 
 }
 
-echo json_encode(array('result' => 'Thank you a lot :)','error' => 'false'));
+echo json_encode(array('result' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/tagphoto','Thank you a lot :)'),'error' => 'false'));
 exit;
 
 ?>

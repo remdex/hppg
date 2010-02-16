@@ -35,13 +35,8 @@ $ViewList['image'] = array(
 $ViewList['popular'] = array( 
     'script' => 'popular.php',
     'params' => array()
-    );  
-         
-$ViewList['testing'] = array( 
-    'script' => 'testing.php',
-    'params' => array()
-    ); 
-         
+    );          
+        
 $ViewList['lastuploads'] = array( 
     'script' => 'lastuploads.php',
     'params' => array()

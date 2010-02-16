@@ -8,5 +8,5 @@ $ImageData->caption = isset($_POST['caption']) ? $_POST['caption'] : '';
 erLhcoreClassGallery::getSession()->update($ImageData); 
 $ImageData->clearCache();
 
-echo json_encode(array('error' => 'false','result' => 'Image updated'));
+echo json_encode(array('error' => 'false','result' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/updateimage','Image updated')));
 exit;
