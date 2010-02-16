@@ -15,7 +15,7 @@ try {
 if (($xml = $cache->restore($cacheKey)) === false)
 {         
     $feed = new ezcFeed(); 
-    $feed->title = 'Last uploaded images to album - '.$Album->title;
+    $feed->title = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumrss','Last uploaded images to album').' - '.$Album->title;
     $feed->description = '';
     $feed->published = time(); 
     $link = $feed->add( 'link' );
@@ -26,13 +26,13 @@ if (($xml = $cache->restore($cacheKey)) === false)
     {	
     	
     	    $item = $feed->add( 'item' ); 
-    	    $item->title = ($title = $itemRecord->name_user) == '' ? 'View image' : $title;
+    	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumrss','View image') : $title;
     	    $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />').	    
     	   '<ul>
                 <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
-                <li>'.$itemRecord->hits.' watched</li>                    
+                <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumrss','watched').'</li>                    
                 </a></li>
-            </ul>';;
+            </ul>';
     	    $item->published = $itemRecord->ctime; 
     	     
     	    $link = $item->add( 'link' );
