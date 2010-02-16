@@ -22,8 +22,8 @@ foreach ($ReverseOrder as $pathItem) : ?>
 <link rel="stylesheet" type="text/css" href="<?=erLhcoreClassDesign::design('css/style_site.css');?>" /> 
 <link rel="icon" type="image/png" href="/design/defaulttheme/images/favicon.ico" />
 <link rel="shortcut icon" type="image/x-icon" href="/design/defaulttheme/images/favicon.ico" />
-<meta name="Keywords" content="Hentai wallpapers" />
-<meta name="Description" content="Hentai wallpapers resource. Dedicated to hentai anime, soyorama, garv wallpapers, all free. Users uploaded hentai wallpapers." />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
 <script type="text/javascript">
 WWW_DIR_JAVASCRIPT = '<?=erLhcoreClassDesign::baseurl()?>';
 </script>
@@ -31,3 +31,8 @@ WWW_DIR_JAVASCRIPT = '<?=erLhcoreClassDesign::baseurl()?>';
 <script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
 <script type="text/javascript" language="javascript" src="<?=erLhcoreClassDesign::design('js/hw.js');?>?v=3"></script>
 <?=isset($Result['additional_js']) ? $Result['additional_js'] : ''?>
+<?if (isset($Result['rss'])) : ?>
+<link rel="alternate" type="application/rss+xml" title="<?=$Result['rss']['title']?>" href="<?=$Result['rss']['url'];?>" />
+<? else :?>
+<link rel="alternate" type="application/rss+xml" title="Last uploaded images" href="<?=erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss/')?>" />
+<?endif;?>
