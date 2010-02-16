@@ -21,7 +21,7 @@ class erLhcoreClassImageConverter{
                 'thumbbig',
                 array( 
                     new ezcImageFilter( 
-                        'croppedThumbnail',
+                        'scale',
                         array( 
                             'width'     => 400,                        
                             'height'     => 400,                        
