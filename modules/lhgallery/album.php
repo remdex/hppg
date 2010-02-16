@@ -46,18 +46,18 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $modeSQL = $sortModes[$mode];         
     $appendImageMode = $mode != 'newdesc' ? '/(sort)/'.$mode : '';
     
-
     $sortModesTitle = array(    
     'newdesc' => '',
-    'newasc' => 'Last uploaded last',    
-    'popular' => 'Most popular first',
-    'popularasc' => 'Most popular last',    
-    'lasthits' => 'Last hits first',
-    'lasthitsasc' => 'Last hits last',    
-    'lastcommented' => 'Last commented first',
-    'lastcommentedasc' => 'Last commented last',    
-    'toprated' => 'Top rated first',
-    'topratedasc' => 'Top rated last Last');
+    'newasc'        => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last uploaded last'),    
+    'popular'       => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Most popular first'),
+    'popularasc'    => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Most popular last'),    
+    'lasthits'      => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last hits first'),
+    'lasthitsasc'   => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last hits last'),    
+    'lastcommented' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented first'),
+    'lastcommentedasc'  => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented last'),    
+    'toprated'          => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Top rated first'),
+    'topratedasc'       => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Top rated last Last')
+    );
       
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)));

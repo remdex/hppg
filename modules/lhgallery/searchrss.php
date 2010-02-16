@@ -2,7 +2,7 @@
 
 header ("content-type: text/xml");       
 $feed = new ezcFeed(); 
-$feed->title = 'Search rss by keyword - '.urldecode($Params['user_parameters_unordered']['keyword']);
+$feed->title = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','Search rss by keyword').' - '.urldecode($Params['user_parameters_unordered']['keyword']);
 $feed->description = '';
 $feed->published = time(); 
 $link = $feed->add( 'link' );

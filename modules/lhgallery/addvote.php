@@ -16,7 +16,7 @@ if (isset($_POST['photo']) && isset($_POST['score']) )
     //Clear top rated listing cache
     CSCacheAPC::getMem()->increaseCacheVersion('top_rated');
     
-    echo json_encode(array('result' => 'Thank you for your vote.','error' => 'false'));
+    echo json_encode(array('result' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addvote','Thank you for your vote'),'error' => 'false'));
     exit;      
 }
 

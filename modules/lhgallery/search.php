@@ -67,7 +67,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $pages = new lhPaginator();
     $pages->items_total = $totalItems;
-    $pages->translationContext = 'rss/category';
+    $pages->translationContext = 'gallery/search';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/search').$userParams;
     $pages->paginate();
     $searchParams['SearchOffset'] = $pages->low;
@@ -84,10 +84,10 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('mode',$mode);
     
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => 'search result'));
-    $Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; search result'));
+    $Result['path'] = array(array('title' =>  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','search result')));
+    $Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','search result')));
     $Result['keyword'] = $searchParams['keyword'];
-    $Result['rss']['title'] = 'Search rss by keyword - '.htmlspecialchars($searchParams['keyword']);
+    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','Search rss by keyword').' - '.htmlspecialchars($searchParams['keyword']);
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/searchrss/').'(keyword)/'.urlencode($searchParams['keyword']); 
     $cache->store($cacheKey,$Result,12000);
 }
