@@ -16,6 +16,11 @@ $ViewList['album'] = array(
     'uparams' => array('sort')
     );
     
+$ViewList['albumrss'] = array( 
+    'script' => 'albumrss.php',
+    'params' => array('album_id')
+    );
+        
 $ViewList['category'] = array( 
     'script' => 'category.php',
     'params' => array('category_id')
