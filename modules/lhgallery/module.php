@@ -79,6 +79,12 @@ $ViewList['search'] = array(
     'uparams' => array('keyword','total','sort'),
     );
     
+$ViewList['searchrss'] = array( 
+    'script' => 'searchrss.php',
+    'params' => array(),
+    'uparams' => array('keyword','total'),
+    );
+        
 $ViewList['myalbums'] = array( 
     'script' => 'myalbums.php',
     'params' => array(),
