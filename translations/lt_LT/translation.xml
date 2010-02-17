@@ -30,6 +30,61 @@
     </message>
 </context>
 <context>
+    <name>gallery/publicupload</name>
+    <message>
+        <source>Public images upload</source>
+        <translation>Viešas paveikslėlių įkėlimas</translation>
+    </message>
+    <message>
+        <source>All files were uploaded. See album.</source>
+        <translation>Visi failai buvo nusiųsti. Peržiūrėkite albumą.</translation>
+    </message>
+    <message>
+        <source>Uploading</source>
+        <translation>Siunčiama</translation>
+    </message>
+    <message>
+        <source>Complete</source>
+        <translation>Baigta</translation>
+    </message>
+    <message>
+        <source>Choose images for upload first.</source>
+        <translation>Pasirinkite paveiksliukus nusiuntimui pirma.</translation>
+    </message>
+    <message>
+        <source>Choose images for upload.</source>
+        <translation>Pasirinkite paveikslėlius nusiuntimui.</translation>
+    </message>
+    <message>
+        <source>File is too big.</source>
+        <translation>Failas per didelis.</translation>
+    </message>
+    <message>
+        <source>Choose one of</source>
+        <translation>Pasirinkite vieną iš</translation>
+    </message>
+    <message>
+        <source>Browse</source>
+        <translation>Naršyti</translation>
+    </message>
+    <message>
+        <source>Attatch local images</source>
+        <translation>Nusiųskite lokalius paveikslėlius</translation>
+    </message>
+    <message>
+        <source>Images to upload</source>
+        <translation>Paveikslėliai nusiuntimui</translation>
+    </message>
+    <message>
+        <source>Upload</source>
+        <translation>Siųsti</translation>
+    </message>
+    <message>
+        <source>Max file size 5mb.</source>
+        <translation>Maksimalus failo dydis 5mb.</translation>
+    </message>
+</context>
+<context>
     <name>gallery/addvote</name>
     <message>
         <source>Thank you for your vote</source>
