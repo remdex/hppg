@@ -23,7 +23,7 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_last_hits'))) === false)
                 <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
                 <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthitsrss','watched').'</li>                    
                 </a></li>
-            </ul>';;
+            </ul>';
     	    $item->published = $itemRecord->ctime; 
     	     
     	    $link = $item->add( 'link' );

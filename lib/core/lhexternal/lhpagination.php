@@ -82,7 +82,7 @@ class lhPaginator{
 				$this->return .= ($i == $this->current_page) ? "<a class=\"current\" href=\"#\">$i</a> ":"<a class=\"paginate\" href=\"$this->serverURL/(page)/$i$this->querystring\">$i</a> ";
 			}			
 		}	
-		
+				
 		$this->return .= (($this->current_page != $this->num_pages)) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$next_page$this->querystring\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</a>\n":"<span class=\"inactive\" href=\"#\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</span>\n";
 		
 		$this->low = ($this->current_page-1) * $this->items_per_page;

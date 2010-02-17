@@ -16,13 +16,13 @@
 <div id="logo"><h1><a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?></a></h1></div>
 
 <div class="title-gallery">
-<h1>High perfomance photo gallery</h1>
+<h1><?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?></h1>
 </div>
 
 <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
 
 <div class="search-box">
-    <form action="<?=erLhcoreClassDesign::baseurl('/gallery/search')?>"><input type="text" title="Enter keyword or phrase" id="searchtext" onfocus="Javascript: if ( $('input#searchtext').val() == 'Search...') { $('input#searchtext').val('');}" onblur="Javascript: if ($('input#searchtext').val() == '') { $('input#searchtext').val('Search...'); }" class="keywordField" name="SearchText" value="<?=isset($Result['keyword']) ? htmlspecialchars($Result['keyword']) : 'Search...'?>" /> <input type="submit" class="default-button" name="doSearch" value="Search entire gallery"/></form>
+    <form action="<?=erLhcoreClassDesign::baseurl('/gallery/search')?>"><input type="text" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Enter keyword or phrase')?>" id="searchtext" onfocus="Javascript: if ( $('input#searchtext').val() == '<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search...')?>') { $('input#searchtext').val('');}" onblur="Javascript: if ($('input#searchtext').val() == '') { $('input#searchtext').val('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search...')?>'); }" class="keywordField" name="SearchText" value="<?=isset($Result['keyword']) ? htmlspecialchars($Result['keyword']) : erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search...')?>" /> <input type="submit" class="default-button" name="doSearch" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search entire gallery')?>"/></form>
 </div>
 
 <?php endif; ?>

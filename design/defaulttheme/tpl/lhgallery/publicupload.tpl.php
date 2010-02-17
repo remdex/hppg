@@ -32,7 +32,7 @@ SWFUpload.onload = function () {
 		post_params: {},
 		file_size_limit : "5 MB",
 		file_types : "*.jpg;*.gif;*.png;*.png;*.bmp;",
-		file_types_description : "<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/index','Choose one of')?>",
+		file_types_description : "<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/publicupload','Choose one of')?>",
 		file_upload_limit : 200,
 		file_queue_limit : 20,
 		custom_settings : {
@@ -41,7 +41,7 @@ SWFUpload.onload = function () {
 		debug: false,
 
 		// Button Settings
-		button_text: '<span class="theFont"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/index','Browse')?>...</span>',
+		button_text: '<span class="theFont"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/publicupload','Browse')?>...</span>',
 		button_text_style: ".theFont { font-size: 19;}",
 		button_text_left_padding: 12,
 		button_text_top_padding: 3,	

@@ -13,7 +13,7 @@
                 <? 
                     $pages = new lhPaginator();
                     $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true, 'filter' => array('category' => $subcategory->cid)));
-                    $pages->translationContext = 'gallery/album';
+                    $pages->translationContext = 'gallery/subcategry_list_full';
                     $pages->default_ipp = 8;
                     $pages->serverURL = $subcategory->path_url;
                     $pages->paginate();

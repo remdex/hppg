@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>Last viewed images</h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Last viewed images')?></h1>
 </div>
 <? if ($pages->items_total > 0) { ?>
          

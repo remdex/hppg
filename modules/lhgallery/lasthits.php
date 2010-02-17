@@ -11,7 +11,7 @@ if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lasthits.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount();
-    $pages->translationContext = 'gallery/album';
+    $pages->translationContext = 'gallery/lasthits';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/lasthits');
     $pages->paginate();
     

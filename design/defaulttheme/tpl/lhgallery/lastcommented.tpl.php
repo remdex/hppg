@@ -13,7 +13,7 @@
           
 <? } else { ?>
 
-<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','No records.')?></p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','No records.')?></p>
 
 <? } ?>
 

@@ -29,7 +29,355 @@
         <translation>Programinės įrangos diegimas</translation>
     </message>
 </context>
-
+<context>
+    <name>gallery/addvote</name>
+    <message>
+        <source>Thank you for your vote</source>
+        <translation>Ačiū už įvertinimą</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/lastuploads</name>
+    <message>
+        <source>Last uploaded images</source>
+        <translation>Paskutiniai nusiųsti paveikslėliai</translation>
+    </message>
+    <message>
+        <source>No records.</source>
+        <translation>Nėra įrašų.</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/toprated</name>
+    <message>
+        <source>Top rated images</source>
+        <translation>Aukščiausiai įvertinti</translation>
+    </message>
+    <message>
+        <source>No records.</source>
+        <translation>Nėra įrašų.</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/lasthits</name>
+    <message>
+        <source>Last viewed images</source>
+        <translation>Paskutiniai žiūrėti paveikslėliai</translation>
+    </message>
+    <message>
+        <source>No records.</source>
+        <translation>Nėra įrašų.</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/ajaximages</name>
+    <message>
+        <source>preview version</source>
+        <translation>peržiūros versija</translation>
+    </message>
+    <message>
+        <source>See full size picture</source>
+        <translation>Peržiūrėti paveiksliuką</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/image</name>
+    <message>
+        <source>previous image</source>
+        <translation>ankstesnis paveiksliukas</translation>
+    </message>
+    <message>
+        <source>next image</source>
+        <translation>kitas paveiksliukas</translation>
+    </message>
+    <message>
+        <source>return to thumbnails</source>
+        <translation>grįžti į sąrašą</translation>
+    </message>
+    <message>
+        <source>Picture details</source>
+        <translation>Paveikslėlio informacija</translation>
+    </message>
+    <message>
+        <source>Filename</source>
+        <translation>Paveikslėlio informacija</translation>
+    </message>
+    <message>
+        <source>File size</source>
+        <translation>Failo dydis</translation>
+    </message>
+    <message>
+        <source>Image rating</source>
+        <translation>Paveikslėlio reitingas</translation>
+    </message>
+    <message>
+        <source>Date added</source>
+        <translation>Įkėlimo data</translation>
+    </message>
+    <message>
+        <source>Dimensions</source>
+        <translation>Dydis</translation>
+    </message>
+    <message>
+        <source>Displayed</source>
+        <translation>Parodytas</translation>
+    </message>
+    <message>
+        <source>Rate this picture</source>
+        <translation>Įvertintike šį paveiksliuką</translation>
+    </message>
+    <message>
+        <source>star</source>
+        <translation>žvaigždė</translation>
+    </message>
+    <message>
+        <source>stars</source>
+        <translation>žvaigždės</translation>
+    </message>
+    <message>
+        <source>Vote!</source>
+        <translation>balsuoti!</translation>
+    </message>
+    <message>
+        <source>Picture comments</source>
+        <translation>Paveikslėlio komentarai</translation>
+    </message>
+    <message>
+        <source>No comments</source>
+        <translation>Nėra komentarų</translation>
+    </message>
+    <message>
+        <source>Comment stored</source>
+        <translation>Komentaras išsaugotas</translation>
+    </message>
+    <message>
+        <source>Leave a reply</source>
+        <translation>Palikite atsiliepimą</translation>
+    </message>
+    <message>
+        <source>Nick</source>
+        <translation>Nikas</translation>
+    </message>
+    <message>
+        <source>Max 25 characters</source>
+        <translation>Max 25 ženklai</translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation>Žinutė</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Siųsti</translation>
+    </message>
+    <message>
+        <source>Tag it!</source>
+        <translation>Tag it!</translation>
+    </message>
+    <message>
+        <source>Tag this photo</source>
+        <translation>Tag šią nuotrauką</translation>
+    </message>
+    <message>
+        <source>Safe code</source>
+        <translation>Saugos kodas</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/category</name>
+    <message>
+        <source>Category</source>
+        <translation>Kategorija</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/subcategry_list_full</name>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/index</name>
+    <message>
+        <source>Page %currentpage of %totalpage</source>
+        <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+    <message>
+        <source>Found</source>
+        <translation>Rasta</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/image_list</name>
+    <message>
+        <source>Page %currentpage of %totalpage</source>
+        <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+    <message>
+        <source>Found</source>
+        <translation>Rasta</translation>
+    </message>
+    <message>
+        <source>watched</source>
+        <translation>peržiūrėtas</translation>
+    </message>
+    <message>
+        <source>See full size</source>
+        <translation>Peržiūrėti paveiksliuką</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/lastcommented</name>
+    <message>
+        <source>Last commented images</source>
+        <translation>Paskutiniai komentuoti paveikslėliai</translation>
+    </message>
+    <message>
+        <source>No records.</source>
+        <translation>Nėra įrašų.</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/subcategory_list_full</name>
+    <message>
+        <source>Page %currentpage of %totalpage</source>
+        <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+    <message>
+        <source>albums</source>
+        <translation>albumai</translation>
+    </message>
+    <message>
+        <source>images</source>
+        <translation>paveiksliukai</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/album</name>
+    <message>
+        <source>Page %currentpage of %totalpage</source>
+        <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+    <message>
+        <source>Found</source>
+        <translation>Rasta</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Last uploaded first</source>
+        <translation>Naujausi paveiksliuka pirmi</translation>
+    </message>
+    <message>
+        <source>Last uploaded last</source>
+        <translation>Naujausi paveiksliuka paskutiniai</translation>
+    </message>
+    <message>
+        <source>Most popular first</source>
+        <translation>Populiariausi pirmi</translation>
+    </message>
+    <message>
+        <source>Most popular last</source>
+        <translation>Populiariausi paskutiniai</translation>
+    </message>
+    <message>
+        <source>Last hits first</source>
+        <translation>Vėliausi žiūrėti pirmi</translation>
+    </message>
+    <message>
+        <source>Last hits last</source>
+        <translation>Vėliausi žiūrėti paskutiniai</translation>
+    </message>
+    <message>
+        <source>Top rated first</source>
+        <translation>Aukščiausiai įvertinti pirmi</translation>
+    </message>
+    <message>
+        <source>Top rated last</source>
+        <translation>Aukščiausiai įvertinti paskutiniai</translation>
+    </message>
+    <message>
+        <source>Last commented first</source>
+        <translation>Paskutiniai komentuoti pirmi</translation>
+    </message>
+    <message>
+        <source>Last commented last</source>
+        <translation>Paskutiniai komentuoti paskutiniai</translation>
+    </message>
+    <message>
+        <source>No records</source>
+        <translation>Nėra įrašų</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/album_list</name>
+    <message>
+        <source>Page %currentpage of %totalpage</source>
+        <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Found</source>
+        <translation>Rasta</translation>
+    </message>
+    <message>
+        <source>files</source>
+        <translation>failai</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/subcategory_list</name>
+    <message>
+        <source>albums</source>
+        <translation>albumai</translation>
+    </message>
+    <message>
+        <source>images</source>
+        <translation>paveiksliukai</translation>
+    </message>
+</context>
 <context>
     <name>pagelayout/pagelayout</name>
     <message>
@@ -53,8 +401,60 @@
         <translation>Paskyra</translation>
     </message>
     <message>
-        <source>Configuration</source>
-        <translation>Konfigūracija</translation>
+        <source>Enter keyword or phrase</source>
+        <translation>Įveskite raktažodį arba frazę</translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation>Paskyra</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Prisijungti</translation>
+    </message>
+    <message>
+        <source>Register</source>
+        <translation>Registruotis</translation>
+    </message>
+    <message>
+        <source>Most popular images</source>
+        <translation>Populiariausi paveiksliukai</translation>
+    </message>
+    <message>
+        <source>Last uploads</source>
+        <translation>Naujausi paveiksliukai</translation>
+    </message>
+    <message>
+        <source>Top rated</source>
+        <translation>Aukščiausiai įvertinti</translation>
+    </message>
+    <message>
+        <source>Last hits</source>
+        <translation>Paskutiniai žiūrėti</translation>
+    </message>
+    <message>
+        <source>Last commented</source>
+        <translation>Paskutiniai komentuoti</translation>
+    </message>
+    <message>
+        <source>Upload image</source>
+        <translation>Nusiųsti paveiksliuką</translation>
+    </message>
+    <message>
+        <source>Last searches</source>
+        <translation>Paskutinės paieškos</translation>
+    </message>
+    <message>
+        <source>Last viewed images</source>
+        <translation>Paskutiniai žiūrėti paveiksliukai</translation>
+    </message>
+    <message>
+        <source>Search...</source>
+        <translation>Paieška...</translation>
+    </message>
+    <message>
+        <source>Search entire gallery</source>
+        <translation>Ieškoti visoje galerijoje</translation>
     </message>
 </context>
 <context>
@@ -121,14 +521,6 @@
         <source>E-mail</source>
         <translation>El-paštas</translation>
     </message>
-    <message>
-        <source>Name</source>
-        <translation>Vardas</translation>
-    </message>
-    <message>
-        <source>Surname</source>
-        <translation>Pavardė</translation>
-    </message> 
     <message>
         <source>Assign</source>
         <translation>Priskirti</translation>
@@ -395,14 +787,6 @@
     <message>
         <source>Username</source>
         <translation>Vartotojo vardas</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Vardas</translation>
-    </message>
-    <message>
-        <source>Surname</source>
-        <translation>Pavardė</translation>
     </message>
     <message>
         <source>Assign user</source>

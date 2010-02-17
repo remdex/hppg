@@ -4,16 +4,12 @@
     <th>ID</th>
     <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/groupassignuser','Username');?></th>
     <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/groupassignuser','E-mail');?></th>
-    <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/groupassignuser','Name');?></th>
-    <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/groupassignuser','Surname');?></th>
 </tr>
 <? foreach (erLhcoreClassGroupUser::getGroupNotAssignedUsers($group_id) as $user) : ?>
     <tr>
         <td><input type="checkbox" name="UserID[]" value="<?=$user['id']?>"></td>
         <td><?=$user['username']?></td>
-        <td><?=$user['email']?></td>
-        <td><?=$user['name']?></td>
-        <td><?=$user['surname']?></td>        
+        <td><?=$user['email']?></td>    
     </tr>
 <? endforeach; ?>
 </table>

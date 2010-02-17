@@ -1,5 +1,5 @@
 <?php if (isset($pages)) : ?> 
-    <div class="navigator"><?if ($pages->num_pages > 1) : ?><?=$pages->display_pages();?><?php endif;?> <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('rss/category',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, Found - <?=$pages->items_total?></div></div>
+    <div class="navigator"><?if ($pages->num_pages > 1) : ?><?=$pages->display_pages();?><?php endif;?> <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list','Page %currentpage of %totalpage',array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list','Found')?> - <?=$pages->items_total?></div></div>
 <? endif;?>
 <div class="float-break">
 <? foreach ($items as $key => $item) : ?>
