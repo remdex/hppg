@@ -30,6 +30,13 @@
     </message>
 </context>
 <context>
+    <name>gallery/updateimage</name>
+    <message>
+        <source>Image updated</source>
+        <translation>Paveikslėlis atnaujintas</translation>
+    </message>
+</context>
+<context>
     <name>gallery/publicupload</name>
     <message>
         <source>Public images upload</source>

@@ -23,5 +23,3 @@ if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$
 
     $cache->store(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$Params['user_parameters_unordered']['page']),$Result);
 }
-
-?>
