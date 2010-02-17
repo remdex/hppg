@@ -65,7 +65,7 @@ if (isset($_POST['Update_account']))
         erLhcoreClassUser::getSession()->save($UserData); 
         
         $GroupUser = new erLhcoreClassModelGroupUser();        
-        $GroupUser->group_id = 2; //User group
+        $GroupUser->group_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'default_user_group' ); //User group
         $GroupUser->user_id = $UserData->id;        
         erLhcoreClassUser::getSession()->save($GroupUser);
         
