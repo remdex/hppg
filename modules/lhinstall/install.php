@@ -198,6 +198,10 @@ switch ((int)$Params['user_parameters']['step_id']) {
                $GroupData->name    = "Administrators";
                erLhcoreClassUser::getSession()->save($GroupData);
                
+               $GroupDataRegistered = new erLhcoreClassModelGroup();
+               $GroupDataRegistered->name    = "Registered users";
+               erLhcoreClassUser::getSession()->save($GroupDataRegistered);
+               
                //Administrators role
                $db->query("CREATE TABLE IF NOT EXISTS `lh_role` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -207,6 +211,10 @@ switch ((int)$Params['user_parameters']['step_id']) {
                $Role = new erLhcoreClassModelRole();
                $Role->name = 'Administrators';
                erLhcoreClassRole::getSession()->save($Role);
+               
+               $RoleRegistered = new erLhcoreClassModelRole();
+               $RoleRegistered->name = 'Registered users';
+               erLhcoreClassRole::getSession()->save($RoleRegistered);
 
                
                //Assing group role
@@ -223,6 +231,11 @@ switch ((int)$Params['user_parameters']['step_id']) {
                $GroupRole->role_id = $Role->id;        
                erLhcoreClassRole::getSession()->save($GroupRole);
         
+               $GroupRoleRegistered = new erLhcoreClassModelGroupRole();        
+               $GroupRoleRegistered->group_id = $GroupDataRegistered->id;
+               $GroupRoleRegistered->role_id = $RoleRegistered->id;        
+               erLhcoreClassRole::getSession()->save($GroupRoleRegistered);
+               
                // Users
                $db->query("CREATE TABLE IF NOT EXISTS `lh_users` (
                       `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -392,12 +405,26 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 $RoleFunction->module = '*';
                 $RoleFunction->function = '*';                
                 erLhcoreClassRole::getSession()->save($RoleFunction);
-                   
-               $cfgSite = erConfigClassLhConfig::getInstance();
-	           $cfgSite->conf->setSetting( 'site', 'installed', true);	     
-	           $cfgSite->save();
+                
+                
+                $RoleFunctionRegistered = new erLhcoreClassModelRoleFunction();
+                $RoleFunctionRegistered->role_id = $RoleRegistered->id;
+                $RoleFunctionRegistered->module = 'lhuser';
+                $RoleFunctionRegistered->function = 'selfedit';                
+                erLhcoreClassRole::getSession()->save($RoleFunctionRegistered);
+                
+                $RoleFunctionRegisteredGallery = new erLhcoreClassModelRoleFunction();
+                $RoleFunctionRegisteredGallery->role_id = $RoleRegistered->id;
+                $RoleFunctionRegisteredGallery->module = 'lhgallery';
+                $RoleFunctionRegisteredGallery->function = 'use';                
+                erLhcoreClassRole::getSession()->save($RoleFunctionRegisteredGallery);
+                               
+                $cfgSite = erConfigClassLhConfig::getInstance();
+	            $cfgSite->conf->setSetting( 'site', 'installed', true);	     
+	            $cfgSite->conf->setSetting( 'user_settings', 'default_user_group', $GroupDataRegistered->id);	     
+	            $cfgSite->save();
 	           
-    	       $tpl->setFile('lhinstall/install4.tpl.php');
+    	        $tpl->setFile('lhinstall/install4.tpl.php');
     	       
             } else {      
                 
