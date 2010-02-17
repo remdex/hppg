@@ -37,6 +37,43 @@
     </message>
 </context>
 <context>
+    <name>gallery/searchrss</name>
+    <message>
+        <source>Search RSS by keyword</source>
+        <translation>Paieškos RSS pagal raktažodį</translation>
+    </message>
+    <message>
+        <source>watched</source>
+        <translation>peržiūrėtas</translation>
+    </message>
+    <message>
+        <source>View image</source>
+        <translation>Peržiūrėti paveikslėlį</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/topratedrss</name>
+    <message>
+        <source>watched</source>
+        <translation>peržiūrėtas</translation>
+    </message>
+    <message>
+        <source>View image</source>
+        <translation>Peržiūrėti paveikslėlį</translation>
+    </message>
+    <message>
+        <source>Top rated images</source>
+        <translation>Aukščiausiai įvertinti paveikslėliai</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/tagphoto</name>
+    <message>
+        <source>Thank you a lot :)</source>
+        <translation>Ačiū labai :)</translation>
+    </message>
+</context>
+<context>
     <name>gallery/publicupload</name>
     <message>
         <source>Public images upload</source>
