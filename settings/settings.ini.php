@@ -21,6 +21,9 @@ return array (
         1 => 'lt_LT',
       ),
     ),
+    'user_settings' => array(
+        'default_user_group' => 2,
+    ),
     'sphinx' => 
     array (
       'host' => 'localhost',
