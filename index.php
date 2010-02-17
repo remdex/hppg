@@ -1,5 +1,5 @@
 <?php
-
+//
 $star_microtile = microtime();
 function set_time ( $start_time, $end_time )
 {
