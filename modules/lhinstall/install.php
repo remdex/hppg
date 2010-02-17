@@ -405,8 +405,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 $RoleFunction->module = '*';
                 $RoleFunction->function = '*';                
                 erLhcoreClassRole::getSession()->save($RoleFunction);
-                
-                
+                                
                 $RoleFunctionRegistered = new erLhcoreClassModelRoleFunction();
                 $RoleFunctionRegistered->role_id = $RoleRegistered->id;
                 $RoleFunctionRegistered->module = 'lhuser';
