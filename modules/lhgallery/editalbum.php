@@ -60,9 +60,9 @@ $tpl->set('album',$AlbumData);
 $Result['content'] = $tpl->fetch();
 
 $Result['path'] = array(
-array('url' => erLhcoreClassDesign::baseurl('user/index'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My account')),
+array('url' => erLhcoreClassDesign::baseurl('gallery/editalbum'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My account')),
 
-array('url' => erLhcoreClassDesign::baseurl('gallery/myalbums'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My albums')),
+array('url' => erLhcoreClassDesign::baseurl('gallery/editalbum'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My albums')),
 array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit',$AlbumData->title)),
 
 

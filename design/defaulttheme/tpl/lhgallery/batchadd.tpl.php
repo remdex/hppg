@@ -9,7 +9,7 @@ foreach ($directoryList  as $directory) : ?>
 <?endif;?>
 
 <?if (isset($writable) && $writable == false) : ?>
-<p class="error">I cannot write this directory</p>
+<p class="error"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','I cannot write this directory')?></p>
 <?endif;?>
 
 <? if (isset($filesList)) : ?>

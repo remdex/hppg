@@ -508,10 +508,37 @@
     </message>
 </context>
 <context>
+    <name>gallery/batchadd</name>
+    <message>
+        <source>Add images</source>
+        <translation>Paveikslėlis įkėlimas</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>Importas</translation>
+    </message>
+    <message>
+        <source>Import recursive this directory</source>
+        <translation>Rekursyvinis importas</translation>
+    </message>
+    <message>
+        <source>I cannot write this directory</source>
+        <translation>Aš negaliu įrašyti i šią direktoriją</translation>
+    </message>
+</context>
+<context>
     <name>pagelayout/pagelayout</name>
     <message>
         <source>Logged user</source>
         <translation>Prisijungęs vartotojas</translation>
+    </message>
+    <message>
+        <source>Gallery categorys</source>
+        <translation>Galerijos kategorijos</translation>
+    </message>  
+    <message>
+        <source>Batch images add</source>
+        <translation>Masinis paveikslėlių įkėlimas</translation>
     </message>  
     <message>
         <source>Home</source>
