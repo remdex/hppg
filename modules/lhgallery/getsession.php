@@ -16,8 +16,5 @@ else
 erLhcoreClassGallery::getSession()->save($fileSession);
                   
 echo json_encode(array('error' => 'false','sessionhash' => $fileSession->hash));
-
    
 exit;
-
-?>

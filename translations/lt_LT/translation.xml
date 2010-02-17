@@ -37,6 +37,36 @@
     </message>
 </context>
 <context>
+    <name>gallery/lastuploadsrss</name>
+    <message>
+        <source>Last uploaded images</source>
+        <translation>Paskutiniai įkelti paveikslėliai</translation>
+    </message>
+    <message>
+        <source>watched</source>
+        <translation>peržiūrėtas</translation>
+    </message>
+    <message>
+        <source>View image</source>
+        <translation>Peržiūrėti paveikslėlį</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/lasthitsrss</name>
+    <message>
+        <source>Last viewed images</source>
+        <translation>Paskutiniai peržiūrėti paveikslėliai</translation>
+    </message>
+    <message>
+        <source>watched</source>
+        <translation>peržiūrėtas</translation>
+    </message>
+    <message>
+        <source>View image</source>
+        <translation>Peržiūrėti paveikslėlį</translation>
+    </message>
+</context>
+<context>
     <name>gallery/searchrss</name>
     <message>
         <source>Search RSS by keyword</source>
@@ -169,7 +199,7 @@
     <name>gallery/lasthits</name>
     <message>
         <source>Last viewed images</source>
-        <translation>Paskutiniai žiūrėti paveikslėliai</translation>
+        <translation>Paskutiniai peržiūrėti paveikslėliai</translation>
     </message>
     <message>
         <source>No records.</source>
