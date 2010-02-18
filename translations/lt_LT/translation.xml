@@ -331,6 +331,17 @@
     </message>
 </context>
 <context>
+    <name>user/forgotpasswordsent</name>
+    <message>
+        <source>Password remind</source>
+        <translation>Slaptažodžio priminimas</translation>
+    </message>
+    <message>
+        <source>E-mail send. Click link in email and to You will be send out new password.</source>
+        <translation>El. laiškas išsiųstas. Paspauskite nuorodą  el. laiške ir Jums bus atsiųstas naujas slaltažodis.</translation>
+    </message>
+</context>
+<context>
     <name>user/forgotpassword</name>
     <message>
         <source>E-mail</source>
@@ -347,6 +358,10 @@
     <message>
         <source>Wrong e-mail address!</source>
         <translation>Nekorektiškas el. pašto adresas!</translation>
+    </message>
+    <message>
+        <source>Click this link and to You will be send new password</source>
+        <translation>Paspausk šią nuorodą ir Jums bus atsiųstas naujas slaptažodis</translation>
     </message>
     <message>
         <source>Click this link and to You will be send new password</source>
