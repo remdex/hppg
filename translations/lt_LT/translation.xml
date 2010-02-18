@@ -342,6 +342,25 @@
     </message>
 </context>
 <context>
+    <name>user/remindpassword</name>
+    <message>
+        <source>Hash not found or was used already</source>
+        <translation>Hašas nerastas arba jau buvo panaudotas</translation>
+    </message>
+    <message>
+        <source>New password has beend send to your email.</source>
+        <translation>Naujas slaptažodis buvo išsiųstas į tavo el. pašto dėžutę.</translation>
+    </message>
+    <message>
+        <source>New password:</source>
+        <translation>Naujas slaptažodis:</translation>
+    </message>
+    <message>
+        <source>Password remind - new password</source>
+        <translation>Slaptažodžio priminimas - naujas slaptažodis</translation>
+    </message>
+</context>
+<context>
     <name>user/forgotpassword</name>
     <message>
         <source>E-mail</source>
