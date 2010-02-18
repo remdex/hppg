@@ -120,6 +120,10 @@
         <source>Choose images for upload.</source>
         <translation>Pasirinkite paveikslėlius nusiuntimui.</translation>
     </message>
+    <message>
+        <source>Choose one of</source>
+        <translation>Pasirinkite vieną iš</translation>
+    </message>
 </context>
 <context>
     <name>gallery/albumedit</name>
