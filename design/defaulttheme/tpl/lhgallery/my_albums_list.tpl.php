@@ -8,11 +8,11 @@
         <div class="albthumb-img"><?=$item->album_thumb_path;?></div>
        <div class="right">
        <a href="<?=erLhcoreClassDesign::baseurl('/gallery/editalbum/')?><?=$item->aid?>" ><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Edit album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Edit album');?>" /></a>
-       <a href="<?=erLhcoreClassDesign::baseurl('/gallery/deletealbum/')?><?=$item->aid?>" onclick="return hw.confirm('Are you sure?')"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Delete album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Delete album');?>" /></a>
+       <a href="<?=erLhcoreClassDesign::baseurl('/gallery/deletealbum/')?><?=$item->aid?>" onclick="return hw.confirm('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Are you sure?')?>')"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Delete album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Delete album');?>" /></a>
        <a href="<?=erLhcoreClassDesign::baseurl('/gallery/addimages/')?><?=$item->aid?>" ><img src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Add images');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Add images');?>" /></a>
        </div>
        <h2><a href="<?=erLhcoreClassDesign::baseurl('/gallery/mylistalbum/')?><?=$item->aid?>" ><?=htmlspecialchars($item->title)?></a></h2>
-       <?=$item->images_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','files.')?>
+       <?=$item->images_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','images.')?>
        </div>
     </div>   
 <?endforeach; ?>      

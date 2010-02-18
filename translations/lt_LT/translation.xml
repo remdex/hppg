@@ -73,6 +73,14 @@
     <message>
         <source>Edit album</source>
         <translation>Redaguoti albumą</translation>
+    </message> 
+    <message>
+        <source>images.</source>
+        <translation>paveikslėlių.</translation>
+    </message> 
+    <message>
+        <source>Are you sure?</source>
+        <translation>Ar tikrai norite ištrinti pasirinktą albumą?</translation>
     </message>    
 </context>
 <context>
