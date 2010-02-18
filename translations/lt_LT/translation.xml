@@ -331,6 +331,37 @@
     </message>
 </context>
 <context>
+    <name>gallery/editcategory</name>
+    <message>
+        <source>Category edit</source>
+        <translation>Kategorijos redagavimas</translation>
+    </message>
+    <message>
+        <source>Hide subcategorys in frontpage</source>
+        <translation>Slėpti subkategorijas tituliniame</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Aprašymas</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>back</source>
+        <translation>atgal</translation>
+    </message>
+    <message>
+        <source>Owner</source>
+        <translation>Savininkas</translation>
+    </message>
+</context>
+<context>
     <name>gallery/managealbumimages</name>
     <message>
         <source>Home</source>
