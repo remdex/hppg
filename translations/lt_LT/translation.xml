@@ -331,6 +331,33 @@
     </message>
 </context>
 <context>
+    <name>gallery/managealbum</name>
+    <message>
+        <source>Category</source>
+        <translation>Kategorija</translation>
+    </message>
+    <message>
+        <source>Home</source>
+        <translation>Pradžia</translation>
+    </message>
+    <message>
+        <source>Create an album</source>
+        <translation>Sukurti albumą</translation>
+    </message>
+    <message>
+        <source>No records.</source>
+        <translation>Nėra įrašų.</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+</context>
+<context>
     <name>gallery/editcategory</name>
     <message>
         <source>Category edit</source>

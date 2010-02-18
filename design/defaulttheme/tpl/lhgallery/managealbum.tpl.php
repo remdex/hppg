@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','Home')?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Home')?></h1>
 </div>
 
 <? if ($pages->items_total > 0) { ?>         
@@ -15,5 +15,5 @@
 
 <? } ?>
 <div>
-<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$category->cid?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Create an album');?></a>
+<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$category->cid?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Create an album');?></a>
 </div>
