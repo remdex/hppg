@@ -37,7 +37,7 @@
 </div>
 
 <div class="in-blk">
-<label>Safe code</label>
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Safe code')?></label>
 <input type="text" class="inputfield" name="CaptchaCode" value="" /><br />
 <img src="<?=erLhcoreClassDesign::baseurl('/captcha/image/feedback_form')?>" alt="">
 </div>

@@ -1754,6 +1754,10 @@
         <source>Passwords mismatch</source>
         <translation>Slaptažodžiai nesutampa</translation>
     </message>
+    <message>
+        <source>Safe code</source>
+        <translation>Saugos kodas</translation>
+    </message>
 </context>
 <context>
     <name>user/account</name>
