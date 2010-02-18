@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Password remind');?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Password remind');?></h1>
 </div>
 <div class="attribute-short">
 <div id="messages">
@@ -9,12 +9,12 @@
 
 <form method="post" action="<?=erLhcoreClassDesign::baseurl('/user/forgotpassword/')?>">
 <div class="in-blk">
-<label>E-mail:</label>
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','E-mail')?>:</label>
 <input type="text" class="inputfield" name="Email" value="" />
 </div>
 
 
-<input type="submit" class="default-button" value="Restore password" name="Forgotpassword" />
+<input type="submit" class="default-button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Restore password')?>" name="Forgotpassword" />
 
 
 </form>

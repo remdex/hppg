@@ -16,7 +16,7 @@ if (isset($_POST['Forgotpassword'])) {
     
     if ( !$form->hasValidData( 'Email' ) )
     {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Wrong email address');
+        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Wrong e-mail address!');
     }
         
 	if (count($Errors) == 0) {  
@@ -39,14 +39,14 @@ if (isset($_POST['Forgotpassword'])) {
 			$mail = new PHPMailer();
 			$mail->CharSet = "UTF-8";
 			$mail->From = $adminEmail;
-			$mail->FromName = 'hentaiwallpapers.com - Hentai wallpapers';
-			$mail->Subject = "Password remind";
+			$mail->FromName = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' );
+			$mail->Subject = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Password remind');
 		
 			// HTML body
-			$body  = 'Click this link - <a href="http://'.$host.'/user/remindpassword/'.$hash.'">generate password</a>';
+			$body  = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Click this link and to You will be send new password').' -  <a href="http://'.$host.erLhcoreClassDesign::baseurl('/user/remindpassword/').$hash.'">http://'.$host.erLhcoreClassDesign::baseurl('/user/remindpassword/').$hash.'</a>';
 
 			// Plain text body
-			$text_body  = 'Click this link and to you will be send new password - http://'.$host.'/user/remindpassword/'.$hash;		
+			$text_body  = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Click this link and to You will be send new password').' - http://'.$host.erLhcoreClassDesign::baseurl('/user/remindpassword/').$hash;		
 
 			$mail->Body    = $body;
 			$mail->AltBody = $text_body;

@@ -331,6 +331,29 @@
     </message>
 </context>
 <context>
+    <name>user/forgotpassword</name>
+    <message>
+        <source>E-mail</source>
+        <translation>El. paštas</translation>
+    </message>
+    <message>
+        <source>Restore password</source>
+        <translation>Atstatyti slaptažodį</translation>
+    </message>
+    <message>
+        <source>Password remind</source>
+        <translation>Slaptažodžio priminimas</translation>
+    </message>
+    <message>
+        <source>Wrong e-mail address!</source>
+        <translation>Nekorektiškas el. pašto adresas!</translation>
+    </message>
+    <message>
+        <source>Click this link and to You will be send new password</source>
+        <translation>Paspausk šią nuorodą ir Jums bus atsiųstas naujas slaptažodis</translation>
+    </message>
+</context>
+<context>
     <name>gallery/managealbum</name>
     <message>
         <source>Category</source>
