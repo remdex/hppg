@@ -356,6 +356,10 @@
         <translation>Naujas slaptažodis:</translation>
     </message>
     <message>
+        <source>New password</source>
+        <translation>Naujas slaptažodis</translation>
+    </message>
+    <message>
         <source>Password remind - new password</source>
         <translation>Slaptažodžio priminimas - naujas slaptažodis</translation>
     </message>
