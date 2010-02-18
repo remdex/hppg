@@ -46,10 +46,98 @@
     </message>
 </context>
 <context>
+    <name>gallery/popular</name>
+    <message>
+        <source>Most popular images</source>
+        <translation>Populiariausi paveikslėliai</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/albumedit</name>
+    <message>
+        <source>Album edit</source>
+        <translation>Albumo redagavimas</translation>
+    </message>
+    <message>
+        <source>Album name</source>
+        <translation>Albumo pavadinimas</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Aprašymas</translation>
+    </message>
+    <message>
+        <source>Keywords</source>
+        <translation>Raktažodžiai</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+</context>
+<context>
     <name>install/install</name>
     <message>
         <source>Installation of software</source>
         <translation>Programinės įrangos diegimas</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/my_image_list</name>
+    <message>
+        <source>View image</source>
+        <translation>Peržiūrėti paveikslėli</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Keywords</source>
+        <translation>Raktažodžiai</translation>
+    </message>
+    <message>
+        <source>Caption</source>
+        <translation>Antraštė</translation>
+    </message>
+    <message>
+        <source>Found</source>
+        <translation>Rasta</translation>
+    </message>
+    <message>
+        <source>Page %currentpage of %totalpage</source>
+        <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/createalbum</name>
+    <message>
+        <source>New album</source>
+        <translation>Naujas albumas</translation>
+    </message>
+    <message>
+        <source>Album name</source>
+        <translation>Albumo pavadinimas</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Aprašymas</translation>
+    </message>
+    <message>
+        <source>Keywords</source>
+        <translation>Raktažodžiai</translation>
+    </message>
+    <message>
+        <source>Create</source>
+        <translation>Sukurti</translation>
+    </message>
+    <message>
+        <source>Create and upload photos</source>
+        <translation>Sukurti ir siųsti paveikslėlius</translation>
     </message>
 </context>
 <context>

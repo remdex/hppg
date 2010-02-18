@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editalbum','Edit an album')?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Edit an album')?></h1>
 </div>
 <? if (isset($errArr)) : ?>
 <div class="error-list">
@@ -14,23 +14,23 @@
 <? endif;?>
 <br />
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/editalbumadmin/')?><?=$album->aid?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/albumeditadmin/')?><?=$album->aid?>">
 <div class="in-blk">
-<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editalbum','Album name');?> *</label>
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Album name');?> *</label>
 <input class="inputfield" type="text" name="AlbumName" value="<?=htmlspecialchars($album->title);?>" />
 </div>
 
 <div class="in-blk">
-<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editalbum','Description');?></label>
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Description');?></label>
 <textarea name="AlbumDescription" class="default-textarea"><?=htmlspecialchars($album->description);?></textarea>
 </div>
 
 <div class="in-blk">
-<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editalbum','Keywords');?></label>
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Keywords');?></label>
 <input class="inputfield" type="text" name="AlbumKeywords" value="<?=htmlspecialchars($album->keyword);?>" />
 </div>
 
-<input type="submit" class="default-button" name="CreateAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editalbum','Update')?>"/>
+<input type="submit" class="default-button" name="CreateAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Update')?>"/>
 
 </form>
 

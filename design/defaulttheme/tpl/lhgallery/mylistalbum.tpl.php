@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1><?=$album->title?></h1>
+<h1><?=htmlspecialchars($album->title)?></h1>
 </div>
 
 <? if ($pages->items_total > 0) { ?>

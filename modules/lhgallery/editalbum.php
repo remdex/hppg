@@ -1,6 +1,6 @@
 <?php
 
-$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/editalbum.tpl.php');
+$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/albumedit.tpl.php');
 
 $AlbumData = $Params['user_object'] ;
 
@@ -60,9 +60,9 @@ $tpl->set('album',$AlbumData);
 $Result['content'] = $tpl->fetch();
 
 $Result['path'] = array(
-array('url' => erLhcoreClassDesign::baseurl('gallery/editalbum'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My account')),
+array('url' => erLhcoreClassDesign::baseurl('gallery/albumedit'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My account')),
 
-array('url' => erLhcoreClassDesign::baseurl('gallery/editalbum'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My albums')),
+array('url' => erLhcoreClassDesign::baseurl('gallery/albumedit'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My albums')),
 array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit',$AlbumData->title)),
 
 

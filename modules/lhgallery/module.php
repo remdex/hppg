@@ -132,15 +132,15 @@ $ViewList['createcategory'] = array(
     'functions' => array( 'administrate' ),
     );
     
-$ViewList['editalbum'] = array( 
-    'script' => 'editalbum.php',
+$ViewList['albumedit'] = array( 
+    'script' => 'albumedit.php',
     'params' => array('album_id'),
     'pagelayout' => 'main_3column',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' =>'administrate'),
     ); 
        
-$ViewList['editalbumadmin'] = array( 
-    'script' => 'editalbumadmin.php',
+$ViewList['albumeditadmin'] = array( 
+    'script' => 'albumeditadmin.php',
     'params' => array('album_id'),
     'pagelayout' => 'admin',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' =>'administrate'),
