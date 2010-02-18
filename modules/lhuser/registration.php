@@ -74,7 +74,7 @@ if (isset($_POST['Update_account']))
        
         $userCategory = new erLhcoreClassModelGalleryCategory();
         $userCategory->owner_id =  $UserData->id;
-        $userCategory->parent =  1;
+        $userCategory->parent =  erConfigClassLhConfig::getInstance()->conf->getSetting( 'gallery_settings', 'default_gallery_category' );
         $userCategory->name =  $form->Username;
         erLhcoreClassGallery::getSession()->save($userCategory);               
         $userCategory->clearCategoryCache();
