@@ -24,6 +24,9 @@ return array (
     'user_settings' => array(
         'default_user_group' => 2,
     ),
+    'gallery_settings' => array(
+        'default_gallery_category' => 1,
+    ),
     'sphinx' => 
     array (
       'host' => 'localhost',
