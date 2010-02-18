@@ -16,5 +16,5 @@
 <input class="inputfield" type="password" name="Password" value="" />
 </div>
 
-<input class="default-button" type="submit" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Login');?>" name="Login" />&nbsp;&nbsp;&nbsp;<a href="<?=erLhcoreClassDesign::baseurl('/user/forgotpassword/')?>">Password remind</a>
+<input class="default-button" type="submit" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Login');?>" name="Login" />&nbsp;&nbsp;&nbsp;<a href="<?=erLhcoreClassDesign::baseurl('/user/forgotpassword/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Password remind')?></a>
 </form>

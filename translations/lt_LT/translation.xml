@@ -21,12 +21,57 @@
         <source>Incorrect username or password</source>
         <translation>Nekorektiškas prisijungimo vardas arba slaptažodis</translation>
     </message>
+    <message>
+        <source>Password remind</source>
+        <translation>Slaptažodžio priminimas</translation>
+    </message>  
+</context>
+<context>
+    <name>user/index</name>
+    <message>
+        <source>User home</source>
+        <translation>Vartotojo namai</translation>
+    </message>
+    <message>
+        <source>Welcome. Here you can:</source>
+        <translation>Sveiki. Jūs čia galite:</translation>
+    </message>
+    <message>
+        <source>Edit personal settings</source>
+        <translation>Redaguoti asmeninius nustatymus</translation>
+    </message>
+    <message>
+        <source>Manage personal albums</source>
+        <translation>Tvarkyti asmeninius albumus</translation>
+    </message>
 </context>
 <context>
     <name>install/install</name>
     <message>
         <source>Installation of software</source>
         <translation>Programinės įrangos diegimas</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/my_albums_list</name>
+    <message>
+        <source>Page %currentpage of %totalpage</source>
+        <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+    <message>
+        <source>Found</source>
+        <translation>Rasta</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/myalbums</name>
+    <message>
+        <source>My albums</source>
+        <translation>Mano albumai</translation>
+    </message>
+    <message>
+        <source>You do not have any album.</source>
+        <translation>Jūs neturite albumų</translation>
     </message>
 </context>
 <context>
@@ -531,6 +576,14 @@
     <message>
         <source>Logged user</source>
         <translation>Prisijungęs vartotojas</translation>
+    </message>
+    <message>
+        <source>My account</source>
+        <translation>Mano paskyra</translation>
+    </message>
+    <message>
+        <source>Manage albums</source>
+        <translation>Tvarkyti albumus</translation>
     </message>
     <message>
         <source>Gallery categorys</source>

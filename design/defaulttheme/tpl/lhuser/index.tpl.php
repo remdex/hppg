@@ -1,11 +1,11 @@
 <div class="header-list">
-<h1>User home</h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/index','User home');?></h1>
 </div>
 
 <div class="attribute-short">
-<p>Welcome to user home. From here you can:</p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/index','Welcome. Here you can:');?></p>
 <ul>
-    <li><a href="/user/account">Edit personal settings</a></li>
-    <li><a href="/gallery/myalbums">Manage personal albums</a></li>
+    <li><a href="<?=erLhcoreClassDesign::baseurl('/user/account')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/index','Edit personal settings');?></a></li>
+    <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/myalbums')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/index','Manage personal albums');?></a></li>
 </ul>
 </div>
