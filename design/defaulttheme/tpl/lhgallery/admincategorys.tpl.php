@@ -1,16 +1,16 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category');?> - <?= $category !== false ? $category->name : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></h1>
 </div>
 <?php
 $categoryID = $category !== false ? $category->cid : 0;
 ?>
-<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createcategory/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Create a category');?></a>
+<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createcategory/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create a category');?></a>
 
 <? 
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $categoryID)));
-$pages->translationContext = 'gallery/album';
+$pages->translationContext = 'gallery/admincategorys';
 $pages->default_ipp = 8;
 $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$categoryID;
 $pages->paginate();
@@ -24,15 +24,15 @@ if ($pages->items_total > 0) :?>
 </tr>
 
 <?php if (isset($pages)) : ?> 
-    <div class="navigator"><?=$pages->display_pages();?> <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('rss/category',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, Found - <?=$pages->items_total?></div></div>
+    <div class="navigator"><?=$pages->display_pages();?> <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Page %currentpage of %totalpage',array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Found')?> - <?=$pages->items_total?></div></div>
 <? endif;
 
 foreach (erLhcoreClassModelGalleryCategory::getParentCategories($category !== false ? $category->cid : 0,$pages->items_per_page, $pages->low) as $categoryItem) : ?>
     <tr>
         <td width="1%"><?=$categoryItem->cid?></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys/')?><?=$categoryItem->cid?>"><?=htmlspecialchars($categoryItem->name)?></a></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/editcategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Edit group');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Edit group');?>" /></a></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/deletecategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete group');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete group');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/editcategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/deletecategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 
@@ -49,7 +49,7 @@ if ($category !== false) :  ?>
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('filter' => array('category' => $category->cid)));
-$pages->translationContext = 'gallery/managealbum';
+$pages->translationContext = 'gallery/admincategorys';
 $pages->default_ipp = 8;
 $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/managealbum/').$category->cid;
 $pages->paginate();
@@ -63,12 +63,12 @@ $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => a
 
 <?php else: ?>
 
-<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','This category does not have any albums. ');?>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','This category does not have an album.');?>
 
 <?php endif;
 
 endif;
 ?> 
 <? if ($category !== false) : ?>
-<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Create an album');?></a>
+<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create an album');?></a>
 <?endif;?>

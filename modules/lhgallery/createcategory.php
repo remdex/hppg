@@ -29,7 +29,7 @@ if (isset($_POST['Update_Category']))
     
     if ( !$form->hasValidData( 'CategoryName' ) || $form->CategoryName == '' )
     {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Please enter category name!');
+        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createcategory','Please enter category name!');
     } else {$CategoryData->name = $form->CategoryName;}
     
     
