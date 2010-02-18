@@ -12,7 +12,7 @@
           
 <? } else { ?>
 
-<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','No records.')?></p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbumimages','No records.')?></p>
 
 <? } ?>
 

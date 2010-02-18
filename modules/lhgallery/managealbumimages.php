@@ -5,7 +5,7 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/managealbumimages.tpl.php'
 $Album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', (int)$Params['user_parameters']['album_id'] );    
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)));
-$pages->translationContext = 'gallery/album';
+$pages->translationContext = 'gallery/managealbumimages';
 $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/managealbumimages/').$Album->aid;
 $pages->paginate();
 
@@ -24,6 +24,3 @@ foreach ($pathObjects as $pathItem)
 }
 
 $Result['path'] = $path;
-
-
-?>

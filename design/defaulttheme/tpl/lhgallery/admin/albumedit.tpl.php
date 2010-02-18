@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Edit an album')?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Album edit')?></h1>
 </div>
 <? if (isset($errArr)) : ?>
 <div class="error-list">

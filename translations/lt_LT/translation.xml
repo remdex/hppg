@@ -98,6 +98,14 @@
         <source>Create a category</source>
         <translation>Sukurti kategoriją</translation>
     </message>
+     <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
 </context>
 <context>
     <name>gallery/popularrss</name>
@@ -263,12 +271,39 @@
         <source>Update</source>
         <translation>Atnaujinti</translation>
     </message>
+    <message>
+        <source>Please enter album name!</source>
+        <translation>Prašome įvesti albumo pavadinimą!</translation>
+    </message>
 </context>
 <context>
     <name>install/install</name>
     <message>
         <source>Installation of software</source>
         <translation>Programinės įrangos diegimas</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/managealbumimages</name>
+    <message>
+        <source>Home</source>
+        <translation>Pradžia</translation>
+    </message>
+    <message>
+        <source>Page %currentpage of %totalpage</source>
+        <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+    <message>
+        <source>Found</source>
+        <translation>Rasta</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
     </message>
 </context>
 <context>
