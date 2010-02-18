@@ -417,7 +417,13 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 $RoleFunctionRegisteredGallery->module = 'lhgallery';
                 $RoleFunctionRegisteredGallery->function = 'use';                
                 erLhcoreClassRole::getSession()->save($RoleFunctionRegisteredGallery);
-                               
+                   
+                $CategoryData = new erLhcoreClassModelGalleryCategory();
+                $CategoryData->name = 'Users galleries';
+                $CategoryData->hide_frontpage = 1;
+                $CategoryData->owner_id = $UserData->id;
+                erLhcoreClassGallery::getSession()->save($CategoryData); 
+                 
                 $cfgSite = erConfigClassLhConfig::getInstance();
 	            $cfgSite->conf->setSetting( 'site', 'installed', true);	     
 	            $cfgSite->conf->setSetting( 'user_settings', 'default_user_group', $GroupDataRegistered->id);	     
