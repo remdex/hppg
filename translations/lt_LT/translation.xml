@@ -62,6 +62,18 @@
         <source>Found</source>
         <translation>Rasta</translation>
     </message>
+    <message>
+        <source>Delete album</source>
+        <translation>Trinti albumą</translation>
+    </message>
+    <message>
+        <source>Add images</source>
+        <translation>Pridėti paveikslėlių</translation>
+    </message>
+    <message>
+        <source>Edit album</source>
+        <translation>Redaguoti albumą</translation>
+    </message>    
 </context>
 <context>
     <name>gallery/myalbums</name>
@@ -72,6 +84,14 @@
     <message>
         <source>You do not have any album.</source>
         <translation>Jūs neturite albumų</translation>
+    </message>
+    <message>
+        <source>Create a new album.</source>
+        <translation>Sukurti naują albumą.</translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation>Paskyra</translation>
     </message>
 </context>
 <context>

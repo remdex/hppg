@@ -12,7 +12,7 @@
           
 <? } else { ?>
 
-<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','You do not have any album.')?> <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Create an album.')?></a></p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','You do not have any album.')?> <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Create a new album.')?></a></p>
 
 <? } ?>
 
