@@ -248,6 +248,26 @@
         <source>Choose one of</source>
         <translation>Pasirinkite vieną iš</translation>
     </message>
+    <message>
+        <source>Uploading</source>
+        <translation>Siunčiama</translation>
+    </message>
+    <message>
+        <source>Complete</source>
+        <translation>Baigta</translation>
+    </message>
+     <message>
+        <source>Choose images for upload first.</source>
+        <translation>Pasirinkite paveiksliukus nusiuntimui pirma.</translation>
+    </message>
+    <message>
+        <source>File is too big.</source>
+        <translation>Failas per didelis.</translation>
+    </message>
+     <message>
+        <source>All files were uploaded. See album.</source>
+        <translation>Visi failai buvo nusiųsti. Peržiūrėkite albumą.</translation>
+    </message>
 </context>
 <context>
     <name>gallery/albumedit</name>
@@ -270,6 +290,33 @@
     <message>
         <source>Update</source>
         <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Please enter album name!</source>
+        <translation>Prašome įvesti albumo pavadinimą!</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/createalbumadmin</name>
+    <message>
+        <source>New album</source>
+        <translation>Naujas albumas</translation>
+    </message>
+    <message>
+        <source>Album name</source>
+        <translation>Albumo pavadinimas</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Aprašymas</translation>
+    </message>
+    <message>
+        <source>Keywords</source>
+        <translation>Raktažodžiai</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Saugoti</translation>
     </message>
     <message>
         <source>Please enter album name!</source>

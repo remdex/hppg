@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Create an album')?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','New album')?></h1>
 </div>
 <? if (isset($errArr)) : ?>
 <div class="error-list">
@@ -30,7 +30,7 @@
 <input class="inputfield" type="text" name="AlbumKeywords" value="<?=htmlspecialchars($album->keyword);?>" />
 </div>
 
-<input type="submit" class="default-button" name="CreateAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Create')?>"/>
+<input type="submit" class="default-button" name="CreateAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Save')?>"/>
 
 </form>
 

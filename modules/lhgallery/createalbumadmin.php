@@ -28,7 +28,7 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     
     if ( !$form->hasValidData( 'AlbumName' ) || $form->AlbumName == '' )
     {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Please enter album name!');
+        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Please enter album name!');
     } else {$AlbumData->title = $form->AlbumName;}
     
     
