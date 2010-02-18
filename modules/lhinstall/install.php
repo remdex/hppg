@@ -425,6 +425,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 erLhcoreClassGallery::getSession()->save($CategoryData); 
                  
                 $cfgSite = erConfigClassLhConfig::getInstance();
+	            $cfgSite->conf->setSetting( 'gallery_settings', 'default_gallery_category', $CategoryData->cid);	     
 	            $cfgSite->conf->setSetting( 'site', 'installed', true);	     
 	            $cfgSite->conf->setSetting( 'user_settings', 'default_user_group', $GroupDataRegistered->id);	     
 	            $cfgSite->save();
