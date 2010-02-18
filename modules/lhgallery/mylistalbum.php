@@ -16,12 +16,11 @@ $Result['content'] = $tpl->fetch();
 $Result['path'] = $Album->path_album;
     
 
-$Result['path'] = array(
-array('url' => erLhcoreClassDesign::baseurl('user/index'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My account')),
+$Result['path'] = array (
 
-array('url' => erLhcoreClassDesign::baseurl('gallery/myalbums'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My albums')),
-array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit',$Album->title)),
-
+array('url' => erLhcoreClassDesign::baseurl('user/index'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','Account')),
+array('url' => erLhcoreClassDesign::baseurl('gallery/myalbums'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','My albums')),
+array('title' => $Album->title),
 
 );
 

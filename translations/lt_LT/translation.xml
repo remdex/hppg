@@ -53,6 +53,75 @@
     </message>
 </context>
 <context>
+    <name>gallery/mylistalbum</name>
+    <message>
+        <source>Account</source>
+        <translation>Paskyra</translation>
+    </message>
+    <message>
+        <source>My albums</source>
+        <translation>Mano albumai</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/fileuploadcontainer</name>
+    <message>
+        <source>Title</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Keywords</source>
+        <translation>Raktažodžiai</translation>
+    </message>
+    <message>
+        <source>Caption</source>
+        <translation>Antraštė</translation>
+    </message>
+    <message>
+        <source>Waiting</source>
+        <translation>Laukiama</translation>
+    </message>
+    <message>
+        <source>Sutch file already exists</source>
+        <translation>Toks failas jau egzistuoja</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/addimages</name>
+    <message>
+        <source>Add images to album</source>
+        <translation>Įkelti paveikslėlius į albumą</translation>
+    </message>
+    <message>
+        <source>Attachment of local images</source>
+        <translation>Lokalių paveikslėlių įkėlimas</translation>
+    </message>
+    <message>
+        <source>Images to upload</source>
+        <translation>Paveikslėliai nusiuntimui</translation>
+    </message>
+    <message>
+        <source>Upload</source>
+        <translation>Siųsti</translation>
+    </message>
+    <message>
+        <source>Browse</source>
+        <translation>Naršyti</translation>
+    </message>
+    <message>
+        <source>Max file size 5mb.</source>
+        <translation>Maksimalus failo dydis 5mb.</translation>
+    </message>
+    <message>
+        <source>Choose images for upload first.</source>
+        <translation>Pasirinkite paveiksliukus nusiuntimui pirma.</translation>
+    </message>
+    <message>
+        <source>Choose images for upload.</source>
+        <translation>Pasirinkite paveikslėlius nusiuntimui.</translation>
+    </message>
+</context>
+<context>
     <name>gallery/albumedit</name>
     <message>
         <source>Album edit</source>

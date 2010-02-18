@@ -84,7 +84,7 @@ SWFUpload.onload = function () {
 		
 		<table cellpadding="0" cellspacing="0">
 		  <tr>
-		      <td><fieldset class="box-fieldset"><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Attatch local images')?></legend> 
+		      <td><fieldset class="box-fieldset"><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Attachment of local images')?></legend> 
 		<span id="spanButtonPlaceholder"></span>
 		</fieldset>	</td>		      
 		  </tr>
@@ -106,7 +106,7 @@ SWFUpload.onload = function () {
 
 <br>
 <fieldset id="chooseFileLegend"><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Images to upload')?></legend> 
-<p id="chooseFile"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Choose images for upload')?>.</p>
+<p id="chooseFile"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Choose images for upload.')?></p>
 
 		<div id="divSWFUploadUI">
 			<div class="fieldset flash" id="fsUploadProgress">	
@@ -117,7 +117,7 @@ SWFUpload.onload = function () {
 </fieldset>
 <br>
 
-<input type="button" onclick="fileconverter.startUpload()" disabled="disabled" class="default-button" id="ConvertButton" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/index','Upload')?>" />
+<input type="button" onclick="fileconverter.startUpload()" disabled="disabled" class="default-button" id="ConvertButton" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Upload')?>" />
 
 <div id="content">
 	

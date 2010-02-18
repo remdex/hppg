@@ -17,10 +17,10 @@
 			</div>		
 			
 			<div class="right-progresbar">
-				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Photo title')?></div>				
+				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Title')?></div>				
 				<input type="text" id="PhotoTitle<?=$fileID?>" value="" class="inputfield" />
 
-				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Photo keywords')?></div>	
+				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Keywords')?></div>	
 				<input type="text" id="PhotoKeyword<?=$fileID?>" value="" class="inputfield" />	
 				
 				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Caption')?></div>			
@@ -36,7 +36,7 @@
 	<div class="progressContainer" id="progressContainer<?=$fileID?>">						
 			<div class="left-progorescolumng">
 				<div class="progressName">
-					<?=$fileName?>
+					<?=htmlspecialchars($fileName)?>
 				</div>
 				<div class="progressBarStatus" id="progresStatus<?=$fileID?>">
 					<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Waiting')?>...
