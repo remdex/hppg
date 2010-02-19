@@ -27,7 +27,6 @@ class erLhcoreClassModule{
                 {           
                    $urlCfgDefault->addOrderedParameter( $userParameter );                                       
                    $url->applyConfiguration( $urlCfgDefault );
-
                    $Params['user_parameters'][$userParameter] =  $url->getParam($userParameter); 
                 }
                
@@ -48,9 +47,9 @@ class erLhcoreClassModule{
             // Function set, check permission
             if (isset($Params['module']['functions']))
             {   
-                if (!$currentUser->isLogged()){
-                    header('Location: '. erLhcoreClassSystem::instance()->WWWDir . '/index.php'.erLhcoreClassSystem::instance()->WWWDirLang.'/user/login');
-                    return ;
+                if (!$currentUser->isLogged()){                    
+                    erLhcoreClassModule::redirect('user/login');
+                    exit;
                 }
                 
                 if (!$currentUser->hasAccessTo('lh'.$GLOBALS['ModuleToRun'],$Params['module']['functions']))
@@ -61,12 +60,7 @@ class erLhcoreClassModule{
             }
             
             if(isset($Params['module']['limitations']))
-            {            
-//            	if (!$currentUser->isLogged()){
-//                    header('Location: '. erLhcoreClassSystem::instance()->WWWDir . '/user/login');
-//                    return ;
-//                }
-                               
+            {       
                 $access = call_user_func($Params['module']['limitations']['self']['method'],$Params['user_parameters'][$Params['module']['limitations']['self']['param']],$currentUser->hasAccessTo('lh'.$GLOBALS['ModuleToRun'],$Params['module']['limitations']['global']));               	
                 
                 if ($access == false) {                
@@ -82,18 +76,17 @@ class erLhcoreClassModule{
             if (isset($Params['module']['pagelayout']) && !isset($Result['pagelayout'])) {
                 $Result['pagelayout'] = $Params['module']['pagelayout'];
             }
-        
-            
-                       
+               
             return $Result;
         } else {
-            echo 'Views not found -> ',$GLOBALS['ViewToRun'];
+            erLhcoreClassModule::redirect();
+            exit;
         }
     }
     
     static function redirect($url = '/')
-    {        
-        header('Location: '. erLhcoreClassSystem::instance()->WWWDir . '/index.php'. erLhcoreClassSystem::instance()->WWWDirLang . '/' .ltrim($url,'/') );
+    {
+        header('Location: '. erLhcoreClassDesign::baseurl($url) );
     }
 }
 
