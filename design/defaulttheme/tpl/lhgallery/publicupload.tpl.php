@@ -88,7 +88,7 @@ SWFUpload.onload = function () {
 		<span id="spanButtonPlaceholder"></span>
 		</fieldset>	</td>		      
 		<td><select id="AlbumIDToUpload">
- 		  <?php foreach ($items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => 28),'offset' => 0, 'limit' => 100)) as $album) : ?>
+ 		  <?php foreach ($items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('public' => 1),'offset' => 0, 'limit' => 100)) as $album) : ?>
  		     <option value="<?=$album->aid?>"><?=$album->title?></option>
  		  <?php endforeach;?> 		  
  		  </select>
