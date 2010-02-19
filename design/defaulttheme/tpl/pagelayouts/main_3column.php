@@ -137,9 +137,8 @@
                             $appendImageMode = '/(mode)/lasthits';
                             $Result = '<ul class="last-hits-infobox">';
                             foreach ($items as $item)
-                            {
-                                $title = ($title = $item->name_user) == '' ? 'preview version' : $title;
-                                $Result .= '<li><a href="'.$item->url_path.$appendImageMode.'"><img title="See full size" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename)).'" alt="'.htmlspecialchars($item->name_user).'" /></a></li>';
+                            {               
+                                $Result .= '<li><a href="'.$item->url_path.$appendImageMode.'"><img title="'.erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','View image').'" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename)).'" alt="'.htmlspecialchars($item->name_user).'" /></a></li>';
                             }
                             $Result .= '</ul>';
 

@@ -1120,6 +1120,10 @@
 <context>
     <name>pagelayout/pagelayout</name>
     <message>
+        <source>View image</source>
+        <translation>Žiūrėti paveikslėlį</translation>
+    </message>
+    <message>
         <source>Logged user</source>
         <translation>Prisijungęs vartotojas</translation>
     </message>
