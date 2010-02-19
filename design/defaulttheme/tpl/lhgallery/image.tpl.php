@@ -393,7 +393,7 @@ if (count($comments) > 0) :
     <div class="in-blk">
     <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Safe code')?></label>
     <input type="text" class="inputfield" name="CaptchaCode" value="" /><br />
-    <img src="<?=erLhcoreClassDesign::baseurl('/captcha/image/comment')?>" alt="" />
+    <img src="<?=erLhcoreClassDesign::baseurl('/captcha/image/comment/')?><?php echo time();?>" alt="" />
     </div>    
     <input type="submit" class="default-button" name="StoreComment" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Send')?>"/>
 </form>

@@ -1,4 +1,4 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editcategory','Category edit');?> - <? echo htmlspecialchars($category->name)?></legend> 
+<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editcategory','Category edit');?> - <?php echo htmlspecialchars($category->name)?></legend> 
 
 <div class="articlebody">
 

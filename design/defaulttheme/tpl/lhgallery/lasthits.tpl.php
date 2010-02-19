@@ -13,7 +13,7 @@
           
 <? } else { ?>
 
-<p>Nėra įrašų.</p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','No records.')?></p>
 
 <? } ?>
 

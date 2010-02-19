@@ -780,6 +780,10 @@
         <source>Previous</source>
         <translation>Ankstesnis</translation>
     </message>
+    <message>
+        <source>No records.</source>
+        <translation>Nėra įrašų</translation>
+    </message>
 </context>
 <context>
     <name>gallery/ajaximages</name>
@@ -794,6 +798,26 @@
 </context>
 <context>
     <name>gallery/image</name>
+    <message>
+        <source>Wrong captcha code!</source>
+        <translation>Nekorektiškas saugos kodas!</translation>
+    </message>
+    <message>
+        <source>Please enter nick!</source>
+        <translation>Prašome įvesti niką!</translation>
+    </message>
+    <message>
+        <source>Please enter comment!</source>
+        <translation>Prašome įvesti komentarą!</translation>
+    </message>
+    <message>
+        <source>Guest_</source>
+        <translation>Svečias_</translation>
+    </message>
+    <message>
+        <source>search results</source>
+        <translation>paieškos rezultatai</translation>
+    </message>
     <message>
         <source>previous image</source>
         <translation>ankstesnis paveiksliukas</translation>

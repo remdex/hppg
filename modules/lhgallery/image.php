@@ -9,7 +9,7 @@ $currentUser = erLhcoreClassUser::instance();
 if ($currentUser->isLogged()){
     $CommentData->msg_author = $currentUser->getUserData()->username;
 } else {
-    $CommentData->msg_author = 'Guest_';
+    $CommentData->msg_author = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Guest_');
 }
 
 if (isset($_POST['StoreComment']))
@@ -33,13 +33,13 @@ if (isset($_POST['StoreComment']))
     
     if ( !$form->hasValidData( 'CaptchaCode' ) || $form->CaptchaCode == '' || $form->CaptchaCode != $_SESSION[$_SERVER['REMOTE_ADDR']]['comment'] )
     {
-        $Errors[] =  'Wrong captcha code!';
+        $Errors[] =   erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Wrong captcha code!');
     } 
     
     $validUsername = false;
     if ( !$form->hasValidData( 'Name' ) || $form->Name == '' )
     {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Please enter name!');
+        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Please enter nick!');
     } else {$CommentData->msg_author = $form->Name;$validUsername = true;}
     
     if ($validUsername == true && (($currentUser->isLogged() && $currentUser->getUserData()->username != $form->Name) || ($currentUser->isLogged() == false)) && erLhcoreClassUser::getUserCount(array('filter' => array('username' => $form->Name))) > 0){
@@ -48,7 +48,7 @@ if (isset($_POST['StoreComment']))
     
     if ( !$form->hasValidData( 'CommentBody' ) || $form->CommentBody == '' || mb_strlen($form->CommentBody) > 500 || erLhcoreClassModelGalleryComment::isSpam($form->CommentBody))
     {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Please enter comment body!');
+        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Please enter comment!');
     } else $CommentData->msg_body = $form->CommentBody;
     
     
@@ -519,7 +519,7 @@ if ($mode == 'lastuploads') {
 }elseif ($mode == 'popular') {	
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most popular images')),array('title' => $Image->name_user));
 }elseif ($mode == 'search') {	
-    $Result['title_path'] = array(array('title' => urldecode($Params['user_parameters_unordered']['keyword']).' - search results'),array('title' => $Image->name_user));
+    $Result['title_path'] = array(array('title' => urldecode($Params['user_parameters_unordered']['keyword']).' - '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','search results')),array('title' => $Image->name_user));
     $Result['keyword'] =urldecode($Params['user_parameters_unordered']['keyword']);
 }
 
