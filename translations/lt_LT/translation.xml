@@ -649,6 +649,73 @@
     </message>
 </context>
 <context>
+    <name>gallery/search</name>
+    <message>
+        <source>Search RSS by keyword</source>
+        <translation>Paieškos RSS pagal raktažodį</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>search results</source>
+        <translation>paieškos rezultatai</translation>
+    </message>
+    <message>
+        <source>Last uploaded first</source>
+        <translation>Naujausi paveiksliuka pirmi</translation>
+    </message>
+    <message>
+        <source>Last uploaded last</source>
+        <translation>Naujausi paveiksliuka paskutiniai</translation>
+    </message>
+    <message>
+        <source>Most popular first</source>
+        <translation>Populiariausi pirmi</translation>
+    </message>
+    <message>
+        <source>Most popular last</source>
+        <translation>Populiariausi paskutiniai</translation>
+    </message>
+    <message>
+        <source>Last hits first</source>
+        <translation>Vėliausi žiūrėti pirmi</translation>
+    </message>
+    <message>
+        <source>Last hits last</source>
+        <translation>Vėliausi žiūrėti paskutiniai</translation>
+    </message>
+    <message>
+        <source>Top rated first</source>
+        <translation>Aukščiausiai įvertinti pirmi</translation>
+    </message>
+    <message>
+        <source>Top rated last</source>
+        <translation>Aukščiausiai įvertinti paskutiniai</translation>
+    </message>
+    <message>
+        <source>Last commented first</source>
+        <translation>Paskutiniai komentuoti pirmi</translation>
+    </message>
+    <message>
+        <source>Last commented last</source>
+        <translation>Paskutiniai komentuoti paskutiniai</translation>
+    </message>
+    <message>
+        <source>No records</source>
+        <translation>Nėra įrašų</translation>
+    </message>
+    <message>
+        <source>Search results</source>
+        <translation>Paieškos rezultatai</translation>
+    </message>
+</context>
+<context>
     <name>gallery/topratedrss</name>
     <message>
         <source>watched</source>

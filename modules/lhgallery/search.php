@@ -85,9 +85,9 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $Result['content'] = $tpl->fetch();
     $Result['path'] = array(array('title' =>  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','search result')));
-    $Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','search result')));
+    $Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','search results')));
     $Result['keyword'] = $searchParams['keyword'];
-    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','Search rss by keyword').' - '.htmlspecialchars($searchParams['keyword']);
+    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Search RSS by keyword').' - '.htmlspecialchars($searchParams['keyword']);
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/searchrss/').'(keyword)/'.urlencode($searchParams['keyword']); 
     $cache->store($cacheKey,$Result,12000);
 }
