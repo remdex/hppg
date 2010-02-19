@@ -58,7 +58,7 @@ function startImport()
     if ($('.image_import').eq(0).attr('rel') != undefined)
     {
         $.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/addimagesbatch/')?>"+$('#AlbumID').val()+"/?image="+$('.image_import').eq(0).attr('rel'), {} , function(data){	
-              $('.image_import').eq(0).attr('src','/design/defaulttheme/images/icons/accept.png');
+              $('.image_import').eq(0).attr('src','<?=erLhcoreClassDesign::design('images/icons/accept.png')?>');
               $('.image_import').eq(0).removeClass('image_import');	
     		   startImport();        
     	});    	
