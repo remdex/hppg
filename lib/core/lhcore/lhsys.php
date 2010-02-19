@@ -387,12 +387,11 @@ class erLhcoreClassSystem{
                 }
             }
         }
-
-    
+        
         $instance->SiteDir = $siteDir;
         $instance->WWWDir = $wwwDir;
         $instance->WWWDirLang = '';
-        $instance->IndexFile = $index;
+        $instance->IndexFile = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'force_virtual_host' )== false ? $index : '';
         $instance->RequestURI = $requestURI;        
         
     }

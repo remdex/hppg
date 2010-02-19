@@ -13,20 +13,18 @@ class erLhcoreClassURL extends ezcUrl {
     public static function getInstance()  
     {
         if ( is_null( self::$instance ) )
-        {
-            $urlString = ezcUrlTools::getCurrentUrl();
-
+        {            
             $sys = erLhcoreClassSystem::instance()->WWWDir;
             
             $urlCfgDefault = ezcUrlConfiguration::getInstance();
             $urlCfgDefault->basedir = $sys;
-            $urlCfgDefault->script  = 'index.php';
+            $urlCfgDefault->script  = erLhcoreClassSystem::instance()->IndexFile;
             $urlCfgDefault->unorderedDelimiters = array( '(', ')' );            
             $urlCfgDefault->addOrderedParameter( 'language' ); 
             $urlCfgDefault->addOrderedParameter( 'module' ); 
             $urlCfgDefault->addOrderedParameter( 'function' );
-                                     
-            $urlInstance = new erLhcoreClassURL($urlString, $urlCfgDefault);
+                       
+            $urlInstance = new erLhcoreClassURL(erLhcoreClassSystem::instance()->RequestURI, $urlCfgDefault);
                 
             $language = $urlInstance->getParam( 'language' );
             $cfgSite = erConfigClassLhConfig::getInstance(); 
