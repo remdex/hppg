@@ -1,4 +1,5 @@
 <?php
+
 return array (
   'settings' => 
   array (
@@ -12,6 +13,7 @@ return array (
       'templatecompile' => false,
       'classCompile' => false,
       'nice_url_enabled' => false,
+      'force_virtual_host' => false,
       'etag_caching_enabled' => false,
       'installed' => false,
       'secrethash' => '',
