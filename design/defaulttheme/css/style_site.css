@@ -522,3 +522,6 @@ a.progressCancel:hover {
 a.selor{text-decoration:underline;}
 .order-nav{font-size:11px;}
 .act-blc{text-align:left;padding:2px;}
+div.right{
+float:right;
+}

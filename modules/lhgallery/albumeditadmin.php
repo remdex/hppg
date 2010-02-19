@@ -13,10 +13,12 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         
         'AlbumDescription' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
-        ),   
-            
+        ), 
         'AlbumKeywords' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
+        ), 
+        'AlbumPublic' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::OPTIONAL, 'boolean'
         )
     );
     
@@ -37,7 +39,14 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     if ( $form->hasValidData( 'AlbumKeywords' ) && $form->AlbumKeywords != '' )
     {
         $AlbumData->keyword = $form->AlbumKeywords;
-    } 
+    }
+    
+    if ( $form->hasValidData( 'AlbumPublic' ) && $form->AlbumKeywords == true )
+    {
+        $AlbumData->public = 1;
+    } else {
+        $AlbumData->public = 0;
+    }
     
     if (count($Errors) == 0)
     {                                

@@ -276,6 +276,14 @@
         <translation>Albumo redagavimas</translation>
     </message>
     <message>
+        <source>Public</source>
+        <translation>Viešas</translation>
+    </message>
+    <message>
+        <source>All users can uploads images to this album</source>
+        <translation>Visi vartotojai gali siųsti paveikslėlius į šį albumą</translation>
+    </message>
+    <message>
         <source>Album name</source>
         <translation>Albumo pavadinimas</translation>
     </message>
@@ -301,6 +309,14 @@
     <message>
         <source>New album</source>
         <translation>Naujas albumas</translation>
+    </message>
+    <message>
+        <source>Public</source>
+        <translation>Viešas</translation>
+    </message>
+    <message>
+        <source>All users can uploads images to this album</source>
+        <translation>Visi vartotojai gali siųsti paveikslėlius į šį albumą</translation>
     </message>
     <message>
         <source>Album name</source>
