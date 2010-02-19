@@ -707,8 +707,8 @@
         <translation>Paskutiniai komentuoti paskutiniai</translation>
     </message>
     <message>
-        <source>No records</source>
-        <translation>Nėra įrašų</translation>
+        <source>Nothing found.</source>
+        <translation>Nieko nerasta.</translation>
     </message>
     <message>
         <source>Search results</source>
@@ -1186,6 +1186,14 @@
 </context>
 <context>
     <name>pagelayout/pagelayout</name>
+    <message>
+        <source>Rendered in</source>
+        <translation>Sugeneruotas per</translation>
+    </message>
+    <message>
+        <source>It&apos;s NOT fake!</source>
+        <translation>Tai NEpadirbta!</translation>
+    </message>
     <message>
         <source>View image</source>
         <translation>Žiūrėti paveikslėlį</translation>
