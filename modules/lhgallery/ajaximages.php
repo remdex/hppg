@@ -30,9 +30,9 @@ if ($mode == 'album')
     if ($modeSort == 'newdesc') {
         
         if ($direction == 'left') {
-            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$image->aid),'limit' => 5,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid),'filtergt' => array('pid' => $Image->pid)));
+            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 5,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid),'filtergt' => array('pid' => $Image->pid)));
             $imagesAjax = array_reverse($imagesAjax);
-        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$image->aid),'limit' => 5,'filter' => array('aid' => $Image->aid),'filterlt' => array('pid' => $Image->pid)));        
+        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 5,'filter' => array('aid' => $Image->aid),'filterlt' => array('pid' => $Image->pid)));        
            
     } elseif ($modeSort == 'newasc') {  
         
