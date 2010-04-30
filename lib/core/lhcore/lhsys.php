@@ -197,10 +197,10 @@ class CSCacheAPC {
     {
         if ( $this->cacheEngine != null )
         {            
-            if (($version = $this->get($this->cacheGlobalKey.$cacheVariable)) == false){
-                 $this->set($this->cacheGlobalKey.$cacheVariable,1);
+            if (($version = $this->cacheEngine->get($this->cacheGlobalKey.$cacheVariable)) == false){
+                 $this->cacheEngine->set($this->cacheGlobalKey.$cacheVariable,1);
                  $GLOBALS['CacheKeyVersion_'.$cacheVariable] = 1;
-            } else {$this->increment($this->cacheGlobalKey.$cacheVariable);$GLOBALS['CacheKeyVersion_'.$cacheVariable] = $version+1;}
+            } else {$this->cacheEngine->increment($this->cacheGlobalKey.$cacheVariable);$GLOBALS['CacheKeyVersion_'.$cacheVariable] = $version+1;}
             
         } else {
             $GLOBALS['CacheKeyVersion_'.$cacheVariable] = 1;
