@@ -1,9 +1,9 @@
 <?php
 
 $AlbumData = $Params['user_object'] ;
-$imagePath = base64_decode($_GET["image"]);
+$imagePath = base64_decode($Params['user_parameters_unordered']['image']);
 
-if (isset($_GET["image"]) && file_exists($imagePath) && erLhcoreClassImageConverter::isPhotoLocal($imagePath))
+if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePath) && erLhcoreClassImageConverter::isPhotoLocal($imagePath))
 {           	        
    try {
        $photoDir = dirname($imagePath);

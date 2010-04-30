@@ -213,13 +213,15 @@ $ViewList['editcategory'] = array(
 $ViewList['batchadd'] = array( 
     'script' => 'batchadd.php',
     'params' => array(),    
+    'uparams' => array('directory','import','importrecur'),
     'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     );         
               
 $ViewList['addimagesbatch'] = array( 
     'script' => 'addimagesbatch.php',
-    'params' => array('album_id'),    
+    'params' => array('album_id'),  
+    'uparams' => array('image'),  
     'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),

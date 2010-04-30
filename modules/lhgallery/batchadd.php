@@ -2,12 +2,14 @@
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/batchadd.tpl.php');
 
-$directoryList = erLhcoreClassGalleryBatch::listDirectory(isset($_GET['directory']) ? urldecode($_GET['directory']) : 'albums');
+$directoryList = erLhcoreClassGalleryBatch::listDirectory(isset($Params['user_parameters_unordered']['directory']) ? urldecode($Params['user_parameters_unordered']['directory']) : 'albums');
 $tpl->set('directoryList',$directoryList);
 
-$directory = isset($_GET['directory']) ? urldecode($_GET['directory']) : 'albums';
+$directory = isset($Params['user_parameters_unordered']['directory']) ? urldecode($Params['user_parameters_unordered']['directory']) : 'albums';
 
-if (isset($_GET['import']) && $_GET['import'] == 1)
+
+
+if (isset($Params['user_parameters_unordered']['import']) && $Params['user_parameters_unordered']['import'] == 1)
 {
     if (is_writable($directory)) 
         $tpl->set('writable',true);        
@@ -17,7 +19,7 @@ if (isset($_GET['import']) && $_GET['import'] == 1)
     $tpl->set('filesList',erLhcoreClassGalleryBatch::listDirectory($directory,true)); 
 }
 
-if (isset($_GET['importrecur']) && $_GET['importrecur'] == 1)
+if (isset($Params['user_parameters_unordered']['importrecur']) && $Params['user_parameters_unordered']['importrecur'] == 1)
 {
     if (is_writable($directory)) 
         $tpl->set('writable',true);        
@@ -35,7 +37,7 @@ $previousFolder = '';
 foreach ($pathDirectorys as $pathItem)
 {
    $previousFolder .= $pathItem.'/';
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/batchadd/').'?directory='.urlencode(rtrim($previousFolder,'/')),'title' => $pathItem); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/batchadd/(directory)/').urlencode(rtrim($previousFolder,'/')),'title' => $pathItem); 
 }
  
 $Result['path'] = $path;
