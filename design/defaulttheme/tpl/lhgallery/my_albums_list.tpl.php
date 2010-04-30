@@ -1,5 +1,5 @@
 <?php if (isset($pages)) : ?> 
-    <div class="navigator"><?=$pages->display_pages();?> <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Found')?> - <?=$pages->items_total?></div></div>
+    <div class="navigator"><?=$pages->display_pages();?> <div class="right"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Found')?> - <?=$pages->items_total?></div></div>
 <? endif;?>
 <div class="float-break">
 <? foreach ($items as $key => $item) : ?>
