@@ -112,7 +112,8 @@ class erLhcoreClassTemplate {
 			
 			//Compile translations
 			$Matches = array();
-			preg_match_all('/<\?=erTranslationClassLhTranslation::getInstance\(\)->getTranslation\(\'(.*?)\',\'(.*?)\'\)(.*?)\?\>/i',$contentFile,$Matches); 
+			preg_match_all('/<\?=erTranslationClassLhTranslation::getInstance\(\)->getTranslation\(\'(.*?)\',\'(.*?)\'\)(.*?)\?\>/i',$contentFile,$Matches);
+					
 			foreach ($Matches[1] as $key => $TranslateContent)
 			{	
 				$contentFile = str_replace($Matches[0][$key],erTranslationClassLhTranslation::getInstance()->getTranslation($TranslateContent,$Matches[2][$key]),$contentFile);	

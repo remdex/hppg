@@ -98,7 +98,9 @@ class erLhcoreClassGallery{
       {
          $idMatch[$key] = null;
       }
-	      
+      
+	  if (count($idMatch) == 0)
+          	return array('total_found' => 0,'list' => null);   
         
       $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => array_keys($idMatch))));
 	        
