@@ -79,7 +79,7 @@ $ViewList['addvote'] = array(
 $ViewList['ajaximages'] = array( 
     'script' => 'ajaximages.php',    
     'params' => array('image_id'),
-    'uparams' => array('mode','keyword','sort'),
+    'uparams' => array('mode','keyword','sort','direction'),
     );   
       
 $ViewList['lastcommented'] = array( 

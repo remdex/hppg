@@ -4,9 +4,8 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/ajaximages.tpl.php');
 $Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$Params['user_parameters']['image_id'] );
 
 $mode = isset($Params['user_parameters_unordered']['mode']) ? $Params['user_parameters_unordered']['mode'] : 'album';
-$direction = $_GET['direction'] == 'left' ? 'left' : 'right';
+$direction = (isset($Params['user_parameters_unordered']['direction']) && $Params['user_parameters_unordered']['direction'] == 'left') ? $Params['user_parameters_unordered']['direction'] : 'right';
 $tpl->set('direction',$direction);
-
 
 if ($mode == 'album')
 {
