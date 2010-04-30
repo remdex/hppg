@@ -7,6 +7,7 @@ url.rewrite-once = (
 "^/design/defaulttheme/js/(.*)" =>  "/design/defaulttheme/js/$1",
 "^/.*\.(css|html|htm|pdf|txt|js|bmp|ico|png|JPG|PNG|gif|jpe?g|swf)$" => "$0",
 "^/index(.*)" => "/index$1",
+"^/(.+)\?(.*)/?$" => "/index.php?/$1&$2",
 "^/(.+)/?$" => "/index.php?/$1"
 )
 server.document-root = "/site/directory/root"
