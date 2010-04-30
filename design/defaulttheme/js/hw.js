@@ -91,7 +91,7 @@ var hw = {
 	},
 	
 	getimages : function(url,direction) {	
-        $.getJSON(url, {direction:direction} , function(data){	
+        $.getJSON(url + "/(direction)/"+direction, {} , function(data){	
             if (data.error != 'true')			
 			$('#ajax-navigator-content').html(data.result);	
 		});			
