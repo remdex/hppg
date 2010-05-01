@@ -15,6 +15,9 @@ return array (
       'nice_url_enabled' => false,
       'force_virtual_host' => false,
       'etag_caching_enabled' => false,
+      'default_www_user' => 'lighttpd',
+      'default_www_group' => 'lighttpd',
+      'public_category_id' => 28,
       'installed' => false,
       'secrethash' => '',
       'available_locales' => 
