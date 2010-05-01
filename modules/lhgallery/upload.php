@@ -20,7 +20,7 @@ if (count($objects) == 1)
 	    $session->save($image);
 	    	        
 	   try {
-	      
+	    
 	       $photoDir = 'albums/userpics/'.$fileSession->user_id;
 	       if (!file_exists($photoDir))
 	       mkdir($photoDir,0777);
@@ -29,15 +29,21 @@ if (count($objects) == 1)
 	       if (!file_exists($photoDir))
 	       mkdir($photoDir,0777);	       
 	       
-	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $_FILES['Filedata']['tmp_name'], $photoDir.'/normal_'.erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']) ); 
-	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $_FILES['Filedata']['tmp_name'], $photoDir.'/thumb_'.erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']) ); 
-	       move_uploaded_file($_FILES["Filedata"]["tmp_name"],$photoDir.'/'.erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']));
+	       $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']);
 	       
-	       $image->filesize = filesize($photoDir.'/'.erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']));
-	       $image->total_filesize = filesize($photoDir.'/'.erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']))+filesize($photoDir.'/thumb_'.erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']))+filesize($photoDir.'/normal_'.erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']));
+	       if (file_exists($photoDir.'/'.erLhcoreClassImageConverter::sanitizeFileName($fileNamePhysic))) {
+	       		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
+	       }
+	       
+	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $_FILES['Filedata']['tmp_name'], $photoDir.'/normal_'.$fileNamePhysic ); 
+	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $_FILES['Filedata']['tmp_name'], $photoDir.'/thumb_'.$fileNamePhysic ); 
+	       move_uploaded_file($_FILES["Filedata"]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
+	       
+	       $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
+	       $image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
 	       $image->filepath = 'userpics/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
 	       
-	       $imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']) ); 	       
+	       $imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic ); 	       
 	       $image->pwidth = $imageAnalyze->data->width;
 	       $image->pheight = $imageAnalyze->data->height;
 	       $image->hits = 0;
@@ -50,7 +56,7 @@ if (count($objects) == 1)
 	       $image->caption = $_POST['description'];
 	       $image->keywords =  $_POST['keyword'];
 	       $image->approved =  1;
-	       $image->filename = erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']);
+	       $image->filename = $fileNamePhysic;
 	              
 	       $session->update($image);
 	       $image->clearCache();
@@ -68,7 +74,7 @@ if (count($objects) == 1)
 	}
 
 } else {
-	erLhcoreClassLog::write('Not found: '.$sessionID);
+	erLhcoreClassLog::write('Nerastas: '.$sessionID);
 }
 
 //echo "wrong";
