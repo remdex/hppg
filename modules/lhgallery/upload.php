@@ -31,7 +31,7 @@ if (count($objects) == 1)
 	       
 	       $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']);
 	       
-	       if (file_exists($photoDir.'/'.erLhcoreClassImageConverter::sanitizeFileName($fileNamePhysic))) {
+	       if (file_exists($photoDir.'/'.$fileNamePhysic)) {
 	       		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
 	       }
 	       

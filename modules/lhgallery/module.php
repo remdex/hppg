@@ -164,6 +164,11 @@ $ViewList['fileuploadcontainer'] = array(
     'script' => 'fileuploadcontainer.php',
     'params' => array('fileID','album_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::canUpload','param' => 'album_id'),'global' => 'administrate'),
+    );
+        
+$ViewList['fileuploadcontainerarchive'] = array( 
+    'script' => 'fileuploadcontainerarchive.php',
+    'params' => array('fileID')
     ); 
        
 $ViewList['getsession'] = array( 
@@ -171,9 +176,19 @@ $ViewList['getsession'] = array(
     'params' => array('album_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::canUpload','param' => 'album_id'),'global' => 'administrate'),
     );
+           
+$ViewList['getsessionarchive'] = array( 
+    'script' => 'getsessionarchive.php',
+    'params' => array()
+    );
     
 $ViewList['upload'] = array( 
     'script' => 'upload.php',
+    'params' => array()
+    ); 
+        
+$ViewList['uploadarchive'] = array( 
+    'script' => 'uploadarchive.php',
     'params' => array()
     );  
        
@@ -266,6 +281,11 @@ $ViewList['deletealbumadmin'] = array(
 
 $ViewList['publicupload'] = array( 
     'script' => 'publicupload.php',
+    'params' => array()
+    ); 
+    
+$ViewList['publicarchiveupload'] = array( 
+    'script' => 'publicarchiveupload.php',
     'params' => array()
     ); 
       
