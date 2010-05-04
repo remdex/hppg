@@ -45,6 +45,7 @@ return array (
       'port' => 3312,     
       'index' => 'index_name',
       'enabled' => false,      
+      'max_matches' => 1000000,      
     ),
     'cacheEngine' => array(
         'cache_global_key'  => 'global_site_cache_key',
