@@ -31,6 +31,13 @@ return array (
     ),
     'gallery_settings' => array(
         'default_gallery_category' => 1,
+    ),    
+    'cdn' => array(
+    	'css' => '',
+    	'images' => array(
+    		0 => '',
+    		1 => '' 		
+    	)
     ),
     'sphinx' => 
     array (
