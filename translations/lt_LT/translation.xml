@@ -1022,6 +1022,14 @@
         <source>Found</source>
         <translation>Rasta</translation>
     </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
 </context>
 <context>
     <name>gallery/image_list</name>
