@@ -72,6 +72,29 @@ class erLhcoreClassTemplate {
        $this->file = $file;
     }
     
+    public static function strip_html($data)
+	{
+		$dataLines = explode("\n",$data);
+		$return = "";
+		foreach ($dataLines as $line)
+		{			
+			if (($lineOutput = trim($line)) != ''){
+				$return.=preg_replace("/^\/\/.*/","",$lineOutput);	
+				if (preg_match('/\/\//',$lineOutput)) // In case comment is at the end somewhere, /gallery/publicupload/
+					$return.= "\n";
+			}
+		}
+		
+		// Spaces have to be adjusted using CSS
+		$return=str_replace("> <","><",$return);
+		
+		// Need space some templates
+		$return=str_replace('<?php','<?php ',$return);
+				
+	    return $return;
+	}
+	
+
     /**
      * Open, parse, and return the template file.
      *
@@ -92,14 +115,14 @@ class erLhcoreClassTemplate {
           
         if ($this->templatecompile == true)
         {
-	        $contentFile = file_get_contents($file);  
+	        $contentFile = php_strip_whitespace($file);  
 	        
 	        //Compile templates inclusions first level.             
 	        $Matches = array();
 			preg_match_all('/<\?php(.*?)include_once\(erLhcoreClassDesign::designtpl\(\'([a-zA-Z0-9-\.-\/\_]+)\'\)\)(.*?)\?\>/i',$contentFile,$Matches);       		
 			foreach ($Matches[2] as $key => $Match)
 			{	
-				$contentFile = str_replace($Matches[0][$key],file_get_contents(erLhcoreClassDesign::designtpl($Match)),$contentFile);	
+				$contentFile = str_replace($Matches[0][$key],php_strip_whitespace(erLhcoreClassDesign::designtpl($Match)),$contentFile);	
 			}		
 			
 			//Compile image css paths. Etc..
@@ -136,8 +159,11 @@ class erLhcoreClassTemplate {
 			}
 				
 			$sys = erLhcoreClassSystem::instance()->SiteDir;  
-			$file = $sys . 'cache/compiledtemplates/'.md5($file.$instance->WWWDirLang).'.php';	
-			file_put_contents($file,$contentFile);
+			$file = $sys . 'cache/compiledtemplates/'.md5($file.$instance->WWWDirLang).'.php';
+			
+			
+				
+			file_put_contents($file,erLhcoreClassTemplate::strip_html($contentFile));
 				
 	 	    $this->cacheTemplates[md5($fileTemplate.$instance->WWWDirLang)] = $file;		
 			$this->storeCache();

@@ -37,7 +37,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
 {  
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/album.tpl.php');
     try {
-    $Album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', (int)$Params['user_parameters']['album_id'] ); 
+    $Album = erLhcoreClassModelGalleryAlbum::fetch((int)$Params['user_parameters']['album_id']); 
     } catch (Exception $e){
         erLhcoreClassModule::redirect('/');
         exit;

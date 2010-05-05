@@ -36,7 +36,7 @@ class lhPaginator{
 		$prev_page = $this->current_page-1;
 		$next_page = $this->current_page+1;
 	
-		$this->return = ($this->current_page != 1) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$prev_page$this->querystring\">&laquo; ".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</a> ":"<span class=\"inactive\" href=\"#\">&laquo; ".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</span> ";
+		$this->return = ($this->current_page != 1) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$prev_page$this->querystring\">&laquo; ".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</a>":"<span class=\"inactive\" href=\"#\">&laquo; ".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</span>";
 
 		$this->mid_range = 16;
 			
@@ -68,7 +68,7 @@ class lhPaginator{
 				if($i==1 Or $i==$this->num_pages Or in_array($i,$this->range))
 				{
 				    $pageURL = $i > 1 ? '/(page)/'.$i : '';
-					$this->return .= ($i == $this->current_page) ? "<a title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" class=\"current\" href=\"#\">$i</a> ":"<a class=\"paginate\" title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" href=\"{$this->serverURL}{$pageURL}{$this->querystring}\">$i</a> ";
+					$this->return .= ($i == $this->current_page) ? "<a title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" class=\"current\" href=\"#\">$i</a>":"<a class=\"paginate\" title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" href=\"{$this->serverURL}{$pageURL}{$this->querystring}\">$i</a>";
 				}
 				if (isset($this->range[$this->mid_range-1]))
 				if($this->range[$this->mid_range-1] < $this->num_pages-1 And $i == $this->range[$this->mid_range-1]) $this->return .= " ... ";
@@ -79,11 +79,11 @@ class lhPaginator{
 		{
 			for($i=1;$i<=$this->num_pages;$i++)
 			{
-				$this->return .= ($i == $this->current_page) ? "<a class=\"current\" href=\"#\">$i</a> ":"<a class=\"paginate\" href=\"$this->serverURL/(page)/$i$this->querystring\">$i</a> ";
+				$this->return .= ($i == $this->current_page) ? "<a class=\"current\" href=\"#\">$i</a> ":"<a class=\"paginate\" href=\"$this->serverURL/(page)/$i$this->querystring\">$i</a>";
 			}			
 		}	
 				
-		$this->return .= (($this->current_page != $this->num_pages)) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$next_page$this->querystring\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</a>\n":"<span class=\"inactive\" href=\"#\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</span>\n";
+		$this->return .= (($this->current_page != $this->num_pages)) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$next_page$this->querystring\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</a>":"<span class=\"inactive\" href=\"#\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</span>";
 		
 		$this->low = ($this->current_page-1) * $this->items_per_page;
 		$this->high = (isset($_GET['ipp']) && $_GET['ipp'] == 'All') ? $this->items_total:($this->current_page * $this->items_per_page)-1;

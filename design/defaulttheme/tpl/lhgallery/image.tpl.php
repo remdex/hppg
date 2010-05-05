@@ -74,45 +74,72 @@
 	?>         
 	<?break;
 	
-	case 'popular': ?>		
+	case 'popular': ?>		    		
     	<?     	    	
     	$urlAppend = '/(mode)/popular';
     	$db = ezcDbInstance::get(); 
         $session = erLhcoreClassGallery::getSession();
         
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        $q->where( $q->expr->gt( 'hits', $q->bindValue( $image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $image->pid ) ) )
-        ->orderBy('hits ASC, pid ASC')
-        ->limit( 2 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );        
+        $cache = CSCacheAPC::getMem();   
+		$cacheVersion = $cache->getCacheVersion('most_popular_version',time(),1500);
+        
+        
+		$cacheKey = md5('popular_left_thumbnails_'.$cacheVersion.'_hits_'.$image->hits.'_pid_'.$image->pid);
+		if (($imagesLeft = $cache->restore($cacheKey)) === false)
+		{
+	        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+	        $q->where( $q->expr->gt( 'hits', $q->bindValue( $image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $image->pid ) ) )
+	        ->orderBy('hits ASC, pid ASC')
+	        ->limit( 2 );
+	        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+	        $cache->store($cacheKey,$imagesLeft);
+		}
+               
         if (count($imagesLeft) > 0) :   
     	$next_image = current($imagesLeft);
     	$imagesLeft = array_reverse($imagesLeft); 
     	?>
-        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/popular">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>             
-        <?  endif;   	
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE hits > :hits OR hits = :hits AND pid > :pid LIMIT 1');
-        $stmt->bindValue( ':hits',$image->hits);
-        $stmt->bindValue( ':pid',$image->pid);       
-        $stmt->execute();
-        $photos = $stmt->fetchColumn();                 
+        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/popular">&laquo; previous image</a>             
+        <?  endif; 
+        
+        
+  		$cacheKey = md5('popular_count_thumbnails_'.$cacheVersion.'_hits_'.$image->hits.'_pid_'.$image->pid);
+		if (($photos = $cache->restore($cacheKey)) === false)
+		{
+	        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE hits > :hits OR hits = :hits AND pid > :pid LIMIT 1');
+	        $stmt->bindValue( ':hits',$image->hits);
+	        $stmt->bindValue( ':pid',$image->pid);       
+	        $stmt->execute();
+	        $photos = $stmt->fetchColumn(); 
+	        $cache->store($cacheKey,$photos);
+		}
+        
+		
         $page = ceil(($photos+1)/20);
 	    $pageAppend = $page > 1 ? '/(page)/'.$page : '';
     	?>    	
-        <a href="<?=erLhcoreClassDesign::baseurl('gallery/popular')?><?=$pageAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?> &raquo;</a>        
+        <a href="/gallery/popular<?=$pageAppend?>">&laquo; return to thumbnails &raquo;</a>        
         <?   
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        $q->where( $q->expr->lt( 'hits', $q->bindValue( $image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $image->pid ) ) )
-        ->orderBy('hits DESC, pid DESC')
-        ->limit( 2 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );        
+        
+        $cacheKey = md5('popular_right_thumbnails_'.$cacheVersion.'_hits_'.$image->hits.'_pid_'.$image->pid);
+        
+        if (($imagesRight = $cache->restore($cacheKey)) === false)
+		{
+	        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+	        $q->where( $q->expr->lt( 'hits', $q->bindValue( $image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $image->pid ) ) )
+	        ->orderBy('hits DESC, pid DESC')
+	        ->limit( 2 );
+	        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );	        
+	        $cache->store($cacheKey,$imagesRight); 
+		}        
+               
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight);         
     	?>       
-        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/popular"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a>       
+        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/popular">next image &raquo;</a>       
 	<?endif;
 	   $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
-	break;
+	break;	   
 	
 	case 'lasthits': ?>		
     	<? 
