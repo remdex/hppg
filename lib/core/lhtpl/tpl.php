@@ -79,7 +79,7 @@ class erLhcoreClassTemplate {
 		foreach ($dataLines as $line)
 		{			
 			if (($lineOutput = trim($line)) != ''){
-				$return.=preg_replace("/^\/\/.*/","",$lineOutput);	
+				$return.= $lineOutput;	
 				if (preg_match('/\/\//',$lineOutput)) // In case comment is at the end somewhere, /gallery/publicupload/
 					$return.= "\n";
 			}
