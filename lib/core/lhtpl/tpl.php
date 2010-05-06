@@ -80,7 +80,7 @@ class erLhcoreClassTemplate {
 		{			
 			if (($lineOutput = trim($line)) != ''){
 				$return.= $lineOutput;	
-				if (preg_match('/\/\//',$lineOutput)) // In case comment is at the end somewhere, /gallery/publicupload/
+				if (preg_match('/(\/\/|<!--)/',$lineOutput)) // In case comment is at the end somewhere, /gallery/publicupload/
 					$return.= "\n";
 			}
 		}
