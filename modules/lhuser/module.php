@@ -32,63 +32,54 @@ $ViewList['userlist'] = array(
     'script' => 'userlist.php',
     'params' => array(),
     'functions' => array( 'userlist' ),
-    'pagelayout' => 'admin'
     );
           
 $ViewList['grouplist'] = array( 
     'script' => 'grouplist.php',
     'params' => array(),
     'functions' => array( 'grouplist' ),
-    'pagelayout' => 'admin'
     );
     
 $ViewList['edit'] = array( 
     'script' => 'edit.php',
     'params' => array('user_id'),
     'functions' => array( 'edituser' ),
-    'pagelayout' => 'admin'
     ); 
        
 $ViewList['delete'] = array( 
     'script' => 'delete.php',
     'params' => array('user_id'),
     'functions' => array( 'deleteuser' ),
-    'pagelayout' => 'admin'
     );   
                 
 $ViewList['new'] = array( 
     'script' => 'new.php',
     'params' => array(),
     'functions' => array( 'createuser' ),
-    'pagelayout' => 'admin'
     ); 
            
 $ViewList['newgroup'] = array( 
     'script' => 'newgroup.php',
     'params' => array(),
     'functions' => array( 'creategroup', 'editgroup' ),
-    'pagelayout' => 'admin'
     );
     
 $ViewList['editgroup'] = array( 
     'script' => 'editgroup.php',
     'params' => array('group_id'),
     'functions' => array( 'editgroup' ),
-    'pagelayout' => 'admin'
     );     
     
 $ViewList['groupassignuser'] = array( 
     'script' => 'groupassignuser.php',
     'params' => array('group_id'),
     'functions' => array( 'groupassignuser' ),
-    'pagelayout' => 'admin'
     ); 
     
 $ViewList['deletegroup'] = array( 
     'script' => 'deletegroup.php',
     'params' => array('group_id'),
     'functions' => array( 'deletegroup' ),
-    'pagelayout' => 'admin'
     ); 
     
 $ViewList['registration'] = array( 

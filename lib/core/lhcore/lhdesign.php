@@ -27,6 +27,7 @@ class erLhcoreClassDesign
         } 
         
         $debug->log( $logString, 0, array( "source"  => "shop", "erLhcoreClassDesign" =>  "design - $path" )  );
+       
     } 
     
     public static function designtpl($path)   
