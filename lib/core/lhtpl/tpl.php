@@ -14,7 +14,6 @@ class erLhcoreClassTemplate {
     private $cacheTemplates = array() ;
     private $cacheEnabled = true;
     private $templatecompile = true;
-    private $templatePath = '';
     
     var $file = null;
         
@@ -42,7 +41,6 @@ class erLhcoreClassTemplate {
         $sys = erLhcoreClassSystem::instance()->SiteDir;        
         $this->cacheEnabled = $cfg->conf->getSetting( 'site', 'templatecache' );
         $this->templatecompile = $cfg->conf->getSetting( 'site', 'templatecompile' );
-        $this->templatePath =  $sys . 'design/' . $cfg->conf->getSetting( 'site', 'theme' ) . '/tpl/';
         
         if (!is_null($file))
         $this->file = $file;   
@@ -111,7 +109,7 @@ class erLhcoreClassTemplate {
         }
         
         $cfg = erConfigClassLhConfig::getInstance();  
-        $file = $this->templatePath . $fileTemplate;
+        $file = erLhcoreClassDesign::designtpl($fileTemplate);
           
         if ($this->templatecompile == true)
         {

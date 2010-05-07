@@ -121,14 +121,12 @@ $ViewList['createalbum'] = array(
 $ViewList['createalbumadmin'] = array( 
     'script' => 'createalbumadmin.php',
     'params' => array('category_id'),
-    'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     ); 
                     
 $ViewList['createcategory'] = array( 
     'script' => 'createcategory.php',
     'params' => array('category_id'),
-    'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     );
     
@@ -142,7 +140,6 @@ $ViewList['albumedit'] = array(
 $ViewList['albumeditadmin'] = array( 
     'script' => 'albumeditadmin.php',
     'params' => array('album_id'),
-    'pagelayout' => 'admin',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' =>'administrate'),
     );
     
@@ -156,7 +153,6 @@ $ViewList['addimages'] = array(
 $ViewList['addimagesadmin'] = array( 
     'script' => 'addimagesadmin.php',
     'params' => array('album_id'),
-    'pagelayout' => 'admin',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
     );
     
@@ -200,28 +196,24 @@ $ViewList['sessiondone'] = array(
 $ViewList['admincategorys'] = array( 
     'script' => 'admincategorys.php',
     'params' => array('category_id'),    
-    'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     );    
             
 $ViewList['managealbum'] = array( 
     'script' => 'managealbum.php',
     'params' => array('category_id'),    
-    'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     );   
               
 $ViewList['managealbumimages'] = array( 
     'script' => 'managealbumimages.php',
     'params' => array('album_id'),    
-    'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     );  
              
 $ViewList['editcategory'] = array( 
     'script' => 'editcategory.php',
     'params' => array('category_id'),    
-    'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     ); 
     
@@ -229,7 +221,6 @@ $ViewList['batchadd'] = array(
     'script' => 'batchadd.php',
     'params' => array(),    
     'uparams' => array('directory','import','importrecur'),
-    'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     );         
               
@@ -237,7 +228,6 @@ $ViewList['addimagesbatch'] = array(
     'script' => 'addimagesbatch.php',
     'params' => array('album_id'),  
     'uparams' => array('image'),  
-    'pagelayout' => 'admin',
     'functions' => array( 'administrate' ),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
     );

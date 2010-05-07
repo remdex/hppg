@@ -36,9 +36,11 @@ if (!is_null($url->getParam( 'module' )) && file_exists('modules/lh'.$url->getPa
     $ModuleToRun = $url->getParam( 'module' );
     $ViewToRun = $url->getParam( 'function' );
 } else {	
-	/*First page search results*/
-	$ModuleToRun = 'gallery';
-	$ViewToRun = 'index';
+	$cfg = erConfigClassLhConfig::getInstance();
+    $params = $cfg->getOverrideValue('site','default_url');
+    
+    $ModuleToRun = $params['module'];
+	$ViewToRun = $params['view'];
 }
     
 include_once('modules/lh'.$ModuleToRun.'/module.php');

@@ -1,6 +1,6 @@
 <?php
 
-$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/admin/addimages.tpl.php');
+$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/addimagesadmin.tpl.php');
 $AlbumData = $Params['user_object'];
 
 

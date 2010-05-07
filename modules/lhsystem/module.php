@@ -7,14 +7,12 @@ $ViewList = array();
 $ViewList['configuration'] = array( 
     'script' => 'configuration.php',
     'params' => array(),
-    'functions' => array( 'use' ),
-    'pagelayout' => 'admin'
+    'functions' => array( 'use' )
     );         
 $ViewList['index'] = array( 
     'script' => 'index.php',
     'params' => array(),
-    'functions' => array( 'use' ),
-    'pagelayout' => 'admin'
+    'functions' => array( 'use' )
     );   
          
 $ViewList['expirecache'] = array( 

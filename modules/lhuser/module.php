@@ -8,12 +8,6 @@ $ViewList['login'] = array(
     'script' => 'login.php',
     'params' => array()
     ); 
-        
-$ViewList['loginadmin'] = array( 
-    'script' => 'loginadmin.php',
-    'params' => array(),
-    'pagelayout' => 'login'
-    );  
      
 $ViewList['logout'] = array( 
     'script' => 'logout.php',

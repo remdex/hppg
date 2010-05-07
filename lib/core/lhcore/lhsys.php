@@ -37,66 +37,7 @@ class erLhcoreClassCacheSystem implements ezcBaseConfigurationInitializer
                   
          $cache->store( md5($cacheID), $content );   
          return $content;
-     }
-     
-     public static function compileClass($ModuleToRun,$ViewToRun)
-     {
-     	$cfg = erConfigClassLhConfig::getInstance();     	
-     	$classFile = erLhcoreClassSystem::instance()->SiteDir . 'cache/compiledclasses/'.md5($ModuleToRun.$ViewToRun).'.php';
-     	if ($cfg->conf->getSetting( 'site', 'classCompile' ) == true && !isset($GLOBALS['erCoreClassIncluded']) && !file_exists($classFile))
-     	{    	
-	     	$classes = array_merge(get_declared_classes(), get_declared_interfaces());     	
-	     	$ret = array();
-	
-	     	foreach ($classes as $class)
-	     	{
-	     		if ((stristr($class,'ezc') || preg_match('/^er.*/',$class)) && !in_array($class,
-	     		array('ezcConfigurationArrayReader',
-	     		'ezcConfigurationFileReader',
-	     		'erLhcoreClassURL',
-	     		'erLhcoreClassCacheSystem',
-	     		'erLhcoreClassLazyDatabaseConfiguration',
-	     		'ezcBaseConfigurationInitializer',
-	     		'ezcConfigurationReader',
-	     		'ezcConfiguration',
-	     		'ezcBaseInit',
-	     		'erConfigClassLhConfig',
-	     		'ezcUrlConfiguration',
-	     		'ezcUrlTools',
-	     		'ezcUrl',
-	     		'ezcBase',
-	     		'ezcBaseFeatures',
-	     		'erLhcoreClassSystem')))
-	     		{
-	     			$refl  = new ReflectionClass($class);
-	            	$file  = $refl->getFileName();
-	            	if ($file != '')
-	            	{            	
-	            		$lines = file($file);
-	            		
-	            		$start = $refl->getStartLine() - 1;
-	            		$end   = $refl->getEndLine();
-	            		
-	            		$ret = array_merge($ret, array_slice($lines, $start, ($end - $start)));            		
-	            	} 	                     	
-	     		}
-	     		
-	     	}
-			file_put_contents($classFile,'<?php '.implode('',$ret));
-     	}     	 	
-     }
-  
-     public static function includeCompiledClasses($ModuleToRun,$ViewToRun)
-     {     	
-     	$cfg = erConfigClassLhConfig::getInstance(); 
-     	$classFile = erLhcoreClassSystem::instance()->SiteDir . 'cache/compiledclasses/'.md5($ModuleToRun.$ViewToRun).'.php';
-     	
-     	if ($cfg->conf->getSetting( 'site', 'classCompile' ) == true && file_exists($classFile))
-     	{   
-     		include_once($classFile);
-     		$GLOBALS['erCoreClassIncluded'] = true;
-     	}
-     }
+     }   
      
 }
 
@@ -222,18 +163,15 @@ class CSCacheAPC {
 
 
 class erLhcoreClassSystem{
-    
-	
-    
-    static function instance()
+        
+    public static function instance()  
     {
-        if ( empty( $GLOBALS['LhSysInstance'] ) )
-        {
-            $GLOBALS['LhSysInstance'] = new erLhcoreClassSystem();
+        if ( is_null( self::$instance ) )
+        {          
+            self::$instance = new erLhcoreClassSystem();            
         }
-        return $GLOBALS['LhSysInstance'];
+        return self::$instance;
     }
-    
     
     static function init()
     {
@@ -387,7 +325,8 @@ class erLhcoreClassSystem{
                 }
             }
         }
-        
+
+    
         $instance->SiteDir = $siteDir;
         $instance->WWWDir = $wwwDir;
         $instance->WWWDirLang = '';
@@ -418,7 +357,13 @@ class erLhcoreClassSystem{
     
     /// Current language
     public $Language;
-    public $LanguageShortname;
+    
+    /// Theme site
+    public $ThemeSite;
+    
+    public $SiteAccess;
+    
+    private static $instance = null;
 
 }
 

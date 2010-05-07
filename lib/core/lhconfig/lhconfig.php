@@ -18,6 +18,25 @@ class erConfigClassLhConfig
         }
     }
     
+    /**
+     * This function should be used then value can be override by siteAccess
+     * 
+     * */
+    public function getOverrideValue($section,$key)
+    {
+        $value = null;
+        
+        if ($this->conf->hasSetting($section,$key))
+        $value = $this->conf->getSetting( $section, $key );
+                
+        $valueOverride = $this->conf->getSetting('site_access_options',erLhcoreClassSystem::instance()->SiteAccess);
+        
+        if (key_exists($key,$valueOverride))  
+              return $valueOverride[$key];
+              
+        return $value;
+    }
+    
     public static function getInstance()  
     {
         if ( is_null( self::$instance ) )

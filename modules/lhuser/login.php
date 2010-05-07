@@ -19,5 +19,9 @@ if (isset($_POST['Login']))
 
 $Result['content'] = $tpl->fetch();
 
+$pagelayout = erConfigClassLhConfig::getInstance()->getOverrideValue('site','login_pagelayout');
+   
+if ($pagelayout != null)
+$Result['pagelayout'] = $pagelayout
 
 ?>
