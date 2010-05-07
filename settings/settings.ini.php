@@ -19,11 +19,54 @@ return array (
       'default_www_group' => 'lighttpd',
       'public_category_id' => 28,
       'installed' => false,
+      'default_site_access' => 'eng',
       'secrethash' => '',
-      'available_locales' => 
+      'default_url' => 
       array (
-        0 => 'en_EN',
-        1 => 'lt_LT',
+        'module' => 'gallery',
+        'view' => 'index',
+      ),
+      'available_site_access' => 
+      array (
+        0 => 'eng',
+        1 => 'lit',
+        2 => 'site_admin',
+      ),
+    ),
+    'site_access_options' => 
+    array (
+      'eng' => 
+      array (
+        'locale' => 'en_EN',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'lit' => 
+      array (
+        'locale' => 'lt_LT',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'site_admin' => 
+      array (
+        'locale' => 'lt_LT',
+        'theme' => 
+        array (
+          0 => 'backend',
+          1 => 'defaulttheme',
+        ),
+        'login_pagelayout' => 'login',
+        'default_url' => 
+        array (
+          'module' => 'system',
+          'view' => 'index',
+        ),
       ),
     ),
     'user_settings' => array(
