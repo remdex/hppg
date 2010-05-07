@@ -55,7 +55,7 @@ return array (
       ),
       'site_admin' => 
       array (
-        'locale' => 'lt_LT',
+        'locale' => 'en_EN',
         'theme' => 
         array (
           0 => 'backend',
