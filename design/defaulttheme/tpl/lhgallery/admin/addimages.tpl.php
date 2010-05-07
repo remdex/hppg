@@ -117,7 +117,7 @@ SWFUpload.onload = function () {
 </fieldset>
 <br>
 
-<input type="button" onclick="fileconverter.startUpload()" disabled="disabled" class="default-button" id="ConvertButton" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fc/index','Upload')?>" />
+<input type="button" onclick="fileconverter.startUpload()" disabled="disabled" class="default-button" id="ConvertButton" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Upload')?>" />
 
 <div id="content">
 	
