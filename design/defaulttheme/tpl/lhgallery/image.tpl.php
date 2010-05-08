@@ -333,8 +333,7 @@ $lastImages = current($imagesAjax);
 $('#photo_full').each(function(index) {	
 	$(this).colorbox({href:$(this).attr('href')});	
 	$(this).attr('href','');
-})
-
+});
 $('.right-ajax a').click(function(){
     hw.getimages($(this).attr('rel'),'right');
    return false;

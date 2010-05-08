@@ -20,16 +20,17 @@
                     if ($pages->items_total > 0) :
                 ?>                
                 <?php 
-                $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $subcategory->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page));
-                include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php'));endif;?>
-  
+                $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $subcategory->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page)); ?>
+                
+               <?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php')); ?>
+                
+               <?php endif;?>  
                 
                 <? $subsubcategorys = erLhcoreClassModelGalleryCategory::getParentCategories($subcategory->cid);
                 if (count($subsubcategorys) > 0) : ?>
                  <?php include(erLhcoreClassDesign::designtpl('lhgallery/subsubcategory_list.tpl.php'));?> 
                 <?endif;?>
-                
-                
+                                
                 </li> 
         <?php endif;endforeach;?>
     </ul>
