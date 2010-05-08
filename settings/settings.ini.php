@@ -17,6 +17,7 @@ return array (
       'etag_caching_enabled' => false,
       'default_www_user' => 'lighttpd',
       'default_www_group' => 'lighttpd',
+      'debug_output' => true,
       'public_category_id' => 28,
       'installed' => false,
       'default_site_access' => 'eng',
