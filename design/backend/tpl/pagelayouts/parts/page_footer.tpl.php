@@ -4,6 +4,8 @@
 </div>
 
 <?php 
-$debug = ezcDebug::getInstance(); 
-echo $debug->generateOutput(); 
+if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' ) == true) {
+	$debug = ezcDebug::getInstance(); 
+	echo $debug->generateOutput(); 
+}
 ?>

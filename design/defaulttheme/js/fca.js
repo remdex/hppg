@@ -6,7 +6,6 @@ fc.prototype.startUpload = function(instance)
 		
     $('#ConvertButton').attr('disabled','disabled');
     
-	//alert(this.wwwDir);
 	$.postJSON(this.wwwDir+"gallery/getsessionarchive/",{},function(data){			
 		if (data.error == 'false')
 		{	
@@ -27,8 +26,7 @@ fc.prototype.startUpload = function(instance)
 		else {
 		    $('#ConvertButton').removeAttr('disabled');			    
 		    if ($('#errorsList').size() == 0) $('#divSWFUploadUI').prepend('<div id="errorsList"></div>');
-		    $('#errorsList').html(data.result);
-		  
+		    $('#errorsList').html(data.result);		  
 		}			
 	});	
 }

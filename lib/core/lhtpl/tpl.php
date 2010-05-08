@@ -121,6 +121,14 @@ class erLhcoreClassTemplate {
 			foreach ($Matches[2] as $key => $Match)
 			{	
 				$contentFile = str_replace($Matches[0][$key],php_strip_whitespace(erLhcoreClassDesign::designtpl($Match)),$contentFile);	
+			}
+			
+	        //Compile templates inclusions first level.             
+	        $Matches = array();
+			preg_match_all('/<\?php(.*?)include\(erLhcoreClassDesign::designtpl\(\'([a-zA-Z0-9-\.-\/\_]+)\'\)\)(.*?)\?\>/i',$contentFile,$Matches);       		
+			foreach ($Matches[2] as $key => $Match)
+			{	
+				$contentFile = str_replace($Matches[0][$key],php_strip_whitespace(erLhcoreClassDesign::designtpl($Match)),$contentFile);	
 			}		
 			
 			//Compile image css paths. Etc..

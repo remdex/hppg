@@ -6,10 +6,14 @@ class erLhcoreClassDesign
 {
     public static function design($path)
     {
-    	$debug = ezcDebug::getInstance(); 
     	
-    	$logString = '';
-    	    	
+    	$debugOutput = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' );
+    	
+    	if ($debugOutput == true) {
+    		$logString = '';
+    		$debug = ezcDebug::getInstance(); 
+    	}
+    	   	
         $instance = erLhcoreClassSystem::instance();  
         foreach ($instance->ThemeSite as $designDirectory)
         {
@@ -17,24 +21,31 @@ class erLhcoreClassDesign
                        
             if (file_exists($fileDir)) {  
             	
-            	$logString .= "Found IN - ".$fileDir."<br/>";          	
-            	$debug->log( $logString, 0, array( "source"  => "erLhcoreClassDesign", "category" =>  "design - $path" )  );
+            	if ($debugOutput == true) {
+            		$logString .= "Found IN - ".$fileDir."<br/>";          	
+            		$debug->log( $logString, 0, array( "source"  => "erLhcoreClassDesign", "category" =>  "design - $path" )  );
+            	}
             	
             	return $instance->wwwDir() . '/design/'. $designDirectory .'/' . $path;
+            } else { 
+            	if ($debugOutput == true)
+	            $logString .= "Not found IN - ".$fileDir."<br/>";
             }
-            else 
-            $logString .= "Not found IN - ".$fileDir."<br/>";
         } 
         
+        if ($debugOutput == true)
         $debug->log( $logString, 0, array( "source"  => "shop", "erLhcoreClassDesign" =>  "design - $path" )  );
        
     } 
     
     public static function designtpl($path)   
     {
-    	$logString = '';
+    	$debugOutput = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' );
     	
-    	$debug = ezcDebug::getInstance();
+    	if ($debugOutput == true) {
+    		$logString = '';    	
+    		$debug = ezcDebug::getInstance();
+    	}
     	
         $instance = erLhcoreClassSystem::instance();  
         foreach ($instance->ThemeSite as $designDirectory)
@@ -42,15 +53,18 @@ class erLhcoreClassDesign
             $tplDir = $instance->SiteDir .'/design/' . $designDirectory .  '/tpl/'. $path;
             
             if (file_exists($tplDir)) {
-            	
-            	$logString .= "Found IN - ".$tplDir."<br/>";          	
-            	$debug->log( $logString, 0, array( "source"  => "erLhcoreClassDesign", "category" =>  "designtpl - $path" )  );
+            	if ($debugOutput == true) {
+            		$logString .= "Found IN - ".$tplDir."<br/>";          	
+            		$debug->log( $logString, 0, array( "source"  => "erLhcoreClassDesign", "category" =>  "designtpl - $path" )  );
+            	}
             	return $tplDir;
             } else {
+            	if ($debugOutput == true)
             	$logString .= "Not found IN - ".$tplDir."<br/>";
             }
-        }     
-        
+        }   
+          
+        if ($debugOutput == true)
         $debug->log( $logString, 0, array( "source"  => "shop", "erLhcoreClassDesign" =>  "designtpl - $path" )  );
           
         return ;

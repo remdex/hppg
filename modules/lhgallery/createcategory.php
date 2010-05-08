@@ -1,6 +1,6 @@
 <?php
 
-$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/admin/createcategory.tpl.php');
+$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/createcategory.tpl.php');
 
 $CategoryData = new erLhcoreClassModelGalleryCategory();
 
