@@ -278,7 +278,22 @@ $ViewList['publicarchiveupload'] = array(
     'script' => 'publicarchiveupload.php',
     'params' => array()
     ); 
-      
+    
+$ViewList['addtofavorites'] = array( 
+    'script' => 'addtofavorites.php',
+    'params' => array('image_id')
+    ); 
+                              
+$ViewList['deletefavorite'] = array( 
+    'script' => 'deletefavorite.php',
+    'params' => array('image_id')
+    );
+     
+$ViewList['myfavorites'] = array( 
+    'script' => 'myfavorites.php',
+    'params' => array()
+    ); 
+          
 $FunctionList = array();  
 $FunctionList['use'] = array('explain' => 'General registered user permission');
 $FunctionList['administrate'] = array('explain' => 'Global edit permission');
