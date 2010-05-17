@@ -57,7 +57,7 @@
                     <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lasthits/')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last hits');?> </a></li>                  
                     <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lastcommented/')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last commented');?></a></li>                  
                     <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/publicupload/')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Upload image');?></a></li>                  
-                    
+                    <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/myfavorites/')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','My favorites');?></a></li>
                     </ul>
 </div>
 	<div id="bodcont" class="float-break">

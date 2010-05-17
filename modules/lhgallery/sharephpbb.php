@@ -1,0 +1,28 @@
+<?php
+
+try {
+$Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$Params['user_parameters']['image_id'] );
+} catch (Exception $e){
+	erLhcoreClassModule::redirect();
+    exit;
+}
+?>
+
+<div style="width:400px;height:300px;">
+<div>
+	<h3>Link to image</h3>
+	<textarea onclick="$(this).select()" class="default-textarea" style="width:95%;font-size:11px;height:75px;"><?php echo htmlspecialchars('[url=http://'.$_SERVER['HTTP_HOST'].$Image->url_path.']'.$Image->name_user.'[/url]');?></textarea>	
+</div>
+<div>
+	<h3>Link to image with thumbnail</h3>
+	<textarea onclick="$(this).select()" class="default-textarea" style="width:95%;font-size:11px;height:75px;"><?php echo htmlspecialchars("[url=http://{$_SERVER['HTTP_HOST']}{$Image->url_path}][img]http://{$_SERVER['HTTP_HOST']}".erLhcoreClassDesign::imagePath($Image->filepath.'thumb_'.urlencode($Image->filename))."[/img][/url]");?></textarea>	
+</div>
+<div>
+	<h3>Link to image with medium size thumbnail</h3>
+	<textarea onclick="$(this).select()" class="default-textarea" style="width:95%;font-size:11px;height:75px;"><?php echo htmlspecialchars("[url=http://{$_SERVER['HTTP_HOST']}{$Image->url_path}][img]http://{$_SERVER['HTTP_HOST']}".erLhcoreClassDesign::imagePath($Image->filepath.'normal_'.urlencode($Image->filename))."[/img][/url]");?></textarea>	
+</div>
+
+ 
+</div>
+
+<?php exit;?>

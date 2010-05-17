@@ -26,7 +26,29 @@
         $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
         ?>
 	<?break;
-
+	
+	case 'myfavorites': ?>		
+    	<? 
+    	if (count($imagesLeft) > 0) :   
+    	$next_image = current($imagesLeft); 
+    	$imagesLeft = array_reverse($imagesLeft);    	
+    	?>
+        <a class="left-image" href="<?=$next_image->url_path.$urlAppend?>">&laquo; previous image</a>
+        <?
+        endif;
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';
+        ?>        
+        <a href="<? echo erLhcoreClassDesign::baseurl('/gallery/myfavorites'),$pageAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to favorites')?> &raquo;</a>        
+        <? 
+        if (count($imagesRight) > 0) :
+        $prev_image = current($imagesRight); 
+        ?>
+        <a class="right-image" href="<?=$prev_image->url_path.$urlAppend?>">next image &raquo;</a> 
+        <? endif;
+        $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
+        ?>
+	<?break;
+	
 	case 'lastuploads': ?>		
     	<? 
     	$urlAppend = '/(mode)/lastuploads';
@@ -278,20 +300,30 @@
 
 <div class="img">
 
-<div class="right" id="id_window_right">
+<a id="photo_full" href="<?=erLhcoreClassDesign::imagePath($image->filepath.$image->filename)?>"><img src="<?=($image->pwidth < 450) ? erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename)) : erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode($image->filename))?>" alt="<?=htmlspecialchars($image->name_user);?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Click to see fullsize')?>"/></a>
+<?php if( $image->caption != '') : ?>
+<div class="float-break"><?=htmlspecialchars($image->caption)?></div>
+<?endif;?>
+</div>
+
+<div class="float-break control-block" style="clear:both">
+
+<div class="left">
+<a class="ad-fv" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Add to favorites')?>"></a>
+<a class="ad-html" href="/gallery/sharehtml/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Share this page HTML code')?>"></a>
+<a class="ad-phpbb" href="/gallery/sharephpbb/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Share PHPBB code')?>"></a>
+</div>
+
+<div class="right">
 <?if ($image->owner_id == 1 || $image->owner_id == 0) : ?>
 <form onsubmit="return hw.tagphoto(<?=$image->pid;?>)">
 <div class="act-blc" id="tags-container">
-<input type="text" id="IDtagsPhoto" value="" class="inputfield" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Enter tags separated by space')?>" /> <input type="button" onclick="hw.tagphoto(<?=$image->pid;?>)" class="default-button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Tag it!')?>" /> <i><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Tag this photo')?></i>
+<input type="text" id="IDtagsPhoto" value="" class="inputfield" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Enter tags separated by space')?>" /> <input type="button" onclick="hw.tagphoto(<?=$image->pid;?>)" class="default-button" value="tag it!" /> <i>Tag this photo</i>
 </div>
 </form>
 <?endif;?>
 </div>
 
-<a id="photo_full" href="<?=erLhcoreClassDesign::imagePath($image->filepath.$image->filename)?>"><img src="<?=($image->pwidth < 450) ? erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename)) : erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode($image->filename))?>" alt="<?=htmlspecialchars($image->name_user);?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Click to see fullsize')?>"/></a>
-<?php if( $image->caption != '') : ?>
-<div class="float-break"><?=htmlspecialchars($image->caption)?></div>
-<?endif;?>
 </div>
 
 
@@ -342,6 +374,13 @@ $('.left-ajax a').click(function(){
     hw.getimages($(this).attr('rel'),'left');
    return false;
 });
+$('.ad-fv').click(function(){
+    hw.addToFavorites(<?=$image->pid?>);
+   return false;
+});
+
+$('.ad-html').colorbox();
+$('.ad-phpbb').colorbox();
 </script>
 
 

@@ -54,6 +54,10 @@ return array (
         'erLhcoreClassImageConverter'         => 'core/lhgallery/lhimageconverter.php',        
         'erLhcoreClassGalleryBatch'           => 'core/lhgallery/lhbatch.php',
         'erLhcoreClassLhMemcache'             => 'core/lhcore/lhmemcache.php',
+        
+        //Favorites        
+        'erLhcoreClassModelGalleryMyfavoritesImage' 	=> 'models/lhgallery/erlhcoreclassmodelmyfavoritesimage.php',
+        'erLhcoreClassModelGalleryMyfavoritesSession' 	=> 'models/lhgallery/erlhcoreclassmodelmyfavoritessession.php', 
 );
     
 ?>

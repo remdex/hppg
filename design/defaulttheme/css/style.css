@@ -606,30 +606,38 @@ float:right;
     color: #fc8f1c;
 }
 
-    .ezc-debug-output .log .debugstacktrace .stacktrace th
-    {
-            padding-bottom: 3px;
-            border-bottom: 3px solid black;
-            font-weight: bold;
-    }
+.ezc-debug-output .log .debugstacktrace .stacktrace th
+{
+        padding-bottom: 3px;
+        border-bottom: 3px solid black;
+        font-weight: bold;
+}
 
-    .ezc-debug-output .log .debugstacktrace .stacktrace td
-    {
-            padding-top: 3px;
-            padding-bottom: 3px;
-    }
+.ezc-debug-output .log .debugstacktrace .stacktrace td
+{
+        padding-top: 3px;
+        padding-bottom: 3px;
+}
 
-    .ezc-debug-output .log .debugstacktrace .stacktrace td.stacktraceno
-    {
-            font-weight: bold;
-    }
+.ezc-debug-output .log .debugstacktrace .stacktrace td.stacktraceno
+{
+        font-weight: bold;
+}
 
-    .ezc-debug-output .log .debugstacktrace .stacktrace td.stacktracefunction
-    {
-            font-style: italic;
-    }
+.ezc-debug-output .log .debugstacktrace .stacktrace td.stacktracefunction
+{
+        font-style: italic;
+}
 
-    .ezc-debug-output .log .debugstacktrace .stacktrace td.stacktracelocation
-    {
-            color: #c0c0c0;
-    }
+.ezc-debug-output .log .debugstacktrace .stacktrace td.stacktracelocation
+{
+        color: #c0c0c0;
+}
+
+.ad-fv{background:url(../images/icons/star.png) no-repeat top left;width:16px;height:16px;float:left;cursor:pointer;}
+.ad-fv-ok{background:url(../images/icons/star_accept.png) no-repeat top left;}
+.control-block{border:1px solid #CCCCCC;margin:5px;padding:7px;}
+.ad-html{background:url(../images/icons/html.png) no-repeat top left;width:16px;height:16px;float:left;cursor:pointer;}
+.ad-phpbb{background:url(../images/icons/phpbb45.png) no-repeat top left;width:16px;height:16px;float:left;cursor:pointer;}
+.control-block a{margin-right:5px;}
+.tib{text-align:center;padding-top:5px;}

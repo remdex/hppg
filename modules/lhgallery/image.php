@@ -490,6 +490,28 @@ if ($mode == 'album')
     $tpl->set('mode_sort_append',$modeSort != 'newdesc' ? '/(sort)/'.$modeSort : '');  
     $tpl->set('urlAppend',$modeSort != 'newdesc' ? '/(mode)/search/(keyword)/'.$Params['user_parameters_unordered']['keyword'].'/(sort)/'.$modeSort : '/(mode)/search/(keyword)/'.$Params['user_parameters_unordered']['keyword']); 
     
+} elseif ($mode == 'myfavorites') {
+
+	$favouriteSession = erLhcoreClassModelGalleryMyfavoritesSession::getInstance();	
+	$imagesLeftArray = erLhcoreClassModelGalleryMyfavoritesImage::getImages(array('cache_key' => 'favorite_image_'.CSCacheAPC::getMem()->getCacheVersion('favorite_'.$favouriteSession->id),'limit' => 2,'sort' => 'pid ASC','filter' => array('session_id' => $favouriteSession->id),'filtergt' => array('pid' => $Image->pid)));
+    $page = ceil((erLhcoreClassModelGalleryMyfavoritesImage::getImageCount(array('filter' => array('session_id' => $favouriteSession->id),'filtergt' => array('pid' => $Image->pid)))+1)/20);
+    $imagesRightArray = erLhcoreClassModelGalleryMyfavoritesImage::getImages(array('cache_key' => 'favorite_image_'.CSCacheAPC::getMem()->getCacheVersion('favorite_'.$favouriteSession->id),'limit' => 2,'filter' => array('session_id' => $favouriteSession->id),'filterlt' => array('pid' => $Image->pid)));        
+
+    foreach ($imagesLeftArray as $imageLeftItem)
+    {
+    	$imagesLeft[] = $imageLeftItem->image;
+    }
+    
+    foreach ($imagesRightArray as $imageRightItem)
+    {
+    	$imagesRight[] = $imageRightItem->image;
+    }
+        
+    $tpl->set('imagesLeft',$imagesLeft); 
+    $tpl->set('imagesRight',$imagesRight);    
+	$tpl->set('mode_sort_append',''); 
+	$tpl->set('urlAppend', '/(mode)/myfavorites/'); 
+	$tpl->set('page',$page);
 }
 
 

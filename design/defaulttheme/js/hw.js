@@ -8,7 +8,9 @@ var hw = {
 	votepath : 'gallery/addvote/',
 	updatepath : 'gallery/updateimage/',
 	deletepath : 'gallery/deleteimage/',
-	tagpath : 'gallery/tagphoto/',
+	tagpath : 'gallery/tagphoto/',	
+	addtofavorites : 'gallery/addtofavorites/',
+	deletefavorite : 'gallery/deletefavorite/',
 	formAddPath: WWW_DIR_JAVASCRIPT,		
 		
 	setPath : function (path)
@@ -96,6 +98,22 @@ var hw = {
 			$('#ajax-navigator-content').html(data.result);	
 		});			
 		return false;	
+	},
+	
+	addToFavorites : function(pid)
+	{
+		$.getJSON(this.formAddPath + this.addtofavorites+pid, {} , function(data){	
+			
+			$('.ad-fv').addClass('ad-fv-ok');
+            	
+		});
+	},
+	
+	deleteFavorite : function(pid)
+	{
+		$.getJSON(this.formAddPath + this.deletefavorite+pid, {} , function(data) {				
+			$('#image_thumb_'+pid).fadeOut();            	
+		});
 	}
 		
 }

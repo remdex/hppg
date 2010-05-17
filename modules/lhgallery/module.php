@@ -293,7 +293,17 @@ $ViewList['myfavorites'] = array(
     'script' => 'myfavorites.php',
     'params' => array()
     ); 
-          
+                            
+$ViewList['sharehtml'] = array( 
+    'script' => 'sharehtml.php',
+    'params' => array('image_id')
+    );  
+                      
+$ViewList['sharephpbb'] = array( 
+    'script' => 'sharephpbb.php',
+    'params' => array('image_id')
+    );
+    
 $FunctionList = array();  
 $FunctionList['use'] = array('explain' => 'General registered user permission');
 $FunctionList['administrate'] = array('explain' => 'Global edit permission');

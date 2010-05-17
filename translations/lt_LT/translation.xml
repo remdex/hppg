@@ -57,6 +57,21 @@
     </message>
 </context>
 <context>
+    <name>gallery/myfavorites</name>
+    <message>
+        <source>My favorite images</source>
+        <translation>Mano mėgstamiausi paveikslėliai</translation>
+    </message>
+    <message>
+        <source>Remove from favorites</source>
+        <translation>Pašalinti iš mėgstamiausių</translation>
+    </message>
+    <message>
+        <source>My favorite images</source>
+        <translation>Mano mėgstamiausi paveikslėliai</translation>
+    </message>
+</context>
+<context>
     <name>gallery/admincategorys</name>
     <message>
         <source>Category</source>
@@ -866,6 +881,26 @@
 <context>
     <name>gallery/image</name>
     <message>
+        <source>Add to favorites</source>
+        <translation>Įtraukti į mėgstamiausius</translation>
+    </message>
+    <message>
+        <source>Share this page HTML code</source>
+        <translation>Dalintis HTML kodu</translation>
+    </message>
+    <message>
+        <source>Share PHPBB code</source>
+        <translation>Dalintis PHPBB kodu</translation>
+    </message>
+    <message>
+        <source>Enter tags separated by space</source>
+        <translation>Įvesk žymes atskirtas tarpu</translation>
+    </message>
+    <message>
+        <source>return to favorites</source>
+        <translation>grįžti į mėgstamiausius</translation>
+    </message>
+    <message>
         <source>Wrong captcha code!</source>
         <translation>Nekorektiškas saugos kodas!</translation>
     </message>
@@ -1197,6 +1232,10 @@
     <message>
         <source>Rendered in</source>
         <translation>Sugeneruotas per</translation>
+    </message> 
+    <message>
+        <source>My favorites</source>
+        <translation>Mano mėgstamiausi</translation>
     </message>
     <message>
         <source>It&apos;s NOT fake!</source>
