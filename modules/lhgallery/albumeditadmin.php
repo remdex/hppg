@@ -41,7 +41,7 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         $AlbumData->keyword = $form->AlbumKeywords;
     }
     
-    if ( $form->hasValidData( 'AlbumPublic' ) && $form->AlbumKeywords == true )
+    if ( $form->hasValidData( 'AlbumPublic' ) && $form->AlbumPublic == true )
     {
         $AlbumData->public = 1;
     } else {
