@@ -15,9 +15,6 @@ if (isset($_POST['Update_account']))
         ),       
         'Email' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'validate_email'
-        ),
-        'Name' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::REQUIRED, 'string'
         )
     );
   
@@ -48,7 +45,6 @@ if (isset($_POST['Update_account']))
     {  
         $UserData->setPassword($form->Password);
         $UserData->email   = $form->Email;
-        $UserData->name    = $form->Name;
         $UserData->surname = $form->Surname;
         $UserData->username = $form->Username;
         
@@ -64,7 +60,6 @@ if (isset($_POST['Update_account']))
             $UserData->email = $form->Email;
         }
         
-        $UserData->name = $form->Name;
         $UserData->surname = $form->Surname;
         $UserData->username = $form->Username;
         
