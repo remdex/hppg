@@ -44,8 +44,7 @@ if (isset($_POST['Update_account']))
     if (count($Errors) == 0)
     {  
         $UserData->setPassword($form->Password);
-        $UserData->email   = $form->Email;
-        $UserData->surname = $form->Surname;
+        $UserData->email   = $form->Email;      
         $UserData->username = $form->Username;
         
         erLhcoreClassUser::getSession()->save($UserData);
@@ -59,8 +58,7 @@ if (isset($_POST['Update_account']))
         {
             $UserData->email = $form->Email;
         }
-        
-        $UserData->surname = $form->Surname;
+               
         $UserData->username = $form->Username;
         
         $tpl->set('errArr',$Errors);
