@@ -12,6 +12,9 @@ if (isset($_POST['Update_account']))
         ),
         'Password1' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'string'
+        ),
+        'Username' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::REQUIRED, 'string'
         ),       
         'Email' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'validate_email'
