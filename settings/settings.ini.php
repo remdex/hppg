@@ -19,6 +19,7 @@ return array (
       'default_www_group' => 'lighttpd',
       'debug_output' => false,
       'public_category_id' => 28,
+      'delay_image_hit_enabled' => false,
       'installed' => false,
       'default_site_access' => 'eng',
       'secrethash' => '',
