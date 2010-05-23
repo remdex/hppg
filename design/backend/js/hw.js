@@ -96,6 +96,12 @@ var hw = {
 			$('#ajax-navigator-content').html(data.result);	
 		});			
 		return false;	
+	},
+	
+	expandBlock : function(idBlock){
+	    
+	    $('.duplicates-row').hide();	    
+	    $('#details-block-'+idBlock).fadeIn();
 	}
 		
 }

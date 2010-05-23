@@ -215,6 +215,18 @@ $ViewList['editcategory'] = array(
     'script' => 'editcategory.php',
     'params' => array('category_id'),    
     'functions' => array( 'administrate' ),
+    );
+                  
+$ViewList['duplicates'] = array( 
+    'script' => 'duplicates.php',
+    'params' => array(),    
+    'functions' => array( 'administrate' ),
+    );
+                       
+$ViewList['deleteduplicatesession'] = array( 
+    'script' => 'deleteduplicatesession.php',
+    'params' => array('duplicate_session_id'),    
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryDuplicateCollection::canDelete','param' => 'duplicate_session_id'),'global' => 'administrate'),
     ); 
     
 $ViewList['batchadd'] = array( 

@@ -430,8 +430,22 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `pid` int(11) NOT NULL,
 				  `mtime` int(11) NOT NULL,
 				  KEY `pid` (`pid`)
-				) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
-
+				) ENGINE=MyISAM;");
+                
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_duplicate_collection` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `time` int(11) NOT NULL,
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM;");
+                
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_duplicate_image` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `pid` int(11) NOT NULL,
+				  `duplicate_collection_id` int(11) NOT NULL,
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM;");
+               
+                
                 $db->query("CREATE VIEW `sphinxseearch` AS SELECT `lh_gallery_images`.`pid` AS `id`,`lh_gallery_images`.`pid` AS `pid`,`lh_gallery_images`.`hits` AS `hits`,`lh_gallery_images`.`title` AS `title`,`lh_gallery_images`.`mtime` AS `mtime`,`lh_gallery_images`.`keywords` AS `keywords`,`lh_gallery_images`.`caption` AS `caption`,`lh_gallery_images`.`comtime` AS `comtime`,`lh_gallery_images`.`pic_rating` AS `pic_rating`,`lh_gallery_images`.`votes` AS `votes`,replace(replace(`lh_gallery_images`.`filepath`,'/',' '),'-',' ') AS `file_path`,replace(replace(`lh_gallery_images`.`filename`,'-',' '),'_',' ') AS `filename`,`lh_gallery_albums`.`title` AS `album_title`,`lh_gallery_albums`.`keyword` AS `album_keyword`,`lh_gallery_albums`.`description` AS `album_description`,`lh_gallery_categorys`.`name` AS `category_name`,`lh_gallery_categorys`.`description` AS `category_description`,concat(`lh_gallery_images`.`pwidth`,'x',`lh_gallery_images`.`pheight`) AS `pdimension` from ((`lh_gallery_images` left join `lh_gallery_albums` on((`lh_gallery_images`.`aid` = `lh_gallery_albums`.`aid`))) left join `lh_gallery_categorys` on((`lh_gallery_categorys`.`cid` = `lh_gallery_albums`.`category`))) where (`lh_gallery_images`.`approved` = 1);");
                                                  
                 $RoleFunction = new erLhcoreClassModelRoleFunction();

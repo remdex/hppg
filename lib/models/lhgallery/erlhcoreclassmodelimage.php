@@ -73,7 +73,9 @@ class erLhcoreClassModelGalleryImage {
             unlink($photoPath.'thumb_'.$this->filename); 
        
        $this->clearCache();
+       erLhcoreClassModelGalleryDuplicateImage::deleteByPid($this->pid);
        erLhcoreClassGallery::getSession()->delete($this);
+       
        
        CSCacheAPC::getMem()->increaseImageManipulationCache();
    }

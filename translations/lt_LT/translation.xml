@@ -57,6 +57,29 @@
     </message>
 </context>
 <context>
+    <name>gallery/duplicates</name>
+    <message>
+        <source>Similar images number</source>
+        <translation>Panašių paveikslėlių skaičius</translation>
+    </message>
+    <message>
+        <source>Details</source>
+        <translation>Detalės</translation>
+    </message>
+    <message>
+        <source>No duplicates pending...</source>
+        <translation>Nėra laukiančių dublikatų...</translation>
+    </message>
+    <message>
+        <source>Duplicates</source>
+        <translation>Dublikatai</translation>
+    </message>
+    <message>
+        <source>More</source>
+        <translation>Plačiau</translation>
+    </message>
+</context>
+<context>
     <name>gallery/myfavorites</name>
     <message>
         <source>My favorite images</source>
@@ -1232,6 +1255,10 @@
     <message>
         <source>Rendered in</source>
         <translation>Sugeneruotas per</translation>
+    </message> 
+    <message>
+        <source>Duplicates</source>
+        <translation>Dublikatai</translation>
     </message> 
     <message>
         <source>My favorites</source>

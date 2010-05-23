@@ -55,6 +55,8 @@ return array (
         'erLhcoreClassGalleryBatch'           => 'core/lhgallery/lhbatch.php',
         'erLhcoreClassLhMemcache'             => 'core/lhcore/lhmemcache.php',
         'erLhcoreClassModelGalleryDelayImageHit' => 'models/lhgallery/erlhcoreclassmodeldelayimagehit.php',
+        'erLhcoreClassModelGalleryDuplicateCollection' => 'models/lhgallery/erlhcoreclassmodelduplicatecollection.php',
+        'erLhcoreClassModelGalleryDuplicateImage' => 'models/lhgallery/erlhcoreclassmodelduplicateimage.php',
         
         //Favorites        
         'erLhcoreClassModelGalleryMyfavoritesImage' 	=> 'models/lhgallery/erlhcoreclassmodelmyfavoritesimage.php',
