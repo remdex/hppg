@@ -279,6 +279,19 @@ class erLhcoreClassModelGalleryCategory {
        	    } else {
        	        return erLhcoreClassDesign::baseurl('/gallery/category/'.$this->cid);
        	    } 
+       	    break;
+       	      	
+       	case 'owner':
+       	    $this->owner = false;
+       	    try{
+	       		if ($this->owner_id > 0){
+	       	   		$this->owner = erLhcoreClassModelUser::fetch($this->owner_id);
+	       		}
+       	    } catch (Exception $e) {
+       	    	// Nothing to do
+       	    }
+       	    
+       		return $this->owner;
        	    break;	
        			
        	case 'images_count':       	    

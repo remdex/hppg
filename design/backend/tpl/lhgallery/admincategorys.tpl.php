@@ -19,6 +19,7 @@ if ($pages->items_total > 0) :?>
 <tr>
     <th>ID</th>
     <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Title');?></th>
+    <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Owner');?></th>
     <th width="1%">&nbsp;</th>
     <th width="1%">&nbsp;</th>
 </tr>
@@ -31,6 +32,7 @@ foreach (erLhcoreClassModelGalleryCategory::getParentCategories($category !== fa
     <tr>
         <td width="1%"><?=$categoryItem->cid?></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys/')?><?=$categoryItem->cid?>"><?=htmlspecialchars($categoryItem->name)?></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('user/edit/')?><?=$categoryItem->owner_id?>"><?=htmlspecialchars($categoryItem->owner)?></a></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/editcategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" /></a></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/deletecategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" /></a></td>
     </tr>

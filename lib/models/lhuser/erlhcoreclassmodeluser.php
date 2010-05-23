@@ -21,6 +21,17 @@ class erLhcoreClassModelUser {
        }
    }
    
+   public function __toString()
+   {
+   		return $this->username.' ('.$this->email.')';
+   }
+   
+   public static function fetch($user_id)
+   {
+   	 $user = erLhcoreClassUser::getSession()->load( 'erLhcoreClassModelUser', (int)$user_id );
+   	 return $user;
+   }
+   
    public function setPassword($password)
    {
        $cfgSite = erConfigClassLhConfig::getInstance();

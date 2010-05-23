@@ -105,7 +105,11 @@ class erLhcoreClassTemplate {
     	if(!$fileTemplate) { $fileTemplate = $this->file; }        
         if ($this->cacheEnabled == true && key_exists(md5($fileTemplate.$instance->WWWDirLang),$this->cacheTemplates))
         {
-        	return $this->fetchExecute($this->cacheTemplates[md5($fileTemplate.$instance->WWWDirLang)]);
+        	try {
+        		return $this->fetchExecute($this->cacheTemplates[md5($fileTemplate.$instance->WWWDirLang)]);
+        	} catch (Exception $e) {
+        		// Do nothing
+        	}
         }
         
         $cfg = erConfigClassLhConfig::getInstance();  
