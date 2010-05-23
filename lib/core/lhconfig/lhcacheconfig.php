@@ -69,7 +69,9 @@ class erConfigClassLhCacheConfig
 		{
 			unlink($compiledTemplate);
 		}		
-		 
+		
+		$instance = CSCacheAPC::getMem(); 
+		$instance->increaseImageManipulationCache();
 		
         $this->save();       
     }
