@@ -526,9 +526,13 @@ $Result['content'] = $tpl->fetch();
 $Result['path'] = $Image->path;
 
 // Must be in the bottom
-$Image->hits++;
-$Image->mtime = time();
-erLhcoreClassGallery::getSession()->update($Image);
+if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true){
+	erLhcoreClassModelGalleryDelayImageHit::addHit($Image->pid);
+} else {
+	$Image->hits++;
+	$Image->mtime = time();
+	erLhcoreClassGallery::getSession()->update($Image);
+}
 
 if ($mode == 'lastuploads') {	
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last additions')),array('title' => $Image->name_user));

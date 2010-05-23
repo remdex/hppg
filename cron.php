@@ -6,8 +6,6 @@ ini_set('display_errors', 1);
 
 ini_set("max_execution_time", "3600");
 
-
-//require_once "./ezcomponents/Base/src/base.php";
 require_once dirname(__FILE__)."/ezcomponents/Base/src/base.php";
 
 function __autoload( $className )
@@ -15,18 +13,26 @@ function __autoload( $className )
         ezcBase::autoload( $className );
 }
 
-//ezcBase::addClassRepository( './lib','./lib/autoloads'); 
 ezcBase::addClassRepository( dirname(__FILE__).'/lib', dirname(__FILE__).'/lib/autoloads'); 
 
 $input = new ezcConsoleInput();
 
 $helpOption = $input->registerOption(
 new ezcConsoleOption(
-    'l',
-    'language',
+    's',
+    'siteaccess',
     ezcConsoleInput::TYPE_STRING 
 )
 ); 
+
+$cronjobPartOption = $input->registerOption(
+new ezcConsoleOption(
+    'c',
+    'cronjob',
+    ezcConsoleInput::TYPE_STRING 
+)
+); 
+
 
 try
 {
@@ -37,20 +43,23 @@ catch ( ezcConsoleOptionException $e )
     die( $e->getMessage() );
 } 
 
-
-
 ezcBaseInit::setCallback(
  'ezcInitDatabaseInstance',
  'erLhcoreClassLazyDatabaseConfiguration'
 );
 
 $instance = erLhcoreClassSystem::instance();
+$instance->SiteAccess = $helpOption->value; 
 $instance->SiteDir = dirname(__FILE__).'/';
-$instance->Language = $helpOption->value;
+$cfgSite = erConfigClassLhConfig::getInstance();                                                           
+$defaultSiteAccess = $cfgSite->conf->getSetting( 'site', 'default_site_access' );
+$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$helpOption->value);                      
+$instance->Language = $optionsSiteAccess['locale'];                         
+$instance->ThemeSite = $optionsSiteAccess['theme'];                         
+$instance->WWWDirLang = '/'.$helpOption->value;   
 
+// php cron.php -s site_admin -c gallery/cron
 
-include_once('modules/lhgallery/cron.php');
-
-
+include_once('modules/lh'.$cronjobPartOption->value.'.php');
 
 ?>

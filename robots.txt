@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /gallery/sharehtml/
+Disallow: /gallery/sharephpbb/
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: psbot
+Disallow: /
+
+User-agent: msnbot
+Crawl-delay: 5

@@ -54,6 +54,7 @@ return array (
         'erLhcoreClassImageConverter'         => 'core/lhgallery/lhimageconverter.php',        
         'erLhcoreClassGalleryBatch'           => 'core/lhgallery/lhbatch.php',
         'erLhcoreClassLhMemcache'             => 'core/lhcore/lhmemcache.php',
+        'erLhcoreClassModelGalleryDelayImageHit' => 'models/lhgallery/erlhcoreclassmodeldelayimagehit.php',
         
         //Favorites        
         'erLhcoreClassModelGalleryMyfavoritesImage' 	=> 'models/lhgallery/erlhcoreclassmodelmyfavoritesimage.php',
