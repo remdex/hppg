@@ -4,7 +4,7 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/managealbum.tpl.php');
 $Category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$Params['user_parameters']['category_id'] );
 
 $pages = new lhPaginator();
-$pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('filter' => array('category' => $Category->cid)));
+$pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $Category->cid)));
 $pages->translationContext = 'gallery/managealbum';
 $pages->default_ipp = 8;
 $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/managealbum/').$Category->cid;
