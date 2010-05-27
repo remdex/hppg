@@ -97,6 +97,10 @@
 <context>
     <name>gallery/admincategorys</name>
     <message>
+        <source>Batch album create</source>
+        <translation>Masinis albumų kūrimas</translation>
+    </message>
+    <message>
         <source>Category</source>
         <translation>Kategorija</translation>
     </message>
@@ -344,6 +348,14 @@
 </context>
 <context>
     <name>gallery/createalbumadmin</name>
+    <message>
+        <source>New batch album create</source>
+        <translation>Naujas masinis albumų kūrimas</translation>
+    </message>
+    <message>
+        <source>Paste album names separated by new line</source>
+        <translation>Įkopijuokite albumo pavadinimus atskirtus naujomis eilutėmis</translation>
+    </message>
     <message>
         <source>New album</source>
         <translation>Naujas albumas</translation>
@@ -1255,6 +1267,14 @@
     <message>
         <source>Rendered in</source>
         <translation>Sugeneruotas per</translation>
+    </message> 
+    <message>
+        <source>Delete photo by ID</source>
+        <translation>Nuot. trynimas pagal ID</translation>
+    </message>
+    <message>
+        <source>Photo was deleted</source>
+        <translation>Nuotrauka buvo ištrinta</translation>
     </message> 
     <message>
         <source>Duplicates</source>

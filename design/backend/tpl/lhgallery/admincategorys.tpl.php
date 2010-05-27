@@ -72,5 +72,5 @@ $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => a
 endif;
 ?> 
 <? if ($category !== false) : ?>
-<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create an album');?></a>
+<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create an album');?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadminbatch/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Batch album create');?></a>
 <?endif;?>

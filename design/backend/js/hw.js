@@ -86,6 +86,19 @@ var hw = {
 		return false;	
 	},
 	
+	deletePhotoQuick : function(photo_id,message){
+	    
+        $.postJSON(this.formAddPath + this.deletepath+photo_id, {} , function(data){	
+			if (data.error == 'false')
+			{	
+				alert(message);			
+			} 
+                     
+		});		
+		
+		return false;	
+	},
+	
 	confirm : function(question){	    
        return confirm(question);
 	},

@@ -123,6 +123,12 @@ $ViewList['createalbumadmin'] = array(
     'params' => array('category_id'),
     'functions' => array( 'administrate' ),
     ); 
+                         
+$ViewList['createalbumadminbatch'] = array( 
+    'script' => 'createalbumadminbatch.php',
+    'params' => array('category_id'),
+    'functions' => array( 'administrate' ),
+    );
                     
 $ViewList['createcategory'] = array( 
     'script' => 'createcategory.php',
