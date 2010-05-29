@@ -132,7 +132,7 @@ class erLhcoreClassModelGalleryAlbum {
            	    $images = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('album_'.$this->aid),'filter' => array('aid' => $this->aid),'limit' => 1));
            	    foreach ($images as $image)
            	    {
-           	        return '<img src="'.erLhcoreClassDesign::imagePath($image->filepath.'thumb_'.$image->filename).'" height="40" alt="" />';
+           	        return '<img src="'.erLhcoreClassDesign::imagePath($image->filepath.'thumb_'.urlencode($image->filename)).'" height="40" alt="" />';
            	    }           	    
        		break;
        				
