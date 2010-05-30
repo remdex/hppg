@@ -23,13 +23,17 @@ a:hover{text-decoration:underline;}
 ul{padding:0;margin:0;list-style-type: none;}
 li{margin:0;padding:0;}
 
+.default-select{width:150px;}
+
 input.default-button
 {
     background: #aaaaaa url(../images/tabs/images/ui-bg_highlight-soft_75_cccccc_1x100.png) repeat-x top left;
     border:1px solid #aaaaaa;    
 }
 
+.default-textarea,
 input.default-input{ border:1px solid #aaaaaa;   }
+.big-textarea{width:100%;height:150px;}
 
 .right{float:right;}
 .navigator{padding:5px 0px;}

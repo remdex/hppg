@@ -1,11 +1,16 @@
 <?php
 
-
 $CategoryData = erLhcoreClassModelGalleryCategory::fetch($Params['user_parameters']['category_id']);
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/createalbumadmin.tpl.php');
 $AlbumData = new erLhcoreClassModelGalleryAlbum();
-$tpl->set('categoryID',$CategoryData->cid);
+
+// Parent category by default
+$AlbumData->category = $CategoryData->cid;
+
+// Logged user by default
+$currentUser = erLhcoreClassUser::instance();
+$AlbumData->owner_id = $currentUser->getUserID();
 
 if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
 {      
@@ -22,6 +27,12 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         ), 
         'AlbumPublic' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::OPTIONAL, 'boolean'
+        ), 
+        'UserID' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::REQUIRED, 'int'
+        ), 
+        'AlbumCategoryID' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::REQUIRED, 'int'
         )
     );
     
@@ -52,10 +63,9 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     }
     
     if (count($Errors) == 0)
-    {     
-        $currentUser = erLhcoreClassUser::instance();
-        $AlbumData->owner_id = $currentUser->getUserID(); 
-        $AlbumData->category = $CategoryData->cid;            
+    {  
+        $AlbumData->owner_id = $form->UserID;
+        $AlbumData->category = $form->AlbumCategoryID;            
         erLhcoreClassGallery::getSession()->save($AlbumData); 
         
         CSCacheAPC::getMem()->increaseCacheVersion('album_count_version');        

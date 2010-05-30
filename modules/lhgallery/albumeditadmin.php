@@ -19,6 +19,12 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         ), 
         'AlbumPublic' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::OPTIONAL, 'boolean'
+        ), 
+        'AlbumCategoryID' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::REQUIRED, 'int'
+        ), 
+        'UserID' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::REQUIRED, 'int'
         )
     );
     
@@ -49,7 +55,16 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     }
     
     if (count($Errors) == 0)
-    {                                
+    {   
+    	// Clear previous category cache
+    	if ($AlbumData->category != $form->AlbumCategoryID) {
+    		$category = erLhcoreClassModelGalleryCategory::fetch($AlbumData->category);
+    		$category->clearCategoryCache();
+    	}
+    	    	
+    	$AlbumData->category = $form->AlbumCategoryID;
+    	$AlbumData->owner_id = $form->UserID;
+    	
         erLhcoreClassGallery::getSession()->update($AlbumData); 
         
         $AlbumData->clearAlbumCache();        

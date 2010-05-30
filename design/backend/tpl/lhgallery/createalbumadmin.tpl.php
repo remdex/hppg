@@ -14,26 +14,9 @@
 <? endif;?>
 <br />
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$categoryID?>">
-<div class="in-blk">
-<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Album name');?> *</label>
-<input class="inputfield" type="text" name="AlbumName" value="<?=htmlspecialchars($album->title);?>" />
-</div>
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$album->category?>">
 
-<div class="in-blk">
-<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Description');?></label>
-<textarea name="AlbumDescription" class="default-textarea"><?=htmlspecialchars($album->description);?></textarea>
-</div>
-
-<div class="in-blk">
-<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Keywords');?></label>
-<input class="inputfield" type="text" name="AlbumKeywords" value="<?=htmlspecialchars($album->keyword);?>" />
-</div>
-
-<div class="in-blk">
-<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Public');?></label>
-<input type="checkbox" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','All users can uploads images to this album');?>" value="on" <?=$album->public == 1 ? 'checked="checked"' : ''?> name="AlbumPublic" />
-</div>
+<?php include_once(erLhcoreClassDesign::designtpl('lhgallery/albumeditadmin_form.tpl.php'));?>
 
 <input type="submit" class="default-button" name="CreateAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Save')?>"/>
 

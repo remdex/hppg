@@ -15,6 +15,9 @@ if (isset($_POST['Update_Category']))
         ), 
         'HideFrontpage' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::OPTIONAL, 'boolean'
+        ), 
+        'UserID' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::REQUIRED, 'int'
         )
     );
     
@@ -41,17 +44,17 @@ if (isset($_POST['Update_Category']))
     
     if (count($Errors) == 0)
     {                                
+    	$CategoryData->owner_id = $form->UserID;
+    	
         erLhcoreClassGallery::getSession()->update($CategoryData);         
         $CategoryData->clearCategoryCache();        
-   
-            
+               
         erLhcoreClassModule::redirect('gallery/admincategorys');
         exit;  
          
     }  else {         
         $tpl->set('errArr',$Errors);
-    }
-        
+    }        
 }
 
 $tpl->set('category',$CategoryData);

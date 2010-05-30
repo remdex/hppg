@@ -4,6 +4,10 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/createcategory.tpl.php');
 
 $CategoryData = new erLhcoreClassModelGalleryCategory();
 
+// Assig logged user by default
+$currentUser = erLhcoreClassUser::instance();
+$CategoryData->owner_id = $currentUser->getUserID(); 
+        
 if ((int)$Params['user_parameters']['category_id'] > 0) {
     $CategoryDataParent = erLhcoreClassModelGalleryCategory::fetch($Params['user_parameters']['category_id']);
     $tpl->set('category_parent',$CategoryDataParent); 
@@ -21,6 +25,9 @@ if (isset($_POST['Update_Category']))
         ), 
         'HideFrontpage' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::OPTIONAL, 'boolean'
+        ), 
+        'UserID' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::REQUIRED, 'int'
         )
     );
     
@@ -47,14 +54,12 @@ if (isset($_POST['Update_Category']))
     
     if (count($Errors) == 0)
     {                  
-                 
+        $CategoryData->owner_id = $form->UserID;   
+             
         if (isset($CategoryDataParent))
         {
             $CategoryData->parent = $CategoryDataParent->cid;
         }
-        
-        $currentUser = erLhcoreClassUser::instance();
-        $CategoryData->owner_id = $currentUser->getUserID(); 
         
         erLhcoreClassGallery::getSession()->save($CategoryData);         
         $CategoryData->clearCategoryCache();        

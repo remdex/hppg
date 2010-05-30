@@ -342,6 +342,14 @@
         <translation>Raktažodžiai</translation>
     </message>
     <message>
+        <source>Album category</source>
+        <translation>Albumo kategorija</translation>
+    </message>
+    <message>
+        <source>Album owner</source>
+        <translation>Albumo sąvininkas</translation>
+    </message>
+    <message>
         <source>Update</source>
         <translation>Atnaujinti</translation>
     </message>
