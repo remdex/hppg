@@ -148,6 +148,10 @@
         <source>Next</source>
         <translation>Kitas</translation>
     </message>
+    <message>
+        <source>Owner</source>
+        <translation>Sąvininkas</translation>
+    </message>
 </context>
 <context>
     <name>gallery/popularrss</name>
@@ -1261,6 +1265,42 @@
         <source>I cannot write this directory</source>
         <translation>Aš negaliu įrašyti i šią direktoriją</translation>
     </message>
+    <message>
+        <source>No image were found!</source>
+        <translation>Nerasta paveikslėlių!</translation>
+    </message>
+    <message>
+        <source>Mass image upload</source>
+        <translation>Masinis paveikslėlių įkėlimas</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Ieškoti</translation>
+    </message>
+    <message>
+        <source>Please enter album name and click search</source>
+        <translation>Įveskite albumo pavadinima ir paspauskite ieškoti</translation>
+    </message>
+    <message>
+        <source>List images</source>
+        <translation>Gauti paveikslėlių sąrašą</translation>
+    </message>
+    <message>
+        <source>List images recursive</source>
+        <translation>Gauti rekursyvų paveikslėlių sąrašą</translation>
+    </message>
+    <message>
+        <source>Import images</source>
+        <translation>Importuoti paveikslėlius</translation>
+    </message>
+    <message>
+        <source>Please choose album first!</source>
+        <translation>Prašome pasirinkti albumą pirma!</translation>
+    </message> 
+    <message>
+        <source>Click list images or list images recursive</source>
+        <translation>Paspauskite &quot;Gauti paveikslėlių sąrašą&quot; arba &quot;Gauti rekursyvų paveikslėlių sąrašą&quot;</translation>
+    </message>
 </context>
 <context>
     <name>pagelayout/pagelayout</name>
@@ -1383,6 +1423,10 @@
     <message>
         <source>Search entire gallery</source>
         <translation>Ieškoti visoje galerijoje</translation>
+    </message>
+    <message>
+        <source>Configuration</source>
+        <translation>Konfiguracija</translation>
     </message>
 </context>
 <context>

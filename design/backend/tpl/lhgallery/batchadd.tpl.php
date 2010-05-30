@@ -1,8 +1,26 @@
 <? if (count($directoryList) > 0) :?>
-<ul>
+<ul class="directory-input-list">
 <?php 
-foreach ($directoryList  as $directory) : ?>
-<li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode($directory);?>"><?=$directory?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode($directory);?>/(import)/1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import')?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode($directory);?>/(importrecur)/1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import recursive this directory')?></a></li>
+foreach ($directoryList  as $key => $directory) : ?>
+<li class="dir-item" id="directory_id<?=$key?>">
+<a id="directoryListLink<?=$key?>" rel="<?=urlencode($directory);?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode($directory);?>"><?=$directory?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode($directory);?>/(import)/1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import')?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode($directory);?>/(importrecur)/1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import recursive this directory')?></a>
+
+<div class="album-search-row"><input type="text" rel="<?=$key?>" class="AlbumNameInput default-input" value="" />&nbsp;<input class="default-button" type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Search')?>" /></div>
+<br />
+<div id="album_select_directory<?=$key?>">
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Please enter album name and click search')?>
+</div>
+<br />
+<input type="button" rel="<?=$key?>" class="listImagesButton default-button" name="ListImages" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','List images')?>" />&nbsp;<input type="button" rel="<?=$key?>" class="listRecursiveImagesButton default-button" <?=erLhcoreClassGalleryBatch::hasSubdir($directory) ? '' : 'disabled="disabled"'?> name="ListImagesRecursive" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','List images recursive')?>" />&nbsp;<input type="button" id="ImportDirectoryButton<?=$key?>" rel="<?=$key?>" class="importButtonDirectory default-button" name="ImportImages" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import images')?>" disabled="disabled" />
+<br />
+<br />
+
+<div id="import-images<?=$key?>">
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Click list images or list images recursive')?>
+</div>
+<br />
+
+</li>
 <?endforeach;?>
 </ul>
 <br />
@@ -41,9 +59,9 @@ endforeach;?>
 </table>
 
 <?if (isset($writable) && $writable == true) : ?>
-<input type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Add images')?>" onclick="startImport()" />
+<input type="button" class="default-button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Add images')?>" onclick="startImport()" />
 <? else : ?>
-<input type="button" disabled="disabled" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Add images')?>" />
+<input type="button" class="default-button" disabled="disabled" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Add images')?>" />
 <? endif;?>
 
 
@@ -53,6 +71,64 @@ endforeach;?>
 <div id="status"></div>
 
 <script type="text/javascript">
+
+$('.AlbumNameInput').change(function(){	
+	var albumInputInstanceDirecoty = $(this).attr('rel');
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumnamesuggest/')?>"+albumInputInstanceDirecoty+"/"+escape($(this).val()), {} , function(data){	
+                   $('#album_select_directory'+albumInputInstanceDirecoty).html(data.result);
+    	});	
+});
+
+$('.listImagesButton').click(function(){	
+	var albumInputInstanceDirecoty = $(this).attr('rel');
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumlistdirectory/')?>"+$('#directoryListLink'+albumInputInstanceDirecoty).attr('rel'), {} , function(data){	
+                   $('#import-images'+albumInputInstanceDirecoty).html(data.result);
+                   if (data.is_writable == true) {                   		
+                   	 	$('#ImportDirectoryButton'+albumInputInstanceDirecoty).removeAttr("disabled");
+                   } else {
+                   	 	$('#ImportDirectoryButton'+albumInputInstanceDirecoty).attr("disabled");
+                   }
+    	});	
+});
+
+$('.listRecursiveImagesButton').click(function(){	
+	var albumInputInstanceDirecoty = $(this).attr('rel');
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumlistdirectory/')?>"+$('#directoryListLink'+albumInputInstanceDirecoty).attr('rel')+'/true', {} , function(data){	
+                   $('#import-images'+albumInputInstanceDirecoty).html(data.result);
+                   if (data.is_writable == true) {                   		
+                   	 	$('#ImportDirectoryButton'+albumInputInstanceDirecoty).removeAttr("disabled");
+                   } else {
+                   		
+                   	 	$('#ImportDirectoryButton'+albumInputInstanceDirecoty).attr("disabled","disabled");
+                   }
+    	});	
+});
+
+//var currentDirectoryImportID = 0;
+//var currentImportAlbumID = 0;
+
+$('.importButtonDirectory').click(function(){
+	var currentDirectoryImportID = $(this).attr('rel');
+	if ($('input[name=AlbumDestinationDirectory'+$(this).attr('rel')+']:checked').val() != undefined){
+		var currentImportAlbumID = $('input[name=AlbumDestinationDirectory'+$(this).attr('rel')+']:checked').val();
+		startImportQuick(currentDirectoryImportID,currentImportAlbumID);
+	} else {
+		alert("<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Please choose album first!')?>");
+	}
+});
+
+function startImportQuick(currentDirectoryImportID,currentImportAlbumID)
+{
+	if ($('#import-images'+currentDirectoryImportID+' .image_import').eq(0).attr('rel') != undefined)
+    {    	    	
+        $.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/addimagesbatch/')?>"+currentImportAlbumID+"/(image)/"+$('#import-images'+currentDirectoryImportID+' .image_import').eq(0).attr('rel'), {} , function(data){	
+              $('#import-images'+currentDirectoryImportID+' .image_import').eq(0).attr('src','<?=erLhcoreClassDesign::design('images/icons/accept.png')?>');
+              $('#import-images'+currentDirectoryImportID+' .image_import').eq(0).removeClass('image_import');	
+    		   startImportQuick(currentDirectoryImportID,currentImportAlbumID);        
+    	});    	
+    }
+}
+
 function startImport()
 {
     if ($('.image_import').eq(0).attr('rel') != undefined)

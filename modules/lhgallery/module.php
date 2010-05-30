@@ -26,6 +26,18 @@ $ViewList['category'] = array(
     'params' => array('category_id')
     );
     
+$ViewList['albumnamesuggest'] = array( 
+    'script' => 'albumnamesuggest.php',
+    'params' => array('directory_id','name'),
+    'functions' => array( 'administrate' ),
+);     
+    
+$ViewList['albumlistdirectory'] = array( 
+    'script' => 'albumlistdirectory.php',
+    'params' => array('directory','recursive'),
+    'functions' => array( 'administrate' ),
+); 
+    
 $ViewList['image'] = array( 
     'script' => 'image.php',
     'params' => array('image_id'),
