@@ -4,7 +4,7 @@
 $cache = CSCacheAPC::getMem();   
 $cacheVersion = $cache->getCacheVersion('most_popular_version',time(),1500);
 
-if (($Result = $cache->restore(md5('version_'.$cacheVersion.'popular_view_url'.'_page_'.$Params['user_parameters_unordered']['page']))) === false)
+if (($Result = $cache->restore(md5('version_'.$cacheVersion.'popular_view_url'.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
 { 
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/popular.tpl.php');
     $pages = new lhPaginator();

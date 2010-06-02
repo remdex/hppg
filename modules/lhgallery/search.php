@@ -46,7 +46,7 @@ $searchParams['SearchLimit'] = 20;
 $searchParams['SearchOffset'] = 0;
 
 $cache = CSCacheAPC::getMem();        
-$cacheKey =  md5('SphinxSearchPage_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$searchParams).'page_'.$Params['user_parameters_unordered']['page']);
+$cacheKey =  md5('SphinxSearchPage_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$searchParams).'page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
       
 if (($Result = $cache->restore($cacheKey)) === false)
 {

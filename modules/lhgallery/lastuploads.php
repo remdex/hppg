@@ -1,7 +1,7 @@
 <?php
 
 $cache = CSCacheAPC::getMem(); 
-$cacheKey = md5('version_'.$cache->getCacheVersion('last_uploads').'lastuploads_view_url'.'_page_'.$Params['user_parameters_unordered']['page']);
+$cacheKey = md5('version_'.$cache->getCacheVersion('last_uploads').'lastuploads_view_url'.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
     
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {

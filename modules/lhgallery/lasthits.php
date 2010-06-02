@@ -6,7 +6,7 @@ $cache = CSCacheAPC::getMem();
 // Total image expiration  
 $cacheVersion = $cache->getCacheVersion('last_hits_version',time(),600);
 
-if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$Params['user_parameters_unordered']['page']))) === false)
+if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
 { 
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lasthits.tpl.php');
     $pages = new lhPaginator();

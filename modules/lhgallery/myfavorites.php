@@ -2,7 +2,7 @@
 
 $favouriteSession = erLhcoreClassModelGalleryMyfavoritesSession::getInstance();
 $cache = CSCacheAPC::getMem(); 
-$cacheKey = md5('version_'.$cache->getCacheVersion('favorite_'.(int)$favouriteSession->id).'favorite_view_url'.(int)$favouriteSession->id.'_page_'.$Params['user_parameters_unordered']['page']);
+$cacheKey = md5('version_'.$cache->getCacheVersion('favorite_'.(int)$favouriteSession->id).'favorite_view_url'.(int)$favouriteSession->id.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
 
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {
