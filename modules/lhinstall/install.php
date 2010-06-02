@@ -467,7 +467,14 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  PRIMARY KEY (`identifier`)
 				) ENGINE=MyISAM;");
                 
-				$db->query("INSERT INTO `lh_system_config` (`identifier`, `value`, `type`, `explain`) VALUES ('footer_article_id', 'a:3:{s:3:\"eng\";s:1:\"3\";s:3:\"lit\";s:2:\"28\";s:10:\"site_admin\";s:2:\"29\";}', 1, 'Footer article ID';");
+				$db->query("INSERT INTO `lh_system_config` (`identifier`, `value`, `type`, `explain`) VALUES
+				('footer_article_id', 'a:3:{s:3:\"eng\";s:1:\"3\";s:3:\"lit\";s:2:\"28\";s:10:\"site_admin\";s:2:\"29\";}', 1, 'Footer article ID'),
+				('max_photo_size', '5000', 0, 'Maximum photo size in kilobytes '),
+				('thumbnail_width_x', '100', 0, 'Small thumbnail width - x'),
+				('thumbnail_width_y', '100', 0, 'Small thumbnail width - Y'),
+				('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x'),
+				('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y'),
+				('thumbnail_scale_algorithm', 'scale', 0, 'It can be \"scale\" or \"croppedThumbnail\" - makes perfect squares');");
 
 					              
                 $db->query("CREATE VIEW `sphinxseearch` AS SELECT `lh_gallery_images`.`pid` AS `id`,`lh_gallery_images`.`pid` AS `pid`,`lh_gallery_images`.`hits` AS `hits`,`lh_gallery_images`.`title` AS `title`,`lh_gallery_images`.`mtime` AS `mtime`,`lh_gallery_images`.`keywords` AS `keywords`,`lh_gallery_images`.`caption` AS `caption`,`lh_gallery_images`.`comtime` AS `comtime`,`lh_gallery_images`.`pic_rating` AS `pic_rating`,`lh_gallery_images`.`votes` AS `votes`,replace(replace(`lh_gallery_images`.`filepath`,'/',' '),'-',' ') AS `file_path`,replace(replace(`lh_gallery_images`.`filename`,'-',' '),'_',' ') AS `filename`,`lh_gallery_albums`.`title` AS `album_title`,`lh_gallery_albums`.`keyword` AS `album_keyword`,`lh_gallery_albums`.`description` AS `album_description`,`lh_gallery_categorys`.`name` AS `category_name`,`lh_gallery_categorys`.`description` AS `category_description`,concat(`lh_gallery_images`.`pwidth`,'x',`lh_gallery_images`.`pheight`) AS `pdimension` from ((`lh_gallery_images` left join `lh_gallery_albums` on((`lh_gallery_images`.`aid` = `lh_gallery_albums`.`aid`))) left join `lh_gallery_categorys` on((`lh_gallery_categorys`.`cid` = `lh_gallery_albums`.`category`))) where (`lh_gallery_images`.`approved` = 1);");

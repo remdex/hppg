@@ -23,8 +23,8 @@ class erLhcoreClassImageConverter{
                     new ezcImageFilter( 
                         'scale',
                         array( 
-                            'width'     => 400,                        
-                            'height'     => 400,                        
+                            'width'     => (int)erLhcoreClassModelSystemConfig::fetch('normal_thumbnail_width_x')->current_value,                        
+                            'height'     => (int)erLhcoreClassModelSystemConfig::fetch('normal_thumbnail_width_y')->current_value,                        
                             'direction' => ezcImageGeometryFilters::SCALE_DOWN,
                         )
                     ),
@@ -35,15 +35,22 @@ class erLhcoreClassImageConverter{
             );
             
             $this->converter->createTransformation( 'jpeg', array(), array( 'image/jpeg' ) ); 
-            
+             
+          
+            /**
+             * Two options
+             * croppedThumbnail 
+             * OR
+             * scale
+             * */ 
             $this->converter->createTransformation(
                 'thumb',
                 array( 
                     new ezcImageFilter( 
-                        'scale',
+                        erLhcoreClassModelSystemConfig::fetch('thumbnail_scale_algorithm')->current_value,
                         array( 
-                            'width'     => 100, 
-                            'height'     => 100,                            
+                            'width'     => (int)erLhcoreClassModelSystemConfig::fetch('thumbnail_width_x')->current_value, 
+                            'height'    => (int)erLhcoreClassModelSystemConfig::fetch('thumbnail_width_y')->current_value,                            
                             'direction' => ezcImageGeometryFilters::SCALE_DOWN,
                         )
                     ),
@@ -71,7 +78,7 @@ class erLhcoreClassImageConverter{
        {       
            try {
                $image = new ezcImageAnalyzer( $_FILES[$file]['tmp_name'] );            
-               if ($image->data->size < (5000*1024) && $image->data->width > 10 && $image->data->height > 10)
+               if ($image->data->size < ((int)erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value*1024) && $image->data->width > 10 && $image->data->height > 10)
                {                   
                    return true;                   
                    
@@ -91,7 +98,7 @@ class erLhcoreClassImageConverter{
     {              
            try {
                $image = new ezcImageAnalyzer( $filePAth );            
-               if ($image->data->size < (5000*1024) && $image->data->width > 10 && $image->data->height > 10)
+               if ($image->data->size < ((int)erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value*1024) && $image->data->width > 10 && $image->data->height > 10)
                {                   
                    return true;                   
                    
