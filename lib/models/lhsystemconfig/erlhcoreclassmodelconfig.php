@@ -47,6 +47,7 @@ class erLhcoreClassModelSystemConfig {
    							
    						case erLhcoreClassModelSystemConfig::SITE_ACCESS_PARAM_OFF:
    								$this->current_value = $this->value;
+   								return $this->current_value;
    							break;
    					
    						default:
