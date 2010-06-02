@@ -54,13 +54,23 @@ return array (
         'erLhcoreClassImageConverter'         => 'core/lhgallery/lhimageconverter.php',        
         'erLhcoreClassGalleryBatch'           => 'core/lhgallery/lhbatch.php',
         'erLhcoreClassLhMemcache'             => 'core/lhcore/lhmemcache.php',
-        'erLhcoreClassModelGalleryDelayImageHit' => 'models/lhgallery/erlhcoreclassmodeldelayimagehit.php',
-        'erLhcoreClassModelGalleryDuplicateCollection' => 'models/lhgallery/erlhcoreclassmodelduplicatecollection.php',
-        'erLhcoreClassModelGalleryDuplicateImage' => 'models/lhgallery/erlhcoreclassmodelduplicateimage.php',
-        
+        'erLhcoreClassModelGalleryDelayImageHit' 		=> 'models/lhgallery/erlhcoreclassmodeldelayimagehit.php',
+        'erLhcoreClassModelGalleryDuplicateCollection'  => 'models/lhgallery/erlhcoreclassmodelduplicatecollection.php',
+        'erLhcoreClassModelGalleryDuplicateImage' 		=> 'models/lhgallery/erlhcoreclassmodelduplicateimage.php',
+        'erLhcoreClassModelGalleryConfig' 	  => 'models/lhgallery/erlhcoreclassmodelconfig.php',
+                
         //Favorites        
         'erLhcoreClassModelGalleryMyfavoritesImage' 	=> 'models/lhgallery/erlhcoreclassmodelmyfavoritesimage.php',
         'erLhcoreClassModelGalleryMyfavoritesSession' 	=> 'models/lhgallery/erlhcoreclassmodelmyfavoritessession.php', 
+        
+        // Articles
+        'erLhcoreClassModelArticleStatic' 	=> 'models/lharticle/erlhcoreclassmodelarticlestatic.php',
+        'erLhcoreClassArticle' 	  			=> 'core/lharticle/lharticle.php', 
+        'CKEditor' 	  						=> 'core/lharticle/ckeditor_php5.php',
+        
+        // System config
+        'erLhcoreClassSystemConfig'			=> 'core/lhsystemconfig/lhsystemconfig.php',
+        'erLhcoreClassModelSystemConfig'	=> 'models/lhsystemconfig/erlhcoreclassmodelconfig.php'
 );
     
 ?>

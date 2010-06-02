@@ -46,6 +46,56 @@
     </message>
 </context>
 <context>
+    <name>systemconfig/list</name>
+    <message>
+        <source>System config options</source>
+        <translation>Sistemos nustatymų reikšmės</translation>
+    </message>
+    <message>
+        <source>List</source>
+        <translation>Sąrašas</translation>
+    </message>
+    <message>
+        <source>Config list</source>
+        <translation>Reikšmių sąrašas</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>Identifikatorius</translation>
+    </message>
+    <message>
+        <source>Explain</source>
+        <translation>Paaiškinimas</translation>
+    </message>
+    <message>
+        <source>Edit value</source>
+        <translation>Redaguoti reikšmę</translation>
+    </message>
+</context>
+<context>
+    <name>systemconfig/edit</name>
+    <message>
+        <source>Edit</source>
+        <translation>Redagavimas</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>Identifikatorius</translation>
+    </message>
+    <message>
+        <source>Values applies to</source>
+        <translation>Reikšmė taikoma</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Data updated</source>
+        <translation>Duomenys atnaujinti</translation>
+    </message>
+</context>
+<context>
     <name>gallery/popular</name>
     <message>
         <source>Most popular images</source>
@@ -54,6 +104,168 @@
     <message>
         <source>No records.</source>
         <translation>Nėra įrašų.</translation>
+    </message>
+</context>
+<context>
+    <name>article/staticlist</name>
+    <message>
+        <source>Static articles</source>
+        <translation>Statiniai straipsniai</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>New article</source>
+        <translation>Naujas straipsnis</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Redaguoti</translation>
+    </message>
+</context>
+<context>
+    <name>article/newstatic</name>
+    <message>
+        <source>New article</source>
+        <translation>Naujas straipsnis</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Saugoti</translation>
+    </message>
+</context>
+<context>
+    <name>article/editstatic</name>
+    <message>
+        <source>Static articles</source>
+        <translation>Statiniai straipsniai</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>New article</source>
+        <translation>Naujas straipsnis</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Redaguoti</translation>
+    </message>
+    <message>
+        <source>Body</source>
+        <translation>Turinys</translation>
+    </message>
+    <message>
+        <source>Article name</source>
+        <translation>Straipsnio pavadinimas</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Article edit</source>
+        <translation>Straipsnio redagavimas</translation>
+    </message>
+</context>
+<context>
+    <name>feedback/formsend</name>
+    <message>
+        <source>Feedback</source>
+        <translation>Užklausa</translation>
+    </message>
+    <message>
+        <source>Your feedback was succesfuly send</source>
+        <translation>Užklausa buvo sėkmingai išsiųsta</translation>
+    </message>
+    <message>
+        <source>Home page</source>
+        <translation>Titulinis puslapis</translation>
+    </message>
+</context>
+<context>
+    <name>feedback/mail</name>
+    <message>
+        <source>Hellow</source>
+        <translation>Sveiki</translation>
+    </message>
+    <message>
+        <source>Feedback data</source>
+        <translation>Užklausos duomenys</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Vardas</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El. paštas</translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation>Tekstas</translation>
+    </message>
+    <message>
+        <source>Bye</source>
+        <translation>Viso</translation>
+    </message>
+</context>
+<context>
+    <name>feedback/form</name>
+    <message>
+        <source>Feedback</source>
+        <translation>Užklausa</translation>
+    </message>
+    <message>
+        <source>Feedback was send</source>
+        <translation>Užklausa gauta</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Vardas</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El. pašto adresas</translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation>Tekstas</translation>
+    </message>
+    <message>
+        <source>Captcha image</source>
+        <translation>Saugos paveikslėlis</translation>
+    </message>
+    <message>
+        <source>Captcha code</source>
+        <translation>Saugos kodas</translation>
+    </message>
+    <message>
+        <source>Required fields</source>
+        <translation>Privalomas laukas</translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation>Siūsti</translation>
+    </message>
+    <message>
+        <source>Please enter name!</source>
+        <translation>Prašome įrašyti vardą!</translation>
+    </message>
+    <message>
+        <source>Invalid e-mail address!</source>
+        <translation>Nekorektiškas el. pašto adresas!</translation>
+    </message>
+    <message>
+        <source>Please enter text!</source>
+        <translation>Prašome įrašyti tekstą!</translation>
+    </message>
+    <message>
+        <source>Please enter captcha code!</source>
+        <translation>Prašome įrašyti saugos kodą!</translation>
     </message>
 </context>
 <context>
@@ -1313,6 +1525,10 @@
 <context>
     <name>pagelayout/pagelayout</name>
     <message>
+        <source>Static articles</source>
+        <translation>Statiniai straipsniai</translation>
+    </message> 
+    <message>
         <source>Rendered in</source>
         <translation>Sugeneruotas per</translation>
     </message> 
@@ -1810,6 +2026,10 @@
 </context>
 <context>
     <name>system/configuration</name>
+    <message>
+        <source>System configuration values</source>
+        <translation>Sistemos nustatymų sąrašas</translation>
+    </message>
     <message>
         <source>Users</source>
         <translation>Vartotojai</translation>

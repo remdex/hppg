@@ -444,8 +444,32 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `duplicate_collection_id` int(11) NOT NULL,
 				  PRIMARY KEY (`id`)
 				) ENGINE=MyISAM;");
-               
                 
+                // Create article module tables
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_article_static` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `name` varchar(200) NOT NULL,
+				  `content` text NOT NULL,
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;");
+                
+                $db->query("INSERT INTO `lh_article_static` (`id`, `name`, `content`) VALUES
+				(1, 'Contact', '<p>\r\n	Contact information goes here</p>\r\n'),
+				(2, 'Conditions', '<p>\r\n	Somes conditions goes here</p>\r\n'),
+				(3, 'Gallery footer text', '<p>\r\n	&copy; 2010 <a href=\"lh:article/static/2\">Conditions</a> | <a href=\"lh:article/static/1\">Contact</a> | <a href=\"lh:feedback/form\">Feedback</a></p>\r\n');");
+
+                // Create system configuration module tables
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_system_config` (
+				  `identifier` varchar(50) NOT NULL,
+				  `value` text NOT NULL,
+				  `type` tinyint(1) NOT NULL DEFAULT '0',
+				  `explain` varchar(250) NOT NULL,
+				  PRIMARY KEY (`identifier`)
+				) ENGINE=MyISAM;");
+                
+				$db->query("INSERT INTO `lh_system_config` (`identifier`, `value`, `type`, `explain`) VALUES ('footer_article_id', 'a:3:{s:3:\"eng\";s:1:\"3\";s:3:\"lit\";s:2:\"28\";s:10:\"site_admin\";s:2:\"29\";}', 1, 'Footer article ID';");
+
+					              
                 $db->query("CREATE VIEW `sphinxseearch` AS SELECT `lh_gallery_images`.`pid` AS `id`,`lh_gallery_images`.`pid` AS `pid`,`lh_gallery_images`.`hits` AS `hits`,`lh_gallery_images`.`title` AS `title`,`lh_gallery_images`.`mtime` AS `mtime`,`lh_gallery_images`.`keywords` AS `keywords`,`lh_gallery_images`.`caption` AS `caption`,`lh_gallery_images`.`comtime` AS `comtime`,`lh_gallery_images`.`pic_rating` AS `pic_rating`,`lh_gallery_images`.`votes` AS `votes`,replace(replace(`lh_gallery_images`.`filepath`,'/',' '),'-',' ') AS `file_path`,replace(replace(`lh_gallery_images`.`filename`,'-',' '),'_',' ') AS `filename`,`lh_gallery_albums`.`title` AS `album_title`,`lh_gallery_albums`.`keyword` AS `album_keyword`,`lh_gallery_albums`.`description` AS `album_description`,`lh_gallery_categorys`.`name` AS `category_name`,`lh_gallery_categorys`.`description` AS `category_description`,concat(`lh_gallery_images`.`pwidth`,'x',`lh_gallery_images`.`pheight`) AS `pdimension` from ((`lh_gallery_images` left join `lh_gallery_albums` on((`lh_gallery_images`.`aid` = `lh_gallery_albums`.`aid`))) left join `lh_gallery_categorys` on((`lh_gallery_categorys`.`cid` = `lh_gallery_albums`.`category`))) where (`lh_gallery_images`.`approved` = 1);");
                                                  
                 $RoleFunction = new erLhcoreClassModelRoleFunction();

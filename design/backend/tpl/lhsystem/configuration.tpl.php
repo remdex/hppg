@@ -7,3 +7,11 @@
 </ul>
 
 </fieldset>
+
+<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','System configuration values');?></legend>
+
+<ul>
+    <li><a href="<?=erLhcoreClassDesign::baseurl('systemconfig/list')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','System configuration values');?></a></li>
+</ul>
+
+</fieldset>
