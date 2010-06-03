@@ -621,6 +621,84 @@
     </message>
 </context>
 <context>
+    <name>statistic/choosesite</name>
+    <message>
+        <source>Choose site you want to show statistic</source>
+        <translation>Pasirinkite puslapį, kurio statistiką norite matyti</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Saugoti</translation>
+    </message>
+</context>
+<context>
+    <name>statistic/view</name>
+    <message>
+        <source>Pageviews</source>
+        <translation>Peržiūros</translation>
+    </message>
+    <message>
+        <source>Legend</source>
+        <translation>Legenda</translation>
+    </message>
+    <message>
+        <source>Total</source>
+        <translation>Viso</translation>
+    </message>
+    <message>
+        <source>Visits</source>
+        <translation>Apsilankymai</translation>
+    </message>
+    <message>
+        <source>Total visits</source>
+        <translation>Viso apsilankymų</translation>
+    </message>
+    <message>
+        <source>Total pageviews</source>
+        <translation>Viso puslapio parodymų</translation>
+    </message>
+    <message>
+        <source>Time spent</source>
+        <translation>Praleista laiko</translation>
+    </message>
+    <message>
+        <source>hours</source>
+        <translation>valandų</translation>
+    </message>
+    <message>
+        <source>Google analytics statistic</source>
+        <translation>Google analytics statistika</translation>
+    </message>
+    
+    <message>
+        <source>Last 31 days statistic, data resource - google analytics API</source>
+        <translation>Paskutinės 31 dienos statistika, duomenų šaltinis - google analytics API</translation>
+    </message>
+</context>
+<context>
+    <name>statistic/index</name>
+    <message>
+        <source>Statistic</source>
+        <translation>Statistika</translation>
+    </message>
+    <message>
+        <source>Grant access application to access google analytics API</source>
+        <translation>Suteikti prieigą aplikacijai naudotis google analytics API</translation>
+    </message>
+    <message>
+        <source>Home</source>
+        <translation>Pagrindinis</translation>
+    </message>    
+    <message>
+        <source>Site choose</source>
+        <translation>Puslapio pasirinkimas</translation>
+    </message>
+    <message>
+        <source>View statistic</source>
+        <translation>Peržiūrėti statistiką</translation>
+    </message>    
+</context>
+<context>
     <name>user/forgotpasswordsent</name>
     <message>
         <source>Password remind</source>
@@ -1527,6 +1605,10 @@
     <message>
         <source>Static articles</source>
         <translation>Statiniai straipsniai</translation>
+    </message>
+    <message>
+        <source>Statistic</source>
+        <translation>Statistika</translation>
     </message> 
     <message>
         <source>Rendered in</source>

@@ -6,5 +6,6 @@
 			<li><a href="<?=erLhcoreClassDesign::baseurl('gallery/batchadd')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Batch images add');?></a></li>
 			<li><a href="<?=erLhcoreClassDesign::baseurl('gallery/duplicates')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Duplicates');?></a></li>
 			<li><a href="<?=erLhcoreClassDesign::baseurl('article/staticlist')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Static articles');?></a></li>
+			<li><a href="<?=erLhcoreClassDesign::baseurl('statistic/index')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Statistic');?></a></li>
 	</ul>
 </div>	

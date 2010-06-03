@@ -474,7 +474,9 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				('thumbnail_width_y', '100', 0, 'Small thumbnail width - Y'),
 				('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x'),
 				('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y'),
-				('thumbnail_scale_algorithm', 'scale', 0, 'It can be \"scale\" or \"croppedThumbnail\" - makes perfect squares');");
+				('thumbnail_scale_algorithm', 'scale', 0, 'It can be \"scale\" or \"croppedThumbnail\" - makes perfect squares'),
+				('google_analytics_token', '', 0, 'Google analytics API key'),
+			    ('google_analytics_site_profile_id', '', 0, 'Google analytics page profile ID');");
 
 					              
                 $db->query("CREATE VIEW `sphinxseearch` AS SELECT `lh_gallery_images`.`pid` AS `id`,`lh_gallery_images`.`pid` AS `pid`,`lh_gallery_images`.`hits` AS `hits`,`lh_gallery_images`.`title` AS `title`,`lh_gallery_images`.`mtime` AS `mtime`,`lh_gallery_images`.`keywords` AS `keywords`,`lh_gallery_images`.`caption` AS `caption`,`lh_gallery_images`.`comtime` AS `comtime`,`lh_gallery_images`.`pic_rating` AS `pic_rating`,`lh_gallery_images`.`votes` AS `votes`,replace(replace(`lh_gallery_images`.`filepath`,'/',' '),'-',' ') AS `file_path`,replace(replace(`lh_gallery_images`.`filename`,'-',' '),'_',' ') AS `filename`,`lh_gallery_albums`.`title` AS `album_title`,`lh_gallery_albums`.`keyword` AS `album_keyword`,`lh_gallery_albums`.`description` AS `album_description`,`lh_gallery_categorys`.`name` AS `category_name`,`lh_gallery_categorys`.`description` AS `category_description`,concat(`lh_gallery_images`.`pwidth`,'x',`lh_gallery_images`.`pheight`) AS `pdimension` from ((`lh_gallery_images` left join `lh_gallery_albums` on((`lh_gallery_images`.`aid` = `lh_gallery_albums`.`aid`))) left join `lh_gallery_categorys` on((`lh_gallery_categorys`.`cid` = `lh_gallery_albums`.`category`))) where (`lh_gallery_images`.`approved` = 1);");
