@@ -4,7 +4,7 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhstatistic/view.tpl.php');
 
 $cache = CSCacheAPC::getMem(); 
 $cacheVersion = $cache->getCacheVersion('analytics_cache_version');
-if (/*($AnalyticsCacheData = $cache->restore(md5($cacheVersion.'analytics_data'.erLhcoreClassSystem::instance()->SiteAccess))) === false*/1==1)
+if (($AnalyticsCacheData = $cache->restore(md5($cacheVersion.'analytics_data'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
 {
 	$tplCache = new erLhcoreClassTemplate( 'lhstatistic/analytics_parsed.tpl.php');
 	
