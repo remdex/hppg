@@ -79,7 +79,7 @@ class erLhcoreClassModelGalleryCategory {
                   
           $objects = $session->find( $q, 'erLhcoreClassModelGalleryCategory' );
                     
-          $cache->store(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id),$objects);
+          $cache->store(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id.'limit_'.$limit.'_offset'.$offset),$objects);
       }
       
                 
@@ -157,7 +157,7 @@ class erLhcoreClassModelGalleryCategory {
       {
           $sql = $q->__toString();        
           $cache = CSCacheAPC::getMem();          
-          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('sit_version').$sql);
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
                              
           if (($result = $cache->restore($cacheKey)) === false)
           {

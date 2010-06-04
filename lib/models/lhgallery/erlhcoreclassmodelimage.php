@@ -199,8 +199,8 @@ class erLhcoreClassModelGalleryImage {
       {
           $sql = $q->__toString();        
           $cache = CSCacheAPC::getMem();          
-          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('sit_version').$sql);
-                             
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
+ 
           if (($result = $cache->restore($cacheKey)) === false)
           {
               $stmt = $q->prepare();       
@@ -324,8 +324,8 @@ class erLhcoreClassModelGalleryImage {
       {
           $cache = CSCacheAPC::getMem();  
           $sql = $q->__toString(); 
-          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('sit_version').$sql);      
-              
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);      
+             
           if (($objects = $cache->restore($cacheKey)) === false)
           {
               $objects = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 

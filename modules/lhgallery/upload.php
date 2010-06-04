@@ -74,7 +74,7 @@ if (count($objects) == 1)
 	}
 
 } else {
-	erLhcoreClassLog::write('Nerastas: '.$sessionID);
+	erLhcoreClassLog::write('Not found: '.$sessionID);
 }
 
 //echo "wrong";
