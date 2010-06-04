@@ -33,7 +33,7 @@
     	$next_image = current($imagesLeft); 
     	$imagesLeft = array_reverse($imagesLeft);    	
     	?>
-        <a class="left-image" href="<?=$next_image->url_path.$urlAppend?>">&laquo; previous image</a>
+        <a class="left-image" href="<?=$next_image->url_path.$urlAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
         <?
         endif;
         $pageAppend = $page > 1 ? '/(page)/'.$page : '';
@@ -43,7 +43,7 @@
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight); 
         ?>
-        <a class="right-image" href="<?=$prev_image->url_path.$urlAppend?>">next image &raquo;</a> 
+        <a class="right-image" href="<?=$prev_image->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a> 
         <? endif;
         $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
         ?>

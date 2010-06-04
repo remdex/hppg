@@ -1357,6 +1357,46 @@
         <source>Safe code</source>
         <translation>Saugos kodas</translation>
     </message>
+    <message>
+        <source>Last uploaded first</source>
+        <translation>Naujausi paveiksliuka pirmi</translation>
+    </message>
+    <message>
+        <source>Last uploaded last</source>
+        <translation>Naujausi paveiksliuka paskutiniai</translation>
+    </message>
+    <message>
+        <source>Most popular first</source>
+        <translation>Populiariausi pirmi</translation>
+    </message>
+    <message>
+        <source>Most popular last</source>
+        <translation>Populiariausi paskutiniai</translation>
+    </message>
+    <message>
+        <source>Last hits first</source>
+        <translation>Vėliausi žiūrėti pirmi</translation>
+    </message>
+    <message>
+        <source>Last hits last</source>
+        <translation>Vėliausi žiūrėti paskutiniai</translation>
+    </message>
+    <message>
+        <source>Top rated first</source>
+        <translation>Aukščiausiai įvertinti pirmi</translation>
+    </message>
+    <message>
+        <source>Top rated last</source>
+        <translation>Aukščiausiai įvertinti paskutiniai</translation>
+    </message>
+    <message>
+        <source>Last commented first</source>
+        <translation>Paskutiniai komentuoti pirmi</translation>
+    </message>
+    <message>
+        <source>Last commented last</source>
+        <translation>Paskutiniai komentuoti paskutiniai</translation>
+    </message>
 </context>
 <context>
     <name>gallery/category</name>

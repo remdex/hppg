@@ -524,6 +524,7 @@ $tpl->set('comment_new',$CommentData);
 
 $Result['content'] = $tpl->fetch();
 $Result['path'] = $Image->path;
+$Result['canonical'] = 'http://'.$_SERVER['HTTP_HOST'].$Image->url_path;
 
 // Must be in the bottom
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true){
@@ -534,19 +535,50 @@ if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image
 	erLhcoreClassGallery::getSession()->update($Image);
 }
 
-if ($mode == 'lastuploads') {	
+if ($mode == 'lastuploads') {
+	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded images');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss/');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last additions')),array('title' => $Image->name_user));
-}elseif ($mode == 'lasthits') {	
+}elseif ($mode == 'lasthits') {
+	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last viewed images');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lasthitsrss/');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last viewed images')),array('title' => $Image->name_user));
-}elseif ($mode == 'lastcommented') {	
+}elseif ($mode == 'lastcommented') {
+	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last commented images');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastcommentedrss/');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last commented images')),array('title' => $Image->name_user));
 }elseif ($mode == 'toprated') {	
+	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated images');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/topratedrss/');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated images')),array('title' => $Image->name_user));
 }elseif ($mode == 'popular') {	
+	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most popular images');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/popularrss/');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most popular images')),array('title' => $Image->name_user));
-}elseif ($mode == 'search') {	
+}elseif ($mode == 'search') {
+	
+	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search rss by keyword').' - '.htmlspecialchars($Params['user_parameters_unordered']['keyword']);
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/searchrss/(keyword)/').urlencode($Params['user_parameters_unordered']['keyword']);
+    
+    $sortModesTitle = array(    
+        'newdesc' => '',
+        'newasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded last'),    
+        'popular' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most popular first'),
+        'popularasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most popular last'),    
+        'lasthits' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last hits first'),
+        'lasthitsasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last hits last'),    
+        'lastcommented' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last commented first'),
+        'lastcommentedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last commented last'),    
+        'toprated' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated first'),
+        'topratedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated last Last'));        
+    $Result['tittle_prepend'] = $sortModesTitle[$modeSort];
+         
+    $Result['keyword'] =urldecode($Params['user_parameters_unordered']['keyword']);  
     $Result['title_path'] = array(array('title' => urldecode($Params['user_parameters_unordered']['keyword']).' - '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','search results')),array('title' => $Image->name_user));
-    $Result['keyword'] =urldecode($Params['user_parameters_unordered']['keyword']);
+   
+} else {
+    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded images to album').' - '.$Image->album->title;
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss/').$Image->aid; 
 }
 
 

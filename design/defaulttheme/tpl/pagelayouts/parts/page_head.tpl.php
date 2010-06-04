@@ -20,8 +20,9 @@ foreach ($ReverseOrder as $pathItem) : ?>
 <?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?></title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'cdn', 'css' )?><?=erLhcoreClassDesign::design('css/style.css');?>" /> 
-<link rel="icon" type="image/png" href="/design/defaulttheme/images/favicon.ico" />
-<link rel="shortcut icon" type="image/x-icon" href="/design/defaulttheme/images/favicon.ico" />
+<link rel="icon" type="image/png" href="<?=erLhcoreClassDesign::design('images/favicon.ico')?>" />
+<link rel="shortcut icon" type="image/x-icon" href="<?=erLhcoreClassDesign::design('images/favicon.ico')?>" />
+<?php if (isset( $Result['canonical'])) : ?><link rel="canonical" href="<?=$Result['canonical']?>" /><?endif;?>
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
 <script type="text/javascript">

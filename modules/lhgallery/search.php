@@ -76,6 +76,19 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
     }
     
+    $sortModesTitle = array(    
+        'newdesc' => '',
+        'newasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded last'),    
+        'popular' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most popular first'),
+        'popularasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most popular last'),    
+        'lasthits' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last hits first'),
+        'lasthitsasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last hits last'),    
+        'lastcommented' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented first'),
+        'lastcommentedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented last'),    
+        'toprated' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated first'),
+        'topratedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated last'));
+        
+        
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/search.tpl.php');
     $tpl->set('pages',$pages);
     $tpl->set('items',$searchResult['list']);
@@ -83,6 +96,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('appendImageMode',$appendImageMode);
     $tpl->set('mode',$mode);
     
+    $Result['tittle_prepend'] = $sortModesTitle[$mode];
     $Result['content'] = $tpl->fetch();
     $Result['path'] = array(array('title' =>  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','search result')));
     $Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','search results')));
