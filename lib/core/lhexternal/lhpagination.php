@@ -36,7 +36,7 @@ class lhPaginator{
 		$prev_page = $this->current_page-1;
 		$next_page = $this->current_page+1;
 	
-		$this->return = ($this->current_page != 1) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$prev_page$this->querystring\">&laquo; ".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</a>":"<span class=\"inactive\" href=\"#\">&laquo; ".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</span>";
+		$this->return = ($this->current_page != 1) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$prev_page$this->querystring\">&laquo; ".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</a>":"<span class=\"inactive\" >&laquo; ".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</span>";
 
 		$this->mid_range = 16;
 			
@@ -83,29 +83,11 @@ class lhPaginator{
 			}			
 		}	
 				
-		$this->return .= (($this->current_page != $this->num_pages)) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$next_page$this->querystring\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</a>":"<span class=\"inactive\" href=\"#\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</span>";
+		$this->return .= (($this->current_page != $this->num_pages)) ? "<a class=\"paginate\" href=\"$this->serverURL/(page)/$next_page$this->querystring\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</a>":"<span class=\"inactive\" >".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Next')." &raquo;</span>";
 		
 		$this->low = ($this->current_page-1) * $this->items_per_page;
 		$this->high = (isset($_GET['ipp']) && $_GET['ipp'] == 'All') ? $this->items_total:($this->current_page * $this->items_per_page)-1;
 		$this->limit = (isset($_GET['ipp']) && $_GET['ipp'] == 'All') ? "":" LIMIT $this->low,$this->items_per_page";
-	}
-
-	function display_items_per_page()
-	{
-		$items = '';
-		$ipp_array = array(10,25,50,100,'All');
-		foreach($ipp_array as $ipp_opt)	$items .= ($ipp_opt == $this->items_per_page) ? "<option selected value=\"$ipp_opt\">$ipp_opt</option>\n":"<option value=\"$ipp_opt\">$ipp_opt</option>\n";
-		return "<span class=\"paginate\">Items per page:</span><select class=\"paginate\" onchange=\"window.location='$this->serverURL?page=1&ipp='+this[this.selectedIndex].value+'$this->querystring';return false\">$items</select>\n";
-	}
-
-	function display_jump_menu()
-	{
-	    $option = '';
-		for($i=1;$i<=$this->num_pages;$i++)
-		{
-			$option .= ($i==$this->current_page) ? "<option value=\"$i\" selected>$i</option>\n":"<option value=\"$i\">$i</option>\n";
-		}
-		return "<span class=\"paginate\">Jump to page: </span><select class=\"paginate\" onchange=\"window.location='$this->serverURL?page='+this[this.selectedIndex].value+'$this->querystring';return false\">$option</select>\n";
 	}
 
 	function display_pages()

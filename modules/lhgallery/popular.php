@@ -9,7 +9,7 @@ if (($Result = $cache->restore(md5('version_'.$cacheVersion.'popular_view_url'.'
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/popular.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true));
-    $pages->translationContext = 'gallery/album';
+    $pages->translationContext = 'gallery/popular';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/popular');
     $pages->paginate();
     

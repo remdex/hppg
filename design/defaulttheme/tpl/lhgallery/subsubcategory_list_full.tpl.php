@@ -2,7 +2,8 @@
     <ul>
         <?php foreach ($subsubcategorys as $subcategory) : ?>    
                 <li>
-                <h3><a href="<?=$subcategory->path_url?>"><?=htmlspecialchars($subcategory->name)?></a><div class="right status-album"><span class="albums-category"><?=$subcategory->albums_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list_full','albums')?>, <?=$subcategory->images_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list_full','images')?></span></div></h3>
+                <div class="right status-album btext"><span class="albums-category"><?=$subcategory->albums_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list_full','albums')?>, <?=$subcategory->images_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list_full','images')?></span></div>
+                <h3><a href="<?=$subcategory->path_url?>"><?=htmlspecialchars($subcategory->name)?></a></h3>
                 
                <? if ($subcategory->description != '') : ?>
                 <p><?=$subcategory->description?></p>

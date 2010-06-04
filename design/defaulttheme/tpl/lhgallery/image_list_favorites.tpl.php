@@ -14,9 +14,9 @@ $item = $itemFavorite->image;
            <ul>
 	            <li><?=$item->pwidth?>x<?=$item->pheight?></li>
 	            <li><?=$item->hits?> watched</li>
-	            <li><a class="thmb" rel="<?=($item->pwidth < 450) ? erLhcoreClassDesign::imagePath($item->filepath.urlencode($item->filename)) : erLhcoreClassDesign::imagePath($item->filepath.'normal_'.urlencode($item->filename))?>" title="<?=htmlspecialchars($item->name_user);?>" href="<?=erLhcoreClassDesign::imagePath($item->filepath.$item->filename)?>"><h3>
-	            <?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','preview version') : $title;?></h3>          
-	            </a></li>
+	            <li><h3><a class="thmb" rel="<?=($item->pwidth < 450) ? erLhcoreClassDesign::imagePath($item->filepath.urlencode($item->filename)) : erLhcoreClassDesign::imagePath($item->filepath.'normal_'.urlencode($item->filename))?>" title="<?=htmlspecialchars($item->name_user);?>" href="<?=erLhcoreClassDesign::imagePath($item->filepath.$item->filename)?>">
+	            <?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','preview version') : $title;?>          
+	            </a></h3></li>
 	        </ul>            
         </div>
     </div>   
@@ -24,7 +24,7 @@ $item = $itemFavorite->image;
  <?php if (isset($pages)) : ?> 
     <div class="navigator" style="clear:left;">
     
-    <?=$pages->display_pages();?> &nbsp;(<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, Found - <?=$pages->items_total?>)</div>
+    <?=$pages->display_pages();?> &nbsp;(<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list',"Found")?> - <?=$pages->items_total?>)</div>
 <? endif;?>
  
 </div>

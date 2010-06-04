@@ -105,6 +105,18 @@
         <source>No records.</source>
         <translation>Nėra įrašų.</translation>
     </message>
+    <message>
+        <source>Go to page %item of %numpages</source>
+        <translation>Eiti į %item puslapį iš %numpages</translation>
+    </message>
+       <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
 </context>
 <context>
     <name>article/staticlist</name>
@@ -1161,6 +1173,18 @@
         <source>No records.</source>
         <translation>Nėra įrašų.</translation>
     </message>
+    <message>
+        <source>Go to page %item of %numpages</source>
+        <translation>Eiti į %item puslapį iš %numpages</translation>
+    </message>
+       <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
 </context>
 <context>
     <name>gallery/toprated</name>
@@ -1180,16 +1204,16 @@
         <source>Previous</source>
         <translation>Ankstesnis</translation>
     </message>
+    <message>
+        <source>Go to page %item of %numpages</source>
+        <translation>Eiti į %item puslapį iš %numpages</translation>
+    </message>
 </context>
 <context>
     <name>gallery/lasthits</name>
     <message>
         <source>Last viewed images</source>
         <translation>Paskutiniai peržiūrėti paveikslėliai</translation>
-    </message>
-    <message>
-        <source>No records.</source>
-        <translation>Nėra įrašų.</translation>
     </message>
     <message>
         <source>Next</source>
@@ -1202,6 +1226,10 @@
     <message>
         <source>No records.</source>
         <translation>Nėra įrašų</translation>
+    </message>
+    <message>
+        <source>Go to page %item of %numpages</source>
+        <translation>Eiti į %item puslapį iš %numpages</translation>
     </message>
 </context>
 <context>
@@ -1461,6 +1489,10 @@
         <source>See full size</source>
         <translation>Peržiūrėti paveiksliuką</translation>
     </message>
+    <message>
+        <source>preview version</source>
+        <translation>peržiūros versija</translation>
+    </message>
 </context>
 <context>
     <name>gallery/lastcommented</name>
@@ -1471,6 +1503,18 @@
     <message>
         <source>No records.</source>
         <translation>Nėra įrašų.</translation>
+    </message>
+    <message>
+        <source>Go to page %item of %numpages</source>
+        <translation>Eiti į %item puslapį iš %numpages</translation>
+    </message>
+       <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
     </message>
 </context>
 <context>

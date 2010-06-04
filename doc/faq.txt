@@ -1,0 +1,2 @@
+1. How to detele SVN folders?
+find . -name ".svn" -exec rm -rf {}
