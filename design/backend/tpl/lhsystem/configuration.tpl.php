@@ -12,6 +12,7 @@
 
 <ul>
     <li><a href="<?=erLhcoreClassDesign::baseurl('systemconfig/list')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','System configuration values');?></a></li>
+    <li><a href="<?=erLhcoreClassDesign::baseurl('systemconfig/watermark')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','Watermark protection');?></a></li>
 </ul>
 
 </fieldset>

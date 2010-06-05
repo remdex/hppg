@@ -14,6 +14,12 @@ $ViewList['edit'] = array(
     'script' => 'edit.php',
     'params' => array('config_id'),
     'functions' => array( 'administrate' )
+);  
+   
+$ViewList['watermark'] = array( 
+    'script' => 'watermark.php',
+    'params' => array(),
+    'functions' => array( 'administrate' )
 ); 
     
 $FunctionList['administrate'] = array('explain' => 'Allow user to see configuration links');  

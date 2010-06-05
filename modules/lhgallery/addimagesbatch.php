@@ -18,6 +18,14 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $imagePath, $photoDir.'/normal_'.$fileName ); 
            erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $imagePath, $photoDir.'/thumb_'.$fileName); 
            
+           //Apply watermark if needed
+           $dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	    
+              
+	       // If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
+	       if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
+            	erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $imagePath, $imagePath ); 
+           }
+                     
            $image->filesize = filesize($photoDir.'/'.$fileName);
            $image->total_filesize = filesize($photoDir.'/'.$fileName)+filesize($photoDir.'/thumb_'.$fileName)+filesize($photoDir.'/normal_'.$fileName);
            $image->filepath = str_replace('albums/','',$photoDir).'/';

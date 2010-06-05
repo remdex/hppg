@@ -37,7 +37,14 @@ if (count($objects) == 1)
 	       
 	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $_FILES['Filedata']['tmp_name'], $photoDir.'/normal_'.$fileNamePhysic ); 
 	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $_FILES['Filedata']['tmp_name'], $photoDir.'/thumb_'.$fileNamePhysic ); 
-	       move_uploaded_file($_FILES["Filedata"]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
+	       
+	       $dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
+	       // If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
+	       if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
+            	erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $_FILES['Filedata']['tmp_name'], $photoDir.'/'.$fileNamePhysic ); 
+           } else  {
+	       		move_uploaded_file($_FILES["Filedata"]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
+           }
 	       
 	       $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
 	       $image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
@@ -77,7 +84,7 @@ if (count($objects) == 1)
 	erLhcoreClassLog::write('Not found: '.$sessionID);
 }
 
-//echo "wrong";
+
 exit;
 
 ?>

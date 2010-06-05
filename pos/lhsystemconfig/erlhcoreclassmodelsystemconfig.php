@@ -20,6 +20,11 @@ $def->properties['type']->columnName   = 'type';
 $def->properties['type']->propertyName = 'type';
 $def->properties['type']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
+$def->properties['hidden'] = new ezcPersistentObjectProperty();
+$def->properties['hidden']->columnName   = 'hidden';
+$def->properties['hidden']->propertyName = 'hidden';
+$def->properties['hidden']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
 $def->properties['explain'] = new ezcPersistentObjectProperty();
 $def->properties['explain']->columnName   = 'explain';
 $def->properties['explain']->propertyName = 'explain';

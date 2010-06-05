@@ -89,7 +89,7 @@ visibility:hidden;
 }
 
 div#bodcont{
-padding: 0 217px 0 200px;
+padding: 0 217px 0 250px;
 border-bottom:1px solid #C7C2BB;
 }
 
@@ -117,9 +117,9 @@ float:left;
 }
 
 div#leftmenucont{
-width:200px;
+width:250px;
 float:left;
-margin-left:-200px;
+margin-left:-250px;
 display: inline;
 }
 
@@ -203,7 +203,7 @@ color:#40353d;
 padding-left: 15px;
 padding-top:2px;
 padding-bottom:2px;
-width:150px;
+width:230px;
 display:block;
 }
 

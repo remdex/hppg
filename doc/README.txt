@@ -9,6 +9,6 @@
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
   ********************************************
-  Version 0.3
-  Date 2010-05-04
+  Version 0.3.1
+  Date 2010-06-05
 **********************************************/

@@ -119,8 +119,15 @@ class erLhcoreClassModelGalleryUploadArchive {
 
 				    	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $pathExtracted, $photoDir.'/normal_'.$fileNamePhysic );
 				    	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$pathExtracted, $photoDir.'/thumb_'.$fileNamePhysic );
-				    	rename($pathExtracted,$photoDir.'/'.$fileNamePhysic);
-				    	
+				    					    	
+				    	$dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
+						// If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
+						if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
+								erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $pathExtracted, $photoDir.'/'.$fileNamePhysic ); 
+						} else  {
+								rename($pathExtracted,$photoDir.'/'.$fileNamePhysic);
+						}
+									    	
 				    	chown($photoDir.'/'.$fileNamePhysic,$wwwUser);
 				    	chown($photoDir.'/normal_'.$fileNamePhysic,$wwwUser);
 				    	chown($photoDir.'/thumb_'.$fileNamePhysic,$wwwUser);

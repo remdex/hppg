@@ -2,8 +2,7 @@
 1. Make sure that script can write to cache/cacheconfig directory.
 chmod 664 cache/cacheconfig, or better chmod -R 664 cache/*
 2. Create database choosing utf-8 charset.
-3. Download eZ Components from http://ezcomponents.org/download and extract to ezcomponents directory
-4. Enter in browser /index.php/install/install
+4. Enter in browser /index.php/install/install or /index.php?/install/install
 5. Follow instruction.
 6. Sphinx index must be recreated after image modification it can be archieved with cronjob or any other prefered way
 

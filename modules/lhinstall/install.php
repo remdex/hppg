@@ -464,19 +464,24 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `value` text NOT NULL,
 				  `type` tinyint(1) NOT NULL DEFAULT '0',
 				  `explain` varchar(250) NOT NULL,
+				  `hidden` int(11) NOT NULL DEFAULT '0',
 				  PRIMARY KEY (`identifier`)
 				) ENGINE=MyISAM;");
                 
-				$db->query("INSERT INTO `lh_system_config` (`identifier`, `value`, `type`, `explain`) VALUES
-				('footer_article_id', 'a:3:{s:3:\"eng\";s:1:\"3\";s:3:\"lit\";s:2:\"28\";s:10:\"site_admin\";s:2:\"29\";}', 1, 'Footer article ID'),
-				('max_photo_size', '5000', 0, 'Maximum photo size in kilobytes '),
-				('thumbnail_width_x', '100', 0, 'Small thumbnail width - x'),
-				('thumbnail_width_y', '100', 0, 'Small thumbnail width - Y'),
-				('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x'),
-				('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y'),
-				('thumbnail_scale_algorithm', 'scale', 0, 'It can be \"scale\" or \"croppedThumbnail\" - makes perfect squares'),
-				('google_analytics_token', '', 0, 'Google analytics API key'),
-			    ('google_analytics_site_profile_id', '', 0, 'Google analytics page profile ID');");
+				$db->query("INSERT INTO `lh_system_config` (`identifier`, `value`, `type`, `explain`, `hidden`) VALUES
+						('footer_article_id', 'a:3:{s:3:\"eng\";s:1:\"3\";s:3:\"lit\";s:2:\"28\";s:10:\"site_admin\";s:2:\"29\";}', 1, 'Footer article ID', 0),
+						('max_photo_size', '5000', 0, 'Maximum photo size in kilobytes ', 0),
+						('thumbnail_width_x', '100', 0, 'Small thumbnail width - x', 0),
+						('thumbnail_width_y', '100', 0, 'Small thumbnail width - Y', 0),
+						('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x', 0),
+						('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y', 0),
+						('thumbnail_scale_algorithm', 'scale', 0, 'It can be \"scale\" or \"croppedThumbnail\" - makes perfect squares', 0),
+						('google_analytics_token', '', 0, 'Google analytics API key', 0),
+						('google_analytics_site_profile_id', '', 0, 'Google analytics site profile id', 0),
+						('thumbnail_quality_default', '93', 0, 'Converted small thumbnail image quality', 0),
+						('normal_thumbnail_quality', '93', 0, 'Converted normal thumbnail quality', 0),
+						('watermark_data', 'a:9:{s:17:\"watermark_enabled\";b:0;s:21:\"watermark_enabled_all\";b:0;s:9:\"watermark\";s:0:\"\";s:6:\"size_x\";i:200;s:6:\"size_y\";i:50;s:18:\"watermark_disabled\";b:1;s:18:\"watermark_position\";s:12:\"bottom_right\";s:28:\"watermark_position_padding_x\";i:10;s:28:\"watermark_position_padding_y\";i:10;}', 0, 'Not shown public, editing is done in watermark module', 1),
+						('full_image_quality', '93', 0, 'Full image quality', 0);");
 
 					              
                 $db->query("CREATE VIEW `sphinxseearch` AS SELECT `lh_gallery_images`.`pid` AS `id`,`lh_gallery_images`.`pid` AS `pid`,`lh_gallery_images`.`hits` AS `hits`,`lh_gallery_images`.`title` AS `title`,`lh_gallery_images`.`mtime` AS `mtime`,`lh_gallery_images`.`keywords` AS `keywords`,`lh_gallery_images`.`caption` AS `caption`,`lh_gallery_images`.`comtime` AS `comtime`,`lh_gallery_images`.`pic_rating` AS `pic_rating`,`lh_gallery_images`.`votes` AS `votes`,replace(replace(`lh_gallery_images`.`filepath`,'/',' '),'-',' ') AS `file_path`,replace(replace(`lh_gallery_images`.`filename`,'-',' '),'_',' ') AS `filename`,`lh_gallery_albums`.`title` AS `album_title`,`lh_gallery_albums`.`keyword` AS `album_keyword`,`lh_gallery_albums`.`description` AS `album_description`,`lh_gallery_categorys`.`name` AS `category_name`,`lh_gallery_categorys`.`description` AS `category_description`,concat(`lh_gallery_images`.`pwidth`,'x',`lh_gallery_images`.`pheight`) AS `pdimension` from ((`lh_gallery_images` left join `lh_gallery_albums` on((`lh_gallery_images`.`aid` = `lh_gallery_albums`.`aid`))) left join `lh_gallery_categorys` on((`lh_gallery_categorys`.`cid` = `lh_gallery_albums`.`category`))) where (`lh_gallery_images`.`approved` = 1);");

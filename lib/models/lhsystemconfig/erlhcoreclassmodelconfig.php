@@ -8,6 +8,7 @@ class erLhcoreClassModelSystemConfig {
                'identifier'    => $this->identifier,
                'value'         => $this->value,            
                'type'          => $this->type,            
+               'hidden'        => $this->hidden,            
                'explain'       => $this->explain           
        );
    }
@@ -72,6 +73,7 @@ class erLhcoreClassModelSystemConfig {
        $q = $session->createFindQuery( 'erLhcoreClassModelSystemConfig' );  
        
        $conditions = array(); 
+       $conditions[] = $q->expr->eq( 'hidden', 0 );
              
        if (isset($params['filter']) && count($params['filter']) > 0)
        {                     
@@ -123,6 +125,7 @@ class erLhcoreClassModelSystemConfig {
    public $identifier = null;
    public $value = null;
    public $explain = null;
+   public $hidden = 0;
    
    const SITE_ACCESS_PARAM_ON = 1;
    const SITE_ACCESS_PARAM_OFF = 0;

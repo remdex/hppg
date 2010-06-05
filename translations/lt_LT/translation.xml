@@ -73,6 +73,81 @@
     </message>
 </context>
 <context>
+    <name>systemconfig/watermark</name>
+    <message>
+        <source>Watermark</source>
+        <translation>Vandens ženklai</translation>
+    </message> 
+    <message>
+        <source>Watermark configuration</source>
+        <translation>Vandens ženklų konfiguracija</translation>
+    </message> 
+    <message>
+        <source>Settings updated</source>
+        <translation>Nustatymai atnaujinti</translation>
+    </message>
+    <message>
+        <source>Delete watermark</source>
+        <translation>Ištrinti vandens ženklą</translation>
+    </message> 
+    <message>
+        <source>Image, it is recommended PNG type image</source>
+        <translation>Paveikslėlimis, rekomenduojamas PNG tipo paveikslėlis</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Nustatymai</translation>
+    </message> 
+    <message>
+        <source>Settings updated</source>
+        <translation>Nustatymai atnaujinti</translation>
+    </message> 
+    <message>
+        <source>Watermark disabled</source>
+        <translation>Vandens ženklas išjungtas</translation>
+    </message>
+    <message>
+        <source>Watermark enabled on normal size thumbnails</source>
+        <translation>Vandens ženklas įjungtas normalaus dydžio paveiksliukams</translation>
+    </message>
+    <message>
+        <source>Watermark enabled for all images</source>
+        <translation>Vandens ženklai įgalinti visiems paveiksliukams</translation>
+    </message> 
+    <message>
+        <source>Watermark position</source>
+        <translation>Vandens ženklo pozicija</translation>
+    </message>
+    <message>
+        <source>Top left</source>
+        <translation>Viršuje kairėja</translation>
+    </message> 
+    <message>
+        <source>Top right</source>
+        <translation>Viršuje dešinėje</translation>
+    </message> 
+    <message>
+        <source>Bottom right</source>
+        <translation>Apačioje dešinėje</translation>
+    </message>
+    <message>
+        <source>Center</source>
+        <translation>Centre</translation>
+    </message>
+    <message>
+        <source>Bottom left</source>
+        <translation>Apačioje kairėje</translation>
+    </message>
+    <message>
+        <source>Watermark padding from borders</source>
+        <translation>Vandens ženklų atitraukimas nuo kraštų</translation>
+    </message> 
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message> 
+</context>
+<context>
     <name>systemconfig/edit</name>
     <message>
         <source>Edit</source>
@@ -2199,6 +2274,10 @@
     <message>
         <source>Users</source>
         <translation>Vartotojai</translation>
+    </message>
+    <message>
+        <source>Watermark protection</source>
+        <translation>Vandens ženklų apsauga</translation>
     </message>
     <message>
         <source>List of groups</source>

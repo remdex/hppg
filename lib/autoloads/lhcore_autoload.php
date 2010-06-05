@@ -52,6 +52,8 @@ return array (
         'erLhcoreClassGalleryArchive' 	      => 'core/lhgallery/lharchive.php',
         'erLhcoreClassModelGalleryLastSearch' => 'models/lhgallery/erlhcoreclassmodellastsearch.php',
         'erLhcoreClassImageConverter'         => 'core/lhgallery/lhimageconverter.php',        
+        'erLhcoreClassGalleryImagemagickHandler'         => 'core/lhgallery/lhgalleryconverterhandler.php',        
+        'erLhcoreClassGalleryGDHandler'       => 'core/lhgallery/lhgallerygdconverterhandler.php',        
         'erLhcoreClassGalleryBatch'           => 'core/lhgallery/lhbatch.php',
         'erLhcoreClassLhMemcache'             => 'core/lhcore/lhmemcache.php',
         'erLhcoreClassModelGalleryDelayImageHit' 		=> 'models/lhgallery/erlhcoreclassmodeldelayimagehit.php',
