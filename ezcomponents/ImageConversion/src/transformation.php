@@ -248,7 +248,7 @@ class ezcImageTransformation
                 {
                     if ( $this->lastHandler->hasFilter( $filter->name ) )
                     {
-                    	$this->lastHandler->save( $ref );
+                    	$this->lastHandler->save( $ref ); // http://issues.ez.no/IssueView.php?Id=16884&activeItem=1
                         $this->lastHandler->applyFilter( $ref, $filter );
                         continue;
                     }
