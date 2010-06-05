@@ -248,6 +248,7 @@ class ezcImageTransformation
                 {
                     if ( $this->lastHandler->hasFilter( $filter->name ) )
                     {
+                    	$this->lastHandler->save( $ref );
                         $this->lastHandler->applyFilter( $ref, $filter );
                         continue;
                     }
