@@ -33,8 +33,17 @@ switch ((int)$Params['user_parameters']['step_id']) {
 	       $Errors[] = "albums is not writable";
 	             	           
 		if (!is_writable("albums/userpics"))
-	       $Errors[] = "albums/userpics is not writable";	
-	       
+	       $Errors[] = "albums/userpics is not writable";
+	              
+		if (!is_writable("var/archives"))
+	       $Errors[] = "var/archives is not writable";
+	          	           
+		if (!is_writable("var/tmpfiles"))
+	       $Errors[] = "var/tmpfiles is not writable";
+	             	           
+		if (!is_writable("var/watermark"))
+	       $Errors[] = "var/watermark is not writable";	
+	           
 	       if (count($Errors) == 0)
 	           $tpl->setFile('lhinstall/install2.tpl.php');	              
 	  break;

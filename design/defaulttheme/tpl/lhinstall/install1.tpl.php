@@ -28,6 +28,18 @@
         <td>I can write to &quot;albums/userpics&quot; directory</td>
         <td><?=is_writable("albums/userpics") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
     </tr>
+    <tr>
+        <td>I can write to &quot;var/archives&quot; directory</td>
+        <td><?=is_writable("var/archives") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
+    </tr>
+    <tr>
+        <td>I can write to &quot;var/tmpfiles&quot; directory</td>
+        <td><?=is_writable("var/tmpfiles") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
+    </tr>
+    <tr>
+        <td>I can write to &quot;var/watermark&quot; directory</td>
+        <td><?=is_writable("var/watermark") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
+    </tr>
 </table>
 </fieldset>
 <br>
