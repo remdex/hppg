@@ -59,20 +59,29 @@ class lhPaginator{
 			
 			$this->range = range($this->start_range,$this->end_range);
 						
-			
-			
-			for($i=1;$i<=$this->num_pages;$i++)
+			end($this->range);
+			$lastArrayNumber = current($this->range);			
+			if ($this->range[0] > 1)
 			{
-				if($this->range[0] > 2 And $i == $this->range[0]) $this->return .= " ... ";
-				// loop through all pages. if first, last, or in range, display
-				if($i==1 Or $i==$this->num_pages Or in_array($i,$this->range))
-				{
-				    $pageURL = $i > 1 ? '/(page)/'.$i : '';
-					$this->return .= ($i == $this->current_page) ? "<a title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" class=\"current\" href=\"#\">$i</a>":"<a class=\"paginate\" title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" href=\"{$this->serverURL}{$pageURL}{$this->querystring}\">$i</a>";
-				}
-				if (isset($this->range[$this->mid_range-1]))
-				if($this->range[$this->mid_range-1] < $this->num_pages-1 And $i == $this->range[$this->mid_range-1]) $this->return .= " ... ";
+				$i = 1;
+				$pageURL = $i > 1 ? '/(page)/'.$i : '';
+				$this->return .= ($i == $this->current_page) ? "<a title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" class=\"current\" href=\"#\">$i</a>":"<a class=\"paginate\" title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" href=\"{$this->serverURL}{$pageURL}{$this->querystring}\">$i</a>";
+				$this->return .= " ... ";
 			}
+			
+			for($i=$this->range[0];$i<=$lastArrayNumber;$i++)
+			{						
+				$pageURL = $i > 1 ? '/(page)/'.$i : '';
+				$this->return .= ($i == $this->current_page) ? "<a title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" class=\"current\" href=\"#\">$i</a>":"<a class=\"paginate\" title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" href=\"{$this->serverURL}{$pageURL}{$this->querystring}\">$i</a>";
+			}
+			
+			if ($lastArrayNumber < $this->num_pages)
+			{
+				$this->return .= " ... ";
+				$i = $this->num_pages;
+				$pageURL = '/(page)/'.$i;
+				$this->return .= ($i == $this->current_page) ? "<a title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" class=\"current\" href=\"#\">$i</a>":"<a class=\"paginate\" title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" href=\"{$this->serverURL}{$pageURL}{$this->querystring}\">$i</a>";
+			}			
 			
 		}
 		else
