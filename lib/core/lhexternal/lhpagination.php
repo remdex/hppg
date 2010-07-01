@@ -70,9 +70,11 @@ class lhPaginator{
 			}
 			
 			for($i=$this->range[0];$i<=$lastArrayNumber;$i++)
-			{						
+			{	
+			    if 	($i > 0) {
 				$pageURL = $i > 1 ? '/(page)/'.$i : '';
 				$this->return .= ($i == $this->current_page) ? "<a title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" class=\"current\" href=\"#\">$i</a>":"<a class=\"paginate\" title=\"".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,"Go to page %item of %numpages",array('item' => $i,'numpages' => $this->num_pages))."\" href=\"{$this->serverURL}{$pageURL}{$this->querystring}\">$i</a>";
+			    }
 			}
 			
 			if ($lastArrayNumber < $this->num_pages)
