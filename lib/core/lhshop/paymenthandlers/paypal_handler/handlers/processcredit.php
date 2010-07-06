@@ -70,7 +70,7 @@ if (isset($_POST['buyersemail']))
 	$paymentDetailsItem->setName('Credits order - '.$basket->credits);
 	$paymentDetailsItem->setQuantity(1, 'iso-8859-1');
 	$paymentDetailsItem->setAmount($basket->amount, 'iso-8859-1');
-	$itemsOrderArray['PaymentDetailsItem63'] = $paymentDetailsItem;
+	$itemsOrderArray['PaymentDetailsItem00'] = $paymentDetailsItem;
 	
 	$paymentDetailsType->setPaymentDetailsItem($itemsOrderArray);
 	

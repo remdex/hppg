@@ -63,13 +63,16 @@ if (isset($_POST['buyersemail']))
 	$paymentDetailsType = &PayPal::getType('PaymentDetailsType');
 	
 	$itemsOrderArray = array();
+	
+	$keyCounter = 0;	
 	foreach ($paymentHandler->basket->order->order_items as $key => $orderItem)
 	{
 		$paymentDetailsItem = PayPal::getType('PaymentDetailsItemType');
 		$paymentDetailsItem->setName($orderItem->image_variation->name.' - '.$orderItem->image->name_user);
 		$paymentDetailsItem->setQuantity(1, 'iso-8859-1');
 		$paymentDetailsItem->setAmount($orderItem->price, 'iso-8859-1');
-		$itemsOrderArray['PaymentDetailsItem'.$key] = $paymentDetailsItem;
+		$itemsOrderArray['PaymentDetailsItem'.str_pad($key,2,'0')] = $paymentDetailsItem;		
+		$keyCounter++;
 	}
 	
 	$paymentDetailsType->setPaymentDetailsItem($itemsOrderArray);
@@ -111,6 +114,7 @@ if (isset($_POST['buyersemail']))
 
       default:      	
          $_SESSION['error_shop'] = $response;
+         print_r($response);exit;
          erLhcoreClassModule::redirect('/shop/error/paypal_handler');
          exit;
    }      
