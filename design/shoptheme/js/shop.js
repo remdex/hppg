@@ -1,5 +1,5 @@
 
-//Extendeing main JS core
+//Extending main JS core
 
 hw.addtobasket = 'shop/addtobasket/';
 hw.deletefrombasketurl = 'shop/deletefrombasket/';

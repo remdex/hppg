@@ -1,0 +1,29 @@
+div#bodcont{
+padding: 0;
+}
+
+div#container{
+width:auto;
+min-width:1%;
+}
+
+body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #000;
+    -webkit-text-size-adjust: none;
+}
+
+
+div#logo{
+width:auto;
+}
+
+.search-box input.keywordField{width:100px;}
+.search-box{font-size:14px;padding-right:0px;float:right;padding:5px;}
+.image-full-content{width:auto;}
+
+.image-thumb, .album-thumb{margin:2px;width:140px;}
+.navigator{height:auto;min-height:15px;}

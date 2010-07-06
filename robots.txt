@@ -1,6 +1,7 @@
 User-agent: *
 Disallow: /gallery/sharehtml/
 Disallow: /gallery/sharephpbb/
+Disallow: /m/
 
 User-agent: ia_archiver
 Disallow: /

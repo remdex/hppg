@@ -362,6 +362,8 @@ class erLhcoreClassSystem{
     public $ThemeSite;
     
     public $SiteAccess;
+        
+    public $MobileDevice = false;
     
     private static $instance = null;
 

@@ -43,6 +43,17 @@ if (!is_null($url->getParam( 'module' )) && file_exists('modules/lh'.$url->getPa
     
 include_once('modules/lh'.$ModuleToRun.'/module.php');
 
+$cfgSite = erConfigClassLhConfig::getInstance();
+
+if ($cfgSite->conf->getSetting( 'site', 'redirect_mobile' ) !== false && !isset($_COOKIE['RegularVersion'])  && preg_match("/http_(x|ua)_(.*?)/i",implode(' ',array_keys($_SERVER)))){
+	erLhcoreClassSystem::instance()->MobileDevice = true;	
+	$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$cfgSite->conf->getSetting( 'site', 'redirect_mobile' ));		
+	erLhcoreClassSystem::instance()->Language = $optionsSiteAccess['locale'];                         
+    erLhcoreClassSystem::instance()->ThemeSite = $optionsSiteAccess['theme'];                         
+    erLhcoreClassSystem::instance()->WWWDirLang = '/'.$cfgSite->conf->getSetting( 'site', 'redirect_mobile' ); 
+    erLhcoreClassSystem::instance()->SiteAccess = $cfgSite->conf->getSetting( 'site', 'redirect_mobile' ); 
+}
+
 $Result = erLhcoreClassModule::runModule($ViewList,$FunctionList);
 
 $tpl = erLhcoreClassTemplate::getInstance('pagelayouts/main.php');
