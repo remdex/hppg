@@ -59,7 +59,7 @@ return array (
       ),
       'm' => 
       array (
-        'locale' => 'lt_LT',
+        'locale' => 'en_EN',
         'theme' => 
         array (
           0 => 'mobilefrontend',
