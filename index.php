@@ -29,6 +29,8 @@ ezcBaseInit::setCallback(
   
 erLhcoreClassSystem::init();
 
+//print_r($_SERVER);
+
 $url = erLhcoreClassURL::getInstance();
 if (!is_null($url->getParam( 'module' )) && file_exists('modules/lh'.$url->getParam( 'module' ).'/module.php')){
     $ModuleToRun = $url->getParam( 'module' );
