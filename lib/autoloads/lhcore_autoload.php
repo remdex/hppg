@@ -72,7 +72,27 @@ return array (
         
         // System config
         'erLhcoreClassSystemConfig'			=> 'core/lhsystemconfig/lhsystemconfig.php',
-        'erLhcoreClassModelSystemConfig'	=> 'models/lhsystemconfig/erlhcoreclassmodelconfig.php'
+        'erLhcoreClassModelSystemConfig'	=> 'models/lhsystemconfig/erlhcoreclassmodelconfig.php',
+        
+        // Simple shop module
+         'erLhcoreClassShop' 	            	=> 'core/lhshop/lhshop.php',
+         'erLhcoreClassModelShopImageVariation' => 'models/lhshop/erlhcoreclassmodelimagevariation.php',
+         'erLhcoreClassModelShopBasketSession'  => 'models/lhshop/erlhcoreclassmodelbasketssession.php',
+         'erLhcoreClassModelShopBasketImage'    => 'models/lhshop/erlhcoreclassmodelbasketimage.php',
+         'erLhcoreClassShopPaymentHandler'      => 'core/lhshop/lhpaymenthandler.php',
+         'erLhcoreClassModelShopPaymentSetting' => 'models/lhshop/erlhcoreclassmodelpaymentsetting.php',
+         'erLhcoreClassModelShopOrder' 			=> 'models/lhshop/erlhcoreclassmodelorder.php',
+         'erLhcoreClassShopPaymentHandlerMokejimaiLTMacro' => 'core/lhshop/paymenthandlers/mokejimailt_macro/classes/handler.php',         
+         'erLhcoreClassModelShopOrderItem' 		=> 'models/lhshop/erlhcoreclassmodelorderitem.php',
+         'erLhcoreClassModelShopBaseSetting' 	=> 'models/lhshop/erlhcoreclassmodelbasesetting.php',
+         'erLhcoreClassModelShopUserCredit' 	=> 'models/lhshop/erlhcoreclassmodelusercredit.php',
+         'erLhcoreClassModelShopUserCreditOrder'=> 'models/lhshop/erlhcoreclassmodelusercreditorder.php',
+         'erLhcoreClassShopMail'				=> 'core/lhshop/lhshopmail.php',
+         
+         // Paypal handler options
+         'erLhcoreClassShopPaymentHandlerPaypal' => 'core/lhshop/paymenthandlers/paypal_handler/classes/handler.php',
+        
+         
 );
     
 ?>

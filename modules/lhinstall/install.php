@@ -492,7 +492,110 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('watermark_data', 'a:9:{s:17:\"watermark_enabled\";b:0;s:21:\"watermark_enabled_all\";b:0;s:9:\"watermark\";s:0:\"\";s:6:\"size_x\";i:200;s:6:\"size_y\";i:50;s:18:\"watermark_disabled\";b:1;s:18:\"watermark_position\";s:12:\"bottom_right\";s:28:\"watermark_position_padding_x\";i:10;s:28:\"watermark_position_padding_y\";i:10;}', 0, 'Not shown public, editing is done in watermark module', 1),
 						('full_image_quality', '93', 0, 'Full image quality', 0);");
 
-					              
+
+				// Shop module
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_base_setting` (
+				  `identifier` varchar(100) NOT NULL,
+				  `value` varchar(100) NOT NULL,
+				  `explain` varchar(100) NOT NULL,
+				  PRIMARY KEY (`identifier`)
+				) ENGINE=MyISAM;");
+				
+				$db->query("INSERT INTO `lh_shop_base_setting` (`identifier`, `value`, `explain`) VALUES
+				('credit_price', '0.65', 'Credit price'),
+				('max_downloads', '2', 'How many downloads can be done using download URL'),
+				('main_currency', 'EUR', 'Shop base currency');");
+
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_basket_image` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `session_id` int(11) NOT NULL,
+				  `pid` int(11) NOT NULL,
+				  `variation_id` int(11) NOT NULL,
+				  PRIMARY KEY (`id`),
+				  KEY `session_id` (`session_id`)
+				) ENGINE=MyISAM");
+				
+				
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_basket_session` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `user_id` int(11) NOT NULL,
+				  `session_hash_crc32` bigint(20) NOT NULL,
+				  `session_hash` varchar(40) NOT NULL,
+				  `mtime` int(11) NOT NULL,
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM");
+				
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_image_variation` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `width` int(11) NOT NULL,
+				  `height` int(11) NOT NULL,
+				  `name` varchar(50) NOT NULL,
+				  `credits` int(11) NOT NULL,
+				  `position` int(11) NOT NULL DEFAULT '0',
+				  `type` int(11) NOT NULL DEFAULT '0',
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM;");
+				
+				
+				$db->query("INSERT INTO `lh_shop_image_variation` (`id`, `width`, `height`, `name`, `credits`, `position`, `type`) VALUES
+				(1, 800, 800, 'Small', 3, 20, 0),
+				(3, 480, 480, 'Extra small', 1, 10, 0),
+				(4, 1414, 1414, 'Medium', 4, 30, 0),
+				(5, 1825, 1825, 'Large', 5, 40, 0),
+				(6, 0, 0, 'Original', 11, 60, 1);");
+				
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_order` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `order_time` int(11) NOT NULL,
+				  `user_id` int(11) NOT NULL,
+				  `status` int(11) NOT NULL DEFAULT '0',
+				  `basket_id` int(11) NOT NULL,
+				  `email` varchar(100) NOT NULL,
+				  `payment_gateway` varchar(100) NOT NULL,
+				  `currency` varchar(3) NOT NULL,
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM;");
+				
+				
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_order_item` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `order_id` int(11) NOT NULL,
+				  `pid` int(11) NOT NULL,
+				  `image_variation_id` int(11) NOT NULL,
+				  `hash` varchar(40) NOT NULL,
+				  `credit_price` decimal(10,4) NOT NULL,
+				  `credits` int(11) NOT NULL,
+				  `download_count` int(11) NOT NULL,
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM;");
+				
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_payment_setting` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `identifier` varchar(50) NOT NULL,
+				  `param` varchar(50) NOT NULL,
+				  `value` varchar(100) NOT NULL,
+				  PRIMARY KEY (`id`),
+				  KEY `identifier` (`identifier`,`param`)
+				) ENGINE=MyISAM ;");
+				
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_user_credit` (
+				  `user_id` int(11) NOT NULL,
+				  `credits` int(11) NOT NULL DEFAULT '0',
+				  PRIMARY KEY (`user_id`)
+				) ENGINE=MyISAM;");
+				
+				
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_user_credit_order` (
+				  `id` int(11) NOT NULL AUTO_INCREMENT,
+				  `user_id` int(11) NOT NULL,
+				  `credits` int(11) NOT NULL,
+				  `status` int(11) NOT NULL,
+				  `date` int(11) NOT NULL,
+				  `payment_gateway` varchar(100) NOT NULL,
+				  `currency` varchar(3) NOT NULL,
+				  PRIMARY KEY (`id`)
+				) ENGINE=MyISAM;");
+					
                 $db->query("CREATE VIEW `sphinxseearch` AS SELECT `lh_gallery_images`.`pid` AS `id`,`lh_gallery_images`.`pid` AS `pid`,`lh_gallery_images`.`hits` AS `hits`,`lh_gallery_images`.`title` AS `title`,`lh_gallery_images`.`mtime` AS `mtime`,`lh_gallery_images`.`keywords` AS `keywords`,`lh_gallery_images`.`caption` AS `caption`,`lh_gallery_images`.`comtime` AS `comtime`,`lh_gallery_images`.`pic_rating` AS `pic_rating`,`lh_gallery_images`.`votes` AS `votes`,replace(replace(`lh_gallery_images`.`filepath`,'/',' '),'-',' ') AS `file_path`,replace(replace(`lh_gallery_images`.`filename`,'-',' '),'_',' ') AS `filename`,`lh_gallery_albums`.`title` AS `album_title`,`lh_gallery_albums`.`keyword` AS `album_keyword`,`lh_gallery_albums`.`description` AS `album_description`,`lh_gallery_categorys`.`name` AS `category_name`,`lh_gallery_categorys`.`description` AS `category_description`,concat(`lh_gallery_images`.`pwidth`,'x',`lh_gallery_images`.`pheight`) AS `pdimension` from ((`lh_gallery_images` left join `lh_gallery_albums` on((`lh_gallery_images`.`aid` = `lh_gallery_albums`.`aid`))) left join `lh_gallery_categorys` on((`lh_gallery_categorys`.`cid` = `lh_gallery_albums`.`category`))) where (`lh_gallery_images`.`approved` = 1);");
                                                  
                 $RoleFunction = new erLhcoreClassModelRoleFunction();

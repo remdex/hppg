@@ -1,7 +1,5 @@
 <?php
 
-
-
 $star_microtile = microtime();
 function set_time ( $start_time, $end_time )
 {
@@ -55,5 +53,5 @@ if (isset($Result['pagelayout']))
 }
 
 echo $tpl->fetch();
-
+   
 ?>

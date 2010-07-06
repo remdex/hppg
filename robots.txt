@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /
 Disallow: /gallery/sharehtml/
 Disallow: /gallery/sharephpbb/
 

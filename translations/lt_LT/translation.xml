@@ -44,6 +44,563 @@
         <source>Manage personal albums</source>
         <translation>Tvarkyti asmeninius albumus</translation>
     </message>
+    <message>
+        <source>My account</source>
+        <translation>Mano paskyra</translation>
+    </message>
+</context>
+<context>
+    <name>shop/mycredits</name>
+    <message>
+        <source>My credits balanse</source>
+        <translation>Mano kreditų balansas</translation>
+    </message>
+    <message>
+        <source>My credits</source>
+        <translation>Mano kreditai</translation>
+    </message>
+    <message>
+        <source>You have</source>
+        <translation>Jūs turite</translation>
+    </message>
+    <message>
+        <source>in your account</source>
+        <translation>savo paskyroje</translation>
+    </message>
+    <message>
+        <source>Buy credits</source>
+        <translation>Pirkti kreditus</translation>
+    </message>
+</context>
+<context>
+    <name>shop/paymentoption</name>
+    <message>
+        <source>Payment option</source>
+        <translation>Apmokėjimo būdas</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El. paštas</translation>
+    </message>
+    <message>
+        <source>Choose payment method</source>
+        <translation>Pasirinkti apmokėjimo metodą</translation>
+    </message>
+    <message>
+        <source>Credits based</source>
+        <translation>Kreditais pagrįstas</translation>
+    </message>
+    <message>
+        <source>Checkout using Paypal</source>
+        <translation>Paypal mokėjimo sistema</translation>
+    </message>
+</context>
+<context>
+    <name>shop/buycredits</name>
+    <message>
+        <source>Buy credits</source>
+        <translation>Pirkti kreditus</translation>
+    </message>
+    <message>
+        <source>How many credits do want to boy?</source>
+        <translation>Kiek kreditų norite pirkti?</translation>
+    </message>
+    <message>
+        <source>Choose payment method</source>
+        <translation>Pasirinkti apmokėjimo metodą</translation>
+    </message>
+</context>
+<context>
+    <name>paypal_handler/review</name>
+    <message>
+        <source>Order payment confirmation</source>
+        <translation>Užsakymo apmokėjimo patvirtinimas</translation>
+    </message>
+    <message>
+        <source>Order amount</source>
+        <translation>Užsakymo suma</translation>
+    </message>
+    <message>
+        <source>Confirm payment</source>
+        <translation>Patvirtinti apmokėjimą</translation>
+    </message>
+    <message>
+        <source>Thank you for your payment!</source>
+        <translation>Ačiū už Jūsų apmokėjimą!</translation>
+    </message>
+    <message>
+        <source>credits</source>
+        <translation>kreditai</translation>
+    </message>
+</context>
+<context>
+    <name>shop/cancel</name>
+    <message>
+        <source>Paypal payment was canceled.</source>
+        <translation>Apmokėjimas paypal sistema buvo atšauktas</translation>
+    </message>
+    <message>
+        <source>Payment canceled</source>
+        <translation>Apmokėjimas atšauktas</translation>
+    </message>
+</context>
+<context>
+    <name>shop/error</name>
+    <message>
+        <source>Error</source>
+        <translation>Klaida</translation>
+    </message>
+    <message>
+        <source>Execution was terminated unexpectedly.</source>
+        <translation>Įvyko klaida bandant atsiskaityti.</translation>
+    </message>
+</context>
+<context>
+    <name>shop/settingedit</name>
+    <message>
+        <source>Edit</source>
+        <translation>Redagavimas</translation>
+    </message>
+</context>
+<context>
+    <name>paypal_handler/process</name>
+    <message>
+        <source>Checkout using Paypal</source>
+        <translation>Atsiskaitymas naudojant Paypal mokėjimo sistema</translation>
+    </message>
+    <message>
+        <source>Buyer's Email</source>
+        <translation>Pirkėjo el. pašto adresas</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation>Suma</translation>
+    </message>
+    <message>
+        <source>Currency</source>
+        <translation>Valiuta</translation>
+    </message>
+</context>
+<context>
+    <name>shop/orderedit</name>
+    <message>
+        <source>Version</source>
+        <translation>Versija</translation>
+    </message>
+    <message>
+        <source>Order view</source>
+        <translation>Užsakymo peržiūra</translation>
+    </message>
+    <message>
+        <source>Order time</source>
+        <translation>Užsakymo laikas</translation>
+    </message>
+    <message>
+        <source>Order price</source>
+        <translation>Užsakymo kaina</translation>
+    </message>
+    <message>
+        <source>Order credits</source>
+        <translation>Užsakymo kreditai</translation>
+    </message>
+    <message>
+        <source>Order status</source>
+        <translation>Užsakymo būsena</translation>
+    </message>
+    <message>
+        <source>Payed.</source>
+        <translation>Apmokėta.</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Patvirtintas</translation>
+    </message>
+    <message>
+        <source>Ordered items</source>
+        <translation>Užsakyti dalykai</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Versija</translation>
+    </message>
+    <message>
+        <source>Image size</source>
+        <translation>Paveikslėlio dydis</translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation>Formatas</translation>
+    </message>
+    <message>
+        <source>Price</source>
+        <translation>Kaina</translation>
+    </message>
+    <message>
+        <source>Download count</source>
+        <translation>Parsisiuntimų skaičius</translation>
+    </message>
+    <message>
+        <source>Downloads left</source>
+        <translation>Liko parsisiuntimų</translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation>Kreditai</translation>
+    </message>
+</context>
+<context>
+    <name>credits_handler/accept</name>
+    <message>
+        <source>Order succesfull</source>
+        <translation>Užsakymas sėkmingas</translation>
+    </message>
+    <message>
+        <source>Payment was succesfull</source>
+        <translation>Apmokėjimas sėkmingas</translation>
+    </message>
+</context>
+<context>
+    <name>credits_handler/process</name>
+    <message>
+        <source>Checkout</source>
+        <translation>Apmokėjimas</translation>
+    </message>
+    <message>
+        <source>Checkout using credits from account</source>
+        <translation>Atsiskaityti paskyroje esančiais kreditais</translation>
+    </message>
+    <message>
+        <source>Not enouth credits to checkout</source>
+        <translation>Nepakankamas kreditų skaičius</translation>
+    </message>
+    <message>
+        <source>Confirm payment</source>
+        <translation>Patvirtinti apmokėjimą</translation>
+    </message>
+</context>
+<context>
+    <name>shop/orderslist</name>
+    <message>
+        <source>Orders list</source>
+        <translation>Užsakymų sąrašas</translation>
+    </message>
+    <message>
+        <source>User orders list</source>
+        <translation>Vartotojo užsakymų sąrašas</translation>
+    </message>
+    <message>
+        <source>User credits orders list</source>
+        <translation>Vartotojo kreditų užsakymų sąrašas</translation>
+    </message>
+    <message>
+        <source>Orders credits list</source>
+        <translation>Kreditų užsakymų sąrašas</translation>
+    </message>
+    <message>
+        <source>No orders...</source>
+        <translation>Nėra užsakymų...</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
+    </message>
+    <message>
+        <source>E-mail</source>
+        <translation>El. paštas</translation>
+    </message>
+    <message>
+        <source>Order price</source>
+        <translation>Užsakymo kaina</translation>
+    </message>
+    <message>
+        <source>Order credits</source>
+        <translation>Užsakymo kreditai</translation>
+    </message>
+    <message>
+        <source>Order status</source>
+        <translation>Užsakymo būsena</translation>
+    </message>
+    <message>
+        <source>Payed.</source>
+        <translation>Apmokėta</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Patvirtintas</translation>
+    </message>
+    <message>
+        <source>Order view</source>
+        <translation>Užsakymo peržiūra</translation>
+    </message>
+</context>
+<context>
+    <name>shop/settinglist</name>
+    <message>
+        <source>Shop config list</source>
+        <translation>Parduotuvės nustatymų sąrašas</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>Identifikatorius</translation>
+    </message>
+    <message>
+        <source>Explain</source>
+        <translation>Paaiškinimas</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Reikšmė</translation>
+    </message>
+    <message>
+        <source>Edit value</source>
+        <translation>Redaguoti reikšmę</translation>
+    </message>
+</context>
+<context>
+    <name>shop/paymentoptioncredit</name>
+    <message>
+        <source>Payment option</source>
+        <translation>Apmokėjimas būdas</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Tęsti</translation>
+    </message>
+    <message>
+        <source>Checkout using Paypal</source>
+        <translation>Atsiskaitymas naudojant Paypal sistemą</translation>
+    </message>
+</context>
+<context>
+    <name>shop/orderview</name>
+    <message>
+        <source>Order view</source>
+        <translation>Užsakymo peržiūra</translation>
+    </message>
+    <message>
+        <source>Order time</source>
+        <translation>Užsakymo laikas</translation>
+    </message>
+    <message>
+        <source>Order price</source>
+        <translation>Užsakymo kaina</translation>
+    </message>
+    <message>
+        <source>Order credits</source>
+        <translation>Užsakymo kreditai</translation>
+    </message>
+    <message>
+        <source>Payed</source>
+        <translation>Apmokėta</translation>
+    </message>
+    <message>
+        <source>Order status</source>
+        <translation>Užsakymo būsena</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Patvirtinta</translation>
+    </message>
+    <message>
+        <source>Ordered items</source>
+        <translation>Užsakyti dalykai</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Versija</translation>
+    </message>
+    <message>
+        <source>Image size</source>
+        <translation>Paveikslėlio dydis</translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation>Formatas</translation>
+    </message>
+    <message>
+        <source>Price</source>
+        <translation>Kaina</translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation>Kreditai</translation>
+    </message>
+    <message>
+        <source>downloads left</source>
+        <translation>parsisiuntimų liko</translation>
+    </message>
+    <message>
+        <source>No downloads available</source>
+        <translation>Parsisiuntimų nėra</translation>
+    </message>
+    <message>
+        <source>Download image</source>
+        <translation>Parsisiųsti paveiksliuką</translation>
+    </message>
+    <message>
+        <source>Download count</source>
+        <translation>Parsisiuntimų skaičius</translation>
+    </message>
+    <message>
+        <source>Downloads left</source>
+        <translation>Liko parsisiuntimų</translation>
+    </message>
+</context>
+<context>
+    <name>shop/basket</name>
+    <message>
+        <source>Basket</source>
+        <translation>Krepšelis</translation>
+    </message>
+    <message>
+        <source>Remove from basket</source>
+        <translation>Pašalinti iš krepšelio</translation>
+    </message>
+    <message>
+        <source>Choose payment option</source>
+        <translation>Pasirinkite mokėjimo būdą</translation>
+    </message>
+    <message>
+        <source>In order to checkout atlest one item have to be selected.</source>
+        <translation>Norėdami pirkti turite pasirinkti bent vieną produktą.</translation>
+    </message>
+    <message>
+        <source>In order to checkout you have to</source>
+        <translation>Norėdami pirkti turite</translation>
+    </message>
+    <message>
+        <source>sign in</source>
+        <translation>užsiregistruoti</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>arba</translation>
+    </message>
+    <message>
+        <source>login</source>
+        <translation>prisijungti</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Versija</translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation>Formatas</translation>
+    </message>
+    <message>
+        <source>Price</source>
+        <translation>Kaina</translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation>Kreditai</translation>
+    </message>
+    <message>
+        <source>Image size</source>
+        <translation>Paveikslėlio dydis</translation>
+    </message>
+    <message>
+        <source>if you have already created an account</source>
+        <translation>jei jau esate užsiregistravę</translation>
+    </message>
+</context>
+<context>
+    <name>shop/imagevariationform</name>
+    <message>
+        <source>Credits</source>
+        <translation>Kreditai</translation>
+    </message>
+    <message>
+        <source>Applies to original</source>
+        <translation>Taikoma originalui</translation>
+    </message>
+    <message>
+        <source>Max height in pixels</source>
+        <translation>Maksimalus aukštis pikseliai</translation>
+    </message>
+    <message>
+        <source>Max width in pixels</source>
+        <translation>Maksimalus plotis pikseliais</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Pavadinimai</translation>
+    </message>
+    <message>
+        <source>Please enter variation name!</source>
+        <translation>Prašome įvesti variacijos pavadinimą!</translation>
+    </message>
+    <message>
+        <source>Please enter width!</source>
+        <translation>Prašome įvesti plotį!</translation>
+    </message>
+    <message>
+        <source>Please enter height!</source>
+        <translation>Prašome įvesti aukštį!</translation>
+    </message>
+    <message>
+        <source>Please enter credit number!</source>
+        <translation>Prašome įvesti kreditų skaičių!</translation>
+    </message>
+    <message>
+        <source>Please enter variation position!</source>
+        <translation>Prašome įvesti poziciją!</translation>
+    </message>
+</context>
+<context>
+    <name>shop/imagevariationnew</name>
+    <message>
+        <source>New</source>
+        <translation>Nauja</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>Saugoti</translation>
+    </message>
+    <message>
+        <source>New image variation</source>
+        <translation>Naujas paveiksliuko variacija</translation>
+    </message>
+</context>
+<context>
+    <name>shop/myorders</name>
+    <message>
+        <source>My orders</source>
+        <translation>Mano užsakymai</translation>
+    </message>
+    <message>
+        <source>My credits orders</source>
+        <translation>Mano kreditų užsakymai</translation>
+    </message>
+    <message>
+        <source>Date</source>
+        <translation>Data</translation>
+    </message>
+    <message>
+        <source>Order price</source>
+        <translation>Užsakymo kaina</translation>
+    </message>
+    <message>
+        <source>Order credits</source>
+        <translation>Užsakymo kreditai</translation>
+    </message>
+    <message>
+        <source>Order status</source>
+        <translation>Užsakymo būsena</translation>
+    </message>
+    <message>
+        <source>Payed</source>
+        <translation>Apmokėta</translation>
+    </message>
+    <message>
+        <source>Confirmed</source>
+        <translation>Patvirtinta</translation>
+    </message>
+    <message>
+        <source>Order view</source>
+        <translation>Užsakymo periūra</translation>
+    </message>
 </context>
 <context>
     <name>systemconfig/list</name>
@@ -1325,6 +1882,34 @@
         <translation>Įtraukti į mėgstamiausius</translation>
     </message>
     <message>
+        <source>Version</source>
+        <translation>Versija</translation>
+    </message>
+    <message>
+        <source>Image size</source>
+        <translation>Paveikslėlio dydis</translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation>Formatas</translation>
+    </message>
+    <message>
+        <source>Price</source>
+        <translation>Kaina</translation>
+    </message>
+    <message>
+        <source>credits</source>
+        <translation>kreditai</translation>
+    </message>
+    <message>
+        <source>Remove from basket</source>
+        <translation>Pašalinti iš krepšelio</translation>
+    </message>
+    <message>
+        <source>Add to basket</source>
+        <translation>Įdėti į krepšelį</translation>
+    </message>
+    <message>
         <source>Share this page HTML code</source>
         <translation>Dalintis HTML kodu</translation>
     </message>
@@ -1705,6 +2290,161 @@
     </message>
 </context>
 <context>
+    <name>shop/paymentoptionedit</name>
+    <message>
+        <source>Payment option edit</source>
+        <translation>Apmokėjimo būdo redagavimas</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>Identifikatorius</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation>Aktyvus</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message>
+    <message>
+        <source>Payment settings</source>
+        <translation>Apmokėjimo nustatymai</translation>
+    </message>
+</context>
+<context>
+    <name>shop/listpaymentoptions</name>
+    <message>
+        <source>Payment options</source>
+        <translation>Apmokėjimo būdai</translation>
+    </message>
+    <message>
+        <source>Identifier</source>
+        <translation>Identifikatorius</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation>Aktyvus</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation>Autorius</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Redaguoti</translation>
+    </message>
+</context>
+<context>
+    <name>shop/index</name>
+    <message>
+        <source>Shop</source>
+        <translation>Parduotuvė</translation>
+    </message>
+    <message>
+        <source>Credits orders list</source>
+        <translation>Kreditų užsakymų sąrašas</translation>
+    </message>
+    <message>
+        <source>Shop configuration</source>
+        <translation>Parduotuvės konfiguracija</translation>
+    </message>
+    <message>
+        <source>Images variations sizes</source>
+        <translation>Paveikslėlių variacijų dydžiai</translation>
+    </message>
+    <message>
+        <source>Orders list</source>
+        <translation>Užsakymo sąrašas</translation>
+    </message>
+    <message>
+        <source>Settings list</source>
+        <translation>Nustatymų sąrašas</translation>
+    </message>
+    <message>
+        <source>List payment options</source>
+        <translation>Apmokėjimų būdų sąrašas</translation>
+    </message>
+</context>
+<context>
+    <name>shop/imagevariation</name>
+    <message>
+        <source>Shop</source>
+        <translation>Parduotuvė</translation>
+    </message>
+    <message>
+        <source>Shop configuration</source>
+        <translation>Parduotuvės konfiguracija</translation>
+    </message>
+    <message>
+        <source>Images variations sizes</source>
+        <translation>Paveikslėlių variacijų dydžiai</translation>
+    </message>
+    <message>
+        <source>Variations list</source>
+        <translation>Variacijų sąrašas</translation>
+    </message>
+    <message>
+        <source>New variation</source>
+        <translation>Nauja variacija</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Pavadinimas</translation>
+    </message>
+    <message>
+        <source>Width</source>
+        <translation>Plotis</translation>
+    </message>
+    <message>
+        <source>Height</source>
+        <translation>Aukštis</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Trinti</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Redaguoti</translation>
+    </message>
+    <message>
+        <source>Applies to original</source>
+        <translation>Taikoma originalui</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Ne</translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation>Kreditai</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Taip</translation>
+    </message>
+</context>
+<context>
+    <name>shop/imagevariationedit</name>
+    <message>
+        <source>Shop</source>
+        <translation>Parduotuvė</translation>
+    </message> 
+    <message>
+        <source>Update</source>
+        <translation>Atnaujinti</translation>
+    </message> 
+    <message>
+        <source>Image variation edit</source>
+        <translation>Paveiksliuko variacijos redagavimas</translation>
+    </message> 
+</context>
+<context>
     <name>gallery/batchadd</name>
     <message>
         <source>Add images</source>
@@ -1762,8 +2502,28 @@
 <context>
     <name>pagelayout/pagelayout</name>
     <message>
+        <source>Shop</source>
+        <translation>Parduotuvė</translation>
+    </message>
+    <message>
+        <source>My credits orders</source>
+        <translation>Mano kreditų užsakymai</translation>
+    </message>
+    <message>
+        <source>Basket</source>
+        <translation>Krepšelis</translation>
+    </message>
+    <message>
         <source>Static articles</source>
         <translation>Statiniai straipsniai</translation>
+    </message>
+    <message>
+        <source>My orders</source>
+        <translation>Mano užsakymai</translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation>Kreditai</translation>
     </message>
     <message>
         <source>Statistic</source>
