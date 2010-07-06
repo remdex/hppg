@@ -15,6 +15,7 @@ return array (
       'nice_url_enabled' => false,
       'force_virtual_host' => false,
       'etag_caching_enabled' => false,
+      'redirect_mobile' => 'm',
       'default_www_user' => 'lighttpd',
       'default_www_group' => 'lighttpd',
       'debug_output' => false,
@@ -33,6 +34,7 @@ return array (
         0 => 'eng',
         1 => 'lit',
         2 => 'site_admin',
+        3 => 'm',
       ),
     ),
     'site_access_options' => 
@@ -53,6 +55,16 @@ return array (
         array (
           0 => 'frontend',
           1 => 'defaulttheme',
+        ),
+      ),
+      'm' => 
+      array (
+        'locale' => 'lt_LT',
+        'theme' => 
+        array (
+          0 => 'mobilefrontend',
+          1 => 'mobile',
+          2 => 'defaulttheme',
         ),
       ),
       'site_admin' => 
