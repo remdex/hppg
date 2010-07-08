@@ -84,12 +84,16 @@ $tpl->set('album',$AlbumData);
 $Result['content'] = $tpl->fetch();
 
 $pathObjects = array();
+$pathCategorys = array();
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$AlbumData->category);        
 foreach ($pathObjects as $pathItem)
 {
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name);
+   $pathCategorys[] = $pathItem->cid;
 }
  
 $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/managealbumimages/').$AlbumData->aid,'title' => $AlbumData->title); 
  
 $Result['path'] = $path;
+$Result['path_cid'] = $pathCategorys;
+$Result['album_id'] = $AlbumData->aid;

@@ -14,6 +14,10 @@ h1{font-size:14px;}
 h2{font-size:12px;}
 h3{font-size:12px;}
 div.top-menu{border-bottom:1px solid #D5D1CC;padding:2px;}
+div.top-menu{padding:2px;padding-left:3px;}
+div.top-menu ul li{float:left;padding-left:10px;}
+div.top-menu ul li a{font-weight:bold;color:#000000}
+
 
 div#path{font-weight:bold;padding-top:5px;padding-left:12px;}
 
@@ -906,3 +910,116 @@ a.progressCancel:hover {
 
 .album-search-row{padding-top:5px;}
 .directory-input-list li.dir-item{border-bottom:1px solid #CCCCCC;padding-top:5px;}
+
+
+
+#categories
+{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+#categories ul
+{
+list-style-type: none;
+text-align: left;
+margin:0;
+padding:0;
+}
+#categories ul li{
+padding-left:15px;
+}
+
+#categories ul li a
+{
+text-align: left;
+font: bold 11px verdana;
+text-decoration: none;
+color:#40353d;
+}
+
+#categories ul li a.selected, 
+#categories ul li a:hover
+{
+color:#4D8F35;
+text-decoration:none;
+}
+
+#categories ul li a#current
+{
+color:#4D8F35;
+text-decoration:underline;
+}
+span.dvmid {
+	background: url(../images/gallery/mid.gif) no-repeat center center;
+	padding-right:14px;
+}
+span.dvlast {
+	background: url(../images/gallery/last.gif) no-repeat 0 2px;
+	padding-top:0px;
+	padding-right:8px;
+	padding-left:12px;
+	display:block;
+}
+span.none {
+	padding-right:12px;
+	padding-left:12px;
+}
+.sakaliukas {
+	padding:0;
+	margin:0;
+	overflow:hidden;
+	background-image: url(../images/gallery/vertical.gif);
+	background-repeat: repeat-y;
+	background-position: 18px 0px;
+}
+.dvcat {
+	background: url(../images/gallery/folder.gif) no-repeat center left;
+	padding-left:12px;
+	margin-left:3px;
+}
+.dvnone {
+	background: url(../images/gallery/horizontal.gif) no-repeat 0px 2px;
+	padding-left:12px;
+	display:block;
+}
+.dvalbum {
+	background: url(../images/gallery/album.gif) no-repeat 0 2px;
+	padding-left:12px;
+	margin-left:3px;
+	display:block;
+}
+a.sutraukti {
+	padding-right: 3px;
+	outline:0;
+}
+a.sutraukti img {
+	border:0;
+}
+a.isplesti {
+	padding-right: 3px;
+	outline:0;
+}
+a.isplesti img {
+	border:0;
+}
+.notransparent {
+	background-color: #ffffff;
+}
+
+
+
+/****/
+#rightclickarea{padding:50px 0;width:620px;text-align:center;border:1px solid #ccc;margin-top:10px;}
+.vmenu{
+border:1px solid #aaa;
+position:absolute;
+background:#fff;
+display:none;}
+.vmenu h3{background-color:#EEEEEE;font-size:11px;padding:2px;}
+.first_li{}
+.first_li span{width:100px;display:block;padding:5px 10px;cursor:pointer}
+.first_li span a{display:block;}
+.inner_li{display:none;margin-left:120px;position:absolute;border:1px solid #aaa;border-left:1px solid #ccc;margin-top:-28px;background:#fff;}
+.sep_li{border-top: 1px ridge #aaa;margin:5px 0}
+.fill_title{font-size:11px;font-weight:bold;/height:15px;/overflow:hidden;word-wrap:break-word;}
+

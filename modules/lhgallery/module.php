@@ -16,6 +16,12 @@ $ViewList['album'] = array(
     'uparams' => array('sort')
     );
     
+$ViewList['catjson'] = array( 
+    'script' => 'catjson.php',
+    'functions' => array( 'administrate' ),
+    'params' => array('category_id')
+    );
+    
 $ViewList['albumrss'] = array( 
     'script' => 'albumrss.php',
     'params' => array('album_id')

@@ -6,4 +6,5 @@ $AlbumData = $Params['user_object'];
 
 $tpl->set('album',$AlbumData);
 $Result['content'] = $tpl->fetch();
+$Result['album_id'] = $AlbumData->aid;
 

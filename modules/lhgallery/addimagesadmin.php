@@ -16,10 +16,14 @@ $Result['additional_js'] = '<script type="text/javascript" language="javascript"
                             <script type="text/javascript" language="javascript" src="'.erLhcoreClassDesign::design('js/swfupload/plugins/handlers.js').'"></script>';
 
 $pathObjects = array();
+$pathCategorys = array();
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$AlbumData->category);        
 foreach ($pathObjects as $pathItem)
 {
    $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+   $pathCategorys[] = $pathItem->cid; 
 }
 
 $Result['path'] = $path;
+$Result['path_cid'] = $pathCategorys;
+$Result['album_id'] = $AlbumData->aid;

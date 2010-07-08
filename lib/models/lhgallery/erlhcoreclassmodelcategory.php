@@ -33,9 +33,11 @@ class erLhcoreClassModelGalleryCategory {
    public static function isCategoryOwner($aid,$skipChecking = false)
    {
        $category = erLhcoreClassModelGalleryCategory::fetch($aid);
-       
+                   
        if ($skipChecking==true) return $category;
+         
        
+         
        $currentUser = erLhcoreClassUser::instance();              
        if ($category->owner_id == $currentUser->getUserID()) return $category;
         
@@ -91,7 +93,7 @@ class erLhcoreClassModelGalleryCategory {
        $albums = erLhcoreClassGallery::getSession()->getRelatedObjects( $this, "erLhcoreClassModelGalleryAlbum" );
        foreach ($albums as $album) 
        {
-           $image->removeThis();
+           $album->removeThis();
        }
         
        $parentCategorys = erLhcoreClassGallery::getSession()->getRelatedObjects( $this, "erLhcoreClassModelGalleryCategory" ); 

@@ -17,10 +17,15 @@ $Result['content'] = $tpl->fetch();
 $path = array();
 $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbumimages','Home')); 
 $pathObjects = array();
-erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Album->category);        
+erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Album->category);   
+ 
+$pathCategorys = array();      
 foreach ($pathObjects as $pathItem)
 {
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name);
+   $pathCategorys[] = $pathItem->cid; 
 }
 
 $Result['path'] = $path;
+$Result['path_cid'] = $pathCategorys;
+$Result['album_id'] = $Album->aid;

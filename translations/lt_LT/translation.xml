@@ -2506,8 +2506,36 @@
         <translation>Parduotuvė</translation>
     </message>
     <message>
-        <source>My credits orders</source>
-        <translation>Mano kreditų užsakymai</translation>
+        <source>Open</source>
+        <translation>Atidaryti</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>Redaguoti</translation>
+    </message>
+    <message>
+        <source>New album</source>
+        <translation>Naujas albumas</translation>
+    </message>
+    <message>
+        <source>Delete album</source>
+        <translation>Trinti albumą</translation>
+    </message>
+    <message>
+        <source>Delete category</source>
+        <translation>Trinti kategorija</translation>
+    </message>
+    <message>
+        <source>Add images</source>
+        <translation>Paveikslėlių įkėlimas</translation>
+    </message>
+    <message>
+        <source>New category</source>
+        <translation>Nauja kategorija</translation>
+    </message>
+    <message>
+        <source>Root category</source>
+        <translation>Pagrindinė kategorija</translation>
     </message>
     <message>
         <source>Basket</source>

@@ -10,9 +10,12 @@ if (is_numeric($Params['user_parameters']['category_id']) && $Params['user_param
     $Category = erLhcoreClassModelGalleryCategory::fetch($Params['user_parameters']['category_id']);
     $tpl->set('category',$Category);
     $pathObjects = array();
-    erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Category->cid);        
+    erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Category->cid);  
+     
+    $pathCategorys = array();     
     foreach ($pathObjects as $pathItem)
     {
+       $pathCategorys[] = $pathItem->cid; 
        $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
     }
     
@@ -23,6 +26,7 @@ if (is_numeric($Params['user_parameters']['category_id']) && $Params['user_param
 
 $Result['content'] = $tpl->fetch();
 $Result['path'] = $path;
+$Result['path_cid'] = $pathCategorys;
 
 
 
