@@ -58,10 +58,9 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 				if (arYra == 0) {
 					masyvas[masyvas.length] = $(linkas).attr('href').substr(4);
 					var sausainis = masyvas.join(",");
-					$.cookie("category", sausainis, { path: '/', expires: 7 });
+					jQuery.cookie("category", sausainis, { path: '/', expires: 7 });
 				}
-			} else {
-				$.cookie("category", $(linkas).attr('href').substr(4), { path: '/', expires: 7 });
+			} else {				jQuery.cookie("category", $(linkas).attr('href').substr(4), { path: '/', expires: 7 });
 			}
 			event.preventDefault();
 		} else if ($(this).hasClass('sutraukti')) {
@@ -69,10 +68,11 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 			$(this).removeClass("sutraukti");
 			$(this).addClass("isplesti");
 			$(this).parent().removeClass('sakaliukas');
-			if ($(this).hasClass('last'))
-				$(this).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/plus2.gif');?>' alt='' align='top' />");
-			else
-				$(this).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/plus.gif');?>' alt='' align='top' />");
+			if ($(this).hasClass('last')){
+				$(this).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/plus2.gif');?>' alt='' align='top' />");}
+			else{
+				$(this).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/plus.gif');?>' alt='' align='top' />");}
+				
 			var sausainis = $.cookie("category");
 			if (sausainis) {
 				var masyvas = $.cookie("category").split(",");
@@ -179,10 +179,10 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 				htmlul.addClass("notransparent");
 			$(linkas).removeClass("isplesti");
 			$(linkas).addClass("sutraukti");
-			if ($(linkas).hasClass('last'))
+			if ($(linkas).hasClass('last')){
 				$(linkas).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/minus2.gif');?>' alt='' align='top' />");
-			else
-				$(linkas).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/minus.gif');?>' alt='' align='top' />");
+			}else{
+				$(linkas).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/minus.gif');?>' alt='' align='top' />");}
 			$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/catjson/')?>"+$(linkas).attr('href'), function(data) {
 				$(data).each(function(index) {
 					var html = $(document.createElement('li'));
