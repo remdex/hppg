@@ -18,6 +18,8 @@ return array (
       'redirect_mobile' => 'm',
       'default_www_user' => 'lighttpd',
       'default_www_group' => 'lighttpd',
+      'StorageDirPermissions' => 0777,
+	  'StorageFilePermissions' => 0666,
       'debug_output' => false,
       'public_category_id' => 28,
       'delay_image_hit_enabled' => false,
