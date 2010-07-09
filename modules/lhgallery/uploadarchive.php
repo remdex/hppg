@@ -19,7 +19,10 @@ if (count($objects) == 1)
 	   try {	
 	   	    
 	       $fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(40);	       	       
-	       move_uploaded_file($_FILES["Filedata"]["tmp_name"],'var/archives/'.$fileNamePhysic.'.zip');	       	  
+	       move_uploaded_file($_FILES["Filedata"]["tmp_name"],'var/archives/'.$fileNamePhysic.'.zip');	
+		   $config = erConfigClassLhConfig::getInstance();
+		   chmod('var/archives/'.$fileNamePhysic.'.zip',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+	           	  
 	       $archive->filename = $fileNamePhysic.'.zip';	 	       
 	       $archive->album_name = (isset($_POST['title']) && $_POST['title'] != '') ? $_POST['title'] : '';
 	       $archive->album_id = (isset($_POST['album_id']) && $_POST['album_id'] > 0) ? $_POST['album_id'] : 0;

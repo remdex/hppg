@@ -10,7 +10,10 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
        $fileName = basename($imagePath);
        
        if (!file_exists($photoDir.'/normal_'.$fileName) && !file_exists($photoDir.'/normal_'.$fileName))
-       {       
+       {      
+       	
+       	   $config = erConfigClassLhConfig::getInstance();
+       		 
            $session = erLhcoreClassGallery::getSession();
            $image = new erLhcoreClassModelGalleryImage();
            $image->aid = $AlbumData->aid;       
@@ -18,12 +21,16 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $imagePath, $photoDir.'/normal_'.$fileName ); 
            erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $imagePath, $photoDir.'/thumb_'.$fileName); 
            
+           chmod($photoDir.'/normal_'.$fileName,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+	       chmod($photoDir.'/thumb_'.$fileName,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+           
            //Apply watermark if needed
            $dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	    
               
 	       // If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
 	       if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
             	erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $imagePath, $imagePath ); 
+            	chmod($imagePath,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
            }
                      
            $image->filesize = filesize($photoDir.'/'.$fileName);

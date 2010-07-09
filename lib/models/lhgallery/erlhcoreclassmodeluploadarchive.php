@@ -71,6 +71,8 @@ class erLhcoreClassModelGalleryUploadArchive {
    		} else {   		
    			$album = erLhcoreClassModelGalleryAlbum::fetch($this->album_id);   			   			
    		}
+   		
+   		$config = erConfigClassLhConfig::getInstance();
    		 	   			 
    		while( $archive->valid() )
 		{
@@ -81,7 +83,7 @@ class erLhcoreClassModelGalleryUploadArchive {
 			if ($entry->isFile())
 			{
 				if (!file_exists("var/tmpfiles/".$this->id))
-				mkdir("var/tmpfiles/".$this->id,0777);
+				mkdir("var/tmpfiles/".$this->id,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
 				    					
 				$pathExtracted = "var/tmpfiles/{$this->id}/" . $entry->getPath();								
 				$archive->extractCurrent( "var/tmpfiles/{$this->id}/" );
@@ -96,14 +98,14 @@ class erLhcoreClassModelGalleryUploadArchive {
 
 				    	$photoDir = 'albums/userpics/'.$this->user_id;
 				    	if (!file_exists($photoDir)) {
-				    		mkdir($photoDir,0777);
+				    		mkdir($photoDir,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
 				    		chown($photoDir,$wwwUser);
 				    		chgrp($photoDir,$wwwUserGroup);
 				    	}
 
 				    	$photoDir = 'albums/userpics/'.$this->user_id.'/'.$album->aid;
 				    	if (!file_exists($photoDir)) {
-				    		mkdir($photoDir,0777);				    		
+				    		mkdir($photoDir,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));				    		
 				    		chown($photoDir,$wwwUser);
 				    		chgrp($photoDir,$wwwUserGroup);
 				    	}
@@ -136,9 +138,9 @@ class erLhcoreClassModelGalleryUploadArchive {
 				    	chgrp($photoDir.'/normal_'.$fileNamePhysic,$wwwUserGroup);
 				    	chgrp($photoDir.'/thumb_'.$fileNamePhysic,$wwwUserGroup);
 				    					    					    	
-				    	chmod($photoDir.'/'.$fileNamePhysic,0664);
-				    	chmod($photoDir.'/normal_'.$fileNamePhysic,0664);
-				    	chmod($photoDir.'/thumb_'.$fileNamePhysic,0664);
+				    	chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+				    	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+				    	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
 				    	
 				    	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
 				    	$image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);

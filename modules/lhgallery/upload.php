@@ -21,13 +21,16 @@ if (count($objects) == 1)
 	    	        
 	   try {
 	    
+	   	   $config = erConfigClassLhConfig::getInstance();
+	   	
 	       $photoDir = 'albums/userpics/'.$fileSession->user_id;
 	       if (!file_exists($photoDir))
-	       mkdir($photoDir,0777);
+	       mkdir($photoDir,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
+	       
 	       
 	       $photoDir = 'albums/userpics/'.$fileSession->user_id.'/'.$fileSession->album_id;
 	       if (!file_exists($photoDir))
-	       mkdir($photoDir,0777);	       
+	       mkdir($photoDir,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));	       
 	       
 	       $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']);
 	       
@@ -37,6 +40,9 @@ if (count($objects) == 1)
 	       
 	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $_FILES['Filedata']['tmp_name'], $photoDir.'/normal_'.$fileNamePhysic ); 
 	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $_FILES['Filedata']['tmp_name'], $photoDir.'/thumb_'.$fileNamePhysic ); 
+	       	       
+	       chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+	       chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
 	       
 	       $dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
 	       // If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
@@ -45,6 +51,8 @@ if (count($objects) == 1)
            } else  {
 	       		move_uploaded_file($_FILES["Filedata"]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
            }
+           
+           chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
 	       
 	       $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
 	       $image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
