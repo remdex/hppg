@@ -10,3 +10,6 @@ Example:
 /etc/init.d/sphinx stop
 /usr/local/bin/indexer --config /usr/local/etc/sphinx.conf --all
 /etc/init.d/sphinx start
+
+Cronjob example command
+/usr/local/bin/indexer --config /usr/local/etc/sphinx.conf --all --rotate
