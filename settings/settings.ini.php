@@ -108,7 +108,7 @@ return array (
     ),
     'cacheEngine' => array(
         'cache_global_key'  => 'global_site_cache_key',
-        'className'         => false //'erLhcoreClassLhMemcache' //false if none
+        'className'         => false //'erLhcoreClassLhMemcache' //false if none 
     ),
     'memecache' => 
     array (
