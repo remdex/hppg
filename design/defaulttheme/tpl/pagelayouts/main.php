@@ -3,16 +3,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_head.tpl.php'));?>
-
-
 </head>
 <body>
 
 <div id="container">
+<div id="main-header-bg">
+<div id="topcontainer">
 
-<div id="main-header-bg"><div id="topcontainer">
 <div id="logo"><h1><a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?></a></h1></div>
 
 <div class="title-gallery">
@@ -107,7 +105,6 @@
 	</div>
 	
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_footer.tpl.php'));?>
-<br />
 
 </div>
 </body>

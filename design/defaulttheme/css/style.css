@@ -642,3 +642,6 @@ float:right;
 .ad-phpbb{background:url(../images/icons/phpbb45.png) no-repeat top left;width:16px;height:16px;float:left;cursor:pointer;}
 .control-block a{margin-right:5px;}
 .tib{text-align:center;padding-top:5px;}
+
+
+#preview{position:absolute;padding:5px;display:none;color:#fff;background-color:#EFEFEF;border:1px solid #3F3F3F;}

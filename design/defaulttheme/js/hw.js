@@ -114,6 +114,30 @@ var hw = {
 		$.getJSON(this.formAddPath + this.deletefavorite+pid, {} , function(data) {				
 			$('#image_thumb_'+pid).fadeOut();            	
 		});
+	},
+	
+	imagePreview : function()
+	{
+		xOffset = -10;
+		yOffset = 10;
+		// you might want to adjust to get the right result
+		$(".image-thumb a").hover(		
+			function(e){						
+				$("body").append("<p id=\"preview\"><img src='"+ this.rel +"' akt=\"\" /></p>");
+				$("#preview").css("top",(e.pageY - xOffset) + "px").css("left",(e.pageX + yOffset) + "px").fadeIn("fast");				
+			},				
+			function(){		
+				$("#preview").remove();		
+			}		
+		);
+				
+		$(".image-thumb a").mousemove(function(e){
+			$("#preview").css("top",(e.pageY - xOffset) + "px").css("left",(e.pageX + yOffset) + "px");
+		});
+		
+		$('.thumb-attr a').each(function(index) {	
+			$(this).attr('href',$('#pic_'+$(this).attr('id')).attr('href'));
+		})
 	}
 		
 }

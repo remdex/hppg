@@ -119,7 +119,6 @@
 	</div>
 	
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_footer.tpl.php'));?>
-<br />
 
 </div>
 </body>
