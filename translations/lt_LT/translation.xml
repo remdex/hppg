@@ -3118,6 +3118,18 @@
         <source>New user</source>
         <translation>Naujas vartotojas</translation>
     </message>
+    <message>
+        <source>Go to page %item of %numpages</source>
+        <translation>Eiti į %item puslapį iš %numpages</translation>
+    </message>
+       <message>
+        <source>Next</source>
+        <translation>Kitas</translation>
+    </message>
+    <message>
+        <source>Previous</source>
+        <translation>Ankstesnis</translation>
+    </message>
 </context>
 <context>
     <name>user/edit</name>
