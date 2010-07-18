@@ -1,10 +1,13 @@
 <?php
+
+	$CategoryID = (int)$Params['user_parameters']['category_id'];
+	
 	$masyvas = array();
-	$albums = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 1000,'filter' => array('category' => (int)$_GET['id'])));
+	$albums = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 1000,'filter' => array('category' => $CategoryID)));
 	foreach($albums as $album) {
 		$masyvas[] = array("id" => $album->aid, "name" => $album->title, "type" => 1);
 	}
-	$cats = erLhcoreClassModelGalleryCategory::getParentCategories((int)$_GET['id']);
+	$cats = erLhcoreClassModelGalleryCategory::getParentCategories($CategoryID);
 	foreach($cats as $cat) {
 		$subalbums = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 1000,'filter' => array('category' => $cat->cid)));
 		$subcats = erLhcoreClassModelGalleryCategory::getParentCategories($cat->cid);

@@ -1,5 +1,7 @@
 <?php
 
+try {
+	
 $cfgSite = erConfigClassLhConfig::getInstance();
 
 if ($cfgSite->conf->getSetting( 'site', 'installed' ) == true)
@@ -657,10 +659,11 @@ switch ((int)$Params['user_parameters']['step_id']) {
 		break;
 }
 
-
-
 $Result['content'] = $tpl->fetch();
 $Result['pagelayout'] = 'install';
-$Result['path'] = array(array('title' => 'High performance photo gallery install'))
+$Result['path'] = array(array('title' => 'High performance photo gallery install'));
 
+} catch (Exception $e){
+	echo "Make sure that &quot;cache/*&quot; is writable and then <a href=\"".erLhcoreClassDesign::baseurl('install/install')."\">try again</a>";
+}
 ?>

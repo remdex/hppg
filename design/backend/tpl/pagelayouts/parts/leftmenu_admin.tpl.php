@@ -13,7 +13,7 @@ if (count($items) > 0) {
 				$subcat = erLhcoreClassModelGalleryCategory::getParentCategories($item->cid);
 				$subalbum = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $item->cid)));
 				if ((count($subcat) + count($subalbum)) > 0) : ?>
-					<li id="c<?=$item->cid?>" ><a href="?id=<?=$item->cid?>" class='isplesti'><img src="<?=erLhcoreClassDesign::design('images/gallery/plus.gif')?>" alt="" align="top" /></a><span class="dvcat"><a class="cat-href<?php if (isset($Result['path_cid']) && in_array($item->cid,$Result['path_cid'])){ print ' selected'; }?>" rel="<?=$item->cid?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys')?>/<?=$item->cid?>" ><?=htmlspecialchars($item->name)?></a></span></li>
+					<li id="c<?=$item->cid?>" ><a href="<?=$item->cid?>" class='isplesti'><img src="<?=erLhcoreClassDesign::design('images/gallery/plus.gif')?>" alt="" align="top" /></a><span class="dvcat"><a class="cat-href<?php if (isset($Result['path_cid']) && in_array($item->cid,$Result['path_cid'])){ print ' selected'; }?>" rel="<?=$item->cid?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys')?>/<?=$item->cid?>" ><?=htmlspecialchars($item->name)?></a></span></li>
 				<?php else : ?> 
 					<li><span class="none"><span class="dvcat"><a class="cat-href<?php if (isset($Result['path_cid']) && in_array($item->cid,$Result['path_cid'])){ print ' selected'; }?>" rel="<?=$item->cid?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys')?>/<?=$item->cid?>"><?=htmlspecialchars($item->name)?></a></span></span></li>
 				<?php endif;
@@ -36,7 +36,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 			var sausainis = $.cookie("category");
     		if (sausainis) {
     			var masyvas = sausainis.split(",");
-    			if (jQuery.inArray($(this).attr('href').substr(4), masyvas) >= 0) {
+    			if (jQuery.inArray($(this).attr('href'), masyvas) >= 0) {
     				testas($(this));
     			}
     		}
@@ -52,19 +52,19 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 				var masyvas = $.cookie("category").split(",");
 				var arYra = 0;
 				for (ind in masyvas) {
-					if (masyvas[ind] == $(linkas).attr('href').substr(4))
+					if (masyvas[ind] == $(linkas).attr('href'))
 						arYra = 1;
 				}
 				if (arYra == 0) {
-					masyvas[masyvas.length] = $(linkas).attr('href').substr(4);
+					masyvas[masyvas.length] = $(linkas).attr('href');
 					var sausainis = masyvas.join(",");
 					jQuery.cookie("category", sausainis, { path: '/', expires: 7 });
 				}
-			} else {				jQuery.cookie("category", $(linkas).attr('href').substr(4), { path: '/', expires: 7 });
+			} else {				jQuery.cookie("category", $(linkas).attr('href'), { path: '/', expires: 7 });
 			}
 			event.preventDefault();
 		} else if ($(this).hasClass('sutraukti')) {
-			$(this).parent().parent().find("li#cat_"+$(linkas).attr('href').substr(4)).remove();
+			$(this).parent().parent().find("li#cat_"+$(linkas).attr('href')).remove();
 			$(this).removeClass("sutraukti");
 			$(this).addClass("isplesti");
 			$(this).parent().removeClass('sakaliukas');
@@ -78,7 +78,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 				var masyvas = $.cookie("category").split(",");
 				sausainis = "";
 				for (ind in masyvas) {
-					if (masyvas[ind] != $(linkas).attr('href').substr(4)) {
+					if (masyvas[ind] != $(linkas).attr('href')) {
 						sausainis += ","+masyvas[ind];
 					}
 				}
@@ -170,7 +170,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 			});
 			
 		function testas (linkas) {
-    		var id = $(linkas).attr('href').substr(4);
+    		var id = $(linkas).attr('href');
 			var htmlli = $(document.createElement('li'));
 			htmlli.attr("id","cat_"+id);
 			var htmlul = $(document.createElement('ul'));
@@ -183,7 +183,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 				$(linkas).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/minus2.gif');?>' alt='' align='top' />");
 			}else{
 				$(linkas).html("<img src='<?=erLhcoreClassDesign::design('images/gallery/minus.gif');?>' alt='' align='top' />");}
-			$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/catjson/')?>"+$(linkas).attr('href'), function(data) {
+			$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/catjson')?>"+"/"+$(linkas).attr('href'), function(data) {
 				$(data).each(function(index) {
 					var html = $(document.createElement('li'));
 					var htmla = $(document.createElement('a'));
@@ -193,7 +193,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 					}	
 					if (data[index].type == 2 && data[index].haschild == 1) {
 						html.attr("id","c"+data[index].id);
-						htmla.attr('href',"?id="+data[index].id);
+						htmla.attr('href',data[index].id);
 						htmla.addClass("isplesti");
 						if (data.length == (index+1)) {
 							htmla.addClass("last");
