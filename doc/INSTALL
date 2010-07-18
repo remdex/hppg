@@ -2,9 +2,11 @@
 1. Make sure that script can write to cache/cacheconfig directory.
 chmod 664 cache/cacheconfig, or better chmod -R 664 cache/*
 2. Create database choosing utf-8 charset.
-4. Enter in browser /index.php/install/install or /index.php?/install/install
-5. Follow instruction.
-6. Sphinx index must be recreated after image modification it can be archieved with cronjob or any other prefered way
+3. Enter in browser /index.php/install/install or /index.php?/install/install
+4. Follow instruction.
+
+Optional
+5. Sphinx index must be recreated after image modification it can be archieved with cronjob or any other prefered way
 
 Example:
 /etc/init.d/sphinx stop
