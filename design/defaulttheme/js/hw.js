@@ -121,7 +121,7 @@ var hw = {
 		xOffset = -10;
 		yOffset = 10;
 		// you might want to adjust to get the right result
-		$(".image-thumb a").hover(		
+		$(".thumb-pic a").hover(		
 			function(e){						
 				$("body").append("<p id=\"preview\"><img src='"+ this.rel +"' akt=\"\" /></p>");
 				$("#preview").css("top",(e.pageY - xOffset) + "px").css("left",(e.pageX + yOffset) + "px").fadeIn("fast");				
@@ -131,7 +131,7 @@ var hw = {
 			}		
 		);
 				
-		$(".image-thumb a").mousemove(function(e){
+		$(".thumb-pic a").mousemove(function(e){
 			$("#preview").css("top",(e.pageY - xOffset) + "px").css("left",(e.pageX + yOffset) + "px");
 		});
 		
