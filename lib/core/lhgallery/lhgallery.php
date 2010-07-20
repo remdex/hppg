@@ -56,17 +56,17 @@ class erLhcoreClassGallery{
                     
       $filter = isset($params['Filter']) ? $params['Filter'] : array();  
        
-       foreach ($filter as $field => $value)  
-       {                     
-           if ( is_numeric( $value ) and $value > 0 )
-           {
-           	 $cl->SetFilter( $field, array((int)$value));
-           }
-           else if ( is_array( $value ) and count( $value ) )
-           {           
-              $cl->SetFilter( $field, $value);
-           }       
-       }
+      foreach ($filter as $field => $value)  
+      {                     
+          if ( is_numeric( $value ) and $value > 0 )
+          {
+          	 $cl->SetFilter( $field, array((int)$value));
+          }
+          else if ( is_array( $value ) and count( $value ) )
+          {           
+             $cl->SetFilter( $field, $value);
+          }       
+      }
       
       if (isset($params['filtergt'])) {
            foreach ($params['filtergt'] as $attribute => $fieldValue) {          

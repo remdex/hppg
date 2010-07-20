@@ -139,7 +139,7 @@ class erLhcoreClassModelShopOrder {
        {
            foreach ($params['filterin'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->in( $field, $fieldValue );
+               $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue) );
            } 
        } 
            
@@ -147,7 +147,7 @@ class erLhcoreClassModelShopOrder {
        {                     
            foreach ($params['filter'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->eq( $field, $fieldValue );
+               $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue) );
            }           
       } 
       
@@ -180,7 +180,7 @@ class erLhcoreClassModelShopOrder {
        {
            foreach ($params['filterin'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->in( $field, $fieldValue );
+               $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue) );
            } 
        } 
            
@@ -188,7 +188,7 @@ class erLhcoreClassModelShopOrder {
        {                     
            foreach ($params['filter'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->eq( $field, $fieldValue );
+               $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue) );
            }           
       } 
       

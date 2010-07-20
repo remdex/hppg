@@ -73,7 +73,7 @@ class erLhcoreClassModelShopImageVariation {
            
            foreach ($params['filter'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->eq( $field, $fieldValue );
+               $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue) );
            }
            
            $q->where( 
@@ -103,7 +103,7 @@ class erLhcoreClassModelShopImageVariation {
            
            foreach ($params['filter'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->eq( $field, $fieldValue );
+               $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue) );
            }
            
            $q->where( 

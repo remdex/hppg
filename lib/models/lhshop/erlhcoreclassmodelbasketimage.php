@@ -32,7 +32,7 @@ class erLhcoreClassModelShopBasketImage {
        {
            foreach ($params['filter'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->eq( $field, $fieldValue );
+               $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue) );
            } 
       }  
       
@@ -40,7 +40,7 @@ class erLhcoreClassModelShopBasketImage {
        {
            foreach ($params['filterin'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->in( $field, $fieldValue );
+               $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue) );
            } 
       }     
        
@@ -48,7 +48,7 @@ class erLhcoreClassModelShopBasketImage {
        {
            foreach ($params['filterlt'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->lt( $field, $fieldValue );
+               $conditions[] = $q->expr->lt( $field, $q->bindValue($fieldValue) );
            } 
       }
       
@@ -56,7 +56,7 @@ class erLhcoreClassModelShopBasketImage {
        {
            foreach ($params['filtergt'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->gt( $field, $fieldValue );
+               $conditions[] = $q->expr->gt( $field,$q->bindValue($fieldValue) );
            } 
       }
       
@@ -119,7 +119,7 @@ class erLhcoreClassModelShopBasketImage {
                   {                     
                        foreach ($params['filter'] as $field => $fieldValue)
                        {
-                           $conditions[] = $q->expr->eq( $field, $fieldValue );
+                           $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue) );
                        }
                   } 
                   
@@ -127,7 +127,7 @@ class erLhcoreClassModelShopBasketImage {
                   {
                        foreach ($params['filterin'] as $field => $fieldValue)
                        {
-                           $conditions[] = $q->expr->in( $field, $fieldValue );
+                           $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue) );
                        } 
                   }
                   
@@ -135,7 +135,7 @@ class erLhcoreClassModelShopBasketImage {
                   {
                        foreach ($params['filterlt'] as $field => $fieldValue)
                        {
-                           $conditions[] = $q->expr->lt( $field, $fieldValue );
+                           $conditions[] = $q->expr->lt( $field, $q->bindValue($fieldValue) );
                        } 
                   }
                   
@@ -143,7 +143,7 @@ class erLhcoreClassModelShopBasketImage {
                   {
                        foreach ($params['filtergt'] as $field => $fieldValue)
                        {
-                           $conditions[] = $q->expr->gt( $field, $fieldValue );
+                           $conditions[] = $q->expr->gt( $field, $q->bindValue($fieldValue) );
                        } 
                   }      
                   
@@ -165,7 +165,7 @@ class erLhcoreClassModelShopBasketImage {
           {                     
                foreach ($params['filter'] as $field => $fieldValue)
                {
-                   $conditions[] = $q2->expr->eq( $field, $fieldValue );
+                   $conditions[] = $q2->expr->eq( $field, $q->bindValue($fieldValue) );
                }
           } 
           
@@ -173,7 +173,7 @@ class erLhcoreClassModelShopBasketImage {
           {
                foreach ($params['filterin'] as $field => $fieldValue)
                {
-                   $conditions[] = $q2->expr->in( $field, $fieldValue );
+                   $conditions[] = $q2->expr->in( $field, $q->bindValue($fieldValue) );
                } 
           }
           
@@ -181,7 +181,7 @@ class erLhcoreClassModelShopBasketImage {
           {
                foreach ($params['filterlt'] as $field => $fieldValue)
                {
-                   $conditions[] = $q2->expr->lt( $field, $fieldValue );
+                   $conditions[] = $q2->expr->lt( $field, $q->bindValue($fieldValue) );
                } 
           }
           
@@ -189,7 +189,7 @@ class erLhcoreClassModelShopBasketImage {
           {
                foreach ($params['filtergt'] as $field => $fieldValue)
                {
-                   $conditions[] = $q2->expr->gt( $field, $fieldValue );
+                   $conditions[] = $q2->expr->gt( $field, $q->bindValue($fieldValue) );
                } 
           }      
           

@@ -57,7 +57,7 @@ class erLhcoreClassModelShopUserCredit {
        {
            foreach ($params['filterin'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->in( $field, $fieldValue );
+               $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue) );
            } 
       }     
        
@@ -65,7 +65,7 @@ class erLhcoreClassModelShopUserCredit {
        {
            foreach ($params['filterlt'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->lt( $field, $fieldValue );
+               $conditions[] = $q->expr->lt( $field, $q->bindValue($fieldValue) );
            } 
       }
       
@@ -73,7 +73,7 @@ class erLhcoreClassModelShopUserCredit {
        {
            foreach ($params['filtergt'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->gt( $field, $fieldValue );
+               $conditions[] = $q->expr->gt( $field, $q->bindValue($fieldValue) );
            } 
       }
       
