@@ -46,7 +46,7 @@ class erLhcoreClassModelGalleryComment {
        {
            foreach ($params['filterin'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue) );
+               $conditions[] = $q->expr->in( $field, $fieldValue );
            } 
       }
       
@@ -76,7 +76,7 @@ class erLhcoreClassModelGalleryComment {
       $q->limit($params['limit'],$params['offset']);                
       $q->orderBy(isset($params['sort']) ? $params['sort'] : 'msg_id DESC' ); 
       
-      $sql = isset($params['cache_key']) ? $params['cache_key'] : md5($q->__toString());
+      $sql = isset($params['cache_key']) ? $params['cache_key'] : md5(erLhcoreClassGallery::multi_implode(',',$params));
               
       $cache = CSCacheAPC::getMem();      
       if (($objects = $cache->restore($sql)) === false)

@@ -162,7 +162,7 @@ class erLhcoreClassModelGalleryAlbum {
            );
       }  
       
-      $sql = $q->__toString();        
+      $sql = erLhcoreClassGallery::multi_implode(',',$params);    
       $cache = CSCacheAPC::getMem();      
       if (($result = $cache->restore(md5('site_version_'.$cache->getCacheVersion('site_version').$sql))) === false)
       {
@@ -197,9 +197,12 @@ class erLhcoreClassModelGalleryAlbum {
        
       if (!isset($params['disable_sql_cache']))
       {
-          $sql = $q->__toString();        
+          $sql = erLhcoreClassGallery::multi_implode(',',$params);
+                  
           $cache = CSCacheAPC::getMem(); 
-          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);                
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);  
+
+                   
           if (($result = $cache->restore($cacheKey)) === false)
           {
               $stmt = $q->prepare();       

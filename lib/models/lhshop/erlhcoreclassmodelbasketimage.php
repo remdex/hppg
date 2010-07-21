@@ -40,7 +40,7 @@ class erLhcoreClassModelShopBasketImage {
        {
            foreach ($params['filterin'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue) );
+               $conditions[] = $q->expr->in( $field, $fieldValue );
            } 
       }     
        
@@ -127,7 +127,7 @@ class erLhcoreClassModelShopBasketImage {
                   {
                        foreach ($params['filterin'] as $field => $fieldValue)
                        {
-                           $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue) );
+                           $conditions[] = $q->expr->in( $field, $fieldValue );
                        } 
                   }
                   
@@ -173,7 +173,7 @@ class erLhcoreClassModelShopBasketImage {
           {
                foreach ($params['filterin'] as $field => $fieldValue)
                {
-                   $conditions[] = $q2->expr->in( $field, $q->bindValue($fieldValue) );
+                   $conditions[] = $q2->expr->in( $field, $fieldValue );
                } 
           }
           
@@ -209,7 +209,7 @@ class erLhcoreClassModelShopBasketImage {
       if (!isset($params['disable_sql_cache']))
       {
           $cache = CSCacheAPC::getMem();  
-          $sql = $q->__toString(); 
+          $sql = erLhcoreClassGallery::multi_implode(',',$params); 
           $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('sit_version').$sql);      
               
           if (($objects = $cache->restore($cacheKey)) === false)

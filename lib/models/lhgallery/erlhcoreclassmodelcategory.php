@@ -128,7 +128,7 @@ class erLhcoreClassModelGalleryCategory {
        {
            foreach ($params['filterin'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->in( $field, $q->bindValue( $fieldValue ) );
+               $conditions[] = $q->expr->in( $field,   $fieldValue );
            } 
       }     
        
@@ -157,7 +157,7 @@ class erLhcoreClassModelGalleryCategory {
       
       if (!isset($params['disable_sql_cache']))
       {
-          $sql = $q->__toString();        
+          $sql = erLhcoreClassGallery::multi_implode(',',$params);   
           $cache = CSCacheAPC::getMem();          
           $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
                              

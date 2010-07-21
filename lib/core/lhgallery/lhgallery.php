@@ -22,7 +22,7 @@ class erLhcoreClassGallery{
         return self::$persistentSession;
    }
    
-   public static function multi_implode($glue, $pieces)
+   public static function multi_implode($glue, $pieces, $key = null)
    {
        $string='';
 
@@ -31,12 +31,12 @@ class erLhcoreClassGallery{
            reset($pieces);
            while(list($key,$value)=each($pieces))
            {
-               $string.=$glue.erLhcoreClassGallery::multi_implode($glue, $value);
+               $string.=$glue.erLhcoreClassGallery::multi_implode($glue, $value, $key);
            }
        }
        else
        {
-           return $pieces;
+           return "{$key}_{$pieces}";
        }
 
        return trim($string, $glue);

@@ -78,7 +78,7 @@ class erLhcoreClassModelGalleryLastSearch {
        {
            foreach ($params['filterin'] as $field => $fieldValue)
            {
-               $conditions[] = $q->expr->in( $field, $q->bindValue($fieldValue ));
+               $conditions[] = $q->expr->in( $field, $fieldValue );
            } 
       }
       
