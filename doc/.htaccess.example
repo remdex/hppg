@@ -3,10 +3,17 @@ RewriteEngine On
 RewriteRule ^/m/(.*)-([0-9]*)c.html(.*?)?$ index.php/m/gallery/category/$2$3
 RewriteRule ^/m/(.*)-([0-9]*)a.html(.*?)?$ index.php/m/gallery/album/$2$3
 RewriteRule ^/m/(.*)-([0-9]*)p.html(.*?)?$ index.php/m/gallery/image/$2$3
-
 RewriteRule ^(.*)-([0-9]*)c.html(.*?)?$ index.php/gallery/category/$2$3
 RewriteRule ^(.*)-([0-9]*)a.html(.*?)?$ index.php/gallery/album/$2$3
 RewriteRule ^(.*)-([0-9]*)p.html(.*?)?$ index.php/gallery/image/$2$3
+
+# Uncomment four lines bellow for disable access to fullsize images.
+#RewriteCond %{REQUEST_FILENAME} /albums [NC]
+#RewriteCond %{REQUEST_FILENAME} !thumb [NC]
+#RewriteCond %{REQUEST_FILENAME} !normal [NC]
+#RewriteRule ^(.*)$ index.php
+
+
 RewriteRule ^/var/[^/]+/cache/(stylesheets|images|javascripts?)/.* - [L]
 RewriteRule !\.(gif|jpe?g|png|bmp|css|js|xml|html|swf|php)|var(.+)storage.pdf(.+)\.pdf$ index.php
 DirectoryIndex index.php
