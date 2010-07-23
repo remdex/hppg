@@ -25,8 +25,14 @@ class erLhcoreClassModelGalleryUploadArchive {
     
    private function cleanup()
    {
-   		ezcBaseFile::removeRecursive("var/tmpfiles/{$this->id}");
-   		unlink("var/archives/{$this->filename}");
+   		if (file_exists("var/tmpfiles/{$this->id}")) {
+   			ezcBaseFile::removeRecursive("var/tmpfiles/{$this->id}");
+   		}
+   		
+   		if (file_exists("var/archives/{$this->filename}")) {
+   			unlink("var/archives/{$this->filename}");
+   		}
+   		
    		erLhcoreClassGallery::getSession()->delete($this);
    }
    
