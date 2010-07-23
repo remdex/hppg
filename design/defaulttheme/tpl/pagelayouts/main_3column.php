@@ -38,23 +38,8 @@
 
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_top_menu.tpl.php'));?>
 
-	<? if (isset($Result['path'])) : 		
-	$pathElementCount = count($Result['path'])-1;
-		?>			
-    		<div id="path" class="float-break">
-    		  <a href="/"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?> &raquo;</a>
-    		  
-    		  <? foreach ($Result['path'] as $key => $pathItem) : ?>
-    		      <? 
-    		      $pathElementRaquo = ($key != $pathElementCount) ? '&raquo;' : '';
-    		      if (isset($pathItem['url'])) { ?>
-    		             <a href="<?=$pathItem['url']?>"><?=$pathItem['title']?> <?=$pathElementRaquo;?> </a>		      
-    		      <? } else { ?>
-    		      		 <?=$pathItem['title']?> <?=$pathElementRaquo;?>    
-    		      <? }; ?>
-    		  <? endforeach; ?>
-    		</div>
-		<? endif; ?>
+<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/path.tpl.php'));?>
+	
 		<div id="bodcont" class="float-break">
 			
 		<div id="leftmenucont">
