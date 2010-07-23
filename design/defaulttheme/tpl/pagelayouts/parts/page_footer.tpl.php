@@ -3,7 +3,7 @@
 	$instance = erLhcoreClassSystem::instance();  
 	?>
 	<a href="<?=$instance->WWWDir . $instance->IndexFile .  '/m'  . '/'?>">Browse mobile version</a>
-	<?php endif;;?>
+	<?php endif;?>
 	
     <div class="right"><acronym title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','It\'s NOT fake!')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Rendered in')?>: <?=number_format(set_time($GLOBALS['star_microtile'], microtime()), 5);?> s.</acronym>, powered by <a href="http://code.google.com/p/hppg/" title="High performance photo gallery">HPPG</a></div>
 	<div class="creator copyright">

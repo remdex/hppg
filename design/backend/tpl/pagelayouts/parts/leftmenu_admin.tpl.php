@@ -2,7 +2,6 @@
 $items=erLhcoreClassModelGalleryCategory::getParentCategories();
 if (count($items) > 0) {
 ?>
-
 <div id="categories">
 	<ul>
 		<li><span class='dvcat' style="margin-left:15px;"><a rel="0" class="cat-href" href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Root category');?></a></span>
