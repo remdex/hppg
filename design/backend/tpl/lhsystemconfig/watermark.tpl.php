@@ -23,7 +23,7 @@
 <div class="in-blk">
 <label><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/watermark','Settings');?></strong></label>
 <label><input type="radio" value="thumbnails_none" name="WatermarkEnabled"  <?= (isset($data['watermark_disabled']) && $data['watermark_disabled'] == true) ? 'checked="checked"' : '' ?> /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/watermark','Watermark disabled');?></label>
-<label><input type="radio" value="thumbnails" name="WatermarkEnabled"  <?= (isset($data['watermark_enabled']) && $data['watermark_enabled'] == true) ? 'checked="checked"' : '' ?> /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/watermark','Watermark enabled on normal size thumbnails');?></label>
+<label><input type="radio" value="thumbnails" name="WatermarkEnabled"  <?= (isset($data['watermark_enabled']) && $data['watermark_enabled'] == true) ? 'checked="checked"' : '' ?> /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/watermark','Watermark enabled for normal size thumbnails');?></label>
 <label><input type="radio" value="thumbnails_all" name="WatermarkEnabled"  <?= (isset($data['watermark_enabled_all']) && $data['watermark_enabled_all'] == true) ? 'checked="checked"' : '' ?> /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/watermark','Watermark enabled for all images');?></label><br />
 </div>
 
