@@ -112,6 +112,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 				
 					$('.vmenu .cat-new-li').hide();
 					$('.vmenu .album-new-li').hide();	
+					$('.vmenu .album-new-batch-li').hide();	
 					
 					$('.vmenu .album-del-li').show();
 					$('.vmenu .add-images-li').show();
@@ -120,12 +121,14 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 				} else {
 					$('.vmenu .edit-link-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/editcategory')?>'+"/"+$(this).attr('rel'));
 					$('.vmenu .album-new-li').show();
+					$('.vmenu .album-new-batch-li').show();
 					$('.vmenu .cat-new-li').show();
 					$('.vmenu .album-del-li').hide();
 					$('.vmenu .add-images-li').hide();
 					$('.vmenu .cat-del-li').show();
 					
 					$('.vmenu .album-new-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/createalbumadmin')?>'+"/"+$(this).attr('rel'));
+					$('.vmenu .album-new-batch-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/createalbumadminbatch')?>'+"/"+$(this).attr('rel'));
 					$('.vmenu .cat-new-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/createcategory')?>'+"/"+$(this).attr('rel'));
 					$('.vmenu .cat-del-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/deletecategory')?>'+"/"+$(this).attr('rel'));
 				}
@@ -135,6 +138,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 					$('.vmenu .cat-del-li').hide();
 					$('.vmenu .edit-link-li').hide();
 					$('.vmenu .album-new-li').hide();
+					$('.vmenu .album-new-batch-li').hide();
 					
 				}
 					
@@ -261,6 +265,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 		<div class="first_li"><span><a class="open-link" href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Open');?></a></span></div>
 		<div class="first_li edit-link-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Edit');?></a></span></div>		
 		<div class="first_li album-new-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','New album');?></a></span></div>
+		<div class="first_li album-new-batch-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','New batch albums');?></a></span></div>
 		<div class="first_li cat-new-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','New category');?></a></span></div>			
 		<div class="first_li album-del-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Delete album');?></a></span></div>
 		<div class="first_li cat-del-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Delete category');?></a></span></div>

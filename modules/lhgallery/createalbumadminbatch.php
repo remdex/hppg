@@ -70,11 +70,14 @@ $tpl->set('album',$AlbumData);
 $pathObjects = array();
 
 $path = array();
+$pathCategorys = array(); 
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$CategoryData->cid);        
 foreach ($pathObjects as $pathItem)
 {
+   $pathCategorys[] = $pathItem->cid;
    $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
 }
 
 $Result['content'] = $tpl->fetch();
 $Result['path'] = $path;
+$Result['path_cid'] = $pathCategorys;
