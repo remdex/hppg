@@ -45,13 +45,16 @@ include_once('modules/lh'.$ModuleToRun.'/module.php');
 
 $cfgSite = erConfigClassLhConfig::getInstance();
 
-if ($cfgSite->conf->getSetting( 'site', 'redirect_mobile' ) !== false && !isset($_COOKIE['RegularVersion'])  && preg_match("/http_(x_wap|ua)_(.*?)/i",implode(' ',array_keys($_SERVER)))){
+if ($cfgSite->conf->getSetting( 'site', 'redirect_mobile' ) !== false && (!isset($_COOKIE['RegularVersion'])  && preg_match("/http_(x_wap|ua)_(.*?)/i",implode(' ',array_keys($_SERVER)))) || ( isset($_COOKIE['RegularVersion']) && $_COOKIE['RegularVersion'] == 2 ) ){
 	erLhcoreClassSystem::instance()->MobileDevice = true;	
 	$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$cfgSite->conf->getSetting( 'site', 'redirect_mobile' ));		
 	erLhcoreClassSystem::instance()->Language = $optionsSiteAccess['locale'];                         
     erLhcoreClassSystem::instance()->ThemeSite = $optionsSiteAccess['theme'];                         
     erLhcoreClassSystem::instance()->WWWDirLang = '/'.$cfgSite->conf->getSetting( 'site', 'redirect_mobile' ); 
-    erLhcoreClassSystem::instance()->SiteAccess = $cfgSite->conf->getSetting( 'site', 'redirect_mobile' );     
+    erLhcoreClassSystem::instance()->SiteAccess = $cfgSite->conf->getSetting( 'site', 'redirect_mobile' ); 
+    setcookie('RegularVersion','2',time()+30*24*3600,"/");      // Mobile version   
+} elseif (!isset($_COOKIE['RegularVersion'])){     
+        setcookie('RegularVersion','1',time()+30*24*3600,"/");  // Regular version
 }
 
 $Result = erLhcoreClassModule::runModule($ViewList,$FunctionList);
