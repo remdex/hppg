@@ -104,9 +104,6 @@ $('.listRecursiveImagesButton').click(function(){
     	});	
 });
 
-//var currentDirectoryImportID = 0;
-//var currentImportAlbumID = 0;
-
 $('.importButtonDirectory').click(function(){
 	var currentDirectoryImportID = $(this).attr('rel');
 	if ($('input[name=AlbumDestinationDirectory'+$(this).attr('rel')+']:checked').val() != undefined){
