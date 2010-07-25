@@ -45,7 +45,7 @@ include_once('modules/lh'.$ModuleToRun.'/module.php');
 
 $cfgSite = erConfigClassLhConfig::getInstance();
 
-if ($cfgSite->conf->getSetting( 'site', 'redirect_mobile' ) !== false && (!isset($_COOKIE['RegularVersion'])  && preg_match("/http_(x_wap|ua)_(.*?)/i",implode(' ',array_keys($_SERVER)))) || ( isset($_COOKIE['RegularVersion']) && $_COOKIE['RegularVersion'] == 2 ) ){
+if ($cfgSite->conf->getSetting( 'site', 'redirect_mobile' ) !== false && ((!isset($_COOKIE['RegularVersion'])  && preg_match("/http_(x_wap|ua)_(.*?)/i",implode(' ',array_keys($_SERVER)))) || ( isset($_COOKIE['RegularVersion']) && $_COOKIE['RegularVersion'] == 2 )) ){
 	erLhcoreClassSystem::instance()->MobileDevice = true;	
 	$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$cfgSite->conf->getSetting( 'site', 'redirect_mobile' ));		
 	erLhcoreClassSystem::instance()->Language = $optionsSiteAccess['locale'];                         
