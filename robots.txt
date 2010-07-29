@@ -2,6 +2,7 @@ User-agent: *
 Disallow: /gallery/sharehtml/
 Disallow: /gallery/sharephpbb/
 Disallow: /m/
+Disallow: /gallery/anaglyph/
 
 User-agent: ia_archiver
 Disallow: /
