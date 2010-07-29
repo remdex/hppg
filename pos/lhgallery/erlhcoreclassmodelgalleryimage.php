@@ -109,6 +109,11 @@ $def->properties['sort_rated']->columnName   = 'sort_rated';
 $def->properties['sort_rated']->propertyName = 'sort_rated';
 $def->properties['sort_rated']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
+$def->properties['anaglyph'] = new ezcPersistentObjectProperty();
+$def->properties['anaglyph']->columnName   = 'anaglyph';
+$def->properties['anaglyph']->propertyName = 'anaglyph';
+$def->properties['anaglyph']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
 $def->relations["erLhcoreClassModelGalleryComment"] = new ezcPersistentOneToManyRelation(
 	"lh_gallery_images",
 	"lh_gallery_comments"

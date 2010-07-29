@@ -113,8 +113,43 @@ class erLhcoreClassImageConverter {
                     'image/jpeg',
                 ),
                 new ezcImageSaveOptions(array('quality' => (int)erLhcoreClassModelSystemConfig::fetch('thumbnail_quality_default')->current_value))
-            ); 
-          
+            );
+            
+            $this->converter->createTransformation(
+                'anaglyph_left',
+                array( 
+                    new ezcImageFilter( 
+                        'anaglyphImageSide',
+                        array(    
+                             'side' => 0 // Left side                    
+                        )
+                    ),
+                ),
+                array( 
+                    'image/jpeg',
+                    'image/png'
+                ),
+                new ezcImageSaveOptions(array('quality' => 100))
+            );
+            
+            $this->converter->createTransformation(
+                'anaglyph_right',
+                array( 
+                    new ezcImageFilter( 
+                        'anaglyphImageSide',
+                        array(    
+                             'side' => 1 // Left side                    
+                        )
+                    ),
+                ),
+                array( 
+                    'image/jpeg',
+                    'image/png'
+                ),
+                new ezcImageSaveOptions(array('quality' => 100))
+            );
+                         
+                    
         }
    
    

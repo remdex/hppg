@@ -1,0 +1,1 @@
+ALTER TABLE  `lh_gallery_images` ADD  `anaglyph` INT( 11 ) NOT NULL DEFAULT  '0';

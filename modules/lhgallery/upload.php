@@ -71,6 +71,7 @@ if (count($objects) == 1)
 	       $image->caption = $_POST['description'];
 	       $image->keywords =  $_POST['keyword'];
 	       $image->approved =  1;
+	       $image->anaglyph =  (isset($_POST['anaglyph']) && $_POST['anaglyph'] == 'true') ? 1 : 0;
 	       $image->filename = $fileNamePhysic;
 	              
 	       $session->update($image);

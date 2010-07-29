@@ -371,6 +371,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           `mtime` int(11) NOT NULL,
                           `comtime` int(11) NOT NULL,
                           `sort_rated` text NOT NULL,
+                          `anaglyph` int(11) NOT NULL DEFAULT '0',
                           PRIMARY KEY (`pid`),
                           KEY `owner_id` (`owner_id`),
                           KEY `pic_hits` (`hits`),

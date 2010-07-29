@@ -160,6 +160,7 @@ FileProgress.prototype.attatchActions = function()
 	swfUploadInstance.addFileParam(fileID,'title',$('#PhotoTitle'+this.fileProgressID).val());
 	swfUploadInstance.addFileParam(fileID,'keyword',$('#PhotoKeyword'+this.fileProgressID).val());
 	swfUploadInstance.addFileParam(fileID,'description',$('#PhotoDescription'+this.fileProgressID).val());
+	swfUploadInstance.addFileParam(fileID,'anaglyph',$('#PhotoAnaglyph'+this.fileProgressID).attr('checked'));
 	
 	$('#PhotoTitle'+this.fileProgressID).change(function(){
 	    swfUploadInstance.addFileParam(fileID,'title',$(this).val())
@@ -171,6 +172,10 @@ FileProgress.prototype.attatchActions = function()
 	
 	$('#PhotoDescription'+this.fileProgressID).change(function(){
 	    swfUploadInstance.addFileParam(fileID,'description',$(this).val())
+	});
+	
+	$('#PhotoAnaglyph'+this.fileProgressID).change(function(){
+	    swfUploadInstance.addFileParam(fileID,'anaglyph',$(this).attr('checked'))
 	});
 	
 	

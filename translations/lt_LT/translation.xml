@@ -96,6 +96,21 @@
     </message>
 </context>
 <context>
+    <name>gallery/anaglyph</name>
+    <message>
+        <source>Original</source>
+        <translation>Originalas</translation>
+    </message>
+    <message>
+        <source>Anaglyph</source>
+        <translation>Anaglyph versija</translation>
+    </message>
+    <message>
+        <source>Animating</source>
+        <translation>Animuota</translation>
+    </message>
+</context>
+<context>
     <name>shop/buycredits</name>
     <message>
         <source>Buy credits</source>

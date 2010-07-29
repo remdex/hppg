@@ -23,6 +23,9 @@
 				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Keywords')?></div>	
 				<input type="text" id="PhotoKeyword<?=$fileID?>" value="" class="inputfield" />	
 				
+				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Anaglyph image')?></div>	
+				<input type="checkbox" id="PhotoAnaglyph<?=$fileID?>" value="" class="inputfield" />	
+				
 				<div class="progressName"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/fileuploadcontainer','Caption')?></div>			
 				<textarea class="default-textarea" id="PhotoDescription<?=$fileID?>"></textarea>						
 			</div>

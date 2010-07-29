@@ -513,7 +513,7 @@ a.progressCancel:hover {
 	vertical-align: top;
 }
 
-.thumb-edit{float:left;height:260px;overflow:hidden;width:200px;border:1px solid #C7C2BB;margin:5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;font-size:11px;}
+.thumb-edit{float:left;height:290px;overflow:hidden;width:200px;border:1px solid #C7C2BB;margin:5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;font-size:11px;}
 .thumb-edit .thumb-attr{text-align:left;padding-left:8px;}
 .big-button{font-size:14px;}
 .status-img{padding-left:5px;}
@@ -640,6 +640,7 @@ float:right;
 .control-block{border:1px solid #CCCCCC;margin:5px;padding:7px;}
 .ad-html{background:url(../images/icons/html.png) no-repeat top left;width:16px;height:16px;float:left;cursor:pointer;}
 .ad-phpbb{background:url(../images/icons/phpbb45.png) no-repeat top left;width:16px;height:16px;float:left;cursor:pointer;}
+.ad-anaglyph{background:url(../images/icons/anaglyph.png) no-repeat top left;width:16px;height:16px;float:left;cursor:pointer;}
 .control-block a{margin-right:5px;}
 .tib{text-align:center;padding-top:5px;}
 

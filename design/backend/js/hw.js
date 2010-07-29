@@ -58,7 +58,8 @@ var hw = {
 	    var pdata = {
 				title	  : $('#PhotoTitle_'+photo_id).val(),
 				keywords  : $('#PhotoKeyword_'+photo_id).val(),				
-				caption	  : $('#PhotoDescription_'+photo_id).val()				
+				caption	  : $('#PhotoDescription_'+photo_id).val(),				
+				anaglyph  : $('#PhotoAnaglyph_'+photo_id).attr('checked')				
 		}
 		$('#image_status_'+photo_id).html('Updating...');
 		$('#image_status_'+photo_id).removeClass('ok');

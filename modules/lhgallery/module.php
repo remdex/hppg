@@ -48,7 +48,17 @@ $ViewList['image'] = array(
     'script' => 'image.php',
     'params' => array('image_id'),
     'uparams' => array('mode','keyword','sort'),
-    );  
+    ); 
+       
+$ViewList['anaglyph'] = array( 
+    'script' => 'anaglyph.php',
+    'params' => array('image_id')
+);       
+
+$ViewList['anaglyphimage'] = array( 
+    'script' => 'anaglyphimage.php',
+    'params' => array('image_id')
+);  
       
 $ViewList['popular'] = array( 
     'script' => 'popular.php',

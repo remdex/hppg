@@ -355,6 +355,11 @@ $('.ad-fv').click(function(){
 
 $('.ad-html').colorbox();
 $('.ad-phpbb').colorbox();
+
+<?php if ($image->anaglyph == 1) : ?>
+$('.ad-anaglyph').colorbox({width:'<?=$image->pwidth+50?>px',height:'<?=$image->pheight+130?>px'});
+<?php endif;?>
+
 </script>
 
 

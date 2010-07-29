@@ -26,6 +26,7 @@ class erLhcoreClassModelGalleryImage {
                'mtime'          => $this->mtime,             
                'comtime'        => $this->comtime,             
                'sort_rated'     => $this->sort_rated,             
+               'anaglyph'       => $this->anaglyph,             
        );
    }
    
@@ -119,7 +120,7 @@ class erLhcoreClassModelGalleryImage {
            	$this->path = $categoryPath;
        	    return $this->path;
        		break;        		  	
-
+           	
        	case 'url_path': 
        	
        	    if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
@@ -141,6 +142,16 @@ class erLhcoreClassModelGalleryImage {
        	    return $this->filesize_user;
        		break;
        
+       	case 'file_path_filesystem':       	  
+       	        $this->file_path_filesystem = 'albums/'.$this->filepath.$this->filename;
+       	        return $this->file_path_filesystem;
+       	    break; 
+       	         	
+       	case 'album':        	    
+       	    $this->album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', $this->aid );
+       	    return $this->album;
+       		break;
+       		   	
        	default:
        		break;
        }
@@ -359,6 +370,7 @@ class erLhcoreClassModelGalleryImage {
    public $mtime = 0;
    public $comtime = 0;
    public $sort_rated = 0;
+   public $anaglyph = 0;
 }
 
 
