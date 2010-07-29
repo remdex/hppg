@@ -28,7 +28,9 @@ var stopAnimation = false;
 
 $('input[name=DisplayOption]').change(function() {  
       
-    $('#imageContainerAnaglyph').css({'width':'<?=$Image->pwidth?>px'});    
+    $('#imageContainerAnaglyph').css({'width':'<?=$Image->pwidth?>px'}); 
+    $('#ImageAnaglyphContainer').css({'margin-left':'0px'});
+       
     if ($(this).val() == 'original') {
         stopAnimation = true;
         $('#ImageAnaglyphContainer').attr('src','<?=erLhcoreClassDesign::imagePath($Image->filepath.urlencode($Image->filename))?>');
