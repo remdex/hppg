@@ -111,6 +111,36 @@
     </message>
 </context>
 <context>
+    <name>gallery/sharehtml</name>
+    <message>
+        <source>Link to image</source>
+        <translation>Nuoroda į paveiksliuką</translation>
+    </message>
+    <message>
+        <source>Link to image with thumbnail</source>
+        <translation>Nuoroda į paveiksliuką su maža nuotrauka</translation>
+    </message>
+    <message>
+        <source>Link to image with medium size thumbnail</source>
+        <translation>Nuoroda į paveiksliuką su vidutinio dydžio paveiksliuku</translation>
+    </message>
+</context>
+<context>
+    <name>gallery/sharephpbb</name>
+    <message>
+        <source>Link to image</source>
+        <translation>Nuoroda į paveiksliuką</translation>
+    </message>
+    <message>
+        <source>Link to image with thumbnail</source>
+        <translation>Nuoroda į paveiksliuką su maža nuotrauka</translation>
+    </message>
+    <message>
+        <source>Link to image with medium size thumbnail</source>
+        <translation>Nuoroda į paveiksliuką su vidutinio dydžio paveiksliuku</translation>
+    </message>
+</context>
+<context>
     <name>shop/buycredits</name>
     <message>
         <source>Buy credits</source>
