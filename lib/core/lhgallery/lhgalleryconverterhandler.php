@@ -212,7 +212,7 @@ class erLhcoreClassGalleryImagemagickHandler extends ezcImageImagemagickHandler 
     public function anaglyphImageSide($side = 0)
     {
         $data = getimagesize( $this->getActiveResource() );
-        $imageHalfWidth = $data[0]/2;
+        $imageHalfWidth = (int)($data[0]/2);
         $imageHeight = $data[1];
       
         if ($side == 0)
@@ -295,8 +295,6 @@ class erLhcoreClassGalleryImagemagickHandler extends ezcImageImagemagickHandler 
             );
         }
         // Finish atomic file operation
-//        echo copy
-//        $this->setReferenceData( $ref, $fileTmp, 'resource' );
         copy( $this->getReferenceData( $image, 'file' ), $this->getReferenceData( $image, 'resource' ) );                        
     }
     

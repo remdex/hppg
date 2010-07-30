@@ -11,6 +11,7 @@ $randomTmpHash = erLhcoreClassModelForgotPassword::randomPassword(40);
 erLhcoreClassImageConverter::getInstance()->converter->transform( 'anaglyph_left', $Image->file_path_filesystem, 'var/tmpfiles/'.$randomTmpHash.'_left.jpg' ); 
 erLhcoreClassImageConverter::getInstance()->converter->transform( 'anaglyph_right', $Image->file_path_filesystem, 'var/tmpfiles/'.$randomTmpHash.'_right.jpg' ); 
 
+
 $converter = new ezcImageConverter(
     new ezcImageConverterSettings(
         array( 

@@ -93,8 +93,73 @@ class erLhcoreClassGalleryGDHandler extends ezcImageGdHandler {
         
         // Restore original image reference
         $this->setActiveReference( $originalRef );
-                
+    }
+    
+    
+    /**
+     * @param $side 
+     * 0 - left side cut
+     * 1 - right side cut
+     * */
+    public function anaglyphImage($imageRight)
+    {           
+        $originalRef = $this->getActiveReference();
 
+        $originalWidth  = imagesx( $this->getActiveResource() );
+        $originalHeight = imagesy( $this->getActiveResource() );
+            
+        $rightImageRef = $this->load( $imageRight );  
+                
+        // Taken from http://instantsolve.net/blog/2008/06/creating-anaglyphs/ 
+        $src_left = $this->getReferenceData( $originalRef, "resource" );
+        $src_right = $this->getReferenceData( $rightImageRef, "resource" );
+               
+        $bwimage= imagecreatetruecolor($originalWidth, $originalHeight);
+        //Reads the origonal colors pixel by pixel        
+        for ($y=0;$y<$originalHeight;$y++){
+        
+        	for ($x=0;$x<$originalWidth;$x++){        
+        		$rgb_left = imagecolorat($src_left,$x,$y);        
+        		$r = ($rgb_left >> 16) & 0xFF;        
+        		$rgb_right = imagecolorat($src_right,$x,$y);        
+        		$g = ($rgb_right >> 8) & 0xFF;        
+        		$b = $rgb_right & 0xFF;        
+        		
+        		//This is where we create the color which is a mix of the red, green and blue channels        
+        		$color = imagecolorallocate($bwimage,$r,$g,$b);        
+        		imagesetpixel($bwimage,$x,$y,$color);        
+        	}        
+        }
+         
+        $this->close( $rightImageRef );
+        
+        // Restore original image reference
+        $this->setActiveReference( $originalRef );         
+        $oldResource = $this->getReferenceData( $originalRef, 'resource' );        
+        imagedestroy( $oldResource );        
+                
+        $this->setReferenceData( $originalRef, $bwimage, 'resource' );           
+    }
+    
+    
+    /**
+     * @param $side 
+     * 0 - left side cut
+     * 1 - right side cut
+     * */
+    public function anaglyphImageSide($side = 0)
+    {                
+        $data[0] = imagesx( $this->getActiveResource() );
+        $data[1] = imagesy( $this->getActiveResource() );
+        
+        $imageHalfWidth = (int)($data[0]/2);
+        $imageHeight = $data[1];
+                   
+        if ($side == 0) {
+            $this->crop(0,0,$imageHalfWidth,$imageHeight);
+        } else {
+            $this->crop($imageHalfWidth,0,$imageHalfWidth,$imageHeight);
+        }            
     }
 	
 }
