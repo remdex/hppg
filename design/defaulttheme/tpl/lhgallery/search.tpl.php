@@ -11,7 +11,7 @@
     <a class="da<?=$mode == 'lastcommented' ? ' selor' : ''?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/search')?>/(keyword)/<?echo urlencode($keyword)?>/(sort)/lastcommented"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented first')?></a>
     <a class="ar<?=$mode == 'lastcommentedasc' ? ' selor' : ''?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/search')?>/(keyword)/<?echo urlencode($keyword)?>/(sort)/lastcommentedasc"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented last')?></a>
 </div>
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Search results')?> - <?=htmlspecialchars($keyword)?></h1>
+<a class="rss_list" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Search RSS by keyword')?> - <?=htmlspecialchars($keyword)?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/searchrss')?>/(keyword)/<?=urlencode($keyword)?>"></a> <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Search results')?> - <?=htmlspecialchars($keyword)?></h1>
 </div>
 
 <? if ($pages->items_total > 0) { ?>

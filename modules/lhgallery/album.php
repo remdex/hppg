@@ -75,7 +75,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $Result['content'] = $tpl->fetch();
     $Result['path'] = $Album->path_album;
     $Result['tittle_prepend'] = $sortModesTitle[$mode];
-    $Result['rss']['title'] = 'Last uploaded images to album - '.$Album->title;
+    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last uploaded images to album').' - '.$Album->title;
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss/').$Album->aid;  
     
     $cache->store($cacheKey,$Result);

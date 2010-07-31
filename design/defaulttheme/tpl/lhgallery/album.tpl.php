@@ -11,7 +11,7 @@
     <a class="da<?=$mode == 'lastcommented' ? ' selor' : ''?>" href="<?=$album->url_path?>/(sort)/lastcommented"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented first')?></a>
     <a class="ar<?=$mode == 'lastcommentedasc' ? ' selor' : ''?>" href="<?=$album->url_path?>/(sort)/lastcommentedasc"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented last')?></a>
 </div>
-<h1><?=htmlspecialchars($album->title)?></h1>
+<a class="rss_list" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last uploaded images to album')?> - <?=htmlspecialchars($album->title)?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/albumrss')?>/<?=$album->aid?>"></a> <h1><?=htmlspecialchars($album->title)?></h1>
 </div>
 <? if ($pages->items_total > 0) { ?>         
   <?  

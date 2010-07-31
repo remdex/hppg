@@ -644,5 +644,7 @@ float:right;
 .control-block a{margin-right:5px;}
 .tib{text-align:center;padding-top:5px;}
 
+.rss_list{background:url(../images/icons/rss.png) no-repeat top left;width:25px;height:17px;float:left;cursor:pointer;}
+
 
 #preview{position:absolute;padding:5px;display:none;color:#fff;background-color:#EFEFEF;border:1px solid #3F3F3F;}
