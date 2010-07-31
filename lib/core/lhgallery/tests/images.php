@@ -1,6 +1,6 @@
 <?php
 
-class ezcImagesTest extends PHPUnit_Framework_TestCase
+class ezcImagesTest extends ezcTestCase
 {
     public function testImagesCount()
     {
