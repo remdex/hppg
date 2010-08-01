@@ -7,6 +7,7 @@
 
 <table class="lentele" cellpadding="0" cellspacing="0">
 <tr>
+	<th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/basket','Image name');?></th>
 	<th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/basket','Version');?></th>
 	<th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/basket','Image size');?></th>
 	<th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/basket','Format');?></th>
@@ -15,6 +16,7 @@
 </tr>
 <?php foreach ($basketItems as $item) : ?>
 	<tr id="row_basket-<?=$item->pid?>-<?=$item->variation->id?>">
+		<td><a href="<?=$item->image->url_path?>"><?=$item->image->name_user?></a></td>
 		<td><?=$item->variation->name?></td>
 		<td><?=$item->variation->getSize($item->image)?></td>
 		<td><?=$item->variation->getFormat($item->image)?></td>
