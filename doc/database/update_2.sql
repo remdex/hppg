@@ -1,0 +1,1 @@
+ALTER TABLE  `lh_gallery_images` CHANGE  `sort_rated`  `sort_rated` BIGINT( 20 ) NOT NULL;

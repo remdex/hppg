@@ -4,6 +4,13 @@ Disallow: /gallery/sharephpbb/
 Disallow: /m/
 Disallow: /gallery/anaglyph/
 
+Disallow: /gallery/albumrss/
+Disallow: /gallery/lastcommentedrss/
+Disallow: /gallery/popularrss/
+Disallow: /gallery/lastuploadsrss/
+Disallow: /gallery/topratedrss/
+Disallow: /gallery/searchrss/
+
 User-agent: ia_archiver
 Disallow: /
 
