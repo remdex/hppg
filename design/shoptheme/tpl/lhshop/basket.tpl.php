@@ -16,7 +16,7 @@
 </tr>
 <?php foreach ($basketItems as $item) : ?>
 	<tr id="row_basket-<?=$item->pid?>-<?=$item->variation->id?>">
-		<td><a href="<?=$item->image->url_path?>"><?=$item->image->name_user?></a></td>
+		<td><a href="<?=$item->image->url_path?>"><?=htmlspecialchars($item->image->name_user)?></a></td>
 		<td><?=$item->variation->name?></td>
 		<td><?=$item->variation->getSize($item->image)?></td>
 		<td><?=$item->variation->getFormat($item->image)?></td>

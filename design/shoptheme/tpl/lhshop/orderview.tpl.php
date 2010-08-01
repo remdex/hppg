@@ -54,7 +54,7 @@
 </tr>
 <?php foreach ($order->order_items as $item) : ?>
 	<tr>
-		<td><a href="<?=$item->image->url_path?>"><?=$item->image->name_user?></a></td>
+		<td><a href="<?=$item->image->url_path?>"><?=htmlspecialchars($item->image->name_user)?></a></td>
 		<td><?=$item->image_variation->name?></td>
 		<td><?=$item->image_variation->getSize($item->image)?></td>
 		<td><?=$item->image_variation->getFormat($item->image)?></td>
