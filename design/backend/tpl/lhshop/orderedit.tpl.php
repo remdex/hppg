@@ -42,7 +42,7 @@
 <h2><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/orderedit','Ordered items');?></h2>
 <table class="lentele" cellpadding="0" cellspacing="0">
 <tr>
-    <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/orderview','Image name')?></th>
+    <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/orderedit','Image name')?></th>
 	<th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/orderedit','Version');?></th>
 	<th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/orderedit','Image size');?></th>
 	<th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/orderedit','Format');?></th>

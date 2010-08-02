@@ -5,7 +5,7 @@
 <form action="<?=erLhcoreClassDesign::baseurl('/shop/buycredits')?>" method="post">
 
 <div class="in-blk">
-<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/buycredits','How many credits do want to boy?');?></label>
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/buycredits','How many credits do want to buy?');?></label>
 <input type="text" class="inputfield" name="CreditsAmount" value="<?=$credits_order->credits?>" />
 </div>
 
