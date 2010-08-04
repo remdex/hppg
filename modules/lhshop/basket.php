@@ -4,6 +4,7 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhshop/basket.tpl.php');
 
 $basket = erLhcoreClassModelShopBasketSession::getInstance();
 $tpl->set('basketItems',$basket->basket_items);
+			
 
 $Result['content'] = $tpl->fetch();
 

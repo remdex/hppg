@@ -14,7 +14,8 @@
 
 
 <?php 
-$basketItems = erLhcoreClassModelShopBasketImage::getImages(array('filter' => array('pid' => $image->pid)));
+
+$basketItems = erLhcoreClassModelShopBasketImage::getImages(array('disable_sql_cache' => true,'filter' => array('pid' => $image->pid)));
 $selectedItemsCombinations = array();
 foreach ($basketItems as $item)
 {

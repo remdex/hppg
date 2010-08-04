@@ -18,7 +18,7 @@ $favouriteSession = erLhcoreClassModelShopBasketSession::getInstance();
 
 if (erLhcoreClassModelShopBasketImage::getImageCount(array('filter' => array('pid' => $Image->pid,'session_id'=> $favouriteSession->id,'variation_id' => $variation->id))) == 1)
 {	
-	$objects = erLhcoreClassModelShopBasketImage::getImages(array('filter' => array('pid' => $Image->pid,'session_id'=> $favouriteSession->id,'variation_id' => $variation->id)));
+	$objects = erLhcoreClassModelShopBasketImage::getImages(array('disable_sql_cache' => true,'filter' => array('pid' => $Image->pid,'session_id'=> $favouriteSession->id,'variation_id' => $variation->id)));
 		
 	foreach ($objects as $object)
 	{

@@ -73,8 +73,9 @@ class erLhcoreClassModelShopBasketSession {
 					return $this->order;
 				break;
 				
-			case 'basket_items':
-					$this->basket_items = erLhcoreClassModelShopBasketImage::getImages(array('filter' => array('session_id' => $this->id)));
+			case 'basket_items':			     			     
+			        $cache = CSCacheAPC::getMem();
+					$this->basket_items = erLhcoreClassModelShopBasketImage::getImages(array('cache_key' => 'version_'.$cache->getCacheVersion('basket_'.$this->id),'filter' => array('session_id' => $this->id)));
 					return $this->basket_items;
 				break;
 		
