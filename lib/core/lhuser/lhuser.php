@@ -4,11 +4,11 @@ class erLhcoreClassUser{
     
     static function instance()
     {
-        if ( empty( $GLOBALS['LhUserInstance'] ) )
-        {
-            $GLOBALS['LhUserInstance'] = new erLhcoreClassUser();
-        }
-        return $GLOBALS['LhUserInstance'];
+        if ( is_null( self::$instance ) )
+        {          
+            self::$instance = new erLhcoreClassUser();            
+        }         
+        return self::$instance;    
     }    
     
    function __construct()
@@ -66,12 +66,17 @@ class erLhcoreClassUser{
        }
        else
        {       
-            $data = $this->filter->fetchData();  
-            $_SESSION['user_id'] = $data['id'][0];
-            $this->userid = $data['id'][0];
-                        
-            $this->authenticated = true;
-            return true;
+           // Anonymous user does not have access to login
+           if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' ) != $data['id'][0])
+           {
+                $data = $this->filter->fetchData();  
+                $_SESSION['user_id'] = $data['id'][0];
+                $this->userid = $data['id'][0];                        
+                $this->authenticated = true;
+                return true;
+           }
+           
+           return false;
        }
    }
    
@@ -267,12 +272,21 @@ class erLhcoreClassUser{
    
    function generateAccessArray()
    {
-       $accessArray = erLhcoreClassRole::accessArrayByUserID( $this->userid );
+       if ($this->userid !== null) {
+            $UserIDGenerate = $this->userid;
+       } else {
+            $UserIDGenerate = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' );
+       }
+       
+       $accessArray = erLhcoreClassRole::accessArrayByUserID( $UserIDGenerate );
+       
        
        return $accessArray;
    }
     
    private static $persistentSession;
+   private static $instance = null; 
+   
    private $userid;   
    private $AccessArray = false;
    

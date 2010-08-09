@@ -136,14 +136,14 @@ $ViewList['myalbums'] = array(
     'script' => 'myalbums.php',
     'params' => array(),
     'pagelayout' => 'main_3column',
-    'functions' => array( 'use' ),
+    'functions' => array( 'personal_albums' ),
     ); 
        
 $ViewList['createalbum'] = array( 
     'script' => 'createalbum.php',
     'params' => array(),
     'pagelayout' => 'main_3column',
-    'functions' => array( 'use' ),
+    'functions' => array( 'personal_albums' ),
     );  
                  
 $ViewList['createalbumadmin'] = array( 
@@ -198,6 +198,7 @@ $ViewList['fileuploadcontainer'] = array(
         
 $ViewList['fileuploadcontainerarchive'] = array( 
     'script' => 'fileuploadcontainerarchive.php',
+    'functions' => array( 'public_upload' ),
     'params' => array('fileID')
     ); 
        
@@ -209,16 +210,20 @@ $ViewList['getsession'] = array(
            
 $ViewList['getsessionarchive'] = array( 
     'script' => 'getsessionarchive.php',
+    'functions' => array( 'public_upload_archive' ),
     'params' => array()
     );
     
+
 $ViewList['upload'] = array( 
     'script' => 'upload.php',
+    'functions' => array( 'public_upload' ),
     'params' => array()
     ); 
         
 $ViewList['uploadarchive'] = array( 
     'script' => 'uploadarchive.php',
+    'functions' => array( 'public_upload_archive' ),
     'params' => array()
     );  
        
@@ -317,6 +322,7 @@ $ViewList['deletealbumadmin'] = array(
 
 $ViewList['publicupload'] = array( 
     'script' => 'publicupload.php',
+    'functions' => array( 'public_upload' ),
     'params' => array()
     ); 
     
@@ -332,7 +338,8 @@ $ViewList['addtofavorites'] = array(
                               
 $ViewList['deletefavorite'] = array( 
     'script' => 'deletefavorite.php',
-    'params' => array('image_id')
+    'params' => array('image_id'),
+     'functions' => array( 'public_upload_archive' ),
     );
      
 $ViewList['myfavorites'] = array( 
@@ -353,5 +360,8 @@ $ViewList['sharephpbb'] = array(
 $FunctionList = array();  
 $FunctionList['use'] = array('explain' => 'General registered user permission');
 $FunctionList['administrate'] = array('explain' => 'Global edit permission');
+$FunctionList['personal_albums'] = array('explain' => 'Allow users to have personal albums');
+$FunctionList['public_upload'] = array('explain' => 'Allow anyone to upload images usign flash');
+$FunctionList['public_upload_archive'] = array('explain' => 'Allow anyone to upload archive');
 
 ?>

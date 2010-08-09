@@ -198,37 +198,52 @@ switch ((int)$Params['user_parameters']['step_id']) {
     	        
     	       $db = ezcDbInstance::get();	       
     	                      
-               //Administrators group
+               //Groups table
                $db->query("CREATE TABLE IF NOT EXISTS `lh_group` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `name` varchar(50) NOT NULL,
                   PRIMARY KEY (`id`)
                 ) TYPE=MyISAM");
                
+               // Administrators group
                $GroupData = new erLhcoreClassModelGroup();
                $GroupData->name    = "Administrators";
                erLhcoreClassUser::getSession()->save($GroupData);
                
+               // Registered users group
                $GroupDataRegistered = new erLhcoreClassModelGroup();
                $GroupDataRegistered->name    = "Registered users";
                erLhcoreClassUser::getSession()->save($GroupDataRegistered);
                
-               //Administrators role
+               // Anonymous users group
+               $GroupDataAnonymous = new erLhcoreClassModelGroup();
+               $GroupDataAnonymous->name    = "Anonymous users group";
+               erLhcoreClassUser::getSession()->save($GroupDataAnonymous);
+                              
+               // Roles table
                $db->query("CREATE TABLE IF NOT EXISTS `lh_role` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `name` varchar(50) NOT NULL,
                   PRIMARY KEY (`id`)
                 ) TYPE=MyISAM");
+               
+               // Administrators role
                $Role = new erLhcoreClassModelRole();
                $Role->name = 'Administrators';
                erLhcoreClassRole::getSession()->save($Role);
                
+               // Registered users role
                $RoleRegistered = new erLhcoreClassModelRole();
                $RoleRegistered->name = 'Registered users';
                erLhcoreClassRole::getSession()->save($RoleRegistered);
 
+               // Anonymous users role
+               $RoleAnonymous = new erLhcoreClassModelRole();
+               $RoleAnonymous->name = 'Anonymous users';
+               erLhcoreClassRole::getSession()->save($RoleAnonymous);
                
-               //Assing group role
+               
+               //Assing group to role table
                $db->query("CREATE TABLE IF NOT EXISTS `lh_grouprole` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `group_id` int(11) NOT NULL,
@@ -237,15 +252,24 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `group_id` (`role_id`,`group_id`)
                 ) TYPE=MyISAM");
 
+               // Admin group assing admin role
                $GroupRole = new erLhcoreClassModelGroupRole();        
                $GroupRole->group_id =$GroupData->id;
                $GroupRole->role_id = $Role->id;        
                erLhcoreClassRole::getSession()->save($GroupRole);
         
+               // Registered users role assign registered users role
                $GroupRoleRegistered = new erLhcoreClassModelGroupRole();        
                $GroupRoleRegistered->group_id = $GroupDataRegistered->id;
                $GroupRoleRegistered->role_id = $RoleRegistered->id;        
                erLhcoreClassRole::getSession()->save($GroupRoleRegistered);
+               
+               // Anonymous users assing anonymous users role
+               $GroupRoleAnonymous = new erLhcoreClassModelGroupRole();        
+               $GroupRoleAnonymous->group_id = $GroupDataAnonymous->id;
+               $GroupRoleAnonymous->role_id = $RoleAnonymous->id;        
+               erLhcoreClassRole::getSession()->save($GroupRoleAnonymous);
+               
                
                // Users
                $db->query("CREATE TABLE IF NOT EXISTS `lh_users` (
@@ -268,14 +292,21 @@ switch ((int)$Params['user_parameters']['step_id']) {
                       KEY `hash` (`hash`)
                     ) ENGINE=MyISAM");
                               
+                // Create admin user
                 $UserData = new erLhcoreClassModelUser();
-
                 $UserData->setPassword($form->AdminPassword);
                 $UserData->email   = $form->AdminEmail;             
-                $UserData->username = $form->AdminUsername;
-        
+                $UserData->username = $form->AdminUsername;        
                 erLhcoreClassUser::getSession()->save($UserData);
-                                        
+
+                // Create anonymous user
+                $UserDataAnonymous = new erLhcoreClassModelUser();
+                $UserDataAnonymous->setPassword(erLhcoreClassModelForgotPassword::randomPassword());
+                $UserDataAnonymous->email   = $form->AdminEmail;             
+                $UserDataAnonymous->username = 'anonymous';        
+                erLhcoreClassUser::getSession()->save($UserDataAnonymous);                
+                
+                // User assign to groyp table
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_groupuser` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `group_id` int(11) NOT NULL,
@@ -286,11 +317,18 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `group_id_2` (`group_id`,`user_id`)
                 ) TYPE=MyISAM ");
 
+                // Assign admin user to admin group
                 $GroupUser = new erLhcoreClassModelGroupUser();        
                 $GroupUser->group_id = $GroupData->id;
                 $GroupUser->user_id = $UserData->id;        
                 erLhcoreClassUser::getSession()->save($GroupUser);
                 
+                // Assign Anonymous user to anonymous group
+                $GroupUserAnonymous = new erLhcoreClassModelGroupUser();        
+                $GroupUserAnonymous->group_id = $GroupDataAnonymous->id;
+                $GroupUserAnonymous->user_id = $UserDataAnonymous->id;        
+                erLhcoreClassUser::getSession()->save($GroupUserAnonymous);
+                 
                 //Assign default role functions
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_rolefunction` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -617,6 +655,12 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 $RoleFunctionRegisteredGallery->role_id = $RoleRegistered->id;
                 $RoleFunctionRegisteredGallery->module = 'lhgallery';
                 $RoleFunctionRegisteredGallery->function = 'use';                
+                erLhcoreClassRole::getSession()->save($RoleFunctionRegisteredGallery);
+                                
+                $RoleFunctionRegisteredGallery = new erLhcoreClassModelRoleFunction();
+                $RoleFunctionRegisteredGallery->role_id = $RoleRegistered->id;
+                $RoleFunctionRegisteredGallery->module = 'lhgallery';
+                $RoleFunctionRegisteredGallery->function = 'personal_albums';                
                 erLhcoreClassRole::getSession()->save($RoleFunctionRegisteredGallery);
                    
                 $CategoryData = new erLhcoreClassModelGalleryCategory();

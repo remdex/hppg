@@ -1,7 +1,9 @@
 <div id="navcontainer">
 	<ul id="navlist">
 		<li><a href="<?=erLhcoreClassDesign::baseurl('user/account')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','My account');?></a></li>
+		<?php if (erLhcoreClassUser::instance()->hasAccessTo('lhgallery','personal_albums')) : ?>
 		<li><a href="<?=erLhcoreClassDesign::baseurl('gallery/myalbums')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Manage albums');?></a></li>
+		<?php endif;?>		
 		<li><a href="<?=erLhcoreClassDesign::baseurl('shop/mycredits')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Credits');?></a></li>
 		<li><a href="<?=erLhcoreClassDesign::baseurl('shop/myorders')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','My orders');?></a></li>
 		<li><a href="<?=erLhcoreClassDesign::baseurl('shop/mycreditsorders')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','My credits orders');?></a></li>

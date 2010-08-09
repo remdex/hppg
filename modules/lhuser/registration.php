@@ -72,13 +72,18 @@ if (isset($_POST['Update_account']))
         $CacheManager = erConfigClassLhCacheConfig::getInstance();
         $CacheManager->expireCache();
        
-        $userCategory = new erLhcoreClassModelGalleryCategory();
-        $userCategory->owner_id =  $UserData->id;
-        $userCategory->parent =  erConfigClassLhConfig::getInstance()->conf->getSetting( 'gallery_settings', 'default_gallery_category' );
-        $userCategory->name =  $form->Username;
-        erLhcoreClassGallery::getSession()->save($userCategory);               
-        $userCategory->clearCategoryCache();
-               
+        try {
+            $defaultUserCategoryParent = erLhcoreClassModelGalleryCategory::fetch(erConfigClassLhConfig::getInstance()->conf->getSetting( 'gallery_settings', 'default_gallery_category' ));
+            $userCategory = new erLhcoreClassModelGalleryCategory();
+            $userCategory->owner_id =  $UserData->id;
+            $userCategory->parent =  $defaultUserCategoryParent->cid;
+            $userCategory->name =  $form->Username;
+            erLhcoreClassGallery::getSession()->save($userCategory);               
+            $userCategory->clearCategoryCache();
+        } catch (Exception $e) { // Perhaps administrator deleted default gallery category
+            // Do nothing
+        }
+        
         erLhcoreClassModule::redirect('user/registered');
         
         return ;
