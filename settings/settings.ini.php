@@ -49,16 +49,7 @@ return array (
           0 => 'frontend',
           1 => 'defaulttheme',
         ),
-      ),
-      'lit' => 
-      array (
-        'locale' => 'lt_LT',
-        'theme' => 
-        array (
-          0 => 'frontend',
-          1 => 'defaulttheme',
-        ),
-      ),
+      ),      
       'm' => 
       array (
         'locale' => 'en_EN',
@@ -87,6 +78,7 @@ return array (
     ),
     'user_settings' => array(
         'default_user_group' => 2,
+        'anonymous_user_id' => 1,
     ),
     'gallery_settings' => array(
         'default_gallery_category' => 1,
