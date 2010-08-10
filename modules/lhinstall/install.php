@@ -673,6 +673,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 	            $cfgSite->conf->setSetting( 'gallery_settings', 'default_gallery_category', $CategoryData->cid);	     
 	            $cfgSite->conf->setSetting( 'site', 'installed', true);	     
 	            $cfgSite->conf->setSetting( 'user_settings', 'default_user_group', $GroupDataRegistered->id);	     
+	            $cfgSite->conf->setSetting( 'user_settings', 'anonymous_user_id', $UserDataAnonymous->id);	     
 	            $cfgSite->save();
 	           
     	        $tpl->setFile('lhinstall/install4.tpl.php');
