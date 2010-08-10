@@ -1,4 +1,8 @@
+Date: 2010-08-10
+1. Introduced default user ID options.
+2. Various bugfixes
 
+/***************************************************/
 Date: 2010-07-29
 Anaglyph images support added.
 
