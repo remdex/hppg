@@ -29,7 +29,7 @@ SWFUpload.onload = function () {
 		flash_url : "<?=erLhcoreClassDesign::design('js/swfupload/Flash/swfupload.swf')?>",
 		upload_url: "<?=erLhcoreClassDesign::baseurl('/gallery/upload')?>",
 		post_params: {},
-		file_size_limit : "5 MB",
+		file_size_limit : "<?=(int)(erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value/1024)?> MB",
 		file_types : "*.jpg;*.gif;*.png;*.png;*.bmp;",
 		file_types_description : "<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/publicupload','Choose one of')?>",
 		file_upload_limit : 200,
@@ -104,7 +104,7 @@ SWFUpload.onload = function () {
 	<tr>
 	   <td colspan="2">
 		<ul style="margin:0;padding:0;">
-		  <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/publicupload','Max file size 5mb.')?></li>
+		  <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/publicupload','Max file size ')?><?=(int)(erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value/1024)?> mb.</li>
 		</ul>
 		</td>
 	</tr>
