@@ -217,13 +217,13 @@ $ViewList['getsessionarchive'] = array(
 
 $ViewList['upload'] = array( 
     'script' => 'upload.php',
-    'functions' => array( 'public_upload' ),
+    'functions' => array( ),
     'params' => array()
     ); 
         
 $ViewList['uploadarchive'] = array( 
     'script' => 'uploadarchive.php',
-    'functions' => array( 'public_upload_archive' ),
+    'functions' => array( ),
     'params' => array()
     );  
        

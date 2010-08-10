@@ -46,12 +46,7 @@ class erLhcoreClassModule{
             
             // Function set, check permission
             if (isset($Params['module']['functions']))
-            {   
-                if (!$currentUser->isLogged()){                    
-                    erLhcoreClassModule::redirect('user/login');
-                    exit;
-                }
-                
+            {                                 
                 if (!$currentUser->hasAccessTo('lh'.$GLOBALS['ModuleToRun'],$Params['module']['functions']))
                 {
                     include_once('modules/lhkernel/nopermission.php');  
