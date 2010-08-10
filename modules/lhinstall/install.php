@@ -264,6 +264,12 @@ switch ((int)$Params['user_parameters']['step_id']) {
                $GroupRoleRegistered->role_id = $RoleRegistered->id;        
                erLhcoreClassRole::getSession()->save($GroupRoleRegistered);
                
+               // Assign registered users anonymous users role
+               $GroupRoleRegisteredAnonymous = new erLhcoreClassModelGroupRole();        
+               $GroupRoleRegisteredAnonymous->group_id = $GroupDataRegistered->id;
+               $GroupRoleRegisteredAnonymous->role_id = $RoleAnonymous->id;        
+               erLhcoreClassRole::getSession()->save($GroupRoleRegisteredAnonymous);
+                              
                // Anonymous users assing anonymous users role
                $GroupRoleAnonymous = new erLhcoreClassModelGroupRole();        
                $GroupRoleAnonymous->group_id = $GroupDataAnonymous->id;
