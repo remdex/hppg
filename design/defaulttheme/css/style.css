@@ -712,9 +712,9 @@ font-size:11px;
 .image-full-content .navigator{border:0;padding:0;text-align:center;}
 
 
-.image-full-content .default-button{font-size:12px;padding:2px;padding-left:4px;padding-right:4px;}
-.image-full-content input.inputfield{font-size:12px;padding:2px;padding-left:4px;padding-right:4px;}
-.image-full-content .sub-header{margin-top:10px;}
+.image-full .default-button{font-size:12px;padding:2px;padding-left:4px;padding-right:4px;}
+.image-full input.inputfield{font-size:12px;padding:2px;padding-left:4px;padding-right:4px;}
+.image-full .sub-header{margin-top:10px;}
 
 .img{padding:10px;text-align:center;border:1px solid #CCCCCC;margin-left:0;margin-top:10px;}
 
