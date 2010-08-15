@@ -130,7 +130,7 @@ class erLhcoreClassModelGalleryImage {
            	        $pathElements[] = urlencode(erLhcoreClassCharTransform::TransformToURL($item['title']));
            	    }     
            	    $this->url_path = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->pid.'p.html');  	    
-           	    return $this->url_path.'asdasd';
+           	    return $this->url_path;
        	    } else {
        	        $this->url_path = erLhcoreClassDesign::baseurl('/gallery/image/'.$this->pid);
        	        return $this->url_path;
