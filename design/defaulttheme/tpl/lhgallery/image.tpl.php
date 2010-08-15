@@ -1,6 +1,10 @@
 <div class="image-full">
 <div class="image-full-content">
+
+<div class="header-list">
 <h1><?=htmlspecialchars($image->name_user)?></h1>
+</div>
+
 <div class="navigator float-break">
 
 <? switch ($mode) {
@@ -11,21 +15,23 @@
     	$next_image = current($imagesLeft); 
     	$imagesLeft = array_reverse($imagesLeft);    	
     	?>
-        <a class="left-image" href="<?=$next_image->url_path.$urlAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
-        <?
-        endif;
-        $pageAppend = $page > 1 ? '/(page)/'.$page : '';
-        ?>        
-        <a href="<? echo erLhcoreClassModelGalleryAlbum::fetch($image->aid)->url_path,$pageAppend,$urlAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?> &raquo;</a>        
+        <a class="left-image" href="<?=$next_image->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
+         <? endif; ?>
+         
         <? 
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight); 
         ?>
-        <a class="right-image" href="<?=$prev_image->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a> 
-        <? endif;
-        $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
-        ?>
-	<?break;
+        <a class="right-image" href="<?=$prev_image->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?></a> 
+        <?
+        endif;
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';
+        ?>        
+        <a class="ret-thumb" href="<? echo erLhcoreClassModelGalleryAlbum::fetch($image->aid)->url_path,$pageAppend,$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?></a>        
+                
+        <?php $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
+        
+        break;
 	
 	case 'myfavorites': ?>		
     	<? 
@@ -33,21 +39,23 @@
     	$next_image = current($imagesLeft); 
     	$imagesLeft = array_reverse($imagesLeft);    	
     	?>
-        <a class="left-image" href="<?=$next_image->url_path.$urlAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
-        <?
-        endif;
-        $pageAppend = $page > 1 ? '/(page)/'.$page : '';
-        ?>        
-        <a href="<? echo erLhcoreClassDesign::baseurl('/gallery/myfavorites'),$pageAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to favorites')?> &raquo;</a>        
+        <a class="left-image" href="<?=$next_image->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
+        <? endif; ?>
+                
         <? 
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight); 
         ?>
-        <a class="right-image" href="<?=$prev_image->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a> 
-        <? endif;
-        $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
-        ?>
-	<?break;
+        <a class="right-image" href="<?=$prev_image->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?></a> 
+        <?
+        endif;
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';
+        ?>        
+        <a class="ret-thumb" href="<? echo erLhcoreClassDesign::baseurl('/gallery/myfavorites'),$pageAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to favorites')?></a>        
+        
+        <?php $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
+        
+        break;
 	
 	case 'lastuploads': ?>		
     	<? 
@@ -57,44 +65,49 @@
     	$next_image = current($imagesLeft);
     	$imagesLeft = array_reverse($imagesLeft);        	
     	?>
-        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/lastuploads">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
-        <? 
-        endif;
-        $page = ceil(erLhcoreClassModelGalleryImage::getImageCount(array('filtergt' => array('pid' => $image->pid)))/20);
-        $pageAppend = $page > 1 ? '/(page)/'.$page : '';
-        ?>        
-        <a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploads')?><?=$pageAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?> &raquo;</a>        
+        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/lastuploads"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
+        <? endif; ?>
+         
         <? 
         $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'limit' => 2,'sort' => 'ctime DESC','filterlt' => array('pid' => $image->pid)));
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight);
         ?>      
-        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/lastuploads"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a>
-        <? endif; 
-        $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
-        ?>
-	<?break;
+        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/lastuploads"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?></a>
+              
+        <? 
+        endif;
+        $page = ceil(erLhcoreClassModelGalleryImage::getImageCount(array('filtergt' => array('pid' => $image->pid)))/20);
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';
+        ?>        
+        <a class="ret-thumb" href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploads')?><?=$pageAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?></a>        
+            
+        <?php $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
+        
+        break;
 	
 	case 'search':	
 	if (count($imagesLeft) > 0) :
     $next_image = current($imagesLeft);
     $imagesLeft = array_reverse($imagesLeft);             
 	?>
-    <a class="left-image" href="<?=$next_image->url_path?>/(mode)/search/(keyword)/<?php echo urlencode($keyword),$mode_sort_append?>" >&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
-    <? 
-    endif;
-	$pageAppend = $page > 1 ? '/(page)/'.$page : '';
-	?>
-    <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($keyword)?><?php echo $pageAppend,$mode_sort_append?>">&laquo; return to thumbnails mode &raquo;</a>      
+    <a class="left-image" href="<?=$next_image->url_path?>/(mode)/search/(keyword)/<?php echo urlencode($keyword),$mode_sort_append?>" ><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
+    <?endif; ?>
+    
     <? 
 	if (count($imagesRight) > 0) :
 	$next_image = current($imagesRight);
 	?>	
-    <a class="right-image" href="<?=$next_image->url_path?>/(mode)/search/(keyword)/<?php echo urlencode($keyword),$mode_sort_append?>" ><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a>     
-	<?endif;
-	$imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
-	?>         
-	<?break;
+    <a class="right-image" href="<?=$next_image->url_path?>/(mode)/search/(keyword)/<?php echo urlencode($keyword),$mode_sort_append?>" ><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?></a>     
+		
+	<? 
+    endif;
+	$pageAppend = $page > 1 ? '/(page)/'.$page : '';
+	?>
+    <a class="ret-thumb" href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($keyword)?><?php echo $pageAppend,$mode_sort_append?>">return to thumbnails</a>      
+        
+	<?php $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
+	break;
 	
 	case 'popular': ?>		    		
     	<?     	    	
@@ -121,30 +134,11 @@
     	$next_image = current($imagesLeft);
     	$imagesLeft = array_reverse($imagesLeft); 
     	?>
-        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/popular">&laquo; previous image</a>             
-        <?  endif; 
+        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/popular">previous image</a>             
+        <?  endif; ?>
         
-        
-  		$cacheKey = md5('popular_count_thumbnails_'.$cacheVersion.'_hits_'.$image->hits.'_pid_'.$image->pid);
-		if (($photos = $cache->restore($cacheKey)) === false)
-		{
-	        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE hits > :hits OR hits = :hits AND pid > :pid LIMIT 1');
-	        $stmt->bindValue( ':hits',$image->hits);
-	        $stmt->bindValue( ':pid',$image->pid);       
-	        $stmt->execute();
-	        $photos = $stmt->fetchColumn(); 
-	        $cache->store($cacheKey,$photos);
-		}
-        
-		
-        $page = ceil(($photos+1)/20);
-	    $pageAppend = $page > 1 ? '/(page)/'.$page : '';
-    	?>    	
-        <a href="/gallery/popular<?=$pageAppend?>">&laquo; return to thumbnails &raquo;</a>        
-        <?   
-        
-        $cacheKey = md5('popular_right_thumbnails_'.$cacheVersion.'_hits_'.$image->hits.'_pid_'.$image->pid);
-        
+        <?  
+        $cacheKey = md5('popular_right_thumbnails_'.$cacheVersion.'_hits_'.$image->hits.'_pid_'.$image->pid);        
         if (($imagesRight = $cache->restore($cacheKey)) === false)
 		{
 	        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
@@ -158,9 +152,26 @@
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight);         
     	?>       
-        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/popular">next image &raquo;</a>       
-	<?endif;
-	   $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
+        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/popular">next image</a>       
+	   <?endif;?>
+	   	   
+  		<?php $cacheKey = md5('popular_count_thumbnails_'.$cacheVersion.'_hits_'.$image->hits.'_pid_'.$image->pid);
+		if (($photos = $cache->restore($cacheKey)) === false)
+		{
+	        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE hits > :hits OR hits = :hits AND pid > :pid LIMIT 1');
+	        $stmt->bindValue( ':hits',$image->hits);
+	        $stmt->bindValue( ':pid',$image->pid);       
+	        $stmt->execute();
+	        $photos = $stmt->fetchColumn(); 
+	        $cache->store($cacheKey,$photos);
+		}
+        		
+        $page = ceil(($photos+1)/20);
+	    $pageAppend = $page > 1 ? '/(page)/'.$page : '';
+    	?>    	
+        <a class="ret-thumb" href="/gallery/popular<?=$pageAppend?>">return to thumbnails</a>        
+         
+	   <?php $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
 	break;	   
 	
 	case 'lasthits': ?>		
@@ -178,17 +189,9 @@
     	$next_image = current($imagesLeft);
     	$imagesLeft = array_reverse($imagesLeft);    	    	          
     	?>
-        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/lasthits">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>             
-        <?endif; 	
-            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE mtime > :mtime OR mtime = :mtime AND pid > :pid LIMIT 1');
-            $stmt->bindValue( ':mtime',$image->mtime);
-            $stmt->bindValue( ':pid',$image->pid);       
-            $stmt->execute();  
-            $photos = $stmt->fetchColumn();         
-            $page = ceil(($photos+1)/20);
-    	    $pageAppend = $page > 1 ? '/(page)/'.$page : '';  
-    	?>    	
-        <a href="<?=erLhcoreClassDesign::baseurl('gallery/lasthits')?><?=$pageAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?> &raquo;</a>        
+        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/lasthits"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>             
+        <?endif;?> 	
+        
         <? 
         $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
         $q->where( $q->expr->lt( 'mtime', $q->bindValue( $image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $image->pid ) ) )
@@ -199,9 +202,20 @@
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight);              
     	?>       
-        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/lasthits"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a> 
-	   <?endif;
-	   $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
+        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/lasthits"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?></a> 
+	   <?endif;?>
+	   	   
+        <?php $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE mtime > :mtime OR mtime = :mtime AND pid > :pid LIMIT 1');
+            $stmt->bindValue( ':mtime',$image->mtime);
+            $stmt->bindValue( ':pid',$image->pid);       
+            $stmt->execute();  
+            $photos = $stmt->fetchColumn();         
+            $page = ceil(($photos+1)/20);
+    	    $pageAppend = $page > 1 ? '/(page)/'.$page : '';  
+    	?>    	
+        <a class="ret-thumb" href="<?=erLhcoreClassDesign::baseurl('gallery/lasthits')?><?=$pageAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?></a>        
+           
+	   <?php $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
 	   break;
 	   
 	case 'lastcommented': ?>		
@@ -220,17 +234,9 @@
         $next_image = current($imagesLeft);
     	$imagesLeft = array_reverse($imagesLeft);
     	?>
-        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/lastcommented">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>             
-        <?endif;     	
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE comtime > :comtime OR comtime = :comtime AND pid > :pid LIMIT 1');
-        $stmt->bindValue( ':comtime',$image->comtime);
-        $stmt->bindValue( ':pid',$image->pid);       
-        $stmt->execute();
-        $photos = $stmt->fetchColumn();
-        $page = ceil(($photos+1)/20);
-	    $pageAppend = $page > 1 ? '/(page)/'.$page : ''; 
-    	?>    	
-        <a href="<?=erLhcoreClassDesign::baseurl('gallery/lastcommented')?><?=$pageAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?> &raquo;</a>        
+        <a class="left-image" href="<?=$next_image->url_path?>/(mode)/lastcommented"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>             
+        <?endif; ?>    	
+        
         <?   
         $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
         $q->where( $q->expr->lt( 'comtime', $q->bindValue( $image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $image->pid ) ) )
@@ -240,8 +246,20 @@
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight);
     	?>       
-        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/lastcommented"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a> 
-	   <?endif;
+        <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/lastcommented"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?></a> 
+	   <?endif;?>
+	           
+        <?php $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE comtime > :comtime OR comtime = :comtime AND pid > :pid LIMIT 1');
+        $stmt->bindValue( ':comtime',$image->comtime);
+        $stmt->bindValue( ':pid',$image->pid);       
+        $stmt->execute();
+        $photos = $stmt->fetchColumn();
+        $page = ceil(($photos+1)/20);
+	    $pageAppend = $page > 1 ? '/(page)/'.$page : ''; 
+    	?>    	
+        <a  class="ret-thumb" href="<?=erLhcoreClassDesign::baseurl('gallery/lastcommented')?><?=$pageAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?></a>        
+         
+	   <?php
 	   $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
 	   break;
 	
@@ -260,18 +278,9 @@
         $next_image = current($imagesLeft);
     	$imagesLeft = array_reverse($imagesLeft);
         ?>                  	
-       <a class="left-image" href="<?=$next_image->url_path?>/(mode)/toprated">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>                            
-       <?php endif;    
-       $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE pic_rating > :pic_rating OR pic_rating = :pic_rating AND lh_gallery_images.votes > :votes OR pic_rating = :pic_rating AND lh_gallery_images.votes = :votes AND pid > :pid');
-       $stmt->bindValue( ':pic_rating',$image->pic_rating);       
-       $stmt->bindValue( ':votes',$image->votes);       
-       $stmt->bindValue( ':pid',$image->pid);       
-       $stmt->execute();
-       $photos = $stmt->fetchColumn();         
-       $page = ceil(($photos+1)/20);
-	   $pageAppend = $page > 1 ? '/(page)/'.$page : '';                     
-       ?>            
-       <a href="<?=erLhcoreClassDesign::baseurl('gallery/toprated')?><?=$pageAppend?>">&laquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?> &raquo;</a>                
+       <a class="left-image" href="<?=$next_image->url_path?>/(mode)/toprated"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>                            
+       <?php endif;  ?>  
+       
        <?  
         $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
         $q->where( $q->expr->lt( 'pic_rating', $q->bindValue( $image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $image->votes ) ).' OR '.
@@ -282,8 +291,21 @@
         if (count($imagesRight) > 0) :
         $prev_image = current($imagesRight);
         ?>        
-       <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/toprated"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> &raquo;</a>     
-	<?endif;
+       <a class="right-image" href="<?=$prev_image->url_path?>/(mode)/toprated"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?></a>     
+	   <?endif;?>
+       
+       <?php $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE pic_rating > :pic_rating OR pic_rating = :pic_rating AND lh_gallery_images.votes > :votes OR pic_rating = :pic_rating AND lh_gallery_images.votes = :votes AND pid > :pid');
+       $stmt->bindValue( ':pic_rating',$image->pic_rating);       
+       $stmt->bindValue( ':votes',$image->votes);       
+       $stmt->bindValue( ':pid',$image->pid);       
+       $stmt->execute();
+       $photos = $stmt->fetchColumn();         
+       $page = ceil(($photos+1)/20);
+	   $pageAppend = $page > 1 ? '/(page)/'.$page : '';                     
+       ?>            
+       <a class="ret-thumb" href="<?=erLhcoreClassDesign::baseurl('gallery/toprated')?><?=$pageAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?></a>                
+       	
+	<?php
 	   $imagesAjax = array_merge((array)$imagesLeft,array($image->pid => $image),(array)$imagesRight);
 	break;
 	
@@ -296,12 +318,23 @@
 
 </div>
 
-<br />
+
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_window.tpl.php'));?>
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_control_block.tpl.php'));?>  
 
-<div class="navigator-ajax float-break" id="ajax-navigator-content">
+
+<div id="ajax-navigator-content" class="float-break">
+
+<?php if (count($imagesRight) > 0) :
+end($imagesAjax);
+$lastImages = current($imagesAjax);
+?> 
+<div class="right-ajax">
+<a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
+</div>
+<?php endif;?>
+
 <?php
 if (count($imagesLeft) > 0) :
 reset($imagesAjax);
@@ -310,28 +343,39 @@ $lastImages = current($imagesAjax);
 <div class="left-ajax">
 <a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
 </div>
+
+<div class="navigator-ajax float-break" >
 <? 
 endif;
+$counter = 1;
 foreach ($imagesAjax as $key => $item) : ?>
-    <div class="image-thumb thumb-pic-small">
+    <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
         <div class="thumb-pic">
-            <a href="<?=$item->url_path?><?=isset($urlAppend) ? $urlAppend : ''?>"><img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Click to see fullsize')?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename))?>" alt="<?=htmlspecialchars($item->name_user);?>" /></a>
+            <a href="<?=$item->url_path?><?=isset($urlAppend) ? $urlAppend : ''?>"><img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size')?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename),true,$item->pid)?>" alt="<?=htmlspecialchars($item->name_user);?>" /></a>           
         </div>
         <div class="thumb-attr">
-        <ul>            
-            <li><h3><?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image') : $title;?></h3></li>
-        </ul>
+        
+        <div class="tit-item">
+            <h3><a title="<?=htmlspecialchars($item->name_user);?>" href="<?=$item->url_path?><?=isset($urlAppend) ? $urlAppend : ''?>">
+                <?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','preview version') : $title;?>          
+                </a>
+            </h3>
         </div>
-    </div>   
-<?endforeach; 
-if (count($imagesRight) > 0) :
-end($imagesAjax);
-$lastImages = current($imagesAjax);
-?> 
-<div class="right-ajax">
-<a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
+        
+        <span class="res-ico">
+        <?=$item->pwidth?>x<?=$item->pheight?>
+        </span>    
+        
+        <span class="hits-ico">
+        <?=$item->hits?>
+        </span>               
+        
+        </div>
+    </div>     
+<?$counter++;endforeach;?> 
 </div>
-<?php endif;?>
+
+
 </div>
 
 
@@ -360,12 +404,20 @@ $('.ad-phpbb').colorbox();
 $('.ad-anaglyph').colorbox({width:'<?=$image->pwidth+50?>px',height:'<?=$image->pheight+130?>px'});
 <?php endif;?>
 
+$("div.image-thumb").mouseover(function() {
+    $(this).addClass('image-thumb-shadow');
+  }).mouseout(function(){
+    $(this).removeClass('image-thumb-shadow');
+  });
+    
 </script>
 
 
 
 <div class="picture-details">
+<div class="sub-header">
 <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Picture details')?></h3>
+</div>
 <ul>
     <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Filename')?>: <?=htmlspecialchars($image->filename);?></li>
     <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','File size')?>: <?=$image->filesize_user;?></li>
@@ -378,7 +430,9 @@ $('.ad-anaglyph').colorbox({width:'<?=$image->pwidth+50?>px',height:'<?=$image->
 </div>
 
 <div class="picture-voting">
+<div class="sub-header">
 <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Rate this picture')?></h3>
+</div>
 <div id="vote-content">
     <label><input type="radio" checked="checked" value="1" name="Voting" />(1 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','star')?>)</label> <label><input type="radio" value="2" name="Voting" /> (2 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','stars')?>)</label> <label><input type="radio" value="3" name="Voting" />(3 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','stars')?>)</label> <label><input type="radio" value="4" name="Voting" />(4 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','stars')?>)</label> <label><input type="radio" value="5" name="Voting" />(5 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','stars')?>)</label>
     <input type="button" class="default-button" name="AddVote" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Vote!')?>" onclick="hw.vote(<?=$image->pid?>,$('input[name=Voting]:checked').val())"/>
@@ -387,7 +441,9 @@ $('.ad-anaglyph').colorbox({width:'<?=$image->pwidth+50?>px',height:'<?=$image->
 
 
 <div class="picture-comments" id="comment-container">
+<div class="sub-header">
 <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Picture comments')?></h3>
+</div>
 <?php $comments = erLhcoreClassModelGalleryComment::getComments(array('cache_key' => 'comments_'.$image->pid,'filter' => array('pid' => $image->pid))); 
 
 if (count($comments) > 0) :

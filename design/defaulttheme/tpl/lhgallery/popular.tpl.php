@@ -1,5 +1,5 @@
 <div class="header-list">
-<a class="rss_list" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images')?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/popularrss/')?>"></a><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images')?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images')?></h1>
 </div>
 
 <?php if ($pages->items_total > 0) { ?>

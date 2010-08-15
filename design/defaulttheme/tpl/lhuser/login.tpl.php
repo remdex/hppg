@@ -2,7 +2,6 @@
 <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Please login');?></h1>
 </div>
 <? if (isset($error)) : ?><h2 class="error-h2"><?=$error;?></h2><? endif;?>
-<br />
 
 
 <form method="post" action="<?=erLhcoreClassDesign::baseurl('/user/login/')?>">

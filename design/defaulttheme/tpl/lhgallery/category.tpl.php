@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/category','Category')?> - <a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1>
+<h1><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1>
 </div>
 
 <? $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories($category->cid);

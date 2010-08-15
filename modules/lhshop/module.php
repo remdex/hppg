@@ -174,14 +174,12 @@ $ViewList['cancelcredits'] = array(
 $ViewList['myorders'] = array( 
     'script' => 'myorders.php',
     'functions' => array( 'use' ),
-    'pagelayout' => 'main_3column',
     'params' => array()
 );
 
 $ViewList['mycreditsorders'] = array( 
     'script' => 'mycreditsorders.php',
     'functions' => array( 'use' ),
-    'pagelayout' => 'main_3column',
     'params' => array()
 );
 
@@ -200,14 +198,12 @@ $ViewList['index'] = array(
 $ViewList['mycredits'] = array( 
     'script' => 'mycredits.php',
     'params' => array(),
-    'pagelayout' => 'main_3column',
     'functions' => array( 'use' )
 ); 
  
 $ViewList['buycredits'] = array( 
     'script' => 'buycredits.php',
     'params' => array(),
-    'pagelayout' => 'main_3column',
     'functions' => array( 'use' )
 ); 
 
@@ -219,7 +215,6 @@ $ViewList['download'] = array(
 $ViewList['orderview'] = array( 
     'script' => 'orderview.php',
     'params' => array('order_id'),
-    'pagelayout' => 'main_3column',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelShopOrder::userOrderFetch','param' => 'order_id'),'global' =>'administrate'),
 );  
    

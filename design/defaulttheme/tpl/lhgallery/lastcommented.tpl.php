@@ -1,5 +1,5 @@
 <div class="header-list">
-<a class="rss_list" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images')?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/lastcommentedrss/')?>"></a><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images')?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images')?></h1>
 </div>
 <? if ($pages->items_total > 0) { ?>
          

@@ -115,49 +115,22 @@ var hw = {
 		$.getJSON(this.formAddPath + this.deletefavorite+pid, {} , function(data) {				
 			$('#image_thumb_'+pid).fadeOut();            	
 		});
-	},
+	}, 
 	
-	imagePreview : function()
+	initSortBox : function()
 	{
-		xOffset = -10;
-		yOffset = 10;
-		// you might want to adjust to get the right result
-		$(".thumb-pic a").hover(		
-			function(e){						
-				$("body").append("<p id=\"preview\"><img src='"+ this.rel +"' akt=\"\" /></p>");
-				
-				if (($(window).height()-e.pageY) > 400){
-					$("#preview").css("top",(e.pageY - xOffset) + "px").css("left",(e.pageX + yOffset) + "px").show();	
-				} else {
-					if ($("#preview img").height() == 0) {
-						$("#preview").css("top",(e.pageY - xOffset - 400) + "px").css("left",(e.pageX + yOffset) + "px").show();
-					} else {
-						$("#preview").css("top",(e.pageY - xOffset - $("#preview img").height()) + "px").css("left",(e.pageX + yOffset) + "px").show();
-					}						
-				}		
-			},				
-			function(){		
-				$("#preview").remove();		
-			}		
-		);
-				
-		$(".thumb-pic a").mousemove(function(e){						
-			if (($(window).height()-e.pageY) > 400){
-				$("#preview").css("top",(e.pageY - xOffset) + "px").css("left",(e.pageX + yOffset) + "px");
-			} else {			
-				if ($("#preview img").height() == 0) {
-					$("#preview").css("top",(e.pageY - xOffset - 400) + "px").css("left",(e.pageX + yOffset) + "px");
-				} else {
-					$("#preview").css("top",(e.pageY - xOffset - $("#preview img").height()-25) + "px").css("left",(e.pageX + yOffset) + "px");
-				}		
-			}				
-		});
-		
-		$('.thumb-attr a').each(function(index) {	
-			$(this).attr('href',$('#pic_'+$(this).attr('id')).attr('href'));
-		})
-	}
-		
+	    $(document).ready(function() {
+            $(".current-sort").mouseenter(function() {
+            $('.sort-box').fadeIn();
+            $('.choose-sort').addClass('active-sort'); 
+          }).mouseleave(function() {
+            $('.sort-box').fadeOut();
+            $('.choose-sort').removeClass('active-sort');
+          });
+          $('.choose-sort span').text($('.sort-box .selor').text());
+          $('.choose-sort span').addClass($('.sort-box .selor').hasClass('ar') ? 'ar-ind' : 'da-ind');
+        });
+	}		
 }
 
 var sessionHash;

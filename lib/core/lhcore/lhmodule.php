@@ -49,8 +49,8 @@ class erLhcoreClassModule{
             {                                 
                 if (!$currentUser->hasAccessTo('lh'.$GLOBALS['ModuleToRun'],$Params['module']['functions']))
                 {
-                    include_once('modules/lhkernel/nopermission.php');  
-                    return $Result;
+                   erLhcoreClassModule::redirect('user/login');
+                   exit;
                 }
             }
             

@@ -17,14 +17,12 @@ $ViewList['logout'] = array(
 $ViewList['account'] = array( 
     'script' => 'account.php',
     'params' => array(),
-    'pagelayout' => 'main_3column',
     'functions' => array( 'selfedit' )
     );  
       
 $ViewList['index'] = array( 
     'script' => 'index.php',
     'params' => array(),    
-    'pagelayout' => 'main_3column',
     'functions' => array( 'selfedit' )
     );  
       

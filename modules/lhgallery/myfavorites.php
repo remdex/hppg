@@ -37,7 +37,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
 	$Result['content'] = $tpl->fetch();
 	
 	$Result['path'] = array(
-	array('url' => erLhcoreClassDesign::baseurl('user/index'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myfavorites','My favorite images')));
+	array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myfavorites','My favorite images')));
 	
 	$cache->store($cacheKey,$Result);	
     

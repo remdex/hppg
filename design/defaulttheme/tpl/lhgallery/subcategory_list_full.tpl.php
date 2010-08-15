@@ -1,12 +1,18 @@
 <div class="subcategory-list-full">
-    <ul>
+   
         <?php foreach ($subcategorys as $subcategory) :         
         $albumCount = $subcategory->albums_count;        
         if ($albumCount > 0):
         ?>    
-                <li>
-                <div class="right status-album btext"><span class="albums-category"><?=$albumCount;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list_full','albums')?>, <?=$subcategory->images_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list_full','images')?></span></div>
+
+                <div class="sub-category-content">
+        
+                <div class="right status-album"><span class="albums-category"><?=$albumCount;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list_full','albums')?>, <?=$subcategory->images_count;?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list_full','images')?></span></div>
+                
+                <div class="sub-header">
                 <h3><a href="<?=$subcategory->path_url?>"><?=htmlspecialchars($subcategory->name)?></a></h3>
+                </div>
+                
                <? if ($subcategory->description != '') : ?>
                 <p><?=$subcategory->description?></p>
                 <?endif;?>
@@ -22,7 +28,7 @@
                 ?>                
                 <?php 
                 $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $subcategory->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page)); ?>
-                
+               
                <?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php')); ?>
                 
                <?php endif;?>  
@@ -31,8 +37,8 @@
                 if (count($subsubcategorys) > 0) : ?>
                  <?php include(erLhcoreClassDesign::designtpl('lhgallery/subsubcategory_list.tpl.php'));?> 
                 <?endif;?>
-                                
-                </li> 
+                </div>  
+                      
         <?php endif;endforeach;?>
-    </ul>
+  
 </div>

@@ -134,15 +134,13 @@ $ViewList['searchrss'] = array(
         
 $ViewList['myalbums'] = array( 
     'script' => 'myalbums.php',
-    'params' => array(),
-    'pagelayout' => 'main_3column',
+    'params' => array(), 
     'functions' => array( 'personal_albums' ),
     ); 
        
 $ViewList['createalbum'] = array( 
     'script' => 'createalbum.php',
     'params' => array(),
-    'pagelayout' => 'main_3column',
     'functions' => array( 'personal_albums' ),
     );  
                  
@@ -167,7 +165,6 @@ $ViewList['createcategory'] = array(
 $ViewList['albumedit'] = array( 
     'script' => 'albumedit.php',
     'params' => array('album_id'),
-    'pagelayout' => 'main_3column',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' =>'administrate'),
     ); 
        
@@ -180,7 +177,6 @@ $ViewList['albumeditadmin'] = array(
 $ViewList['addimages'] = array( 
     'script' => 'addimages.php',
     'params' => array('album_id'),
-    'pagelayout' => 'main_3column',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
     );
         
@@ -286,7 +282,6 @@ $ViewList['addimagesbatch'] = array(
 $ViewList['mylistalbum'] = array( 
     'script' => 'mylistalbum.php',
     'params' => array('album_id'),
-    'pagelayout' => 'main_3column',
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
     ); 
                  
@@ -339,7 +334,7 @@ $ViewList['addtofavorites'] = array(
 $ViewList['deletefavorite'] = array( 
     'script' => 'deletefavorite.php',
     'params' => array('image_id'),
-     'functions' => array( 'public_upload_archive' ),
+     'functions' => array( ),
     );
      
 $ViewList['myfavorites'] = array( 

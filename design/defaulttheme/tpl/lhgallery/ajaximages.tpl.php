@@ -100,24 +100,47 @@ $lastImages = current($imagesAjax);
 <div class="left-ajax">
 <a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
 </div>
-<? foreach ($imagesAjax as $key => $item) : ?>
-    <div class="image-thumb thumb-pic-small">
-        <div class="thumb-pic">
-            <a href="<?=$item->url_path?><?=isset($urlAppend) ? $urlAppend : ''?>"><img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/ajaximages','See full size picture');?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename))?>" alt="<?=htmlspecialchars($item->name_user);?>" /></a>
-        </div>
-        <div class="thumb-attr">
-        <ul>            
-            <li><h3><?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/ajaximages','preview version') : $title;?></h3></li>
-        </ul>
-        </div>
-    </div>   
-<?endforeach; 
-end($imagesAjax);
+
+<?php end($imagesAjax);
 $lastImages = current($imagesAjax);
 ?> 
 <div class="right-ajax">
 <a href="#" rel="<?=erLhcoreClassDesign::baseurl('/gallery/ajaximages/')?><?=$lastImages->pid?><?=$urlAppend?>"></a>
 </div>
+
+<div class="navigator-ajax float-break" >
+<? 
+$counter = 1;
+foreach ($imagesAjax as $key => $item) : ?>
+
+<div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
+        <div class="thumb-pic">
+            <a href="<?=$item->url_path?><?=isset($urlAppend) ? $urlAppend : ''?>"><img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size')?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename),true,$item->pid)?>" alt="<?=htmlspecialchars($item->name_user);?>" /></a>           
+        </div>
+        <div class="thumb-attr">
+        
+        <div class="tit-item">
+            <h3><a title="<?=htmlspecialchars($item->name_user);?>" href="<?=$item->url_path?><?=isset($urlAppend) ? $urlAppend : ''?>">
+                <?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','preview version') : $title;?>          
+                </a>
+            </h3>
+        </div>
+        
+        <span class="res-ico">
+        <?=$item->pwidth?>x<?=$item->pheight?>
+        </span>    
+        
+        <span class="hits-ico">
+        <?=$item->hits?>
+        </span>               
+        
+        </div>
+    </div>
+      
+<?$counter++;endforeach; ?>
+</div>
+
+
 <script type="text/javascript">
 $('.right-ajax a').click(function(){
     hw.getimages($(this).attr('rel'),'right');
@@ -127,5 +150,10 @@ $('.left-ajax a').click(function(){
     hw.getimages($(this).attr('rel'),'left');
    return false;
 });
+$("div.image-thumb").mouseover(function() {
+    $(this).addClass('image-thumb-shadow');
+  }).mouseout(function(){
+    $(this).removeClass('image-thumb-shadow');
+  });
 </script>
 <?endif;?>
