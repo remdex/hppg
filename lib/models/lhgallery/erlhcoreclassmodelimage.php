@@ -124,13 +124,13 @@ class erLhcoreClassModelGalleryImage {
        	case 'url_path': 
        	
        	    if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-       	    {    
+       	    {         
            	    $pathElements = array();
            	    foreach ($this->path as $item){
            	        $pathElements[] = urlencode(erLhcoreClassCharTransform::TransformToURL($item['title']));
            	    }     
            	    $this->url_path = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->pid.'p.html');  	    
-           	    return $this->url_path;
+           	    return $this->url_path.'asdasd';
        	    } else {
        	        $this->url_path = erLhcoreClassDesign::baseurl('/gallery/image/'.$this->pid);
        	        return $this->url_path;
