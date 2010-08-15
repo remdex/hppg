@@ -18,8 +18,16 @@ div.top-menu{padding:2px;padding-left:3px;}
 div.top-menu ul li{float:left;padding-left:10px;}
 div.top-menu ul li a{font-weight:bold;color:#000000}
 
+div#path a
+{
+background:url(../images/newdesign/sprite.png) no-repeat top left;
+}
 
 div#path{font-weight:bold;padding-top:5px;padding-left:12px;}
+div#path a{padding-right:10px;background-position:100% -103px;
+padding-right:10px;
+margin-right:7px;}
+
 
 a,a:visited{color:#4D8F35;text-decoration:none;}
 a:hover{text-decoration:underline;}
