@@ -5,7 +5,6 @@
 <p><?=$category->description?></p>
 <?endif;?>
 <? 
-$noBottom = true;
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $category->cid)));
 $pages->translationContext = 'gallery/index';
