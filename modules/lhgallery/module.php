@@ -43,7 +43,12 @@ $ViewList['albumlistdirectory'] = array(
     'params' => array('directory','recursive'),
     'functions' => array( 'administrate' ),
 ); 
-    
+
+$ViewList['lastsearches'] = array( 
+    'script' => 'lastsearches.php',
+    'params' => array()
+    );
+        
 $ViewList['image'] = array( 
     'script' => 'image.php',
     'params' => array('image_id'),

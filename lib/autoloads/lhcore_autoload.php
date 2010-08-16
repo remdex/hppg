@@ -51,6 +51,7 @@ return array (
         'erLhcoreClassGallery' 	              => 'core/lhgallery/lhgallery.php',
         'erLhcoreClassGalleryArchive' 	      => 'core/lhgallery/lharchive.php',
         'erLhcoreClassModelGalleryLastSearch' => 'models/lhgallery/erlhcoreclassmodellastsearch.php',
+        'erLhcoreClassModelGallerySearchHistory' => 'models/lhgallery/erlhcoreclassmodelsearchhistory.php',
         'erLhcoreClassImageConverter'         => 'core/lhgallery/lhimageconverter.php',        
         'erLhcoreClassGalleryImagemagickHandler'         => 'core/lhgallery/lhgalleryconverterhandler.php',        
         'erLhcoreClassGalleryGDHandler'       => 'core/lhgallery/lhgallerygdconverterhandler.php',        
