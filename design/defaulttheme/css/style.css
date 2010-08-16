@@ -507,6 +507,7 @@ box-shadow:1px 1px 5px #a8a8a8;
 
 div#main-header-bg{padding:2px 0px 4px 2px;}
 
+.album-ico,
 a.left-image,
 a.right-image,
 .button-link,
@@ -678,6 +679,14 @@ padding-bottom:23px;
 .res-ico{
 padding-right:5px;
 padding-left:17px;
+background-position:0px -370px;
+color:#6f6f6f;
+font-size:11px;
+}
+
+.album-ico{
+padding-right:5px;
+padding-left:17px;
 background-position:0px -72px;
 color:#6f6f6f;
 font-size:11px;
@@ -748,7 +757,7 @@ div.cont-sub{padding:17px;}
 .right{float:right;}
 
 .subcategory .files-ico{clear:right;width:30px;padding-left:22px;margin-top:5px;}
-.subcategory .res-ico{width:23px;padding-left:22px;}
+.subcategory .album-ico{width:23px;padding-left:22px;}
 
 div#path{padding-top:5px;padding-left:12px;padding-bottom:5px;font-size:11px;
 background-color:#FFFFFF;margin-top:10px;

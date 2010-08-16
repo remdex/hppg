@@ -6,7 +6,7 @@ foreach ($subcategorys as $subcategory) : ?>
     <div class="cont-sub">
        
         
-        <span class="res-ico right" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list','albums')?>">
+        <span class="album-ico right" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/subcategory_list','albums')?>">
         <?=$subcategory->albums_count?>
         </span> 
             
