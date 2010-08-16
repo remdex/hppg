@@ -505,7 +505,7 @@ box-shadow:1px 1px 5px #a8a8a8;
 -moz-box-shadow: 1px 1px 5px #a8a8a8;
 }
 
-div#main-header-bg{padding:2px 0px 10px 2px;}
+div#main-header-bg{padding:2px 0px 4px 2px;}
 
 a.left-image,
 a.right-image,
@@ -529,12 +529,19 @@ div.top-menu{
 background:url(../images/newdesign/sprite.png) no-repeat top left;
 }
 
-div.top-menu{ background-repeat:repeat-x;background-position:top left;height:40px;}
+div.top-menu{ background-repeat:repeat-x;background-position:top left;height:40px;width:770px;float:right;}
 div.top-menu ul li{float:left;}
 div.top-menu ul li a{padding:12px;float:left;display:block;text-transform:uppercase;color:#FFFFFF;border-right:1px solid #939185;}
 div.top-menu ul li a:hover{background-color:#6d6a5d;text-decoration:none;}
+div.top-submenu{
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#70CCCCCC,endColorstr=#70CCCCCC);
+background:rgba(109,107,94,0.2);
+height:40px;
+float:right;clear:right;width:770px;
+}
 
-.search-box{font-size:14px;float:right;background-color:#FFFFFF;margin-top:5px;margin-right:5px;padding-top:3px;padding-bottom:3px;
+
+.search-box{font-size:14px;float:right;background-color:#FFFFFF;margin-top:4px;margin-right:5px;padding-top:3px;padding-bottom:3px;
 width:250px;
 }
 .search-box input.default-button{width:36px;height:22px;background-position:0px -40px;border:0;overflow:hidden;border-right:5px solid #FFFFFF;float:right;margin-top:2px;}
