@@ -62,7 +62,7 @@
                          
             	 
              <div class="left-infobox">                    
-                <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last viewed images')?></h3>
+                <h3><a href="<?=erLhcoreClassDesign::baseurl('gallery/lasthits')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last viewed images')?></a></h3>
                 <?php 
                 $cache = CSCacheAPC::getMem(); 
                 $cacheVersion = $cache->getCacheVersion('last_hits_version',time(),600);
@@ -97,14 +97,7 @@
 			
 			</div>
 		</div>
-		
-		<div id="rightmenucont">		
-			<div id="rightpadding">		
-   
-                    							
-		    </div>	
-		</div>
-		
+						
 	</div>
 	
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_footer.tpl.php'));?>
