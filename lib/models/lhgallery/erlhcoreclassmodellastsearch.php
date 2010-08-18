@@ -26,7 +26,9 @@ class erLhcoreClassModelGalleryLastSearch {
        $stmt->bindValue( ':keyword',$keyword);
        $stmt->execute(); 
        $count = $stmt->fetchColumn(); 
-
+    
+       erLhcoreClassModelGallerySearchHistory::addSearch($keyword,$search_count);
+    
        if  ($count == 0     )
        {       
            $search = new erLhcoreClassModelGalleryLastSearch();
