@@ -28,7 +28,11 @@ if ($pages->items_total > 0) :?>
     <div class="navigator"><?=$pages->display_pages();?> <div class="right"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Page %currentpage of %totalpage',array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Found')?> - <?=$pages->items_total?></div></div>
 <? endif;
 
-foreach (erLhcoreClassModelGalleryCategory::getParentCategories($category !== false ? $category->cid : 0,$pages->items_per_page, $pages->low) as $categoryItem) : ?>
+$cache = CSCacheAPC::getMem();
+$categoryFilterID = $category !== false ? $category->cid : 0;
+$filterParams = array('filter' => array('parent' => $categoryFilterID),'limit' => $pages->items_per_page,'offset' => $pages->low, 'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$categoryFilterID));
+
+foreach (erLhcoreClassModelGalleryCategory::getParentCategories($filterParams) as $categoryItem) : ?>
     <tr>
         <td width="1%"><?=$categoryItem->cid?></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys/')?><?=$categoryItem->cid?>"><?=htmlspecialchars($categoryItem->name)?></a></td>

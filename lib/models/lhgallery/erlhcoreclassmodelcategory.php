@@ -11,6 +11,7 @@ class erLhcoreClassModelGalleryCategory {
                'description' => $this->description,             
                'pos'         => $this->pos,             
                'parent'      => $this->parent,             
+               'has_albums'  => $this->has_albums,             
                'hide_frontpage' => $this->hide_frontpage           
        );
    }
@@ -60,9 +61,86 @@ class erLhcoreClassModelGalleryCategory {
        }       
    }
     
-   public static function getParentCategories($category_id = 0,$limit = 100, $offset = 0)
-   {
-      $cache = CSCacheAPC::getMem();
+   public static function getParentCategories($paramsSearch = array())
+   {       
+        $paramsDefault = array('limit' => 8, 'offset' => 0);
+        
+        $params = array_merge($paramsDefault,$paramsSearch);
+        
+        $conditions = array();
+        
+        $session = erLhcoreClassGallery::getSession();
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryCategory' ); 
+           
+        if (isset($params['filter']) && count($params['filter']) > 0)
+        {                     
+           foreach ($params['filter'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue ));
+           }
+        } 
+        
+        if (isset($params['filterin']) && count($params['filterin']) > 0)
+        {
+           foreach ($params['filterin'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->in( $field, $fieldValue );
+           } 
+        }
+        
+        if (isset($params['filterlt']) && count($params['filterlt']) > 0)
+        {
+           foreach ($params['filterlt'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->lt( $field, $q->bindValue($fieldValue ));
+           } 
+        }
+        
+        if (isset($params['filtergt']) && count($params['filtergt']) > 0)
+        {
+           foreach ($params['filtergt'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->gt( $field, $q->bindValue($fieldValue) );
+           } 
+        }      
+        
+        if (count($conditions) > 0)
+        {
+          $q->where( 
+                     $conditions   
+          );
+        } 
+        
+        $q->limit($params['limit'],$params['offset']);
+                
+        $q->orderBy(isset($params['sort']) ? $params['sort'] : 'pos' ); 
+      
+        if (!isset($params['disable_sql_cache']))
+        {
+           $cache = CSCacheAPC::getMem();  
+           $sql = erLhcoreClassGallery::multi_implode(',',$params); 
+          
+           $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);      
+             
+           if (($objects = $cache->restore($cacheKey)) === false)
+           {
+               $objects = $session->find( $q, 'erLhcoreClassModelGalleryCategory' ); 
+               $cache->store($cacheKey,$objects);
+           } 
+           
+        } else {
+            
+            if (!isset($params['use_iterator'])){
+                $objects = $session->find( $q, 'erLhcoreClassModelGalleryCategory' ); 
+            } else {
+                $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryCategory' );
+            }
+        
+        }
+        
+        return $objects;
+        
+      /*$cache = CSCacheAPC::getMem();
             
       if (($objects = $cache->restore(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id.'limit_'.$limit.'_offset'.$offset))) === false)
       {
@@ -85,7 +163,7 @@ class erLhcoreClassModelGalleryCategory {
       }
       
                 
-      return $objects; 
+      return $objects;*/ 
    }
    
    public function removeThis()
@@ -159,7 +237,7 @@ class erLhcoreClassModelGalleryCategory {
       {
           $sql = erLhcoreClassGallery::multi_implode(',',$params);   
           $cache = CSCacheAPC::getMem();          
-          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
+          $cacheKey = isset($params['cache_key']) ? md5($column.$sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql.$column);
                              
           if (($result = $cache->restore($cacheKey)) === false)
           {
@@ -258,7 +336,7 @@ class erLhcoreClassModelGalleryCategory {
        switch ($variable) {
        	case 'albums_count':       	    
        	    $albums = 0;
-       	    foreach (erLhcoreClassModelGalleryCategory::getParentCategories($this->cid) as $category)
+       	    foreach (erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => $this->cid),'disable_sql_cache' => true,'use_iterator' => true,'limit' => 1000000)) as $category)
        	    {
        	        $albums += erLhcoreClassModelGalleryAlbum::getAlbumCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('category_'.$category->cid),'filter' => array('category' => $category->cid)));
        	        
@@ -301,7 +379,7 @@ class erLhcoreClassModelGalleryCategory {
        			
        	case 'images_count':       	    
        	    $imagesCount = 0;
-       	    foreach (erLhcoreClassModelGalleryCategory::getParentCategories($this->cid) as $category)
+       	    foreach (erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => $this->cid),'disable_sql_cache' => true,'use_iterator' => true,'limit' => 1000000)) as $category)
        	    {
        	        $albums = erLhcoreClassModelGalleryAlbum::getAlbumsIDByFilter(array('filter' => array('category' => $category->cid)));
        	        if (is_array($albums) && count($albums) > 0){
@@ -331,6 +409,7 @@ class erLhcoreClassModelGalleryCategory {
    public $pos = '';
    public $parent = '';
    public $hide_frontpage = 0;
+   public $has_albums = 0;
 
 }
 

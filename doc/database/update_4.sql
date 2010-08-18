@@ -1,0 +1,1 @@
+ALTER TABLE  `lh_gallery_categorys` ADD  `has_albums` INT( 11 ) NOT NULL DEFAULT  '0';

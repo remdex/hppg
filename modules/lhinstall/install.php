@@ -364,18 +364,19 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 
                 // Categorys
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_categorys` (
-                          `cid` int(11) NOT NULL AUTO_INCREMENT,
-                          `owner_id` int(11) NOT NULL DEFAULT '0',
-                          `name` varchar(255) NOT NULL DEFAULT '',
-                          `description` text NOT NULL,
-                          `pos` int(11) NOT NULL DEFAULT '0',
-                          `parent` int(11) NOT NULL DEFAULT '0',
-                          `hide_frontpage` int(11) NOT NULL,
-                          PRIMARY KEY (`cid`),
-                          KEY `cat_parent` (`parent`),
-                          KEY `cat_pos` (`pos`),
-                          KEY `cat_owner_id` (`owner_id`)
-                        ) ENGINE=MyISAM");
+                  `cid` int(11) NOT NULL AUTO_INCREMENT,
+                  `owner_id` int(11) NOT NULL DEFAULT '0',
+                  `name` varchar(255) NOT NULL DEFAULT '',
+                  `description` text NOT NULL,
+                  `pos` int(11) NOT NULL DEFAULT '0',
+                  `parent` int(11) NOT NULL DEFAULT '0',
+                  `hide_frontpage` int(11) NOT NULL,
+                  `has_albums` int(11) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`cid`),
+                  KEY `cat_parent` (`parent`),
+                  KEY `cat_pos` (`pos`),
+                  KEY `cat_owner_id` (`owner_id`)
+                ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
                 
                 // Comments
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_comments` (

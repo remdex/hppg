@@ -39,6 +39,11 @@ $def->properties['hide_frontpage']->columnName   = 'hide_frontpage';
 $def->properties['hide_frontpage']->propertyName = 'hide_frontpage';
 $def->properties['hide_frontpage']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
 
+$def->properties['has_albums'] = new ezcPersistentObjectProperty();
+$def->properties['has_albums']->columnName   = 'has_albums';
+$def->properties['has_albums']->propertyName = 'has_albums';
+$def->properties['has_albums']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
+
 $def->relations["erLhcoreClassModelGalleryAlbum"] = new ezcPersistentOneToManyRelation(
 	"lh_gallery_albums",
 	"lh_gallery_categorys"

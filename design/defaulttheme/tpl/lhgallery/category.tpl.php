@@ -2,12 +2,6 @@
 <h1><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1>
 </div>
 
-<? $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories($category->cid);
-if (count($subcategorys) > 0) : 
-
-?>
- <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list_full.tpl.php'));?> 
-<?endif;?>
 <? if ($pagesCurrent->items_total > 0) { ?>         
   <? 
       $pages = $pagesCurrent;
@@ -18,6 +12,36 @@ if (count($subcategorys) > 0) :
           
 <? } else { ?>
 
-
-
 <? } ?>
+
+<? 
+
+$cache = CSCacheAPC::getMem();
+
+$pagesSubcategorys = new lhPaginator();
+$pagesSubcategorys->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $category->cid) ,'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$cat->cid)));
+$pagesSubcategorys->translationContext = 'gallery/category';
+$pagesSubcategorys->default_ipp = 8;
+$pagesSubcategorys->serverURL = $category->path_url;
+$pagesSubcategorys->paginate();
+     
+if ($pagesSubcategorys->items_total > 0) : 
+$subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => $category->cid),'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$category->cid),'offset' => $pagesSubcategorys->low, 'limit' => $pagesSubcategorys->items_per_page));
+ ?>
+ 
+<?php include_once(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list_full.tpl.php'));?> 
+
+
+<?php if (isset($pages)) : ?>
+ <div class="nav-container">
+    <div class="navigator">
+    <div class="right found-total"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list',"Page %currentpage of %totalpage",array('currentpage' => $pagesSubcategorys->current_page,'totalpage' => $pagesSubcategorys->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','Found')?> - <?=$pagesSubcategorys->items_total?></div>
+    <?=$pagesSubcategorys->display_pages();?></div>
+ </div>   
+<? endif;?>
+
+
+<?endif;?>
+
+
+

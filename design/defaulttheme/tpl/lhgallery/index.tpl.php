@@ -1,4 +1,7 @@
-<?php foreach (erLhcoreClassModelGalleryCategory::getParentCategories() as $category) : ?>
+<?php 
+
+$cache = CSCacheAPC::getMem();
+foreach (erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => 0),'cache_key' => 'version_'.$cache->getCacheVersion('category_0'))) as $category) : ?>
 <div class="category">
 <div class="header-list"><h1><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1></div>
 <? if ($category->description != '') : ?>
@@ -22,10 +25,13 @@ $items=erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => arr
 <?php endif;?>    
     
 <?php if ($category->hide_frontpage != 1) :
-$subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories($category->cid);
+
+$subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => $category->cid),'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$category->cid)));
 if (count($subcategorys) > 0) : ?>
  <?php include(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list.tpl.php'));?> 
 <?endif;
+
+
 endif;?>
 
 </div>

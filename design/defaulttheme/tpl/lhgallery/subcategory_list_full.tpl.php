@@ -2,7 +2,7 @@
    
         <?php foreach ($subcategorys as $subcategory) :         
         $albumCount = $subcategory->albums_count;        
-        if ($albumCount > 0):
+        
         ?>    
 
                 <div class="sub-category-content">
@@ -19,6 +19,7 @@
                   
                 <? 
                     $pages = new lhPaginator();
+                    $pages->current_page = 0;
                     $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true, 'filter' => array('category' => $subcategory->cid)));
                     $pages->translationContext = 'gallery/subcategry_list_full';
                     $pages->default_ipp = 8;
@@ -27,18 +28,23 @@
                     if ($pages->items_total > 0) :
                 ?>                
                 <?php 
-                $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $subcategory->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page)); ?>
+                
+                $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $subcategory->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page)); 
+                
+                ?>
                
                <?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php')); ?>
                 
                <?php endif;?>  
                 
-                <? $subsubcategorys = erLhcoreClassModelGalleryCategory::getParentCategories($subcategory->cid);
+                <? 
+                $cache = CSCacheAPC::getMem();
+                $subsubcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => $subcategory->cid),'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$subcategory->cid)));
                 if (count($subsubcategorys) > 0) : ?>
                  <?php include(erLhcoreClassDesign::designtpl('lhgallery/subsubcategory_list.tpl.php'));?> 
                 <?endif;?>
                 </div>  
                       
-        <?php endif;endforeach;?>
+        <?php endforeach;?>
   
 </div>

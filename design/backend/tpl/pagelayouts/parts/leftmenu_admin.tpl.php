@@ -1,6 +1,5 @@
 <?php
-$items=erLhcoreClassModelGalleryCategory::getParentCategories();
-if (count($items) > 0) {
+$items = erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => 0),'disable_sql_cache' => true,'use_iterator' => true,'limit' => 1000000));
 ?>
 <div id="categories">
 	<ul>
@@ -8,8 +7,9 @@ if (count($items) > 0) {
 		
 		<ul>
 		<?php
+		    $cache = CSCacheAPC::getMem();
 			foreach ($items as $key => $item) {
-				$subcat = erLhcoreClassModelGalleryCategory::getParentCategories($item->cid);
+				$subcat = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $item->cid),'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$item->cid)));
 				$subalbum = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $item->cid)));
 				if ((count($subcat) + count($subalbum)) > 0) : ?>
 					<li id="c<?=$item->cid?>" ><a href="<?=$item->cid?>" class='isplesti'><img src="<?=erLhcoreClassDesign::design('images/gallery/plus.gif')?>" alt="" align="top" /></a><span class="dvcat"><a class="cat-href<?php if (isset($Result['path_cid']) && in_array($item->cid,$Result['path_cid'])){ print ' selected'; }?>" rel="<?=$item->cid?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys')?>/<?=$item->cid?>" ><?=htmlspecialchars($item->name)?></a></span></li>
@@ -23,9 +23,7 @@ if (count($items) > 0) {
 	</ul>
 </div>
 
-<?php
-}
-?>
+
 <script type="text/javascript">
 
 var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Result['path_cid']); } ?>];

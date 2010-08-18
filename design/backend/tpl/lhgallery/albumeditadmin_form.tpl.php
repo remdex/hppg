@@ -10,7 +10,7 @@
 		<div class="in-blk">
 			<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Album category');?> *</label>
 			<select name="AlbumCategoryID" class="default-select">
-				<?php foreach (erLhcoreClassModelGalleryCategory::getParentCategories(-1,5000,0) as $category) : ?>
+				<?php foreach (erLhcoreClassModelGalleryCategory::getParentCategories(array('disable_sql_cache' => true,'use_iterator' => true,'limit' => 1000000)) as $category) : ?>
 					<option value="<?=$category->cid?>" <?=$category->cid == $album->category ? 'selected="selected"' : ''?>><?=htmlspecialchars($category->name)?></option>
 				<?php endforeach;?>
 			</select>
