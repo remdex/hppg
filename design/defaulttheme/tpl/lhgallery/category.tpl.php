@@ -19,7 +19,7 @@
 $cache = CSCacheAPC::getMem();
 
 $pagesSubcategorys = new lhPaginator();
-$pagesSubcategorys->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $category->cid) ,'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$cat->cid)));
+$pagesSubcategorys->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $category->cid) ,'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$category->cid)));
 $pagesSubcategorys->translationContext = 'gallery/category';
 $pagesSubcategorys->default_ipp = 8;
 $pagesSubcategorys->serverURL = $category->path_url;
