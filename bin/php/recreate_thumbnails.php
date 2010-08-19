@@ -90,22 +90,26 @@ foreach ($objects as $object)
 {
     $photoPath = 'albums/'.$object->filepath;
     
-    if (file_exists($photoPath.$object->filename) && is_file($photoPath.$object->filename)){ 
-                      
-        if ($targetOption->value == 'small' || $targetOption->value == 'both') {
-            erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoPath.$object->filename, $photoPath.'/thumb_'.$object->filename ); 
-            $status->addEntry( 'ACTION', "Recreating small size image thumbnail PID #{$object->pid}." );
-            chmod($photoPath.'/thumb_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
-        }  
-                    
-        if ($targetOption->value == 'normal' || $targetOption->value == 'both') {
-            erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoPath.$object->filename, $photoPath.'/normal_'.$object->filename ); 
-            $status->addEntry( 'ACTION', "Recreating normal size image thumbnail PID #{$object->pid}." );
-            chmod($photoPath.'/normal_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    try {
+        if (file_exists($photoPath.$object->filename) && is_file($photoPath.$object->filename)){ 
+                          
+            if ($targetOption->value == 'small' || $targetOption->value == 'both') {
+                erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoPath.$object->filename, $photoPath.'/thumb_'.$object->filename ); 
+                $status->addEntry( 'ACTION', "Recreating small size image thumbnail PID #{$object->pid}." );
+                chmod($photoPath.'/thumb_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            }  
+                        
+            if ($targetOption->value == 'normal' || $targetOption->value == 'both') {
+                erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoPath.$object->filename, $photoPath.'/normal_'.$object->filename ); 
+                $status->addEntry( 'ACTION', "Recreating normal size image thumbnail PID #{$object->pid}." );
+                chmod($photoPath.'/normal_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            }
+            
+        } else {
+            $status->addEntry( 'ACTION', "Original file not found #{$object->pid}." );
         }
-        
-    } else {
-        $status->addEntry( 'ACTION', "Original file not found #{$object->pid}." );
+    } catch (Exception $e){
+        $status->addEntry( 'ACTION', "Cound not convert - #{$object->pid}." );
     }
 }
 
