@@ -337,6 +337,7 @@ class ezcImageImagemagickBaseHandler extends ezcImageMethodcallHandler
             'application/x-icb' => 'ICB',
             'application/x-mif' => 'MIFF',
             'image/bmp' => 'BMP3',
+            'image/x-ms-bmp' => 'BMP',
             'image/dcx' => 'DCX',
             'image/g3fax' => 'G3',
             'image/gif' => 'GIF',
