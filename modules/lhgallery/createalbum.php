@@ -43,11 +43,8 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     {     
         $currentUser = erLhcoreClassUser::instance();
         $AlbumData->owner_id = $currentUser->getUserID(); 
-        $AlbumData->category = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('owner_id' => $currentUser->getUserID())),'cid');            
-        erLhcoreClassGallery::getSession()->save($AlbumData); 
-        
-        CSCacheAPC::getMem()->increaseCacheVersion('album_count_version');        
-        $AlbumData->clearAlbumCache();
+        $AlbumData->category = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('owner_id' => $currentUser->getUserID())),'cid');  
+        $AlbumData->storeThis();
             
         if (isset($_POST['CreateAlbumAndUpload']))
             erLhcoreClassModule::redirect('gallery/addimages/'.$AlbumData->aid);

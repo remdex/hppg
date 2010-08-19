@@ -50,14 +50,10 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
 	        $AlbumData->owner_id = $currentUser->getUserID(); 
 	        $AlbumData->category = $CategoryData->cid;  
 	        $AlbumData->title = trim($name);
-	        $AlbumData->public = $dataAlbum['public'];	                 
-	        erLhcoreClassGallery::getSession()->save($AlbumData); 
+	        $AlbumData->public = $dataAlbum['public'];
+	        $AlbumData->storeThis();
     	}
-    	
-        CSCacheAPC::getMem()->increaseCacheVersion('album_count_version');        
-        $AlbumData->clearAlbumCache();
-                  
-        
+         
         erLhcoreClassModule::redirect('/gallery/admincategorys/'.$AlbumData->category);
         exit;  
          

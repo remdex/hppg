@@ -65,10 +65,7 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     	$AlbumData->category = $form->AlbumCategoryID;
     	$AlbumData->owner_id = $form->UserID;
     	
-        erLhcoreClassGallery::getSession()->update($AlbumData); 
-        
-        $AlbumData->clearAlbumCache();        
-        CSCacheAPC::getMem()->increaseCacheVersion('album_count_version');
+    	$AlbumData->updateThis();
             
         erLhcoreClassModule::redirect('gallery/admincategorys/'.$AlbumData->category);
         exit;  

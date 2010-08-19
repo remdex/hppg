@@ -40,12 +40,9 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     } 
     
     if (count($Errors) == 0)
-    {                                
-        erLhcoreClassGallery::getSession()->update($AlbumData); 
-        
-        $AlbumData->clearAlbumCache();        
-        CSCacheAPC::getMem()->increaseCacheVersion('album_count_version');
-            
+    {                        
+
+        $AlbumData->updateThis();
         erLhcoreClassModule::redirect('gallery/myalbums');
         exit;  
          
