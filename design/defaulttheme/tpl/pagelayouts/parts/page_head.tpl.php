@@ -31,5 +31,5 @@ foreach ($ReverseOrder as $pathItem) : ?>
 <?if (isset($Result['rss'])) : ?>
 <link rel="alternate" type="application/rss+xml" title="<?=$Result['rss']['title']?>" href="<?=$Result['rss']['url'];?>" />
 <? else :?>
-<link rel="alternate" type="application/rss+xml" title="Last uploaded images" href="<?=erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss/')?>" />
+<link rel="alternate" type="application/rss+xml" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploaded images')?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss/')?>" />
 <?endif;?>
