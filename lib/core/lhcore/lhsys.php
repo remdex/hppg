@@ -54,7 +54,6 @@ class CSCacheAPC {
     'last_uploads',             // Last uploaded images
     'last_commented',           // Last commented images
     'site_version',             // Global site version
-    'album_count_version',      // Album count version
     'sphinx_cache_version',     // Sphinx search cache version
     );
     

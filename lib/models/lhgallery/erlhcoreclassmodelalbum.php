@@ -82,7 +82,6 @@ class erLhcoreClassModelGalleryAlbum {
    public function storeThis()
    {       
        erLhcoreClassGallery::getSession()->save($this); 
-       CSCacheAPC::getMem()->increaseCacheVersion('album_count_version');        
        $this->clearAlbumCache();
    }
    
@@ -90,7 +89,6 @@ class erLhcoreClassModelGalleryAlbum {
    {
        erLhcoreClassGallery::getSession()->update($this);         
        $this->clearAlbumCache();        
-       CSCacheAPC::getMem()->increaseCacheVersion('album_count_version');
    }
    
    // Album cache clear
