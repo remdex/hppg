@@ -91,6 +91,7 @@ $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
 $q->orderBy('pid ASC' ); 
 
 $filter = array();
+
 if ($pidOption->value !== false){
     $filter['filtergt'] = array('pid' => $pidOption->value);
     $q->expr->gt( 'pid', $q->bindValue($pidOption->value) );
