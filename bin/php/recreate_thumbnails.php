@@ -39,6 +39,14 @@ $targetOption = $input->registerOption(
     )
 ); 
 
+$pidOption = $input->registerOption(
+    new ezcConsoleOption(
+        'p',
+        'pid',
+        ezcConsoleInput::TYPE_INT 
+    )
+); 
+
 try
 {
     $input->process();
@@ -80,10 +88,18 @@ $instance->WWWDirLang = '/'.$helpOption->value;
 // Find all images, using iterator here.
 $session = erLhcoreClassGallery::getSession();
 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+$q->orderBy('pid ASC' ); 
+
+$filter = array();
+if ($pidOption->value !== false){
+    $filter['filtergt'] = array('pid' => $pidOption->value);
+    $q->expr->gt( 'pid', $q->bindValue($pidOption->value) );
+}
+
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );       
 
 $output = new ezcConsoleOutput();
-$status = new ezcConsoleProgressMonitor( $output, erLhcoreClassModelGalleryImage::getImageCount() );
+$status = new ezcConsoleProgressMonitor( $output, erLhcoreClassModelGalleryImage::getImageCount( $filter ) );
 
 
 foreach ($objects as $object)
