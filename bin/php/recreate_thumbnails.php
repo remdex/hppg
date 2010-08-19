@@ -94,7 +94,9 @@ $filter = array();
 
 if ($pidOption->value !== false){
     $filter['filtergt'] = array('pid' => $pidOption->value);
-    $q->expr->gt( 'pid', $q->bindValue($pidOption->value) );
+    $q->where( 
+        $q->expr->gt( 'pid', $q->bindValue($pidOption->value) )
+    );
 }
 
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );       
