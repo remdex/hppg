@@ -109,7 +109,7 @@ foreach ($objects as $object)
             $status->addEntry( 'ACTION', "Original file not found #{$object->pid}." );
         }
     } catch (Exception $e){
-        $status->addEntry( 'ACTION', "Cound not convert - #{$object->pid}." );
+        $status->addEntry( 'ACTION', "Cound not convert - #{$object->pid}. MSG: ".$e->getMessage() );
     }
 }
 

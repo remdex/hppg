@@ -68,6 +68,8 @@ class erLhcoreClassImageConverter {
                 $filterNormal,
                 array( 
                     'image/jpeg',
+                    'image/png',
+                    'image/x-ms-bmp',
                 ),
                 new ezcImageSaveOptions(array('quality' => (int)erLhcoreClassModelSystemConfig::fetch('normal_thumbnail_quality')->current_value))
             );
@@ -81,6 +83,7 @@ class erLhcoreClassImageConverter {
                 array( 
                     'image/jpeg',
                     'image/png',
+                    'image/x-ms-bmp',
                     //Supported by GD
 //                   'image/tiff',                    
 //                   'image/tga',
@@ -111,6 +114,8 @@ class erLhcoreClassImageConverter {
                 ),
                 array( 
                     'image/jpeg',
+                    'image/png',
+                    'image/x-ms-bmp',                    
                 ),
                 new ezcImageSaveOptions(array('quality' => (int)erLhcoreClassModelSystemConfig::fetch('thumbnail_quality_default')->current_value))
             );
@@ -127,7 +132,8 @@ class erLhcoreClassImageConverter {
                 ),
                 array( 
                     'image/jpeg',
-                    'image/png'
+                    'image/png',
+                    'image/x-ms-bmp',
                 ),
                 new ezcImageSaveOptions(array('quality' => 100))
             );
@@ -144,7 +150,8 @@ class erLhcoreClassImageConverter {
                 ),
                 array( 
                     'image/jpeg',
-                    'image/png'
+                    'image/png',
+                    'image/x-ms-bmp',
                 ),
                 new ezcImageSaveOptions(array('quality' => 100))
             );
