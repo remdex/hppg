@@ -47,6 +47,14 @@ $pidOption = $input->registerOption(
     )
 ); 
 
+$albumOption = $input->registerOption(
+    new ezcConsoleOption(
+        'a',
+        'aid',
+        ezcConsoleInput::TYPE_INT 
+    )
+); 
+
 try
 {
     $input->process();
@@ -65,6 +73,12 @@ if ( $targetOption->value === false )
     exit;
 }
 
+$siteAccessName = 'site_admin';
+if ( !$helpOption->value === false )
+{
+    $siteAccessName = $helpOption->value;
+} 
+
 
 try
 {
@@ -76,14 +90,14 @@ catch ( ezcConsoleOptionException $e )
 }
 
 $instance = erLhcoreClassSystem::instance();
-$instance->SiteAccess = $helpOption->value; 
+$instance->SiteAccess = $siteAccessName; 
 $instance->SiteDir = './';
 $cfgSite = erConfigClassLhConfig::getInstance();    
 $defaultSiteAccess = $cfgSite->conf->getSetting( 'site', 'default_site_access' );
-$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$helpOption->value);                      
+$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$siteAccessName);                      
 $instance->Language = $optionsSiteAccess['locale'];                         
 $instance->ThemeSite = $optionsSiteAccess['theme'];                         
-$instance->WWWDirLang = '/'.$helpOption->value;   
+$instance->WWWDirLang = '/'.$siteAccessName;   
 
 // Find all images, using iterator here.
 $session = erLhcoreClassGallery::getSession();
@@ -91,14 +105,25 @@ $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
 $q->orderBy('pid ASC' ); 
 
 $filter = array();
+$filterExpresion = array();
 
 if ($pidOption->value !== false){
     $filter['filtergt'] = array('pid' => $pidOption->value);
+    $filterExpresion[] =  $q->expr->gt( 'pid', $q->bindValue($pidOption->value) );    
+}
+
+if ($albumOption->value !== false){
+    $filter['filter'] = array('aid' => $albumOption->value);
+    $filterExpresion[] =  $q->expr->eq( 'aid', $q->bindValue($albumOption->value) );    
+}
+
+if (count($filterExpresion) > 0){
     $q->where( 
-        $q->expr->gt( 'pid', $q->bindValue($pidOption->value) )
+       $filterExpresion
     );
 }
 
+    
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );       
 
 $output = new ezcConsoleOutput();
