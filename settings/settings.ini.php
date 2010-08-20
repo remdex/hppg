@@ -11,6 +11,7 @@ return array (
       'site_admin_email' => '',
       'templatecache' => false,
       'templatecompile' => false,
+      'modulecompile' => false,
       'classCompile' => false,
       'nice_url_enabled' => false,
       'force_virtual_host' => false,
