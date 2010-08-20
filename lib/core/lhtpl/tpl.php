@@ -143,7 +143,7 @@ class erLhcoreClassTemplate {
 				$contentFile = str_replace($Matches[0][$key],erLhcoreClassDesign::design($Match),$contentFile);	
 			}
 			
-			//Compile translations
+			//Compile translations, pure translations
 			$Matches = array();
 			preg_match_all('/<\?=erTranslationClassLhTranslation::getInstance\(\)->getTranslation\(\'(.*?)\',\'(.*?)\'\)(.*?)\?\>/i',$contentFile,$Matches);
 					
@@ -151,7 +151,16 @@ class erLhcoreClassTemplate {
 			{	
 				$contentFile = str_replace($Matches[0][$key],erTranslationClassLhTranslation::getInstance()->getTranslation($TranslateContent,$Matches[2][$key]),$contentFile);	
 			}
-
+			
+			//Translations used in logical conditions
+			$Matches = array();
+			preg_match_all('/erTranslationClassLhTranslation::getInstance\(\)->getTranslation\(\'(.*?)\',\'(.*?)\'\)/i',$contentFile,$Matches);
+					
+			foreach ($Matches[1] as $key => $TranslateContent)
+			{	
+				$contentFile = str_replace($Matches[0][$key],'\''.erTranslationClassLhTranslation::getInstance()->getTranslation($TranslateContent,$Matches[2][$key]).'\'',$contentFile);	
+			}		
+			
 			// Compile url addresses
 			$Matches = array();
 			preg_match_all('/<\?=erLhcoreClassDesign::baseurl\((.*?)\)(.*?)\?\>/i',$contentFile,$Matches); 
@@ -159,19 +168,39 @@ class erLhcoreClassTemplate {
 			{	
 				$contentFile = str_replace($Matches[0][$key],erLhcoreClassDesign::baseurl(trim($UrlAddress,'\'')),$contentFile);	
 			}
+			
+			// Compile url addresses in logical operations
+			$Matches = array();
+			preg_match_all('/erLhcoreClassDesign::baseurl\((.*?)\)/i',$contentFile,$Matches); 
+			foreach ($Matches[1] as $key => $UrlAddress)
+			{	
+				$contentFile = str_replace($Matches[0][$key],'\''.erLhcoreClassDesign::baseurl(trim($UrlAddress,'\'')).'\'',$contentFile);	
+			}
 
 			// Compile config settings
 			$Matches = array();
-			preg_match_all('/<\?=erConfigClassLhConfig::getInstance\(\)->conf->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)(.*?)\?\>/i',$contentFile,$Matches); 
+			preg_match_all('/erConfigClassLhConfig::getInstance\(\)->conf->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)/i',$contentFile,$Matches); 
 			foreach ($Matches[1] as $key => $UrlAddress)
 			{	
-				$contentFile = str_replace($Matches[0][$key],erConfigClassLhConfig::getInstance()->conf->getSetting($Matches[2][$key],$Matches[5][$key]),$contentFile);	
+			    
+			    $valueConfig = erConfigClassLhConfig::getInstance()->conf->getSetting($Matches[2][$key],$Matches[5][$key]);
+			    $valueReplace = '';
+			    
+			    if (is_bool($valueConfig)){
+			        $valueReplace = $valueConfig == false ? 'false' : 'true';
+			    } elseif (is_integer($valueConfig)) {
+			        $valueReplace = $valueConfig;
+			    } else {
+			        $valueReplace = '\''.$valueConfig.'\'';
+			    }
+			    
+				$contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);				
+//				$contentFile = str_replace($Matches[0][$key],erConfigClassLhConfig::getInstance()->conf->getSetting($Matches[2][$key],$Matches[5][$key]),$contentFile);	
 			}
 				
 			$sys = erLhcoreClassSystem::instance()->SiteDir;  
 			$file = $sys . 'cache/compiledtemplates/'.md5($file.$instance->WWWDirLang).'.php';
-			
-			
+					
 				
 			file_put_contents($file,erLhcoreClassTemplate::strip_html($contentFile));
 				

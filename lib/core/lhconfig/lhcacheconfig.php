@@ -51,19 +51,20 @@ class erConfigClassLhCacheConfig
             if (isset($_SESSION[$option])) unset($_SESSION[$option]);
         }
         
-		if (file_exists($this->sitedir. 'cache/cacheconfig/templateCache-.cache'))
+        $compiledModules = ezcBaseFile::findRecursive( 'cache/cacheconfig',array( '@\.cache@' ) );        
+        foreach ($compiledModules as $compiledClass)
 		{
-			unlink($this->sitedir. 'cache/cacheconfig/templateCache-.cache');
+		    unlink($compiledClass);
 		}
-      
-		$compiledClasses = ezcBaseFile::findRecursive( 'cache/compiledclasses',array( '@.php@' ) );
+		 
+		$compiledClasses = ezcBaseFile::findRecursive( 'cache/compiledclasses',array( '@\.php@' ) );
 		
 		foreach ($compiledClasses as $compiledClass)
 		{
 			unlink($compiledClass);
 		}
 		
-		$compiledTemplates = ezcBaseFile::findRecursive( 'cache/compiledtemplates',array( '@.php@' ) );
+		$compiledTemplates = ezcBaseFile::findRecursive( 'cache/compiledtemplates',array( '@\.php@' ) );
 		
 		foreach ($compiledTemplates as $compiledTemplate)
 		{

@@ -11,8 +11,8 @@
     <tr>
         <td><?=$departament['id']?></td>
         <td><?=$departament['name']?></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('permission/editrole/')?><?=$departament['id']?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','Edit role');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','Edit role');?>" /></a></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('permission/deleterole/')?><?=$departament['id']?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','Delete role');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','Delete role');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('permission/editrole')?>/<?=$departament['id']?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','Edit role');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','Edit role');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('permission/deleterole')?>/<?=$departament['id']?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','Delete role');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','Delete role');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 </table>

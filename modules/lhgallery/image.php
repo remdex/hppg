@@ -558,7 +558,7 @@ if ($mode == 'lastuploads') {
 }elseif ($mode == 'search') {
 	
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search rss by keyword').' - '.htmlspecialchars($Params['user_parameters_unordered']['keyword']);
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/searchrss/(keyword)/').urlencode($Params['user_parameters_unordered']['keyword']);
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/searchrss').'/(keyword)/'.urlencode($Params['user_parameters_unordered']['keyword']);
     
     $sortModesTitle = array(    
         'newdesc' => '',

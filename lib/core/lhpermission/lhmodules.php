@@ -13,8 +13,8 @@ class erLhcoreClassModules{
         
         $ModuleList = array();
         
-        $Modules = ezcBaseFile::findRecursive( $ModulesDir,array( '@module.php@' ) );
-      
+        $Modules = ezcBaseFile::findRecursive( $ModulesDir,array( '@module\.php$@' ) );
+        
         foreach ($Modules as $ModuleInclude)
         {
             include($ModuleInclude); 
