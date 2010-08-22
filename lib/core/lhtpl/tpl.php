@@ -195,7 +195,6 @@ class erLhcoreClassTemplate {
 			    }
 			    
 				$contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);				
-//				$contentFile = str_replace($Matches[0][$key],erConfigClassLhConfig::getInstance()->conf->getSetting($Matches[2][$key],$Matches[5][$key]),$contentFile);	
 			}
 				
 			$sys = erLhcoreClassSystem::instance()->SiteDir;  

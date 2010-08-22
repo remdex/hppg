@@ -65,6 +65,7 @@ class CSCacheAPC {
         $this->increaseCacheVersion('top_rated');
         $this->increaseCacheVersion('last_commented');        
         $this->increaseCacheVersion('sphinx_cache_version');        
+        $this->increaseCacheVersion('site_version');        
         $this->delete(md5('index_page'));
     }
     
