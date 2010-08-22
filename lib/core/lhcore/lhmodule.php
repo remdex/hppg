@@ -164,24 +164,26 @@ class erLhcoreClassModule{
            
         $cfg = erConfigClassLhConfig::getInstance();               
         self::$moduleCacheEnabled = $cfg->conf->getSetting( 'site', 'modulecompile' );
-                    
-        if ( self::$moduleCacheEnabled === true &&($cacheModules = self::$cacheInstance->restore('moduleFunctionsCache_'.$module.'_version_'.self::$cacheVersionSite)) !== false)
-        {     
-        	return $cacheModules;
-        }
-       
-        $cacheWriter = new ezcCacheStorageFileArray(erLhcoreClassSystem::instance()->SiteDir . 'cache/cacheconfig/');
-        if ( ($cacheModules = $cacheWriter->restore('moduleFunctionsCache_'.$module)) == false)
-        {        	
-        	$cacheWriter->store('moduleFunctionsCache_'.$module,array());
-        	$cacheModules = array();
-        }
-                        
-        if (self::$moduleCacheEnabled == true && count($cacheModules) > 0){
-            self::$cacheInstance->store('moduleFunctionsCache_'.$module.'_version_'.self::$cacheVersionSite,$cacheModules);
-            return $cacheModules;
-        }
-               
+
+        if (self::$moduleCacheEnabled === true) { 
+            if ( ($cacheModules = self::$cacheInstance->restore('moduleFunctionsCache_'.$module.'_version_'.self::$cacheVersionSite)) !== false)
+            {     
+            	return $cacheModules;
+            }
+           
+            $cacheWriter = new ezcCacheStorageFileArray(erLhcoreClassSystem::instance()->SiteDir . 'cache/cacheconfig/');
+            if ( ($cacheModules = $cacheWriter->restore('moduleFunctionsCache_'.$module)) == false)
+            {        	
+            	$cacheWriter->store('moduleFunctionsCache_'.$module,array());
+            	$cacheModules = array();
+            }
+                            
+            if (count($cacheModules) > 0){
+                self::$cacheInstance->store('moduleFunctionsCache_'.$module.'_version_'.self::$cacheVersionSite,$cacheModules);
+                return $cacheModules;
+            }
+        }  
+         
         $extensions = $cfg->conf->getSetting('site','extensions');
         
         $ViewListCompiled = array();
@@ -214,8 +216,10 @@ class erLhcoreClassModule{
         }
                        
         if (count($ViewListCompiled) > 0) {
-            $cacheWriter->store('moduleFunctionsCache_'.$module,$ViewListCompiled);
-            self::$cacheInstance->store('moduleFunctionsCache_'.$module.'_version_'.self::$cacheVersionSite,$ViewListCompiled);            
+            if (self::$moduleCacheEnabled === true) { 
+                $cacheWriter->store('moduleFunctionsCache_'.$module,$ViewListCompiled);
+                self::$cacheInstance->store('moduleFunctionsCache_'.$module.'_version_'.self::$cacheVersionSite,$ViewListCompiled);
+            }            
             return $ViewListCompiled;
         }
                
