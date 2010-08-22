@@ -1,6 +1,6 @@
 <?php
 
-$Module = array( "name" => "Article module",
+$Module = array( "name" => "Captcha module",
 				 'variable_params' => true );
 
 $ViewList = array();

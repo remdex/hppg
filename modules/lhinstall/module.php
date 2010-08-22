@@ -1,6 +1,6 @@
 <?php
 
-$Module = array( "name" => "Live helper chat installer");
+$Module = array( "name" => "Gallery install module");
 
 $ViewList = array();
 
