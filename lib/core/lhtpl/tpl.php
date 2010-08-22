@@ -37,21 +37,26 @@ class erLhcoreClassTemplate {
      */
     function erLhcoreClassTemplate($file = null) {
         
-        $cfg = erConfigClassLhConfig::getInstance();
-        $sys = erLhcoreClassSystem::instance()->SiteDir;        
+        $cfg = erConfigClassLhConfig::getInstance();               
         $this->cacheEnabled = $cfg->conf->getSetting( 'site', 'templatecache' );
         $this->templatecompile = $cfg->conf->getSetting( 'site', 'templatecompile' );
         
         if (!is_null($file))
         $this->file = $file;   
              
-        $this->cacheWriter = new ezcCacheStorageFileArray($sys . 'cache/cacheconfig/');    
-        
-        if (($this->cacheTemplates = $this->cacheWriter->restore('templateCache')) == false)
-        {        	
-        	$this->cacheWriter->store('templateCache',array());
-        	$this->cacheTemplates = array();
-        }    
+        $cacheObj = CSCacheAPC::getMem();           
+        if (($this->cacheTemplates = $cacheObj->restore('templateCacheArray_version_'.$cacheObj->getCacheVersion('site_version'))) === false)
+        {        
+            $sys = erLhcoreClassSystem::instance()->SiteDir; 
+            $this->cacheWriter = new ezcCacheStorageFileArray($sys . 'cache/cacheconfig/'); 
+             
+            if (($this->cacheTemplates = $this->cacheWriter->restore('templateCache')) == false)
+            {        	
+            	$this->cacheWriter->store('templateCache',array());
+            	$this->cacheTemplates = array();
+            	$cacheObj->store('templateCacheArray_version_'.$cacheObj->getCacheVersion('site_version'),array());
+            } 
+        }   
     }
 
     /**
@@ -212,8 +217,16 @@ class erLhcoreClassTemplate {
     }
     
 	function storeCache()
-	{
-		$this->cacheWriter->store('templateCache',$this->cacheTemplates);
+	{	   
+	    if (is_null($this->cacheWriter)){
+    	    $sys = erLhcoreClassSystem::instance()->SiteDir; 
+            $this->cacheWriter = new ezcCacheStorageFileArray($sys . 'cache/cacheconfig/');
+	    }
+	    
+		$this->cacheWriter->store('templateCache',$this->cacheTemplates); 
+		
+		$cacheObj = CSCacheAPC::getMem();
+		$cacheObj->store('templateCacheArray_version_'.$cacheObj->getCacheVersion('site_version'),$this->cacheTemplates);
 	}  
 
 	
