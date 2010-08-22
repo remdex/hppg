@@ -1,13 +1,13 @@
 <?php
 $cache = CSCacheAPC::getMem(); 
-  
-if (($Result = $cache->restore(md5('index_page'.'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
+$cacheKey =   md5('index_page'.'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.'_version_'.$cache->getCacheVersion('site_version'));
+
+if (($Result = $cache->restore($cacheKey)) === false)
 { 
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/index.tpl.php');
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array();
-
-    $cache->store(md5('index_page'),$Result);
+    $Result['path'] = array();   
+    $cache->store($cacheKey,$Result);
 }
 
 ?>

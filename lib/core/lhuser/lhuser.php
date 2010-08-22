@@ -232,7 +232,7 @@ class erLhcoreClassUser{
            }
            
            if ( $this->AccessTimestamp === $AccessTimestamp)
-           {    
+           {               
                return $this->AccessArray;
            }
        }
