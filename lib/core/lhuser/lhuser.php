@@ -220,7 +220,15 @@ class erLhcoreClassUser{
                   
        if (isset($_SESSION['access_array'])) {
            $this->AccessArray = $_SESSION['access_array'];
-           return $this->AccessArray;
+           $this->AccessTimestamp =  $_SESSION['access_timestamp'];
+           
+           $cfg = erConfigClassLhCacheConfig::getInstance();  
+           $AccessTimestamp = $cfg->conf->getSetting( 'cachetimestamps', 'accessfile' );
+           
+           if ( $this->AccessTimestamp === $AccessTimestamp)
+           {    
+               return $this->AccessArray;
+           }
        }
        
        ezcCacheManager::createCache( 'userinfo', 'cache/userinfo', 'ezcCacheStorageFileArray', array('ttl'   => 60*60*24*1 ) ); 
@@ -239,7 +247,8 @@ class erLhcoreClassUser{
             $this->AccessArray = $this->generateAccessArray();
             
             $data['access_array'] = $this->AccessArray;
-            $data['access_timestamp'] = $AccessTimestamp;
+            $data['access_timestamp'] = $AccessTimestamp;            
+            $this->AccessTimestamp = $AccessTimestamp;
                                     
             if ($AccessTimestamp < time() )
             {
@@ -247,6 +256,7 @@ class erLhcoreClassUser{
                 $cfg->conf->setSetting( 'cachetimestamps', 'accessfile', $AccessTimestamp );
                 $cfg->save();
                 $data['access_timestamp'] = $AccessTimestamp;
+                $this->AccessTimestamp = $AccessTimestamp;
             }
                                     
             $cache->store( $id, $data );                       
@@ -256,18 +266,21 @@ class erLhcoreClassUser{
        } else {
            $CheckExpire = true;
            $this->AccessArray = $data['access_array'];
+           $this->AccessTimestamp = $data['access_timestamp'];
        }
               
        if ( $CheckExpire === true && $data['access_timestamp'] != $AccessTimestamp)
        {
-           $this->AccessArray = $this->generateAccessArray(); 
+           $this->AccessArray = $this->generateAccessArray();
+           $this->AccessTimestamp = $AccessTimestamp;
            $data['access_timestamp'] = $AccessTimestamp;
            $data['access_array'] = $this->AccessArray;
            $cache->store( $id, $data );  
        }
           
        $_SESSION['access_array'] = $this->AccessArray;
-        
+       $_SESSION['access_timestamp'] = $this->AccessTimestamp;
+              
        return $this->AccessArray;
    }
    
@@ -290,6 +303,7 @@ class erLhcoreClassUser{
    
    private $userid;   
    private $AccessArray = false;
+   private $AccessTimestamp = false;
    
    // Authentification things
    public $authentication;
