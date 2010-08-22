@@ -1,7 +1,7 @@
 <?php
 
 
-//xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
+xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
 
 $star_microtile = microtime();
 function set_time ( $start_time, $end_time )
@@ -43,7 +43,7 @@ if (isset($Result['pagelayout']))
 echo $tpl->fetch();
    
 
-/*include_once 'xhprof_lib/utils/xhprof_lib.php';
+include_once 'xhprof_lib/utils/xhprof_lib.php';
 include_once 'xhprof_lib/utils/xhprof_runs.php';
 
 $profiler_namespace = 'myapp';  // namespace for your application
@@ -54,6 +54,6 @@ $run_id = $xhprof_runs->save_run($xhprof_data, $profiler_namespace);
 
 // url to the XHProf UI libraries (change the host name and path)
 $profiler_url = sprintf('/xhprof_html/index.php?run=%s&source=%s', $run_id, $profiler_namespace);
-echo '<a href="'. $profiler_url .'" target="_blank">Profiler output</a>';*/
+echo '<a href="'. $profiler_url .'" target="_blank">Profiler output</a>';
 
 ?>

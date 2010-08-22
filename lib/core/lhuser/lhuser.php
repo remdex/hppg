@@ -222,8 +222,14 @@ class erLhcoreClassUser{
            $this->AccessArray = $_SESSION['access_array'];
            $this->AccessTimestamp =  $_SESSION['access_timestamp'];
            
-           $cfg = erConfigClassLhCacheConfig::getInstance();  
-           $AccessTimestamp = $cfg->conf->getSetting( 'cachetimestamps', 'accessfile' );
+           $cacheObj = CSCacheAPC::getMem();
+           
+           if (($AccessTimestamp = $cacheObj->restore('cachetimestamp_accessfile_version_'.$cacheObj->getCacheVersion('site_version'))) === false)
+           {          
+               $cfg = erConfigClassLhCacheConfig::getInstance();  
+               $AccessTimestamp = $cfg->conf->getSetting( 'cachetimestamps', 'accessfile' );
+               $cacheObj->store('cachetimestamp_accessfile_version_'.$cacheObj->getCacheVersion('site_version'),$AccessTimestamp);
+           }
            
            if ( $this->AccessTimestamp === $AccessTimestamp)
            {    
