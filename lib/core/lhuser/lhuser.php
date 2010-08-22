@@ -220,6 +220,7 @@ class erLhcoreClassUser{
                   
        if (isset($_SESSION['access_array'])) {
            $this->AccessArray = $_SESSION['access_array'];
+           return $this->AccessArray;
        }
        
        ezcCacheManager::createCache( 'userinfo', 'cache/userinfo', 'ezcCacheStorageFileArray', array('ttl'   => 60*60*24*1 ) ); 
