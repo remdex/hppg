@@ -72,7 +72,9 @@ class erLhcoreClassUser{
                 $data = $this->filter->fetchData();  
                 $_SESSION['user_id'] = $data['id'][0];
                 $this->userid = $data['id'][0];                        
-                $this->authenticated = true;
+                $this->authenticated = true;                
+                unset($_SESSION['access_array']);
+                
                 return true;
            }
            
@@ -92,6 +94,8 @@ class erLhcoreClassUser{
    
    function logout()
    {
+       unset($_SESSION['access_array']);
+       unset($_SESSION['access_timestamp']);
        $this->session->destroy();
    }
    
@@ -217,11 +221,12 @@ class erLhcoreClassUser{
    {
    
        if ($this->AccessArray !== false) return $this->AccessArray;
-                  
+             
        if (isset($_SESSION['access_array'])) {
+                    
            $this->AccessArray = $_SESSION['access_array'];
            $this->AccessTimestamp =  $_SESSION['access_timestamp'];
-           
+                   
            $cacheObj = CSCacheAPC::getMem();
            
            if (($AccessTimestamp = $cacheObj->restore('cachetimestamp_accessfile_version_'.$cacheObj->getCacheVersion('site_version'))) === false)
