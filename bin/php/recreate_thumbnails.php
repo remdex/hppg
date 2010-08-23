@@ -11,7 +11,7 @@ function __autoload( $className )
         ezcBase::autoload( $className );
 }
 
-ezcBase::addClassRepository( './lib', './lib/autoloads'); 
+ezcBase::addClassRepository( './', './lib/autoloads'); 
 
 
 ezcBaseInit::setCallback(
