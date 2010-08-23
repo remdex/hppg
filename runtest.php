@@ -10,7 +10,7 @@ function __autoload( $className )
         ezcBase::autoload( $className );
 }
 
-ezcBase::addClassRepository( dirname(__FILE__).'/lib',dirname(__FILE__).'/lib/autoloads'); 
+ezcBase::addClassRepository( dirname(__FILE__).'/',dirname(__FILE__).'/lib/autoloads'); 
 
 $input = new ezcConsoleInput();
 
