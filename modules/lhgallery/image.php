@@ -1,7 +1,12 @@
 <?php
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/image.tpl.php');
-$Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$Params['user_parameters']['image_id'] );
+try{
+    $Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$Params['user_parameters']['image_id'] );
+} catch (Exception $e){
+    erLhcoreClassModule::redirect('/');
+    exit;
+}
 
 $CommentData = new erLhcoreClassModelGalleryComment();
 $currentUser = erLhcoreClassUser::instance();
