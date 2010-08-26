@@ -348,7 +348,30 @@ class erLhcoreClassModelGalleryImage {
          
       return $objects; 
    }
-     
+   
+    
+   public static function getImagesSlices($imagesLeft, $imagesRight)
+   {
+       // Both sequances are full
+        if (count($imagesLeft) > 2 && count($imagesRight) > 2) {           
+            $imagesLeft = array_slice($imagesLeft,0,2);
+            $imagesRight = array_slice($imagesRight,0,2);
+        } elseif (count($imagesLeft) == 1 && count($imagesRight) > 3) {            
+            $imagesRight = array_slice($imagesRight,0,3);
+        } elseif (count($imagesRight) == 1 && count($imagesLeft) > 3) {
+            $imagesLeft = array_slice($imagesLeft,0,3);
+        } elseif (count($imagesRight) == 2 && count($imagesLeft) > 2) {
+            $imagesLeft = array_slice($imagesLeft,0,2);
+        } elseif (count($imagesLeft) == 2 && count($imagesRight) > 2) {
+            $imagesRight = array_slice($imagesLeft,0,2);
+        }
+        
+        return array(
+            'imagesLeft'   => $imagesLeft,
+            'imagesRight'  => $imagesRight       
+        );
+   }
+    
    public $pid = null;
    public $aid = '';
    public $filepath = '';
