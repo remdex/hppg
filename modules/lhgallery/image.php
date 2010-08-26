@@ -312,7 +312,6 @@ if ($mode == 'album')
         $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );                     
     }    
     
-    // Both sequances are full  
     $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight);
         
     $tpl->set('imagesLeft',$imagesParams['imagesLeft']); 
@@ -492,8 +491,7 @@ if ($mode == 'album')
             $imagesRight = array();             
     }
     
-    
-    // Both sequances are full    
+     
     $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft,$imagesRight);
         
     $tpl->set('imagesLeft',$imagesParams['imagesLeft']); 
