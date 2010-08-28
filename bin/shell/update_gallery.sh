@@ -33,5 +33,17 @@ svn update "./pos"
 echo "Updating translations"
 svn update "./translations"
 
+echo "Updating bin php files"
+svn update "./bin/php"
+
 echo "Updating Zend Framework"
 svn update "./Zend"
+
+echo "Updating var directory"
+svn update "./var"
+
+echo "Updating index.php file"
+svn update "index.php"
+
+echo "Updating cron.php file"
+svn update "runtest.php"
