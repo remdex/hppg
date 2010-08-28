@@ -41,9 +41,3 @@ svn update "./Zend"
 
 echo "Updating var directory"
 svn update "./var"
-
-echo "Updating index.php file"
-svn update "index.php"
-
-echo "Updating cron.php file"
-svn update "runtest.php"
