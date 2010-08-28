@@ -148,7 +148,7 @@ class erLhcoreClassModelGalleryImage {
        	    break; 
        	         	
        	case 'album':        	    
-       	    $this->album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', $this->aid );
+       	    $this->album = erLhcoreClassModelGalleryAlbum::fetch($this->aid);
        	    return $this->album;
        		break;
        		   	
@@ -349,26 +349,121 @@ class erLhcoreClassModelGalleryImage {
       return $objects; 
    }
    
-    
-   public static function getImagesSlices($imagesLeft, $imagesRight)
+   /**
+    * @param $imagesLeft Left images array
+    * @param $imagesRight Right images array
+    * 
+    * @return array imagesLeft - Left images for ajax
+    *               imagesRight - Right images for ajax
+    *               hasLeft - indicates that we can show left navigation link
+    *               hasRight - indicates that we can show right navigation link
+    * 
+    * */ 
+   public static function getImagesSlices($imagesLeft, $imagesRight, $Image)
    {
        // Both sequances are full
-        if (count($imagesLeft) > 2 && count($imagesRight) > 2) {           
+       $hasLeft = false;
+       $hasRight = false; 
+       
+       $hasPreviousImage = false; 
+       $previousImage = null;
+       
+       $hasNextImage = false; 
+       $nextImage = null; 
+              
+       $leftImagePID = null;
+       $rightImagePID = null;
+       
+       $imagesAjax = array();
+       
+        if (count($imagesLeft) > 2 && count($imagesRight) > 2) {  
+                       
+            $hasLeft = true;
+            $hasRight = true;  
+                            
             $imagesLeft = array_slice($imagesLeft,0,2);
             $imagesRight = array_slice($imagesRight,0,2);
-        } elseif (count($imagesLeft) == 1 && count($imagesRight) > 3) {            
+            
+        } elseif (count($imagesLeft) == 1 && count($imagesRight) > 3) { 
+            
+            $hasLeft = false;
+            $hasRight = true; 
+                     
             $imagesRight = array_slice($imagesRight,0,3);
-        } elseif (count($imagesRight) == 1 && count($imagesLeft) > 3) {
+            
+        } elseif (count($imagesRight) == 1 && count($imagesLeft) > 3) {    
+                    
+            $hasLeft = true;
+            $hasRight = false;   
+                     
             $imagesLeft = array_slice($imagesLeft,0,3);
+            
         } elseif (count($imagesRight) == 2 && count($imagesLeft) > 2) {
+            
+            $hasRight = false; 
+            $hasLeft = true;
+            
             $imagesLeft = array_slice($imagesLeft,0,2);
+            
         } elseif (count($imagesLeft) == 2 && count($imagesRight) > 2) {
-            $imagesRight = array_slice($imagesLeft,0,2);
+            
+            $hasRight = true; 
+            $hasLeft = false;
+           
+            $imagesRight = array_slice($imagesRight,0,2);
+            
+        } elseif (count($imagesLeft) == 0 && count($imagesRight) > 4) {
+            
+            $hasRight = true; 
+            $hasLeft = false;
+           
+            $imagesRight = array_slice($imagesRight,0,4);
+            
+        } elseif (count($imagesRight) == 0 && count($imagesLeft) > 4) {
+            
+            $hasRight = false; 
+            $hasLeft = true;
+           
+            $imagesLeft = array_slice($imagesLeft,0,4);
         }
         
-        return array(
-            'imagesLeft'   => $imagesLeft,
-            'imagesRight'  => $imagesRight       
+        if (count($imagesRight) > 0) { 
+            $hasNextImage = true;
+            $nextImage = current($imagesRight);
+        }
+        
+        if (count($imagesLeft) > 0) { 
+            $hasPreviousImage = true;
+            $previousImage = current($imagesLeft);
+        }
+
+        $imagesAjax = array_merge(array_reverse((array)$imagesLeft),array($Image->pid => $Image),(array)$imagesRight);
+        
+        if ($hasLeft == true) {
+            reset($imagesAjax);
+            $lastImages = current($imagesAjax);
+            $leftImagePID = $lastImages->pid;
+        }       
+        
+        if ($hasRight == true) {                        
+            end($imagesAjax);
+            $lastImages = current($imagesAjax);
+            $rightImagePID = $lastImages->pid;    
+        }
+        
+        return array (            
+            'imagesAjax'        => $imagesAjax,
+            'hasLeft'           => $hasLeft,       
+            'hasRight'          => $hasRight, 
+                  
+            'leftImagePID'      => $leftImagePID,
+            'rightImagePID'     => $rightImagePID,
+            
+            'hasPreviousImage'  => $hasPreviousImage,       
+            'hasNextImage'      => $hasNextImage, 
+                  
+            'nextImage'         => $nextImage,       
+            'prevImage'         => $previousImage,       
         );
    }
     

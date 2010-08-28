@@ -63,9 +63,17 @@ class erLhcoreClassTemplate {
      * Set a template variable.
      */
     function set($name, $value) {
-        $this->vars[$name] = (is_object($value) && get_class($value) == 'cachedtemplate') ? $value->fetch() : $value;
+        $this->vars[$name] = $value;
     }
 
+    /**
+     * Set a template variables from array
+     * */
+    function setArray($array){
+        $this->vars = array_merge($this->vars,$array);
+    }
+    
+    
     /**
      * Set's template file
      * */

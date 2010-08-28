@@ -3,6 +3,7 @@
 $.postJSON = function(url, data, callback) {
 	$.post(url, data, callback, "json");
 };
+$.fn.reverse = [].reverse;
 
 var hw = {
 	votepath : 'gallery/addvote/',
@@ -11,6 +12,8 @@ var hw = {
 	tagpath : 'gallery/tagphoto/',	
 	addtofavorites : 'gallery/addtofavorites/',
 	deletefavorite : 'gallery/deletefavorite/',
+	ajaximages : 'gallery/ajaximages/',
+	appendURL : null,
 	formAddPath: WWW_DIR_JAVASCRIPT,		
 		
 	setPath : function (path)
@@ -93,10 +96,75 @@ var hw = {
        return confirm(question);
 	},
 	
+	setAppendURL : function(appendURLPar){
+	    this.appendURL = appendURLPar;
+	},
+	
 	getimages : function(url,direction) {	
+	    	    	  
+	   var appendUrlToUser = this.appendURL;
+	   var ajaxImagesURL = this.ajaximages;
+	   var urlmain = this.formAddPath;
+	   
         $.getJSON(url + "/(direction)/"+direction, {} , function(data){	
-            if (data.error != 'true')			
-			$('#ajax-navigator-content').html(data.result);	
+                                    
+            if (data.error != 'true'){	
+                 
+                 if (data.has_more_images == 'true') {                     
+                     $('.left-ajax a').attr('rel',urlmain + ajaxImagesURL + data.left_img_pid + appendUrlToUser);
+                     $('.right-ajax a').attr('rel',urlmain + ajaxImagesURL + data.right_img_pid + appendUrlToUser);                     	
+			         $('#images-ajax-container').html(data.result);	
+			         $('.right-ajax').show();
+			         $('.left-ajax').show();
+                 } else {                                        
+                    
+                     if (direction == 'left') { 
+                         $('.left-ajax').hide(); 
+                         $('.right-ajax').show();
+                     } else {
+                         $('.right-ajax').hide();
+                         $('.left-ajax').show(); 
+                     }
+                     
+                     var dif = data.images_found;
+                     
+                     if (data.images_found == 5) {  
+                            $('#images-ajax-container').html(data.result);	
+                            
+                            if (direction == 'right') {
+                                $('.left-ajax a').attr('rel',urlmain + ajaxImagesURL + data.left_img_pid + appendUrlToUser);
+                            } else {
+                                $('.right-ajax a').attr('rel',urlmain + ajaxImagesURL + data.right_img_pid + appendUrlToUser);
+                            }
+                            
+                     } else if (direction == 'left') { 
+                           
+                           jQuery.each($('#images-ajax-container div.image-thumb').reverse(), function(i, val) {                               
+                               if (dif > 0  ){ 
+                                   $(this).remove();
+                                   dif--;
+                               }                               
+                           });                            
+                           $('#images-ajax-container').prepend(data.result);
+                           $('.left-ajax a').attr('rel',urlmain + ajaxImagesURL + data.left_img_pid + appendUrlToUser);
+                           $('.right-ajax a').attr('rel',urlmain + ajaxImagesURL + $('#images-ajax-container div.image-thumb:last a').attr('rel') + appendUrlToUser);
+                           
+                     } else if (direction == 'right') {       
+                            
+                            jQuery.each($('#images-ajax-container div.image-thumb'), function(i, val) {
+                                  if (dif > 0  ){ 
+                                       $(this).remove();
+                                       dif--;
+                                   }
+                            });                           
+                                          
+                           $('#images-ajax-container').append(data.result);
+                           $('.right-ajax a').attr('rel',urlmain + ajaxImagesURL + data.right_img_pid + appendUrlToUser);
+                           $('.left-ajax a').attr('rel',urlmain + ajaxImagesURL + $('#images-ajax-container div.image-thumb a').attr('rel') + appendUrlToUser);                                                     
+                           
+                     } 
+                 }	            
+            }	
 		});			
 		return false;	
 	},
@@ -115,6 +183,8 @@ var hw = {
 		$.getJSON(this.formAddPath + this.deletefavorite+pid, {} , function(data) {				
 			$('#image_thumb_'+pid).fadeOut();            	
 		});
+		
+		return false;
 	}, 
 	
 	initSortBox : function()

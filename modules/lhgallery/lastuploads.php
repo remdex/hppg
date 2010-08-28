@@ -20,7 +20,8 @@ if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_cachin
 }
 
 if (($Result = $cache->restore($cacheKey)) === false)
-{         
+{        
+    
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lastuploads.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true));

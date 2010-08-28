@@ -692,7 +692,8 @@ div.pagercontent a{color: #4D8F35;}
 .ui-state-error, .ui-widget-content .ui-state-error {border: 1px solid #cd0a0a; background: #b81900 url(../images/tabs/images/ui-bg_diagonals-thick_18_b81900_40x40.png) 50% 50% repeat; color: #ffffff; }
 
 
-.image-thumb,.album-thumb{float:left;height:150px;overflow:hidden;width:150px;border:1px solid #C7C2BB;margin:5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;font-size:11px;}
+.image-thumb,
+.album-thumb{float:left;height:150px;overflow:hidden;width:150px;border:1px solid #C7C2BB;margin:5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;font-size:11px;}
 .thumb-attr a:hover{text-decoration:underline;}
 .thumb-pic{padding:2px;}
 .thumb-pic img{border:1px solid #CCCCCC;}

@@ -37,12 +37,7 @@ foreach ($items as $key => $item) :
 </div>
 
 <script type="text/javascript">
-$("div.image-thumb").mouseover(function() {
-    $(this).addClass('image-thumb-shadow');
-  }).mouseout(function(){
-    $(this).removeClass('image-thumb-shadow');
-  });
-  
+ 
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
   })

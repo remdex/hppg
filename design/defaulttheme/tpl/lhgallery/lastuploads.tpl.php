@@ -5,7 +5,7 @@
 <? if ($pages->items_total > 0) { ?>
          
 <? 
-    $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true, 'sort' => 'ctime DESC','offset' => $pages->low, 'limit' => $pages->items_per_page));
+    $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true, 'sort' => 'pid DESC','offset' => $pages->low, 'limit' => $pages->items_per_page));
     $appendImageMode = '/(mode)/lastuploads';
 ?>   
    
