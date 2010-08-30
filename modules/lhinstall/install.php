@@ -10,7 +10,7 @@ if ($cfgSite->conf->getSetting( 'site', 'installed' ) == true)
     include_once('modules/lhkernel/nopermission.php'); 
      
     $Result['pagelayout'] = 'install';
-    $Result['path'] = array(array('title' => 'High perfomance photo gallery install'));
+    $Result['path'] = array(array('title' => 'High performance photo gallery install'));
     return $Result;
     
     exit;
