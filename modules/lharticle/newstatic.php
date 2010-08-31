@@ -7,7 +7,6 @@ if (isset($_POST['UpdateArticle']))
 {
     $Static->content = $_POST['ArticleBody'];
     $Static->name = $_POST['ArticleName'];
-    $Static->siteaccess = $_POST['Siteaccess'];
     
     erLhcoreClassArticle::getSession()->save($Static);
     
