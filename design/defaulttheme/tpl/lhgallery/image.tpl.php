@@ -5,17 +5,17 @@
             <h1><?=htmlspecialchars($image->name_user)?></h1>
         </div>
         
-        <div class="navigator float-break">
+        <div class="navigator-image float-break">
         
-            <?php if ($hasPreviousImage === true) : ?>
-                <a class="left-image" title="<?=htmlspecialchars($prevImage->name_user)?>" href="<?=$prevImage->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?></a>
-            <?php endif;?>
-            
             <?php if ($hasNextImage === true) : ?>
-                <a class="right-image" title="<?=htmlspecialchars($nextImage->name_user)?>" href="<?=$nextImage->url_path.$urlAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?></a>
+                <a class="right-image" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> - <?=htmlspecialchars($nextImage->name_user)?>" href="<?=$nextImage->url_path.$urlAppend?>"></a>
             <?php endif;?>
             
-            <a class="ret-thumb" href="<?=$urlReturnToThumbnails?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?></a>
+            <?php if ($hasPreviousImage === true) : ?>
+                <a class="left-image" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','previous image')?> - <?=htmlspecialchars($prevImage->name_user)?>" href="<?=$prevImage->url_path.$urlAppend?>"></a>
+            <?php endif;?>
+                        
+            <a class="ret-thumb" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','return to thumbnails')?>" href="<?=$urlReturnToThumbnails?>"></a>
         
         </div>
         

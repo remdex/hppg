@@ -1,4 +1,4 @@
-<div class="float-break control-block" style="clear:both">
+<div class="float-break control-block">
 
 <div class="left">
 <a class="ad-fv" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Add to favorites')?>"></a>
