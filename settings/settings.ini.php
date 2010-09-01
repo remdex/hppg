@@ -18,7 +18,7 @@ return array (
       'nice_url_enabled' => false,
       'force_virtual_host' => false,
       'etag_caching_enabled' => false,
-      'redirect_mobile' => 'm',
+      'redirect_mobile' => false,//'m',
       'default_www_user' => 'lighttpd',
       'default_www_group' => 'lighttpd',
       'StorageDirPermissions' => 0777,
