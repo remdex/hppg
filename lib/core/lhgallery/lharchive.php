@@ -12,7 +12,7 @@ class erLhcoreClassGalleryArchive {
 	        end($fileNameAray);	        
 	        $extension = current($fileNameAray);
 	                
-	        return $extension === 'zip';
+	        return strtolower($extension) === 'zip';
 	    }
 	    
 	    return false;    
