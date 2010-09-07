@@ -395,46 +395,54 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 
                 // Images table
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_images` (
-                          `pid` int(11) NOT NULL AUTO_INCREMENT,
-                          `aid` int(11) NOT NULL DEFAULT '0',
-                          `filepath` varchar(255) NOT NULL DEFAULT '',
-                          `filename` varchar(255) NOT NULL DEFAULT '',
-                          `filesize` int(11) NOT NULL DEFAULT '0',
-                          `total_filesize` int(11) NOT NULL DEFAULT '0',
-                          `pwidth` smallint(6) NOT NULL DEFAULT '0',
-                          `pheight` smallint(6) NOT NULL DEFAULT '0',
-                          `hits` int(10) NOT NULL DEFAULT '0',
-                          `ctime` int(11) NOT NULL DEFAULT '0',
-                          `owner_id` int(11) NOT NULL DEFAULT '0',
-                          `pic_rating` int(11) NOT NULL DEFAULT '0',
-                          `votes` int(11) NOT NULL DEFAULT '0',
-                          `title` varchar(255) NOT NULL DEFAULT '',
-                          `caption` text NOT NULL,
-                          `keywords` varchar(255) NOT NULL DEFAULT '',
-                          `pic_raw_ip` tinytext,
-                          `approved` int(11) NOT NULL DEFAULT '0',
-                          `mtime` int(11) NOT NULL,
-                          `comtime` int(11) NOT NULL,
-                          `sort_rated` bigint(20) NOT NULL,
-                          `anaglyph` int(11) NOT NULL DEFAULT '0',
-                          PRIMARY KEY (`pid`),
-                          KEY `owner_id` (`owner_id`),
-                          KEY `pic_hits` (`hits`),
-                          KEY `pic_rate` (`pic_rating`),
-                          KEY `pic_aid` (`aid`),
-                          KEY `mtime` (`mtime`),
-                          KEY `comtime` (`comtime`,`pid`),
-                          KEY `pid_4` (`hits`,`pid`),
-                          KEY `pid_5` (`pic_rating`,`votes`,`pid`),
-                          KEY `pid` (`mtime`,`pid`),
-                          KEY `pid_3` (`ctime`),
-                          KEY `pid_2` (`ctime`,`pid`),
-                          KEY `pid_6` (`aid`,`pid`),
-                          KEY `pid_7` (`aid`,`hits`,`pid`),
-                          KEY `pid_8` (`aid`,`mtime`,`pid`),
-                          KEY `pid_9` (`aid`,`pic_rating`,`votes`,`pid`),
-                          KEY `pid_10` (`aid`,`comtime`,`pid`)
-                        ) ENGINE=MyISAM");
+                  `pid` int(11) NOT NULL AUTO_INCREMENT,
+                  `aid` int(11) NOT NULL DEFAULT '0',
+                  `filepath` varchar(255) NOT NULL DEFAULT '',
+                  `filename` varchar(255) NOT NULL DEFAULT '',
+                  `filesize` int(11) NOT NULL DEFAULT '0',
+                  `total_filesize` int(11) NOT NULL DEFAULT '0',
+                  `pwidth` smallint(6) NOT NULL DEFAULT '0',
+                  `pheight` smallint(6) NOT NULL DEFAULT '0',
+                  `hits` int(10) NOT NULL DEFAULT '0',
+                  `ctime` int(11) NOT NULL DEFAULT '0',
+                  `owner_id` int(11) NOT NULL DEFAULT '0',
+                  `pic_rating` int(11) NOT NULL DEFAULT '0',
+                  `votes` int(11) NOT NULL DEFAULT '0',
+                  `title` varchar(255) NOT NULL DEFAULT '',
+                  `caption` text NOT NULL,
+                  `keywords` varchar(255) NOT NULL DEFAULT '',
+                  `pic_raw_ip` tinytext,
+                  `approved` int(11) NOT NULL DEFAULT '0',
+                  `mtime` int(11) NOT NULL,
+                  `comtime` int(11) NOT NULL,
+                  `sort_rated` bigint(20) NOT NULL,
+                  `anaglyph` int(11) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`pid`),
+                  KEY `owner_id` (`owner_id`),
+                  KEY `pic_hits` (`hits`),
+                  KEY `pic_rate` (`pic_rating`),
+                  KEY `pic_aid` (`aid`),
+                  KEY `mtime` (`mtime`),
+                  KEY `comtime` (`comtime`,`pid`),
+                  KEY `pid_4` (`hits`,`pid`),
+                  KEY `pid_5` (`pic_rating`,`votes`,`pid`),
+                  KEY `pid` (`mtime`,`pid`),
+                  KEY `pid_3` (`ctime`),
+                  KEY `pid_2` (`ctime`,`pid`),
+                  KEY `pid_6` (`aid`,`pid`),
+                  KEY `pid_7` (`aid`,`hits`,`pid`),
+                  KEY `pid_8` (`aid`,`mtime`,`pid`),
+                  KEY `pid_9` (`aid`,`pic_rating`,`votes`,`pid`),
+                  KEY `pid_10` (`aid`,`comtime`,`pid`),
+                  KEY `aid` (`aid`,`pwidth`,`pheight`,`pid`),
+                  KEY `pid_11` (`aid`,`pwidth`,`pheight`,`hits`,`pid`),
+                  KEY `aid_2` (`aid`,`pwidth`,`pheight`,`mtime`,`pid`),
+                  KEY `aid_3` (`aid`,`pwidth`,`pheight`,`pic_rating`,`votes`,`pid`),
+                  KEY `aid_4` (`aid`,`pwidth`,`pheight`,`comtime`,`pid`),
+                  KEY `pid_12` (`pwidth`,`pheight`,`pid`),
+                  KEY `pwidth` (`pwidth`,`pheight`,`mtime`,`pid`),
+                  KEY `pwidth_2` (`pwidth`,`pheight`,`pic_rating`,`votes`,`pid`)
+                ) ENGINE=MyISAM;");
                 
                 
                 // Last search table
@@ -656,7 +664,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `keyword_2` (`crc32`,`keyword`)
                 ) ENGINE=MyISAM;");
 					
-                $db->query("CREATE VIEW `sphinxseearch` AS SELECT `lh_gallery_images`.`pid` AS `id`,`lh_gallery_images`.`pid` AS `pid`,`lh_gallery_images`.`hits` AS `hits`,`lh_gallery_images`.`title` AS `title`,`lh_gallery_images`.`mtime` AS `mtime`,`lh_gallery_images`.`keywords` AS `keywords`,`lh_gallery_images`.`caption` AS `caption`,`lh_gallery_images`.`comtime` AS `comtime`,`lh_gallery_images`.`pic_rating` AS `pic_rating`,`lh_gallery_images`.`votes` AS `votes`,replace(replace(`lh_gallery_images`.`filepath`,'/',' '),'-',' ') AS `file_path`,replace(replace(`lh_gallery_images`.`filename`,'-',' '),'_',' ') AS `filename`,`lh_gallery_albums`.`title` AS `album_title`,`lh_gallery_albums`.`keyword` AS `album_keyword`,`lh_gallery_albums`.`description` AS `album_description`,`lh_gallery_categorys`.`name` AS `category_name`,`lh_gallery_categorys`.`description` AS `category_description`,concat(`lh_gallery_images`.`pwidth`,'x',`lh_gallery_images`.`pheight`) AS `pdimension` from ((`lh_gallery_images` left join `lh_gallery_albums` on((`lh_gallery_images`.`aid` = `lh_gallery_albums`.`aid`))) left join `lh_gallery_categorys` on((`lh_gallery_categorys`.`cid` = `lh_gallery_albums`.`category`))) where (`lh_gallery_images`.`approved` = 1);");
+                $db->query("CREATE VIEW `sphinxseearch` AS SELECT `lh_gallery_images`.`pid` AS `id`,`lh_gallery_images`.`pid` AS `pid`,`lh_gallery_images`.`hits` AS `hits`,`lh_gallery_images`.`title` AS `title`,`lh_gallery_images`.`mtime` AS `mtime`,`lh_gallery_images`.`keywords` AS `keywords`,`lh_gallery_images`.`caption` AS `caption`,`lh_gallery_images`.`comtime` AS `comtime`,`lh_gallery_images`.`pic_rating` AS `pic_rating`,`lh_gallery_images`.`votes` AS `votes`,replace(replace(`lh_gallery_images`.`filepath`,'/',' '),'-',' ') AS `file_path`,replace(replace(`lh_gallery_images`.`filename`,'-',' '),'_',' ') AS `filename`,`lh_gallery_albums`.`title` AS `album_title`,`lh_gallery_albums`.`keyword` AS `album_keyword`,`lh_gallery_albums`.`description` AS `album_description`,`lh_gallery_categorys`.`name` AS `category_name`,`lh_gallery_categorys`.`description` AS `category_description`,`lh_gallery_images`.`pwidth`,`lh_gallery_images`.`pheight`,concat(`lh_gallery_images`.`pwidth`,'x',`lh_gallery_images`.`pheight`) AS `pdimension` from ((`lh_gallery_images` left join `lh_gallery_albums` on((`lh_gallery_images`.`aid` = `lh_gallery_albums`.`aid`))) left join `lh_gallery_categorys` on((`lh_gallery_categorys`.`cid` = `lh_gallery_albums`.`category`))) where (`lh_gallery_images`.`approved` = 1);");
                                                  
                 $RoleFunction = new erLhcoreClassModelRoleFunction();
                 $RoleFunction->role_id = $Role->id;

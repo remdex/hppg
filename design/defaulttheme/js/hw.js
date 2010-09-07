@@ -187,18 +187,20 @@ var hw = {
 		return false;
 	}, 
 	
-	initSortBox : function()
+	initSortBox : function(name)
 	{
 	    $(document).ready(function() {
-            $(".current-sort").mouseenter(function() {
-            $('.sort-box').fadeIn();
-            $('.choose-sort').addClass('active-sort'); 
+            $(name+" .current-sort").mouseenter(function() {
+            $(name+" .sort-box").fadeIn();
+            $(name+' .choose-sort').addClass('active-sort'); 
           }).mouseleave(function() {
-            $('.sort-box').fadeOut();
-            $('.choose-sort').removeClass('active-sort');
+            $(name+' .sort-box').fadeOut();
+            $(name+' .choose-sort').removeClass('active-sort');
           });
-          $('.choose-sort span').text($('.sort-box .selor').text());
-          $('.choose-sort span').addClass($('.sort-box .selor').hasClass('ar') ? 'ar-ind' : 'da-ind');
+          if ($(name+' .sort-box .selor').size() > 0){
+              $(name+' .choose-sort span').text($(name+' .sort-box .selor').text());
+              $(name+' .choose-sort span').addClass($(name+' .sort-box .selor').hasClass('ar') ? 'ar-ind' : 'da-ind');
+          }
         });
 	}		
 }

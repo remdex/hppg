@@ -11,10 +11,20 @@ $sortModes = array(
     'toprated' => 'pic_rating DESC, votes DESC, pid DESC',
     'topratedasc' => 'pic_rating ASC, votes ASC, pid ASC');
     
+$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
+    
+$resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
+$appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
+$filterArray = array();    
+if ($resolution != ''){
+    $filterArray['pwidth'] = $resolutions[$resolution]['width'];
+    $filterArray['pheight'] = $resolutions[$resolution]['height'];
+}
+
 $mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'newdesc';
         
 $cache = CSCacheAPC::getMem(); 
-$cacheKey = md5('version_'.$cache->getCacheVersion('album_'.(int)$Params['user_parameters']['album_id']).$mode.'album_view_url'.(int)$Params['user_parameters']['album_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
+$cacheKey = md5('version_'.$cache->getCacheVersion('album_'.(int)$Params['user_parameters']['album_id']).$mode.$resolution.'album_view_url'.(int)$Params['user_parameters']['album_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
     
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {
@@ -45,6 +55,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $modeSQL = $sortModes[$mode];         
     $appendImageMode = $mode != 'newdesc' ? '/(sort)/'.$mode : '';
+    $appendImageMode .= $appendResolutionMode;
     
     $sortModesTitle = array(    
     'newdesc' => '',
@@ -60,13 +71,15 @@ if (($Result = $cache->restore($cacheKey)) === false)
     );
       
     $pages = new lhPaginator();
-    $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)));
+    $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)+$filterArray));
     $pages->translationContext = 'gallery/album';
     $pages->serverURL = $Album->url_path.$appendImageMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
     $tpl->set('album',$Album);
+    $tpl->set('currentResolution',$resolution);
+    $tpl->set('filterArray',$filterArray);
     $tpl->set('appendImageMode',$appendImageMode);
     
     $tpl->set('modeSQL',$modeSQL);

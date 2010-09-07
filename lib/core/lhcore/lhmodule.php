@@ -140,6 +140,8 @@ class erLhcoreClassModule{
 			        $valueReplace = $valueConfig == false ? 'false' : 'true';
 			    } elseif (is_integer($valueConfig)) {
 			        $valueReplace = $valueConfig;
+			    } elseif (is_array($valueConfig)) {
+			        $valueReplace = var_export($valueConfig,true);
 			    } else {
 			        $valueReplace = '\''.$valueConfig.'\'';
 			    }

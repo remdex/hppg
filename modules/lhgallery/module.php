@@ -13,7 +13,7 @@ $ViewList['index'] = array(
 $ViewList['album'] = array( 
     'script' => 'album.php',
     'params' => array('album_id'),
-    'uparams' => array('sort')
+    'uparams' => array('sort','resolution')
     );
     
 $ViewList['catjson'] = array( 
@@ -52,7 +52,7 @@ $ViewList['lastsearches'] = array(
 $ViewList['image'] = array( 
     'script' => 'image.php',
     'params' => array('image_id'),
-    'uparams' => array('mode','keyword','sort'),
+    'uparams' => array('mode','keyword','sort','resolution'),
     ); 
        
 $ViewList['anaglyph'] = array( 
@@ -67,12 +67,14 @@ $ViewList['anaglyphimage'] = array(
       
 $ViewList['popular'] = array( 
     'script' => 'popular.php',
-    'params' => array()
+    'params' => array(),
+    'uparams' => array('resolution')
     );          
         
 $ViewList['lastuploads'] = array( 
     'script' => 'lastuploads.php',
-    'params' => array()
+    'params' => array(),
+    'uparams' => array('resolution')
     ); 
     
 $ViewList['lastuploadsrss'] = array( 
@@ -82,7 +84,8 @@ $ViewList['lastuploadsrss'] = array(
                 
 $ViewList['toprated'] = array( 
     'script' => 'toprated.php',
-    'params' => array()
+    'params' => array(),
+    'uparams' => array('resolution')
     );   
 $ViewList['topratedrss'] = array( 
     'script' => 'topratedrss.php',
@@ -91,7 +94,8 @@ $ViewList['topratedrss'] = array(
                
 $ViewList['lasthits'] = array( 
     'script' => 'lasthits.php',
-    'params' => array()
+    'params' => array(),
+    'uparams' => array('resolution')
     );   
      
 $ViewList['lasthitsrss'] = array( 
@@ -112,12 +116,13 @@ $ViewList['addvote'] = array(
 $ViewList['ajaximages'] = array( 
     'script' => 'ajaximages.php',    
     'params' => array('image_id'),
-    'uparams' => array('mode','keyword','sort','direction'),
+    'uparams' => array('mode','keyword','sort','direction','resolution'),
     );   
       
 $ViewList['lastcommented'] = array( 
     'script' => 'lastcommented.php',
-    'params' => array()
+    'params' => array(),
+    'uparams' => array('resolution'),
     );   
     
 $ViewList['lastcommentedrss'] = array( 
@@ -128,7 +133,7 @@ $ViewList['lastcommentedrss'] = array(
 $ViewList['search'] = array( 
     'script' => 'search.php',
     'params' => array(),
-    'uparams' => array('keyword','total','sort'),
+    'uparams' => array('keyword','total','sort','resolution'),
     );
     
 $ViewList['searchrss'] = array( 

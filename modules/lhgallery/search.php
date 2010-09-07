@@ -32,13 +32,25 @@ $sortModes = array(
     'toprated'         => 'pic_rating DESC, votes DESC, @id DESC',
     'topratedasc'      => 'pic_rating ASC, votes ASC, @id ASC',   
     );
+
+$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
     
 $mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'newdesc';
+$resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
+
+$appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
+if ($resolution != ''){
+    $searchParams['Filter']['pwidth'] = $resolutions[$resolution]['width'];
+    $searchParams['Filter']['pheight'] = $resolutions[$resolution]['height'];
+}
+
 $modeSQL = $sortModes[$mode];         
 $appendImageModeSorting = $mode != 'newdesc' ? '/(sort)/'.$mode : '';    
 $searchParams['sort'] = $modeSQL;
 $userParams .= $appendImageModeSorting;
-$appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting;
+$userParams .= $appendResolutionMode;
+
+$appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendResolutionMode;
 /* SORTING */
 
 $firstSearch = false;
@@ -95,6 +107,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('keyword',$searchParams['keyword']);
     $tpl->set('appendImageMode',$appendImageMode);
     $tpl->set('mode',$mode);
+    $tpl->set('currentResolution',$resolution);
+    
     
     $Result['tittle_prepend'] = $sortModesTitle[$mode];
     $Result['content'] = $tpl->fetch();

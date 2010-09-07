@@ -57,7 +57,7 @@
                         <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lastcommented/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last commented');?></a></li>                  
 					</ul>									
              </div>
-           
+                               
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_last_searchers.tpl.php'));?>
                          
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_last_hits.tpl.php'));?>	 

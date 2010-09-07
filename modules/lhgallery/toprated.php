@@ -1,7 +1,19 @@
 <?php
 
 $cache = CSCacheAPC::getMem(); 
-$cacheKey = md5('version_'.$cache->getCacheVersion('top_rated').'_topratedalbum_view_url_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
+
+$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' ); 
+$resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
+
+$appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
+$filterArray = array();
+
+if ($resolution != ''){
+    $filterArray['pwidth'] = $resolutions[$resolution]['width'];
+    $filterArray['pheight'] = $resolutions[$resolution]['height'];
+}
+
+$cacheKey = md5('version_'.$cache->getCacheVersion('top_rated').'_topratedalbum_view_url_'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
     
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {
@@ -24,12 +36,20 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/toprated.tpl.php');
     
     $pages = new lhPaginator();
-    $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true));
+    $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
     $pages->translationContext = 'gallery/toprated';
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/toprated');
+    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/toprated').$appendResolutionMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
+    $tpl->set('currentResolution',$resolution);
+    $tpl->set('filterArray',$filterArray);
+    
+    $appendImageMode = '/(mode)/toprated'.$appendResolutionMode;
+       
+    $tpl->set('appendImageMode',$appendImageMode);
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/toprated'));
+    
     $Result['content'] = $tpl->fetch();
     $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images')));    
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images');

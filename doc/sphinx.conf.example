@@ -17,6 +17,8 @@ source anifofsrc
 	sql_attr_uint   = comtime
 	sql_attr_uint   = pic_rating
 	sql_attr_uint   = votes
+	sql_attr_uint   = pwidth
+	sql_attr_uint   = pheight
 }
 
 index anifof

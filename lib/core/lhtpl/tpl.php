@@ -181,8 +181,7 @@ class erLhcoreClassTemplate {
 			{	
 				$contentFile = str_replace($Matches[0][$key],erLhcoreClassDesign::baseurl(trim($UrlAddress,'\'')),$contentFile);	
 			}
-			
-			
+						
 			// Compile url addresses
 			$Matches = array();
 			preg_match_all('/<\?=erLhcoreClassDesign::designCSS\((.*?)\)(.*?)\?\>/i',$contentFile,$Matches); 
@@ -190,8 +189,6 @@ class erLhcoreClassTemplate {
 			{	
 				$contentFile = str_replace($Matches[0][$key],erLhcoreClassDesign::designCSS(trim($UrlAddress,'\'')),$contentFile);	
 			}
-			
-			
 			
 			// Compile url addresses in logical operations
 			$Matches = array();
@@ -205,8 +202,7 @@ class erLhcoreClassTemplate {
 			$Matches = array();
 			preg_match_all('/erConfigClassLhConfig::getInstance\(\)->conf->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)/i',$contentFile,$Matches); 
 			foreach ($Matches[1] as $key => $UrlAddress)
-			{	
-			    
+			{				    
 			    $valueConfig = erConfigClassLhConfig::getInstance()->conf->getSetting($Matches[2][$key],$Matches[5][$key]);
 			    $valueReplace = '';
 			    
@@ -214,6 +210,8 @@ class erLhcoreClassTemplate {
 			        $valueReplace = $valueConfig == false ? 'false' : 'true';
 			    } elseif (is_integer($valueConfig)) {
 			        $valueReplace = $valueConfig;
+			    } elseif (is_array($valueConfig)) {
+			        $valueReplace = var_export($valueConfig,true);			    
 			    } else {
 			        $valueReplace = '\''.$valueConfig.'\'';
 			    }
