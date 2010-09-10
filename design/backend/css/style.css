@@ -703,7 +703,7 @@ div.pagercontent a{color: #4D8F35;}
 .thumb-attr  a:hover h3{text-decoration:underline;}
 
 
-.thumb-edit{float:left;height:290px;overflow:hidden;width:200px;border:1px solid #C7C2BB;margin:5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;font-size:11px;}
+.thumb-edit{float:left;height:320px;overflow:hidden;width:200px;border:1px solid #C7C2BB;margin:5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;font-size:11px;}
 .thumb-edit .thumb-attr{text-align:left;padding-left:8px;}
 .big-button{font-size:14px;}
 .status-img{padding-left:5px;}
