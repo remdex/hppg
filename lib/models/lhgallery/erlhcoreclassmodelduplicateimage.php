@@ -29,6 +29,13 @@ class erLhcoreClassModelGalleryDuplicateImage {
    
    public function removeThis()
    {
+         try {
+            $duplicateImageHash = erLhcoreClassModelGalleryDuplicateImageHash::fetch($this->pid);
+            $duplicateImageHash->removeThis();
+          } catch (Exception $e){
+              
+          }
+       
    		erLhcoreClassGallery::getSession()->delete($this);
    }
    

@@ -143,8 +143,7 @@ class erLhcoreClassModelGalleryImage {
        		break;
        
        	case 'file_path_filesystem':       	  
-       	        $this->file_path_filesystem = 'albums/'.$this->filepath.$this->filename;
-       	        return $this->file_path_filesystem;
+       	        return 'albums/'.$this->filepath.$this->filename;
        	    break; 
        	         	
        	case 'album':        	    

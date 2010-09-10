@@ -2,11 +2,31 @@
 
 $session = erLhcoreClassGallery::getSession();
 
+$session = erLhcoreClassGallery::getSession();
+$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+$q->orderBy('pid DESC' );
+
+$objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );
+
+// First check that we have all objects in hash table
+foreach ($objects as $object)
+{
+   $found = erLhcoreClassModelGalleryDuplicateImageHash::getImageCount(array('filter' => array('pid' => $object->pid)));
+   if ($found == 0) {       
+       if (file_exists($object->file_path_filesystem)) {      
+           $imageHash = new erLhcoreClassModelGalleryDuplicateImageHash();
+           $imageHash->hash = md5_file($object->file_path_filesystem);
+           $imageHash->pid = $object->pid;
+           $session->save($imageHash);        
+       }       
+   }
+}
+
 $db = ezcDbInstance::get();
 $q = $db->createSelectQuery();
-$q->select( 'pid, filesize, count( * ) AS n' )
-	->from( 'lh_gallery_images' )
-	->groupBy( 'filesize' )
+$q->select( 'pid,hash, count( * ) AS n' )
+	->from( 'lh_gallery_duplicate_image_hash' )
+	->groupBy( 'hash' )
 	->having( $q->expr->gt('n',1) ); 
 
 $stmt = $q->prepare();
@@ -16,13 +36,16 @@ $duplicates = $stmt->fetchAll();
 $dulicateSessionObject = false;
 foreach ($duplicates as $duplicate)
 {
-	$images = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true, 'filter' => array('filesize' => $duplicate['filesize'])));
+	$images = erLhcoreClassModelGalleryDuplicateImageHash::getImages(array('filter' => array('hash' => $duplicate['hash'])));
 	$Original = false;
 	$OriginalSaved = false;
 	$dulicateSessionObject = false;
 	
-	foreach ($images as $image)
+	foreach ($images as $imageDuplicate)
 	{
+	    
+	     $image = $imageDuplicate->image;
+	     
 		 $photoPath = 'albums/'.$image->filepath;
        	 $filePath = $photoPath.$image->filename;
        	 if (file_exists($filePath))
