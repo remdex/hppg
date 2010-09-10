@@ -194,7 +194,7 @@ var hw = {
             $(name+" .sort-box").fadeIn();
             $(name+' .choose-sort').addClass('active-sort'); 
           }).mouseleave(function() {
-            $(name+' .sort-box').fadeOut();
+            $(name+' .sort-box').hide();
             $(name+' .choose-sort').removeClass('active-sort');
           });
           if ($(name+' .sort-box .selor').size() > 0){
