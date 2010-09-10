@@ -31,11 +31,14 @@ class erLhcoreClassModelGalleryLastSearch {
     
        if  ($count == 0     )
        {       
-           $search = new erLhcoreClassModelGalleryLastSearch();
-           $search->keyword = $keyword;
-           $search->countresult = $search_count;       
-           erLhcoreClassGallery::getSession()->save($search);
-           
+           try {
+               $search = new erLhcoreClassModelGalleryLastSearch();
+               $search->keyword = $keyword;
+               $search->countresult = $search_count;       
+               erLhcoreClassGallery::getSession()->save($search);
+           } catch (Exception $e) { // Sometimes table gets crushed if a lot of searches is done
+               
+           }
            //Clear cache
            $cache = CSCacheAPC::getMem();            
            $cache->delete('last_searches'); 
