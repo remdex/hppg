@@ -138,32 +138,7 @@ class erLhcoreClassModelGalleryCategory {
         
         }
         
-        return $objects;
-        
-      /*$cache = CSCacheAPC::getMem();
-            
-      if (($objects = $cache->restore(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id.'limit_'.$limit.'_offset'.$offset))) === false)
-      {
-           $session = erLhcoreClassGallery::getSession();
-           $q = $session->createFindQuery( 'erLhcoreClassModelGalleryCategory' );  
-           
-           if ($category_id >= 0)
-           {
-	           $q->where( 
-	            $q->expr->eq( 'parent', $q->bindValue($category_id) )        
-	           );
-           }
-           
-           $q->orderBy( 'pos' ); 
-           $q->limit($limit,$offset);
-                  
-          $objects = $session->find( $q, 'erLhcoreClassModelGalleryCategory' );
-                    
-          $cache->store(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_'.$category_id.'limit_'.$limit.'_offset'.$offset),$objects);
-      }
-      
-                
-      return $objects;*/ 
+        return $objects; 
    }
    
    public function removeThis()

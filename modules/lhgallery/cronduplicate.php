@@ -2,8 +2,21 @@
 
 $session = erLhcoreClassGallery::getSession();
 
-$session = erLhcoreClassGallery::getSession();
-$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+$q = $session->database->createSelectQuery();  
+$q->select( $q->alias( 'MAX(pid)', 'max_pid' ) )->from( "lh_gallery_duplicate_image_hash" ); 
+$stmt = $q->prepare();       
+$stmt->execute();   
+$lastIndexedPID = $stmt->fetchColumn();  
+
+if (!is_numeric($lastIndexedPID)) {
+    $lastIndexedPID = 0;
+}
+
+$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+$q->where( 
+       $q->expr->gt( 'pid', $lastIndexedPID )
+);
+     
 $q->orderBy('pid DESC' );
 
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );
