@@ -17,7 +17,7 @@ $q->where(
        $q->expr->gt( 'pid', $lastIndexedPID )
 );
      
-$q->orderBy('pid DESC' );
+$q->orderBy('pid ASC' );
 
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );
 
