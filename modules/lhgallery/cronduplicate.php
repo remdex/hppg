@@ -65,9 +65,7 @@ foreach ($duplicates as $duplicate)
        	 {
        	 	// First item cycle, mark current image as original
        	 	if ($Original == false){$Original = $image;continue;}
-       	 	
-       	 	if (sha1_file( 'albums/'.$Original->filepath.$Original->filename) == sha1_file( 'albums/'.$image->filepath.$image->filename))
-       	 	{
+       	 	       	 	
        	 		// Check if image ID is already not in duplicate table
        	 		$q = $db->createSelectQuery();  
        			$q->select( "COUNT(pid)" )->from( "lh_gallery_duplicate_image" ); 
@@ -97,8 +95,7 @@ foreach ($duplicates as $duplicate)
 	       	 		$duplicateRecord->pid = $image->pid;
 	       	 		$duplicateRecord->duplicate_collection_id = $dulicateSessionObject->id;
 	       	 		$session->save($duplicateRecord);
-              	}       	 			
-       	 	}
+              	}  
        	 }
 	}	
 }
