@@ -35,7 +35,7 @@ foreach ($items as $key => $item) :
  </div>   
 <? endif;?>
 </div>
-<script type="text/javascript"> 
+<script> 
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
   })
