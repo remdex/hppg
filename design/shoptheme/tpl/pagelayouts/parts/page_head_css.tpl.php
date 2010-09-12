@@ -1,2 +1,1 @@
-<link rel="stylesheet" type="text/css" href="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'cdn', 'css' )?><?=erLhcoreClassDesign::design('css/style.css');?>" /> 
-<link rel="stylesheet" type="text/css" href="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'cdn', 'css' )?><?=erLhcoreClassDesign::design('css/style_shop.css');?>" /> 
+<link rel="stylesheet" href="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'cdn', 'css' )?><?=erLhcoreClassDesign::designCSS('css/style.css;css/style_shop.css');?>" /> 

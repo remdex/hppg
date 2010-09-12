@@ -6,9 +6,9 @@ foreach ($items as $item) : ?>
         <div class="content">        
             <div class="albthumb-img">
             <a href="<?=$item->url_path?>"><?php if ($item->album_thumb_path !== false) :?> 
-            <img src="<?=erLhcoreClassDesign::imagePath($item->album_thumb_path)?>" alt="" width="130" height="140"/>
+            <img src="<?=erLhcoreClassDesign::imagePath($item->album_thumb_path)?>" alt="" width="130" height="140">
             <?php else :?>
-            <img src="<?=erLhcoreClassDesign::design('images/newdesign/nophoto.jpg')?>" alt="" width="130" height="140"/>            
+            <img src="<?=erLhcoreClassDesign::design('images/newdesign/nophoto.jpg')?>" alt="" width="130" height="140">            
             <?php endif;?></a>      
             </div>
         
@@ -38,7 +38,7 @@ endforeach; ?>
 <? endif;?> 
 </div>
 
-<script type="text/javascript">
+<script>
 $("div.album-thumb").mouseover(function() {
     $(this).addClass('image-thumb-shadow');
   }).mouseout(function(){

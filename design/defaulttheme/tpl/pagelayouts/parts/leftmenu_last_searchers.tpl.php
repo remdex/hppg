@@ -5,8 +5,7 @@
 					<?php foreach (erLhcoreClassModelGalleryLastSearch::getSearches() as $search) : ?>									
 					   <li>
 					   <a class="cnt" href="<?=erLhcoreClassDesign::baseurl('/gallery/search/')?>(keyword)/<?=urlencode($search->keyword);?>">(<?=$search->countresult;?>)</a>	   
-					   <a href="<?=erLhcoreClassDesign::baseurl('/gallery/search/')?>(keyword)/<?=urlencode($search->keyword);?>"><?=htmlspecialchars($search->keyword);?></a>
-					   </li>
+					   <a href="<?=erLhcoreClassDesign::baseurl('/gallery/search/')?>(keyword)/<?=urlencode($search->keyword);?>"><?=htmlspecialchars($search->keyword);?></a>					  
 					<?endforeach;?>
 					</ul>									
              </div>

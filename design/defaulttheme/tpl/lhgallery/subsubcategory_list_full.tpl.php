@@ -20,9 +20,8 @@
                 ?>                
                 <?php 
                 $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $subcategory->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page));
-                include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php'));endif;?>
-                   
-                </li> 
+                include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php'));endif;?>                   
+                
         <?php endforeach;?>
     </ul>
 </div>

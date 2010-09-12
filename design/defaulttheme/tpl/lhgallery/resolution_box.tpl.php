@@ -13,15 +13,14 @@
     <li class="current-sort" ><a class="choose-sort"><span></span></a>
         <ul class="sort-box">
             <?php $currentResolution?>
-            <li><a <?=$currentResolution == '' ? 'class="selor" ' : ''?> href="<?=$urlSortBase?>">Any resolution</a></li>
+            <li><a <?=$currentResolution == '' ? 'class="selor" ' : ''?> href="<?=$urlSortBase?>">Any resolution</a>
             <?php foreach ($resolutions as $key => $resolution) : ?>
-                <li><a <?=$currentResolution == $key ? 'class="selor" ' : ''?>href="<?=$urlSortBase?>/(resolution)/<?=$resolution['width']?>x<?=$resolution['height']?>"><span><?=$resolution['width']?>x<?=$resolution['height']?><span></a></li>
+                <li><a <?=$currentResolution == $key ? 'class="selor" ' : ''?>href="<?=$urlSortBase?>/(resolution)/<?=$resolution['width']?>x<?=$resolution['height']?>"><span><?=$resolution['width']?>x<?=$resolution['height']?></span></a>
             <?php endforeach;?>            
-        </ul>
-    </li>
+        </ul>    
 </ul>
 </div>
 
-<script type="text/javascript">
+<script>
 hw.initSortBox('#resolution-nav');
 </script>

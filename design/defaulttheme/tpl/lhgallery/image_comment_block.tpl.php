@@ -11,8 +11,7 @@
     <li>
     <span class="author"><?=htmlspecialchars($comment->msg_author);?></span>
     <div class="right ct"><?=$comment->msg_date;?></div>
-    <p class="msg-body"><?=htmlspecialchars($comment->msg_body)?></p>
-    </li>
+    <p class="msg-body"><?=htmlspecialchars($comment->msg_body)?>    
     <?php endforeach;?>
     </ul>
     <?else:?>
@@ -23,14 +22,14 @@
         <? if (isset($commentErrArr)) : ?>
         <ul class="error-list">
             <?foreach ($commentErrArr as $error) :?>
-                <li><?=$error?></li>
+                <li><?=$error?>
             <?php endforeach;?>
         </ul>
         <?endif;?>
         
         <? if (isset($commentStored)) : ?>
         <ul class="ok">
-            <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Comment stored')?></li>
+            <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Comment stored')?>
         </ul>
         <?endif;?>
         

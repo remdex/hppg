@@ -1,6 +1,6 @@
 <div class="img float-break">
 <div class="left-photo">
-<img src="<?=($image->pwidth < 450) ? erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename)) : erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode($image->filename))?>" alt="<?=htmlspecialchars($image->name_user);?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Click to see fullsize')?>"/>
+<img src="<?=($image->pwidth < 450) ? erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename)) : erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode($image->filename))?>" alt="<?=htmlspecialchars($image->name_user);?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Click to see fullsize')?>" >
 </div>
 <div class="shop-options">
 <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
@@ -35,7 +35,7 @@ $selected = in_array($variation->id,$selectedItemsCombinations);
 <?php endforeach;?>
 </table>
 
-<script type="text/javascript">
+<script>
 
 $('.add-to-cart').click(function() {
   hw.addToBasket(<?=$image->pid?>,$(this).attr('rel'));

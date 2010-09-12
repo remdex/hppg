@@ -7,7 +7,7 @@
 
 <ul>
 <?php foreach ($errArr as $err) : ?>
-    <li><?=$err?></li>
+    <li><?=$err?>
 <?php endforeach;?>
 </ul>
 </div>

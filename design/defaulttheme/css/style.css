@@ -50,7 +50,7 @@ div#main-header-bg
    overflow:hidden;
 }
 
-a img{border:0;}
+a img{border:0;margin:0;padding:0;}
 .clearer{
 font-size:0;
 height:0;
@@ -493,16 +493,10 @@ margin:0 auto;
 
 div#logo{
 float:left;
-
-/*-moz-border-radius:5px;
--webkit-border-radius:5px; 
-border-radius:5px; 
-behavior:url(ie-css3.htc);
-vertical-align:top;
-height:45px;overflow:visible;	*/
 box-shadow:1px 1px 5px #a8a8a8;
 -webkit-box-shadow:1px 1px 5px #a8a8a8;
 -moz-box-shadow: 1px 1px 5px #a8a8a8;
+height:80px;
 }
 
 div#main-header-bg{padding:2px 0px 4px 2px;}
@@ -688,6 +682,7 @@ background-position:0px -370px;
 color:#6f6f6f;
 font-size:11px;
 }
+
 
 .album-ico{
 padding-right:5px;

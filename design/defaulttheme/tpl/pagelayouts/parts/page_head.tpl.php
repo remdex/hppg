@@ -1,5 +1,6 @@
+<html lang="en">
+<meta charset="utf-8">
 <title><? 
-
 if ((isset($Result['tittle_prepend']) && $Result['tittle_prepend'] != '')){ echo $Result['tittle_prepend'].' &laquo;';}
 
 if (isset($Result['title_path'])) : 
@@ -18,7 +19,7 @@ foreach ($ReverseOrder as $pathItem) : ?>
 <? endif; ?>
 
 <?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?></title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
 <?php include(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_head_css.tpl.php'));?>  
 <link rel="icon" type="image/png" href="<?=erLhcoreClassDesign::design('images/favicon.ico')?>" />
 <link rel="shortcut icon" type="image/x-icon" href="<?=erLhcoreClassDesign::design('images/favicon.ico')?>" />

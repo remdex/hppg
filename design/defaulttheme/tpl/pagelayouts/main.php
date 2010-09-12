@@ -1,18 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_head.tpl.php'));?>
-</head>
-<body>
 
 <div id="container" class="no-right-column">
 
 <div id="main-header-bg" class="float-break">
-    <div id="logo">
-        <a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><img src="<?=erLhcoreClassDesign::design('images/newdesign/logo.jpg')?>" alt="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" title="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" /></a>
-    </div>
+    <div id="logo"><a style="clear:both;" href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><img src="<?=erLhcoreClassDesign::design('images/newdesign/logo.jpg')?>" alt="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" title="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" ></a></div>
     
     <div class="top-menu float-break">        
     <?if (isset($Result['rss'])) : ?>
@@ -30,14 +23,10 @@
     
 </div>
 
-
-
-
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/path.tpl.php'));?>
 
 	<div id="bodcont" class="float-break">
 		
-	
 				
         <div id="leftmenucont">
               
@@ -50,11 +39,11 @@
 	  		 <div class="left-infobox">				
 					<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Categories')?></h3>
 					<ul>													
-					    <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/popular/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Most popular images');?></a></li>                  
-                        <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lastuploads/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads');?></a></li>                  
-                        <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/toprated/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Top rated');?></a></li>                  
-                        <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lasthits/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last hits');?> </a></li>                  
-                        <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lastcommented/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last commented');?></a></li>                  
+					    <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/popular/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Most popular images');?></a>                 
+                        <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lastuploads/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads');?></a>                  
+                        <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/toprated/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Top rated');?></a>                  
+                        <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lasthits/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last hits');?> </a>                 
+                        <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/lastcommented/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last commented');?></a>                 
 					</ul>									
              </div>
                                
@@ -80,6 +69,5 @@
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_footer.tpl.php'));?>
 
 </div>
-</body>
 
-</html>
+

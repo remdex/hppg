@@ -10,7 +10,7 @@
         $ResultCache = '<ul class="last-hits-infobox">';                                                        
         foreach ($items as $item)
         {      
-           $ResultCache .= '<li><a href="'.$item->url_path.$appendImageMode.'"><img title="'.erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','View image').'" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename),true,$item->pid).'" alt="'.htmlspecialchars($item->name_user).'" /></a></li>';
+           $ResultCache .= '<li><a href="'.$item->url_path.$appendImageMode.'"><img title="'.erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','View image').'" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename),true,$item->pid).'" alt="'.htmlspecialchars($item->name_user).'" ></a>';
         }                            
         $ResultCache .= '</ul>';
         
