@@ -93,8 +93,11 @@ class erLhcoreClassModelGalleryImage {
             }  
                
             $string = $this->filename;               
-        	$stringArr = explode('.',$string);	
-        	$string = trim(preg_replace('#^\d+#', '',  $stringArr[0]));
+        	$stringArr = explode('.',$string);        	
+        	array_pop($stringArr);
+            $string = implode(' ',$stringArr);
+        	       	      		
+        	$string = trim(preg_replace('#^\d+#', '',  $string));
         	$string=str_replace('_',' ',$string);	
         	$string=str_replace('-',' ',$string);
             $ArrTitle = explode(' ',$string);
@@ -105,7 +108,7 @@ class erLhcoreClassModelGalleryImage {
             
             $this->name_user = trim($string);
             return $this->name_user;
-            break;                  
+            break;                 
            		
        	case 'path':
 
