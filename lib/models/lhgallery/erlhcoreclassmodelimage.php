@@ -166,7 +166,7 @@ class erLhcoreClassModelGalleryImage {
        $session = erLhcoreClassGallery::getSession();
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_gallery_images" );     
-         
+       
        $conditions = array();
        
        if (isset($params['filter']) && count($params['filter']) > 0)
@@ -207,7 +207,7 @@ class erLhcoreClassModelGalleryImage {
                      $conditions   
           );
       }         
-      
+                  
       if (!isset($params['disable_sql_cache']))
       {
           $sql = erLhcoreClassGallery::multi_implode(',',$params);  
@@ -338,7 +338,7 @@ class erLhcoreClassModelGalleryImage {
       {
           $cache = CSCacheAPC::getMem();  
           $sql = erLhcoreClassGallery::multi_implode(',',$params); 
-           
+                         
           $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);      
              
           if (($objects = $cache->restore($cacheKey)) === false)

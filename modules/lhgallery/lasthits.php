@@ -13,6 +13,7 @@ if ($resolution != ''){
     $filterArray['pwidth'] = $resolutions[$resolution]['width'];
     $filterArray['pheight'] = $resolutions[$resolution]['height'];
 }
+$filterArray['approved'] = 1;
 
 // All cache will expire at once, subpages expires every 10 minits.
 // Total image expiration  

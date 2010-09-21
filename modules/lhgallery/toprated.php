@@ -12,6 +12,7 @@ if ($resolution != ''){
     $filterArray['pwidth'] = $resolutions[$resolution]['width'];
     $filterArray['pheight'] = $resolutions[$resolution]['height'];
 }
+$filterArray['approved'] = 1;
 
 $cacheKey = md5('version_'.$cache->getCacheVersion('top_rated').'_topratedalbum_view_url_'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
     

@@ -13,6 +13,8 @@ if ($resolution != ''){
     $filterArray['pheight'] = $resolutions[$resolution]['height'];
 }
 
+$filterArray['approved'] = 1;
+
 $cacheKey = md5('version_'.$cache->getCacheVersion('last_uploads').'lastuploads_view_url'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
     
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)

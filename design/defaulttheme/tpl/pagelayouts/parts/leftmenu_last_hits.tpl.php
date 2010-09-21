@@ -5,7 +5,7 @@
     $cacheVersion = $cache->getCacheVersion('last_hits_version',time(),600);
     if (($ResultCache = $cache->restore(md5($cacheVersion.'_lasthits_infobox'))) === false)
     {
-        $items = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'sort' => 'mtime DESC, pid DESC','offset' => 0, 'limit' => 4));
+        $items = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'filter' => array('approved' => 1), 'sort' => 'mtime DESC, pid DESC','offset' => 0, 'limit' => 4));
         $appendImageMode = '/(mode)/lasthits';
         $ResultCache = '<ul class="last-hits-infobox">';                                                        
         foreach ($items as $item)

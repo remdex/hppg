@@ -20,7 +20,7 @@ if (($xml = $cache->restore($cacheKey)) === false)
     $feed->published = time(); 
     $link = $feed->add( 'link' );
     $link->href = 'http://'.$_SERVER['HTTP_HOST'].$Album->url_path; 
-    $items = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'filter' => array('aid' => $Album->aid),'offset' => 0, 'limit' => 20));
+    $items = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'filter' => array('approved' => 1,'aid' => $Album->aid),'offset' => 0, 'limit' => 20));
        
     foreach ($items as $itemRecord)
     {	

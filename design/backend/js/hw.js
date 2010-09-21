@@ -59,7 +59,8 @@ var hw = {
 				title	  : $('#PhotoTitle_'+photo_id).val(),
 				keywords  : $('#PhotoKeyword_'+photo_id).val(),				
 				caption	  : $('#PhotoDescription_'+photo_id).val(),				
-				anaglyph  : $('#PhotoAnaglyph_'+photo_id).attr('checked')				
+				anaglyph  : $('#PhotoAnaglyph_'+photo_id).attr('checked'),
+				approved  : $('#PhotoApproved_'+photo_id).attr('checked')				
 		}
 		$('#image_status_'+photo_id).html('Updating...');
 		$('#image_status_'+photo_id).removeClass('ok');

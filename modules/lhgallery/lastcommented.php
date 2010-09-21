@@ -12,7 +12,7 @@ if ($resolution != ''){
     $filterArray['pwidth'] = $resolutions[$resolution]['width'];
     $filterArray['pheight'] = $resolutions[$resolution]['height'];
 }
-
+$filterArray['approved'] = 1;
 
 $cacheKey = md5('version_'.$cache->getCacheVersion('last_commented').'lastcommented_view_url'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
     
@@ -35,7 +35,7 @@ if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_cachin
 if (($Result = $cache->restore($cacheKey)) === false)
 {    
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lastcommented.tpl.php');
-    
+        
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
     $pages->translationContext = 'gallery/lastcommented';
@@ -50,13 +50,18 @@ if (($Result = $cache->restore($cacheKey)) === false)
        
     $tpl->set('appendImageMode',$appendImageMode);
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/lastcommented'));
-    
+       
     $Result['content'] = $tpl->fetch();
+       
     $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images')));    
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastcommentedrss/');
 
+    
+
     $cache->store($cacheKey,$Result);
 }
+
+
 
 ?>

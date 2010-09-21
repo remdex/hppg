@@ -12,7 +12,7 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_last_hits'))) === false)
     $feed->published = time(); 
     $link = $feed->add( 'link' );
     $link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('/gallery/lasthitsrss/');     
-    $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'sort' => 'mtime DESC, pid DESC','offset' => 0, 'limit' => 20));    
+    $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'approved' => 1,'disable_sql_cache' => true,'sort' => 'mtime DESC, pid DESC','offset' => 0, 'limit' => 20));    
     foreach ($items as $itemRecord)
     {	
     	

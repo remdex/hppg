@@ -13,6 +13,7 @@ if ($resolution != ''){
     $filterArray['pwidth'] = $resolutions[$resolution]['width'];
     $filterArray['pheight'] = $resolutions[$resolution]['height'];
 }
+$filterArray['approved'] = 1;
 
 $cacheVersion = $cache->getCacheVersion('most_popular_version',time(),1500);
 

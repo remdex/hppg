@@ -92,6 +92,16 @@ class erLhcoreClassUser{
        return $this->authenticated;
    }
    
+   function setLoggedUser($user_id)
+   {
+       if ($user_id != $this->userid) {
+           if (isset($_SESSION['access_array'])) unset($_SESSION['access_array']);
+           $this->AccessArray = false;
+           $this->userid = $user_id;
+           $this->authenticated = true;
+       }
+   }
+   
    function logout()
    {
        unset($_SESSION['access_array']);
@@ -219,7 +229,7 @@ class erLhcoreClassUser{
    
    function accessArray()
    {
-   
+           
        if ($this->AccessArray !== false) return $this->AccessArray;
              
        if (isset($_SESSION['access_array'])) {
@@ -242,8 +252,11 @@ class erLhcoreClassUser{
            }
        }
        
-       ezcCacheManager::createCache( 'userinfo', 'cache/userinfo', 'ezcCacheStorageFileArray', array('ttl'   => 60*60*24*1 ) ); 
-
+       if ($this->cacheCreated == false) {
+           $this->cacheCreated = true;
+           ezcCacheManager::createCache( 'userinfo', 'cache/userinfo', 'ezcCacheStorageFileArray', array('ttl'   => 60*60*24*1 ) ); 
+       }
+       
        $cache = ezcCacheManager::getCache( 'userinfo' );
 
        $id = $this->userid;
@@ -315,6 +328,7 @@ class erLhcoreClassUser{
    private $userid;   
    private $AccessArray = false;
    private $AccessTimestamp = false;
+   private $cacheCreated = false;
    
    // Authentification things
    public $authentication;

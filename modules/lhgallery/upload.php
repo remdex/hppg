@@ -70,7 +70,16 @@ if (count($objects) == 1)
 	       $image->title = $_POST['title'];
 	       $image->caption = $_POST['description'];
 	       $image->keywords =  $_POST['keyword'];
-	       $image->approved =  1;
+	       
+	       $userOwner = erLhcoreClassUser::instance();
+	       $userOwner->setLoggedUser($fileSession->user_id);	  
+	       
+           $canApproveSelfImages = $userOwner->hasAccessTo('lhgallery','auto_approve_self_photos');
+           $canApproveAllImages =  $userOwner->hasAccessTo('lhgallery','auto_approve');           
+           $canChangeApprovement = ($image->owner_id == $userOwner->getUserID() && $canApproveSelfImages) || ($canApproveAllImages == true);
+
+	       $image->approved = $canChangeApprovement == true ? 1 : 0;
+	       	       	       
 	       $image->anaglyph =  (isset($_POST['anaglyph']) && $_POST['anaglyph'] == 'true') ? 1 : 0;
 	       $image->filename = $fileNamePhysic;
 	              

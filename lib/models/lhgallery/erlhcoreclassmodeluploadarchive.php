@@ -79,7 +79,15 @@ class erLhcoreClassModelGalleryUploadArchive {
    		}
    		
    		$config = erConfigClassLhConfig::getInstance();
-   		 	   			 
+   		
+   		// Auto approvement
+   		$userOwner = erLhcoreClassUser::instance();
+	    $userOwner->setLoggedUser($this->user_id);
+	    
+	    $canApproveSelfImages = $userOwner->hasAccessTo('lhgallery','auto_approve_self_photos');
+        $canApproveAllImages =  $userOwner->hasAccessTo('lhgallery','auto_approve');           
+        $approved = ($album->owner_id == $this->user_id && $canApproveSelfImages) || ($canApproveAllImages == true);           	    
+	       			 
    		while( $archive->valid() )
 		{
 			// Returns the current entry (ezcArchiveEntry).
@@ -164,7 +172,7 @@ class erLhcoreClassModelGalleryUploadArchive {
 				    	$image->title = '';
 				    	$image->caption = '';
 				    	$image->keywords =  '';
-				    	$image->approved =  1;
+				    	$image->approved =  $approved;
 				    	$image->filename = $fileNamePhysic;
 
 				    	$session->update($image);

@@ -423,25 +423,28 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `pic_rate` (`pic_rating`),
                   KEY `pic_aid` (`aid`),
                   KEY `mtime` (`mtime`),
-                  KEY `comtime` (`comtime`,`pid`),
-                  KEY `pid_4` (`hits`,`pid`),
-                  KEY `pid_5` (`pic_rating`,`votes`,`pid`),
-                  KEY `pid` (`mtime`,`pid`),
                   KEY `pid_3` (`ctime`),
-                  KEY `pid_2` (`ctime`,`pid`),
-                  KEY `pid_6` (`aid`,`pid`),
-                  KEY `pid_7` (`aid`,`hits`,`pid`),
-                  KEY `pid_8` (`aid`,`mtime`,`pid`),
-                  KEY `pid_9` (`aid`,`pic_rating`,`votes`,`pid`),
-                  KEY `pid_10` (`aid`,`comtime`,`pid`),
-                  KEY `aid` (`aid`,`pwidth`,`pheight`,`pid`),
-                  KEY `pid_11` (`aid`,`pwidth`,`pheight`,`hits`,`pid`),
-                  KEY `aid_2` (`aid`,`pwidth`,`pheight`,`mtime`,`pid`),
-                  KEY `aid_3` (`aid`,`pwidth`,`pheight`,`pic_rating`,`votes`,`pid`),
                   KEY `aid_4` (`aid`,`pwidth`,`pheight`,`comtime`,`pid`),
-                  KEY `pid_12` (`pwidth`,`pheight`,`pid`),
-                  KEY `pwidth` (`pwidth`,`pheight`,`mtime`,`pid`),
-                  KEY `pwidth_2` (`pwidth`,`pheight`,`pic_rating`,`votes`,`pid`)
+                  KEY `approved` (`approved`,`pid`),
+                  KEY `pid_12` (`pwidth`,`pheight`,`approved`,`pid`),
+                  KEY `pid_4` (`approved`,`hits`,`pid`),
+                  KEY `pid_4res` (`pwidth`,`pheight`,`approved`,`hits`,`pid`),
+                  KEY `pid_5` (`approved`,`pic_rating`,`votes`,`pid`),
+                  KEY `pwidth_2` (`pwidth`,`pheight`,`approved`,`pic_rating`,`votes`,`pid`),
+                  KEY `pid` (`approved`,`mtime`,`pid`),
+                  KEY `pwidth` (`pwidth`,`pheight`,`approved`,`mtime`,`pid`),
+                  KEY `comtime` (`approved`,`comtime`,`pid`),
+                  KEY `pid_com_res` (`pwidth`,`pheight`,`approved`,`comtime`,`pid`),
+                  KEY `pid_7` (`aid`,`approved`,`hits`,`pid`),
+                  KEY `pid_6` (`aid`,`approved`,`pid`),
+                  KEY `pid_8` (`aid`,`approved`,`mtime`,`pid`),
+                  KEY `pid_9` (`aid`,`approved`,`pic_rating`,`votes`,`pid`),
+                  KEY `pid_10` (`aid`,`approved`,`comtime`,`pid`),
+                  KEY `aid` (`aid`,`pwidth`,`pheight`,`approved`,`pid`),
+                  KEY `pid_2` (`ctime`,`approved`,`pid`),
+                  KEY `pid_11` (`aid`,`pwidth`,`pheight`,`approved`,`hits`,`pid`),
+                  KEY `aid_2` (`aid`,`pwidth`,`pheight`,`approved`,`mtime`,`pid`),
+                  KEY `aid_3` (`aid`,`pwidth`,`pheight`,`approved`,`pic_rating`,`votes`,`pid`)
                 ) ENGINE=MyISAM;");
                 
                 
@@ -696,7 +699,15 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 $RoleFunctionRegisteredGallery->module = 'lhgallery';
                 $RoleFunctionRegisteredGallery->function = 'personal_albums';                
                 erLhcoreClassRole::getSession()->save($RoleFunctionRegisteredGallery);
+                
+                // Auto approvement for registered users           
+                $RoleFunctionRegisteredGallery = new erLhcoreClassModelRoleFunction();
+                $RoleFunctionRegisteredGallery->role_id = $RoleRegistered->id;
+                $RoleFunctionRegisteredGallery->module = 'lhgallery';
+                $RoleFunctionRegisteredGallery->function = 'auto_approve';                
+                erLhcoreClassRole::getSession()->save($RoleFunctionRegisteredGallery);
                    
+                
                 $CategoryData = new erLhcoreClassModelGalleryCategory();
                 $CategoryData->name = 'Users galleries';
                 $CategoryData->hide_frontpage = 1;

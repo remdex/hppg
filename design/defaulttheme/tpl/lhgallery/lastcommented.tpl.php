@@ -11,6 +11,7 @@
 ?>   
    
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_list.tpl.php'));?> 
+   
           
 <? } else { ?>
 
