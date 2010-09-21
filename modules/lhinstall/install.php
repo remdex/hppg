@@ -444,7 +444,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `pid_2` (`ctime`,`approved`,`pid`),
                   KEY `pid_11` (`aid`,`pwidth`,`pheight`,`approved`,`hits`,`pid`),
                   KEY `aid_2` (`aid`,`pwidth`,`pheight`,`approved`,`mtime`,`pid`),
-                  KEY `aid_3` (`aid`,`pwidth`,`pheight`,`approved`,`pic_rating`,`votes`,`pid`)
+                  KEY `aid_3` (`aid`,`pwidth`,`pheight`,`approved`,`pic_rating`,`votes`,`pid`),
+                  KEY `approved_2` (`approved`)
                 ) ENGINE=MyISAM;");
                 
                 
