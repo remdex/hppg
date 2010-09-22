@@ -358,14 +358,14 @@ class erLhcoreClassModelGalleryCategory {
        	    {
        	        $albums = erLhcoreClassModelGalleryAlbum::getAlbumsIDByFilter(array('filter' => array('category' => $category->cid)));
        	        if (is_array($albums) && count($albums) > 0){
-       	            $imagesCount += erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('category_'.$this->cid),'filterin' => array('aid' => $albums)));
+       	            $imagesCount += erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('category_'.$this->cid),'filter' => array('approved' => 1),'filterin' => array('aid' => $albums)));
        	        }
        	    }       	    
        	    $albums = erLhcoreClassModelGalleryAlbum::getAlbumsIDByFilter(array('filter' => array('category' => $this->cid)));
        	           	    
        	    $imagesAppend = 0;
        	    if (is_array($albums) && count($albums) > 0)
-       	    $imagesAppend = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'category_'.CSCacheAPC::getMem()->getCacheVersion('category_'.$this->cid), 'filterin' => array('aid' => $albums)));
+       	    $imagesAppend = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'category_'.CSCacheAPC::getMem()->getCacheVersion('category_'.$this->cid),'filter' => array('approved' => 1), 'filterin' => array('aid' => $albums)));
        	           	    
        	    $this->images_count = $imagesAppend+$imagesCount;      	    
        	    return $this->images_count;

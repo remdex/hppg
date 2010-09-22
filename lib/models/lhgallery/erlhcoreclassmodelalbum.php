@@ -106,7 +106,7 @@ class erLhcoreClassModelGalleryAlbum {
    {
        switch ($variable) {
        	case 'images_count':
-       	       $this->images_count = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('album_'.$this->aid),'filter' => array('aid' => $this->aid)));
+       	       $this->images_count = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('album_'.$this->aid),'filter' => array('aid' => $this->aid,'approved' => 1)));
        		   return $this->images_count;
        		break;
        		
@@ -140,8 +140,9 @@ class erLhcoreClassModelGalleryAlbum {
        	    }      	    
        	    break;
        	    	
-        case 'album_thumb_path':        	    
-           	    $images = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('album_'.$this->aid),'filter' => array('aid' => $this->aid),'limit' => 1));
+        case 'album_thumb_path':
+                // FIX me, we show only approved photo, but we should check if user has access to see all images.        	    
+           	    $images = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('album_'.$this->aid),'filter' => array('aid' => $this->aid,'approved' => 1),'limit' => 1));
            	    foreach ($images as $image)
            	    {
            	        return $image->filepath.'thumb_'.urlencode($image->filename);
