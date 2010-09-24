@@ -11,7 +11,7 @@ class erLhcoreClassImageConverter {
         $this->converter = new ezcImageConverter(
                 new ezcImageConverterSettings(
                     array( 
-//                        new ezcImageHandlerSettings( 'imagemagick', 'erLhcoreClassGalleryImagemagickHandler' ),
+                        new ezcImageHandlerSettings( 'imagemagick', 'erLhcoreClassGalleryImagemagickHandler' ),
                         new ezcImageHandlerSettings( 'gd','erLhcoreClassGalleryGDHandler' )
                     )
                 )
