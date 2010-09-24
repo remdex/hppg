@@ -8,8 +8,8 @@ $ViewList = array();
 $ViewList['index'] = array( 
     'script' => 'index.php',
     'params' => array()
-    );  
-     
+    );
+   
 $ViewList['album'] = array( 
     'script' => 'album.php',
     'params' => array('album_id'),

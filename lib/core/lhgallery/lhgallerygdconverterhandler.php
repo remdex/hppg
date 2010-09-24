@@ -161,5 +161,9 @@ class erLhcoreClassGalleryGDHandler extends ezcImageGdHandler {
             $this->crop($imageHalfWidth,0,$imageHalfWidth,$imageHeight);
         }            
     }
+    
+    public function extractAnimatedGifFrame($frame = 0) {
+         
+    }
 	
 }

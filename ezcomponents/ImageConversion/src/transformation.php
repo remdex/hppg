@@ -217,10 +217,17 @@ class ezcImageTransformation
 
             // Do not process animated GIFs
             if ( $analyzer->data->isAnimated )
-            {
-                copy( $fileTmp, $fileOut );
+            {                  
+                // Dummy method witch does nothing
+                array_unshift($this->filters,new ezcImageFilter( 
+                                    'extractAnimatedGifFrame',
+                                    array(    
+                                         'frame' => 0 // Left side                    
+                                    ))); 
+                
+                /*copy( $fileTmp, $fileOut );
                 unlink( $fileTmp );
-                return;
+                return;*/
             }
 
             $mimeIn = $analyzer->mime;

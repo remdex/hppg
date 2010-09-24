@@ -93,7 +93,7 @@ return array_merge(array (
          
          // Paypal handler options
          'erLhcoreClassShopPaymentHandlerPaypal' => 'lib/core/lhshop/paymenthandlers/paypal_handler/classes/handler.php',
-        
+                
          
 ),
 include('var/autoloads/lhextension_autoload.php')

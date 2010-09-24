@@ -152,6 +152,8 @@ class ezcImageImagemagickBaseHandler extends ezcImageMethodcallHandler
 
         $this->saveCommon( $image, $newFile, $mime );
         
+        $frameNumber = '';
+                  
         switch ( $this->getReferenceData( $image, 'mime' ) )
         {
             case "image/jpeg":
@@ -165,7 +167,9 @@ class ezcImageImagemagickBaseHandler extends ezcImageMethodcallHandler
                 {
                     // ImageMagick uses qualtiy options here and incorporates filter options
                     $this->addFilterOption( $image, "-quality", $options->compression * 10 );
-                }
+                };
+            case "image/gif":
+                $frameNumber = '[0]';              
             break;
         }
 
@@ -177,14 +181,14 @@ class ezcImageImagemagickBaseHandler extends ezcImageMethodcallHandler
         {
             $command = $this->binary . ' ' .
                 ( isset( $this->filterOptions[$image] ) ? implode( ' ', $this->filterOptions[$image] ) : '' ) . ' ' .
-                escapeshellarg( $this->getReferenceData( $image, 'resource' ) ) . ' ' .
+                escapeshellarg( $this->getReferenceData( $image, 'resource' ).$frameNumber ) . ' ' .
                 implode( ' ', $this->compositeImages[$image] ) . ' ' .
                 escapeshellarg( $this->tagMap[$this->getReferenceData( $image, 'mime' )] . ':' . $this->getReferenceData( $image, 'resource' ) );
         }
         else
         {
             $command = $this->binary . ' ' .
-                escapeshellarg( $this->getReferenceData( $image, 'resource' ) ) . ' ' .
+                escapeshellarg( $this->getReferenceData( $image, 'resource' ).$frameNumber ) . ' ' .
                 ( isset( $this->filterOptions[$image] ) ? implode( ' ', $this->filterOptions[$image] ) : '' ) . ' ' .
                 escapeshellarg( $this->tagMap[$this->getReferenceData( $image, 'mime' )] . ':' . $this->getReferenceData( $image, 'resource' ) );
         }

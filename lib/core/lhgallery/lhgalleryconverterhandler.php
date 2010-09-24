@@ -314,5 +314,9 @@ class erLhcoreClassGalleryImagemagickHandler extends ezcImageImagemagickHandler 
            
        $this->saveComposite( $this->getActiveReference() );        
     }
+    
+    public function extractAnimatedGifFrame($frame = 0) {
+         
+    }
 	
 }
