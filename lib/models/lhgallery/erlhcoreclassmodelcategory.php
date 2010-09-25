@@ -51,7 +51,7 @@ class erLhcoreClassModelGalleryCategory {
        $cache = CSCacheAPC::getMem();
        $cache->increaseCacheVersion('category_'.$this->cid); 
        $cache->increaseCacheVersion('category_0'); 
-       $cache->delete(md5('index_page')); 
+       $cache->increaseCacheVersion('site_version');
              
        $pathObjects = array();       
        erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$this->cid);
