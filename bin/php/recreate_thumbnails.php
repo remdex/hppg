@@ -18,9 +18,7 @@ ezcBaseInit::setCallback(
  'ezcInitDatabaseInstance',
  'erLhcoreClassLazyDatabaseConfiguration'
 );
-  
-
-  
+    
 $input = new ezcConsoleInput();
 
 $helpOption = $input->registerOption(
@@ -136,15 +134,11 @@ if (count($filterExpresion) > 0){
        $filterExpresion
     );
 }
-
-
-
     
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );       
 
 $output = new ezcConsoleOutput();
 $status = new ezcConsoleProgressMonitor( $output, erLhcoreClassModelGalleryImage::getImageCount( $filter ) );
-
 
 foreach ($objects as $object)
 {

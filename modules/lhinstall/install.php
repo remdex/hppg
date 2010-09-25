@@ -548,6 +548,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('footer_article_id', 'a:3:{s:3:\"eng\";s:1:\"3\";s:3:\"lit\";s:2:\"28\";s:10:\"site_admin\";s:2:\"29\";}', 1, 'Footer article ID', 0),
 						('max_photo_size', '5120', 0, 'Maximum photo size in kilobytes', 0),
 						('max_archive_size', '20480', 0, 'Maximum archive size in kilobytes', 0),
+						('file_queue_limit', '20', 0, 'How many files user can upload in single session', 0),
+						('file_upload_limit', '200', 0, 'How many files upload during one session', 0),
 						('thumbnail_width_x', '120', 0, 'Small thumbnail width - x', 0),
 						('thumbnail_width_y', '130', 0, 'Small thumbnail width - Y', 0),
 						('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x', 0),

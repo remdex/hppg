@@ -29,11 +29,11 @@ SWFUpload.onload = function () {
 		flash_url : "<?=erLhcoreClassDesign::design('js/swfupload/Flash/swfupload.swf')?>",
 		upload_url: "<?=erLhcoreClassDesign::baseurl('/gallery/upload')?>",
 		post_params: {},
-		file_size_limit : "5 MB",
+		file_size_limit : "<?=(int)(erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value/1024)?> MB",
 		file_types : "*.jpg;*.gif;*.png;*.png;*.bmp;",
 		file_types_description : "<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Choose one of')?>",
-		file_upload_limit : 200,
-		file_queue_limit : 20,
+		file_upload_limit : <?=(int)(erLhcoreClassModelSystemConfig::fetch('file_upload_limit')->current_value)?>,
+		file_queue_limit : <?=(int)(erLhcoreClassModelSystemConfig::fetch('file_queue_limit')->current_value)?>,
 		custom_settings : {
 			progressTarget : "fsUploadProgress"
 		},
