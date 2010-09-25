@@ -906,7 +906,7 @@ if ($mode == 'album')
     $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
     $countSQL = ' AND '.implode(' AND ',$countSQLArray);
     
-    $q->where( '('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')'.$filterSQLString )
+    $q->where( $filterSQLString.'('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
     ->orderBy('comtime ASC, pid ASC')
     ->limit( 5 );
     $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
@@ -919,7 +919,7 @@ if ($mode == 'album')
     }
     $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
     
-    $q->where( '('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')'.$filterSQLString )
+    $q->where( $filterSQLString.'('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
     ->orderBy('comtime DESC, pid DESC')
     ->limit( 5 );
     $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
@@ -966,8 +966,8 @@ if ($mode == 'album')
     $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
     $countSQL = ' AND '.implode(' AND ',$countSQLArray);    
     
-    $q->where( '('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
-    $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).') '.$filterSQLString)
+    $q->where( $filterSQLString.'('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
+    $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).') ')
     ->orderBy('pic_rating ASC, votes ASC, pid ASC')
     ->limit( 5 );
     $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
@@ -980,8 +980,8 @@ if ($mode == 'album')
     }
     $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
         
-    $q->where( '('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
-    $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).') '.$filterSQLString)
+    $q->where( $filterSQLString.'('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
+    $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).') ')
     ->orderBy('pic_rating DESC, votes DESC, pid DESC')
     ->limit( 5 );
     $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
