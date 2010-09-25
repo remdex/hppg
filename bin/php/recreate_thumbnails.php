@@ -45,6 +45,15 @@ $pidOption = $input->registerOption(
         'pid',
         ezcConsoleInput::TYPE_INT 
     )
+);
+
+
+$photoidOption = $input->registerOption(
+    new ezcConsoleOption(
+        'id',
+        'photoid',
+        ezcConsoleInput::TYPE_INT 
+    )
 ); 
 
 $albumOption = $input->registerOption(
@@ -112,9 +121,14 @@ if ($pidOption->value !== false){
     $filterExpresion[] =  $q->expr->gt( 'pid', $q->bindValue($pidOption->value) );    
 }
 
-if ($albumOption->value !== false){
+if ($albumOption->value !== false){ 
     $filter['filter'] = array('aid' => $albumOption->value);
     $filterExpresion[] =  $q->expr->eq( 'aid', $q->bindValue($albumOption->value) );    
+}
+
+if ($photoidOption->value !== false) {
+    $filter['filter'] = array('pid' => $photoidOption->value);
+    $filterExpresion[] =  $q->expr->eq( 'pid', $q->bindValue($photoidOption->value) );    
 }
 
 if (count($filterExpresion) > 0){
@@ -122,6 +136,8 @@ if (count($filterExpresion) > 0){
        $filterExpresion
     );
 }
+
+
 
     
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );       
