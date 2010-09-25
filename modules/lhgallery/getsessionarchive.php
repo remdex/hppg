@@ -9,7 +9,7 @@ $currentUser = erLhcoreClassUser::instance();
 if ($currentUser->isLogged())
     $fileSession->user_id = $currentUser->getUserID();	
 else 
-    $fileSession->user_id = 0;	
+    $fileSession->user_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' );	
                 
 erLhcoreClassGallery::getSession()->save($fileSession);
                   
