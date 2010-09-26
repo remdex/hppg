@@ -55,6 +55,10 @@ class erLhcoreClassModelGalleryPopular24 {
 	   $stmt = $db->prepare('DELETE FROM lh_gallery_popular24 WHERE added < :dayago');
 	   $stmt->bindValue( ':dayago',$dayAgo); 
 	   $stmt->execute();
+	   
+	   // Expunge cache if some image was deleted
+	   $cache = CSCacheAPC::getMem(); 
+	   $cache->increaseCacheVersion('popularrecent_version');
    }
    
    public static function getImageCount($params = array())
