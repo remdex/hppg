@@ -781,7 +781,9 @@ if ($mode == 'album')
     $photos = $stmt->fetchColumn(); 
 	           
     $page = ceil(($photos+1)/20);
-            
+
+    $imagesLeft = $imagesRight = array();
+  
     foreach ($imagesLeftArray as $imageLeftItem)
     {
     	$imagesLeft[] = $imageLeftItem->image;

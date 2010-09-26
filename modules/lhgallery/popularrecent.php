@@ -17,7 +17,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $pages->paginate();
     
     $tpl->set('pages',$pages);
-    $tpl->set('filterArray',$filterArray);
     
     $appendImageMode = '/(mode)/popularrecent';
        
