@@ -752,6 +752,55 @@ if ($mode == 'album')
     $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/myfavorites').$urlAppend.$pageAppend);   
     $tpl->setArray($imagesParams);	
 	
+} elseif ($mode == 'popularrecent') {
+    
+	$db = ezcDbInstance::get(); 
+    $session = erLhcoreClassGallery::getSession(); 
+            
+    $hitsRecent = erLhcoreClassModelGalleryPopular24::fetch($Image->pid);
+        
+    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );
+    
+    $q->where( '('.$q->expr->gt( 'hits', $q->bindValue( $hitsRecent->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $hitsRecent->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    ->orderBy('hits ASC, pid ASC')
+    ->limit( 5 );
+    $imagesLeftArray = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' );
+          
+    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );
+    
+    $q->where( '('.$q->expr->lt( 'hits', $q->bindValue( $hitsRecent->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $hitsRecent->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    ->orderBy('hits DESC, pid DESC')
+    ->limit( 5 );
+    $imagesRightArray = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' );
+            
+    $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_popular24 WHERE (hits > :hits OR hits = :hits AND pid > :pid) LIMIT 1');
+    $stmt->bindValue( ':hits',$hitsRecent->hits);
+    $stmt->bindValue( ':pid',$Image->pid); 
+                  
+    $stmt->execute();
+    $photos = $stmt->fetchColumn(); 
+	           
+    $page = ceil(($photos+1)/20);
+            
+    foreach ($imagesLeftArray as $imageLeftItem)
+    {
+    	$imagesLeft[] = $imageLeftItem->image;
+    }
+    
+    foreach ($imagesRightArray as $imageRightItem)
+    {
+    	$imagesRight[] = $imageRightItem->image;
+    }
+    
+    $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+    $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
+    $urlAppend = '/(mode)/popularrecent';             
+    $urlAppend .= $appendResolutionMode;
+        
+    $tpl->set('urlAppend',$urlAppend);       
+    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/popularrecent').$urlAppend.$pageAppend);   
+    $tpl->setArray($imagesParams);    
+	
 } elseif ($mode == 'lastuploads') {
                
     $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'limit' => 5,'filter' => $filterArray,'sort' => 'pid ASC','filtergt' => array('pid' => $Image->pid)));    	

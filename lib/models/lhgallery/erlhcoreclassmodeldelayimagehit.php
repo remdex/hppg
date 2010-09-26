@@ -35,9 +35,22 @@ class erLhcoreClassModelGalleryDelayImageHit {
 		    total INT(3) UNSIGNED NOT NULL,
 		    mtime INT(11) UNSIGNED NOT NULL
 		) ENGINE=MEMORY;
-		
-		LOCK TABLE lh_delay_image_hit WRITE;
-		INSERT INTO
+			
+		INSERT INTO 
+		      lh_gallery_popular24 (
+		        SELECT
+		            lh_delay_image_hit.pid,
+		            COUNT(lh_delay_image_hit.pid),
+		            UNIX_TIMESTAMP()
+		        FROM
+		            lh_delay_image_hit
+		        GROUP BY
+		            lh_delay_image_hit.pid
+		      )
+       ON DUPLICATE KEY UPDATE hits = hits + VALUES(hits);
+       
+	   LOCK TABLE lh_delay_image_hit WRITE;
+	   INSERT INTO
 		    tmp_counter (
 		        SELECT
 		            lh_delay_image_hit.pid,
@@ -47,8 +60,8 @@ class erLhcoreClassModelGalleryDelayImageHit {
 		            lh_delay_image_hit
 		        GROUP BY
 		            lh_delay_image_hit.pid
-		    )
-		;
+		    );	
+       
 		DELETE FROM lh_delay_image_hit;
 				
 		UNLOCK TABLE;

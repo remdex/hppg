@@ -500,6 +500,15 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `mtime` int(11) NOT NULL,
 				  KEY `pid` (`pid`)
 				) ENGINE=MyISAM;");
+                               
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_popular24` (
+                  `pid` int(11) NOT NULL,
+                  `hits` int(11) NOT NULL,
+                  `added` int(11) NOT NULL,
+                  PRIMARY KEY (`pid`),
+                  KEY `hits` (`hits`,`pid`),
+                  KEY `added` (`added`)
+                ) ENGINE=MyISAM;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_duplicate_collection` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,

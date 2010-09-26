@@ -1,14 +1,14 @@
 <div class="float-break">
 <? 
 $counter = 1;
-foreach ($items as $key => $itemFavorite) : 
+foreach ($items as $key => $itemRecent) : 
 try {
-	$item = $itemFavorite->image;
-} catch (Exception $e) {
+	$item = $itemRecent->image;
+} catch (Exception $e){
 	continue;
 }
 ?>
-    <div id="image_thumb_<?=$item->pid?>" class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
+    <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
         <div class="thumb-pic">
             <a href="<?=$item->url_path?><?=isset($appendImageMode) ? $appendImageMode : ''?>"><img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size')?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename),true,$item->pid)?>" alt="<?=htmlspecialchars($item->name_user);?>"></a>           
         </div>
@@ -21,12 +21,16 @@ try {
             </h3>
         </div>
         
-        <div class="right">
-        <a class="cursor" onclick="return hw.deleteFavorite(<?=$item->pid?>)" ><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myfavorites','Remove from favorites');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myfavorites','Remove from favorites');?>"></a>
+        <span class="res-ico">
+        <?=$item->pwidth?>x<?=$item->pheight?>
+        </span>    
+        
+        <span class="hits-ico">
+        <?=$item->hits?>
+        </span>               
+        
         </div>
-           
-        </div>
-    </div>
+    </div> 
         
 <?$counter++;endforeach; ?>  
 <?php if (isset($pages)) : ?> 

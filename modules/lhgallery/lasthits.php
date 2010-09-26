@@ -18,8 +18,9 @@ $filterArray['approved'] = 1;
 // All cache will expire at once, subpages expires every 10 minits.
 // Total image expiration  
 $cacheVersion = $cache->getCacheVersion('last_hits_version',time(),600);
+$cacheKey = md5($cacheVersion.'_lasthits_view_url'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
 
-if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
+if (($Result = $cache->restore($cacheKey)) === false)
 { 
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lasthits.tpl.php');
     $pages = new lhPaginator();
@@ -42,5 +43,5 @@ if (($Result = $cache->restore(md5($cacheVersion.'_lasthits_view_url'.$resolutio
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Last viewed images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lasthitsrss/');
 
-    $cache->store(md5($cacheVersion.'_lasthits_view_url'.'_page_'.$Params['user_parameters_unordered']['page']),$Result);
+    $cache->store($cacheKey,$Result);
 }

@@ -658,6 +658,60 @@ if ($mode == 'album')
 	$tpl->set('urlAppend',$urlAppend);
 	
 	
+} elseif ($mode == 'popularrecent') {
+           	
+	$session = erLhcoreClassGallery::getSession();
+	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );   
+	
+	$hitsRecent = erLhcoreClassModelGalleryPopular24::fetch($Image->pid); 
+        
+	if ($direction == 'left'){
+	    $q->where( '('.$q->expr->gt( 'hits', $q->bindValue( $hitsRecent->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $hitsRecent->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+        ->orderBy('hits ASC, pid ASC')
+        ->limit( 6 );
+        $imagesAjaxRecent = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' );
+        $imagesAjaxRecent = array_reverse($imagesAjaxRecent);
+	} else {
+	    $q->where( '('.$q->expr->lt( 'hits', $q->bindValue( $hitsRecent->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $hitsRecent->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+        ->orderBy('hits DESC, pid DESC')
+        ->limit( 6 );
+        $imagesAjaxRecent = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' );
+	};	
+		
+	foreach ($imagesAjaxRecent as $imageRecent)
+    {
+    	$imagesAjax[] = $imageRecent->image;
+    }
+    	
+	$hasMoreImages = 'false';
+        
+    if (count($imagesAjax) > 5) {
+        $hasMoreImages = 'true';
+        if ($direction == 'left') { 
+            $imagesAjax = array_slice($imagesAjax,1,5);
+        } else {
+            $imagesAjax = array_slice($imagesAjax,0,5);
+        }    
+    }
+
+    $imagesFound = count($imagesAjax);
+    
+    reset($imagesAjax);
+    $ImageLast = current($imagesAjax);    
+    $LeftImagePID = $ImageLast->pid;
+    
+    end($imagesAjax);
+    $ImageLast = current($imagesAjax);
+    $RightImagePID = $ImageLast->pid;
+           
+    $tpl->set('imagesAjax',$imagesAjax); 
+    
+	$urlAppend = '/(mode)/popularrecent';
+    $urlAppend .= $appendResolutionMode;  
+      
+	$tpl->set('urlAppend',$urlAppend);
+	
+	
 } elseif ($mode == 'lastcommented') {
            	
 	$session = erLhcoreClassGallery::getSession();

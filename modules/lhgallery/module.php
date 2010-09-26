@@ -69,6 +69,11 @@ $ViewList['popular'] = array(
     'script' => 'popular.php',
     'params' => array(),
     'uparams' => array('resolution')
+    ); 
+          
+$ViewList['popularrecent'] = array( 
+    'script' => 'popularrecent.php',
+    'params' => array(),
     );          
         
 $ViewList['lastuploads'] = array( 
