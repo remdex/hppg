@@ -51,7 +51,7 @@ class erLhcoreClassModelGalleryPopular24 {
    public static function deleteExpired() 
    {
        $db = ezcDbInstance::get();       
-       $dayAgo = time()-3600*24;          		
+       $dayAgo = time()-3600*(int)(erLhcoreClassModelSystemConfig::fetch('popularrecent_timeout')->current_value);          		
 	   $stmt = $db->prepare('DELETE FROM lh_gallery_popular24 WHERE added < :dayago');
 	   $stmt->bindValue( ':dayago',$dayAgo); 
 	   $stmt->execute();
