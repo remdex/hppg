@@ -66,6 +66,7 @@ class CSCacheAPC {
         $this->increaseCacheVersion('last_commented');        
         $this->increaseCacheVersion('sphinx_cache_version');        
         $this->increaseCacheVersion('site_version');  
+        $this->increaseCacheVersion('popularrecent_version');  
     }
     
     function __construct() {  
