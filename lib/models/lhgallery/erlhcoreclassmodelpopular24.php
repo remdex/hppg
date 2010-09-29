@@ -33,8 +33,7 @@ class erLhcoreClassModelGalleryPopular24 {
    public function __get($variable)
    {
    		switch ($variable) {
-   			case 'image':
-   				
+   			case 'image':   				
    				try {
    					$this->image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
    				} catch (Exception $e) {
@@ -183,6 +182,16 @@ class erLhcoreClassModelGalleryPopular24 {
           }          
       }  else { $objects = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' ); }
          
+      $pids = array();
+      foreach ($objects as $item){
+          $pids[] = $item->pid;
+      }
+      
+      $images = erLhcoreClassModelGalleryImage::getImages(array('filterin' => array('pid' => $pids)));
+      foreach ($objects as $item){
+          $item->image = $images[$item->pid];
+      }
+            
       return $objects; 
    }
    
