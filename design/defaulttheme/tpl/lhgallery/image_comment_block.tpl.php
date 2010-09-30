@@ -11,7 +11,7 @@
     <li>
     <span class="author"><?=htmlspecialchars($comment->msg_author);?></span>
     <div class="right ct"><?=$comment->msg_date;?></div>
-    <p class="msg-body"><?=htmlspecialchars($comment->msg_body)?>    
+    <p class="msg-body"><?=nl2br(htmlspecialchars($comment->msg_body))?>    
     <?php endforeach;?>
     </ul>
     <?else:?>

@@ -191,7 +191,7 @@ class erLhcoreClassModelGalleryPopular24 {
       foreach ($objects as $item){
           $item->image = $images[$item->pid];
       }
-            
+      
       return $objects; 
    }
    
