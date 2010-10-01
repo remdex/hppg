@@ -253,7 +253,7 @@ class erLhcoreClassTemplate {
         ob_start();                             // Start output buffering
         $result = include($file);               // Include the file        
         if ($result === false) {                 // Make sure file was included succesfuly
-            throw new Exception("File inclusion vailed"); // Throw exception if failed, so tpl compiler will regenerate template
+            throw new Exception("File inclusion failed"); // Throw exception if failed, so tpl compiler will recompile template
         }        
         $contents = ob_get_contents(); // Get the contents of the buffer
         ob_end_clean();                // End buffering and discard
