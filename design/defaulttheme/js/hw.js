@@ -107,8 +107,18 @@ var hw = {
 	   var ajaxImagesURL = this.ajaximages;
 	   var urlmain = this.formAddPath;
 	   
-        $.getJSON(url + "/(direction)/"+direction, {} , function(data){	
-                                    
+	   $('#ajax-navigator-content').addClass("ajax-loading-items");	
+	   $('#images-ajax-container').hide();
+	   $('.right-ajax').hide();
+	   $('.left-ajax').hide();
+	   
+       $.getJSON(url + "/(direction)/"+direction, {} , function(data) {	
+            
+            $('#ajax-navigator-content').removeClass('ajax-loading-items'); 
+            $('#images-ajax-container').show();
+    	    $('.right-ajax').show();
+    	    $('.left-ajax').show();
+	   
             if (data.error != 'true'){	
                  
                  if (data.has_more_images == 'true') {                     
@@ -165,7 +175,7 @@ var hw = {
                            
                      } 
                  }	            
-            }	
+            }
 		});			
 		return false;	
 	},
