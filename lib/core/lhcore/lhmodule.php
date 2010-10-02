@@ -15,30 +15,24 @@ class erLhcoreClassModule{
             $Params['module']['view'] = self::$currentView;
             
             $urlCfgDefault = ezcUrlConfiguration::getInstance();
-            $url = erLhcoreClassURL::getInstance();            
-            $urlCfgDefault->addUnorderedParameter( 'page' );                                       
-            $url->applyConfiguration( $urlCfgDefault );
-            $Params['user_parameters_unordered']['page'] = $url->getParam('page');      
-             
-            if (isset(self::$currentModule[self::$currentView]['params']))
-            {          
-                foreach (self::$currentModule[self::$currentView]['params'] as $userParameter)
-                {           
-                   $urlCfgDefault->addOrderedParameter( $userParameter );                                       
-                   $url->applyConfiguration( $urlCfgDefault );
-                   $Params['user_parameters'][$userParameter] =  $url->getParam($userParameter); 
-                }               
+            $url = erLhcoreClassURL::getInstance();             
+            self::$currentModule[self::$currentView]['uparams'][] = 'page';
+               
+            foreach (self::$currentModule[self::$currentView]['params'] as $userParameter)
+            {           
+               $urlCfgDefault->addOrderedParameter( $userParameter );                                       
+            }               
+                                                             
+            foreach (self::$currentModule[self::$currentView]['uparams'] as $userParameter)
+            {           
+               $urlCfgDefault->addUnorderedParameter( $userParameter ); 
             }
             
-            if (isset(self::$currentModule[self::$currentView]['uparams']))
-            {                         
-                foreach (self::$currentModule[self::$currentView]['uparams'] as $userParameter)
-                {           
-                   $urlCfgDefault->addUnorderedParameter( $userParameter );                                       
-                   $url->applyConfiguration( $urlCfgDefault );
-
-                   $Params['user_parameters_unordered'][$userParameter] =  $url->getParam($userParameter); 
-                }               
+            $url->applyConfiguration( $urlCfgDefault );
+                                 
+            foreach (array_merge(self::$currentModule[self::$currentView]['uparams'],self::$currentModule[self::$currentView]['params']) as $userParameter)
+            {    
+                $Params[in_array($userParameter,self::$currentModule[self::$currentView]['params']) ? 'user_parameters' : 'user_parameters_unordered'][$userParameter] = $url->getParam($userParameter); 
             }
             
             // Function set, check permission

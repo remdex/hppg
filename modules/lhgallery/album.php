@@ -12,7 +12,7 @@ $sortModes = array(
     'topratedasc' => 'pic_rating ASC, votes ASC, pid ASC');
     
 $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
-    
+       
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
 $filterArray = array();    
