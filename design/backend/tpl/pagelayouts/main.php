@@ -15,8 +15,7 @@
 
     <div class="top-menu float-break">
     	<ul>
-    	   <li><a href="<?=erLhcoreClassDesign::baseurl('system/configuration')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Configuration');?></a></li>
-    	   <li><a href="<?=erLhcoreClassDesign::baseurl('system/expirecache')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Clean cache');?></a></li>
+    	   <li><a href="<?=erLhcoreClassDesign::baseurl('system/configuration')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Configuration');?></a></li>    	   
     	   <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Gallery categorys');?></a></li>
     	   <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/batchadd')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Batch images add');?></a></li>
     	   <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/duplicates')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Duplicates');?></a></li>
@@ -44,11 +43,13 @@
 		
 		<div id="rightmenucont">		
 			<div id="rightpadding">									
-    			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/user_box.tpl.php'));?>						
-    			<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Delete photo by ID')?></legend> 
-    			    <input type="text" class="default-input" id="PhotoQuickDelete" value="">
-    			    <input type="button" class="default-button" onclick="return hw.deletePhotoQuick($('#PhotoQuickDelete').val(),'<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Photo was deleted')?>')" value="OK" />
-    			</fieldset>									
+    			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/user_box.tpl.php'));?>	
+    			    				
+    			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/file_delete_box.tpl.php'));?>	
+    				
+    			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/clear_cache_box.tpl.php'));?>		
+    			
+    									
 		    </div>	
 		</div>
 		

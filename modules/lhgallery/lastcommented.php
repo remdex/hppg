@@ -20,9 +20,8 @@ if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_cachin
 {
     $ExpireTime = 3600;
     $currentKeyEtag = md5($cacheKey.'user_id_'.erLhcoreClassUser::instance()->getUserID());
-    header('Cache-Control: max-age=' . $ExpireTime); // must-revalidate
-    header('Expires: '.gmdate('D, d M Y H:i:s', time()+$ExpireTime).' GMT');
-    header('ETag: ' . $currentKeyEtag); 
+    header('Cache-Control: must-revalidate'); // must-revalidate
+	header('ETag: ' . $currentKeyEtag);
     
     $iftag = isset($_SERVER['HTTP_IF_NONE_MATCH']) ? $_SERVER['HTTP_IF_NONE_MATCH'] == $currentKeyEtag : null;         
     if ($iftag === true)
