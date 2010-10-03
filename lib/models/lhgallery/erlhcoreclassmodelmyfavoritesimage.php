@@ -85,8 +85,13 @@ class erLhcoreClassModelGalleryMyfavoritesImage {
    	
    	switch ($variable) {
    		case 'image':
-	   			$this->image = null;
-	   			$this->image = erLhcoreClassModelGalleryImage::fetch($this->pid);	   			   			
+	   			$this->image = false;
+	   			try {
+	   			     $this->image = erLhcoreClassModelGalleryImage::fetch($this->pid);
+	   			} catch (Exception $e){
+	   			     $this->removeThis();
+	   			     return false;
+	   			}	   			   			
 	   			return $this->image;
    			break;
    	

@@ -836,7 +836,11 @@ if ($mode == 'album')
 
 	foreach ($imagesAjaxFav as $imageFav)
     {
-    	$imagesAjax[] = $imageFav->image;
+        $imageItem = $imageFav->image;
+                                
+        if ($imageItem !== false) {
+    	   $imagesAjax[] = $imageItem;
+        }
     }
     
 	$hasMoreImages = 'false';

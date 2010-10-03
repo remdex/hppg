@@ -2,12 +2,10 @@
 <? 
 $counter = 1;
 foreach ($items as $key => $itemFavorite) : 
-try {
-	$item = $itemFavorite->image;
-} catch (Exception $e) {
-    $itemFavorite->removeThis();
-	continue;
-}
+
+$item = $itemFavorite->image;	
+if ($item === false) continue;
+
 ?>
     <div id="image_thumb_<?=$item->pid?>" class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
         <div class="thumb-pic">

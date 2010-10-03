@@ -736,14 +736,23 @@ if ($mode == 'album')
     
     foreach ($imagesLeftArray as $imageLeftItem)
     {
-    	$imagesLeft[] = $imageLeftItem->image;
+        $imageItem = $imageLeftItem->image;
+                        
+        if ($imageItem !== false) {
+    	   $imagesLeft[] = $imageItem;
+        }
     }
     
     foreach ($imagesRightArray as $imageRightItem)
     {
-    	$imagesRight[] = $imageRightItem->image;
+        $imageItem = $imageRightItem->image;
+        
+        if ($imageItem !== false) {
+    	   $imagesRight[] = $imageRightItem->image;
+        }
     }
       
+    
 	$imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = '/(mode)/myfavorites';             
