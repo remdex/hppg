@@ -19,6 +19,14 @@ class erLhcoreClassModelGalleryMyfavoritesImage {
        }
    }
    
+   public static function deleteByPid($pid)
+   {
+       $imagesInSessions = erLhcoreClassModelGalleryMyfavoritesImage::getImages(array('limit' => 5000,'filter' => array('pid' => $pid)));
+       foreach ($imagesInSessions as $imageFavourite) {
+           $imageFavourite->removeThis();
+       }
+   }
+   
    public static function getImageCount($params = array())
    {
        $session = erLhcoreClassGallery::getSession();

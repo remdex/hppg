@@ -5,6 +5,7 @@ foreach ($items as $key => $itemFavorite) :
 try {
 	$item = $itemFavorite->image;
 } catch (Exception $e) {
+    $itemFavorite->removeThis();
 	continue;
 }
 ?>
