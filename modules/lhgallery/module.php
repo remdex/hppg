@@ -31,6 +31,11 @@ $ViewList['category'] = array(
     'script' => 'category.php',
     'params' => array('category_id')
     );
+            
+$ViewList['ownercategorys'] = array( 
+    'script' => 'ownercategorys.php',
+    'params' => array('owner_id')
+    );
     
 $ViewList['albumnamesuggest'] = array( 
     'script' => 'albumnamesuggest.php',
