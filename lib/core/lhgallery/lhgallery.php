@@ -86,8 +86,10 @@ class erLhcoreClassGallery{
       }
       
       $cl->SetSortMode(SPH_SORT_EXTENDED, isset($params['sort']) ? $params['sort'] : '@id DESC');
-                     
-      $result = $cl->Query( isset($params['keyword']) ? trim($params['keyword']) : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
+
+      $startAppend = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
+          
+      $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
       
       if ($result['total_found'] == 0 || !isset($result['matches']))
       return array('total_found' => 0,'list' => null);
