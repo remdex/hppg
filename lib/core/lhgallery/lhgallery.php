@@ -122,8 +122,7 @@ class erLhcoreClassGallery{
       $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => array_keys($idMatch))));
       
       foreach ($listObjects as $object)
-      {
-          $object->weight = $result['matches'][$object->pid]['weight'];
+      {     
           $idMatch[$object->pid] = $object;
       }     
        
