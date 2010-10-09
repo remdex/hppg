@@ -1,7 +1,7 @@
 <?php
 
 $sortArrayAppend = array(
-    'newdesc'           => '',
+    'new'               => '/(sort)/new',
     'newasc'            => '/(sort)/newasc',
     'popular'           => '/(sort)/popular',
     'popularasc'        => '/(sort)/popularasc',
@@ -11,6 +11,8 @@ $sortArrayAppend = array(
     'topratedasc'       => '/(sort)/topratedasc',
     'lastcommented'     => '/(sort)/lastcommented',
     'lastcommentedasc'  => '/(sort)/lastcommentedasc',
+    'relevance'         => '',
+    'relevanceasc'      => '/(sort)/relevanceasc',
 );
 
 $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
@@ -27,7 +29,9 @@ if (isset($currentResolution) && key_exists($currentResolution,$resolutions)) {
 <ul>
     <li class="current-sort" ><a class="choose-sort"><span></span></a>
         <ul class="sort-box">
-            <li><a class="da<?=$mode == 'newdesc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort,$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded')?></a>
+            <li><a class="da<?=$mode == 'relevance' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort,$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Relevance')?></a>
+            <li class="sep"><a class="ar<?=$mode == 'relevanceasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/relevanceasc<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Relevance')?></a>
+            <li><a class="da<?=$mode == 'new' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort,$resolutionAppend?>/(sort)/new"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded')?></a>
             <li class="sep"><a class="ar<?=$mode == 'newasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/newasc<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded')?></a>
             <li><a class="da<?=$mode == 'popular' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/popular<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most popular')?></a>
             <li class="sep"><a class="ar<?=$mode == 'popularasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/popularasc<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most popular')?></a>
@@ -46,7 +50,7 @@ if (isset($currentResolution) && key_exists($currentResolution,$resolutions)) {
     <li class="current-sort" ><a class="choose-sort"><span></span></a>
         <ul class="sort-box">
             <?php $currentResolution?>
-            <li><a <?=$currentResolution == '' ? 'class="selor" ' : ''?> href="<?=$urlSortBase?><?echo $urlAppendSort?><?php echo $sortArrayAppend[$mode]?>">Any resolution</a>
+            <li><a <?=$currentResolution == '' ? 'class="selor" ' : ''?> href="<?=$urlSortBase?><?echo $urlAppendSort?><?php echo $sortArrayAppend[$mode]?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Any resolution')?></a>
             <?php foreach ($resolutions as $key => $resolution) : ?>
                 <li><a <?=$currentResolution == $key ? 'class="selor" ' : ''?>href="<?=$urlSortBase?><?echo $urlAppendSort?><?php echo $sortArrayAppend[$mode]?>/(resolution)/<?=$resolution['width']?>x<?=$resolution['height']?>"><span><?=$resolution['width']?>x<?=$resolution['height']?></span></a>
             <?php endforeach;?>            

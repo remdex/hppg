@@ -51,7 +51,7 @@ class erLhcoreClassGallery{
       
       $cl = new SphinxClient();
       $cl->SetServer( erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'host' ), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'port' ) );
-      $cl->SetMatchMode( SPH_MATCH_ALL  );
+      $cl->SetMatchMode( SPH_MATCH_ANY  );
       $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' ));
                     
       $filter = isset($params['Filter']) ? $params['Filter'] : array();  
@@ -69,7 +69,7 @@ class erLhcoreClassGallery{
       }
       
       if (isset($params['filtergt'])) {
-           foreach ($params['filtergt'] as $attribute => $fieldValue) {          
+           foreach ($params['filtergt'] as $attribute => $fieldValue) { 
                $cl->SetFilterRange( $attribute, (int)0, (int)$fieldValue, true );
            }
       }  
@@ -88,26 +88,42 @@ class erLhcoreClassGallery{
       $cl->SetSortMode(SPH_SORT_EXTENDED, isset($params['sort']) ? $params['sort'] : '@id DESC');
 
       $startAppend = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
+      
+      // Make some weightning
+      $cl->SetFieldWeights(array(
+        'title' => 10,
+        'caption' => 9,
+        'filename' => 8,
+        'file_path' => 7,
+      ));
           
       $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
-      
+           
+                
       if ($result['total_found'] == 0 || !isset($result['matches']))
       return array('total_found' => 0,'list' => null);
       
       $idMatch = array();
         
+      if (isset($params['relevance'])) {          
+          $itemCurrent = array_shift($result['matches']);
+          $cache->store($cacheKey,$itemCurrent['weight'],12000);
+          return $itemCurrent['weight'];
+      }
+      
       foreach ($result['matches'] as $key => $match)
       {
          $idMatch[$key] = null;
       }
-      
+            
 	  if (count($idMatch) == 0)
           	return array('total_found' => 0,'list' => null);   
         
       $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => array_keys($idMatch))));
-	        
+      
       foreach ($listObjects as $object)
       {
+          $object->weight = $result['matches'][$object->pid]['weight'];
           $idMatch[$object->pid] = $object;
       }     
        

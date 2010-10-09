@@ -24,22 +24,22 @@ if ($mode == 'album')
 {
     
     $sortModes = array(    
-        'newdesc'       => 'pid DESC',
-        'newasc'        => 'pid ASC',            
-        'popular'       => 'hits DESC, pid DESC',
-        'popularasc'    => 'hits ASC, pid ASC',        
-        'lasthits'      => 'mtime DESC, pid DESC',
-        'lasthitsasc'   => 'mtime ASC, pid ASC',        
-        'lastcommented' => 'comtime DESC, pid DESC',
+        'new'              => 'pid DESC',
+        'newasc'           => 'pid ASC',            
+        'popular'          => 'hits DESC, pid DESC',
+        'popularasc'       => 'hits ASC, pid ASC',        
+        'lasthits'         => 'mtime DESC, pid DESC',
+        'lasthitsasc'      => 'mtime ASC, pid ASC',        
+        'lastcommented'    => 'comtime DESC, pid DESC',
         'lastcommentedasc' => 'comtime ASC, pid ASC',          
         'toprated'         => 'pic_rating DESC, votes DESC, pid DESC',
         'topratedasc'      => 'pic_rating ASC, votes ASC, pid ASC',  
     );
     
-    $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'newdesc';
+    $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'new';
     $modeSQL = $sortModes[$modeSort];
     
-    if ($modeSort == 'newdesc') {
+    if ($modeSort == 'new') {
         
         if ($direction == 'left') {
             $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+$filterArray,'filtergt' => array('pid' => $Image->pid)));
@@ -300,14 +300,14 @@ if ($mode == 'album')
     
     $tpl->set('imagesAjax',$imagesAjax);
      
-    $urlAppend = $modeSort != 'newdesc' ? '/(sort)/'.$modeSort : '';
+    $urlAppend = $modeSort != 'new' ? '/(sort)/'.$modeSort : '';
     $urlAppend .= $appendResolutionMode;
      
     $tpl->set('urlAppend',$urlAppend); 
      
 } elseif ($mode == 'search') {
     $sortModes = array(    
-        'newdesc' => '@id DESC',
+        'new' => '@id DESC',
         'newasc' => '@id ASC',    
         'popular' => 'hits DESC, @id DESC',
         'popularasc' => 'hits ASC, @id ASC',          
@@ -317,16 +317,108 @@ if ($mode == 'album')
         'lastcommentedasc' => 'comtime ASC, @id ASC',          
         'toprated'         => 'pic_rating DESC, votes DESC, @id DESC',
         'topratedasc'      => 'pic_rating ASC, votes ASC, @id ASC', 
+        'relevance'        => '@relevance DESC, @id DESC',
+        'relevanceasc'     => '@relevance ASC, @id ASC'
     );
     
-    $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'newdesc';
+    $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
     $modeSQL = $sortModes[$modeSort];
     $imagesAjax = array();
 
     // Because sphinx view already includes this filter
     unset($filterArray['approved']);
        
-    if ($modeSort == 'newdesc') {
+    if ($modeSort == 'relevance') {
+                    
+        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('relevance' => true, 'SearchLimit' => 1,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)));
+           
+        if ($direction == 'left') {
+                
+            $totalPhotos = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('pid' => $Image->pid),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
+            
+            if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
+                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
+                            
+                if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {
+                    $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
+                } elseif ($totalPhotosHigher['total_found'] > 0) {
+                    $totalPhotos['list'] = $totalPhotosHigher['list'];
+                }
+                
+                $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
+           }            
+    	   
+    	   if ($totalPhotos['total_found'] > 0):
+    	       $imagesAjax = $totalPhotos['list'];
+    	       $imagesAjax = array_reverse($imagesAjax);    
+    	   endif;
+    	   
+    	} else {
+        	
+        	$totalPhotos = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('pid' => $Image->pid-1),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+            
+            if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
+                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+                                     
+                if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
+                    $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
+                } elseif ($totalPhotosHigher['total_found'] > 0) {
+                    $totalPhotos['list'] = $totalPhotosHigher['list'];
+                }                
+                $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
+            }
+    	  
+    	   if ($totalPhotos['total_found'] > 0):
+    	       $imagesAjax = $totalPhotos['list'];	      
+    	   endif; 
+    	}
+    	
+    } elseif ($modeSort == 'relevanceasc') {
+                    
+        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('relevance' => true, 'SearchLimit' => 1,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)));
+           
+        if ($direction == 'left') {
+                
+            $totalPhotos = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('pid' => $Image->pid-1),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+            
+            if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
+                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+                            
+                if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {
+                    $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
+                } elseif ($totalPhotosHigher['total_found'] > 0) {
+                    $totalPhotos['list'] = $totalPhotosHigher['list'];
+                }
+                
+                $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
+           }            
+    	   
+    	   if ($totalPhotos['total_found'] > 0):
+    	       $imagesAjax = $totalPhotos['list'];
+    	       $imagesAjax = array_reverse($imagesAjax);    
+    	   endif;
+    	   
+    	} else {
+        	
+        	$totalPhotos = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('pid' => $Image->pid),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
+            
+            if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
+                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
+                                     
+                if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
+                    $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
+                } elseif ($totalPhotosHigher['total_found'] > 0) {
+                    $totalPhotos['list'] = $totalPhotosHigher['list'];
+                }                
+                $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
+            }
+    	  
+    	   if ($totalPhotos['total_found'] > 0):
+    	       $imagesAjax = $totalPhotos['list'];	      
+    	   endif; 
+    	}
+    	
+    } elseif ($modeSort == 'new') {
                        
         if ($direction == 'left'){
     	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('SearchLimit' => 6,'keyword' =>  urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid)));
@@ -502,7 +594,7 @@ if ($mode == 'album')
 
        
     $tpl->set('imagesAjax',$imagesAjax); 
-    $urlAppend = $modeSort != 'newdesc' ? '/(mode)/search/(keyword)/'.$Params['user_parameters_unordered']['keyword'].'/(sort)/'.$modeSort : '/(mode)/search/(keyword)/'.$Params['user_parameters_unordered']['keyword'];
+    $urlAppend = $modeSort != 'relevance' ? '/(mode)/search/(keyword)/'.$Params['user_parameters_unordered']['keyword'].'/(sort)/'.$modeSort : '/(mode)/search/(keyword)/'.$Params['user_parameters_unordered']['keyword'];
     $urlAppend .= $appendResolutionMode;
      
     $tpl->set('urlAppend',$urlAppend);  

@@ -21,21 +21,23 @@ if ( $form->hasValidData( 'SearchText' ) && trim($form->SearchText) != '')
 
 /* SORTING */
 $sortModes = array(    
-    'newdesc' => '@id DESC',
-    'newasc' => '@id ASC',    
-    'popular' => 'hits DESC, @id DESC',
-    'popularasc' => 'hits ASC, @id ASC',  
-    'lasthits'      => 'mtime DESC, @id DESC',
-    'lasthitsasc'   => 'mtime ASC, @id ASC',        
-    'lastcommented' => 'comtime DESC, @id DESC',
-    'lastcommentedasc' => 'comtime ASC, @id ASC',          
-    'toprated'         => 'pic_rating DESC, votes DESC, @id DESC',
-    'topratedasc'      => 'pic_rating ASC, votes ASC, @id ASC',   
-    );
+    'new'               => '@id DESC',
+    'newasc'            => '@id ASC',    
+    'popular'           => 'hits DESC, @id DESC',
+    'popularasc'        => 'hits ASC, @id ASC',  
+    'lasthits'          => 'mtime DESC, @id DESC',
+    'lasthitsasc'       => 'mtime ASC, @id ASC',        
+    'lastcommented'     => 'comtime DESC, @id DESC',
+    'lastcommentedasc'  => 'comtime ASC, @id ASC',          
+    'toprated'          => 'pic_rating DESC, votes DESC, @id DESC',
+    'topratedasc'       => 'pic_rating ASC, votes ASC, @id ASC',
+    'relevance'         => '@relevance DESC, @id DESC',
+    'relevanceasc'      => '@relevance ASC, @id ASC',
+);
 
 $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
     
-$mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'newdesc';
+$mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
 
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
@@ -45,7 +47,7 @@ if ($resolution != ''){
 }
 
 $modeSQL = $sortModes[$mode];         
-$appendImageModeSorting = $mode != 'newdesc' ? '/(sort)/'.$mode : '';    
+$appendImageModeSorting = $mode != 'relevance' ? '/(sort)/'.$mode : '';    
 $searchParams['sort'] = $modeSQL;
 $userParams .= $appendImageModeSorting;
 $userParams .= $appendResolutionMode;
@@ -69,7 +71,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
         $firstSearch = true;
         $userParams .= '/(total)/'.$totalItems;    
         if ($Params['user_parameters_unordered']['page'] !== null ) $firstSearch = false;
-        elseif ($totalItems > 0) {        
+        elseif ($totalItems > 0) { 
           erLhcoreClassModelGalleryLastSearch::addSearch($searchParams['keyword'],$totalItems);  
         }
         
@@ -89,7 +91,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
     
     $sortModesTitle = array(    
-        'newdesc' => '',
+        'new' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded first'),
         'newasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded last'),    
         'popular' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most popular first'),
         'popularasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most popular last'),    
@@ -98,7 +100,10 @@ if (($Result = $cache->restore($cacheKey)) === false)
         'lastcommented' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented first'),
         'lastcommentedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented last'),    
         'toprated' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated first'),
-        'topratedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated last'));
+        'topratedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated last'),
+        'relevance' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most relevance images first'),
+        'relevanceasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most relevance images last')
+        );
         
         
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/search.tpl.php');
@@ -108,8 +113,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('appendImageMode',$appendImageMode);
     $tpl->set('mode',$mode);
     $tpl->set('currentResolution',$resolution);
-    
-    
+      
     $Result['tittle_prepend'] = $sortModesTitle[$mode];
     $Result['content'] = $tpl->fetch();
     $Result['path'] = array(array('title' =>  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','search result')));

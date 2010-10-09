@@ -1,6 +1,6 @@
 <?php
 $sortModes = array(    
-    'newdesc' => 'pid DESC',
+    'new' => 'pid DESC',
     'newasc' => 'pid ASC',    
     'popular' => 'hits DESC, pid DESC',
     'popularasc' => 'hits ASC, pid ASC',    
@@ -22,7 +22,7 @@ if ($resolution != ''){
 }
 $filterArray['approved'] = 1;
 
-$mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'newdesc';
+$mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'new';
         
 $cache = CSCacheAPC::getMem(); 
 $cacheKey = md5('version_'.$cache->getCacheVersion('album_'.(int)$Params['user_parameters']['album_id']).$mode.$resolution.'album_view_url'.(int)$Params['user_parameters']['album_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
@@ -53,17 +53,17 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }    
     
     $modeSQL = $sortModes[$mode];         
-    $appendImageMode = $mode != 'newdesc' ? '/(sort)/'.$mode : '';
+    $appendImageMode = $mode != 'new' ? '/(sort)/'.$mode : '';
     $appendImageMode .= $appendResolutionMode;
     
     $sortModesTitle = array(    
-    'newdesc' => '',
-    'newasc'        => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last uploaded last'),    
-    'popular'       => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Most popular first'),
-    'popularasc'    => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Most popular last'),    
-    'lasthits'      => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last hits first'),
-    'lasthitsasc'   => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last hits last'),    
-    'lastcommented' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented first'),
+    'new'               => '',
+    'newasc'            => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last uploaded last'),    
+    'popular'           => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Most popular first'),
+    'popularasc'        => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Most popular last'),    
+    'lasthits'          => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last hits first'),
+    'lasthitsasc'       => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last hits last'),    
+    'lastcommented'     => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented first'),
     'lastcommentedasc'  => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented last'),    
     'toprated'          => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Top rated first'),
     'topratedasc'       => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Top rated last Last')
