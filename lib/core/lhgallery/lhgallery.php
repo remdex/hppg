@@ -96,7 +96,7 @@ class erLhcoreClassGallery{
         'filename' => 8,
         'file_path' => 7,
       ));
-          
+     
       $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
            
                 

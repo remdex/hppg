@@ -143,13 +143,13 @@ $ViewList['lastcommentedrss'] = array(
 $ViewList['search'] = array( 
     'script' => 'search.php',
     'params' => array(),
-    'uparams' => array('keyword','total','sort','resolution'),
+    'uparams' => array('keyword','sort','resolution'),
     );
     
 $ViewList['searchrss'] = array( 
     'script' => 'searchrss.php',
     'params' => array(),
-    'uparams' => array('keyword','total'),
+    'uparams' => array('keyword'),
     );
         
 $ViewList['myalbums'] = array( 

@@ -55,7 +55,6 @@ $userParams .= $appendResolutionMode;
 $appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendResolutionMode;
 /* SORTING */
 
-$firstSearch = false;
 $searchParams['SearchLimit'] = 20;
 $searchParams['SearchOffset'] = 0;
 
@@ -64,31 +63,19 @@ $cacheKey =  md5('SphinxSearchPage_VersionCache'.$cache->getCacheVersion('sphinx
       
 if (($Result = $cache->restore($cacheKey)) === false)
 {
-    if (($totalItems = $Params['user_parameters_unordered']['total']) == null)
-    {
-        $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
-        $totalItems = $searchResult['total_found'];
-        $firstSearch = true;
-        $userParams .= '/(total)/'.$totalItems;    
-        if ($Params['user_parameters_unordered']['page'] !== null ) $firstSearch = false;
-        elseif ($totalItems > 0) { 
-          erLhcoreClassModelGalleryLastSearch::addSearch($searchParams['keyword'],$totalItems);  
-        }
-        
-    } else {
-        $userParams .= '/(total)/'.$totalItems; 
+    $pages = new lhPaginator();
+              
+    $searchParams['SearchOffset'] = $pages->low;
+    $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
+    
+    if ($pages->low == 0 && $searchResult['total_found'] > 0) {
+        erLhcoreClassModelGalleryLastSearch::addSearch($searchParams['keyword'],$searchResult['total_found']); 
     }
     
-    $pages = new lhPaginator();
-    $pages->items_total = $totalItems;
+    $pages->items_total = $searchResult['total_found'];
     $pages->translationContext = 'gallery/search';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/search').$userParams;
     $pages->paginate();
-    $searchParams['SearchOffset'] = $pages->low;
-    
-    if ($firstSearch == false){
-    $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
-    }
     
     $sortModesTitle = array(    
         'new' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded first'),
@@ -103,7 +90,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
         'topratedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated last'),
         'relevance' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most relevance images first'),
         'relevanceasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most relevance images last')
-        );
+     );
         
         
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/search.tpl.php');
