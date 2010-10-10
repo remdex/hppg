@@ -565,8 +565,14 @@ if ($mode == 'album')
     $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
     $modeSQL = $sortModes[$modeSort];
             
-    if ($modeSort == 'new') {        
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id ASC','Filter' => $filterArray, 'filtergt' => array('pid' => $Image->pid)));
+    if ($modeSort == 'new') { 
+        
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id ASC','Filter' => $filterArray, 'filtergt' => array('pid' => $Image->pid)),
+            array('SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1))
+        ));
+        
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -574,7 +580,7 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                 
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)));
+        $totalPhotos = $resultSearch[1];
         
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
@@ -582,15 +588,24 @@ if ($mode == 'album')
             $imagesRight = array();  
                   
     } elseif ($modeSort == 'relevance') {  
-             
+           
+        // this query cannot be used in AddQuery, because it's result is used  
         $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('relevance' => true, 'SearchLimit' => 1,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)));
                   
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('pid' => $Image->pid),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti(
+            array (
+                array('filtergt' => array('pid' => $Image->pid),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'),
+                array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'),
+                array('filterlt' => array('pid' => $Image->pid-1),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'),
+                array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC')
+            )
+        );
         
-               
+        $totalPhotos = $resultSearch[0];
+          
         if ($totalPhotos['total_found'] < 5) { // We have check is there any better matches images on left
-            $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
-                        
+            $totalPhotosHigher = $resultSearch[1];
+            
             if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                
                 $totalPhotos['list'] = $totalPhotos['list']+$totalPhotosHigher['list'];
             } elseif ($totalPhotosHigher['total_found'] > 0) {
@@ -600,10 +615,9 @@ if ($mode == 'album')
             $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
         } else { 
             // Needed for return page calcaution
-            $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 1,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
+            $totalPhotosHigher = $resultSearch[1];
             $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
-        }
-    
+        }        
             
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
@@ -612,10 +626,10 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('pid' => $Image->pid-1),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+        $totalPhotos = $resultSearch[2];
                      
         if ($totalPhotos['total_found'] < 5) { // We have check is there any better matches images on left
-            $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+            $totalPhotosHigher = $resultSearch[3];
                                  
             if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
                 $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
@@ -629,32 +643,26 @@ if ($mode == 'album')
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 
-            $imagesRight = array(); 
-        
-        // We cannot use this solution because @weight does not work in SetSelect as it should
-        /*$totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (@weight > '.$relevanceCurrentImage.' OR (@weight = '.$relevanceCurrentImage.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
-        if ($totalPhotos['total_found'] > 0)
-            $imagesLeft = $totalPhotos['list']; 
-        else
-            $imagesLeft = array();
-                              
-        $page = ceil(($totalPhotos['total_found']+1)/20);	
-                
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (@weight < '.$relevanceCurrentImage.' OR (@weight = '.$relevanceCurrentImage.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));        
-        if ($totalPhotos['total_found'] > 0)               
-            $imagesRight = $totalPhotos['list']; 
-        else 
-            $imagesRight = array(); */
-          
+            $imagesRight = array();
                   
     } elseif ($modeSort == 'relevanceasc') {  
              
         $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('relevance' => true, 'SearchLimit' => 1,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)));
                   
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('pid' => $Image->pid-1),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti(
+            array (
+                array('filterlt' => array('pid' => $Image->pid-1),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'),
+                array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'),
+                array('filtergt' => array('pid' => $Image->pid),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'),
+                array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC')
+            )
+        );
+        
+        
+        $totalPhotos = $resultSearch[0];
         
         if ($totalPhotos['total_found'] < 5) { // We have check is there any better matches images on left
-            $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+            $totalPhotosHigher = $resultSearch[1];
                         
             if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {
                 $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
@@ -665,7 +673,7 @@ if ($mode == 'album')
             $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
         } else {
             // Needed for return page calcaution
-            $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 1,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'));
+            $totalPhotosHigher = $resultSearch[1];
             $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
         }
             
@@ -676,10 +684,10 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('pid' => $Image->pid),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
+        $totalPhotos = $resultSearch[2];
                         
         if ($totalPhotos['total_found'] < 5) { // We have check is there any better matches images on left
-            $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'));
+            $totalPhotosHigher = $resultSearch[3];
             
             if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {
                 $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
@@ -697,7 +705,13 @@ if ($mode == 'album')
                           
                   
     } elseif ($modeSort == 'newasc') {
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)));
+        
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)),
+            array('SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid))
+        ));
+        
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -705,15 +719,22 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                 
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid)));
+        $totalPhotos = $resultSearch[1];
         
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 
             $imagesRight = array(); 
+            
+            
     } elseif ($modeSort == 'popular') {
         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'hits ASC, @id ASC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'hits ASC, @id ASC'),
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'hits DESC, @id DESC')
+        ));
+                
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -721,14 +742,21 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                 
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'hits DESC, @id DESC'));        
+        $totalPhotos = $resultSearch[1];        
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 
             $imagesRight = array();   
+            
+            
     } elseif ($modeSort == 'popularasc') {
         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'hits DESC, @id DESC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'hits DESC, @id DESC'),
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'hits ASC, @id ASC')
+        ));
+                
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -736,29 +764,20 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                 
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'hits ASC, @id ASC'));        
-        if ($totalPhotos['total_found'] > 0)               
-            $imagesRight = $totalPhotos['list']; 
-        else 
-            $imagesRight = array();   
-    } elseif ($modeSort == 'lasthits') {
-        
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'mtime ASC, @id ASC'));
-        if ($totalPhotos['total_found'] > 0)
-            $imagesLeft = $totalPhotos['list']; 
-        else
-            $imagesLeft = array();
-                              
-        $page = ceil(($totalPhotos['total_found']+1)/20);	
-                
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'mtime DESC, @id DESC'));        
+        $totalPhotos = $resultSearch[1];        
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 
             $imagesRight = array();  
-    } elseif ($modeSort == 'lasthitsasc') {
+             
+    } elseif ($modeSort == 'lasthits') {
         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'mtime DESC, @id DESC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'mtime ASC, @id ASC'),
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'mtime DESC, @id DESC')
+        ));
+        
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -766,14 +785,20 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                 
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'mtime ASC, @id ASC'));        
+        $totalPhotos = $resultSearch[1];        
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 
-            $imagesRight = array();               
-    } elseif ($modeSort == 'lastcommented') {
+            $imagesRight = array(); 
+             
+    } elseif ($modeSort == 'lasthitsasc') {
         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'comtime ASC, @id ASC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'mtime DESC, @id DESC'),
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'mtime ASC, @id ASC')
+        ));
+        
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -781,14 +806,40 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                 
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'comtime DESC, @id DESC'));        
+        $totalPhotos = $resultSearch[1];      
+        if ($totalPhotos['total_found'] > 0)               
+            $imagesRight = $totalPhotos['list']; 
+        else 
+            $imagesRight = array();        
+                   
+    } elseif ($modeSort == 'lastcommented') {
+        
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'comtime ASC, @id ASC'),
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'comtime DESC, @id DESC')
+        ));
+        
+        $totalPhotos = $resultSearch[0];
+        if ($totalPhotos['total_found'] > 0)
+            $imagesLeft = $totalPhotos['list']; 
+        else
+            $imagesLeft = array();
+                              
+        $page = ceil(($totalPhotos['total_found']+1)/20);	
+                
+        $totalPhotos = $resultSearch[1];        
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 
             $imagesRight = array();  
     } elseif ($modeSort == 'lastcommentedasc') {
         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'comtime DESC, @id DESC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'comtime DESC, @id DESC'),
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'comtime ASC, @id ASC')
+        ));
+        
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -796,14 +847,20 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                 
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'comtime ASC, @id ASC'));        
+        $totalPhotos = $resultSearch[1];        
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 
-            $imagesRight = array();               
+            $imagesRight = array(); 
+                          
     } elseif ($modeSort == 'toprated') {
         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'pic_rating ASC, votes ASC, @id ASC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'pic_rating ASC, votes ASC, @id ASC'),
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'pic_rating DESC, votes DESC, @id DESC')
+        ));
+                
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -811,14 +868,20 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'pic_rating DESC, votes DESC, @id DESC'));
+        $totalPhotos = $resultSearch[1];
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 
-            $imagesRight = array();             
+            $imagesRight = array();   
+                      
     } elseif ($modeSort == 'topratedasc') {
         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'pic_rating DESC, votes DESC, @id DESC'));
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'pic_rating DESC, votes DESC, @id DESC'),
+            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'pic_rating ASC, votes ASC, @id ASC')
+        ));
+        
+        $totalPhotos = $resultSearch[0];
         if ($totalPhotos['total_found'] > 0)
             $imagesLeft = $totalPhotos['list']; 
         else
@@ -826,7 +889,7 @@ if ($mode == 'album')
                               
         $page = ceil(($totalPhotos['total_found']+1)/20);	
                         
-        $totalPhotos = erLhcoreClassGallery::searchSphinx(array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => 'pic_rating ASC, votes ASC, @id ASC'));
+        $totalPhotos = $resultSearch[1];
         if ($totalPhotos['total_found'] > 0)               
             $imagesRight = $totalPhotos['list']; 
         else 

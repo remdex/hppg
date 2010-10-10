@@ -37,8 +37,7 @@ class lhPaginator{
 		$this->return = ($this->current_page != 1) ? "<a class=\"previous\" href=\"$this->serverURL{$prev_page}$this->querystring\">".erTranslationClassLhTranslation::getInstance()->getTranslation($this->translationContext,'Previous')."</a>":'';
 	
 		if($this->num_pages > 10)
-		{		
-
+		{	
 			$this->start_range = $this->current_page - floor($this->mid_range/2);
 			$this->end_range = $this->current_page + floor($this->mid_range/2);
 
