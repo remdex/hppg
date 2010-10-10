@@ -3,6 +3,7 @@
 <?php 
 $urlAppendSort = '/(keyword)/'.urlencode($keyword);
 $urlSortBase  = erLhcoreClassDesign::baseurl('/gallery/search');
+$enableRelevance = true;
 ?> 
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/order_box.tpl.php'));?>
