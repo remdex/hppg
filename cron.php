@@ -33,6 +33,13 @@ new ezcConsoleOption(
 )
 ); 
 
+$extensionPartOption = $input->registerOption(
+new ezcConsoleOption(
+    'e',
+    'extension',
+    ezcConsoleInput::TYPE_STRING 
+)
+); 
 
 try
 {
@@ -60,6 +67,10 @@ $instance->WWWDirLang = '/'.$helpOption->value;
 
 // php cron.php -s site_admin -c gallery/cron
 
-include_once('modules/lh'.$cronjobPartOption->value.'.php');
+if ($extensionPartOption->value) {
+	include_once('extension/'.$extensionPartOption->value.'/modules/lh'.$cronjobPartOption->value.'.php');	
+} else {
+	include_once('modules/lh'.$cronjobPartOption->value.'.php');	
+}
 
 ?>
