@@ -85,7 +85,17 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('mode',$mode);
     
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = $Album->path_album;
+    $Result['path'] = $Album->path;
+    
+          
+    if ($resolution != '') {
+        $Result['path'][] = array('url' => $Album->url_path.$appendImageMode,'title' => 'Resolution - '.$resolution);  
+    }
+    
+    if ($Params['user_parameters_unordered']['page'] > 1) {        
+        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+    }
+    
     $Result['tittle_prepend'] = $sortModesTitle[$mode];
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last uploaded images to album').' - '.$Album->title;
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss/').$Album->aid;  

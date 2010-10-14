@@ -52,7 +52,17 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/lastuploads'));
     
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images')));    
+    
+    $Result['path'] = array(); 
+    $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastuploads'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images'));    
+    if ($resolution != ''){
+        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastuploads').$appendResolutionMode,'title' => 'Resolution - '.$resolution);  
+    }
+    
+    if ($Params['user_parameters_unordered']['page'] > 1) {        
+        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+    }
+    
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss').$appendResolutionMode;
 

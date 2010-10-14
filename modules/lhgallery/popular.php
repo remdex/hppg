@@ -36,7 +36,18 @@ if (($Result = $cache->restore(md5('version_'.$cacheVersion.'popular_view_url'.$
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/popular'));
         
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images')));    
+    
+    $Result['path'] = array();
+    $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/popular'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images'));
+
+    if ($resolution != '') {
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/popular').$appendResolutionMode,'title' => 'Resolution - '.$resolution);  
+    }
+    
+    if ($Params['user_parameters_unordered']['page'] > 1) {        
+        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+    }
+      
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/popularrss/');
 

@@ -50,6 +50,7 @@ $modeSQL = $sortModes[$mode];
 $appendImageModeSorting = $mode != 'relevance' ? '/(sort)/'.$mode : '';    
 $searchParams['sort'] = $modeSQL;
 $userParams .= $appendImageModeSorting;
+$userParamsWithoutResolution = $userParams;
 $userParams .= $appendResolutionMode;
 
 $appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendResolutionMode;
@@ -88,7 +89,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
         'lastcommentedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented last'),    
         'toprated' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated first'),
         'topratedasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated last'),
-        'relevance' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most relevance images first'),
+        'relevance' => '',
         'relevanceasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Most relevance images last')
      );
         
@@ -103,8 +104,19 @@ if (($Result = $cache->restore($cacheKey)) === false)
       
     $Result['tittle_prepend'] = $sortModesTitle[$mode];
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' =>  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','search result')));
+    $Result['path'] = array(array('url' =>erLhcoreClassDesign::baseurl('/gallery/search').$userParamsWithoutResolution, 'title' =>  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','Search results').' - '.$searchParams['keyword']))   ;
     $Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','search results')));
+    
+    if ($resolution != '') {
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/search').$userParams,'title' => 'Resolution - '.$resolution);  
+        $Result['title_path'][] = array('title' => $resolution); 
+    }
+    
+    if ($Params['user_parameters_unordered']['page'] > 1) {        
+        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['title_path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+    }
+         
     $Result['keyword'] = $searchParams['keyword'];
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Search RSS by keyword').' - '.htmlspecialchars($searchParams['keyword']);
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/searchrss').'/(keyword)/'.urlencode($searchParams['keyword']); 
