@@ -6,7 +6,7 @@ $Category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGallery
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $Category->cid)));
 $pages->translationContext = 'gallery/managealbum';
-$pages->default_ipp = 8;
+$pages->setItemsPerPage(8);
 $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/managealbum/').$Category->cid;
 $pages->paginate();
 
