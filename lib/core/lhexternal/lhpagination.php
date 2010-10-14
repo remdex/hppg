@@ -25,6 +25,12 @@ class lhPaginator{
 		$this->low = ($this->current_page-1) * $this->items_per_page;
 	}
 
+	function setItemsPerPage($itemsPerPage)
+	{
+	    $this->items_per_page = $itemsPerPage;		
+		$this->low = ($this->current_page-1) * $this->items_per_page;
+	}
+	
 	function paginate()
 	{				
 		$this->num_pages = ceil($this->items_total/$this->items_per_page);		
