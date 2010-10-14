@@ -85,7 +85,7 @@ class erLhcoreClassModelGalleryDuplicateImageHash {
                 
       $q->orderBy(isset($params['sort']) ? $params['sort'] : 'pid DESC' ); 
           
-      $objects = $session->find( $q, 'erLhcoreClassModelGalleryDuplicateImageHash' );
+      $objects = $session->find( $q );
          
       return $objects; 
    }

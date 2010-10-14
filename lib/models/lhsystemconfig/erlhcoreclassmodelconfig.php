@@ -117,7 +117,7 @@ class erLhcoreClassModelSystemConfig {
       $q->limit($params['limit'],$params['offset']);                
       $q->orderBy(isset($params['sort']) ? $params['sort'] : 'identifier DESC' ); 
          
-      $objects = $session->find( $q, 'erLhcoreClassModelGalleryConfig' );
+      $objects = $session->find( $q );
             
       return $objects; 
    }      

@@ -177,10 +177,10 @@ class erLhcoreClassModelGalleryPopular24 {
               
           if (($objects = $cache->restore($cacheKey)) === false)
           {
-              $objects = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' ); 
+              $objects = $session->find( $q ); 
               $cache->store($cacheKey,$objects);
           }          
-      }  else { $objects = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' ); }
+      }  else { $objects = $session->find( $q ); }
          
       $pids = array();
       foreach ($objects as $item){

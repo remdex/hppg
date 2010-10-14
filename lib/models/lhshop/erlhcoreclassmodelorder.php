@@ -203,7 +203,7 @@ class erLhcoreClassModelShopOrder {
           
       $q->orderBy( isset($paramsSearch['sort']) ? $paramsSearch['sort'] : 'id DESC' ); 
               
-      $objects = $session->find( $q, 'erLhcoreClassModelShopOrder' );         
+      $objects = $session->find( $q );         
       return $objects; 
    }
    

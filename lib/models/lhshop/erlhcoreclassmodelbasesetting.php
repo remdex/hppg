@@ -135,7 +135,7 @@ class erLhcoreClassModelShopBaseSetting {
                 
       $q->orderBy(isset($params['sort']) ? $params['sort'] : 'identifier DESC' ); 
           
-     $objects = $session->find( $q, 'erLhcoreClassModelShopBaseSetting' );
+     $objects = $session->find( $q );
          
       return $objects; 
    }

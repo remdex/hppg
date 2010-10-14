@@ -102,7 +102,7 @@ class erLhcoreClassModelArticleStatic {
 	
 	   	$q->orderBy(isset($params['sort']) ? $params['sort'] : 'id DESC' );
 	
-	   	$objects = $session->find( $q, 'erLhcoreClassModelArticleStatic' );
+	   	$objects = $session->find( $q );
 	
 	   	return $objects;
    }

@@ -121,7 +121,7 @@ class erLhcoreClassModelShopBasketSession {
 
        	$q->limit(1,0);
              	
-       	$objects = $session->find( $q, 'erLhcoreClassModelShopBasketSession' );
+       	$objects = $session->find( $q );
      
 		if (count($objects) > 0)
 		{			

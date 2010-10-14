@@ -158,7 +158,7 @@ class erLhcoreClassModelGalleryDuplicateCollection {
       $q->orderBy(isset($params['sort']) ? $params['sort'] : 'id DESC' ); 
       
               
-      $objects = $session->find( $q, 'erLhcoreClassModelGalleryDuplicateCollection' );
+      $objects = $session->find( $q );
          
       return $objects; 
    }

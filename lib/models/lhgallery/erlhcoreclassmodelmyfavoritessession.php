@@ -43,7 +43,7 @@ class erLhcoreClassModelGalleryMyfavoritesSession {
        }
    }
    		
-	// Pradedama nauja sesija 
+	// Starting new session
 	function storeNewSession()
 	{	
 		$RandomString = mt_rand().time();	
@@ -95,7 +95,7 @@ class erLhcoreClassModelGalleryMyfavoritesSession {
 
        	$q->limit(1,0);
              	
-       	$objects = $session->find( $q, 'erLhcoreClassModelGalleryMyfavoritesSession' );
+       	$objects = $session->find( $q );
      
 		if (count($objects) > 0)
 		{			

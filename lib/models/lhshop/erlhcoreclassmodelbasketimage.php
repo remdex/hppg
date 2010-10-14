@@ -214,10 +214,10 @@ class erLhcoreClassModelShopBasketImage {
               
           if (($objects = $cache->restore($cacheKey)) === false)
           {
-              $objects = $session->find( $q, 'erLhcoreClassModelShopBasketImage' ); 
+              $objects = $session->find( $q ); 
               $cache->store($cacheKey,$objects);
           }          
-      }  else { $objects = $session->find( $q, 'erLhcoreClassModelShopBasketImage' ); }
+      }  else { $objects = $session->find( $q ); }
          
       return $objects; 
    }

@@ -188,7 +188,7 @@ class erLhcoreClassModelShopPaymentSetting {
        }
        
        
-      $objects = $session->find( $q, 'erLhcoreClassModelShopPaymentSetting' ); 
+      $objects = $session->find( $q ); 
          
       return $objects; 
    }

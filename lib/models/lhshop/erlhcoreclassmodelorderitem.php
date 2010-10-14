@@ -227,7 +227,7 @@ class erLhcoreClassModelShopOrderItem {
        }
        
        
-      $objects = $session->find( $q, 'erLhcoreClassModelShopOrderItem' ); 
+      $objects = $session->find( $q ); 
          
       return $objects; 
    }

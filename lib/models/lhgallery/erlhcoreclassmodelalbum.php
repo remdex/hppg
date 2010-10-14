@@ -261,7 +261,7 @@ class erLhcoreClassModelGalleryAlbum {
           
       $q->orderBy( isset($paramsSearch['sort']) ? $paramsSearch['sort'] : 'pos DESC' ); 
               
-      $objects = $session->find( $q, 'erLhcoreClassModelGalleryAlbum' );         
+      $objects = $session->find( $q );         
       return $objects; 
    }
      

@@ -114,7 +114,7 @@ class erLhcoreClassModelGalleryLastSearch {
                 
       $q->orderBy(isset($params['sort']) ? $params['sort'] : 'id DESC' ); 
               
-      $objects = $session->find( $q, 'erLhcoreClassModelGalleryLastSearch' );
+      $objects = $session->find( $q );
       
       $cache->store('last_searches',$objects);
            

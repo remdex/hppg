@@ -220,10 +220,10 @@ class erLhcoreClassModelGalleryMyfavoritesImage {
               
           if (($objects = $cache->restore($cacheKey)) === false)
           {
-              $objects = $session->find( $q, 'erLhcoreClassModelGalleryMyfavoritesImage' ); 
+              $objects = $session->find( $q ); 
               $cache->store($cacheKey,$objects);
           }          
-      }  else { $objects = $session->find( $q, 'erLhcoreClassModelGalleryMyfavoritesImage' ); }
+      }  else { $objects = $session->find( $q ); }
          
       return $objects; 
    }

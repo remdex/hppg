@@ -168,7 +168,7 @@ class erLhcoreClassModelUser {
           $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_users.id', 'items.id' );          
        }
               
-       $objects = $session->find( $q, 'erLhcoreClassModelUser' );
+       $objects = $session->find( $q );
          
       return $objects; 
    }

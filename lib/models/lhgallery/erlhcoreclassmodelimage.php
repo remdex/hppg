@@ -343,11 +343,11 @@ class erLhcoreClassModelGalleryImage {
           $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);      
              
           if (($objects = $cache->restore($cacheKey)) === false)
-          {
-              $objects = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
+          {       
+              $objects = $session->find( $q ); 
               $cache->store($cacheKey,$objects);
           }          
-      }  else { $objects = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); }
+      }  else { $objects = $session->find( $q ); }
          
       return $objects; 
    }

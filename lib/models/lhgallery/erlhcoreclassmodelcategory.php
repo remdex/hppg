@@ -124,16 +124,16 @@ class erLhcoreClassModelGalleryCategory {
              
            if (($objects = $cache->restore($cacheKey)) === false)
            {
-               $objects = $session->find( $q, 'erLhcoreClassModelGalleryCategory' ); 
+               $objects = $session->find( $q ); 
                $cache->store($cacheKey,$objects);
            } 
            
         } else {
             
             if (!isset($params['use_iterator'])){
-                $objects = $session->find( $q, 'erLhcoreClassModelGalleryCategory' ); 
+                $objects = $session->find( $q ); 
             } else {
-                $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryCategory' );
+                $objects = $session->findIterator( $q );
             }
         
         }

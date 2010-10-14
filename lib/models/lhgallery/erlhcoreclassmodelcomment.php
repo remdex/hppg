@@ -81,7 +81,7 @@ class erLhcoreClassModelGalleryComment {
       $cache = CSCacheAPC::getMem();      
       if (($objects = $cache->restore($sql)) === false)
       {      
-          $objects = $session->find( $q, 'erLhcoreClassModelGalleryComment' );
+          $objects = $session->find( $q );
           $cache->store($sql,$objects);
       }         
               

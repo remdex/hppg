@@ -215,7 +215,7 @@ class erLhcoreClassModelShopUserCreditOrder {
           $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_shop_user_credit_order.id', 'items.id' );          
        }
               
-      $objects = $session->find( $q, 'erLhcoreClassModelShopUserCreditOrder' ); 
+      $objects = $session->find( $q ); 
          
       return $objects; 
    }

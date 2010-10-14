@@ -115,7 +115,7 @@ class erLhcoreClassModelShopImageVariation {
           
       $q->orderBy( isset($paramsSearch['sort']) ? $paramsSearch['sort'] : 'position ASC' ); 
               
-      $objects = $session->find( $q, 'erLhcoreClassModelShopImageVariation' );         
+      $objects = $session->find( $q );         
       return $objects; 
    }
      
