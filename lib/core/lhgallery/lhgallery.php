@@ -210,8 +210,14 @@ class erLhcoreClassGallery{
       $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
            
                 
-      if ($result['total_found'] == 0 || !isset($result['matches']))
-      return array('total_found' => 0,'list' => null);
+      if ($result['total_found'] == 0 || !isset($result['matches'])){
+      
+          if (isset($params['relevance'])) { 
+              return 1;  
+          } else {
+            return array('total_found' => 0,'list' => null);
+          }      
+      }
       
       $idMatch = array();
         
