@@ -12,7 +12,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/popularrecent.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryPopular24::getImageCount();
-    $pages->translationContext = 'gallery/lasthits';
+    $pages->translationContext = 'gallery/popularrecent';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/popularrecent');
     $pages->paginate();
     
@@ -24,7 +24,11 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/popularrecent'));
         
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Most popular images in 24 hours')));    
+    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Most popular images in 24 hours')));    
   
+    if ($Params['user_parameters_unordered']['page'] > 1) {        
+        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
+    }
+    
     $cache->store($cacheKey,$Result);
 }

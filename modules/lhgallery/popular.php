@@ -41,11 +41,11 @@ if (($Result = $cache->restore(md5('version_'.$cacheVersion.'popular_view_url'.$
     $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/popular'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images'));
 
     if ($resolution != '') {
-        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/popular').$appendResolutionMode,'title' => 'Resolution - '.$resolution);  
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/popular').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
       
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images');

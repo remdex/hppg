@@ -124,13 +124,13 @@ if ($mode == 'album')
     $modeSQL = $sortModes[$modeSort];
     
     if ($modeSort == 'new') {                
-        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 5,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+$filterArray,'filtergt' => array('pid' => $Image->pid)));
+        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 5,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));
         $page = ceil((erLhcoreClassModelGalleryImage::getImageCount(array('filter' => array('aid' => $Image->aid)+$filterArray,'filtergt' => array('pid' => $Image->pid)))+1)/20);
         $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 5,'filter' => array('aid' => $Image->aid)+$filterArray,'filterlt' => array('pid' => $Image->pid)));        
     } elseif ($modeSort == 'newasc') {        
-        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 5,'sort' => 'pid DESC','filter' => array('aid' => $Image->aid)+$filterArray,'filterlt' => array('pid' => $Image->pid)));
+        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 5,'sort' => 'pid DESC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));
         $page = ceil((erLhcoreClassModelGalleryImage::getImageCount(array('filter' => array('aid' => $Image->aid)+$filterArray,'filterlt' => array('pid' => $Image->pid)))+1)/20);
-        $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('sort' => 'pid ASC','cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 5,'filter' => array('aid' => $Image->aid)+$filterArray,'filtergt' => array('pid' => $Image->pid)));        
+        $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('sort' => 'pid ASC','cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 5,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));        
     } elseif ($modeSort == 'popular') {
         
         $db = ezcDbInstance::get(); 
@@ -594,9 +594,9 @@ if ($mode == 'album')
                   
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti(
             array (
-                array('filtergt' => array('pid' => $Image->pid),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'),
+                array('filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'),
                 array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'),
-                array('filterlt' => array('pid' => $Image->pid-1),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'),
+                array('filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'),
                 array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC')
             )
         );
@@ -607,7 +607,7 @@ if ($mode == 'album')
             $totalPhotosHigher = $resultSearch[1];
             
             if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                
-                $totalPhotos['list'] = $totalPhotos['list']+$totalPhotosHigher['list'];
+                $totalPhotos['list'] = (array)$totalPhotos['list']+(array)$totalPhotosHigher['list'];
             } elseif ($totalPhotosHigher['total_found'] > 0) {
                 $totalPhotos['list'] = $totalPhotosHigher['list'];
             }
@@ -632,7 +632,7 @@ if ($mode == 'album')
             $totalPhotosHigher = $resultSearch[3];
                                  
             if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
-                $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
+                $totalPhotos['list'] = (array)$totalPhotos['list'] + (array)$totalPhotosHigher['list'];
             } elseif ($totalPhotosHigher['total_found'] > 0) {
                 $totalPhotos['list'] = $totalPhotosHigher['list'];
             }
@@ -651,9 +651,9 @@ if ($mode == 'album')
                   
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti(
             array (
-                array('filterlt' => array('pid' => $Image->pid-1),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'),
+                array('filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'),
                 array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance DESC, @id DESC'),
-                array('filtergt' => array('pid' => $Image->pid),'Filter' => $filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'),
+                array('filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC'),
                 array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']),'sort' => '@relevance ASC, @id ASC')
             )
         );
@@ -665,7 +665,7 @@ if ($mode == 'album')
             $totalPhotosHigher = $resultSearch[1];
                         
             if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {
-                $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
+                $totalPhotos['list'] = (array)$totalPhotos['list'] + (array)$totalPhotosHigher['list'];
             } elseif ($totalPhotosHigher['total_found'] > 0) {
                 $totalPhotos['list'] = $totalPhotosHigher['list'];
             }
@@ -690,7 +690,7 @@ if ($mode == 'album')
             $totalPhotosHigher = $resultSearch[3];
             
             if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {
-                $totalPhotos['list'] = $totalPhotos['list'] + $totalPhotosHigher['list'];
+                $totalPhotos['list'] = (array)$totalPhotos['list'] + (array)$totalPhotosHigher['list'];
             } elseif ($totalPhotosHigher['total_found'] > 0) {
                 $totalPhotos['list'] = $totalPhotosHigher['list'];
             }

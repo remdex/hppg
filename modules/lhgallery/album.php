@@ -89,11 +89,11 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
           
     if ($resolution != '') {
-        $Result['path'][] = array('url' => $Album->url_path.$appendImageMode,'title' => 'Resolution - '.$resolution);  
+        $Result['path'][] = array('url' => $Album->url_path.$appendImageMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     $Result['tittle_prepend'] = $sortModesTitle[$mode];

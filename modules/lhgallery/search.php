@@ -108,13 +108,13 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $Result['title_path'] = array(array('title' => $searchParams['keyword'].' &laquo; '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','search results')));
     
     if ($resolution != '') {
-        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/search').$userParams,'title' => 'Resolution - '.$resolution);  
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/search').$userParams,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Resolution').' - '.$resolution);  
         $Result['title_path'][] = array('title' => $resolution); 
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
-        $Result['title_path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['title_path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
          
     $Result['keyword'] = $searchParams['keyword'];

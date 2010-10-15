@@ -46,7 +46,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $Result['path'] = $path;
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/category','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     $cache->store($cacheKey,$Result);

@@ -56,11 +56,11 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastcommented'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images'));
      
     if ($resolution != '') {
-        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastcommented').$appendResolutionMode,'title' => 'Resolution - '.$resolution);  
+        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastcommented').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
       
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images');

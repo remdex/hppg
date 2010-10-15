@@ -55,11 +55,11 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/toprated'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images'));  
       
     if ($resolution != '') {
-        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/toprated').$appendResolutionMode,'title' => 'Resolution - '.$resolution);  
+        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/toprated').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images');
