@@ -1,5 +1,15 @@
 <?php
   
+
+if (isset($_POST['moveSelectedPhotos']) && isset($_POST['PhotoID']) && count($_POST['PhotoID']) > 0 && is_numeric($_POST['AlbumDestinationDirectory0'])){
+    foreach ($_POST['PhotoID'] as $photoID) {        
+        $image = erLhcoreClassModelGalleryImage::fetch($photoID);
+        $image->aid = $_POST['AlbumDestinationDirectory0'];
+        erLhcoreClassGallery::getSession()->update($image); 
+        $image->clearCache();
+    }
+}
+
 $cache = CSCacheAPC::getMem();
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/managealbumimages.tpl.php');
 $Album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', (int)$Params['user_parameters']['album_id'] );    

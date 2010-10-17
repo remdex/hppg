@@ -8,6 +8,9 @@
 <div class="float-break">
 <? foreach ($items as $key => $item) : ?>
     <div class="thumb-edit" id="image_thumb_<?=$item->pid?>">
+        <div class="left">
+            <label><input type="checkbox" name="PhotoID[]" value="<?=$item->pid?>" /> Select image</label>
+        </div>
         <div class="right">
         <a class="cursor" onclick="return hw.deletePhoto(<?=$item->pid?>)" ><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete image');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Delete image');?>" /></a>
         </div>
