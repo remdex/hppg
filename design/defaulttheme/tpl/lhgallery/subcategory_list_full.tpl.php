@@ -19,7 +19,7 @@
                   
                 <? 
                     $pages = new lhPaginator();
-                    $pages->current_page = 0;
+                    $pages->current_page = 1;
                     $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true, 'filter' => array('category' => $subcategory->cid)));
                     $pages->translationContext = 'gallery/subcategry_list_full';
                     $pages->setItemsPerPage(8);
@@ -28,7 +28,7 @@
                     if ($pages->items_total > 0) :
                 ?>                
                 <?php 
-                
+
                 $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $subcategory->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page)); 
                 
                 ?>
