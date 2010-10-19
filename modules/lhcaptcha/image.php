@@ -25,8 +25,5 @@ $_SESSION[$_SERVER['REMOTE_ADDR']][$Params['user_parameters']['captcha_name']] =
 header('Content-type: image/jpeg');	
 imagejpeg($c->getCAPTCHA());
 
-
- 
-
 exit;
 ?>

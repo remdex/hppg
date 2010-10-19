@@ -9,6 +9,11 @@ $ViewList['image'] = array(
     'script' => 'image.php',
     'params' => array('captcha_name')
     );
+       
+$ViewList['captchastring'] = array( 
+    'script' => 'captchastring.php',
+    'params' => array('captcha_name')
+    );
 
 $FunctionList = array();  
 

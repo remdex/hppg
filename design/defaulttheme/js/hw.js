@@ -12,6 +12,7 @@ var hw = {
 	addtofavorites : 'gallery/addtofavorites/',
 	deletefavorite : 'gallery/deletefavorite/',
 	ajaximages : 'gallery/ajaximages/',
+	captcha_url: 'captcha/captchastring/comment/',
 	appendURL : null,
 	formAddPath: WWW_DIR_JAVASCRIPT,		
 		
@@ -55,6 +56,20 @@ var hw = {
 			} 
            return true;	          
 		});	
+		return false;	
+	},
+	
+	addCheck : function (timestamp)
+	{
+		$.getJSON(this.formAddPath + this.captcha_url+timestamp, function(data) {	                
+			var input = $(document.createElement('input'));
+            input.attr("name","captcha_"+data.result);
+            input.attr("value",timestamp);
+            input.attr("type","hidden");
+            input.attr("id","id_captcha_code");
+            $('#comment_form_data').prepend(input);                 
+            document.comment_form.submit();
+		});    		
 		return false;	
 	},
 	

@@ -33,7 +33,7 @@
         </ul>
         <?endif;?>
         
-        <form action="#comment-container" method="post" >
+        <form action="#comment-container" method="post" name="comment_form" id="comment_form_data" onsubmit="return hw.addCheck(<?=time()?>);">
             <h4><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Leave a reply')?></h4>
             <div class="in-blk">
             <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Nick')?>:</label>
@@ -44,13 +44,8 @@
             <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Message')?>:</label>
             <textarea name="CommentBody" rows="5" cols="10" class="default-textarea" ><?=htmlspecialchars($comment_new->msg_body)?></textarea>
             </div>
-        
-            <div class="in-blk">
-            <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Safe code')?></label>
-            <input type="text" class="inputfield" name="CaptchaCode" value="" /><br />
-            <img src="<?=erLhcoreClassDesign::baseurl('/captcha/image/comment/')?><?php echo time();?>" alt="" />
-            </div>    
+                           
             <input type="submit" class="default-button" name="StoreComment" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Send')?>"/>
-        </form>
+        </form>       
     </div>
 </div>

@@ -17,8 +17,9 @@ if ($currentUser->isLogged()){
     $CommentData->msg_author = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Guest_');
 }
 
-if (isset($_POST['StoreComment']))
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {      
+    $nameField = 'captcha_'.$_SESSION[$_SERVER['REMOTE_ADDR']]['comment'];
     $definition = array(
         'Name' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
@@ -28,15 +29,16 @@ if (isset($_POST['StoreComment']))
             ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
         ),   
             
-        'CaptchaCode' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::REQUIRED, 'string'
+        $nameField => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::OPTIONAL, 'string'
         )
     );
   
     $form = new ezcInputForm( INPUT_POST, $definition );
     $Errors = array();
     
-    if ( !$form->hasValidData( 'CaptchaCode' ) || $form->CaptchaCode == '' || $form->CaptchaCode != $_SESSION[$_SERVER['REMOTE_ADDR']]['comment'] )
+    // Catpcha field expires in 10 minutes
+    if ( !$form->hasValidData( $nameField ) || $form->$nameField == '' || $form->$nameField < time()-10*60 )
     {
         $Errors[] =   erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Wrong captcha code!');
     } 
@@ -86,8 +88,7 @@ if (isset($_POST['StoreComment']))
         $tpl->set('commentErrArr',$Errors);
     }
     
-}
-
+} 
 
     
 // Display mode - album, lastupload
