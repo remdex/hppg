@@ -21,7 +21,7 @@ class erLhcoreClassModelGalleryDelayImageHit {
    public static function addHit($pid) 
    {
    	   $db = ezcDbInstance::get();
-       $stmt = $db->prepare('INSERT DELAYED INTO lh_delay_image_hit VALUES (:pid,:mtime)');
+       $stmt = $db->prepare('INSERT INTO lh_delay_image_hit VALUES (:pid,:mtime)');
        $stmt->bindValue( ':pid',$pid);       
        $stmt->bindValue( ':mtime',time());       
        $stmt->execute();
