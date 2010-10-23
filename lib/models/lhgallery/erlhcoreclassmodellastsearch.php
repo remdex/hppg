@@ -39,10 +39,7 @@ class erLhcoreClassModelGalleryLastSearch {
            } catch (Exception $e) { // Sometimes table gets crushed if a lot of searches is done
                
            }
-           //Clear cache
-           $cache = CSCacheAPC::getMem();            
-           $cache->delete('last_searches'); 
-           
+                      
            $stmt = $db->prepare('SELECT id FROM `lh_gallery_lastsearch` order by id desc limit 9,1');    
            $stmt->execute();
            $idlast = $stmt->fetchColumn();        
@@ -55,14 +52,6 @@ class erLhcoreClassModelGalleryLastSearch {
    
    public static function getSearches($paramsSearch = array())
    {
-            
-      $cache = CSCacheAPC::getMem();      
-      if (($result = $cache->restore('last_searches')) !== false)
-      {
-          return $result;
-      } 
-      
-       
        $paramsDefault = array('limit' => 32, 'offset' => 0);       
        $params = array_merge($paramsDefault,$paramsSearch);
        
@@ -116,8 +105,6 @@ class erLhcoreClassModelGalleryLastSearch {
               
       $objects = $session->find( $q );
       
-      $cache->store('last_searches',$objects);
-           
       return $objects; 
    }
        

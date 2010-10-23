@@ -30,6 +30,19 @@ class erLhcoreClassModelGalleryPopular24 {
        return $hitpopular;
    }
     
+   public static function deleteByPid($pid)
+   {
+       $imagesPopular = self::getImages(array('limit' => 1,'filter' => array('pid' => $pid)));
+       foreach ($imagesPopular as $imagePopular) {
+           $imagePopular->removeThis();
+       }
+   }
+   
+   public function removeThis() {
+   	   		                
+   		erLhcoreClassGallery::getSession()->delete($this);   		   		
+   }
+   
    public function __get($variable)
    {
    		switch ($variable) {

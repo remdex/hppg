@@ -1,46 +1,5 @@
 <?php
 
-
-class erLhcoreClassCacheSystem implements ezcBaseConfigurationInitializer
-{
-     public static function configureObject( $id )
-     {
-         $options = array( 'ttl' => 3600 );
-         $sys = erLhcoreClassSystem::instance()->SiteDir;  
-         ezcCacheManager::createCache( $id , $sys . '/cache/cacheblock' , 'ezcCacheStorageFilePlain', $options ); 
-     }  
-     
-     public static function getCache($section_cache,$cacheID)
-     {
-        $cache = ezcCacheManager::getCache( $section_cache ); 
-         
-        if (is_array($cacheID)) $cacheID = implode(',',$cacheID); 
-        
-        if ( ( $dataCache = $cache->restore( md5($cacheID) ) ) === false )
-        { 
-            return false;
-        } else {
-            return $dataCache;
-        }
-     }
-     
-     public static function startCacheBlock()
-     {
-         ob_start();
-     }
-     
-     public static function endCacheBlock($section_cache,$cacheID)
-     {
-         $content = ob_get_clean();
-         $cache = ezcCacheManager::getCache( $section_cache );
-         if (is_array($cacheID)) $cacheID = implode(',',$cacheID);
-                  
-         $cache->store( md5($cacheID), $content );   
-         return $content;
-     }   
-     
-}
-
 class CSCacheAPC {
 
     static private $m_objMem = NULL;
@@ -148,7 +107,7 @@ class CSCacheAPC {
         }        
     }
     
-    function store($key, $value, $ttl = 36000) {        
+    function store($key, $value, $ttl = 72000) {        
         if ( $this->cacheEngine != null )
         {
             $GLOBALS[$key] = $value;
