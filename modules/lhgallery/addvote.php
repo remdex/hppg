@@ -15,6 +15,7 @@ if (isset($_POST['photo']) && isset($_POST['score']) )
     
     //Clear top rated listing cache
     CSCacheAPC::getMem()->increaseCacheVersion('top_rated');
+    CSCacheAPC::getMem()->increaseCacheVersion('top_rated_'.$image->aid); //Album top rated version
     
     echo json_encode(array('result' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addvote','Thank you for your vote'),'error' => 'false'));
     exit;      

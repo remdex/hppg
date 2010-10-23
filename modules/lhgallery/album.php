@@ -17,10 +17,10 @@ $appendCacheModes = array(
 'popularasc' => 'most_popular_version',
 'lasthits' => 'last_hits_version',
 'lasthitsasc' => 'last_hits_version',
-'lastcommented' => 'last_commented',
-'lastcommentedasc' => 'last_commented',
-'toprated' => 'top_rated',
-'topratedasc' => 'top_rated',
+'lastcommented' => 'last_commented_'.(int)$Params['user_parameters']['album_id'],
+'lastcommentedasc' => 'last_commented_'.(int)$Params['user_parameters']['album_id'],
+'toprated' => 'top_rated_'.(int)$Params['user_parameters']['album_id'],
+'topratedasc' => 'top_rated_'.(int)$Params['user_parameters']['album_id'],
 
 );
     

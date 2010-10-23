@@ -200,7 +200,7 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastcommented') {
         
         $cache = CSCacheAPC::getMem();         
-        $cacheKeyImage = 'album_mode_image_ajaxslides_pid_sort_lastcommented_'.$Image->pid.'_lastcommented_version_'.$cache->getCacheVersion('last_commented').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        $cacheKeyImage = 'album_mode_image_ajaxslides_pid_sort_lastcommented_'.$Image->pid.'_lastcommented_version_'.$cache->getCacheVersion('last_commented_'.$Image->aid).'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
                         
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {        
@@ -235,7 +235,7 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastcommentedasc') {
 
         $cache = CSCacheAPC::getMem();         
-        $cacheKeyImage = 'album_mode_image_ajaxslides_pid_sort_lastcommentedasc_'.$Image->pid.'_lastcommented_version_'.$cache->getCacheVersion('last_commented').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        $cacheKeyImage = 'album_mode_image_ajaxslides_pid_sort_lastcommentedasc_'.$Image->pid.'_lastcommented_version_'.$cache->getCacheVersion('last_commented_'.$Image->aid).'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {               
@@ -270,7 +270,7 @@ if ($mode == 'album')
     } elseif ($modeSort == 'toprated') {
         
         $cache = CSCacheAPC::getMem();         
-        $cacheKeyImage = 'album_mode_image_ajaxslides_pid_sort_toprated_'.$Image->pid.'_toprated_version_'.$cache->getCacheVersion('top_rated').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        $cacheKeyImage = 'album_mode_image_ajaxslides_pid_sort_toprated_'.$Image->pid.'_toprated_version_'.$cache->getCacheVersion('top_rated_'.$Image->aid).'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {               
@@ -304,7 +304,7 @@ if ($mode == 'album')
     } elseif ($modeSort == 'topratedasc') {  
         
         $cache = CSCacheAPC::getMem();         
-        $cacheKeyImage = 'album_mode_image_ajaxslides_pid_sort_topratedasc_'.$Image->pid.'_toprated_version_'.$cache->getCacheVersion('top_rated').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        $cacheKeyImage = 'album_mode_image_ajaxslides_pid_sort_topratedasc_'.$Image->pid.'_toprated_version_'.$cache->getCacheVersion('top_rated_'.$Image->aid).'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {                         
