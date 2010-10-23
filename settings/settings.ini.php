@@ -19,6 +19,7 @@ return array (
       'force_virtual_host' => false,
       'etag_caching_enabled' => false,
       'redirect_mobile' => false,//'m',
+      'imagemagic_enabled' => false,
       'default_www_user' => 'lighttpd',
       'default_www_group' => 'lighttpd',
       'StorageDirPermissions' => 0777,
