@@ -256,7 +256,7 @@ class erLhcoreClassModelGalleryImage {
    {             
        $paramsDefault = array('limit' => 32, 'offset' => 0);       
        $params = array_merge($paramsDefault,$paramsSearch);
-              
+       
        if (!isset($params['disable_sql_cache']))
        {
           $sql = erLhcoreClassGallery::multi_implode(',',$params);  

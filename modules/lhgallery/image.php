@@ -10,6 +10,7 @@ try{
 
 $CommentData = new erLhcoreClassModelGalleryComment();
 $currentUser = erLhcoreClassUser::instance();
+$needSave = false;
 
 if ($currentUser->isLogged()){
     $CommentData->msg_author = $currentUser->getUserData(true)->username;
@@ -75,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         erLhcoreClassGallery::getSession()->save($CommentData);
         $CommentData = new erLhcoreClassModelGalleryComment();               
         $Image->comtime = time();
+        $needSave = true;
         
         //Clear cache
         CSCacheAPC::getMem()->delete('comments_'.$Image->pid);
@@ -1502,6 +1504,9 @@ $Result['canonical'] = 'http://'.$_SERVER['HTTP_HOST'].$Image->url_path;
 // Must be in the bottom
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true){
 	erLhcoreClassModelGalleryDelayImageHit::addHit($Image->pid);
+	if ($needSave == true) { // If comment was stored we need to update image
+	    erLhcoreClassGallery::getSession()->update($Image);
+	}
 } else {
 	$Image->hits++;
 	$Image->mtime = time();
