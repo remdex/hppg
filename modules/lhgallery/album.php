@@ -43,7 +43,7 @@ $appendCacheKey = '';
 // We need extra cache key in these cases
 if (key_exists($mode,$appendCacheModes))
 {
-    $appendCacheKey = 'append_cache_'.$mode.'_version_'.$cache->getCacheVersion($appendCacheModes[$mode]);
+    $appendCacheKey = 'append_cache_'.$mode.'_version_'.$cache->getCacheVersion($appendCacheModes[$mode]).'_key_'.$appendCacheModes[$mode];
 }
 
 $cacheKey = md5('version_'.$cache->getCacheVersion('album_'.(int)$Params['user_parameters']['album_id']).$mode.$resolution.'album_view_url'.(int)$Params['user_parameters']['album_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.$appendCacheKey);
