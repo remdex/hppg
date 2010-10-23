@@ -121,9 +121,13 @@ class erLhcoreClassUser{
         return self::$persistentSession;
    }
       
-   function getUserData()
+   function getUserData($canUseCache = false)
    {
-      return erLhcoreClassUser::getSession()->load( 'erLhcoreClassModelUser', $this->userid );
+      if ($canUseCache == true && isset($GLOBALS['CacheUserData_'.$this->userid])) return $GLOBALS['CacheUserData_'.$this->userid];
+            
+      $GLOBALS['CacheUserData_'.$this->userid] = erLhcoreClassUser::getSession()->load( 'erLhcoreClassModelUser', $this->userid );
+            
+      return $GLOBALS['CacheUserData_'.$this->userid];
    }
    
    function getUserID()

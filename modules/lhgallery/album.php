@@ -11,6 +11,19 @@ $sortModes = array(
     'toprated' => 'pic_rating DESC, votes DESC, pid DESC',
     'topratedasc' => 'pic_rating ASC, votes ASC, pid ASC');
     
+$appendCacheModes = array(
+
+'popular' => 'most_popular_version',
+'popularasc' => 'most_popular_version',
+'lasthits' => 'last_hits_version',
+'lasthitsasc' => 'last_hits_version',
+'lastcommented' => 'last_commented',
+'lastcommentedasc' => 'last_commented',
+'toprated' => 'top_rated',
+'topratedasc' => 'top_rated',
+
+);
+    
 $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
        
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
@@ -23,10 +36,18 @@ if ($resolution != ''){
 $filterArray['approved'] = 1;
 
 $mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'new';
-        
+
 $cache = CSCacheAPC::getMem(); 
-$cacheKey = md5('version_'.$cache->getCacheVersion('album_'.(int)$Params['user_parameters']['album_id']).$mode.$resolution.'album_view_url'.(int)$Params['user_parameters']['album_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
-    
+     
+$appendCacheKey = '';
+// We need extra cache key in these cases
+if (key_exists($mode,$appendCacheModes))
+{
+    $appendCacheKey = 'append_cache_'.$mode.'_version_'.$cache->getCacheVersion($appendCacheModes[$mode]);
+}
+
+$cacheKey = md5('version_'.$cache->getCacheVersion('album_'.(int)$Params['user_parameters']['album_id']).$mode.$resolution.'album_view_url'.(int)$Params['user_parameters']['album_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.$appendCacheKey);
+  
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {
     $currentKeyEtag = md5($cacheKey.'user_id_'.erLhcoreClassUser::instance()->getUserID());;
@@ -44,6 +65,8 @@ if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_cachin
 
 if (($Result = $cache->restore($cacheKey)) === false)
 {  
+    
+        
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/album.tpl.php');
     try {
     $Album = erLhcoreClassModelGalleryAlbum::fetch((int)$Params['user_parameters']['album_id']); 
@@ -80,6 +103,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('currentResolution',$resolution);
     $tpl->set('filterArray',$filterArray);
     $tpl->set('appendImageMode',$appendImageMode);
+    $tpl->set('appendCacheKey',$appendCacheKey);
     
     $tpl->set('modeSQL',$modeSQL);
     $tpl->set('mode',$mode);

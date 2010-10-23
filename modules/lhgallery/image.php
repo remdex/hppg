@@ -12,7 +12,7 @@ $CommentData = new erLhcoreClassModelGalleryComment();
 $currentUser = erLhcoreClassUser::instance();
 
 if ($currentUser->isLogged()){
-    $CommentData->msg_author = $currentUser->getUserData()->username;
+    $CommentData->msg_author = $currentUser->getUserData(true)->username;
 } else {
     $CommentData->msg_author = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Guest_');
 }
@@ -134,413 +134,551 @@ if ($mode == 'album')
         $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('sort' => 'pid ASC','cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 5,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));        
     } elseif ($modeSort == 'popular') {
         
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession();        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        $cache = CSCacheAPC::getMem();         
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_popular_'.$Image->pid.'_popular_version_'.$cache->getCacheVersion('most_popular_version').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
+        if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+        {  
+            $db = ezcDbInstance::get(); 
+            $session = erLhcoreClassGallery::getSession();        
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            $countSQLArray = array();
+            $countSQL = '';
+            $filterSQLString = '';
+            
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+                $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            }
         
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            $countSQL =  ' AND '.implode(' AND ',$countSQLArray);   
+                   
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+            ->orderBy('hits ASC, pid ASC')
+            ->limit( 5 );
+            $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
+            
+            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (hits > :hits OR hits = :hits AND pid > :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
+            $stmt->bindValue( ':hits',$Image->hits);
+            $stmt->bindValue( ':pid',$Image->pid);       
+            $stmt->bindValue( ':aid',$Image->aid);
+            
+            foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+            }    
+                          
+            $stmt->execute();
+            $photos = $stmt->fetchColumn(); 
+                       
+            $page = ceil(($photos+1)/20);
+            
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+                 
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+            ->orderBy('hits DESC, pid DESC')
+            ->limit( 5 );
+            $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $ResultCacheImages['imagesRight'] = $imagesRight;
+            $ResultCacheImages['page'] = $page;
+            $ResultCacheImages['imagesLeft'] = $imagesLeft;
+           
+            $cache->store($cacheKeyImage,$ResultCacheImages,0); 
+        } else {
+            $imagesRight = $ResultCacheImages['imagesRight'];
+            $imagesLeft = $ResultCacheImages['imagesLeft'];
+            $page = $ResultCacheImages['page'];
         }
     
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL =  ' AND '.implode(' AND ',$countSQLArray);   
                
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-        ->orderBy('hits ASC, pid ASC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
-        
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (hits > :hits OR hits = :hits AND pid > :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
-        $stmt->bindValue( ':hits',$Image->hits);
-        $stmt->bindValue( ':pid',$Image->pid);       
-        $stmt->bindValue( ':aid',$Image->aid);
-        
-        foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-        }    
-                      
-        $stmt->execute();
-        $photos = $stmt->fetchColumn(); 
-                   
-        $page = ceil(($photos+1)/20);
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-             
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-        ->orderBy('hits DESC, pid DESC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );         
     } elseif ($modeSort == 'popularasc') {
         
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession();        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        $cache = CSCacheAPC::getMem();         
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_popularasc_'.$Image->pid.'_popular_version_'.$cache->getCacheVersion('most_popular_version').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
+                
+        if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+        {        
+            $db = ezcDbInstance::get(); 
+            $session = erLhcoreClassGallery::getSession();        
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            $countSQLArray = array();
+            $countSQL = '';
+            $filterSQLString = '';
+            
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+                $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            }
         
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
-        }
-    
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+            ->orderBy('hits DESC, pid DESC')
+            ->limit( 5 );
+            $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
+            
+            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (hits < :hits OR hits = :hits AND pid < :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
+            $stmt->bindValue( ':hits',$Image->hits);
+            $stmt->bindValue( ':pid',$Image->pid);       
+            $stmt->bindValue( ':aid',$Image->aid); 
+            
+            foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+            }
+                  
+            $stmt->execute();
+            $photos = $stmt->fetchColumn();                 
+            $page = ceil(($photos+1)/20);
+            
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+            ->orderBy('hits ASC, pid ASC')
+            ->limit( 5 );
+            $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );   
         
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
-        ->orderBy('hits DESC, pid DESC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
         
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (hits < :hits OR hits = :hits AND pid < :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
-        $stmt->bindValue( ':hits',$Image->hits);
-        $stmt->bindValue( ':pid',$Image->pid);       
-        $stmt->bindValue( ':aid',$Image->aid); 
-        
-        foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
+            $ResultCacheImages['imagesRight'] = $imagesRight;
+            $ResultCacheImages['page'] = $page;
+            $ResultCacheImages['imagesLeft'] = $imagesLeft;
+           
+            $cache->store($cacheKeyImage,$ResultCacheImages,0); 
+        } else {
+            $imagesRight = $ResultCacheImages['imagesRight'];
+            $imagesLeft = $ResultCacheImages['imagesLeft'];
+            $page = $ResultCacheImages['page'];
         }
               
-        $stmt->execute();
-        $photos = $stmt->fetchColumn();                 
-        $page = ceil(($photos+1)/20);
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-        ->orderBy('hits ASC, pid ASC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );         
     } elseif ($modeSort == 'lasthits') {
-        
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession();        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
-        
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
-        }
-    
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-        ->orderBy('mtime ASC, pid ASC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-        
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (mtime > :mtime OR mtime = :mtime AND pid > :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
-        $stmt->bindValue( ':mtime',$Image->mtime);
-        $stmt->bindValue( ':pid',$Image->pid);   
-        $stmt->bindValue( ':aid',$Image->aid);
-         
-        foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-        }
-           
-        $stmt->execute();  
-        $photos = $stmt->fetchColumn();         
-        $page = ceil(($photos+1)/20);
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
-        ->orderBy('mtime DESC, pid DESC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 
+        $cache = CSCacheAPC::getMem();         
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_lasthits_'.$Image->pid.'_lasthits_version_'.$cache->getCacheVersion('last_hits_version').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+                        
+        if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+        {        
+            $db = ezcDbInstance::get(); 
+            $session = erLhcoreClassGallery::getSession();        
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            $countSQLArray = array();
+            $countSQL = '';
+            $filterSQLString = '';
+            
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+                $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            }
+        
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+            ->orderBy('mtime ASC, pid ASC')
+            ->limit( 5 );
+            $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (mtime > :mtime OR mtime = :mtime AND pid > :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
+            $stmt->bindValue( ':mtime',$Image->mtime);
+            $stmt->bindValue( ':pid',$Image->pid);   
+            $stmt->bindValue( ':aid',$Image->aid);
+             
+            foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+            }
+               
+            $stmt->execute();  
+            $photos = $stmt->fetchColumn();         
+            $page = ceil(($photos+1)/20);
+            
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+            ->orderBy('mtime DESC, pid DESC')
+            ->limit( 5 );
+            $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $ResultCacheImages['imagesRight'] = $imagesRight;
+            $ResultCacheImages['page'] = $page;
+            $ResultCacheImages['imagesLeft'] = $imagesLeft;
+           
+            $cache->store($cacheKeyImage,$ResultCacheImages,0); 
+        } else {
+            $imagesRight = $ResultCacheImages['imagesRight'];
+            $imagesLeft = $ResultCacheImages['imagesLeft'];
+            $page = $ResultCacheImages['page'];
+        }
+               
     } elseif ($modeSort == 'lasthitsasc') {
         
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession();        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        $cache = CSCacheAPC::getMem();         
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_lasthitsasc_'.$Image->pid.'_lasthits_version_'.$cache->getCacheVersion('last_hits_version').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+                        
+        if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+        {        
+            $db = ezcDbInstance::get(); 
+            $session = erLhcoreClassGallery::getSession();        
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            $countSQLArray = array();
+            $countSQL = '';
+            $filterSQLString = '';
+            
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+                $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            }
         
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
-        
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ( '.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+            ->orderBy('mtime DESC, pid DESC')
+            ->limit( 5 );
+            $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (mtime < :mtime OR mtime = :mtime AND pid < :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
+            $stmt->bindValue( ':mtime',$Image->mtime);
+            $stmt->bindValue( ':pid',$Image->pid);   
+            $stmt->bindValue( ':aid',$Image->aid);
+              
+            foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+            }
+              
+            $stmt->execute();  
+            $photos = $stmt->fetchColumn();         
+            $page = ceil(($photos+1)/20);
+            
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+            ->orderBy('mtime ASC, pid ASC')
+            ->limit( 5 );
+            $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
+            
+            $ResultCacheImages['imagesRight'] = $imagesRight;
+            $ResultCacheImages['page'] = $page;
+            $ResultCacheImages['imagesLeft'] = $imagesLeft;
+           
+            $cache->store($cacheKeyImage,$ResultCacheImages,0); 
+        } else {
+            $imagesRight = $ResultCacheImages['imagesRight'];
+            $imagesLeft = $ResultCacheImages['imagesLeft'];
+            $page = $ResultCacheImages['page'];
         }
-    
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ( '.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-        ->orderBy('mtime DESC, pid DESC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-        
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (mtime < :mtime OR mtime = :mtime AND pid < :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
-        $stmt->bindValue( ':mtime',$Image->mtime);
-        $stmt->bindValue( ':pid',$Image->pid);   
-        $stmt->bindValue( ':aid',$Image->aid);
-          
-        foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-        }
-          
-        $stmt->execute();  
-        $photos = $stmt->fetchColumn();         
-        $page = ceil(($photos+1)/20);
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
-        ->orderBy('mtime ASC, pid ASC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
-                       
+
+               
     } elseif ($modeSort == 'lastcommented') {
         
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession();        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        $cache = CSCacheAPC::getMem();         
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_lastcommented_'.$Image->pid.'_lastcommented_version_'.$cache->getCacheVersion('last_commented').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+                        
+        if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+        {
+            $db = ezcDbInstance::get(); 
+            $session = erLhcoreClassGallery::getSession();        
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            $countSQLArray = array();
+            $countSQL = '';
+            $filterSQLString = '';
+            
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+                $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            }
         
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
-        
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+            ->orderBy('comtime ASC, pid ASC')
+            ->limit( 5 );
+            $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (comtime > :comtime OR comtime = :comtime AND pid > :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
+            $stmt->bindValue( ':comtime',$Image->comtime);
+            $stmt->bindValue( ':pid',$Image->pid);   
+            $stmt->bindValue( ':aid',$Image->aid);
+             
+            foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+            }
+                   
+            $stmt->execute();
+            $photos = $stmt->fetchColumn();
+            $page = ceil(($photos+1)/20);
+            
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();     
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+            ->orderBy('comtime DESC, pid DESC')
+            ->limit( 5 );
+            $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
+            
+            $ResultCacheImages['imagesRight'] = $imagesRight;
+            $ResultCacheImages['page'] = $page;
+            $ResultCacheImages['imagesLeft'] = $imagesLeft;
+           
+            $cache->store($cacheKeyImage,$ResultCacheImages,0); 
+        } else {
+            $imagesRight = $ResultCacheImages['imagesRight'];
+            $imagesLeft = $ResultCacheImages['imagesLeft'];
+            $page = $ResultCacheImages['page'];
         }
-    
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
-        ->orderBy('comtime ASC, pid ASC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-        
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (comtime > :comtime OR comtime = :comtime AND pid > :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
-        $stmt->bindValue( ':comtime',$Image->comtime);
-        $stmt->bindValue( ':pid',$Image->pid);   
-        $stmt->bindValue( ':aid',$Image->aid);
-         
-        foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-        }
-               
-        $stmt->execute();
-        $photos = $stmt->fetchColumn();
-        $page = ceil(($photos+1)/20);
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();     
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
-        ->orderBy('comtime DESC, pid DESC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
-                      
+                     
     } elseif ($modeSort == 'lastcommentedasc') {
         
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession();        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        $cache = CSCacheAPC::getMem();         
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_lastcommentedasc_'.$Image->pid.'_lastcommented_version_'.$cache->getCacheVersion('last_commented').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+
+        if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+        {        
+            $db = ezcDbInstance::get(); 
+            $session = erLhcoreClassGallery::getSession();        
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            $countSQLArray = array();
+            $countSQL = '';
+            $filterSQLString = '';
+            
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+                $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            }
         
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
-        
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
-        }
-    
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-        ->orderBy('comtime DESC, pid DESC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-        
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (comtime < :comtime OR comtime = :comtime AND pid < :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
-        $stmt->bindValue( ':comtime',$Image->comtime);
-        $stmt->bindValue( ':pid',$Image->pid);   
-        $stmt->bindValue( ':aid',$Image->aid); 
-        
-        foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-        }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+            ->orderBy('comtime DESC, pid DESC')
+            ->limit( 5 );
+            $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (comtime < :comtime OR comtime = :comtime AND pid < :pid) AND aid = :aid '.$countSQL.' LIMIT 1');
+            $stmt->bindValue( ':comtime',$Image->comtime);
+            $stmt->bindValue( ':pid',$Image->pid);   
+            $stmt->bindValue( ':aid',$Image->aid); 
+            
+            foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+            }
+               
+            $stmt->execute();
+            $photos = $stmt->fetchColumn();
+            $page = ceil(($photos+1)/20);
+            
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();     
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+            ->orderBy('comtime ASC, pid ASC')
+            ->limit( 5 );
+            $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $ResultCacheImages['imagesRight'] = $imagesRight;
+            $ResultCacheImages['page'] = $page;
+            $ResultCacheImages['imagesLeft'] = $imagesLeft;
            
-        $stmt->execute();
-        $photos = $stmt->fetchColumn();
-        $page = ceil(($photos+1)/20);
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();     
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            $cache->store($cacheKeyImage,$ResultCacheImages,0); 
+        } else {
+            $imagesRight = $ResultCacheImages['imagesRight'];
+            $imagesLeft = $ResultCacheImages['imagesLeft'];
+            $page = $ResultCacheImages['page'];
         }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
-        ->orderBy('comtime ASC, pid ASC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-                       
+
+               
     } elseif ($modeSort == 'toprated') {
-                       
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession();        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+
+        $cache = CSCacheAPC::getMem();         
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_toprated_'.$Image->pid.'_toprated_version_'.$cache->getCacheVersion('top_rated').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+
+        if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+        {               
+            $db = ezcDbInstance::get(); 
+            $session = erLhcoreClassGallery::getSession();        
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            $countSQLArray = array();
+            $countSQL = '';
+            $filterSQLString = '';
+            
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+                $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            }
         
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
-        
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
+                    
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')')
+            ->orderBy('pic_rating ASC, votes ASC, pid ASC')
+            ->limit( 5 );
+            $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );  
+            
+            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (pic_rating > :pic_rating OR pic_rating = :pic_rating AND lh_gallery_images.votes > :votes OR pic_rating = :pic_rating AND lh_gallery_images.votes = :votes AND pid > :pid) AND aid = :aid '.$countSQL);
+            $stmt->bindValue( ':pic_rating',$Image->pic_rating);       
+            $stmt->bindValue( ':votes',$Image->votes);       
+            $stmt->bindValue( ':pid',$Image->pid);
+            $stmt->bindValue( ':aid',$Image->aid);
+              
+            foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+            }
+                 
+            $stmt->execute();
+            $photos = $stmt->fetchColumn();         
+            $page = ceil(($photos+1)/20);
+            
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();     
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')')
+            ->orderBy('pic_rating DESC, votes DESC, pid DESC')
+            ->limit( 5 );
+            $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $ResultCacheImages['imagesRight'] = $imagesRight;
+            $ResultCacheImages['page'] = $page;
+            $ResultCacheImages['imagesLeft'] = $imagesLeft;
+           
+            $cache->store($cacheKeyImage,$ResultCacheImages,0); 
+        } else {
+            $imagesRight = $ResultCacheImages['imagesRight'];
+            $imagesLeft = $ResultCacheImages['imagesLeft'];
+            $page = $ResultCacheImages['page'];
         }
-    
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
-                
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')')
-        ->orderBy('pic_rating ASC, votes ASC, pid ASC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );  
-        
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (pic_rating > :pic_rating OR pic_rating = :pic_rating AND lh_gallery_images.votes > :votes OR pic_rating = :pic_rating AND lh_gallery_images.votes = :votes AND pid > :pid) AND aid = :aid '.$countSQL);
-        $stmt->bindValue( ':pic_rating',$Image->pic_rating);       
-        $stmt->bindValue( ':votes',$Image->votes);       
-        $stmt->bindValue( ':pid',$Image->pid);
-        $stmt->bindValue( ':aid',$Image->aid);
-          
-        foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-        }
-             
-        $stmt->execute();
-        $photos = $stmt->fetchColumn();         
-        $page = ceil(($photos+1)/20);
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();     
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')')
-        ->orderBy('pic_rating DESC, votes DESC, pid DESC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );                      
+
+               
     } elseif ($modeSort == 'topratedasc') {
         
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession();        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        $cache = CSCacheAPC::getMem();         
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_topratedasc_'.$Image->pid.'_toprated_version_'.$cache->getCacheVersion('top_rated').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+
+        if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+        {        
+            $db = ezcDbInstance::get(); 
+            $session = erLhcoreClassGallery::getSession();        
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();
+            $countSQLArray = array();
+            $countSQL = '';
+            $filterSQLString = '';
+            
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+                $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+            }
         
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
-        
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
-        }
-    
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')')
-        ->orderBy('pic_rating DESC, votes DESC, pid DESC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );  
-        
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (pic_rating < :pic_rating OR pic_rating = :pic_rating AND lh_gallery_images.votes < :votes OR pic_rating = :pic_rating AND lh_gallery_images.votes = :votes AND pid < :pid) AND aid = :aid '.$countSQL);
-        $stmt->bindValue( ':pic_rating',$Image->pic_rating);       
-        $stmt->bindValue( ':votes',$Image->votes);       
-        $stmt->bindValue( ':pid',$Image->pid);
-        $stmt->bindValue( ':aid',$Image->aid);
-        
-        foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-        }
-               
-        $stmt->execute();
-        $photos = $stmt->fetchColumn();         
-        $page = ceil(($photos+1)/20);
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();     
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-        $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')')
-        ->orderBy('pic_rating ASC, votes ASC, pid ASC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );                     
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            $countSQL =  ' AND '.implode(' AND ',$countSQLArray);
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')')
+            ->orderBy('pic_rating DESC, votes DESC, pid DESC')
+            ->limit( 5 );
+            $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );  
+            
+            $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (pic_rating < :pic_rating OR pic_rating = :pic_rating AND lh_gallery_images.votes < :votes OR pic_rating = :pic_rating AND lh_gallery_images.votes = :votes AND pid < :pid) AND aid = :aid '.$countSQL);
+            $stmt->bindValue( ':pic_rating',$Image->pic_rating);       
+            $stmt->bindValue( ':votes',$Image->votes);       
+            $stmt->bindValue( ':pid',$Image->pid);
+            $stmt->bindValue( ':aid',$Image->aid);
+            
+            foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+            }
+                   
+            $stmt->execute();
+            $photos = $stmt->fetchColumn();         
+            $page = ceil(($photos+1)/20);
+            
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            
+            $filterSQLArray = array();     
+            foreach ($filterArray as $field => $filterValue){
+                $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            }
+            $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')')
+            ->orderBy('pic_rating ASC, votes ASC, pid ASC')
+            ->limit( 5 );
+            $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+            $ResultCacheImages['imagesRight'] = $imagesRight;
+            $ResultCacheImages['page'] = $page;
+            $ResultCacheImages['imagesLeft'] = $imagesLeft;
+           
+            $cache->store($cacheKeyImage,$ResultCacheImages,0);
+             
+        } else {
+            $imagesRight = $ResultCacheImages['imagesRight'];
+            $imagesLeft = $ResultCacheImages['imagesLeft'];
+            $page = $ResultCacheImages['page'];
+        }                     
     }    
     
     $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';
     $urlAppend = $modeSort != 'new' ? '/(sort)/'.$modeSort : '';             
     $urlAppend .= $appendResolutionMode;
-    
+        
     $tpl->set('urlAppend',$urlAppend);       
-    $tpl->set('urlReturnToThumbnails',$Image->album->url_path.$pageAppend.$urlAppend);   
+    $tpl->set('urlReturnToThumbnails',$Image->album_path.$pageAppend.$urlAppend);   
     $tpl->setArray($imagesParams);           
     
 } elseif ($mode == 'search') {
@@ -908,168 +1046,227 @@ if ($mode == 'album')
     
 } elseif ($mode == 'myfavorites') {
 
-	$favouriteSession = erLhcoreClassModelGalleryMyfavoritesSession::getInstance();	
-	$imagesLeftArray = erLhcoreClassModelGalleryMyfavoritesImage::getImages(array('cache_key' => 'favorite_image_'.CSCacheAPC::getMem()->getCacheVersion('favorite_'.$favouriteSession->id),'limit' => 5,'sort' => 'pid ASC','filter' => array('session_id' => $favouriteSession->id),'filtergt' => array('pid' => $Image->pid)));
-    $page = ceil((erLhcoreClassModelGalleryMyfavoritesImage::getImageCount(array('filter' => array('session_id' => $favouriteSession->id),'filtergt' => array('pid' => $Image->pid)))+1)/20);
-    $imagesRightArray = erLhcoreClassModelGalleryMyfavoritesImage::getImages(array('cache_key' => 'favorite_image_'.CSCacheAPC::getMem()->getCacheVersion('favorite_'.$favouriteSession->id),'limit' => 5,'filter' => array('session_id' => $favouriteSession->id),'filterlt' => array('pid' => $Image->pid)));        
-    $imagesLeft = array();
-    $imagesRight = array();
-    
-    foreach ($imagesLeftArray as $imageLeftItem)
-    {
-        $imageItem = $imageLeftItem->image;
-                        
-        if ($imageItem !== false) {
-    	   $imagesLeft[] = $imageItem;
-        }
-    }
-    
-    foreach ($imagesRightArray as $imageRightItem)
-    {
-        $imageItem = $imageRightItem->image;
+    $cache = CSCacheAPC::getMem(); 
+    $favouriteSession = erLhcoreClassModelGalleryMyfavoritesSession::getInstance();    
+    $cacheKeyImage = 'myfavorites_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('favorite_'.$favouriteSession->id).'_session_id_'.$favouriteSession->id.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
-        if ($imageItem !== false) {
-    	   $imagesRight[] = $imageRightItem->image;
-        }
-    }
-      
-    
-	$imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
-    $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
-    $urlAppend = '/(mode)/myfavorites';             
+    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+    {    		
+    	$imagesLeftArray = erLhcoreClassModelGalleryMyfavoritesImage::getImages(array('cache_key' => 'favorite_image_'.CSCacheAPC::getMem()->getCacheVersion('favorite_'.$favouriteSession->id),'limit' => 5,'sort' => 'pid ASC','filter' => array('session_id' => $favouriteSession->id),'filtergt' => array('pid' => $Image->pid)));
+        $page = ceil((erLhcoreClassModelGalleryMyfavoritesImage::getImageCount(array('filter' => array('session_id' => $favouriteSession->id),'filtergt' => array('pid' => $Image->pid)))+1)/20);
+        $imagesRightArray = erLhcoreClassModelGalleryMyfavoritesImage::getImages(array('cache_key' => 'favorite_image_'.CSCacheAPC::getMem()->getCacheVersion('favorite_'.$favouriteSession->id),'limit' => 5,'filter' => array('session_id' => $favouriteSession->id),'filterlt' => array('pid' => $Image->pid)));        
+        $imagesLeft = array();
+        $imagesRight = array();
         
-    $tpl->set('urlAppend',$urlAppend);       
-    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/myfavorites').$urlAppend.$pageAppend);   
-    $tpl->setArray($imagesParams);	
+        foreach ($imagesLeftArray as $imageLeftItem)
+        {
+            $imageItem = $imageLeftItem->image;
+                            
+            if ($imageItem !== false) {
+        	   $imagesLeft[] = $imageItem;
+            }
+        }
+        
+        foreach ($imagesRightArray as $imageRightItem)
+        {
+            $imageItem = $imageRightItem->image;
+            
+            if ($imageItem !== false) {
+        	   $imagesRight[] = $imageRightItem->image;
+            }
+        }
+                
+    	$imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
+        $urlAppend = '/(mode)/myfavorites'; 
+                
+        $ResultCacheImages['urlAppend'] = $urlAppend;
+        $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/myfavorites').$urlAppend.$pageAppend;
+        $ResultCacheImages['imagesParams'] = $imagesParams;
+        
+        $cache->store($cacheKeyImage,$ResultCacheImages,0);
+    }
+        
+    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
+    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
+    $tpl->setArray($ResultCacheImages['imagesParams']);	
 	
 } elseif ($mode == 'popularrecent') {
-    
-	$db = ezcDbInstance::get(); 
-    $session = erLhcoreClassGallery::getSession(); 
-            
-    $hitsRecent = erLhcoreClassModelGalleryPopular24::fetch($Image->pid);
         
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );
-    
-    $q->where( '('.$q->expr->gt( 'hits', $q->bindValue( $hitsRecent->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $hitsRecent->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-    ->orderBy('hits ASC, pid ASC')
-    ->limit( 5 );
-    $imagesLeftArray = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' );
-          
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );
-    
-    $q->where( '('.$q->expr->lt( 'hits', $q->bindValue( $hitsRecent->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $hitsRecent->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-    ->orderBy('hits DESC, pid DESC')
-    ->limit( 5 );
-    $imagesRightArray = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' );
+    $cache = CSCacheAPC::getMem(); 
+        
+    $cacheKeyImage = 'popularrecent_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('popularrecent_version').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        
+    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+    {    
+    	$db = ezcDbInstance::get(); 
+        $session = erLhcoreClassGallery::getSession(); 
+                
+        $hitsRecent = erLhcoreClassModelGalleryPopular24::fetch($Image->pid);
             
-    $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_popular24 WHERE (hits > :hits OR hits = :hits AND pid > :pid) LIMIT 1');
-    $stmt->bindValue( ':hits',$hitsRecent->hits);
-    $stmt->bindValue( ':pid',$Image->pid); 
-                  
-    $stmt->execute();
-    $photos = $stmt->fetchColumn(); 
-	           
-    $page = ceil(($photos+1)/20);
-
-    $imagesLeft = $imagesRight = array();
-  
-    foreach ($imagesLeftArray as $imageLeftItem)
-    {
-    	$imagesLeft[] = $imageLeftItem->image;
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );
+        
+        $q->where( '('.$q->expr->gt( 'hits', $q->bindValue( $hitsRecent->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $hitsRecent->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+        ->orderBy('hits ASC, pid ASC')
+        ->limit( 5 );
+        $imagesLeftArray = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' );
+              
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );
+        
+        $q->where( '('.$q->expr->lt( 'hits', $q->bindValue( $hitsRecent->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $hitsRecent->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+        ->orderBy('hits DESC, pid DESC')
+        ->limit( 5 );
+        $imagesRightArray = $session->find( $q, 'erLhcoreClassModelGalleryPopular24' );
+                
+        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_popular24 WHERE (hits > :hits OR hits = :hits AND pid > :pid) LIMIT 1');
+        $stmt->bindValue( ':hits',$hitsRecent->hits);
+        $stmt->bindValue( ':pid',$Image->pid); 
+                      
+        $stmt->execute();
+        $photos = $stmt->fetchColumn(); 
+    	           
+        $page = ceil(($photos+1)/20);
+    
+        $imagesLeft = $imagesRight = array();
+      
+        foreach ($imagesLeftArray as $imageLeftItem)
+        {
+        	$imagesLeft[] = $imageLeftItem->image;
+        }
+        
+        foreach ($imagesRightArray as $imageRightItem)
+        {
+        	$imagesRight[] = $imageRightItem->image;
+        }
+        
+        $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
+        $urlAppend = '/(mode)/popularrecent';             
+        $urlAppend .= $appendResolutionMode;
+           
+        $ResultCacheImages['urlAppend'] = $urlAppend;
+        $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/popularrecent').$urlAppend.$pageAppend;
+        $ResultCacheImages['imagesParams'] = $imagesParams;
+           
+        $cache->store($cacheKeyImage,$ResultCacheImages,0);
     }
     
-    foreach ($imagesRightArray as $imageRightItem)
-    {
-    	$imagesRight[] = $imageRightItem->image;
-    }
-    
-    $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
-    $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
-    $urlAppend = '/(mode)/popularrecent';             
-    $urlAppend .= $appendResolutionMode;
-        
-    $tpl->set('urlAppend',$urlAppend);       
-    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/popularrecent').$urlAppend.$pageAppend);   
-    $tpl->setArray($imagesParams);    
-	
+    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
+    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
+    $tpl->setArray($ResultCacheImages['imagesParams']);
+    	
 } elseif ($mode == 'lastuploads') {
-               
-    $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'limit' => 5,'filter' => $filterArray,'sort' => 'pid ASC','filtergt' => array('pid' => $Image->pid)));    	
-    $page = ceil((erLhcoreClassModelGalleryImage::getImageCount(array('filtergt' => array('pid' => $Image->pid),'filter' => $filterArray))+1)/20);
-    $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'limit' => 5,'filter' => $filterArray,'sort' => 'pid DESC','filterlt' => array('pid' => $Image->pid)));
-     	
-	$imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
-    $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
-    $urlAppend = '/(mode)/lastuploads'; 
-    $urlAppend .= $appendResolutionMode;
+
+    $cache = CSCacheAPC::getMem(); 
         
-    $tpl->set('urlAppend',$urlAppend);       
-    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/lastuploads').$urlAppend.$pageAppend);   
-    $tpl->setArray($imagesParams);	
-	
-	
+    $cacheKeyImage = 'lastuploads_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('last_uploads').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    
+    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+    {       
+        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'limit' => 5,'filter' => $filterArray,'sort' => 'pid ASC','filtergt' => array('pid' => $Image->pid)));    	
+        $page = ceil((erLhcoreClassModelGalleryImage::getImageCount(array('filtergt' => array('pid' => $Image->pid),'filter' => $filterArray))+1)/20);
+        $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'limit' => 5,'filter' => $filterArray,'sort' => 'pid DESC','filterlt' => array('pid' => $Image->pid)));
+         	
+    	$imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
+        $urlAppend = '/(mode)/lastuploads'; 
+        $urlAppend .= $appendResolutionMode;
+         
+        $ResultCacheImages['urlAppend'] = $urlAppend;
+        $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/lastuploads').$urlAppend.$pageAppend;
+        $ResultCacheImages['imagesParams'] = $imagesParams;
+           
+        $cache->store($cacheKeyImage,$ResultCacheImages,0);	    
+    }
+    
+	$tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
+    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
+    $tpl->setArray($ResultCacheImages['imagesParams']);
+    
 } elseif ($mode == 'lasthits') {
 
-    $db = ezcDbInstance::get(); 
-    $session = erLhcoreClassGallery::getSession(); 
+    $cache = CSCacheAPC::getMem(); 
         
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+    $cacheKeyImage = 'lasthits_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('last_hits_version').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
     
-    $filterSQLArray = array();
-    $countSQLArray = array();
-    $countSQL = '';
-    $filterSQLString = '';
-    
-    foreach ($filterArray as $field => $filterValue){
-        $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
-    }
-
-    $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-    $countSQL = ' AND '.implode(' AND ',$countSQLArray);
-         
-    $q->where( $filterSQLString.' ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-    ->orderBy('mtime ASC, pid ASC')
-    ->limit( 5 );
-    $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-              
-    
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-    
-    $filterSQLArray = array();
-    foreach ($filterArray as $field => $filterValue){
-        $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-    }
-    $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-    $q->where( $filterSQLString.'('.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-    ->orderBy('mtime DESC, pid DESC')
-    ->limit( 5 );
-    $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+    {
+        $db = ezcDbInstance::get(); 
+        $session = erLhcoreClassGallery::getSession(); 
             
-    $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (mtime > :mtime OR mtime = :mtime AND pid > :pid) '.$countSQL.' LIMIT 1');
-    $stmt->bindValue( ':mtime',$Image->mtime);
-    $stmt->bindValue( ':pid',$Image->pid);  
-
-    foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-    }
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
         
-    $stmt->execute();  
-    $photos = $stmt->fetchColumn();         
-    $page = ceil(($photos+1)/20);
+        $filterSQLArray = array();
+        $countSQLArray = array();
+        $countSQL = '';
+        $filterSQLString = '';
+        
+        foreach ($filterArray as $field => $filterValue){
+            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+        }
     
-    $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
-    $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
-    $urlAppend = '/(mode)/lasthits';             
-    $urlAppend .= $appendResolutionMode; 
-      
-    $tpl->set('urlAppend',$urlAppend);       
-    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/lasthits').$urlAppend.$pageAppend);   
-    $tpl->setArray($imagesParams);
+        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+        $countSQL = ' AND '.implode(' AND ',$countSQLArray);
+             
+        $q->where( $filterSQLString.' ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+        ->orderBy('mtime ASC, pid ASC')
+        ->limit( 5 );
+        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+                  
+        
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        
+        $filterSQLArray = array();
+        foreach ($filterArray as $field => $filterValue){
+            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+        }
+        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+        $q->where( $filterSQLString.'('.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+        ->orderBy('mtime DESC, pid DESC')
+        ->limit( 5 );
+        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+                
+        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (mtime > :mtime OR mtime = :mtime AND pid > :pid) '.$countSQL.' LIMIT 1');
+        $stmt->bindValue( ':mtime',$Image->mtime);
+        $stmt->bindValue( ':pid',$Image->pid);  
+    
+        foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+        }
+            
+        $stmt->execute();  
+        $photos = $stmt->fetchColumn();         
+        $page = ceil(($photos+1)/20);
+        
+        $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
+        $urlAppend = '/(mode)/lasthits';             
+        $urlAppend .= $appendResolutionMode; 
+          
+        $ResultCacheImages['urlAppend'] = $urlAppend;
+        $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/lasthits').$urlAppend.$pageAppend;
+        $ResultCacheImages['imagesParams'] = $imagesParams;
+           
+        $cache->store($cacheKeyImage,$ResultCacheImages,0);
+    }
+    
+    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
+    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
+    $tpl->setArray($ResultCacheImages['imagesParams']);
+    
 	
-} elseif ($mode == 'popular'){
+} elseif ($mode == 'popular') {
+        
+    $cache = CSCacheAPC::getMem(); 
+        
+    $cacheKeyImage = 'popular_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('most_popular_version').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    
+    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+    {
+    
+    
     $db = ezcDbInstance::get(); 
     $session = erLhcoreClassGallery::getSession(); 
         
@@ -1123,131 +1320,170 @@ if ($mode == 'album')
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = '/(mode)/popular';             
     $urlAppend .= $appendResolutionMode;
-        
-    $tpl->set('urlAppend',$urlAppend);       
-    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/popular').$urlAppend.$pageAppend);   
-    $tpl->setArray($imagesParams);
-       	
-}   elseif ($mode == 'lastcommented'){
-    $db = ezcDbInstance::get(); 
-    $session = erLhcoreClassGallery::getSession(); 
-        
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+      
+    $ResultCacheImages['urlAppend'] = $urlAppend;
+    $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/popular').$urlAppend.$pageAppend;
+    $ResultCacheImages['imagesParams'] = $imagesParams;
+       
+    $cache->store($cacheKeyImage,$ResultCacheImages,0); 
     
-    $filterSQLArray = array();
-    $countSQLArray = array();
-    $countSQL = '';
-    $filterSQLString = '';
-    
-    foreach ($filterArray as $field => $filterValue){
-        $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
     }
 
-    $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-    $countSQL = ' AND '.implode(' AND ',$countSQLArray);
     
-    $q->where( $filterSQLString.'('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-    ->orderBy('comtime ASC, pid ASC')
-    ->limit( 5 );
-    $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-          
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);       
+    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);   
+    $tpl->setArray($ResultCacheImages['imagesParams']); 
     
-    $filterSQLArray = array();    
-    foreach ($filterArray as $field => $filterValue){
-        $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-    }
-    $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
     
-    $q->where( $filterSQLString.'('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-    ->orderBy('comtime DESC, pid DESC')
-    ->limit( 5 );
-    $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+      	
+}   elseif ($mode == 'lastcommented') {
+    
+    $cache = CSCacheAPC::getMem(); 
+        
+    $cacheKeyImage = 'lastcommented_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('last_commented').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    
+    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+    { 
+        $db = ezcDbInstance::get(); 
+        $session = erLhcoreClassGallery::getSession(); 
             
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        
+        $filterSQLArray = array();
+        $countSQLArray = array();
+        $countSQL = '';
+        $filterSQLString = '';
+        
+        foreach ($filterArray as $field => $filterValue){
+            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+        }
     
-    $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (comtime > :comtime OR comtime = :comtime AND pid > :pid) '.$countSQL.' LIMIT 1');
-    $stmt->bindValue( ':comtime',$Image->comtime);
-    $stmt->bindValue( ':pid',$Image->pid);     
-               
-    foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-    }
-     
-    $stmt->execute();
-          
-    $photos = $stmt->fetchColumn();
-    $page = ceil(($photos+1)/20);
+        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+        $countSQL = ' AND '.implode(' AND ',$countSQLArray);
+        
+        $q->where( $filterSQLString.'('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+        ->orderBy('comtime ASC, pid ASC')
+        ->limit( 5 );
+        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+              
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        
+        $filterSQLArray = array();    
+        foreach ($filterArray as $field => $filterValue){
+            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+        }
+        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+        
+        $q->where( $filterSQLString.'('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+        ->orderBy('comtime DESC, pid DESC')
+        ->limit( 5 );
+        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+                
+        
+        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (comtime > :comtime OR comtime = :comtime AND pid > :pid) '.$countSQL.' LIMIT 1');
+        $stmt->bindValue( ':comtime',$Image->comtime);
+        $stmt->bindValue( ':pid',$Image->pid);     
+                   
+        foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+        }
          
-    $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
-    $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
-    $urlAppend = '/(mode)/lastcommented';             
-    $urlAppend .= $appendResolutionMode;
-        
-    $tpl->set('urlAppend',$urlAppend);       
-    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/lastcommented').$urlAppend.$pageAppend);   
-    $tpl->setArray($imagesParams);
-     	
-} elseif ($mode == 'toprated'){
-    $db = ezcDbInstance::get(); 
-    $session = erLhcoreClassGallery::getSession(); 
-        
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-    
-    $filterSQLArray = array();
-    $countSQLArray = array();
-    $countSQL = '';
-    $filterSQLString = '';
-    
-    foreach ($filterArray as $field => $filterValue){
-        $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+        $stmt->execute();
+              
+        $photos = $stmt->fetchColumn();
+        $page = ceil(($photos+1)/20);
+             
+        $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+        $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
+        $urlAppend = '/(mode)/lastcommented';             
+        $urlAppend .= $appendResolutionMode;
+                
+        $ResultCacheImages['urlAppend'] = $urlAppend;
+        $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/lastcommented').$urlAppend.$pageAppend;
+        $ResultCacheImages['imagesParams'] = $imagesParams;
+       
+        $cache->store($cacheKeyImage,$ResultCacheImages,0); 
     }
-
-    $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-    $countSQL = ' AND '.implode(' AND ',$countSQLArray);    
-    
-    $q->where( $filterSQLString.'('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
-    $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).') ')
-    ->orderBy('pic_rating ASC, votes ASC, pid ASC')
-    ->limit( 5 );
-    $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
-          
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-    
-    $filterSQLArray = array();    
-    foreach ($filterArray as $field => $filterValue){
-        $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-    }
-    $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        
-    $q->where( $filterSQLString.'('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
-    $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).') ')
-    ->orderBy('pic_rating DESC, votes DESC, pid DESC')
-    ->limit( 5 );
-    $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
            
-   $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (pic_rating > :pic_rating OR pic_rating = :pic_rating AND lh_gallery_images.votes > :votes OR pic_rating = :pic_rating AND lh_gallery_images.votes = :votes AND pid > :pid) '.$countSQL);
-   $stmt->bindValue( ':pic_rating',$Image->pic_rating);       
-   $stmt->bindValue( ':votes',$Image->votes);       
-   $stmt->bindValue( ':pid',$Image->pid);
-   
-   foreach ($filterArray as $field => $filterValue){
-            $stmt->bindValue( ':'.$field,$filterValue);
-   }
-   
-   $stmt->execute();
-   $photos = $stmt->fetchColumn();         
-   $page = ceil(($photos+1)/20);
-           
-   $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
-   $pageAppend = $page > 1 ? '/(page)/'.$page : '';
-   $urlAppend = '/(mode)/toprated';
-   $urlAppend .= $appendResolutionMode;
+    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);       
+    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);   
+    $tpl->setArray($ResultCacheImages['imagesParams']);        
+    
+} elseif ($mode == 'toprated') {
+    
+    $cache = CSCacheAPC::getMem(); 
         
-   $tpl->set('urlAppend',$urlAppend);       
-   $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/toprated').$urlAppend.$pageAppend);   
-   $tpl->setArray($imagesParams);      
+    $cacheKeyImage = 'toprated_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('top_rated').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    
+    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+    {
+        $db = ezcDbInstance::get(); 
+        $session = erLhcoreClassGallery::getSession(); 
+            
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        
+        $filterSQLArray = array();
+        $countSQLArray = array();
+        $countSQL = '';
+        $filterSQLString = '';
+        
+        foreach ($filterArray as $field => $filterValue){
+            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
+        }
+    
+        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+        $countSQL = ' AND '.implode(' AND ',$countSQLArray);    
+        
+        $q->where( $filterSQLString.'('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
+        $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).') ')
+        ->orderBy('pic_rating ASC, votes ASC, pid ASC')
+        ->limit( 5 );
+        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
+              
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+        
+        $filterSQLArray = array();    
+        foreach ($filterArray as $field => $filterValue){
+            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+        }
+        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+            
+        $q->where( $filterSQLString.'('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
+        $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).') ')
+        ->orderBy('pic_rating DESC, votes DESC, pid DESC')
+        ->limit( 5 );
+        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+               
+       $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (pic_rating > :pic_rating OR pic_rating = :pic_rating AND lh_gallery_images.votes > :votes OR pic_rating = :pic_rating AND lh_gallery_images.votes = :votes AND pid > :pid) '.$countSQL);
+       $stmt->bindValue( ':pic_rating',$Image->pic_rating);       
+       $stmt->bindValue( ':votes',$Image->votes);       
+       $stmt->bindValue( ':pid',$Image->pid);
+       
+       foreach ($filterArray as $field => $filterValue){
+                $stmt->bindValue( ':'.$field,$filterValue);
+       }
+       
+       $stmt->execute();
+       $photos = $stmt->fetchColumn();         
+       $page = ceil(($photos+1)/20);
+               
+       $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+       $pageAppend = $page > 1 ? '/(page)/'.$page : '';
+       $urlAppend = '/(mode)/toprated';
+       $urlAppend .= $appendResolutionMode;
+             
+       $ResultCacheImages['urlAppend'] = $urlAppend;
+       $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/toprated').$urlAppend.$pageAppend;
+       $ResultCacheImages['imagesParams'] = $imagesParams;
+       
+       $cache->store($cacheKeyImage,$ResultCacheImages,0);       
+   }   
+      
+   $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);       
+   $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);   
+   $tpl->setArray($ResultCacheImages['imagesParams']);      
 }
 
 
@@ -1317,7 +1553,7 @@ if ($mode == 'lastuploads') {
     $Result['title_path'] = array(array('title' => urldecode($Params['user_parameters_unordered']['keyword']).' - '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','search results')),array('title' => $Image->name_user));
    
 } else {
-    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded images to album').' - '.$Image->album->title;
+    $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded images to album').' - '.$Image->album_title;
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss/').$Image->aid; 
 }
 

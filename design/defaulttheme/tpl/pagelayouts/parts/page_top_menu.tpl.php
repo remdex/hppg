@@ -2,7 +2,7 @@
         <?php
         $currentUser = erLhcoreClassUser::instance();                       
         if ($currentUser->isLogged()) : 
-        $UserData = $currentUser->getUserData();
+        $UserData = $currentUser->getUserData(true);
         ?>                                       	
         	<li><a href="<?=erLhcoreClassDesign::baseurl('/user/index/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Account');?> - (<?echo $UserData->username?>) 
         	<li><a href="<?=erLhcoreClassDesign::baseurl('/user/logout/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Logout');?></a>                  

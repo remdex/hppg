@@ -151,11 +151,29 @@ class erLhcoreClassModelGalleryImage {
        	        return 'albums/'.$this->filepath.$this->filename;
        	    break; 
        	         	
-       	case 'album':        	    
+       	case 'album': 
        	    $this->album = erLhcoreClassModelGalleryAlbum::fetch($this->aid);
        	    return $this->album;
        		break;
-       		   	
+       		
+       	case 'album_path':       	  
+       	        $albumPath = $this->path;
+       	        array_pop($albumPath);// Remove self element;
+       	        $albumPath = array_pop($albumPath);
+       	        $this->album_path = $albumPath['url'];
+       	        $this->album_title = $albumPath['title']; // Cache for feature
+       	        return $this->album_path;
+       	    break;
+
+       	case 'album_title':
+           	    $albumPath = $this->path;
+       	        array_pop($albumPath);// Remove self element;
+       	        $albumPath = array_pop($albumPath);
+       	        $this->album_path = $albumPath['url']; // Cache for feature
+       	        $this->album_title = $albumPath['title'];
+       	        return $this->album_title;
+       	    break;    
+       	      	   	
        	default:
        		break;
        }
@@ -165,6 +183,19 @@ class erLhcoreClassModelGalleryImage {
    
    public static function getImageCount($params = array())
    {
+       if (!isset($params['disable_sql_cache']))
+       {
+          $sql = erLhcoreClassGallery::multi_implode(',',$params);  
+                       
+          $cache = CSCacheAPC::getMem();          
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
+          
+          if (($result = $cache->restore($cacheKey)) !== false)
+          {              
+              return $result;
+          }       
+       }    
+       
        $session = erLhcoreClassGallery::getSession();
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_gallery_images" );     
@@ -208,36 +239,37 @@ class erLhcoreClassModelGalleryImage {
           $q->where( 
                      $conditions   
           );
-      }         
-                  
-      if (!isset($params['disable_sql_cache']))
-      {
-          $sql = erLhcoreClassGallery::multi_implode(',',$params);  
-                       
-          $cache = CSCacheAPC::getMem();          
-          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
- 
-          if (($result = $cache->restore($cacheKey)) === false)
-          {
-              $stmt = $q->prepare();       
-              $stmt->execute();   
-              $result = $stmt->fetchColumn();            
-              $cache->store($cacheKey,$result);
-          }  
-      } else {
-              $stmt = $q->prepare();       
-              $stmt->execute();
-              $result = $stmt->fetchColumn(); 
-      }                         
+      }   
+            
+      $stmt = $q->prepare();       
+      $stmt->execute();   
+      $result = $stmt->fetchColumn(); 
+      
+      if (!isset($params['disable_sql_cache'])) {
+              $cache->store($cacheKey,$result);           
+      }                   
       
       return $result; 
    }
    
    public static function getImages($paramsSearch = array())
    {             
-       $paramsDefault = array('limit' => 32, 'offset' => 0);
-       
+       $paramsDefault = array('limit' => 32, 'offset' => 0);       
        $params = array_merge($paramsDefault,$paramsSearch);
+              
+       if (!isset($params['disable_sql_cache']))
+       {
+          $sql = erLhcoreClassGallery::multi_implode(',',$params);  
+                       
+          $cache = CSCacheAPC::getMem();          
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
+          
+          if (($result = $cache->restore($cacheKey)) !== false)
+          {     
+              return $result;
+              
+          }       
+       }
        
        $session = erLhcoreClassGallery::getSession();
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );  
@@ -335,20 +367,12 @@ class erLhcoreClassModelGalleryImage {
           $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );          
        }
        
-       
+      $objects = $session->find( $q );
+             
       if (!isset($params['disable_sql_cache']))
       {
-          $cache = CSCacheAPC::getMem();  
-          $sql = erLhcoreClassGallery::multi_implode(',',$params); 
-                         
-          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);      
-             
-          if (($objects = $cache->restore($cacheKey)) === false)
-          {       
-              $objects = $session->find( $q ); 
               $cache->store($cacheKey,$objects);
-          }          
-      }  else { $objects = $session->find( $q ); }
+      } 
          
       return $objects; 
    }
