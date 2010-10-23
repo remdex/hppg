@@ -8,12 +8,18 @@ class erLhcoreClassImageConverter {
    
    function __construct()
    {
+       $conversionSettings = array();
+       
+       if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'imagemagic_enabled' ) == true)
+       {
+           $conversionSettings[] = new ezcImageHandlerSettings( 'imagemagick', 'erLhcoreClassGalleryImagemagickHandler' );
+       }
+       
+       $conversionSettings[] =  new ezcImageHandlerSettings( 'gd','erLhcoreClassGalleryGDHandler' );
+       
         $this->converter = new ezcImageConverter(
                 new ezcImageConverterSettings(
-                    array( 
-                        new ezcImageHandlerSettings( 'imagemagick', 'erLhcoreClassGalleryImagemagickHandler' ),
-                        new ezcImageHandlerSettings( 'gd','erLhcoreClassGalleryGDHandler' )
-                    )
+                    $conversionSettings
                 )
             );
 
