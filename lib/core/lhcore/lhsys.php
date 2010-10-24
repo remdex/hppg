@@ -18,14 +18,14 @@ class CSCacheAPC {
     
     public function increaseImageManipulationCache()
     {
-        $this->increaseCacheVersion('last_hits_version');
-        $this->increaseCacheVersion('most_popular_version');
+        $this->increaseCacheVersion('last_hits_version',time(),600);
+        $this->increaseCacheVersion('most_popular_version',time(),1500);
         $this->increaseCacheVersion('last_uploads');
         $this->increaseCacheVersion('top_rated');
         $this->increaseCacheVersion('last_commented');        
         $this->increaseCacheVersion('sphinx_cache_version');        
         $this->increaseCacheVersion('site_version');  
-        $this->increaseCacheVersion('popularrecent_version');  
+        $this->increaseCacheVersion('popularrecent_version',time(),600);  
     }
     
     function __construct() {  
