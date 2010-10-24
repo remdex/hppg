@@ -77,7 +77,7 @@ class erLhcoreClassModelGalleryPopular24 {
 	   
 	   // Expunge cache if some image was deleted
 	   $cache = CSCacheAPC::getMem(); 
-	   $cache->increaseCacheVersion('popularrecent_version');
+	   $cache->increaseCacheVersion('popularrecent_version',time(),600);
    }
    
    public static function getImageCount($params = array())
