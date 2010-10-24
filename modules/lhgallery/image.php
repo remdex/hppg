@@ -1501,17 +1501,20 @@ $Result['content'] = $tpl->fetch();
 $Result['path'] = $Image->path;
 $Result['canonical'] = 'http://'.$_SERVER['HTTP_HOST'].$Image->url_path;
 
-// Must be in the bottom
-if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true){
+// Must be in the bottom, three options fo image hit.
+if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true) {
 	erLhcoreClassModelGalleryDelayImageHit::addHit($Image->pid);
-	if ($needSave == true) { // If comment was stored we need to update image
-	    erLhcoreClassGallery::getSession()->update($Image);
-	}
-} else {
+} elseif (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_log' ) == false) {
 	$Image->hits++;
 	$Image->mtime = time();
 	erLhcoreClassGallery::getSession()->update($Image);
+	$needSave = false;
 }
+
+if ($needSave == true) { // If comment was stored we need to update image
+	erLhcoreClassGallery::getSession()->update($Image);
+}
+	
 
 if ($mode == 'lastuploads') {
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded images');
