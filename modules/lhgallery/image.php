@@ -138,7 +138,7 @@ if ($mode == 'album')
     } elseif ($modeSort == 'popular') {
         
         $cache = CSCacheAPC::getMem();         
-        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_popular_'.$Image->pid.'_popular_version_'.$cache->getCacheVersion('most_popular_version').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_popular_'.$Image->pid.'_popular_version_'.$cache->getCacheVersion('most_popular_version',time(),1500).'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
         if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
         {  
@@ -207,7 +207,7 @@ if ($mode == 'album')
     } elseif ($modeSort == 'popularasc') {
         
         $cache = CSCacheAPC::getMem();         
-        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_popularasc_'.$Image->pid.'_popular_version_'.$cache->getCacheVersion('most_popular_version').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_popularasc_'.$Image->pid.'_popular_version_'.$cache->getCacheVersion('most_popular_version',time(),1500).'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
                 
         if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
@@ -275,7 +275,7 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lasthits') {
                 
         $cache = CSCacheAPC::getMem();         
-        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_lasthits_'.$Image->pid.'_lasthits_version_'.$cache->getCacheVersion('last_hits_version').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_lasthits_'.$Image->pid.'_lasthits_version_'.$cache->getCacheVersion('last_hits_version',time(),600).'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
                         
         if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
         {        
@@ -341,7 +341,7 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lasthitsasc') {
         
         $cache = CSCacheAPC::getMem();         
-        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_lasthitsasc_'.$Image->pid.'_lasthits_version_'.$cache->getCacheVersion('last_hits_version').'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        $cacheKeyImage = 'album_mode_image_ajax_pid_sort_lasthitsasc_'.$Image->pid.'_lasthits_version_'.$cache->getCacheVersion('last_hits_version',time(),600).'_version_'.$cache->getCacheVersion('album_'.$Image->aid).'_album_id_'.$Image->aid.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
                         
         if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
         {        
@@ -1190,7 +1190,7 @@ if ($mode == 'album')
 
     $cache = CSCacheAPC::getMem(); 
         
-    $cacheKeyImage = 'lasthits_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('last_hits_version').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    $cacheKeyImage = 'lasthits_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('last_hits_version',time(),600).'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
     
     if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
     {
@@ -1264,7 +1264,7 @@ if ($mode == 'album')
         
     $cache = CSCacheAPC::getMem(); 
         
-    $cacheKeyImage = 'popular_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('most_popular_version').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    $cacheKeyImage = 'popular_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('most_popular_version',time(),1500).'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
     
     if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
     {

@@ -13,14 +13,14 @@ $sortModes = array(
     
 $appendCacheModes = array(
 
-'popular' => 'most_popular_version',
-'popularasc' => 'most_popular_version',
-'lasthits' => 'last_hits_version',
-'lasthitsasc' => 'last_hits_version',
-'lastcommented' => 'last_commented_'.(int)$Params['user_parameters']['album_id'],
-'lastcommentedasc' => 'last_commented_'.(int)$Params['user_parameters']['album_id'],
-'toprated' => 'top_rated_'.(int)$Params['user_parameters']['album_id'],
-'topratedasc' => 'top_rated_'.(int)$Params['user_parameters']['album_id'],
+'popular' => array('key' => 'most_popular_version','defvalue' => time(),'ttl' => 1500),
+'popularasc' => array('key' => 'most_popular_version','defvalue' => time(),'ttl' => 1500),
+'lasthits' => array('key' => 'last_hits_version','defvalue' => time(),'ttl' => 600),
+'lasthitsasc' => array('key' => 'last_hits_version','defvalue' => time(),'ttl' => 600),
+'lastcommented' => array('key' => 'last_commented_'.(int)$Params['user_parameters']['album_id'],'defvalue' => 1,'ttl' => 0),
+'lastcommentedasc' => array('key' => 'last_commented_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
+'toprated' => array('key' => 'top_rated_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
+'topratedasc' => array('key' => 'top_rated_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
 
 );
     
@@ -40,10 +40,11 @@ $mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Param
 $cache = CSCacheAPC::getMem(); 
      
 $appendCacheKey = '';
+
 // We need extra cache key in these cases
 if (key_exists($mode,$appendCacheModes))
-{
-    $appendCacheKey = 'append_cache_'.$mode.'_version_'.$cache->getCacheVersion($appendCacheModes[$mode]).'_key_'.$appendCacheModes[$mode];
+{    
+    $appendCacheKey = 'append_cache_'.$mode.'_version_'.$cache->getCacheVersion($appendCacheModes[$mode]['key'],$appendCacheModes[$mode]['defvalue'],$appendCacheModes[$mode]['ttl']).'_key_'.$appendCacheModes[$mode]['key'];
 }
 
 $cacheKey = md5('version_'.$cache->getCacheVersion('album_'.(int)$Params['user_parameters']['album_id']).$mode.$resolution.'album_view_url'.(int)$Params['user_parameters']['album_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.$appendCacheKey);
