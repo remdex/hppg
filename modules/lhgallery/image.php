@@ -1098,7 +1098,7 @@ if ($mode == 'album')
         
     $cache = CSCacheAPC::getMem(); 
         
-    $cacheKeyImage = 'popularrecent_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('popularrecent_version').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    $cacheKeyImage = 'popularrecent_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('popularrecent_version',time(),600).'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
         
     if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
     {    

@@ -8,9 +8,16 @@ $ViewList['configuration'] = array(
     'script' => 'configuration.php',
     'params' => array(),
     'functions' => array( 'use' )
-    );         
+    );  
+           
 $ViewList['index'] = array( 
     'script' => 'index.php',
+    'params' => array(),
+    'functions' => array( 'use' )
+    ); 
+    
+$ViewList['cachestatus'] = array( 
+    'script' => 'cachestatus.php',
     'params' => array(),
     'functions' => array( 'use' )
     );   

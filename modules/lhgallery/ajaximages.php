@@ -829,7 +829,7 @@ if ($mode == 'album')
 } elseif ($mode == 'popularrecent') {
 
     $cache = CSCacheAPC::getMem();         
-    $cacheKeyImage = 'popularrecent_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('popularrecent_version').'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    $cacheKeyImage = 'popularrecent_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('popularrecent_version',time(),600).'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
     
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
     {
