@@ -44,6 +44,11 @@ return array (
       ),
       'public_category_id' => 28,
       'delay_image_hit_enabled' => false,
+      'delay_image_hit_log' => false,
+      'delay_image_hit_log_settings' => array (      
+        'host' => false,                               //It can be false or array, ex. array('example.com','www.example.com')
+        'log_path' => '' // Absolute path to log, ex. /var/log/lighttpd/access.log.1     
+      ), 
       'installed' => false,
       'default_site_access' => 'eng',
       'secrethash' => '',
