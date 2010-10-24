@@ -32,10 +32,17 @@ class erLhcoreClassModelGalleryPopular24 {
     
    public static function deleteByPid($pid)
    {
-       $imagesPopular = self::getImages(array('limit' => 1,'filter' => array('pid' => $pid)));
+       $session = erLhcoreClassGallery::getSession();
+       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' ); 
+                     
+       $q->where( $q->expr->eq( 'pid', $q->bindValue($pid ))  );
+       
+       $imagesPopular = $session->find( $q );
+                 
        foreach ($imagesPopular as $imagePopular) {
            $imagePopular->removeThis();
        }
+       
    }
    
    public function removeThis() {
