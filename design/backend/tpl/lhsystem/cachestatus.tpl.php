@@ -32,8 +32,38 @@
         <td>Last commented</td>
         <td><?=$last_commented?></td>
         <td></td>
+    </tr>
+    <tr>
+        <td>Site version</td>
+        <td><?=$site_version?></td>
+        <td>Some application parts uses it as global cache key</td>
     </tr>            
 </table>
 
+<a href="<?=erLhcoreClassDesign::baseurl('system/expirecache')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Clean all cache');?></a>
+
+</fieldset>
+
+<br />
+
+<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','Abum cache status');?></legend>
+<p class="explain">With help of this window you can get information about custom album cache versions.</p>
+
+<input type="text" id="albumID" class="default-input" value="" /> <input type="button" class="default-button" name="GetCache" onclick="hw.getalbumcacheinfo($('#albumID').val())" value="Get information" />
+<div id="information-block-album">
+Enter album ID above and press Get information
+</div>
+
+</fieldset>
+
+<br />
+
+<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','Categiry cache status');?></legend>
+<p class="explain">With help of this window you can get information about custom category cache versions.</p>
+
+<input type="text" id="categoryID" class="default-input" value="" /> <input type="button" class="default-button" name="GetCache" onclick="hw.getcategorycacheinfo($('#categoryID').val())" value="Get information" />
+<div id="information-block-category">
+Enter category ID above and press Get information
+</div>
 
 </fieldset>

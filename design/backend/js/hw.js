@@ -54,6 +54,24 @@ var hw = {
 		return false;	
 	},
 	
+	getalbumcacheinfo : function (album_id)
+	{		
+		$.postJSON(this.formAddPath + 'system/albumcacheinfo/'+album_id,  function(data) {			    
+		   $('#information-block-album').html(data.result);			
+           return true;	          
+		});	
+		return false;	
+	},
+	
+	getcategorycacheinfo : function (category_id)
+	{		
+		$.postJSON(this.formAddPath + 'system/categorycacheinfo/'+category_id,  function(data) {			    
+		   $('#information-block-category').html(data.result);			
+           return true;	          
+		});	
+		return false;	
+	},
+	
 	updatePhoto : function(photo_id){
 	    var pdata = {
 				title	  : $('#PhotoTitle_'+photo_id).val(),
