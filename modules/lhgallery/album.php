@@ -104,8 +104,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('currentResolution',$resolution);
     $tpl->set('filterArray',$filterArray);
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('appendCacheKey',$appendCacheKey);
-    
+       
     $tpl->set('modeSQL',$modeSQL);
     $tpl->set('mode',$mode);
     
