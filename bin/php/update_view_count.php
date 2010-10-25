@@ -136,7 +136,12 @@ if ( is_file( $logFilePath ) )
                         
                         $timeDayParts = explode(':',substr($time,-8));
                         $timeStamp = mktime($timeDayParts[0],$timeDayParts[1],$timeDayParts[2]);
-                                                            
+
+                        if ($timeStamp > time()) {
+                            $timeStamp = $timeStamp - 24*3600; //In same cases during log rotate etc.
+                        }
+                    
+                                               
                         $imageID = array();              
                         if ( strpos( $url, 'gallery/image/' ) !== false )
                         {                            
