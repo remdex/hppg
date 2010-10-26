@@ -61,12 +61,16 @@ class erLhcoreClassModelGalleryUploadArchive {
    		{
    			$album = new erLhcoreClassModelGalleryAlbum();
    			
-   			if ($this->user_id == 0) {
+   			if ($this->user_id == 0 || $this->user_id == erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings','anonymous_user_id')) {
    				$album->category = $publicCategoryID;
    			} else {
    				$album->category = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('owner_id' => $this->user_id)),'cid');
    			}
-   			  			
+   			
+   			if ($album->category == 0) {
+   			    $album->category = $publicCategoryID;
+   			}
+   			 			
    			$album->title = $this->album_name;
    			$album->description = $this->description;   			
    			$album->owner_id = $this->user_id;
