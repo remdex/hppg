@@ -1336,6 +1336,74 @@ if ($mode == 'album')
     $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
     $tpl->setArray($ResultCacheImages['imagesParams']);
     	
+} elseif ($mode == 'ratedrecent') {
+        
+    $cache = CSCacheAPC::getMem(); 
+        
+    $cacheKeyImage = 'ratedrecent_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('ratedrecent_version').'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+        
+    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
+    {            
+        $ratedRecent = erLhcoreClassModelGalleryRated24::fetch($Image->pid);
+                
+        $db = ezcDbInstance::get(); 
+        $session = erLhcoreClassGallery::getSession(); 
+            
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryRated24' );
+               
+        $q->where( '('.$q->expr->gt( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $ratedRecent->votes ) ).' OR '.
+        $q->expr->eq( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $ratedRecent->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $ratedRecent->pid ) ).') ')
+        ->orderBy('pic_rating ASC, votes ASC, pid ASC')
+        ->limit( 5 );
+        $imagesLeftArray = $session->find( $q, 'erLhcoreClassModelGalleryRated24' ); 
+           
+        
+        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryRated24' );
+                         
+        $q->where( '('.$q->expr->lt( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $ratedRecent->votes ) ).' OR '.
+        $q->expr->eq( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $ratedRecent->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $ratedRecent->pid ) ).') ')
+        ->orderBy('pic_rating DESC, votes DESC, pid DESC')
+        ->limit( 5 );
+        $imagesRightArray = $session->find( $q, 'erLhcoreClassModelGalleryRated24' );
+               
+       $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_rated24 WHERE (pic_rating > :pic_rating OR pic_rating = :pic_rating AND lh_gallery_rated24.votes > :votes OR pic_rating = :pic_rating AND lh_gallery_rated24.votes = :votes AND pid > :pid) ');
+       $stmt->bindValue( ':pic_rating',$ratedRecent->pic_rating);       
+       $stmt->bindValue( ':votes',$ratedRecent->votes);       
+       $stmt->bindValue( ':pid',$ratedRecent->pid);
+                   
+       $stmt->execute();
+       $photos = $stmt->fetchColumn();         
+       $page = ceil(($photos+1)/20);
+
+       
+       $imagesLeft = $imagesRight = array();
+      
+       foreach ($imagesLeftArray as $imageLeftItem)
+       {
+       	$imagesLeft[] = $imageLeftItem->image;
+       }
+       
+       foreach ($imagesRightArray as $imageRightItem)
+       {
+       	$imagesRight[] = $imageRightItem->image;
+       }
+                    
+       $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+       $pageAppend = $page > 1 ? '/(page)/'.$page : '';
+       $urlAppend = '/(mode)/ratedrecent';
+       $urlAppend .= $appendResolutionMode;
+             
+       $ResultCacheImages['urlAppend'] = $urlAppend;
+       $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/ratedrecent').$urlAppend.$pageAppend;
+       $ResultCacheImages['imagesParams'] = $imagesParams;
+       
+       $cache->store($cacheKeyImage,$ResultCacheImages,0);        
+    }
+    
+    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
+    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
+    $tpl->setArray($ResultCacheImages['imagesParams']);
+    	
 } elseif ($mode == 'lastuploads') {
 
     $cache = CSCacheAPC::getMem(); 

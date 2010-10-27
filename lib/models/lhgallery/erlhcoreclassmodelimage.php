@@ -78,6 +78,7 @@ class erLhcoreClassModelGalleryImage {
        erLhcoreClassModelGalleryDuplicateImage::deleteByPid($this->pid);
        erLhcoreClassModelGalleryMyfavoritesImage::deleteByPid($this->pid);
        erLhcoreClassModelGalleryPopular24::deleteByPid($this->pid);
+       erLhcoreClassModelGalleryRated24::deleteByPid($this->pid);
        erLhcoreClassGallery::getSession()->delete($this);
        
        

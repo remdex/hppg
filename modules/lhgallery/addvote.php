@@ -11,7 +11,9 @@ if (isset($_POST['photo']) && isset($_POST['score']) )
     $image->votes = $image->votes + 1;
     $image->sort_rated = $image->pic_rating*$image->votes;
     $image->rtime = time();
-        
+
+    erLhcoreClassModelGalleryRated24::addRate($image->pid,$rate);
+       
     erLhcoreClassGallery::getSession()->update($image);
     
     //Clear top rated listing cache
@@ -19,8 +21,11 @@ if (isset($_POST['photo']) && isset($_POST['score']) )
     CSCacheAPC::getMem()->increaseCacheVersion('top_rated_'.$image->aid); //Album top rated version
     
     // Clear last rated cache version
-    CSCacheAPC::getMem()->increaseCacheVersion('last_rated');
+    CSCacheAPC::getMem()->increaseCacheVersion('last_rated');    
     CSCacheAPC::getMem()->increaseCacheVersion('last_rated_'.$image->aid);
+    
+    // Clear rated recetly images cache
+    CSCacheAPC::getMem()->increaseCacheVersion('ratedrecent_version');
     
     echo json_encode(array('result' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addvote','Thank you for your vote'),'error' => 'false'));
     exit;      

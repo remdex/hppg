@@ -514,6 +514,16 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `hits` (`hits`,`pid`),
                   KEY `added` (`added`)
                 ) ENGINE=MyISAM;");
+                               
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_rated24` (
+                  `pid` int(11) NOT NULL,
+                  `pic_rating` int(11) NOT NULL,
+                  `votes` int(11) NOT NULL,
+                  `added` int(11) NOT NULL,
+                  PRIMARY KEY (`pid`),
+                  KEY `pic_rating` (`pic_rating`,`votes`,`pid`),
+                  KEY `added` (`added`)
+                ) ENGINE=MyISAM;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_duplicate_collection` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -575,7 +585,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('normal_thumbnail_quality', '93', 0, 'Converted normal thumbnail quality', 0),
 						('watermark_data', 'a:9:{s:17:\"watermark_enabled\";b:0;s:21:\"watermark_enabled_all\";b:0;s:9:\"watermark\";s:0:\"\";s:6:\"size_x\";i:200;s:6:\"size_y\";i:50;s:18:\"watermark_disabled\";b:1;s:18:\"watermark_position\";s:12:\"bottom_right\";s:28:\"watermark_position_padding_x\";i:10;s:28:\"watermark_position_padding_y\";i:10;}', 0, 'Not shown public, editing is done in watermark module', 1),
 						('full_image_quality', '93', 0, 'Full image quality', 0),
-						('popularrecent_timeout', '24', 0, 'Most popular images timeout in hours', 0);");
+						('popularrecent_timeout', '24', 0, 'Most popular images timeout in hours', 0),
+						('ratedrecent_timeout', '24', 0, 'Recently images timeout in hours', 0);");
 
 
 				// Shop module

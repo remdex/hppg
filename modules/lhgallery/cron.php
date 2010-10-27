@@ -3,6 +3,7 @@
 erLhcoreClassModelGalleryDelayImageHit::updateMainCounter();
 
 erLhcoreClassModelGalleryPopular24::deleteExpired();
+erLhcoreClassModelGalleryRated24::deleteExpired();
 
 $session = erLhcoreClassGallery::getSession();
 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryUploadArchive' );  

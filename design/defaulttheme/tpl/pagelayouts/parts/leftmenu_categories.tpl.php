@@ -20,5 +20,6 @@
 		<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last 24 h.')?></h3>
 		<ul>  
             <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/popularrecent')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Most popular images');?></a>                 
+            <li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/ratedrecent')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Top rated');?></a>                 
 		</ul>									
 </div>

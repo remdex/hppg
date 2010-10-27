@@ -1,13 +1,14 @@
 <?php
 
-class erLhcoreClassModelGalleryPopular24 {
+class erLhcoreClassModelGalleryRated24 {
         
    public function getState()
    {
        return array(
                'pid'        => $this->pid,
                'added'      => $this->added,            
-               'hits'       => $this->hits            
+               'pic_rating' => $this->pic_rating,            
+               'votes'      => $this->votes           
        );
    }
    
@@ -22,7 +23,7 @@ class erLhcoreClassModelGalleryPopular24 {
    public static function fetch($pid)
    {
        try {
-            $hitpopular = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryPopular24', (int)$pid );
+            $hitpopular = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryRated24', (int)$pid );
        } catch (Exception $e){
             erLhcoreClassModule::redirect('/');
         exit;
@@ -33,7 +34,7 @@ class erLhcoreClassModelGalleryPopular24 {
    public static function deleteByPid($pid)
    {
        $session = erLhcoreClassGallery::getSession();
-       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' ); 
+       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryRated24' ); 
                      
        $q->where( $q->expr->eq( 'pid', $q->bindValue($pid ))  );
        
@@ -43,6 +44,22 @@ class erLhcoreClassModelGalleryPopular24 {
            $imagePopular->removeThis();
        }
        
+   }
+   
+   public static function addRate($pid, $rate) {
+       
+       try {
+            $hitpopular = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryRated24', (int)$pid );
+       } catch (Exception $e){
+            $hitpopular = new erLhcoreClassModelGalleryRated24();
+            $hitpopular->added = time();
+            $hitpopular->pid = $pid;
+       }
+       
+       $new_rating = round(($hitpopular->votes * $hitpopular->pic_rating + (int)$rate * 2000) / ($hitpopular->votes + 1));    
+       $hitpopular->pic_rating = $new_rating;
+       $hitpopular->votes = $hitpopular->votes + 1;            
+       $hitpopular->saveThis();
    }
    
    public function removeThis() {
@@ -70,21 +87,21 @@ class erLhcoreClassModelGalleryPopular24 {
    public static function deleteExpired() 
    {
        $db = ezcDbInstance::get();       
-       $dayAgo = time()-3600*(int)(erLhcoreClassModelSystemConfig::fetch('popularrecent_timeout')->current_value);          		
-	   $stmt = $db->prepare('DELETE FROM lh_gallery_popular24 WHERE added < :dayago');
+       $dayAgo = time()-3600*(int)(erLhcoreClassModelSystemConfig::fetch('ratedrecent_timeout')->current_value);          		
+	   $stmt = $db->prepare('DELETE FROM lh_gallery_rated24 WHERE added < :dayago');
 	   $stmt->bindValue( ':dayago',$dayAgo); 
 	   $stmt->execute();
 	   
 	   // Expunge cache if some image was deleted
 	   $cache = CSCacheAPC::getMem(); 
-	   $cache->increaseCacheVersion('popularrecent_version',time(),600);
+	   $cache->increaseCacheVersion('ratedrecent_version');
    }
    
    public static function getImageCount($params = array())
    {
        $session = erLhcoreClassGallery::getSession();
        $q = $session->database->createSelectQuery();  
-       $q->select( "COUNT(pid)" )->from( "lh_gallery_popular24" );     
+       $q->select( "COUNT(pid)" )->from( "lh_gallery_rated24" );     
          
        $conditions = array();
        
@@ -141,7 +158,7 @@ class erLhcoreClassModelGalleryPopular24 {
        $params = array_merge($paramsDefault,$paramsSearch);
        
        $session = erLhcoreClassGallery::getSession();
-       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );  
+       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryRated24' );  
        
        $conditions = array(); 
       
@@ -187,7 +204,7 @@ class erLhcoreClassModelGalleryPopular24 {
       
       $q->limit($params['limit'],$params['offset']);
       
-      $q->orderBy(isset($params['sort']) ? $params['sort'] : 'hits DESC, pid DESC' ); 
+      $q->orderBy(isset($params['sort']) ? $params['sort'] : 'pic_rating DESC, votes DESC, pid DESC' ); 
       
       if (!isset($params['disable_sql_cache']))
       {
@@ -201,7 +218,7 @@ class erLhcoreClassModelGalleryPopular24 {
               $cache->store($cacheKey,$objects);
           }          
       }  else { $objects = $session->find( $q ); }
-         
+                  
       $pids = array();
       foreach ($objects as $item){
           $pids[] = $item->pid;
@@ -215,9 +232,15 @@ class erLhcoreClassModelGalleryPopular24 {
       return $objects; 
    }
    
+   public function saveThis()
+   {
+       erLhcoreClassGallery::getSession()->saveOrUpdate($this);
+   }
+   
    public $pid = 0;
    public $added = null;
-   public $hits = 0;
+   public $pic_rating = 0;
+   public $votes = 0;
    
 }
 

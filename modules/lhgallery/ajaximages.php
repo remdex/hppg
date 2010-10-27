@@ -961,6 +961,70 @@ if ($mode == 'album')
 	$tpl->set('urlAppend',$urlAppend);
 	
 	
+} elseif ($mode == 'ratedrecent') {
+
+    $cache = CSCacheAPC::getMem();         
+    $cacheKeyImage = 'ratedrecent_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('ratedrecent_version').'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    
+    if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
+    {
+    	$session = erLhcoreClassGallery::getSession();
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryRated24' );   
+    	
+    	$ratedRecent = erLhcoreClassModelGalleryRated24::fetch($Image->pid); 
+            
+    	if ($direction == 'left'){
+    	    $q->where( '('.$q->expr->gt( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $ratedRecent->votes ) ).' OR '.
+                $q->expr->eq( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $ratedRecent->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $ratedRecent->pid ) ).')')
+                ->orderBy('pic_rating ASC, votes ASC, pid ASC')
+                ->limit( 6 );
+            $imagesAjaxRecent = $session->find( $q, 'erLhcoreClassModelGalleryRated24' );
+            $imagesAjaxRecent = array_reverse($imagesAjaxRecent);
+    	} else {
+    	    $q->where( '('.$q->expr->lt( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $ratedRecent->votes ) ).' OR '.
+                $q->expr->eq( 'pic_rating', $q->bindValue( $ratedRecent->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $ratedRecent->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $ratedRecent->pid ) ).')')
+                ->orderBy('pic_rating DESC, votes DESC, pid DESC')
+                ->limit( 6 );
+            $imagesAjaxRecent = $session->find( $q, 'erLhcoreClassModelGalleryRated24' );
+    	};	
+    		
+    	foreach ($imagesAjaxRecent as $imageRecent)
+        {
+        	$imagesAjax[] = $imageRecent->image;
+        }
+        
+        $cache->store($cacheKeyImage,$imagesAjax,0);
+    }
+          	
+	$hasMoreImages = 'false';
+        
+    if (count($imagesAjax) > 5) {
+        $hasMoreImages = 'true';
+        if ($direction == 'left') { 
+            $imagesAjax = array_slice($imagesAjax,1,5);
+        } else {
+            $imagesAjax = array_slice($imagesAjax,0,5);
+        }    
+    }
+
+    $imagesFound = count($imagesAjax);
+    
+    reset($imagesAjax);
+    $ImageLast = current($imagesAjax);    
+    $LeftImagePID = $ImageLast->pid;
+    
+    end($imagesAjax);
+    $ImageLast = current($imagesAjax);
+    $RightImagePID = $ImageLast->pid;
+           
+    $tpl->set('imagesAjax',$imagesAjax); 
+    
+	$urlAppend = '/(mode)/ratedrecent';
+    $urlAppend .= $appendResolutionMode;  
+      
+	$tpl->set('urlAppend',$urlAppend);
+	
+	
 } elseif ($mode == 'lastcommented') {
 
     $cache = CSCacheAPC::getMem();         
