@@ -114,6 +114,11 @@ $def->properties['anaglyph']->columnName   = 'anaglyph';
 $def->properties['anaglyph']->propertyName = 'anaglyph';
 $def->properties['anaglyph']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
+$def->properties['rtime'] = new ezcPersistentObjectProperty();
+$def->properties['rtime']->columnName   = 'rtime';
+$def->properties['rtime']->propertyName = 'rtime';
+$def->properties['rtime']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
 $def->relations["erLhcoreClassModelGalleryComment"] = new ezcPersistentOneToManyRelation(
 	"lh_gallery_images",
 	"lh_gallery_comments"

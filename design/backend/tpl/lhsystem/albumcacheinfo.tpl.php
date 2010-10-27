@@ -19,5 +19,10 @@ Album - <?=$album->title?>
         <td>Last commented</td>
         <td><?=$last_commented?></td>
         <td>Expires on image comment</td>
+    </tr>
+    <tr>
+        <td>Last rated</td>
+        <td><?=$last_rated?></td>
+        <td>Expires on image rate</td>
     </tr>           
 </table>

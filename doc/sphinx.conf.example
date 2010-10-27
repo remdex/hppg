@@ -15,6 +15,7 @@ source anifofsrc
 	sql_attr_uint   = hits
 	sql_attr_uint   = mtime
 	sql_attr_uint   = comtime
+	sql_attr_uint   = rtime
 	sql_attr_uint   = pic_rating
 	sql_attr_uint   = votes
 	sql_attr_uint   = pwidth

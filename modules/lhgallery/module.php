@@ -133,10 +133,21 @@ $ViewList['lastcommented'] = array(
     'script' => 'lastcommented.php',
     'params' => array(),
     'uparams' => array('resolution'),
+    );
+          
+$ViewList['lastrated'] = array( 
+    'script' => 'lastrated.php',
+    'params' => array(),
+    'uparams' => array('resolution'),
     );   
     
 $ViewList['lastcommentedrss'] = array( 
     'script' => 'lastcommentedrss.php',
+    'params' => array()
+    ); 
+       
+$ViewList['lastratedrss'] = array( 
+    'script' => 'lastratedrss.php',
     'params' => array()
     ); 
           

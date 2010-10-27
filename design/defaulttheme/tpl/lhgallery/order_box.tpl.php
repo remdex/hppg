@@ -13,6 +13,8 @@ $sortArrayAppend = array(
     'lasthitsasc'       => '/(sort)/lasthitsasc',
     'toprated'          => '/(sort)/toprated',
     'topratedasc'       => '/(sort)/topratedasc',
+    'lastrated'         => '/(sort)/lastrated',
+    'lastratedasc'      => '/(sort)/lastratedasc',
     'lastcommented'     => '/(sort)/lastcommented',
     'lastcommentedasc'  => '/(sort)/lastcommentedasc',
     'relevance'         => '',
@@ -43,6 +45,8 @@ if (isset($currentResolution) && key_exists($currentResolution,$resolutions)) {
             <li class="sep"><a class="ar<?=$mode == 'lasthitsasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lasthitsasc<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last hits')?></a> 
             <li><a class="da<?=$mode == 'toprated' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/toprated<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated')?></a>
             <li class="sep"><a class="ar<?=$mode == 'topratedasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/topratedasc<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Top rated')?></a>
+            <li><a class="da<?=$mode == 'lastrated' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastrated<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last rated')?></a>
+            <li class="sep"><a class="ar<?=$mode == 'lastratedasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastratedasc<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last rated')?></a>
             <li><a class="da<?=$mode == 'lastcommented' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastcommented<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented')?></a>
             <li><a class="ar<?=$mode == 'lastcommentedasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastcommentedasc<?=$resolutionAppend?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented')?></a>
         </ul>    

@@ -34,6 +34,11 @@
         <td></td>
     </tr>
     <tr>
+        <td>Last rated</td>
+        <td><?=$last_rated?></td>
+        <td></td>
+    </tr>
+    <tr>
         <td>Site version</td>
         <td><?=$site_version?></td>
         <td>Some application parts uses it as global cache key</td>

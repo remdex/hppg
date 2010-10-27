@@ -12,6 +12,7 @@ class CSCacheAPC {
     'top_rated',                // Top rated images
     'last_uploads',             // Last uploaded images
     'last_commented',           // Last commented images
+    'last_rated',               // Last rated images
     'site_version',             // Global site version
     'sphinx_cache_version',     // Sphinx search cache version
     );
@@ -23,6 +24,7 @@ class CSCacheAPC {
         $this->increaseCacheVersion('last_uploads');
         $this->increaseCacheVersion('top_rated');
         $this->increaseCacheVersion('last_commented');        
+        $this->increaseCacheVersion('last_rated');        
         $this->increaseCacheVersion('sphinx_cache_version');        
         $this->increaseCacheVersion('site_version');  
         $this->increaseCacheVersion('popularrecent_version',time(),600);  

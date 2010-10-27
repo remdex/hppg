@@ -27,6 +27,7 @@ class erLhcoreClassModelGalleryImage {
                'comtime'        => $this->comtime,             
                'sort_rated'     => $this->sort_rated,             
                'anaglyph'       => $this->anaglyph,             
+               'rtime'          => $this->rtime
        );
    }
    
@@ -45,7 +46,7 @@ class erLhcoreClassModelGalleryImage {
    }
    
    public function clearCache()
-   {
+   {       
        $album = erLhcoreClassModelGalleryAlbum::fetch($this->aid);
        $album->clearAlbumCache();
    }
@@ -517,6 +518,7 @@ class erLhcoreClassModelGalleryImage {
    public $comtime = 0;
    public $sort_rated = 0;
    public $anaglyph = 0;
+   public $rtime = 0;
 }
 
 

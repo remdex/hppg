@@ -9,7 +9,10 @@ $sortModes = array(
     'lastcommented' => 'comtime DESC, pid DESC',
     'lastcommentedasc' => 'comtime ASC, pid ASC',    
     'toprated' => 'pic_rating DESC, votes DESC, pid DESC',
-    'topratedasc' => 'pic_rating ASC, votes ASC, pid ASC');
+    'topratedasc' => 'pic_rating ASC, votes ASC, pid ASC',    
+    'lastrated' => 'rtime DESC, pid DESC',
+    'lastratedasc' => 'rtime ASC, pid ASC'
+    );
     
 $appendCacheModes = array(
 
@@ -21,7 +24,8 @@ $appendCacheModes = array(
 'lastcommentedasc' => array('key' => 'last_commented_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
 'toprated' => array('key' => 'top_rated_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
 'topratedasc' => array('key' => 'top_rated_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
-
+'lastrated' => array('key' => 'last_rated_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
+'lastratedasc' => array('key' => 'last_rated_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
 );
     
 $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
@@ -89,6 +93,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
     'lasthitsasc'       => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last hits last'),    
     'lastcommented'     => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented first'),
     'lastcommentedasc'  => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last commented last'),    
+    'lastrated'         => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last rated first'),
+    'lastratedasc'      => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last rated last'),    
     'toprated'          => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Top rated first'),
     'topratedasc'       => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Top rated last Last')
     );
