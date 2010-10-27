@@ -49,7 +49,13 @@ class erLhcoreClassGallery{
       if ($cacheEnabled == false || ($resultReturn = $cache->restore($cacheKey)) === false)
       {
             $cl = self::getSphinxInstance();
-            $maxReturn = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' );      
+            
+            $cfg = erConfigClassLhConfig::getInstance();
+            
+            $maxReturn = $cfg->conf->getSetting( 'sphinx', 'max_matches' );
+            $wildCardEnabled = $cfg->conf->getSetting( 'sphinx', 'enabled_wildcard');
+            $sphinxIndex = $cfg->conf->getSetting( 'sphinx', 'index' );  
+             
             foreach ($queryesBatch as $params) {
                   
                   $cl->ResetFilters();
@@ -90,7 +96,7 @@ class erLhcoreClassGallery{
                   
                   $cl->SetSortMode(SPH_SORT_EXTENDED, isset($params['sort']) ? $params['sort'] : '@id DESC');
             
-                  $startAppend = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
+                  $startAppend = $wildCardEnabled == true ? '*' : '';
                   
                   // Make some weightning
                   $cl->SetFieldWeights(array(
@@ -100,7 +106,7 @@ class erLhcoreClassGallery{
                     'file_path' => 7,
                   ));
                   
-                  $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
+                  $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', $sphinxIndex );
             }
             
             $resultItems = $cl->RunQueries();
