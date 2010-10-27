@@ -49,13 +49,13 @@ class erLhcoreClassGallery{
       if ($cacheEnabled == false || ($resultReturn = $cache->restore($cacheKey)) === false)
       {
             $cl = self::getSphinxInstance();
-                  
+            $maxReturn = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' );      
             foreach ($queryesBatch as $params) {
                   
                   $cl->ResetFilters();
                   $cl->SetSelect('*');
                                                 
-                  $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' ));
+                  $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxReturn);
                     
                   $filter = isset($params['Filter']) ? $params['Filter'] : array();  
                    
