@@ -24,6 +24,11 @@
         <td>Expires every 10 minutes</td>
     </tr>
     <tr>
+        <td>Top rated recent version</td>
+        <td><?=$ratedrecent_version?></td>
+        <td></td>
+    </tr>
+    <tr>
         <td>Top rated version</td>
         <td><?=$top_rated?></td>
         <td></td>
