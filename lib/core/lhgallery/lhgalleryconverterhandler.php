@@ -299,6 +299,37 @@ class erLhcoreClassGalleryImagemagickHandler extends ezcImageImagemagickHandler 
         copy( $this->getReferenceData( $image, 'file' ), $this->getReferenceData( $image, 'resource' ) );                        
     }
     
+    public function croppedThumbnailTop( $width, $height )
+    {
+        if ( !is_int( $width )  || $width < 1 )
+        {
+            throw new ezcBaseValueException( 'width', $width, 'int > 0' );
+        }
+        if ( !is_int( $height )  || $height < 1 )
+        {
+            throw new ezcBaseValueException( 'height', $height, 'int > 0' );
+        }
+        $data = getimagesize( $this->getReferenceData( $this->getActiveReference(), "resource" ) );
+        
+        $scaleRatio  = max( $width / $data[0], $height / $data[1] );
+        $scaleWidth  = round( $data[0]  * $scaleRatio );
+        $scaleHeight = round( $data[1] * $scaleRatio );
+        
+        $cropOffsetX = ( $scaleWidth > $width )   ? "+" . round( ( $scaleWidth - $width ) / 2 )   : "+0";
+        $cropOffsetY = "+0"; // Crop from top
+
+        $this->addFilterOption(
+            $this->getActiveReference(),
+            '-resize',
+            $scaleWidth . "x" . $scaleHeight
+        );
+        $this->addFilterOption(
+            $this->getActiveReference(),
+            '-crop',
+            $width . "x" . $height . $cropOffsetX . $cropOffsetY . "!"
+        );
+    }
+    
     /**
      * @param $side 
      * 0 - left side cut

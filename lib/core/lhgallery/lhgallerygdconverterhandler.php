@@ -95,6 +95,30 @@ class erLhcoreClassGalleryGDHandler extends ezcImageGdHandler {
         $this->setActiveReference( $originalRef );
     }
     
+    public function croppedThumbnailTop( $width, $height )
+    {
+        if ( !is_int( $width )  || $width < 1 )
+        {
+            throw new ezcBaseValueException( 'width', $width, 'int > 0' );
+        }
+        if ( !is_int( $height )  || $height < 1 )
+        {
+            throw new ezcBaseValueException( 'height', $height, 'int > 0' );
+        }
+        $resource = $this->getActiveResource();
+        $data[0] = imagesx( $resource );
+        $data[1] = imagesy( $resource );
+        
+        $scaleRatio  = max( $width / $data[0], $height / $data[1] );
+        $scaleWidth  = round( $data[0] * $scaleRatio );
+        $scaleHeight = round( $data[1] * $scaleRatio );
+        
+        $cropOffsetX = ( $scaleWidth > $width )   ? round( ( $scaleWidth - $width ) / 2 )   : 0;
+        $cropOffsetY = 0; // Crop from top
+
+        $this->performScale( $scaleWidth, $scaleHeight );
+        $this->performCrop( $cropOffsetX, $cropOffsetY, $width, $height );
+    }
     
     /**
      * @param $side 

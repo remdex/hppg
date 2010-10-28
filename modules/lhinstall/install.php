@@ -578,7 +578,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('thumbnail_width_y', '130', 0, 'Small thumbnail width - Y', 0),
 						('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x', 0),
 						('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y', 0),
-						('thumbnail_scale_algorithm', 'croppedThumbnail', 0, 'It can be \"scale\" or \"croppedThumbnail\" - makes perfect squares', 0),
+						('thumbnail_scale_algorithm', 'croppedThumbnail', 0, 'It can be \"scale\" or \"croppedThumbnail\" - makes perfect squares, or \"croppedThumbnailTop\" makes perfect squares, image cropped from top', 0),
 						('google_analytics_token', '', 0, 'Google analytics API key', 0),
 						('google_analytics_site_profile_id', '', 0, 'Google analytics site profile id', 0),
 						('thumbnail_quality_default', '93', 0, 'Converted small thumbnail image quality', 0),
