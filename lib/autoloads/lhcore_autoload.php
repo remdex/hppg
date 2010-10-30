@@ -56,6 +56,7 @@ return array_merge(array (
         'erLhcoreClassGalleryGDHandler'             => 'lib/core/lhgallery/lhgallerygdconverterhandler.php',        
         'erLhcoreClassGalleryBatch'                 => 'lib/core/lhgallery/lhbatch.php',
         'erLhcoreClassLhMemcache'                   => 'lib/core/lhcore/lhmemcache.php',
+        'erLhcoreClassLhAPC'                        => 'lib/core/lhcore/lhapc.php',
         'erLhcoreClassModelGalleryDelayImageHit' 		=> 'lib/models/lhgallery/erlhcoreclassmodeldelayimagehit.php',
         'erLhcoreClassModelGalleryPopular24' 		    => 'lib/models/lhgallery/erlhcoreclassmodelpopular24.php',
         'erLhcoreClassModelGalleryRated24' 		        => 'lib/models/lhgallery/erlhcoreclassmodelrated24.php',
