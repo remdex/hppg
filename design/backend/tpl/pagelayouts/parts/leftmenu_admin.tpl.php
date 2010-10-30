@@ -107,6 +107,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 					$('.vmenu .edit-link-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/albumeditadmin')?>'+"/"+$(this).attr('rel'));
 					$('.vmenu .album-del-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/deletealbumadmin')?>'+"/"+$(this).attr('rel'));
 					$('.vmenu .add-images-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/addimagesadmin')?>'+"/"+$(this).attr('rel'));
+					$('.vmenu .move-images-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/moveimages')?>'+"/"+$(this).attr('rel'));
 				
 					$('.vmenu .cat-new-li').hide();
 					$('.vmenu .album-new-li').hide();	
@@ -114,6 +115,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 					
 					$('.vmenu .album-del-li').show();
 					$('.vmenu .add-images-li').show();
+					$('.vmenu .move-images-li').show();
 					$('.vmenu .cat-del-li').hide();			
 								
 				} else {
@@ -123,6 +125,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 					$('.vmenu .cat-new-li').show();
 					$('.vmenu .album-del-li').hide();
 					$('.vmenu .add-images-li').hide();
+					$('.vmenu .move-images-li').hide();
 					$('.vmenu .cat-del-li').show();
 					
 					$('.vmenu .album-new-li a').attr('href','<?=erLhcoreClassDesign::baseurl('gallery/createalbumadmin')?>'+"/"+$(this).attr('rel'));
@@ -268,5 +271,6 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 		<div class="first_li album-del-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Delete album');?></a></span></div>
 		<div class="first_li cat-del-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Delete category');?></a></span></div>
 		<div class="first_li add-images-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Add images');?></a></span></div>					
+		<div class="first_li move-images-li"><span><a href=""><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Move images');?></a></span></div>					
 </div>
 

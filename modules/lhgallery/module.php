@@ -220,6 +220,12 @@ $ViewList['addimagesadmin'] = array(
     'script' => 'addimagesadmin.php',
     'params' => array('album_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
+    );   
+         
+$ViewList['moveimages'] = array( 
+    'script' => 'moveimages.php',
+    'params' => array('album_id'),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
     );
     
 $ViewList['fileuploadcontainer'] = array( 

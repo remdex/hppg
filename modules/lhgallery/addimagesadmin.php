@@ -24,6 +24,8 @@ foreach ($pathObjects as $pathItem)
    $pathCategorys[] = $pathItem->cid; 
 }
 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/managealbumimages/').$AlbumData->aid,'title' => $AlbumData->title);
+
 $Result['path'] = $path;
 $Result['path_cid'] = $pathCategorys;
 $Result['album_id'] = $AlbumData->aid;
