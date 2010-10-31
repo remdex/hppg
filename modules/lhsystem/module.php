@@ -39,6 +39,12 @@ $ViewList['categorycacheinfo'] = array(
     'params' => array('category_id'),
     'functions' => array( 'use' )
     ); 
+                 
+$ViewList['clearimagecache'] = array( 
+    'script' => 'clearimagecache.php',
+    'params' => array('image_id'),
+    'functions' => array( 'use' )
+    ); 
     
 $FunctionList['use'] = array('explain' => 'Allow user to see configuration links');  
 $FunctionList['expirecache'] = array('explain' => 'Allow user to clear cache');  

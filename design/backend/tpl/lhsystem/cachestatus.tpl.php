@@ -77,3 +77,12 @@ Enter category ID above and press Get information
 </div>
 
 </fieldset>
+
+<br />
+
+<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','Image cache status');?></legend>
+
+<input type="text" id="imageID" class="default-input" value="" />
+<input type="button" class="default-button" name="GetCache" onclick="hw.clearimagecache($('#imageID').val())" value="Clear image cache" />
+
+</fieldset>

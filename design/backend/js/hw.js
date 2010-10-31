@@ -72,6 +72,15 @@ var hw = {
 		return false;	
 	},
 	
+	clearimagecache : function (image_id)
+	{		
+		$.postJSON(this.formAddPath + 'system/clearimagecache/'+image_id,  function(data) {			    
+		   alert("Cache cleared!");			
+           return true;	          
+		});	
+		return false;	
+	},
+	
 	updatePhoto : function(photo_id){
 	    var pdata = {
 				title	  : $('#PhotoTitle_'+photo_id).val(),
