@@ -15,5 +15,5 @@ RewriteRule ^(.*)-([0-9]*)p.html(.*?)?$ index.php/gallery/image/$2$3
 
 
 RewriteRule ^/var/[^/]+/cache/(stylesheets|images|javascripts?)/.* - [L]
-RewriteRule !\.(gif|jpe?g|png|bmp|css|js|xml|html|swf|php)|var(.+)storage.pdf(.+)\.pdf$ index.php
+RewriteRule !\.(gif|jpe?g|png|bmp|css|js|xml|html|ogv|swf|php)|var(.+)storage.pdf(.+)\.pdf$ index.php
 DirectoryIndex index.php

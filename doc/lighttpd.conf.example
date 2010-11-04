@@ -25,7 +25,7 @@ url.rewrite-once = (
 # END uncomoment shop functionality
 
 
-"^/.*\.(css|html|htm|pdf|txt|js|bmp|ico|png|JPG|PNG|gif|jpe?g|swf)$" => "$0",
+"^/.*\.(css|html|htm|pdf|txt|js|bmp|ico|png|JPG|PNG|ogv|gif|jpe?g|swf)$" => "$0",
 "^/index(.*)" => "/index$1",
 "^/(.+)\?(.*)/?$" => "/index.php?/$1&$2",
 "^/(.+)/?$" => "/index.php?/$1"
