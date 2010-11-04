@@ -18,11 +18,11 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_top_rated'))) === false)
     	
     	    $item = $feed->add( 'item' ); 
     	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/topratedrss','View image') : $title;
-    	    if ($itemRecord->filetype->player == 'IMAGE'){
-	       $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />');
-	    } else {
-	       $item->description = '';
-	    }   
+    	   if ($itemRecord->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE){
+    	       $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />');
+    	    } else {
+    	       $item->description = '';
+    	    }   
 	    
 	    $item->description .= '<ul>
             <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
