@@ -418,6 +418,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           `has_preview` int(11) NOT NULL DEFAULT '0' COMMENT 'Used for video files',
                           `anaglyph` int(11) NOT NULL DEFAULT '0',
                           `rtime` int(11) NOT NULL,
+                          `media_type` tinyint(4) NOT NULL,
                           PRIMARY KEY (`pid`),
                           KEY `owner_id` (`owner_id`),
                           KEY `pic_hits` (`hits`),
