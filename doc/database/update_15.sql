@@ -26,7 +26,9 @@ INSERT INTO `lh_gallery_filetypes` (`extension`, `mime`, `content`, `player`) VA
 ('ogg', 'audio/ogg', 'audio', 'HTMLA'),
 ('oga', 'audio/ogg', 'audio', 'HTMLA'),
 ('ogv', 'video/ogg', 'movie', 'HTMLV'),
-('swf', 'application/x-shockwave-flash', 'movie', 'SWF');
+('swf', 'application/x-shockwave-flash', 'movie', 'SWF'),
+('flv', 'video/x-flv', 'movie', 'FLV')
+;
 
 INSERT INTO  `lh_system_config` (
 `identifier` ,

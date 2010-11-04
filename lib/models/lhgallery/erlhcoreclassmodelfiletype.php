@@ -7,6 +7,7 @@ class erLhcoreClassModelGalleryFiletype {
         'IMAGE' => 'erLhcoreClassImageConverter::isPhoto',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::isVideo',
         'SWF'   => 'erLhcoreClassSWFConverter::isSWF',
+        'FLV'   => 'erLhcoreClassFLVConverter::isVideo'
    ); 
    
    // Validation handlers from local
@@ -14,27 +15,31 @@ class erLhcoreClassModelGalleryFiletype {
         'IMAGE' => 'erLhcoreClassImageConverter::isPhotoLocal',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::isVideoLocal',
         'SWF'   => 'erLhcoreClassSWFConverter::isSWFLocal',
+        'FLV'   => 'erLhcoreClassFLVConverter::isVideoLocal',
    );
    
    // Conversion handlers from post
    public $handlersConversion = array(
         'IMAGE' => 'erLhcoreClassImageConverter::handleUpload',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::handleUpload',
-        'SWF'   => 'erLhcoreClassSWFConverter::handleUpload'
+        'SWF'   => 'erLhcoreClassSWFConverter::handleUpload',
+        'FLV'   => 'erLhcoreClassFLVConverter::handleUpload'
    );
    
    // Conversion handlers from post
    public $handlersConversionLocal = array(
         'IMAGE' => 'erLhcoreClassImageConverter::handleUploadLocal',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::handleUploadLocal',
-        'SWF'   => 'erLhcoreClassSWFConverter::handleUploadLocal'
+        'SWF'   => 'erLhcoreClassSWFConverter::handleUploadLocal',
+        'FLV'   => 'erLhcoreClassFLVConverter::handleUploadLocal'
    );
    
    // Conversion handlers from post
    public $handlersConversionBatch = array(
         'IMAGE' => 'erLhcoreClassImageConverter::handleUploadBatch',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::handleUploadBatch',
-        'SWF'   => 'erLhcoreClassSWFConverter::handleUploadBatch'
+        'SWF'   => 'erLhcoreClassSWFConverter::handleUploadBatch',
+        'FLV'   => 'erLhcoreClassFLVConverter::handleUploadBatch'
    );
    
    public function getState()

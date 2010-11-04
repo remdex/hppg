@@ -541,6 +541,7 @@ class erLhcoreClassModelGalleryImage {
    const mediaTypeSWF   = 1;
    const mediaTypeHTMLV = 2;
    const mediaTypeHTMLA = 3;
+   const mediaTypeFLV   = 4;
    
 }
 

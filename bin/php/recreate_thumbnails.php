@@ -146,26 +146,29 @@ foreach ($objects as $object)
     
     try {
         if (file_exists($photoPath.$object->filename) && is_file($photoPath.$object->filename)){ 
-               
-            $recreating = '';
-            if ($targetOption->value == 'small') {
-                $recreating = 'small';
-            } elseif ($targetOption->value == 'normal'){
-                $recreating = 'normal';
-            } elseif ($targetOption->value == 'both'){
-                $recreating = 'small and normal';
-            }
             
             $status->addEntry( 'ACTION', "Recreating {$recreating} size image thumbnail PID #{$object->pid}." );
-                        
-            if ($targetOption->value == 'small' || $targetOption->value == 'both') {
-                erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoPath.$object->filename, $photoPath.'/thumb_'.$object->filename );                 
-                chmod($photoPath.'/thumb_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
-            }  
-                        
-            if ($targetOption->value == 'normal' || $targetOption->value == 'both') {
-                erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoPath.$object->filename, $photoPath.'/normal_'.$object->filename );                
-                chmod($photoPath.'/normal_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            
+            if ($object->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) 
+            {   
+                $recreating = '';
+                if ($targetOption->value == 'small') {
+                    $recreating = 'small';
+                } elseif ($targetOption->value == 'normal'){
+                    $recreating = 'normal';
+                } elseif ($targetOption->value == 'both'){
+                    $recreating = 'small and normal';
+                }
+                       
+                if ($targetOption->value == 'small' || $targetOption->value == 'both') {
+                    erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoPath.$object->filename, $photoPath.'/thumb_'.$object->filename );                 
+                    chmod($photoPath.'/thumb_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                }  
+                            
+                if ($targetOption->value == 'normal' || $targetOption->value == 'both') {
+                    erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoPath.$object->filename, $photoPath.'/normal_'.$object->filename );                
+                    chmod($photoPath.'/normal_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                }
             }
             
         } else {

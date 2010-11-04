@@ -51,6 +51,7 @@ return array_merge(array (
         'erLhcoreClassOgg' 	                        => 'lib/core/lhgallery/lhogg.php',
         'erLhcoreClassHTMLVConverter' 	            => 'lib/core/lhgallery/lhhtmlvconverter.php',
         'erLhcoreClassSWFConverter' 	            => 'lib/core/lhgallery/lhswfconverter.php',
+        'erLhcoreClassFLVConverter' 	            => 'lib/core/lhgallery/lhflvconverter.php',
         'erLhcoreClassGalleryArchive' 	            => 'lib/core/lhgallery/lharchive.php',
         'erLhcoreClassModelGalleryLastSearch'       => 'lib/models/lhgallery/erlhcoreclassmodellastsearch.php',
         'erLhcoreClassModelGallerySearchHistory'    => 'lib/models/lhgallery/erlhcoreclassmodelsearchhistory.php',

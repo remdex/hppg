@@ -572,7 +572,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 ('ogg', 'audio/ogg', 'audio', 'HTMLA'),
                 ('oga', 'audio/ogg', 'audio', 'HTMLA'),
                 ('ogv', 'video/ogg', 'movie', 'HTMLV'),
-                ('swf', 'application/x-shockwave-flash', 'movie', 'SWF');");
+                ('swf', 'application/x-shockwave-flash', 'movie', 'SWF'),
+                ('flv', 'video/x-flv', 'movie', 'FLV');");
                 
                 
                 
