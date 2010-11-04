@@ -27,12 +27,19 @@ if (($xml = $cache->restore($cacheKey)) === false)
     	
     	    $item = $feed->add( 'item' ); 
     	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumrss','View image') : $title;
-    	    $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />').	    
-    	   '<ul>
+    	    
+    	    if ($itemRecord->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) {
+    	       $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />');
+    	    } else {
+    	       $item->description = '';
+    	    }   
+	    
+    	    $item->description .= '<ul>
                 <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
-                <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumrss','watched').'</li>                    
+                <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthitsrss','watched').'</li>                    
                 </a></li>
             </ul>';
+	    
     	    $item->published = $itemRecord->ctime; 
     	     
     	    $link = $item->add( 'link' );
