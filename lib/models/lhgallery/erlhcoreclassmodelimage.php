@@ -1,8 +1,8 @@
 <?
 
 class erLhcoreClassModelGalleryImage {
-        
-    public function getState()
+      
+   public function getState()
    {
        return array(
                'pid'            => $this->pid,
@@ -25,9 +25,10 @@ class erLhcoreClassModelGalleryImage {
                'approved'       => $this->approved,             
                'mtime'          => $this->mtime,             
                'comtime'        => $this->comtime,             
-               'sort_rated'     => $this->sort_rated,             
+               'has_preview'    => $this->has_preview,             
                'anaglyph'       => $this->anaglyph,             
-               'rtime'          => $this->rtime
+               'rtime'          => $this->rtime,
+               'media_type'     => $this->media_type
        );
    }
    
@@ -64,15 +65,29 @@ class erLhcoreClassModelGalleryImage {
    
    public function removeThis(){
                  
-        $photoPath = 'albums/'.$this->filepath;
+       $photoPath = 'albums/'.$this->filepath;
        if (file_exists($photoPath.$this->filename))
             unlink($photoPath.$this->filename);
+       
+       if ($this->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) {
             
-       if (file_exists($photoPath.'normal_'.$this->filename))
-            unlink($photoPath.'normal_'.$this->filename); 
-                 
-       if (file_exists($photoPath.'thumb_'.$this->filename))
-            unlink($photoPath.'thumb_'.$this->filename); 
+       	   if (file_exists($photoPath.'normal_'.$this->filename))
+                unlink($photoPath.'normal_'.$this->filename); 
+                     
+           if (file_exists($photoPath.'thumb_'.$this->filename))
+                unlink($photoPath.'thumb_'.$this->filename);                    
+           	            
+       } elseif ($this->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV ) {
+                  
+           if ($this->has_preview == 1) {      
+
+              if (file_exists($photoPath.'normal_'.str_replace('.ogv','.jpg',$this->filename)))
+                    unlink($photoPath.'normal_'.str_replace('.ogv','.jpg',$this->filename)); 
+                         
+             if (file_exists($photoPath.'thumb_'.str_replace('.ogv','.jpg',$this->filename)))
+                    unlink($photoPath.'thumb_'.str_replace('.ogv','.jpg',$this->filename));                           
+           }
+       }
        
        $this->clearCache();
        erLhcoreClassModelGalleryDuplicateImage::deleteByPid($this->pid);
@@ -157,7 +172,7 @@ class erLhcoreClassModelGalleryImage {
        	    $this->album = erLhcoreClassModelGalleryAlbum::fetch($this->aid);
        	    return $this->album;
        		break;
-       		
+       	        
        	case 'album_path':       	  
        	        $albumPath = $this->path;
        	        array_pop($albumPath);// Remove self element;
@@ -517,9 +532,16 @@ class erLhcoreClassModelGalleryImage {
    public $pic_raw_ip = '';
    public $mtime = 0;
    public $comtime = 0;
-   public $sort_rated = 0;
+   public $has_preview = 0;
    public $anaglyph = 0;
    public $rtime = 0;
+   public $media_type = 0;
+   
+   const mediaTypeIMAGE = 0;
+   const mediaTypeSWF   = 1;
+   const mediaTypeHTMLV = 2;
+   const mediaTypeHTMLA = 3;
+   
 }
 
 

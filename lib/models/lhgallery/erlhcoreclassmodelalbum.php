@@ -146,7 +146,14 @@ class erLhcoreClassModelGalleryAlbum {
            	    $images = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('album_'.$this->aid),'filter' => array('aid' => $this->aid,'approved' => 1),'limit' => 1));
            	    foreach ($images as $image)
            	    {
-           	        return $image->filepath.'thumb_'.urlencode($image->filename);
+           	        if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) {
+           	            return $image->filepath.'thumb_'.urlencode($image->filename);
+           	        } elseif ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV ) {   
+           	                  
+           	           if ($image->has_preview == 1) {           	               
+                            return $image->filepath.'thumb_'.urlencode(str_replace('.ogv','.jpg',$image->filename));
+           	           }
+           	        }
            	    }        
            	    return false;   	    
        		break;
@@ -159,6 +166,7 @@ class erLhcoreClassModelGalleryAlbum {
       
    public static function getAlbumsIDByFilter($params)
    {
+       
        $session = erLhcoreClassGallery::getSession();
        $q = $session->database->createSelectQuery();  
        $q->select( "aid" )->from( "lh_gallery_albums" );     

@@ -18,12 +18,17 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_last_uploaded'))) === false)
     	
     	    $item = $feed->add( 'item' ); 
     	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploadsrss','View image') : $title;
-    	    $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />').	    
-    	   '<ul>
-                <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
-                <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploadsrss','watched').'</li>                    
-                </a></li>
-            </ul>';;
+    	    if ($itemRecord->filetype->player == 'IMAGE'){
+	       $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />');
+	    } else {
+	       $item->description = '';
+	    }   
+	    
+	    $item->description .= '<ul>
+            <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
+            <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthitsrss','watched').'</li>                    
+            </a></li>
+        </ul>';
     	    $item->published = $itemRecord->ctime; 
     	     
     	    $link = $item->add( 'link' );

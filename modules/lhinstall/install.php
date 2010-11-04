@@ -415,7 +415,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           `approved` int(11) NOT NULL DEFAULT '0',
                           `mtime` int(11) NOT NULL,
                           `comtime` int(11) NOT NULL,
-                          `sort_rated` bigint(20) NOT NULL,
+                          `has_preview` int(11) NOT NULL DEFAULT '0' COMMENT 'Used for video files',
                           `anaglyph` int(11) NOT NULL DEFAULT '0',
                           `rtime` int(11) NOT NULL,
                           PRIMARY KEY (`pid`),
@@ -545,6 +545,36 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `hash` (`hash`)
                 ) ENGINE=MyISAM;");
                 
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_filetypes` (
+                  `extension` char(7) NOT NULL DEFAULT '',
+                  `mime` char(254) DEFAULT NULL,
+                  `content` char(15) DEFAULT NULL,
+                  `player` varchar(5) DEFAULT NULL,
+                  PRIMARY KEY (`extension`)
+                ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+                
+                
+                $db->query("INSERT INTO `lh_gallery_filetypes` (`extension`, `mime`, `content`, `player`) VALUES
+                ('jpg', 'image/jpg', 'image', 'IMAGE'),
+                ('jpeg', 'image/jpeg', 'image', 'IMAGE'),
+                ('jpe', 'image/jpe', 'image', 'IMAGE'),
+                ('gif', 'image/gif', 'image', 'IMAGE'),
+                ('png', 'image/png', 'image', 'IMAGE'),
+                ('bmp', 'image/bmp', 'image', 'IMAGE'),
+                ('jpc', 'image/jpc', 'image', 'IMAGE'),
+                ('jp2', 'image/jp2', 'image', 'IMAGE'),
+                ('jpx', 'image/jpx', 'image', 'IMAGE'),
+                ('jb2', 'image/jb2', 'image', 'IMAGE'),
+                ('swc', 'image/swc', 'image', 'IMAGE'),
+                ('iff', 'image/iff', 'image', 'IMAGE'),
+                ('psd', 'image/psd', 'image', 'IMAGE'),
+                ('ogg', 'audio/ogg', 'audio', 'HTMLA'),
+                ('oga', 'audio/ogg', 'audio', 'HTMLA'),
+                ('ogv', 'video/ogg', 'movie', 'HTMLV'),
+                ('swf', 'application/x-shockwave-flash', 'movie', 'SWF');");
+                
+                
+                
                 // Create article module tables
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_article_static` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -576,8 +606,10 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('file_upload_limit', '200', 0, 'How many files upload during one session', 0),
 						('thumbnail_width_x', '120', 0, 'Small thumbnail width - x', 0),
 						('thumbnail_width_y', '130', 0, 'Small thumbnail width - Y', 0),
+						('allowed_file_types', '*.jpg;*.gif;*.png;*.png;*.bmp;*.ogv;*.swf', 0, 'List of allowed file types to upload', 0),
 						('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x', 0),
 						('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y', 0),
+						('loop_video', '0', 0, 'Should HTML5 video be looped? (1 - yes,0 - no))', 0),
 						('thumbnail_scale_algorithm', 'croppedThumbnail', 0, 'It can be \"scale\" or \"croppedThumbnail\" - makes perfect squares, or \"croppedThumbnailTop\" makes perfect squares, image cropped from top', 0),
 						('google_analytics_token', '', 0, 'Google analytics API key', 0),
 						('google_analytics_site_profile_id', '', 0, 'Google analytics site profile id', 0),

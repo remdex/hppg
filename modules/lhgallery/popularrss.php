@@ -19,12 +19,17 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_most_popular'))) === false)
     	
     	    $item = $feed->add( 'item' ); 
     	    $item->title = ($title = $itemRecord->name_user) == '' ? 'View image' : $title;
-    	    $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />').	    
-    	   '<ul>
-                <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
-                <li>'.$itemRecord->hits.' watched</li>                    
-                </a></li>
-            </ul>';;
+    	    if ($itemRecord->filetype->player == 'IMAGE'){
+	       $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />');
+	    } else {
+	       $item->description = '';
+	    }   
+	    
+	    $item->description .= '<ul>
+            <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
+            <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthitsrss','watched').'</li>                    
+            </a></li>
+        </ul>';
     	    $item->published = $itemRecord->ctime; 
     	     
     	    $link = $item->add( 'link' );

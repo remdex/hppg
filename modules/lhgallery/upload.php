@@ -10,7 +10,7 @@ $objects = $session->find( $q, 'erLhcoreClassModelGalleryUpload' );
 
 if (count($objects) == 1)
 {	
-	if (isset($_FILES["Filedata"]) && is_uploaded_file($_FILES["Filedata"]["tmp_name"]) && $_FILES["Filedata"]["error"] == 0 && erLhcoreClassImageConverter::isPhoto('Filedata'))
+	if (isset($_FILES["Filedata"]) && is_uploaded_file($_FILES["Filedata"]["tmp_name"]) && $_FILES["Filedata"]["error"] == 0 && ($filetype = erLhcoreClassModelGalleryFiletype::isValid('Filedata')) !== false)
 	{
 	    
 	    $fileSession = array_pop($objects);
@@ -38,7 +38,14 @@ if (count($objects) == 1)
 	       		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
 	       }
 	       
-	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $_FILES['Filedata']['tmp_name'], $photoDir.'/normal_'.$fileNamePhysic ); 
+	       $filetype->process($image,array(
+    	       'photo_dir'        => $photoDir,
+    	       'file_name_physic' => $fileNamePhysic,
+    	       'post_file_name'   => 'Filedata',
+    	       'file_session'     => $fileSession
+	       ));
+	       
+	       /*erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $_FILES['Filedata']['tmp_name'], $photoDir.'/normal_'.$fileNamePhysic ); 
 	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $_FILES['Filedata']['tmp_name'], $photoDir.'/thumb_'.$fileNamePhysic ); 
 	       	       
 	       chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
@@ -60,7 +67,8 @@ if (count($objects) == 1)
 	       
 	       $imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic ); 	       
 	       $image->pwidth = $imageAnalyze->data->width;
-	       $image->pheight = $imageAnalyze->data->height;
+	       $image->pheight = $imageAnalyze->data->height;*/
+	          
 	       $image->hits = 0;
 	       $image->ctime = time();
 	       $image->owner_id = $fileSession->user_id;

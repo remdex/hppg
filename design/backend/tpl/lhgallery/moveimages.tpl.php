@@ -8,8 +8,8 @@
 
 <div class="articlebody">		
 	<form action="" method="post">
-	<input type="text" class="AlbumNameInput" id="album_suggest_name">
-	<input type="button" id="findButton" value="Find album">
+	<input type="text" class="default-input" id="album_suggest_name">
+	<input type="button" class="default-button" id="findButton" value="Find album">
 	<div id="album-suggest"></div>
 	
 	<input type="submit" class="default-button" name="MoveImages" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editcategory','Update');?>"/>					

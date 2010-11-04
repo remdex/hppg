@@ -192,6 +192,122 @@ class erLhcoreClassImageConverter {
        } 
     }
     
+    public static function handleUpload(& $image,$params = array())
+    {
+        $photoDir = $params['photo_dir'];
+        $fileNamePhysic = $params['file_name_physic'];
+        $fileSession = $params['file_session'];
+        
+        $config = erConfigClassLhConfig::getInstance();
+        
+        erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $_FILES[$params['post_file_name']]['tmp_name'], $photoDir.'/normal_'.$fileNamePhysic ); 
+        erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $_FILES[$params['post_file_name']]['tmp_name'], $photoDir.'/thumb_'.$fileNamePhysic ); 
+       	       
+        chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+       
+        $dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
+        // If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
+        if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
+        	erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $_FILES[$params['post_file_name']]['tmp_name'], $photoDir.'/'.$fileNamePhysic ); 
+        } else  {
+       		move_uploaded_file($_FILES[$params['post_file_name']]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
+        }
+       
+        chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+       
+        $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
+        $image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
+        $image->filepath = 'userpics/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
+       
+        $imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic ); 	       
+        $image->pwidth = $imageAnalyze->data->width;
+        $image->pheight = $imageAnalyze->data->height;
+    }
+    
+    // Handles uploads from archive
+    public static function handleUploadLocal(& $image,$params = array())
+    {
+        $photoDir = $params['photo_dir'];
+        $fileNamePhysic = $params['file_name_physic'];
+        $fileSession = $params['file_session'];
+        $pathExtracted = $params['post_file_name'];
+        $album = $params['album'];
+        
+        $config = erConfigClassLhConfig::getInstance();
+
+        $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
+   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+   		    
+        erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $pathExtracted, $photoDir.'/normal_'.$fileNamePhysic );
+    	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$pathExtracted, $photoDir.'/thumb_'.$fileNamePhysic );
+    					    	
+    	$dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
+		// If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
+		if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
+				erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $pathExtracted, $photoDir.'/'.$fileNamePhysic ); 
+		} else  {
+				rename($pathExtracted,$photoDir.'/'.$fileNamePhysic);
+		}
+		
+    	chown($photoDir.'/'.$fileNamePhysic,$wwwUser);
+    	chown($photoDir.'/normal_'.$fileNamePhysic,$wwwUser);
+    	chown($photoDir.'/thumb_'.$fileNamePhysic,$wwwUser);
+    	
+    	chgrp($photoDir.'/'.$fileNamePhysic,$wwwUserGroup);
+    	chgrp($photoDir.'/normal_'.$fileNamePhysic,$wwwUserGroup);
+    	chgrp($photoDir.'/thumb_'.$fileNamePhysic,$wwwUserGroup);
+    					    					    	
+    	chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    	
+    	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
+    	$image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
+    	$image->filepath = 'userpics/'.$fileSession->user_id.'/'.$album->aid.'/';
+
+    	$imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic );
+    	$image->pwidth = $imageAnalyze->data->width;
+    	$image->pheight = $imageAnalyze->data->height;
+    	$image->hits = 0;    	
+    	
+    }
+    
+    // Handles uploads from archive
+    public static function handleUploadBatch(& $image,$params = array())
+    {
+        $photoDir = $params['photo_dir'];
+        $fileNamePhysic = $params['file_name_physic'];
+        $imagePath = $params['post_file_name'];
+        
+        $config = erConfigClassLhConfig::getInstance();
+   		    
+        erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $imagePath, $photoDir.'/normal_'.$fileNamePhysic );
+    	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$imagePath, $photoDir.'/thumb_'.$fileNamePhysic );
+    					    	
+    	$dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
+		// If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
+		if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
+				erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $imagePath, $imagePath ); 
+				chmod($imagePath,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+		}
+		
+    	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    	
+    	$image->filesize = filesize($imagePath);
+        $image->total_filesize = $image->filesize;
+
+    	$imageAnalyze = new ezcImageAnalyzer( $imagePath ); 	       
+        $image->pwidth = $imageAnalyze->data->width;
+        $image->pheight = $imageAnalyze->data->height;
+
+    	$image->hits = 0;    	
+    	
+    }
+    
+    
+    
     public static function isPhotoLocal($filePAth)
     {              
            try {

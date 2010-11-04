@@ -106,7 +106,7 @@ class erLhcoreClassModelGalleryUploadArchive {
 				$pathExtracted = "var/tmpfiles/{$this->id}/" . $entry->getPath();								
 				$archive->extractCurrent( "var/tmpfiles/{$this->id}/" );
 				
-				if (erLhcoreClassImageConverter::isPhotoLocal($pathExtracted)) {
+				if (($filetype = erLhcoreClassModelGalleryFiletype::isValidLocal($pathExtracted)) !== false /*erLhcoreClassImageConverter::isPhotoLocal($pathExtracted)*/) {
 										
 					$image = new erLhcoreClassModelGalleryImage();
 				    $image->aid = $album->aid;				    				    	
@@ -136,8 +136,17 @@ class erLhcoreClassModelGalleryUploadArchive {
 				    	if (file_exists($photoDir.'/'.$fileNamePhysic)) {
 				    		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
 				    	}
-
-				    	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $pathExtracted, $photoDir.'/normal_'.$fileNamePhysic );
+				    	
+				    	$filetype->processLocal($image,array(
+                	       'photo_dir'        => $photoDir,
+                	       'file_name_physic' => $fileNamePhysic,
+                	       'post_file_name'   => $pathExtracted,
+                	       'file_session'     => $this,
+                	       'album'            => $album,
+            	       ));
+	       
+            	       
+				    	/*erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $pathExtracted, $photoDir.'/normal_'.$fileNamePhysic );
 				    	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$pathExtracted, $photoDir.'/thumb_'.$fileNamePhysic );
 				    					    	
 				    	$dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
@@ -167,7 +176,9 @@ class erLhcoreClassModelGalleryUploadArchive {
 				    	$imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic );
 				    	$image->pwidth = $imageAnalyze->data->width;
 				    	$image->pheight = $imageAnalyze->data->height;
-				    	$image->hits = 0;
+				    	$image->hits = 0;*/
+				    	
+				    	
 				    	$image->ctime = time();
 				    	$image->owner_id = $this->user_id;
 				    	$image->pic_rating = 0;

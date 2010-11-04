@@ -9,7 +9,6 @@ if (isset($_POST['photo']) && isset($_POST['score']) )
     $new_rating = round(($image->votes * $image->pic_rating + (int)$rate * 2000) / ($image->votes + 1));    
     $image->pic_rating = $new_rating;
     $image->votes = $image->votes + 1;
-    $image->sort_rated = $image->pic_rating*$image->votes;
     $image->rtime = time();
 
     erLhcoreClassModelGalleryRated24::addRate($image->pid,$rate);

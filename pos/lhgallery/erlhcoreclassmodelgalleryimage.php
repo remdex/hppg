@@ -104,10 +104,10 @@ $def->properties['comtime']->columnName   = 'comtime';
 $def->properties['comtime']->propertyName = 'comtime';
 $def->properties['comtime']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
-$def->properties['sort_rated'] = new ezcPersistentObjectProperty();
-$def->properties['sort_rated']->columnName   = 'sort_rated';
-$def->properties['sort_rated']->propertyName = 'sort_rated';
-$def->properties['sort_rated']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+$def->properties['has_preview'] = new ezcPersistentObjectProperty();
+$def->properties['has_preview']->columnName   = 'has_preview';
+$def->properties['has_preview']->propertyName = 'has_preview';
+$def->properties['has_preview']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
 $def->properties['anaglyph'] = new ezcPersistentObjectProperty();
 $def->properties['anaglyph']->columnName   = 'anaglyph';
@@ -118,6 +118,11 @@ $def->properties['rtime'] = new ezcPersistentObjectProperty();
 $def->properties['rtime']->columnName   = 'rtime';
 $def->properties['rtime']->propertyName = 'rtime';
 $def->properties['rtime']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
+$def->properties['media_type'] = new ezcPersistentObjectProperty();
+$def->properties['media_type']->columnName   = 'media_type';
+$def->properties['media_type']->propertyName = 'media_type';
+$def->properties['media_type']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
 
 $def->relations["erLhcoreClassModelGalleryComment"] = new ezcPersistentOneToManyRelation(
 	"lh_gallery_images",

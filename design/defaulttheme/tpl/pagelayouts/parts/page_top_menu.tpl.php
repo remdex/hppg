@@ -21,10 +21,10 @@
 		<?php endif;?>
 		
 		<?php if (erLhcoreClassUser::instance()->hasAccessTo('lhgallery','public_upload')) : ?>
-		<li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/publicupload/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Upload image');?></a> 
+		<li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/publicupload/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Upload');?></a> 
 		<?php endif;?>
 		
         <?php if (erLhcoreClassUser::instance()->hasAccessTo('lhgallery','public_upload_archive')) : ?>
-		<li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/publicarchiveupload')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Upload zipped images');?></a> 
+		<li><a href="<?=erLhcoreClassDesign::baseurl('/gallery/publicarchiveupload')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Upload zip');?></a> 
 		<?php endif;?>		
 </ul>

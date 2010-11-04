@@ -48,6 +48,9 @@ return array_merge(array (
         'erLhcoreClassModelGalleryUpload' 	=> 'lib/models/lhgallery/erlhcoreclassmodelupload.php',
         'erLhcoreClassModelGalleryUploadArchive' 	=> 'lib/models/lhgallery/erlhcoreclassmodeluploadarchive.php',
         'erLhcoreClassGallery' 	                    => 'lib/core/lhgallery/lhgallery.php',
+        'erLhcoreClassOgg' 	                        => 'lib/core/lhgallery/lhogg.php',
+        'erLhcoreClassHTMLVConverter' 	            => 'lib/core/lhgallery/lhhtmlvconverter.php',
+        'erLhcoreClassSWFConverter' 	            => 'lib/core/lhgallery/lhswfconverter.php',
         'erLhcoreClassGalleryArchive' 	            => 'lib/core/lhgallery/lharchive.php',
         'erLhcoreClassModelGalleryLastSearch'       => 'lib/models/lhgallery/erlhcoreclassmodellastsearch.php',
         'erLhcoreClassModelGallerySearchHistory'    => 'lib/models/lhgallery/erlhcoreclassmodelsearchhistory.php',
@@ -64,7 +67,8 @@ return array_merge(array (
         'erLhcoreClassModelGalleryDuplicateImage' 		=> 'lib/models/lhgallery/erlhcoreclassmodelduplicateimage.php',
         'erLhcoreClassModelGalleryDuplicateImageHash' 	=> 'lib/models/lhgallery/erlhcoreclassmodelduplicateimagehash.php',
         'erLhcoreClassModelGalleryConfig' 	            => 'lib/models/lhgallery/erlhcoreclassmodelconfig.php',
-                
+        'erLhcoreClassModelGalleryFiletype'	            => 'lib/models/lhgallery/erlhcoreclassmodelfiletype.php',
+
         //Favorites        
         'erLhcoreClassModelGalleryMyfavoritesImage' 	=> 'lib/models/lhgallery/erlhcoreclassmodelmyfavoritesimage.php',
         'erLhcoreClassModelGalleryMyfavoritesSession' 	=> 'lib/models/lhgallery/erlhcoreclassmodelmyfavoritessession.php', 
@@ -92,7 +96,7 @@ return array_merge(array (
          'erLhcoreClassModelShopUserCredit' 	=> 'lib/models/lhshop/erlhcoreclassmodelusercredit.php',
          'erLhcoreClassModelShopUserCreditOrder'=> 'lib/models/lhshop/erlhcoreclassmodelusercreditorder.php',
          'erLhcoreClassShopMail'				=> 'lib/core/lhshop/lhshopmail.php',
-         
+                  
          // Paypal handler options
          'erLhcoreClassShopPaymentHandlerPaypal' => 'lib/core/lhshop/paymenthandlers/paypal_handler/classes/handler.php',
                 

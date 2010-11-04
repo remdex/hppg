@@ -14,12 +14,19 @@ foreach ($searchResult['list'] as $itemRecord)
 {		
 	    $item = $feed->add( 'item' ); 
 	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','View image') : $title;
-	    $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />').	    
-	   '<ul>
+	    
+	    if ($itemRecord->filetype->player == 'IMAGE'){
+	       $item->description = htmlspecialchars('<img src="'.erLhcoreClassDesign::imagePath($itemRecord->filepath.'thumb_'.urlencode($itemRecord->filename)).'" alt="'.htmlspecialchars($itemRecord->name_user).'" />');
+	    } else {
+	       $item->description = '';
+	    }   
+	    
+	    $item->description .= '<ul>
             <li>'.$itemRecord->pwidth.'x'.$itemRecord->pheight.'</li>
-            <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','watched').'</li>                    
+            <li>'.$itemRecord->hits.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthitsrss','watched').'</li>                    
             </a></li>
-        </ul>';;
+        </ul>';
+	    
 	    $item->published = $itemRecord->ctime; 
 	     
 	    $link = $item->add( 'link' );
