@@ -2,7 +2,7 @@
 
 class erLhcoreClassLhAPC
 {
-    public function set($key,$value,$compress,$ttl)
+    public function set($key, $value, $compress, $ttl = 0)
     {
         apc_store($key,$value,$ttl);
     }

@@ -17,7 +17,9 @@ $filterArray['approved'] = 1;
 
 $cacheVersion = $cache->getCacheVersion('most_popular_version',time(),1500);
 
-if (($Result = $cache->restore(md5('version_'.$cacheVersion.'popular_view_url'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
+$cacheKey = md5('version_'.$cache->getCacheVersion('most_popular_version',time(),1500).'popular_view_url'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
+
+if (($Result = $cache->restore($cacheKey)) === false)
 { 
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/popular.tpl.php');
     $pages = new lhPaginator();
@@ -51,7 +53,7 @@ if (($Result = $cache->restore(md5('version_'.$cacheVersion.'popular_view_url'.$
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/popularrss/');
 
-    $cache->store(md5('version_'.$cacheVersion.'popular_view_url'.'_page_'.$Params['user_parameters_unordered']['page']),$Result);
+    $cache->store($cacheKey,$Result);
 }
 
 ?>

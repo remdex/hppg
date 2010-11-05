@@ -44,8 +44,11 @@ class erLhcoreClassGallery{
    
    public static function searchSphinxMulti($queryesBatch,$cacheEnabled = true)
    {
-      $cache = CSCacheAPC::getMem();        
-      $cacheKey =  md5('SphinxSearchMulti_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$queryesBatch));
+      if ($cacheEnabled == true) {
+        $cache = CSCacheAPC::getMem();        
+        $cacheKey = md5('SphinxSearchMulti_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$queryesBatch));
+      }
+      
       if ($cacheEnabled == false || ($resultReturn = $cache->restore($cacheKey)) === false)
       {
             $cl = self::getSphinxInstance();
@@ -159,8 +162,11 @@ class erLhcoreClassGallery{
     
    public static function searchSphinx($params = array('SearchLimit' => 20),$cacheEnabled = true)  
    {
-      $cache = CSCacheAPC::getMem();        
-      $cacheKey =  md5('SphinxSearch_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$params));
+      if ($cacheEnabled == true ) {
+        $cache = CSCacheAPC::getMem();        
+        $cacheKey =  md5('SphinxSearch_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$params));
+      }
+      
       if ($cacheEnabled == false || ($resultReturn = $cache->restore($cacheKey)) === false)
       {
       
@@ -229,7 +235,9 @@ class erLhcoreClassGallery{
         
       if (isset($params['relevance'])) {          
           $itemCurrent = array_shift($result['matches']);
-          $cache->store($cacheKey,$itemCurrent['weight'],12000);
+          if ($cacheEnabled == true ) {
+            $cache->store($cacheKey,$itemCurrent['weight'],12000);
+          }
           return $itemCurrent['weight'];
       }
       
@@ -249,8 +257,12 @@ class erLhcoreClassGallery{
       }     
        
         $resultReturn = array('total_found' => $result['total_found'],'list' => $idMatch);
-        if ($cacheEnabled == true)
-        $cache->store($cacheKey,$resultReturn,12000);
+        
+        if ($cacheEnabled == true) {
+            $cache->store($cacheKey,$resultReturn,12000);
+        }
+        
+        
       }
       
       return $resultReturn;

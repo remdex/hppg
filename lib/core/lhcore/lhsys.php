@@ -79,6 +79,7 @@ class CSCacheAPC {
 
     function getCacheVersion($cacheVariable, $valuedefault = 1, $ttl = 0)
     {
+        
         if (isset($GLOBALS['CacheKeyVersion_'.$cacheVariable])) return $GLOBALS['CacheKeyVersion_'.$cacheVariable];
         
         if ( $this->cacheEngine != null )

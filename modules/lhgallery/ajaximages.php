@@ -34,8 +34,8 @@ if ($mode == 'album')
         'lastcommentedasc' => 'comtime ASC, pid ASC',          
         'toprated'         => 'pic_rating DESC, votes DESC, pid DESC',
         'topratedasc'      => 'pic_rating ASC, votes ASC, pid ASC',    
-        'lastrated' => 'rtime DESC, pid DESC',
-        'lastratedasc' => 'rtime ASC, pid ASC'  
+        'lastrated'        => 'rtime DESC, pid DESC',
+        'lastratedasc'     => 'rtime ASC, pid ASC'  
     );
     
     $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'new';
@@ -1084,6 +1084,68 @@ if ($mode == 'album')
     $tpl->set('imagesAjax',$imagesAjax);
      
 	$urlAppend = '/(mode)/lastcommented';
+    $urlAppend .= $appendResolutionMode;        
+	$tpl->set('urlAppend',$urlAppend);
+	
+} elseif ($mode == 'lastrated') {
+
+    $cache = CSCacheAPC::getMem();         
+    $cacheKeyImage = 'lastrated_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('last_rated').'_direction_'.$direction.'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    
+    if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
+    {      	
+    	$session = erLhcoreClassGallery::getSession();
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+    	
+    	$filterSQLArray = array(); 
+        $filterSQLString = ''; 
+        $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );   
+        if ($resolution != '') {
+            $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
+            $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );        
+        }
+        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+          	
+    	if ($direction == 'left'){
+    	    $q->where(  $filterSQLString.'('.$q->expr->gt( 'rtime', $q->bindValue( $Image->rtime ) ). ' OR '.$q->expr->eq( 'rtime', $q->bindValue( $Image->rtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                ->orderBy('rtime ASC, pid ASC')
+                ->limit( 6 );
+                $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+                $imagesAjax = array_reverse($imagesAjax);
+    	} else {
+    	       $q->where(  $filterSQLString.'('.$q->expr->lt( 'rtime', $q->bindValue( $Image->rtime ) ). ' OR '.$q->expr->eq( 'rtime', $q->bindValue( $Image->rtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                ->orderBy('rtime DESC, pid DESC')
+                ->limit( 6 );
+                $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+    	};	
+    	
+    	$cache->store($cacheKeyImage,$imagesAjax,0);
+    }
+    
+	$hasMoreImages = 'false';
+        
+    if (count($imagesAjax) > 5) {
+        $hasMoreImages = 'true';
+        if ($direction == 'left') { 
+            $imagesAjax = array_slice($imagesAjax,1,5);
+        } else {
+            $imagesAjax = array_slice($imagesAjax,0,5);
+        }    
+    }
+
+    $imagesFound = count($imagesAjax);
+    
+    reset($imagesAjax);
+    $ImageLast = current($imagesAjax);    
+    $LeftImagePID = $ImageLast->pid;
+    
+    end($imagesAjax);
+    $ImageLast = current($imagesAjax);
+    $RightImagePID = $ImageLast->pid;
+           
+    $tpl->set('imagesAjax',$imagesAjax);
+     
+	$urlAppend = '/(mode)/lastrated';
     $urlAppend .= $appendResolutionMode;        
 	$tpl->set('urlAppend',$urlAppend);
 	
