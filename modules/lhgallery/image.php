@@ -186,7 +186,7 @@ if ($mode == 'album') {
 } elseif ($mode == 'myfavorites') {
     
     $favouriteSession = erLhcoreClassModelGalleryMyfavoritesSession::getInstance();    
-    $appendCacheKey = '_my_favorites_version_'.$cache->getCacheVersion('favorite_'.$favouriteSession->id);
+    $appendCacheKey = '_my_favorites_version_'.$cache->getCacheVersion('favorite_'.$favouriteSession->id).'_session_id_'.$favouriteSession->id;
     
 } elseif ($mode == 'popularrecent') {
           
@@ -225,6 +225,7 @@ if ($mode == 'album') {
 if ($currentUser->isLogged()) {
     $appendCacheKey .= 'user_id_'.$currentUser->getUserID();
 }
+
 
 // Global image cache key
 $cacheKeyImageView = md5('image_window_'.(int)$Params['user_parameters']['image_id'].'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray).'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.$appendCacheKey).'_comment_version_'.$cache->getCacheVersion('last_commented_image_version_'.(int)$Params['user_parameters']['image_id']);
