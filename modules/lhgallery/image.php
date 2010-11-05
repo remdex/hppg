@@ -28,7 +28,12 @@ if ($mode == 'album') {
     
     // Avoids loading persistent object classes etc
     if (($albumID = $cache->getCacheVersion('album_id_by_pid'.(int)$Params['user_parameters']['image_id'])) === false){
-        $Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$Params['user_parameters']['image_id'] );
+        try {
+            $Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$Params['user_parameters']['image_id'] );
+        } catch (Exception $e){
+            erLhcoreClassModule::redirect('/');
+            exit;
+        }
         $albumID = $Image->aid;
         $cache->store('album_id_by_pid'.(int)$Params['user_parameters']['image_id'],$albumID);
     }
