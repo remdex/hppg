@@ -112,7 +112,7 @@ class CSCacheAPC {
         }        
     }
     
-    function store($key, $value, $ttl = 72000) {        
+    function store($key, $value, $ttl = 144000) {        
         if ( $this->cacheEngine != null )
         {
             $GLOBALS[$key] = $value;
