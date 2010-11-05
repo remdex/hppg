@@ -1274,15 +1274,10 @@ if ($mode == 'album')
 	$imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = '/(mode)/myfavorites'; 
-            
-    $ResultCacheImages['urlAppend'] = $urlAppend;
-    $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/myfavorites').$urlAppend.$pageAppend;
-    $ResultCacheImages['imagesParams'] = $imagesParams;
-
-    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
-    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
-    $tpl->setArray($ResultCacheImages['imagesParams']);	
-	
+           
+    $tpl->set('urlAppend',$urlAppend);
+    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/myfavorites').$urlAppend.$pageAppend);
+    $tpl->setArray($imagesParams);		
     
 } elseif ($mode == 'popularrecent') {
                
@@ -1330,14 +1325,10 @@ if ($mode == 'album')
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = '/(mode)/popularrecent';             
     $urlAppend .= $appendResolutionMode;
-       
-    $ResultCacheImages['urlAppend'] = $urlAppend;
-    $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/popularrecent').$urlAppend.$pageAppend;
-    $ResultCacheImages['imagesParams'] = $imagesParams;
-          
-    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
-    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
-    $tpl->setArray($ResultCacheImages['imagesParams']);
+
+    $tpl->set('urlAppend',$urlAppend);
+    $tpl->set('urlReturnToThumbnails', erLhcoreClassDesign::baseurl('gallery/popularrecent').$urlAppend.$pageAppend);
+    $tpl->setArray($imagesParams);
     	
 } elseif ($mode == 'ratedrecent') {
                         
@@ -1377,27 +1368,23 @@ if ($mode == 'album')
   
    foreach ($imagesLeftArray as $imageLeftItem)
    {
-   	$imagesLeft[] = $imageLeftItem->image;
+   	    $imagesLeft[] = $imageLeftItem->image;
    }
    
    foreach ($imagesRightArray as $imageRightItem)
    {
-   	$imagesRight[] = $imageRightItem->image;
+   	    $imagesRight[] = $imageRightItem->image;
    }
                 
    $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
    $pageAppend = $page > 1 ? '/(page)/'.$page : '';
    $urlAppend = '/(mode)/ratedrecent';
    $urlAppend .= $appendResolutionMode;
-         
-   $ResultCacheImages['urlAppend'] = $urlAppend;
-   $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/ratedrecent').$urlAppend.$pageAppend;
-   $ResultCacheImages['imagesParams'] = $imagesParams;
-         
-    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
-    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
-    $tpl->setArray($ResultCacheImages['imagesParams']);
-    	
+
+   $tpl->set('urlAppend',$urlAppend);
+   $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/ratedrecent').$urlAppend.$pageAppend);
+   $tpl->setArray($imagesParams);
+
 } elseif ($mode == 'lastuploads') {
           
     $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'limit' => 5,'filter' => $filterArray,'sort' => 'pid ASC','filtergt' => array('pid' => $Image->pid)));    	
@@ -1408,87 +1395,70 @@ if ($mode == 'album')
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = '/(mode)/lastuploads'; 
     $urlAppend .= $appendResolutionMode;
-     
-    $ResultCacheImages['urlAppend'] = $urlAppend;
-    $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/lastuploads').$urlAppend.$pageAppend;
-    $ResultCacheImages['imagesParams'] = $imagesParams;
-           
-	$tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
-    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
-    $tpl->setArray($ResultCacheImages['imagesParams']);
+                   
+	$tpl->set('urlAppend',$urlAppend);
+    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/lastuploads').$urlAppend.$pageAppend);
+    $tpl->setArray($imagesParams);
     
 } elseif ($mode == 'lasthits') {
-
-    $cache = CSCacheAPC::getMem(); 
+   
+    $db = ezcDbInstance::get(); 
+    $session = erLhcoreClassGallery::getSession(); 
         
-    $cacheKeyImage = 'lasthits_mode_image_ajax_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('last_hits_version',time(),600).'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray);
+    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
     
-    if (($ResultCacheImages = $cache->restore($cacheKeyImage)) === false)
-    {
-        $db = ezcDbInstance::get(); 
-        $session = erLhcoreClassGallery::getSession(); 
-            
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();
-        $countSQLArray = array();
-        $countSQL = '';
-        $filterSQLString = '';
-        
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-            $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
-        }
+    $filterSQLArray = array();
+    $countSQLArray = array();
+    $countSQL = '';
+    $filterSQLString = '';
     
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-        $countSQL = ' AND '.implode(' AND ',$countSQLArray);
-             
-        $q->where( $filterSQLString.' ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-        ->orderBy('mtime ASC, pid ASC')
-        ->limit( 5 );
-        $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-                  
-        
-        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-        
-        $filterSQLArray = array();
-        foreach ($filterArray as $field => $filterValue){
-            $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
-        }
-        $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-            
-        $q->where( $filterSQLString.'('.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
-        ->orderBy('mtime DESC, pid DESC')
-        ->limit( 5 );
-        $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-                
-        $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (mtime > :mtime OR mtime = :mtime AND pid > :pid) '.$countSQL.' LIMIT 1');
-        $stmt->bindValue( ':mtime',$Image->mtime);
-        $stmt->bindValue( ':pid',$Image->pid);  
-    
-        foreach ($filterArray as $field => $filterValue){
-                $stmt->bindValue( ':'.$field,$filterValue);
-        }
-            
-        $stmt->execute();  
-        $photos = $stmt->fetchColumn();         
-        $page = ceil(($photos+1)/20);
-        
-        $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
-        $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
-        $urlAppend = '/(mode)/lasthits';             
-        $urlAppend .= $appendResolutionMode; 
-          
-        $ResultCacheImages['urlAppend'] = $urlAppend;
-        $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/lasthits').$urlAppend.$pageAppend;
-        $ResultCacheImages['imagesParams'] = $imagesParams;
-           
-        $cache->store($cacheKeyImage,$ResultCacheImages,0);
+    foreach ($filterArray as $field => $filterValue){
+        $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+        $countSQLArray[] = "lh_gallery_images.{$field} = :$field";
     }
+
+    $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+    $countSQL = ' AND '.implode(' AND ',$countSQLArray);
+         
+    $q->where( $filterSQLString.' ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    ->orderBy('mtime ASC, pid ASC')
+    ->limit( 5 );
+    $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+              
     
-    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);
-    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);
-    $tpl->setArray($ResultCacheImages['imagesParams']);
+    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+    
+    $filterSQLArray = array();
+    foreach ($filterArray as $field => $filterValue){
+        $filterSQLArray[] = $q->expr->eq( $field, $filterValue  );
+    }
+    $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
+        
+    $q->where( $filterSQLString.'('.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    ->orderBy('mtime DESC, pid DESC')
+    ->limit( 5 );
+    $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+            
+    $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_images WHERE (mtime > :mtime OR mtime = :mtime AND pid > :pid) '.$countSQL.' LIMIT 1');
+    $stmt->bindValue( ':mtime',$Image->mtime);
+    $stmt->bindValue( ':pid',$Image->pid);  
+
+    foreach ($filterArray as $field => $filterValue){
+            $stmt->bindValue( ':'.$field,$filterValue);
+    }
+        
+    $stmt->execute();  
+    $photos = $stmt->fetchColumn();         
+    $page = ceil(($photos+1)/20);
+    
+    $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
+    $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
+    $urlAppend = '/(mode)/lasthits';             
+    $urlAppend .= $appendResolutionMode; 
+              
+    $tpl->set('urlAppend',$urlAppend);
+    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/lasthits').$urlAppend.$pageAppend);
+    $tpl->setArray($imagesParams);
     
 	
 } elseif ($mode == 'popular') {
@@ -1546,14 +1516,10 @@ if ($mode == 'album')
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = '/(mode)/popular';             
     $urlAppend .= $appendResolutionMode;
-      
-    $ResultCacheImages['urlAppend'] = $urlAppend;
-    $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/popular').$urlAppend.$pageAppend;
-    $ResultCacheImages['imagesParams'] = $imagesParams;
-
-    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);       
-    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);   
-    $tpl->setArray($ResultCacheImages['imagesParams']);         
+        
+    $tpl->set('urlAppend',$urlAppend);       
+    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/popular').$urlAppend.$pageAppend);   
+    $tpl->setArray($imagesParams);         
       	
 } elseif ($mode == 'lastcommented') {
         
@@ -1611,18 +1577,13 @@ if ($mode == 'album')
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = '/(mode)/lastcommented';             
     $urlAppend .= $appendResolutionMode;
-            
-    $ResultCacheImages['urlAppend'] = $urlAppend;
-    $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/lastcommented').$urlAppend.$pageAppend;
-    $ResultCacheImages['imagesParams'] = $imagesParams;
-                
-    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);       
-    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);   
-    $tpl->setArray($ResultCacheImages['imagesParams']);        
+               
+    $tpl->set('urlAppend',$urlAppend);       
+    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/lastcommented').$urlAppend.$pageAppend);   
+    $tpl->setArray($imagesParams);        
     
 } elseif ($mode == 'lastrated') {
-    
-   
+       
     $db = ezcDbInstance::get(); 
     $session = erLhcoreClassGallery::getSession(); 
         
@@ -1677,14 +1638,10 @@ if ($mode == 'album')
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = '/(mode)/lastrated';             
     $urlAppend .= $appendResolutionMode;
-            
-    $ResultCacheImages['urlAppend'] = $urlAppend;
-    $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/lastrated').$urlAppend.$pageAppend;
-    $ResultCacheImages['imagesParams'] = $imagesParams;
-          
-    $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);       
-    $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);   
-    $tpl->setArray($ResultCacheImages['imagesParams']);        
+        
+    $tpl->set('urlAppend',$urlAppend);       
+    $tpl->set('urlReturnToThumbnails', erLhcoreClassDesign::baseurl('gallery/lastrated').$urlAppend.$pageAppend);   
+    $tpl->setArray($imagesParams);        
     
 } elseif ($mode == 'toprated') {
        
@@ -1743,14 +1700,10 @@ if ($mode == 'album')
    $pageAppend = $page > 1 ? '/(page)/'.$page : '';
    $urlAppend = '/(mode)/toprated';
    $urlAppend .= $appendResolutionMode;
-         
-   $ResultCacheImages['urlAppend'] = $urlAppend;
-   $ResultCacheImages['urlReturnToThumbnails'] = erLhcoreClassDesign::baseurl('gallery/toprated').$urlAppend.$pageAppend;
-   $ResultCacheImages['imagesParams'] = $imagesParams;
                  
-   $tpl->set('urlAppend',$ResultCacheImages['urlAppend']);       
-   $tpl->set('urlReturnToThumbnails',$ResultCacheImages['urlReturnToThumbnails']);   
-   $tpl->setArray($ResultCacheImages['imagesParams']);      
+   $tpl->set('urlAppend',$urlAppend);       
+   $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/toprated').$urlAppend.$pageAppend);   
+   $tpl->setArray($imagesParams);      
 }
 
 $tpl->set('mode',$mode);
