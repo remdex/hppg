@@ -85,7 +85,7 @@ if ($mode == 'album') {
     	break;
     	
     	case 'toprated':
-    		$appendCacheKey = 'album_image_'.$cache->getCacheVersion('top_rated_'.$albumID).'_toprated_'.$cache->getCacheVersion('album_'.$albumID).'_album_id_'.$albumIDd;
+    		$appendCacheKey = 'album_image_'.$cache->getCacheVersion('top_rated_'.$albumID).'_toprated_'.$cache->getCacheVersion('album_'.$albumID).'_album_id_'.$albumID;
     	break;
     	
     	case 'topratedasc':
