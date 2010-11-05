@@ -1771,6 +1771,8 @@ if ($mode == 'lastuploads') {
         'lastcommentedasc'  => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last commented last'),    
         'toprated'          => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated first'),
         'topratedasc'       => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated last Last'),
+        'lastrated'         => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last rated first'),
+        'lastratedasc'      => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last rated last'),
         'relevance'         => '',
         'relevanceasc'      => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most relevance images last')
     );
