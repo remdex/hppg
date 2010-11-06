@@ -65,37 +65,41 @@ foreach ($duplicates as $duplicate)
        	 {
        	 	// First item cycle, mark current image as original
        	 	if ($Original == false){$Original = $image;continue;}
-       	 	       	 	
-       	 		// Check if image ID is already not in duplicate table
-       	 		$q = $db->createSelectQuery();  
-       			$q->select( "COUNT(pid)" )->from( "lh_gallery_duplicate_image" ); 
-	       	 	$q->where( 
-	                 $q->expr->eq( 'pid', $image->pid )     
-	          	);
-          		$stmt = $q->prepare();       
-              	$stmt->execute();   
-              	if ($stmt->fetchColumn() == 0)
-              	{
-              		
-	       	 		if ($dulicateSessionObject == false){
-	       	 			$dulicateSessionObject = new erLhcoreClassModelGalleryDuplicateCollection();
-	       	 			$dulicateSessionObject->time = time();
-	       	 			$session->save($dulicateSessionObject);
-	       	 		}
-	       	 		
-	       	 		if ($OriginalSaved == false) {
-	       	 			$duplicateRecord = new erLhcoreClassModelGalleryDuplicateImage();
-	       	 			$duplicateRecord->pid = $Original->pid;
-	       	 			$duplicateRecord->duplicate_collection_id = $dulicateSessionObject->id;
-	       	 			$session->save($duplicateRecord);
-	       	 			$OriginalSaved = true;
-	       	 		}
-	       	 		
-	       	 		$duplicateRecord = new erLhcoreClassModelGalleryDuplicateImage();
-	       	 		$duplicateRecord->pid = $image->pid;
-	       	 		$duplicateRecord->duplicate_collection_id = $dulicateSessionObject->id;
-	       	 		$session->save($duplicateRecord);
-              	}  
+       	 	    
+       	 	
+       	 	     if ($image->pid > 0) {
+       	 	   	 	
+           	 		// Check if image ID is already not in duplicate table
+           	 		$q = $db->createSelectQuery();  
+           			$q->select( "COUNT(pid)" )->from( "lh_gallery_duplicate_image" ); 
+    	       	 	$q->where( 
+    	                 $q->expr->eq( 'pid', $image->pid )     
+    	          	);
+              		$stmt = $q->prepare();       
+                  	$stmt->execute();   
+                  	if ($stmt->fetchColumn() == 0)
+                  	{
+                  		
+    	       	 		if ($dulicateSessionObject == false){
+    	       	 			$dulicateSessionObject = new erLhcoreClassModelGalleryDuplicateCollection();
+    	       	 			$dulicateSessionObject->time = time();
+    	       	 			$session->save($dulicateSessionObject);
+    	       	 		}
+    	       	 		
+    	       	 		if ($OriginalSaved == false) {
+    	       	 			$duplicateRecord = new erLhcoreClassModelGalleryDuplicateImage();
+    	       	 			$duplicateRecord->pid = $Original->pid;
+    	       	 			$duplicateRecord->duplicate_collection_id = $dulicateSessionObject->id;
+    	       	 			$session->save($duplicateRecord);
+    	       	 			$OriginalSaved = true;
+    	       	 		}
+    	       	 		
+    	       	 		$duplicateRecord = new erLhcoreClassModelGalleryDuplicateImage();
+    	       	 		$duplicateRecord->pid = $image->pid;
+    	       	 		$duplicateRecord->duplicate_collection_id = $dulicateSessionObject->id;
+    	       	 		$session->save($duplicateRecord);
+                  	}
+       	 	    }  
        	 }
 	}	
 }
