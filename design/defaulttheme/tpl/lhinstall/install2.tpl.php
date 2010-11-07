@@ -23,7 +23,7 @@
     </tr>
     <tr>
         <td>Host</td>
-        <td><input type="text" name="DatabaseHost" value="<?=isset($db_host) ? $db_host : ''?>"></td>
+        <td><input type="text" name="DatabaseHost" value="<?=isset($db_host) ? $db_host : 'localhost'?>"></td>
     </tr>
     <tr>
         <td>Port</td>
