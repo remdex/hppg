@@ -9,7 +9,8 @@
         <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Date added')?>: <?=date('Y-m-d H:i:s',$image->ctime);?>
         <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Dimensions')?>: <?=$image->pwidth?>x<?=$image->pheight?>
         <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Displayed')?>: <?=$image->hits?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','times')?>
-        <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Owner')?>: <a href="<?=erLhcoreClassDesign::baseurl('/gallery/ownercategorys/')?><?=$image->owner_id?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','More user images')?></a>
+        <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Album')?>: <a href="<?=$image->album_path?>"><?=$image->album_title?></a>
         <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','URL')?>: <a href="http://<?=$_SERVER['HTTP_HOST']?><?=$image->url_path?>">http://<?=$_SERVER['HTTP_HOST']?><?=$image->url_path?></a>
+        <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Owner')?>: <a href="<?=erLhcoreClassDesign::baseurl('/gallery/ownercategorys/')?><?=$image->owner_id?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','More user images')?></a>
     </ul>
 </div>
