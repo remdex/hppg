@@ -146,9 +146,7 @@ foreach ($objects as $object)
     
     try {
         if (file_exists($photoPath.$object->filename) && is_file($photoPath.$object->filename)){ 
-            
-            $status->addEntry( 'ACTION', "Recreating {$recreating} size image thumbnail PID #{$object->pid}." );
-            
+             
             if ($object->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) 
             {   
                 $recreating = '';
@@ -159,6 +157,8 @@ foreach ($objects as $object)
                 } elseif ($targetOption->value == 'both'){
                     $recreating = 'small and normal';
                 }
+                
+                $status->addEntry( 'ACTION', "Recreating {$recreating} size image thumbnail PID #{$object->pid}." );
                        
                 if ($targetOption->value == 'small' || $targetOption->value == 'both') {
                     erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoPath.$object->filename, $photoPath.'/thumb_'.$object->filename );                 
@@ -169,6 +169,8 @@ foreach ($objects as $object)
                     erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoPath.$object->filename, $photoPath.'/normal_'.$object->filename );                
                     chmod($photoPath.'/normal_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
                 }
+            } else {
+                $status->addEntry( 'ACTION', "Skipping multipedia type PID #{$object->pid}." );
             }
             
         } else {
