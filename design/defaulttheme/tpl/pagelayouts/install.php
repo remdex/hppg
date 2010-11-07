@@ -18,7 +18,10 @@
 	</div>
 	
 	
-<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_footer.tpl.php'));?>
+<div id="footer">
+    <div class="right"><abbr title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','It\'s NOT fake!')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Rendered in')?>: <?=number_format(set_time($GLOBALS['star_microtile'], microtime()), 5);?> s.</abbr>, powered by <a href="http://code.google.com/p/hppg/" title="High performance photo gallery">HPPG</a>, Design <a href="http://pauliusc.lt">http://pauliusc.lt</a></div>
+</div>
+
 
 	
 </div>

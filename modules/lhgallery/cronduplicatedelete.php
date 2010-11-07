@@ -37,6 +37,5 @@ foreach ($objects as $object)
 	$object->removeThis();
 }
 
-
-
-
+// Clear all cache
+CSCacheAPC::getMem()->increaseImageManipulationCache();
