@@ -400,7 +400,7 @@ $FunctionList['administrate'] = array('explain' => 'Global edit permission [admi
 $FunctionList['personal_albums'] = array('explain' => 'Allow users to have personal albums [personal_albums]');
 $FunctionList['public_upload'] = array('explain' => 'Allow anyone to upload images using flash [public_upload]');
 $FunctionList['public_upload_archive'] = array('explain' => 'Allow anyone to upload archive [public_upload_archive]');
-$FunctionList['auto_approve'] = array('explain' => 'Function grants auto for all uploaded photos');
+$FunctionList['auto_approve'] = array('explain' => 'Function grants auto approvement for all uploaded photos');
 $FunctionList['auto_approve_self_photos'] = array('explain' => 'Function grants auto approvement for user self uploaded photos');
 $FunctionList['can_approve_self_photos'] = array('explain' => 'Function grants self uploaded photos approvement');
 $FunctionList['can_approve_all_photos'] = array('explain' => 'Function grants permission to approve all users uploaded photos');
