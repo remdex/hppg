@@ -45,7 +45,7 @@
             <textarea name="CommentBody" rows="5" cols="10" class="default-textarea" ><?=htmlspecialchars($comment_new->msg_body)?></textarea>
             </div>
                            
-            <input type="submit" class="default-button" name="StoreComment" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Send')?>"/>
+            <input type="submit" class="default-button" id="CommentButtomStore" name="StoreComment" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Send')?>"/>
         </form>       
     </div>
 </div>

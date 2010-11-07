@@ -61,6 +61,9 @@ var hw = {
 	
 	addCheck : function (timestamp)
 	{
+	    
+	    $('#CommentButtomStore').attr("disabled","disabled");
+	    $('#CommentButtomStore').val("Working...");
 		$.getJSON(this.formAddPath + this.captcha_url+timestamp, function(data) {	                
 			var input = $(document.createElement('input'));
             input.attr("name","captcha_"+data.result);
@@ -69,7 +72,7 @@ var hw = {
             input.attr("id","id_captcha_code");
             $('#comment_form_data').prepend(input);                 
             document.comment_form.submit();
-		});    		
+		});		  		
 		return false;	
 	},
 	
