@@ -87,6 +87,13 @@ class erLhcoreClassModelGalleryImage {
              if (file_exists($photoPath.'thumb_'.str_replace('.ogv','.jpg',$this->filename)))
                     unlink($photoPath.'thumb_'.str_replace('.ogv','.jpg',$this->filename));                           
            }
+       } elseif ($this->media_type == erLhcoreClassModelGalleryImage::mediaTypeSWF ) {
+                  
+           if ($this->has_preview == 1) {      
+                       
+             if (file_exists($photoPath.'thumb_'.str_replace('.swf','.jpg',$this->filename)))
+                    unlink($photoPath.'thumb_'.str_replace('.swf','.jpg',$this->filename));                           
+           }
        }
        
        $this->clearCache();
