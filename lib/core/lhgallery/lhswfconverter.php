@@ -57,6 +57,8 @@ class erLhcoreClassSWFConverter {
                       
         $image->pwidth = $width;
         $image->pheight = $height;
+        
+        erLhcoreClassModelGalleryPendingConvert::addImage($image->pid);
     }
     
     public static function handleUploadLocal(& $image,$params = array())
@@ -88,6 +90,8 @@ class erLhcoreClassSWFConverter {
         $image->pwidth = $width;
         $image->pheight = $height;
     	$image->hits = 0;
+    	
+    	erLhcoreClassModelGalleryPendingConvert::addImage($image->pid);
     }
     
     public static function handleUploadBatch(& $image,$params = array())
@@ -102,10 +106,12 @@ class erLhcoreClassSWFConverter {
     	$image->total_filesize = $image->filesize;
     	
     	list($width, $height, $type, $attr) = getimagesize($imagePath);
-        $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeSWF;              
+        $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeSWF;
         $image->pwidth = $width;
         $image->pheight = $height;
     	$image->hits = 0;
+    	
+    	erLhcoreClassModelGalleryPendingConvert::addImage($image->pid);
     }
     
     

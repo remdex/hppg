@@ -69,6 +69,7 @@ return array_merge(array (
         'erLhcoreClassModelGalleryDuplicateImageHash' 	=> 'lib/models/lhgallery/erlhcoreclassmodelduplicateimagehash.php',
         'erLhcoreClassModelGalleryConfig' 	            => 'lib/models/lhgallery/erlhcoreclassmodelconfig.php',
         'erLhcoreClassModelGalleryFiletype'	            => 'lib/models/lhgallery/erlhcoreclassmodelfiletype.php',
+        'erLhcoreClassModelGalleryPendingConvert'	    => 'lib/models/lhgallery/erlhcoreclassmodelpendingconvert.php',
 
         //Favorites        
         'erLhcoreClassModelGalleryMyfavoritesImage' 	=> 'lib/models/lhgallery/erlhcoreclassmodelmyfavoritesimage.php',

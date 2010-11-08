@@ -608,6 +608,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('file_upload_limit', '200', 0, 'How many files upload during one session', 0),
 						('thumbnail_width_x', '120', 0, 'Small thumbnail width - x', 0),
 						('thumbnail_width_y', '130', 0, 'Small thumbnail width - Y', 0),
+						('flash_screenshot_command',  'bin/shell/xvfb-run.sh --server-args=\"-screen 0, 1024x2730x24\" bin/shell/screenshot.sh',  '0',  'Command witch is executed for making flash screenshot',  '0'),
 						('allowed_file_types', '*.jpg;*.gif;*.png;*.png;*.bmp;*.ogv;*.swf', 0, 'List of allowed file types to upload', 0),
 						('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x', 0),
 						('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y', 0),
@@ -713,8 +714,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `credits` int(11) NOT NULL DEFAULT '0',
 				  PRIMARY KEY (`user_id`)
 				) ENGINE=MyISAM;");
-				
-				
+								
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_user_credit_order` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
 				  `user_id` int(11) NOT NULL,
@@ -725,6 +725,12 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `currency` varchar(3) NOT NULL,
 				  PRIMARY KEY (`id`)
 				) ENGINE=MyISAM;");
+				
+				$db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_pending_convert` (
+                  `pid` int(11) NOT NULL,
+                  `status` tinyint(4) NOT NULL,
+                  PRIMARY KEY (`pid`)
+                ) ENGINE=MyISAM;");
 								
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_searchhistory` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,

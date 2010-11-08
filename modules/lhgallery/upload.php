@@ -44,31 +44,7 @@ if (count($objects) == 1)
     	       'post_file_name'   => 'Filedata',
     	       'file_session'     => $fileSession
 	       ));
-	       
-	       /*erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $_FILES['Filedata']['tmp_name'], $photoDir.'/normal_'.$fileNamePhysic ); 
-	       erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $_FILES['Filedata']['tmp_name'], $photoDir.'/thumb_'.$fileNamePhysic ); 
-	       	       
-	       chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-	       chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-	       
-	       $dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
-	       // If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
-	       if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
-            	erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $_FILES['Filedata']['tmp_name'], $photoDir.'/'.$fileNamePhysic ); 
-           } else  {
-	       		move_uploaded_file($_FILES["Filedata"]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
-           }
-           
-           chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-	       
-	       $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
-	       $image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
-	       $image->filepath = 'userpics/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
-	       
-	       $imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic ); 	       
-	       $image->pwidth = $imageAnalyze->data->width;
-	       $image->pheight = $imageAnalyze->data->height;*/
-	          
+	       	       	          
 	       $image->hits = 0;
 	       $image->ctime = time();
 	       $image->owner_id = $fileSession->user_id;

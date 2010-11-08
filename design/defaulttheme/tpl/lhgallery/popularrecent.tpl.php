@@ -11,6 +11,6 @@
 
      
 <? } else { ?>
-<p>There are no images.</p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecect','There are no images.')?></p>
 <? } ?>
 
