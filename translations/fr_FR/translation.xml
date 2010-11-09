@@ -3360,4 +3360,15 @@
       <translation></translation>
     </message>
   </context>
+  <context>
+    <name>gallery/subcategry_list_full</name>
+    <message>
+      <source>Next</source>
+      <translation></translation>
+    </message>
+    <message>
+      <source>Previous</source>
+      <translation></translation>
+    </message>
+  </context>
 </TS>
