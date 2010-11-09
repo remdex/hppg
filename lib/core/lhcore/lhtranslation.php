@@ -67,12 +67,12 @@ class erTranslationClassLhTranslation
            try {     
                 $translated = $context->getTranslation($string, $params);
                 
-                if ($translated == '') return $string; 
+                if ($translated == '') return $this->insertarguments($string, $params); 
                                
                 return $translated;
                 
            } catch (Exception $e){
-                return $string;
+                return $this->insertarguments($string, $params);                
            }
            
         } catch (Exception $e) {    
