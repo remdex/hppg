@@ -114,10 +114,14 @@ $reader->initReader( $locale );
 
 $manager = new ezcTranslationManager( $reader );
 
-
 function translateToLanguage($apiKey,$toLanguage, $string) {
     
+    static $cacheTranslations = array();
+    
     if ($apiKey !== false){
+        
+        if (key_exists(md5($string),$cacheTranslations)) return $cacheTranslations[md5($string)];
+        
         $string = urlencode($string);
         $response = file_get_contents("https://www.googleapis.com/language/translate/v2?key={$apiKey}&q={$string}&source=en&target=".$toLanguage);
         
@@ -125,7 +129,8 @@ function translateToLanguage($apiKey,$toLanguage, $string) {
                         
         if (isset($data['data']['translations'][0]['translatedText']))
         {
-            return $data['data']['translations'][0]['translatedText'];
+            $cacheTranslations[md5($string)] = $data['data']['translations'][0]['translatedText'];
+            return $cacheTranslations[md5($string)];
         } else {
             print_r($data);
         }
