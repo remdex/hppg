@@ -65,8 +65,12 @@ class erTranslationClassLhTranslation
         try {
            $context = $this->manager->getContext( $this->languageCode, $context );
            try {     
-              
-                return  $context->getTranslation($string, $params);
+                $translated = $context->getTranslation($string, $params);
+                
+                if ($translated == '') return $string; 
+                               
+                return $translated;
+                
            } catch (Exception $e){
                 return $string;
            }
