@@ -28,6 +28,14 @@ $helpOption = $input->registerOption(
     )
 );
 
+$apiOption = $input->registerOption(
+    new ezcConsoleOption(
+        'a',
+        'api',
+        ezcConsoleInput::TYPE_STRING 
+    )
+);
+
 try
 {
     $input->process();
@@ -42,6 +50,12 @@ if ( !$helpOption->value === false )
 {
     $locale = $helpOption->value;
 } 
+
+$apiKey = false;
+if ( !$apiOption->value === false )
+{
+    $apiKey = $apiOption->value;
+}
 
 try
 {
@@ -100,6 +114,26 @@ $reader->initReader( $locale );
 
 $manager = new ezcTranslationManager( $reader );
 
+
+function translateToLanguage($apiKey,$toLanguage, $string) {
+    
+    if ($apiKey !== false){
+        $string = urlencode($string);
+        $response = file_get_contents("https://www.googleapis.com/language/translate/v2?key={$apiKey}&q={$string}&source=en&target=".$toLanguage);
+        
+        $data = json_decode($response,true);
+                        
+        if (isset($data['data']['translations'][0]['translatedText']))
+        {
+            return $data['data']['translations'][0]['translatedText'];
+        } else {
+            print_r($data);
+        }
+    }
+    
+    return '';
+}
+
 foreach ($arrayTranslationsProcess as $context => $itemsToTranslate)
 {       
     $contextItems = array() ;
@@ -122,14 +156,14 @@ foreach ($arrayTranslationsProcess as $context => $itemsToTranslate)
                  if ($originalTranslation != ''){
                     $contextItems[] = new ezcTranslationData( $string, $originalTranslation, NULL, ezcTranslationData::TRANSLATED );
                  } else {
-                    $contextItems[] = new ezcTranslationData( $string, '', NULL, ezcTranslationData::UNFINISHED );
+                    $contextItems[] = new ezcTranslationData( $string, translateToLanguage($apiKey,substr($locale,0,2),$string), NULL, ezcTranslationData::UNFINISHED );
                  }
                  
            } catch (Exception $e) { // Translation does not exist
-                $contextItems[] = new ezcTranslationData( $string, '', NULL, ezcTranslationData::UNFINISHED );
+                $contextItems[] = new ezcTranslationData( $string, translateToLanguage($apiKey,substr($locale,0,2),$string), NULL, ezcTranslationData::UNFINISHED );
            }
        } else {
-           $contextItems[] = new ezcTranslationData( $string, '', NULL, ezcTranslationData::UNFINISHED );
+           $contextItems[] = new ezcTranslationData( $string, translateToLanguage($apiKey,substr($locale,0,2),$string), NULL, ezcTranslationData::UNFINISHED );
        }
     }
 

@@ -25,11 +25,11 @@
     </message>
     <message>
       <source>Registration is complete</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Registracija yra visi&#x161;kai</translation>
     </message>
     <message>
       <source>Checkout</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">U&#x17E;sakymas</translation>
     </message>
     <message>
       <source>Incorrect username or password</source>
@@ -162,7 +162,7 @@
     </message>
     <message>
       <source>How many credits do want to buy?</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Kiek kredit&#x173; noriu pirkti?</translation>
     </message>
     <message>
       <source>Choose payment method</source>
@@ -233,7 +233,7 @@
     </message>
     <message>
       <source>Buyer\'s Email</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Pirk \ &amp;#39;s pa&#x161;tu</translation>
     </message>
     <message>
       <source>Amount</source>
@@ -245,7 +245,7 @@
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskolos</translation>
     </message>
   </context>
   <context>
@@ -288,7 +288,7 @@
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Vaizdo pavadinimas</translation>
     </message>
     <message>
       <source>Version</source>
@@ -357,7 +357,7 @@
     </message>
     <message>
       <source>ID</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">ID</translation>
     </message>
     <message>
       <source>Date</source>
@@ -482,7 +482,7 @@
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Vaizdo pavadinimas</translation>
     </message>
     <message>
       <source>Version</source>
@@ -533,7 +533,7 @@
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Vaizdo pavadinimas</translation>
     </message>
     <message>
       <source>Version</source>
@@ -632,7 +632,7 @@
     </message>
     <message>
       <source>Credits amount must be greater than 0!</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskolos dydis turi b&#x16B;ti didesnis u&#x17E; 0!</translation>
     </message>
   </context>
   <context>
@@ -693,11 +693,11 @@
     <name>systemconfig/list</name>
     <message>
       <source>Delete order item</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">I&#x161;trinti siekiant punktas</translation>
     </message>
     <message>
       <source>Delete order</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">I&#x161;trinti tvarka</translation>
     </message>
     <message>
       <source>Config list</source>
@@ -846,11 +846,11 @@
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Rezoliucija</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
   <context>
@@ -1031,7 +1031,7 @@
     </message>
     <message>
       <source>Delete duplicate session</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Trinti pasikartojan&#x10D;ius sesija</translation>
     </message>
     <message>
       <source>No duplicates pending...</source>
@@ -1097,11 +1097,11 @@
     </message>
     <message>
       <source>Edit category</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Redaguoti kategorij&#x105;</translation>
     </message>
     <message>
       <source>Delete category</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">I&#x161;trinti kategorij&#x105;</translation>
     </message>
     <message>
       <source>Category albums</source>
@@ -1190,7 +1190,7 @@
     </message>
     <message>
       <source>Please enter category name!</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">&#x12E;veskite kategorijos pavadinim&#x105;!</translation>
     </message>
     <message>
       <source>Home</source>
@@ -1201,7 +1201,7 @@
     <name>gallery/mylistalbum</name>
     <message>
       <source>No records.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">N&#x117;ra &#x12F;ra&#x161;&#x173;.</translation>
     </message>
     <message>
       <source>Account</source>
@@ -1228,7 +1228,7 @@
     </message>
     <message>
       <source>Cross eye image</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Kry&#x17E;iaus aki&#x173; vaizdas</translation>
     </message>
     <message>
       <source>Caption</source>
@@ -1240,11 +1240,11 @@
     </message>
     <message>
       <source>Enter new album name or choose public album</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">&#x12E;veskite nauj&#x105; albumo pavadinim&#x105; arba pasirinkti vie&#x161;&#x105;j&#x12F; album&#x105;</translation>
     </message>
     <message>
       <source>description</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">apra&#x161;ymas</translation>
     </message>
   </context>
   <context>
@@ -1287,11 +1287,11 @@
     </message>
     <message>
       <source>Attatch local images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Attatch vietos vaizdai</translation>
     </message>
     <message>
       <source>Max file size </source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Maksimalus failo dydis</translation>
     </message>
     <message>
       <source>Images to upload</source>
@@ -1299,7 +1299,7 @@
     </message>
     <message>
       <source>Choose images for upload</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Pasirinkite vaizdus &#x12F;kelti</translation>
     </message>
     <message>
       <source>Upload</source>
@@ -1307,15 +1307,15 @@
     </message>
     <message>
       <source>SWFUpload is loading. Please wait a moment...</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">SWFUpload kraunamas. Pra&#x161;ome palaukti ...</translation>
     </message>
     <message>
       <source>SWFUpload is taking a long time to load or the load has failed.  Please make sure that the Flash Plugin is enabled and that a working version of the Adobe Flash Player is installed.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">SWFUpload vartoja ilgai apkrova arba apkrova nepavyko. Pra&#x161;ome &#x12F;sitikinti, kad Flash plugin yra &#x12F;jungta, ir kad darbo versija Adobe Flash Player yra &#x12F;diegtas.</translation>
     </message>
     <message>
       <source>Move album images to another album</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Perkelti albumo nuotraukas &#x12F; kit&#x105; album&#x105;</translation>
     </message>
     <message>
       <source>Attachment of local images</source>
@@ -1481,7 +1481,7 @@
     <name>statistic/index</name>
     <message>
       <source>Google analytics statistic</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Google Analytics statistika</translation>
     </message>
     <message>
       <source>Grant access application to access google analytics API</source>
@@ -1558,11 +1558,11 @@
     </message>
     <message>
       <source>Order confirmed</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Patvirtintas U&#x17E;sakymas</translation>
     </message>
     <message>
       <source>Credits order confirmed</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Kreditai, kad patvirtinta</translation>
     </message>
     <message>
       <source>Wrong e-mail address!</source>
@@ -1651,7 +1651,7 @@
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">N&#x117;ra &#x12F;ra&#x161;&#x173;.</translation>
     </message>
     <message>
       <source>Home</source>
@@ -1666,7 +1666,7 @@
     </message>
     <message>
       <source>Delete image</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Pa&#x161;alinti vaizd&#x105;</translation>
     </message>
     <message>
       <source>View image</source>
@@ -1694,15 +1694,15 @@
     </message>
     <message>
       <source>Approved</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Patvirtinta</translation>
     </message>
     <message>
       <source>Cross eye image</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Kry&#x17E;iaus aki&#x173; vaizdas</translation>
     </message>
     <message>
       <source>Anaglyph</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Anaglyph</translation>
     </message>
   </context>
   <context>
@@ -1771,7 +1771,7 @@
     </message>
     <message>
       <source>New album</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Naujas albumas</translation>
     </message>
     <message>
       <source>You do not have any album.</source>
@@ -1831,7 +1831,7 @@
     </message>
     <message>
       <source>Search results</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paie&#x161;kos rezultatai</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
@@ -1858,35 +1858,35 @@
     </message>
     <message>
       <source>Relevance</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">EEE</translation>
     </message>
     <message>
       <source>Last uploaded</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutiniai &#x12F;ra&#x161;yti</translation>
     </message>
     <message>
       <source>Most popular</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Populiariausios</translation>
     </message>
     <message>
       <source>Last hits</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis per&#x17E;i&#x16B;r&#x117;jim&#x173;</translation>
     </message>
     <message>
       <source>Top rated</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Geriausiai &#x12F;vertinti</translation>
     </message>
     <message>
       <source>Last rated</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta</translation>
     </message>
     <message>
       <source>Last commented</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis komentavo</translation>
     </message>
     <message>
       <source>Any resolution</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Bet rezoliucijos</translation>
     </message>
     <message>
       <source>Search results</source>
@@ -1894,7 +1894,7 @@
     </message>
     <message>
       <source>Nothing found</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Nieko nerasta</translation>
     </message>
     <message>
       <source>Last uploaded first</source>
@@ -1930,11 +1930,11 @@
     </message>
     <message>
       <source>Last rated first</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta pirmas</translation>
     </message>
     <message>
       <source>Last rated last</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta su paskutiniais</translation>
     </message>
     <message>
       <source>Top rated first</source>
@@ -1946,7 +1946,7 @@
     </message>
     <message>
       <source>Most relevance images last</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Dauguma EEE vaizdai paskutiniais</translation>
     </message>
     <message>
       <source>search results</source>
@@ -1954,11 +1954,11 @@
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Rezoliucija</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
@@ -1995,7 +1995,7 @@
     </message>
     <message>
       <source>Public images archive upload</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Visuomen&#x117;s vaizd&#x173; archyvas &#x12F;kelti</translation>
     </message>
     <message>
       <source>All files were uploaded. See album.</source>
@@ -2027,7 +2027,7 @@
     </message>
     <message>
       <source>Max file size </source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Maksimalus failo dydis</translation>
     </message>
     <message>
       <source>Images to upload</source>
@@ -2043,11 +2043,11 @@
     </message>
     <message>
       <source>Image upload is in progress. Please wait a moment...</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Vaizdo &#x12F;kelti darbai. Pra&#x161;ome palaukti ...</translation>
     </message>
     <message>
       <source>Image upload is taking a long time to load or the load has failed.  Please make sure that the Flash Plugin is enabled and that a working version of the Adobe Flash Player is installed.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Vaizdo &#x12F;kelti atsi&#x17E;velgiant ilgai apkrova arba apkrova nepavyko. Pra&#x161;ome &#x12F;sitikinti, kad Flash plugin yra &#x12F;jungta, ir kad darbo versija Adobe Flash Player yra &#x12F;diegtas.</translation>
     </message>
     <message>
       <source>Public images upload</source>
@@ -2112,15 +2112,15 @@
     </message>
     <message>
       <source>No records</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">N&#x117;ra &#x12F;ra&#x161;&#x173;</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Rezoliucija</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
   <context>
@@ -2147,11 +2147,11 @@
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Rezoliucija</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
   <context>
@@ -2201,7 +2201,7 @@
     </message>
     <message>
       <source>Click to see fullsize</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paspauskite, kad pamatyti Visas ekranas</translation>
     </message>
     <message>
       <source>Picture comments</source>
@@ -2249,7 +2249,7 @@
     </message>
     <message>
       <source>Anaglyph version</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Anaglyph versija</translation>
     </message>
     <message>
       <source>Enter tags separated by space</source>
@@ -2285,27 +2285,27 @@
     </message>
     <message>
       <source>times</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">kartus</translation>
     </message>
     <message>
       <source>Album</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Albumas</translation>
     </message>
     <message>
       <source>URL</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">URL</translation>
     </message>
     <message>
       <source>Owner</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Savininkas</translation>
     </message>
     <message>
       <source>More user images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Daugiau vartotojo nuotraukos</translation>
     </message>
     <message>
       <source>votes</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">bals&#x173;</translation>
     </message>
     <message>
       <source>Rate this picture</source>
@@ -2369,35 +2369,35 @@
     </message>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis &#x12F;keltas nuotraukas</translation>
     </message>
     <message>
       <source>Last additions</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Naujausi atnaujinimai</translation>
     </message>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis &#x17E;i&#x16B;rimos nuotraukos</translation>
     </message>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis komentavo nuotraukos</translation>
     </message>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta vaizdai</translation>
     </message>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Geriausiai &#x12F;vertinti vaizdo</translation>
     </message>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Populiariausios nuotraukos</translation>
     </message>
     <message>
       <source>Search rss by keyword</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paie&#x161;ka Rss pagal rakta&#x17E;od&#x12F;</translation>
     </message>
     <message>
       <source>Last uploaded first</source>
@@ -2437,19 +2437,19 @@
     </message>
     <message>
       <source>Top rated last Last</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Geriausiai &#x12F;vertinti paskutiniais Paskutinis</translation>
     </message>
     <message>
       <source>Last rated first</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta pirmas</translation>
     </message>
     <message>
       <source>Last rated last</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta su paskutiniais</translation>
     </message>
     <message>
       <source>Most relevance images last</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Dauguma EEE vaizdai paskutiniais</translation>
     </message>
     <message>
       <source>search results</source>
@@ -2457,7 +2457,7 @@
     </message>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis &#x12F;keltas nuotraukas &#x12F; album&#x105;</translation>
     </message>
   </context>
   <context>
@@ -2476,7 +2476,7 @@
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
   <context>
@@ -2556,11 +2556,11 @@
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Rezoliucija</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
   <context>
@@ -2638,11 +2638,11 @@
     </message>
     <message>
       <source>Last rated first</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta pirmas</translation>
     </message>
     <message>
       <source>Last rated last</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta su paskutiniais</translation>
     </message>
     <message>
       <source>Top rated first</source>
@@ -2650,19 +2650,19 @@
     </message>
     <message>
       <source>Top rated last Last</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Geriausiai &#x12F;vertinti paskutiniais Paskutinis</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Rezoliucija</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis &#x12F;keltas nuotraukas &#x12F; album&#x105;</translation>
     </message>
   </context>
   <context>
@@ -2840,11 +2840,11 @@
     </message>
     <message>
       <source>Basket</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Krep&#x161;elis</translation>
     </message>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Mok&#x117;jimo parinkt&#x12F;</translation>
     </message>
   </context>
   <context>
@@ -3021,11 +3021,11 @@
     </message>
     <message>
       <source>Move images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Perkelti nuotraukas</translation>
     </message>
     <message>
       <source>It\'s NOT fake!</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">It \ &amp;#39;s n&#x117;ra klastot&#x117;!</translation>
     </message>
     <message>
       <source>Rendered in</source>
@@ -3049,15 +3049,15 @@
     </message>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis &#x12F;keltas nuotraukas</translation>
     </message>
     <message>
       <source>All time</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Vis&#x105; laik&#x105;</translation>
     </message>
     <message>
       <source>Most popular</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Populiariausios</translation>
     </message>
     <message>
       <source>Top rated</source>
@@ -3065,7 +3065,7 @@
     </message>
     <message>
       <source>Interactive</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Interaktyvus</translation>
     </message>
     <message>
       <source>Last uploads</source>
@@ -3081,11 +3081,11 @@
     </message>
     <message>
       <source>Last rated</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta</translation>
     </message>
     <message>
       <source>Last 24 h.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutines 24 val</translation>
     </message>
     <message>
       <source>Last viewed images</source>
@@ -3113,7 +3113,7 @@
     </message>
     <message>
       <source>My credits orders</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Mano kreditus u&#x17E;sakymus</translation>
     </message>
     <message>
       <source>Register</source>
@@ -3129,11 +3129,11 @@
     </message>
     <message>
       <source>Upload</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">&#x12E;kelti</translation>
     </message>
     <message>
       <source>Upload zip</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">&#x12E;kelti ZIP</translation>
     </message>
     <message>
       <source>Search entire gallery</source>
@@ -3183,7 +3183,7 @@
     </message>
     <message>
       <source>Delete image</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Pa&#x161;alinti vaizd&#x105;</translation>
     </message>
     <message>
       <source>Groups</source>
@@ -3661,11 +3661,11 @@
     </message>
     <message>
       <source>My account</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Mano s&#x105;skaita</translation>
     </message>
     <message>
       <source>My albums</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Mano albumai</translation>
     </message>
     <message>
       <source>System configuration</source>
@@ -3673,7 +3673,7 @@
     </message>
     <message>
       <source>Account data</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">S&#x105;skaitos duomenys</translation>
     </message>
     <message>
       <source>Wrong email address</source>
@@ -3748,15 +3748,15 @@
     </message>
     <message>
       <source>Please enter album name!</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">&#x12E;veskite albumo pavadinim&#x105;!</translation>
     </message>
     <message>
       <source>Please enter category name!</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">&#x12E;veskite kategorijos pavadinim&#x105;!</translation>
     </message>
     <message>
       <source>Sutch username is already taken!</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Sutch vartotojo vardas jau u&#x17E;imtas!</translation>
     </message>
     <message>
       <source>Wrong email address</source>
@@ -3784,11 +3784,11 @@
     </message>
     <message>
       <source>Please enter group name</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">&#x12E;veskite grup&#x117;s pavadinim&#x105;</translation>
     </message>
     <message>
       <source>E-mail taken!</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">E-mail u&#x17E;imtas!</translation>
     </message>
   </context>
   <context>
@@ -3870,89 +3870,89 @@
     <name>gallery/lastrated</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta vaizdai</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">N&#x117;ra &#x12F;ra&#x161;&#x173;.</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Rezoliucija</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecect</name>
     <message>
       <source>Most popular images in 24 hours.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Populiariausios nuotraukos per 24 valandas.</translation>
     </message>
     <message>
       <source>There are no images.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">N&#x117;ra paveiksl&#x117;li&#x173;.</translation>
     </message>
   </context>
   <context>
     <name>gallery/ratedrecent</name>
     <message>
       <source>Top rated images in 24 hours.</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Geriausiai &#x12F;vertinti nuotraukas 24 valandas.</translation>
     </message>
     <message>
       <source>Top rated images in 24 hours</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Geriausiai &#x12F;vertinti nuotraukas 24 valand&#x173;</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumrss</name>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis &#x12F;keltas nuotraukas &#x12F; album&#x105;</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Per&#x17E;i&#x16B;r&#x117;ti vaizdas</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastcommentedrss</name>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutinis komentavo nuotraukos</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Per&#x17E;i&#x16B;r&#x117;ti vaizdas</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastratedrss</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Paskutin&#x12F; kart&#x105; vertinta vaizdai</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Per&#x17E;i&#x16B;r&#x117;ti vaizdas</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecent</name>
     <message>
       <source>Most popular images in 24 hours</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Populiariausios nuotraukos per 24 valandas</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished"/>
+      <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
 </TS>
