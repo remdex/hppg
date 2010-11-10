@@ -305,7 +305,7 @@
     </message>
     <message>
       <source>List images recursive</source>
-      <translation type="unfinished">Liste Bilder rekursiven</translation>
+      <translation type="unfinished">Liste Bilder rekursive</translation>
     </message>
     <message>
       <source>Import images</source>
@@ -991,7 +991,7 @@
     <name>shop/settinglist</name>
     <message>
       <source>Shop config list</source>
-      <translation type="unfinished">Shop config Liste</translation>
+      <translation type="unfinished">Shop Config Liste</translation>
     </message>
     <message>
       <source>Identifier</source>
@@ -1829,10 +1829,6 @@
       <translation type="unfinished">Preview-Version</translation>
     </message>
     <message>
-      <source>Found</source>
-      <translation type="unfinished">Gefunden</translation>
-    </message>
-    <message>
       <source>See full size</source>
       <translation type="unfinished">Voller Gr&#xF6;&#xDF;e zu sehen</translation>
     </message>
@@ -1906,10 +1902,6 @@
       <source>files</source>
       <translation type="unfinished">Dateien</translation>
     </message>
-    <message>
-      <source>Found</source>
-      <translation type="unfinished">Gefunden</translation>
-    </message>
   </context>
   <context>
     <name>gallery/anaglyph</name>
@@ -1924,6 +1916,21 @@
     <message>
       <source>Animating</source>
       <translation type="unfinished">Animieren</translation>
+    </message>
+  </context>
+  <context>
+    <name>core/paginator</name>
+    <message>
+      <source>Found</source>
+      <translation type="unfinished">Gefunden</translation>
+    </message>
+    <message>
+      <source>Previous</source>
+      <translation type="unfinished">Zur&#xFC;ck</translation>
+    </message>
+    <message>
+      <source>Next</source>
+      <translation type="unfinished">Weiter</translation>
     </message>
   </context>
   <context>
@@ -2359,10 +2366,6 @@
     <message>
       <source>Add images</source>
       <translation type="unfinished">Hinzuf&#xFC;gen von Bildern</translation>
-    </message>
-    <message>
-      <source>Found</source>
-      <translation type="unfinished">Gefunden</translation>
     </message>
   </context>
   <context>
@@ -3342,33 +3345,22 @@
     </message>
   </context>
   <context>
-    <name>gallery/index</name>
+    <name>core/paginator</name>
     <message>
       <source>Page %currentpage of %totalpage</source>
-      <translation></translation>
+      <translation>Seite %currentpage von %totalpage</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation></translation>
+      <translation>Gefunden</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation></translation>
+      <translation>Zurück</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation></translation>
-    </message>
-  </context>
-  <context>
-    <name>gallery/subcategry_list_full</name>
-    <message>
-      <source>Next</source>
-      <translation></translation>
-    </message>
-    <message>
-      <source>Previous</source>
-      <translation></translation>
+      <translation>Weiter</translation>
     </message>
   </context>
 </TS>

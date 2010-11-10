@@ -823,19 +823,7 @@
     </message>
   </context>
   <context>
-    <name>gallery/popular</name>
-    <message>
-      <source>Go to page %item of %numpages</source>
-      <translation>Eiti &#x12F; %item puslap&#x12F; i&#x161; %numpages</translation>
-    </message>
-    <message>
-      <source>Next</source>
-      <translation>Kitas</translation>
-    </message>
-    <message>
-      <source>Previous</source>
-      <translation>Ankstesnis</translation>
-    </message>
+    <name>gallery/popular</name>    
     <message>
       <source>Most popular images</source>
       <translation>Populiariausi paveiksl&#x117;liai</translation>
@@ -846,11 +834,11 @@
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Rezoliucija</translation>
+      <translation>Rezoliucija</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Puslapis</translation>
+      <translation>Puslapis</translation>
     </message>
   </context>
   <context>

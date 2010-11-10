@@ -76,7 +76,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
     
     $pages->items_total = $searchResult['total_found'];
-    $pages->translationContext = 'gallery/search';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/search').$userParams;
     $pages->paginate();
     

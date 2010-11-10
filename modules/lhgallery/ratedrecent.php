@@ -11,7 +11,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/ratedrecent.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryRated24::getImageCount();
-    $pages->translationContext = 'gallery/popularrecent';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/ratedrecent');
     $pages->paginate();
     

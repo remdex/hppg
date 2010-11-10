@@ -25,7 +25,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
 	
 	$pages = new lhPaginator();
 	$pages->items_total = erLhcoreClassModelGalleryMyfavoritesImage::getImageCount(array('filter' => array('session_id' => $favouriteSession->id)));
-	$pages->translationContext = 'gallery/album';
 	$pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/myfavorites');
 	$pages->paginate();
 	

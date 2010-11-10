@@ -37,7 +37,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
         
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
-    $pages->translationContext = 'gallery/lastrated';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/lastrated').$appendResolutionMode;
     $pages->paginate();
     

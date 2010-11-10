@@ -101,7 +101,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
       
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)+$filterArray));
-    $pages->translationContext = 'gallery/album';
     $pages->serverURL = $Album->url_path.$appendImageMode;
     $pages->paginate();
     

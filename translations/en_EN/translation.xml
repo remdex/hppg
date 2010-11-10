@@ -1829,10 +1829,6 @@
       <translation type="unfinished"/>
     </message>
     <message>
-      <source>Found</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
       <source>See full size</source>
       <translation type="unfinished"/>
     </message>
@@ -1906,10 +1902,6 @@
       <source>files</source>
       <translation type="unfinished"/>
     </message>
-    <message>
-      <source>Found</source>
-      <translation type="unfinished"/>
-    </message>
   </context>
   <context>
     <name>gallery/anaglyph</name>
@@ -1923,6 +1915,21 @@
     </message>
     <message>
       <source>Animating</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
+    <name>core/paginator</name>
+    <message>
+      <source>Found</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>Previous</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>Next</source>
       <translation type="unfinished"/>
     </message>
   </context>
@@ -2358,10 +2365,6 @@
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
-      <source>Found</source>
       <translation type="unfinished"/>
     </message>
   </context>
@@ -3342,33 +3345,22 @@
     </message>
   </context>
   <context>
-    <name>gallery/index</name>
+    <name>core/paginator</name>
     <message>
       <source>Page %currentpage of %totalpage</source>
-      <translation></translation>
+      <translation>Page %currentpage sur %totalpage</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation></translation>
+      <translation>Trouver</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation></translation>
+      <translation>Pr&#xE9;c&#xE9;dente</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation></translation>
-    </message>
-  </context>
-  <context>
-    <name>gallery/subcategry_list_full</name>
-    <message>
-      <source>Next</source>
-      <translation></translation>
-    </message>
-    <message>
-      <source>Previous</source>
-      <translation></translation>
+      <translation>Suivante</translation>
     </message>
   </context>
 </TS>

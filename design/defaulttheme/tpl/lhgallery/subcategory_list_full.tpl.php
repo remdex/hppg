@@ -21,7 +21,6 @@
                     $pages = new lhPaginator();
                     $pages->current_page = 1;
                     $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true, 'filter' => array('category' => $subcategory->cid)));
-                    $pages->translationContext = 'gallery/subcategry_list_full';
                     $pages->setItemsPerPage(8);
                     $pages->serverURL = $subcategory->path_url;
                     $pages->paginate();

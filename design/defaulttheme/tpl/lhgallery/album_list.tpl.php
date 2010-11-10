@@ -27,15 +27,10 @@ foreach ($items as $item) : ?>
     </div>   
 <?
 $counter++;
-endforeach; ?>   
-<?php if (isset($pages) && $pages->num_pages > 1) : ?>
- <div class="nav-container">    
-    <div class="navigator">
-    <div class="right found-total"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list','Page %currentpage of %totalpage',array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list','Found')?> - <?=$pages->items_total?></div>
-    <?=$pages->display_pages();?>
-    </div>
-</div>
-<? endif;?> 
+endforeach; ?> 
+  
+<?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
+
 </div>
 
 <script>

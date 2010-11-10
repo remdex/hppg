@@ -10,7 +10,6 @@ foreach (erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' =
 <? 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $category->cid)));
-$pages->translationContext = 'gallery/index';
 $pages->setItemsPerPage(8);
 $pages->serverURL = $category->path_url;
 $pages->paginate();    

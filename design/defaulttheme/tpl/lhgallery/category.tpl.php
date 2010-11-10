@@ -20,7 +20,6 @@ $cache = CSCacheAPC::getMem();
 
 $pagesSubcategorys = new lhPaginator();
 $pagesSubcategorys->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $category->cid) ,'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$category->cid)));
-$pagesSubcategorys->translationContext = 'gallery/category';
 $pagesSubcategorys->setItemsPerPage(8);
 $pagesSubcategorys->serverURL = $category->path_url;
 $pagesSubcategorys->paginate();
@@ -32,13 +31,11 @@ $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('fi
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list_full.tpl.php'));?> 
 
 
-<?php if (isset($pages)) : ?>
- <div class="nav-container">
+<div class="nav-container">
     <div class="navigator">
-    <div class="right found-total"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list',"Page %currentpage of %totalpage",array('currentpage' => $pagesSubcategorys->current_page,'totalpage' => $pagesSubcategorys->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','Found')?> - <?=$pagesSubcategorys->items_total?></div>
+    <div class="right found-total"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('core/paginator',"Page %currentpage of %totalpage",array('currentpage' => $pagesSubcategorys->current_page,'totalpage' => $pagesSubcategorys->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('core/paginator','Found')?> - <?=$pagesSubcategorys->items_total?></div>
     <?=$pagesSubcategorys->display_pages();?></div>
- </div>   
-<? endif;?>
+</div>   
 
 
 <?endif;?>

@@ -1829,10 +1829,6 @@
       <translation type="unfinished">version preview</translation>
     </message>
     <message>
-      <source>Found</source>
-      <translation type="unfinished">Trouver</translation>
-    </message>
-    <message>
       <source>See full size</source>
       <translation type="unfinished">Voir en taille r&#xE9;elle</translation>
     </message>
@@ -1906,10 +1902,6 @@
       <source>files</source>
       <translation type="unfinished">fichiers</translation>
     </message>
-    <message>
-      <source>Found</source>
-      <translation type="unfinished">Trouver</translation>
-    </message>
   </context>
   <context>
     <name>gallery/anaglyph</name>
@@ -1924,6 +1916,21 @@
     <message>
       <source>Animating</source>
       <translation type="unfinished">Animation</translation>
+    </message>
+  </context>
+  <context>
+    <name>core/paginator</name>
+    <message>
+      <source>Found</source>
+      <translation type="unfinished">Trouver</translation>
+    </message>
+    <message>
+      <source>Previous</source>
+      <translation type="unfinished">Pr&#xE9;c&#xE9;dent</translation>
+    </message>
+    <message>
+      <source>Next</source>
+      <translation type="unfinished">Suivant</translation>
     </message>
   </context>
   <context>
@@ -2330,22 +2337,6 @@
       <source>Page</source>
       <translation type="unfinished">Page</translation>
     </message>
-    <message>
-      <source>Page %currentpage of %totalpage</source>
-      <translation>Page %currentpage sur %totalpage</translation>
-    </message>
-    <message>
-      <source>Found</source>
-      <translation>Trouver</translation>
-    </message>
-    <message>
-      <source>Previous</source>
-      <translation>Pr&#xE9;c&#xE9;dente</translation>
-    </message>
-    <message>
-      <source>Next</source>
-      <translation>Suivante</translation>
-    </message>
   </context>
   <context>
     <name>gallery/lastuploads</name>
@@ -2375,10 +2366,6 @@
     <message>
       <source>Add images</source>
       <translation type="unfinished">Ajouter des images</translation>
-    </message>
-    <message>
-      <source>Found</source>
-      <translation type="unfinished">Trouver</translation>
     </message>
   </context>
   <context>
@@ -2711,22 +2698,6 @@
     <message>
       <source>Page</source>
       <translation type="unfinished">Page</translation>
-    </message>
-    <message>
-      <source>Page %currentpage of %totalpage</source>
-      <translation>Page %currentpage sur %totalpage</translation>
-    </message>
-    <message>
-      <source>Found</source>
-      <translation>Trouver</translation>
-    </message>
-    <message>
-      <source>Previous</source>
-      <translation>Pr&#xE9;c&#xE9;dente</translation>
-    </message>
-    <message>
-      <source>Next</source>
-      <translation>Suivante</translation>
     </message>
   </context>
   <context>
@@ -3374,7 +3345,7 @@
     </message>
   </context>
   <context>
-    <name>gallery/index</name>
+    <name>core/paginator</name>
     <message>
       <source>Page %currentpage of %totalpage</source>
       <translation>Page %currentpage sur %totalpage</translation>
@@ -3390,17 +3361,6 @@
     <message>
       <source>Next</source>
       <translation>Suivante</translation>
-    </message>
-  </context>  
-  <context>
-    <name>gallery/subcategry_list_full</name>
-    <message>
-      <source>Next</source>
-      <translation>Suivante</translation>
-    </message>
-    <message>
-      <source>Previous</source>
-      <translation>Pr&#xE9;c&#xE9;dente</translation>
     </message>
   </context>
 </TS>

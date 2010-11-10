@@ -4,7 +4,6 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhuser/userlist.tpl.php');
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelUser::getUserCount();
-$pages->translationContext = 'user/userlist';
 $pages->default_ipp = 20;
 $pages->serverURL = erLhcoreClassDesign::baseurl('user/userlist');
 $pages->paginate();

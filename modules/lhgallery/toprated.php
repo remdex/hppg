@@ -36,7 +36,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
-    $pages->translationContext = 'gallery/toprated';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/toprated').$appendResolutionMode;
     $pages->paginate();
     

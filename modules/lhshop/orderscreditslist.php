@@ -4,7 +4,6 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhshop/orderscreditslist.tpl.php');
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelShopUserCreditOrder::getListCount(array('filterin' => array('status' => array(1,2))));
-$pages->translationContext = 'gallery/album';
 $pages->serverURL = erLhcoreClassDesign::baseurl('shop/orderscreditslist');
 $pages->paginate();
 

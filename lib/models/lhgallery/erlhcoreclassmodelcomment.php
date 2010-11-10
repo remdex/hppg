@@ -90,7 +90,7 @@ class erLhcoreClassModelGalleryComment {
    
    public static function isSpam($body)
    {
-       $badWords = '/http|suck|fuck/i';
+       $badWords = '/suck|fuck/i';
        if (preg_match($badWords,$body))
 	   {
 	       return true;

@@ -12,7 +12,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/popularrecent.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryPopular24::getImageCount();
-    $pages->translationContext = 'gallery/popularrecent';
     $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/popularrecent');
     $pages->paginate();
     

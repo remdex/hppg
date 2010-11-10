@@ -5,7 +5,6 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/mylistalbum.tpl.php');
 $Album = $Params['user_object'];  
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)));
-$pages->translationContext = 'gallery/album';
 $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/mylistalbum/').$Album->aid;
 $pages->paginate();
 

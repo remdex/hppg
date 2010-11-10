@@ -5,7 +5,6 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhshop/orderslist.tpl.php');
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelShopOrder::getListCount(array('filterin' => array('status' => array(1,2))));
-$pages->translationContext = 'gallery/album';
 $pages->serverURL = erLhcoreClassDesign::baseurl('shop/orderlist');
 $pages->paginate();
 

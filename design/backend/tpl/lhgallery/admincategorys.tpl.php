@@ -10,7 +10,6 @@ $categoryID = $category !== false ? $category->cid : 0;
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $categoryID)));
-$pages->translationContext = 'gallery/admincategorys';
 $pages->default_ipp = 8;
 $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$categoryID;
 $pages->paginate();
@@ -55,7 +54,6 @@ if ($category !== false) :  ?>
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $category->cid)));
-$pages->translationContext = 'gallery/admincategorys';
 $pages->default_ipp = 8;
 $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/managealbum/').$category->cid;
 $pages->paginate();

@@ -31,13 +31,9 @@ foreach ($items as $key => $item) :
         </div>
     </div>   
 <?$counter++;endforeach; ?>    
- <?php if (isset($pages)) : ?>
- <div class="nav-container">
-    <div class="navigator">
-    <div class="right found-total"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','Found')?> - <?=$pages->items_total?></div>
-    <?=$pages->display_pages();?></div>
- </div>   
-<? endif;?>
+
+<?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
+
 </div>
 <script> 
   $('.thumb-attr a').each(function(index) {	

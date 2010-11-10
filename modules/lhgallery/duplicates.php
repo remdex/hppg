@@ -5,7 +5,6 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/duplicates.tpl.php');
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryDuplicateCollection::getDuplicatesCount();
-$pages->translationContext = 'gallery/album';
 $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/duplicates');
 $pages->paginate();
 
