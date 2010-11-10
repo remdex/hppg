@@ -88,6 +88,12 @@ class erLhcoreClassDesign
         return $instance->WWWDir . $instance->IndexFile .  $instance->WWWDirLang  . '/' . ltrim($link,'/');
     }
     
+    public static function baseurldirect($link = '')
+    {
+        $instance = erLhcoreClassSystem::instance();            
+        return $instance->WWWDir . $instance->IndexFile . '/' . ltrim($link,'/');
+    }
+    
     public static function designCSS($files)
     {
         $debugOutput = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' );

@@ -19,6 +19,8 @@
     
     <div class="top-submenu">
     <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/search_box.tpl.php'));?>
+    
+    <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/lang_box.tpl.php'));?>
     </div>
     
 </div>

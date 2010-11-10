@@ -539,12 +539,12 @@ float:right;clear:right;width:770px;
 }
 
 
-.search-box{font-size:14px;float:right;background-color:#FFFFFF;margin-top:4px;margin-right:5px;padding-top:3px;padding-bottom:3px;
-width:250px;
-}
+.search-box{font-size:14px;float:right;background-color:#FFFFFF;margin-top:4px;margin-right:5px;padding-top:3px;padding-bottom:3px;width:250px;}
 .search-box input.default-button{width:36px;height:22px;background-position:0px -40px;border:0;overflow:hidden;border-right:5px solid #FFFFFF;float:right;margin-top:2px;}
 .search-box input.keywordField{width:200px;padding:4px;border:0;color:#b4b4b4;float:right;}
 
+.ln-box{float:right;padding-top:14px;padding-right:10px;}
+.ln-box a{padding-left:5px;}
 
 .rss-page{background-position:-31px -40px;float:right;display:block;height:32px;width:32px;margin-top:5px;margin-right:8px;}
 
