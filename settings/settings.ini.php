@@ -61,8 +61,11 @@ return array (
       array (
         0 => 'eng',
         1 => 'lit',
-        2 => 'site_admin',
-        3 => 'm',
+        2 => 'ger',
+        3 => 'esp',
+        4 => 'fre',
+        5 => 'site_admin',
+        6 => 'm',
       ),
     ),
     'site_access_options' => 
@@ -70,6 +73,51 @@ return array (
       'eng' => 
       array (
         'locale' => 'en_EN',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'ger' => 
+      array (
+        'locale' => 'de_DE',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'lit' => 
+      array (
+        'locale' => 'lt_LT',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'esp' => 
+      array (
+        'locale' => 'es_ES',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'fre' => 
+      array (
+        'locale' => 'fr_FR',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'lit' => 
+      array (
+        'locale' => 'lt_LT',
         'theme' => 
         array (
           0 => 'frontend',
