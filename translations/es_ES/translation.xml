@@ -3362,5 +3362,9 @@
       <source>Next</source>
       <translation>Siguiente</translation>
     </message>
+    <message>
+      <source>Go to page %item of %numpages</source>
+      <translation>Ir a la página %item de %numpages</translation>
+    </message>
   </context>
 </TS>

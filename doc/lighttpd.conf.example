@@ -4,10 +4,26 @@ url.rewrite-once = (
 
 # Mobile version nice url get's support
 # Same method all siteaccess can get nice url support
+
 "^m/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/m/gallery/category/$2$4",
 "^m/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/m/gallery/album/$2$4",
 "^m/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/m/gallery/image/$2$4",
 
+"^lit/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/lit/gallery/category/$2$4",
+"^lit/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/lit/gallery/album/$2$4",
+"^lit/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/lit/gallery/image/$2$4",
+
+"^ger/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/ger/gallery/category/$2$4",
+"^ger/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/ger/gallery/album/$2$4",
+"^ger/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/ger/gallery/image/$2$4",
+
+"^fre/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/fre/gallery/category/$2$4",
+"^fre/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/fre/gallery/album/$2$4",
+"^fre/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/fre/gallery/image/$2$4",
+
+"^esp/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/esp/gallery/category/$2$4",
+"^esp/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/esp/gallery/album/$2$4",
+"^esp/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/esp/gallery/image/$2$4",
 
 "^/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/gallery/category/$2$4",
 "^/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/gallery/album/$2$4",

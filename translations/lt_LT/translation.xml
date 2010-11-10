@@ -3943,4 +3943,27 @@
       <translation type="unfinished">Puslapis</translation>
     </message>
   </context>
+  <context>
+    <name>core/paginator</name>
+    <message>
+      <source>Page %currentpage of %totalpage</source>
+      <translation>Puslapis %currentpage iš %totalpage</translation>
+    </message>
+    <message>
+      <source>Found</source>
+      <translation>Rastas</translation>
+    </message>
+    <message>
+      <source>Previous</source>
+      <translation>Ankstesnis</translation>
+    </message>
+    <message>
+      <source>Next</source>
+      <translation>Kitas</translation>
+    </message>
+    <message>
+      <source>Go to page %item of %numpages</source>
+      <translation>Eiti į puslapį %item iš %numpages</translation>
+    </message>
+  </context>
 </TS>
