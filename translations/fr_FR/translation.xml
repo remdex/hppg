@@ -3345,30 +3345,68 @@
     <name>gallery/index</name>
     <message>
       <source>Page %currentpage of %totalpage</source>
-      <translation></translation>
+      <translation>Page %currentpage sur %totalpage</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation></translation>
+      <translation>Trouver</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation></translation>
+      <translation>Pr&#xE9;c&#xE9;dente</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation></translation>
+      <translation>Suivante</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/lastrated</name>
+    <message>
+      <source>Page %currentpage of %totalpage</source>
+      <translation>Page %currentpage sur %totalpage</translation>
+    </message>
+    <message>
+      <source>Found</source>
+      <translation>Trouver</translation>
+    </message>
+    <message>
+      <source>Previous</source>
+      <translation>Pr&#xE9;c&#xE9;dente</translation>
+    </message>
+    <message>
+      <source>Next</source>
+      <translation>Suivante</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/toprated</name>
+    <message>
+      <source>Page %currentpage of %totalpage</source>
+      <translation>Page %currentpage sur %totalpage</translation>
+    </message>
+    <message>
+      <source>Found</source>
+      <translation>Trouver</translation>
+    </message>
+    <message>
+      <source>Previous</source>
+      <translation>Pr&#xE9;c&#xE9;dente</translation>
+    </message>
+    <message>
+      <source>Next</source>
+      <translation>Suivante</translation>
     </message>
   </context>
   <context>
     <name>gallery/subcategry_list_full</name>
     <message>
       <source>Next</source>
-      <translation></translation>
+      <translation>Suivante</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation></translation>
+      <translation>Pr&#xE9;c&#xE9;dente</translation>
     </message>
   </context>
 </TS>

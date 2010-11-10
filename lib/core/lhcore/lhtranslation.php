@@ -76,8 +76,15 @@ class erTranslationClassLhTranslation
            }
            
         } catch (Exception $e) {    
-            $this->updateCache();
-            return $this->translateFromXML($context,$string,$params);
+                        
+            $this->updateCache();                   
+            try {
+                $translated = $this->translateFromXML($context,$string,$params); 
+            } catch (Exception $e){
+                $translated = $this->insertarguments($string, $params); 
+            } 
+            
+            return $translated;
         }
     }
     
