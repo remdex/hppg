@@ -158,6 +158,11 @@ class erLhcoreClassModelGalleryAlbum {
            	           if ($image->has_preview == 1) {           	               
                             return $image->filepath.'thumb_'.urlencode(str_replace('.flv','.jpg',$image->filename));
            	           }
+           	        } elseif ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeSWF ) {   
+           	                  
+           	           if ($image->has_preview == 1) {           	               
+                            return $image->filepath.'thumb_'.urlencode(str_replace('.swf','.jpg',$image->filename));
+           	           }
            	        }
            	    }        
            	    return false;   	    
