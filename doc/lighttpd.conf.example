@@ -25,6 +25,10 @@ url.rewrite-once = (
 "^esp/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/esp/gallery/album/$2$4",
 "^esp/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/esp/gallery/image/$2$4",
 
+"^por/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/por/gallery/category/$2$4",
+"^por/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/por/gallery/album/$2$4",
+"^por/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/por/gallery/image/$2$4",
+
 "^/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/gallery/category/$2$4",
 "^/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/gallery/album/$2$4",
 "^/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/gallery/image/$2$4",
