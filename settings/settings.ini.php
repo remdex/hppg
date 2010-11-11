@@ -74,6 +74,7 @@ return array (
       'eng' => 
       array (
         'locale' => 'en_EN',
+        'content_language' => 'en',
         'theme' => 
         array (
           0 => 'frontend',
@@ -83,6 +84,7 @@ return array (
       'ger' => 
       array (
         'locale' => 'de_DE',
+        'content_language' => 'de',
         'theme' => 
         array (
           0 => 'frontend',
@@ -92,6 +94,7 @@ return array (
       'por' => 
       array (
         'locale' => 'pt_PT',
+        'content_language' => 'pt',
         'theme' => 
         array (
           0 => 'frontend',
@@ -101,6 +104,7 @@ return array (
       'lit' => 
       array (
         'locale' => 'lt_LT',
+        'content_language' => 'lt',
         'theme' => 
         array (
           0 => 'frontend',
@@ -110,6 +114,7 @@ return array (
       'esp' => 
       array (
         'locale' => 'es_ES',
+        'content_language' => 'es',
         'theme' => 
         array (
           0 => 'frontend',
@@ -119,15 +124,7 @@ return array (
       'fre' => 
       array (
         'locale' => 'fr_FR',
-        'theme' => 
-        array (
-          0 => 'frontend',
-          1 => 'defaulttheme',
-        ),
-      ),
-      'lit' => 
-      array (
-        'locale' => 'lt_LT',
+        'content_language' => 'fr',
         'theme' => 
         array (
           0 => 'frontend',
@@ -137,6 +134,7 @@ return array (
       'm' => 
       array (
         'locale' => 'en_EN',
+        'content_language' => 'en',
         'theme' => 
         array (
           0 => 'mobilefrontend',
@@ -147,6 +145,7 @@ return array (
       'site_admin' => 
       array (
         'locale' => 'en_EN',
+        'content_language' => 'en',
         'theme' => 
         array (
           0 => 'backend',
