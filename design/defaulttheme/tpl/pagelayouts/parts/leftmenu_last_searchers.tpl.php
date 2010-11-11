@@ -4,7 +4,7 @@
 	<ul>
 <?php 
 $cache = CSCacheAPC::getMem();
-if (($resultLastSearchTplBlock = $cache->restore('last_search_tpl_block')) === false) :
+if (($resultLastSearchTplBlock = $cache->restore('last_search_tpl_block_siteaccess'.erLhcoreClassSystem::instance()->SiteAccess)) === false) :
 ob_start();
 ?>
 
@@ -16,7 +16,7 @@ ob_start();
 
 <?php 
 $resultLastSearchTplBlock = ob_get_clean();
-$cache->store( 'last_search_tpl_block', $resultLastSearchTplBlock, 60 ); //Cache for 60 seconds
+$cache->store( 'last_search_tpl_block_siteaccess'.erLhcoreClassSystem::instance()->SiteAccess, $resultLastSearchTplBlock, 60 ); //Cache for 60 seconds
 endif;
 echo $resultLastSearchTplBlock; ?>
 	</ul>
