@@ -3,7 +3,7 @@
     <?php 
     $cache = CSCacheAPC::getMem();
     $cacheVersion = $cache->getCacheVersion('last_hits_version',time(),600);
-    if (($ResultCache = $cache->restore(md5($cacheVersion.'_lasthits_infobox'))) === false)
+    if (($ResultCache = $cache->restore(md5($cacheVersion.'_lasthits_infobox_siteaccess'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
     {
         $items = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'filter' => array('approved' => 1), 'sort' => 'mtime DESC, pid DESC','offset' => 0, 'limit' => 4));
         $appendImageMode = '/(mode)/lasthits';
@@ -30,7 +30,7 @@
         
         $ResultCache .= '</ul>';
 
-        $cache->store(md5($cacheVersion.'_lasthits_infobox'),$ResultCache);
+        $cache->store(md5($cacheVersion.'_lasthits_infobox_siteaccess'.erLhcoreClassSystem::instance()->SiteAccess),$ResultCache);
     }
     echo $ResultCache;
     ?>                                         							
