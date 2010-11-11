@@ -15,6 +15,10 @@ foreach ($objects as $object)
 	$object->process();
 }
 
+if (count($objects) > 0) {
+    CSCacheAPC::getMem()->increaseImageManipulationCache();
+}
+
 unlink("cache/cacheconfig/pid_convert.process");
 
 echo "Cron finished - ",date('Y-m-d :H:i'),"\n";
