@@ -226,6 +226,9 @@ class erLhcoreClassTemplate {
 			    
 				$contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);				
 			}
+			
+			// Compile content language
+			$contentFile = str_replace('<?=erLhcoreClassSystem::instance()->ContentLanguage?>',erLhcoreClassSystem::instance()->ContentLanguage);
 				
 			$sys = erLhcoreClassSystem::instance()->SiteDir;  
 			$file = $sys . 'cache/compiledtemplates/'.md5($file.$instance->WWWDirLang).'.php';

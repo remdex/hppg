@@ -36,7 +36,9 @@ class erLhcoreClassURL extends ezcUrl {
             {     
                 $optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$siteaccess);                      
                 erLhcoreClassSystem::instance()->Language = $optionsSiteAccess['locale'];                         
-                erLhcoreClassSystem::instance()->ThemeSite = $optionsSiteAccess['theme'];                         
+                erLhcoreClassSystem::instance()->ThemeSite = $optionsSiteAccess['theme'];
+                erLhcoreClassSystem::instance()->ContentLanguage = $optionsSiteAccess['content_language'];
+                                         
                 erLhcoreClassSystem::instance()->WWWDirLang = '/'.$siteaccess; 
                 erLhcoreClassSystem::instance()->SiteAccess = $siteaccess; 
                 
@@ -48,7 +50,8 @@ class erLhcoreClassURL extends ezcUrl {
                 erLhcoreClassSystem::instance()->SiteAccess = $defaultSiteAccess; 
                 erLhcoreClassSystem::instance()->Language = $optionsSiteAccess['locale'];                
                 erLhcoreClassSystem::instance()->ThemeSite = $optionsSiteAccess['theme'];    
-                                  
+                erLhcoreClassSystem::instance()->ContentLanguage = $optionsSiteAccess['content_language'];
+                
                 // To reset possition counter
                 $urlCfgDefault->removeOrderedParameter('siteaccess');
                 $urlCfgDefault->removeOrderedParameter('module');

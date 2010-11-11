@@ -27,6 +27,8 @@ foreach ($ReverseOrder as $pathItem) : ?>
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
 
+<meta http-equiv="Content-Language" content="<?=erLhcoreClassSystem::instance()->ContentLanguage?>"/>
+
 <?php include(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_head_js.tpl.php'));?> 
 
 <?if (isset($Result['rss'])) : ?>

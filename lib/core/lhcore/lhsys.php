@@ -322,6 +322,9 @@ class erLhcoreClassSystem{
     /// Current language
     public $Language;
     
+    // Content language
+    public $ContentLanguage;
+    
     /// Theme site
     public $ThemeSite;
     
