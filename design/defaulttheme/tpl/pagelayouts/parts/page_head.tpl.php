@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="<?=erLhcoreClassSystem::instance()->ContentLanguage?>">
 <meta charset="utf-8">
 <title><? 
 if ((isset($Result['tittle_prepend']) && $Result['tittle_prepend'] != '')){ echo $Result['tittle_prepend'].' &laquo;';}
