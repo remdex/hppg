@@ -64,8 +64,9 @@ return array (
         2 => 'ger',
         3 => 'esp',
         4 => 'fre',
-        5 => 'site_admin',
-        6 => 'm',
+        5 => 'por',
+        6 => 'site_admin',
+        7 => 'm',
       ),
     ),
     'site_access_options' => 
@@ -82,6 +83,15 @@ return array (
       'ger' => 
       array (
         'locale' => 'de_DE',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'por' => 
+      array (
+        'locale' => 'pt_PT',
         'theme' => 
         array (
           0 => 'frontend',
