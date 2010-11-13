@@ -24,7 +24,7 @@ if ($pages->items_total > 0) :?>
 </tr>
 
 <?php if (isset($pages)) : ?> 
-    <div class="navigator"><?=$pages->display_pages();?> <div class="right"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Page %currentpage of %totalpage',array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Found')?> - <?=$pages->items_total?></div></div>
+    <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 <? endif;
 
 $cache = CSCacheAPC::getMem();

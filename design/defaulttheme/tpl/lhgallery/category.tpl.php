@@ -30,12 +30,9 @@ $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('fi
  
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list_full.tpl.php'));?> 
 
-
-<div class="nav-container">
-    <div class="navigator">
-    <div class="right found-total"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('core/paginator',"Page %currentpage of %totalpage",array('currentpage' => $pagesSubcategorys->current_page,'totalpage' => $pagesSubcategorys->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('core/paginator','Found')?> - <?=$pagesSubcategorys->items_total?></div>
-    <?=$pagesSubcategorys->display_pages();?></div>
-</div>   
+<?php 
+$pages = $pagesSubcategorys;
+include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 
 
 <?endif;?>

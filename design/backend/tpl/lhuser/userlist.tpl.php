@@ -1,10 +1,7 @@
 <fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','Users');?></legend>
 
 <?php if (isset($pages)) : ?>
-    <div class="navigator">
-    <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, Found - <?=$pages->items_total?></div>
-    <?=$pages->display_pages();?>
-    </div>
+    <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 <? endif;?>
 <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
 <tr>
@@ -25,10 +22,7 @@
 <? endforeach; ?>
 </table>
 <?php if (isset($pages)) : ?>
-    <div class="navigator">
-    <div class="right"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist',"Page %currentpage of %totalpage",array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, Found - <?=$pages->items_total?></div>
-    <?=$pages->display_pages();?>
-    </div>
+    <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 <? endif;?>
 <br />
 <div>

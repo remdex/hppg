@@ -4,7 +4,7 @@
 <?php if ($pages->items_total > 0) :?>
 
 <?php if (isset($pages)) : ?> 
-    <div class="navigator"><?=$pages->display_pages();?> <div class="right"><?php echo erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Page %currentpage of %totalpage',array('currentpage' => $pages->current_page,'totalpage' => $pages->num_pages))?>, <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Found')?> - <?=$pages->items_total?></div></div>
+    <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 <? endif;?>
 
 
@@ -49,7 +49,7 @@
 </table>
 
 <?php if (isset($pages)) : ?>
-    <div class="navigator"><?=$pages->display_pages();?></div>
+    <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 <? endif;?>
 
 <?php else : ?>
