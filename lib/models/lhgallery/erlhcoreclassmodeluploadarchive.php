@@ -78,8 +78,13 @@ class erLhcoreClassModelGalleryUploadArchive {
    			
    			$session->save($album);
    			
-   		} else {   		
-   			$album = erLhcoreClassModelGalleryAlbum::fetch($this->album_id);   			   			
+   		} else {  
+   		    if ($this->album_id > 0){
+   			  $album = erLhcoreClassModelGalleryAlbum::fetch($this->album_id); 
+   		    } else {
+   		       $this->cleanup();
+   		       return ;
+   		    }
    		}
    		
    		$config = erConfigClassLhConfig::getInstance();
@@ -144,41 +149,7 @@ class erLhcoreClassModelGalleryUploadArchive {
                 	       'file_session'     => $this,
                 	       'album'            => $album,
             	       ));
-	       
-            	       
-				    	/*erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $pathExtracted, $photoDir.'/normal_'.$fileNamePhysic );
-				    	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$pathExtracted, $photoDir.'/thumb_'.$fileNamePhysic );
-				    					    	
-				    	$dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
-						// If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
-						if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
-								erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $pathExtracted, $photoDir.'/'.$fileNamePhysic ); 
-						} else  {
-								rename($pathExtracted,$photoDir.'/'.$fileNamePhysic);
-						}
-									    	
-				    	chown($photoDir.'/'.$fileNamePhysic,$wwwUser);
-				    	chown($photoDir.'/normal_'.$fileNamePhysic,$wwwUser);
-				    	chown($photoDir.'/thumb_'.$fileNamePhysic,$wwwUser);
-				    	
-				    	chgrp($photoDir.'/'.$fileNamePhysic,$wwwUserGroup);
-				    	chgrp($photoDir.'/normal_'.$fileNamePhysic,$wwwUserGroup);
-				    	chgrp($photoDir.'/thumb_'.$fileNamePhysic,$wwwUserGroup);
-				    					    					    	
-				    	chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-				    	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-				    	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-				    	
-				    	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
-				    	$image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
-				    	$image->filepath = 'userpics/'.$this->user_id.'/'.$album->aid.'/';
-
-				    	$imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic );
-				    	$image->pwidth = $imageAnalyze->data->width;
-				    	$image->pheight = $imageAnalyze->data->height;
-				    	$image->hits = 0;*/
-				    	
-				    	
+	       			    
 				    	$image->ctime = time();
 				    	$image->owner_id = $this->user_id;
 				    	$image->pic_rating = 0;

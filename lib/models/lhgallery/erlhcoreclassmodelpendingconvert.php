@@ -89,11 +89,13 @@ class erLhcoreClassModelGalleryPendingConvert {
         	    $session = erLhcoreClassGallery::getSession();
         	    $session->update($this->image);
         	    $this->image->clearCache();
+        	    
+        	    $this->removeThis();
             }
     	            
        }
        
-        $this->removeThis();
+        
         
    }
    
