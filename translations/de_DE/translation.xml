@@ -3347,8 +3347,12 @@
   <context>
     <name>core/paginator</name>
     <message>
-      <source>Page %currentpage of %totalpage</source>
-      <translation>Seite %currentpage von %totalpage</translation>
+      <source>Page</source>
+      <translation>Seite</translation>
+    </message> 
+    <message>
+      <source>of</source>
+      <translation>von</translation>
     </message>
     <message>
       <source>Found</source>
@@ -3365,6 +3369,10 @@
     <message>
       <source>Go to page %item of %numpages</source>
       <translation>Ga naar pagina %item van %numpages</translation>
+    </message>
+    <message>
+      <source>Go to page</source>
+      <translation>Ga naar pagina</translation>
     </message>
   </context>
 </TS>

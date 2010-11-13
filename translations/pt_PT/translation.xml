@@ -3347,8 +3347,12 @@
   <context>
     <name>core/paginator</name>
     <message>
-      <source>Page %currentpage of %totalpage</source>
-      <translation>Página %currentpage de %totalpage</translation>
+      <source>Page</source>
+      <translation>Página</translation>
+    </message>
+    <message>
+      <source>of</source>
+      <translation>de</translation>
     </message>
     <message>
       <source>Found</source>
@@ -3363,8 +3367,8 @@
       <translation>Seguinte</translation>
     </message>
     <message>
-      <source>Go to page %item of %numpages</source>
-      <translation>Ir para página %item de %numpages</translation>
+      <source>Go to page</source>
+      <translation>Ir para página</translation>
     </message>
   </context>
 </TS>

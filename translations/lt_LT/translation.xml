@@ -3946,12 +3946,16 @@
   <context>
     <name>core/paginator</name>
     <message>
-      <source>Page %currentpage of %totalpage</source>
-      <translation>Puslapis %currentpage iš %totalpage</translation>
+      <source>Page</source>
+      <translation>Puslapis</translation>
+    </message> 
+    <message>
+      <source>of</source>
+      <translation>iš</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation>Rastas</translation>
+      <translation>Rasta</translation>
     </message>
     <message>
       <source>Previous</source>
@@ -3962,8 +3966,8 @@
       <translation>Kitas</translation>
     </message>
     <message>
-      <source>Go to page %item of %numpages</source>
-      <translation>Eiti į puslapį %item iš %numpages</translation>
-    </message>
+      <source>Go to page</source>
+      <translation>Eiti į puslapį</translation>
+    </message>  
   </context>
 </TS>

@@ -3347,20 +3347,28 @@
   <context>
     <name>core/paginator</name>
     <message>
-      <source>Page %currentpage of %totalpage</source>
-      <translation>Page %currentpage sur %totalpage</translation>
+      <source>Page</source>
+      <translation></translation>
+    </message>
+    <message>
+      <source>of</source>
+      <translation></translation>
     </message>
     <message>
       <source>Found</source>
-      <translation>Trouver</translation>
+      <translation></translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation>Pr&#xE9;c&#xE9;dente</translation>
+      <translation></translation>
     </message>
     <message>
       <source>Next</source>
-      <translation>Suivante</translation>
+      <translation></translation>
+    </message>
+    <message>
+      <source>Go to page</source>
+      <translation></translation>
     </message>
   </context>
 </TS>
