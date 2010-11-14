@@ -1,0 +1,1 @@
+ALTER TABLE `lh_gallery_searchhistory` ADD INDEX `keyword` ( `keyword` ( 5 ) ) ;
