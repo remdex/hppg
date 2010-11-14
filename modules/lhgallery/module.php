@@ -84,6 +84,11 @@ $ViewList['popularrecent'] = array(
 $ViewList['ratedrecent'] = array( 
     'script' => 'ratedrecent.php',
     'params' => array(),
+    );
+                  
+$ViewList['suggest'] = array( 
+    'script' => 'suggest.php',
+    'params' => array('q'),
     );          
         
 $ViewList['lastuploads'] = array( 

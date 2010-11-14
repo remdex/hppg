@@ -7,8 +7,6 @@ $q->where (
 );
 $q->orderBy('title ASC' ); 
 
-
-
 $objects = $session->find( $q, 'erLhcoreClassModelGalleryAlbum' );
 
 if (count($objects) > 0) {
