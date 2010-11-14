@@ -6,4 +6,9 @@
    <a href="<?=erLhcoreClassDesign::baseurldirect('/esp')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/lang/es.png')?>" title="Spain"></a>
    <a href="<?=erLhcoreClassDesign::baseurldirect('/por')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/lang/pt.png')?>" title="Portugal"></a>
    <a href="<?=erLhcoreClassDesign::baseurldirect('/rus')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/lang/ru.png')?>" title="Russian"></a>
+   <a href="<?=erLhcoreClassDesign::baseurldirect('/ita')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/lang/it.png')?>" title="Italian"></a>
+   <a href="<?=erLhcoreClassDesign::baseurldirect('/ind')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/lang/in.png')?>" title="India"></a>
+   <a href="<?=erLhcoreClassDesign::baseurldirect('/nor')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/lang/no.gif')?>" title="Norwegian"></a>
+   <a href="<?=erLhcoreClassDesign::baseurldirect('/den')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/lang/dk.png')?>" title="Denmark"></a>
+   <a href="<?=erLhcoreClassDesign::baseurldirect('/jap')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/lang/jp.png')?>" title="Japan"></a>
 </div>
