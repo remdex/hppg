@@ -65,8 +65,13 @@ return array (
         4 => 'fre',
         5 => 'por',
         6 => 'rus',
-        7 => 'site_admin',
-        8 => 'm',
+        7 => 'ita',
+        8 => 'ind',
+        9 => 'den',
+        10 => 'nor',
+        11 => 'jap',
+        12 => 'site_admin',
+        13 => 'm',
       ),
     ),
     'site_access_options' => 
@@ -85,16 +90,6 @@ return array (
       array (
         'locale' => 'de_DE',
         'content_language' => 'de',
-        'theme' => 
-        array (
-          0 => 'frontend',
-          1 => 'defaulttheme',
-        ),
-      ),
-      'por' => 
-      array (
-        'locale' => 'pt_PT',
-        'content_language' => 'pt',
         'theme' => 
         array (
           0 => 'frontend',
@@ -130,11 +125,71 @@ return array (
           0 => 'frontend',
           1 => 'defaulttheme',
         ),
-      ),    
+      ),     
+      'por' => 
+      array (
+        'locale' => 'pt_PT',
+        'content_language' => 'pt',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),     
       'rus' => 
       array (
         'locale' => 'ru_RU',
         'content_language' => 'ru',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),     
+      'ita' => 
+      array (
+        'locale' => 'it_IT',
+        'content_language' => 'it',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),     
+      'ind' => 
+      array (
+        'locale' => 'hi_HI',
+        'content_language' => 'hi',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),     
+      'den' => 
+      array (
+        'locale' => 'da_DA',
+        'content_language' => 'da',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),    
+      'nor' => 
+      array (
+        'locale' => 'no_NO',
+        'content_language' => 'no',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),    
+      'jap' => 
+      array (
+        'locale' => 'ja_JA',
+        'content_language' => 'ja',
         'theme' => 
         array (
           0 => 'frontend',
