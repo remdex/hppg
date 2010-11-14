@@ -73,7 +73,7 @@ class erLhcoreClassModelGalleryPendingConvert {
             // Exit code may be messed up with -1, especially on Windoze
             if ( ( $status['exitcode'] != 0 && $status['exitcode'] != -1 ) || strlen( $errorString ) > 0 )
             {      
-                erLhcoreClassLog::write("Conversion SWF: The command '{$command}' resulted in an error ({$status['exitcode']}): '{$errorString}'. Output: '{$outputString}'");
+                erLhcoreClassLog::writeCronjob("Conversion SWF: The command '{$command}' resulted in an error ({$status['exitcode']}): '{$errorString}'. Output: '{$outputString}'");
                   
             } else {                
                 $dir = dirname( $this->image->file_path_filesystem ); 

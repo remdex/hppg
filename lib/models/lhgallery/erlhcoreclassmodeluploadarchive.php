@@ -165,7 +165,7 @@ class erLhcoreClassModelGalleryUploadArchive {
 				    	$image->clearCache();
 				    	
 				    } catch (Exception $e) {				    	
-				    	erLhcoreClassLog::write('Exception during archive image import'.$e);
+				    	erLhcoreClassLog::writeCronjob('Exception during archive image import'.$e);
 				    	$session->delete($image);
 				    	unlink($pathExtracted);
 				    }
