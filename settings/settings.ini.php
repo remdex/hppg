@@ -13,8 +13,7 @@ return array (
       'templatecompile' => false,
       'modulecompile' => false,        
       'extensions' => array (           
-      ),
-      'classCompile' => false,
+      ), 
       'nice_url_enabled' => false,
       'force_virtual_host' => false,
       'etag_caching_enabled' => false,
@@ -65,8 +64,9 @@ return array (
         3 => 'esp',
         4 => 'fre',
         5 => 'por',
-        6 => 'site_admin',
-        7 => 'm',
+        6 => 'rus',
+        7 => 'site_admin',
+        8 => 'm',
       ),
     ),
     'site_access_options' => 
@@ -125,6 +125,16 @@ return array (
       array (
         'locale' => 'fr_FR',
         'content_language' => 'fr',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),    
+      'rus' => 
+      array (
+        'locale' => 'ru_RU',
+        'content_language' => 'ru',
         'theme' => 
         array (
           0 => 'frontend',
