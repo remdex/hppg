@@ -28,32 +28,6 @@
 	</div>
 </div>
 
-<script>
- var cache = {},
-		lastXhr;		
-$(document).ready(function() {
-    $('#searchtext').focus();
-       
-	$( "#searchtext" ).autocomplete({
-		minLength: 2,
-		source: function( request, response ) {
-			var term = request.term;
-			if ( term in cache ) {
-				response( cache[ term ] );
-				return;
-			}
-			lastXhr = $.getJSON( "<?=erLhcoreClassDesign::baseurl('gallery/suggest/')?>"+request.term, function( data, status, xhr ) {
-				cache[ term ] = data;
-				if ( xhr === lastXhr ) {
-					response( data );
-				}
-			});
-		}
-	});
-	
-});
-</script>
-
 <?php 
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' ) == true) {
 	$debug = ezcDebug::getInstance(); 

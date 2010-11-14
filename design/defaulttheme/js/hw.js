@@ -522,3 +522,26 @@ a.length?this.activate(f,a):this.activate(f,this.element.children(b))}else this.
 c)}else this.activate(a,this.element.children(".ui-menu-item").filter(!this.active||this.last()?":first":":last"))},previousPage:function(a){if(this.hasScroll())if(!this.active||this.first())this.activate(a,this.element.children(".ui-menu-item:last"));else{var b=this.active.offset().top,f=this.element.height();result=this.element.children(".ui-menu-item").filter(function(){var c=e(this).offset().top-b+f-e(this).height();return c<10&&c>-10});result.length||(result=this.element.children(".ui-menu-item:first"));
 this.activate(a,result)}else this.activate(a,this.element.children(".ui-menu-item").filter(!this.active||this.first()?":last":":first"))},hasScroll:function(){return this.element.height()<this.element.attr("scrollHeight")},select:function(a){this._trigger("selected",a,{item:this.active})}})})(jQuery);
 ;
+
+var cache = {},
+		lastXhr;
+				
+$(document).ready(function() {
+    $('#searchtext').focus();       
+	$( "#searchtext" ).autocomplete({
+		minLength: 2,		
+		source: function( request, response ) {
+			var term = request.term;
+			if ( term in cache ) {
+				response( cache[ term ] );
+				return;
+			}
+			lastXhr = $.getJSON( WWW_DIR_JAVASCRIPT + 'gallery/suggest/'+request.term, function( data, status, xhr ) {
+				cache[ term ] = data;
+				if ( xhr === lastXhr ) {
+					response( data );
+				}
+			});
+		}
+	});	
+});
