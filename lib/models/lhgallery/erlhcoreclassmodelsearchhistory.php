@@ -24,15 +24,17 @@ class erLhcoreClassModelGallerySearchHistory {
    
    public static function addSearch($keyword,$search_count)
    {
-       $items = erLhcoreClassModelGallerySearchHistory::getSearches(array('limit' => 1,'filter' => array('crc32' => crc32(trim($keyword)),'keyword' => trim($keyword))));       
+       $keywordClean = mb_strtolower(trim($keyword));
+       $items = erLhcoreClassModelGallerySearchHistory::getSearches(array('limit' => 1,'filter' => array('crc32' => crc32($keywordClean),'keyword' => $keywordClean)));    
+          
        if  (count($items) == 0  )
        {       
            $search = new erLhcoreClassModelGallerySearchHistory();
-           $search->keyword = trim($keyword);
+           $search->keyword = $keywordClean;
            $search->countresult = $search_count;       
            $search->last_search = time();       
            $search->searches_done = 1;       
-           $search->crc32 = crc32($keyword);       
+           $search->crc32 = crc32($keywordClean);
            erLhcoreClassGallery::getSession()->save($search);              
        } else {
            $itemCurrent = array_pop($items);
