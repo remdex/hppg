@@ -148,10 +148,6 @@
       <translation type="unfinished"/>
     </message>
     <message>
-      <source>Found</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
       <source>Edit category</source>
       <translation type="unfinished"/>
     </message>
@@ -177,25 +173,6 @@
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished"/>
-    </message>
-  </context>
-  <context>
-    <name>gallery/album_list_admin</name>
-    <message>
-      <source>Found</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
-      <source>Add images</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
-      <source>Edit album</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
-      <source>Delete album</source>
       <translation type="unfinished"/>
     </message>
   </context>
@@ -227,6 +204,21 @@
     </message>
     <message>
       <source>System configuration</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
+    <name>gallery/album_list_admin</name>
+    <message>
+      <source>Add images</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>Edit album</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>Delete album</source>
       <translation type="unfinished"/>
     </message>
   </context>
@@ -433,10 +425,6 @@
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
-      <source>Found</source>
       <translation type="unfinished"/>
     </message>
     <message>
@@ -1919,21 +1907,6 @@
     </message>
   </context>
   <context>
-    <name>core/paginator</name>
-    <message>
-      <source>Found</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
-      <source>Previous</source>
-      <translation type="unfinished"/>
-    </message>
-    <message>
-      <source>Next</source>
-      <translation type="unfinished"/>
-    </message>
-  </context>
-  <context>
     <name>gallery/createalbum</name>
     <message>
       <source>New album</source>
@@ -2720,6 +2693,33 @@
     </message>
   </context>
   <context>
+    <name>core/paginator</name>
+    <message>
+      <source>Page</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>of</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>Found</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>Previous</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>Go to page</source>
+      <translation type="unfinished"/>
+    </message>
+    <message>
+      <source>Next</source>
+      <translation type="unfinished"/>
+    </message>
+  </context>
+  <context>
     <name>statistic/view</name>
     <message>
       <source>hours</source>
@@ -3342,33 +3342,6 @@
     <message>
       <source>System administration panel</source>
       <translation type="unfinished"></translation>
-    </message>
-  </context>
-  <context>
-    <name>core/paginator</name>
-    <message>
-      <source>Page</source>
-      <translation></translation>
-    </message>
-    <message>
-      <source>of</source>
-      <translation></translation>
-    </message>
-    <message>
-      <source>Found</source>
-      <translation></translation>
-    </message>
-    <message>
-      <source>Previous</source>
-      <translation></translation>
-    </message>
-    <message>
-      <source>Next</source>
-      <translation></translation>
-    </message>
-    <message>
-      <source>Go to page</source>
-      <translation></translation>
     </message>
   </context>
 </TS>
