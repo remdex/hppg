@@ -13,11 +13,12 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
        {      
        	
        	   $config = erConfigClassLhConfig::getInstance();
-       		 
+       	    
            $session = erLhcoreClassGallery::getSession();
            $image = new erLhcoreClassModelGalleryImage();
-           $image->aid = $AlbumData->aid;       
-           
+           $image->aid = $AlbumData->aid;
+                  
+           $session->save($image); 
            
            $filetype->processLocalBatch($image,array(
     	       'photo_dir'        => $photoDir,
@@ -39,11 +40,12 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            $image->approved =  1;
            $image->filename = $fileName;
                   
-           $session->save($image);
+           $session->update($image);
            $image->clearCache();       
        }
        
     } catch (Exception $e) {
+        $session->delete($image);
         erLhcoreClassLog::write('Exception during upload'.$e);
         echo json_encode(array('result' => 'item'));
         exit;
