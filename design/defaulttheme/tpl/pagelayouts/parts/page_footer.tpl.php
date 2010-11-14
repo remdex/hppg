@@ -42,7 +42,7 @@ $(document).ready(function() {
 				response( cache[ term ] );
 				return;
 			}
-			lastXhr = $.getJSON( "/gallery/suggest/"+request.term, function( data, status, xhr ) {
+			lastXhr = $.getJSON( "<?=erLhcoreClassDesign::baseurl('gallery/suggest/')?>"+request.term, function( data, status, xhr ) {
 				cache[ term ] = data;
 				if ( xhr === lastXhr ) {
 					response( data );
