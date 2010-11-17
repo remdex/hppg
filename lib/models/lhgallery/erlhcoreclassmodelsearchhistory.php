@@ -104,7 +104,7 @@ class erLhcoreClassModelGallerySearchHistory {
    {
        $session = erLhcoreClassGallery::getSession();
        $q = $session->database->createSelectQuery();  
-       $q->select( "COUNT(id)" )->from( "lh_gallery_searchhistory" );     
+       $q->select( "COUNT(keyword)" )->from( "lh_gallery_searchhistory" );     
          
        $conditions = array();
        
