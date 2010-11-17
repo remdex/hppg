@@ -1794,6 +1794,22 @@ if ($mode == 'lastuploads') {
 
 $cache->store($cacheKeyImageView,$Result);
 
+} elseif (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true) { // Delay image hit enabled
+	erLhcoreClassModelGalleryDelayImageHit::addHit((int)$Params['user_parameters']['image_id']);
+} elseif (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_log' ) == false) { // No access log hit enabled, so we must each time update picture stats
+    
+    if (!($Image instanceof erLhcoreClassModelGalleryImage)) {
+        
+        try {
+            $Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$Params['user_parameters']['image_id'] );
+        } catch (Exception $e){
+            erLhcoreClassModule::redirect('/');
+            exit;
+        }
+        $Image->hits++;
+    	$Image->mtime = time();
+    	erLhcoreClassGallery::getSession()->update($Image);
+    }	
 }
 
 ?>

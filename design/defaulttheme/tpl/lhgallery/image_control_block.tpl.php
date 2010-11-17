@@ -2,6 +2,9 @@
 
 <div class="left">
 <a class="ad-fv" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Add to favorites')?>"></a>
+
+<?php if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) : ?>
+
 <a class="ad-html" href="<?=erLhcoreClassDesign::baseurl('/gallery/sharehtml')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Share this page HTML code')?>"></a>
 <a class="ad-phpbb" href="<?=erLhcoreClassDesign::baseurl('/gallery/sharephpbb')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Share PHPBB code')?>"></a>
 
@@ -9,6 +12,7 @@
 <a class="ad-anaglyph" href="<?=erLhcoreClassDesign::baseurl('/gallery/anaglyph')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Anaglyph version')?>" ></a>
 <?php endif;?>
 
+<?php endif;?>
 </div>
 
 <div class="right">
