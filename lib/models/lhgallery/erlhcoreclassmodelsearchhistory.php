@@ -4,11 +4,9 @@ class erLhcoreClassModelGallerySearchHistory {
 
    public function getState()
    {
-       return array(
-               'id'            => $this->id,                     
+       return array (                                  
                'countresult'   => $this->countresult,             
-               'keyword'       => $this->keyword,            
-               'crc32'         => $this->crc32,            
+               'keyword'       => $this->keyword, 
                'last_search'   => $this->last_search,          
                'searches_done' => $this->searches_done,          
        );
@@ -25,7 +23,7 @@ class erLhcoreClassModelGallerySearchHistory {
    public static function addSearch($keyword,$search_count)
    {
        $keywordClean = mb_strtolower(trim($keyword));
-       $items = erLhcoreClassModelGallerySearchHistory::getSearches(array('limit' => 1,'filter' => array('crc32' => crc32($keywordClean),'keyword' => $keywordClean)));    
+       $items = erLhcoreClassModelGallerySearchHistory::getSearches(array('limit' => 1,'filter' => array('keyword' => $keywordClean)));    
           
        if  (count($items) == 0  )
        {       
@@ -33,8 +31,7 @@ class erLhcoreClassModelGallerySearchHistory {
            $search->keyword = $keywordClean;
            $search->countresult = $search_count;       
            $search->last_search = time();       
-           $search->searches_done = 1;       
-           $search->crc32 = crc32($keywordClean);
+           $search->searches_done = 1;
            erLhcoreClassGallery::getSession()->save($search);              
        } else {
            $itemCurrent = array_pop($items);
@@ -157,10 +154,8 @@ class erLhcoreClassModelGallerySearchHistory {
       return $result; 
    }
        
-   public $id = null;
    public $countresult = '';
-   public $keyword = '';
-   public $crc32 = 0;
+   public $keyword = null;
    public $last_search = 0;
    public $searches_done = 0;
 

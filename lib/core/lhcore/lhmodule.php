@@ -45,7 +45,7 @@ class erLhcoreClassModule{
                 }
             }
                       
-            if(isset($Params['module']['limitations']))
+            if (isset($Params['module']['limitations']))
             {       
                 $access = call_user_func($Params['module']['limitations']['self']['method'],$Params['user_parameters'][$Params['module']['limitations']['self']['param']],$currentUser->hasAccessTo('lh'.self::$currentModuleName,$Params['module']['limitations']['global']));               	
                 
