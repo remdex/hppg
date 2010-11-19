@@ -24,7 +24,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/popular.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/popular').$appendResolutionMode;
+    $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/popular').$appendResolutionMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
@@ -34,15 +34,15 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/popular'.$appendResolutionMode;
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/popular'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/popular'));
         
     $Result['content'] = $tpl->fetch();
     
     $Result['path'] = array();
-    $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/popular'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images'));
+    $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/popular'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images'));
 
     if ($resolution != '') {
-        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/popular').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Resolution').' - '.$resolution);  
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/popular').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
@@ -50,7 +50,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
       
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/popularrss/');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/popularrss');
 
     $cache->store($cacheKey,$Result);
 }

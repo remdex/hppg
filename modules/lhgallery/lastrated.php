@@ -37,7 +37,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
         
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/lastrated').$appendResolutionMode;
+    $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/lastrated').$appendResolutionMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
@@ -47,15 +47,15 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/lastrated'.$appendResolutionMode;
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/lastrated'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lastrated'));
        
     $Result['content'] = $tpl->fetch();
        
     $Result['path'] = array();    
-    $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastrated'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastrated','Last rated images'));
+    $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/lastrated'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastrated','Last rated images'));
      
     if ($resolution != '') {
-        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastrated').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastrated','Resolution').' - '.$resolution);  
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/lastrated').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastrated','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
@@ -63,7 +63,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
       
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastrated','Last rated images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastratedrss/');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastratedrss');
 
     
 

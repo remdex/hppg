@@ -139,33 +139,33 @@ class erLhcoreClassModelGalleryImage {
            		
        	case 'path':
 
-       	    $cache = CSCacheAPC::getMem();     
-            if (($categoryPath = $cache->restore(md5($cache->getCacheVersion('album_'.$this->aid).'album_path_'.$this->aid))) === false)
+       	    $cache = CSCacheAPC::getMem();
+       	    $cacheKey = md5($cache->getCacheVersion('album_'.$this->aid).'album_path_'.$this->aid.'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);     
+            if (($categoryPath = $cache->restore($cacheKey)) === false)
             {           	          	    
            	    $album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', $this->aid );       	     
            	    $categoryPath = $album->path;
-           	    $cache->store(md5($cache->getCacheVersion('album_'.$this->aid).'album_path_'.$this->aid),$categoryPath);
+           	    $cache->store($cacheKey,$categoryPath);
             }                   	  
            	$categoryPath[] = array('title' =>$this->name_user);           	
            	$this->path = $categoryPath;
        	    return $this->path;
        		break;        		  	
            	
-       	case 'url_path': 
-       	
-       	    if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-       	    {         
-           	    $pathElements = array();
-           	    foreach ($this->path as $item){
-           	        $pathElements[] = urlencode(erLhcoreClassCharTransform::TransformToURL($item['title']));
-           	    }     
-           	    $this->url_path = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->pid.'p.html');  	    
-           	    return $this->url_path;
-       	    } else {
-       	        $this->url_path = erLhcoreClassDesign::baseurl('/gallery/image/'.$this->pid);
-       	        return $this->url_path;
-       	    }      	    
-       	    break;
+       	case 'url_path':         
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+            {         
+                    $pathElements = array();
+                    foreach ($this->path as $item){
+                        $pathElements[] = urlencode(erLhcoreClassCharTransform::TransformToURL($item['title']));
+                    }     
+                    $this->url_path = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->pid.'p.html',false);             
+                    return $this->url_path;
+            } else {
+                $this->url_path = erLhcoreClassDesign::baseurl('gallery/image').'/'.$this->pid;
+                return $this->url_path;
+            }               
+            break;
        		     		
        	case 'filesize_user':        	    
        	    $this->filesize_user = round(($this->filesize/1024),2) . ' KB';

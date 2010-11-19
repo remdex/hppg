@@ -13,7 +13,7 @@ try {
     }
 
 if (($xml = $cache->restore($cacheKey)) === false)
-{         
+{                
     $feed = new ezcFeed(); 
     $feed->title = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumrss','Last uploaded images to album').' - '.$Album->title;
     $feed->description = '';
@@ -21,10 +21,10 @@ if (($xml = $cache->restore($cacheKey)) === false)
     $link = $feed->add( 'link' );
     $link->href = 'http://'.$_SERVER['HTTP_HOST'].$Album->url_path; 
     $items = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'filter' => array('approved' => 1,'aid' => $Album->aid),'offset' => 0, 'limit' => 20));
-       
+           
     foreach ($items as $itemRecord)
     {	
-    	
+    	   
     	    $item = $feed->add( 'item' ); 
     	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumrss','View image') : $title;
     	    
@@ -43,7 +43,7 @@ if (($xml = $cache->restore($cacheKey)) === false)
     	    $item->published = $itemRecord->ctime; 
     	     
     	    $link = $item->add( 'link' );
-    	    $link->href = 'http://'.$_SERVER['HTTP_HOST'].$itemRecord->url_path; 
+    	    $link->href = 'http://'.$_SERVER['HTTP_HOST'].($link); 
     	
     }
     

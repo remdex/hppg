@@ -1874,7 +1874,7 @@
     </message>
     <message>
       <source>Any resolution</source>
-      <translation>Bet kuri rezoliucijos</translation>
+      <translation>Bet kurios rezoliucijos</translation>
     </message>
     <message>
       <source>Search results</source>
@@ -1918,11 +1918,11 @@
     </message>
     <message>
       <source>Last rated first</source>
-      <translation>Ką tik įvertinti pirmi</translation>
+      <translation>Paskutiniai įvertinti pirmi</translation>
     </message>
     <message>
       <source>Last rated last</source>
-      <translation type="unfinished">Ką tik įvertinti pirmi paskutiniai</translation>
+      <translation>Paskutiniai įvertinti pirmi paskutiniai</translation>
     </message>
     <message>
       <source>Top rated first</source>
@@ -3877,7 +3877,7 @@
     <name>gallery/popularrecect</name>
     <message>
       <source>Most popular images in 24 hours.</source>
-      <translation>Populiariausios nuotraukos per 24 valandas.</translation>
+      <translation>Populiariausi paveikslėliai per 24 valandas.</translation>
     </message>
     <message>
       <source>There are no images.</source>

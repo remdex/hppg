@@ -14,7 +14,7 @@
 <? endif;?>
 <br />
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/albumedit/')?><?=$album->aid?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('gallery/albumedit')?>/<?=$album->aid?>">
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Album name');?> *</label>
 <input class="inputfield" type="text" name="AlbumName" value="<?=htmlspecialchars($album->title);?>" />

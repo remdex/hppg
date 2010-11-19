@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Add images to album')?> - <a href="<?=erLhcoreClassDesign::baseurl('/gallery/myalbums')?>"><?=htmlspecialchars($album->title)?></a></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/addimages','Add images to album')?> - <a href="<?=erLhcoreClassDesign::baseurl('gallery/myalbums')?>"><?=htmlspecialchars($album->title)?></a></h1>
 </div>
 <? if (isset($errArr)) : ?>
 <div class="error-list">
@@ -27,7 +27,7 @@ var fileconverter;
 SWFUpload.onload = function () {
 	var settings = {
 		flash_url : "<?=erLhcoreClassDesign::design('js/swfupload/Flash/swfupload.swf')?>",
-		upload_url: "<?=erLhcoreClassDesign::baseurl('/gallery/upload')?>",
+		upload_url: "<?=erLhcoreClassDesign::baseurl('gallery/upload')?>",
 		post_params: {},
 		file_size_limit : "<?=(int)(erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value/1024)?> MB",
 		file_types : "<?=erLhcoreClassModelSystemConfig::fetch('allowed_file_types')->current_value;?>",

@@ -12,11 +12,11 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_most_popular'))) === false)
     $feed->description = '';
     $feed->published = time(); 
     $link = $feed->add( 'link' );
-    $link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('/gallery/popular/');     
-    $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'approved' => 1,'sort' => 'hits DESC, pid DESC','offset' => 0, 'limit' => 20));    
+    $link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('gallery/popular');     
+    $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'approved' => 1,'sort' => 'hits DESC, pid DESC','offset' => 0, 'limit' => 20));
+            
     foreach ($items as $itemRecord)
-    {	
-    	
+    {	    	   
     	    $item = $feed->add( 'item' ); 
     	    $item->title = ($title = $itemRecord->name_user) == '' ? 'View image' : $title;
     	    if ($itemRecord->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE){

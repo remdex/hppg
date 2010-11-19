@@ -82,16 +82,104 @@ class erLhcoreClassDesign
         }
     }
     
-    public static function baseurl($link = '')
+    public static function baseurl($link = '',$useTranslation = true)
     {
-        $instance = erLhcoreClassSystem::instance();            
-        return $instance->WWWDir . $instance->IndexFile .  $instance->WWWDirLang  . '/' . ltrim($link,'/');
+                
+        $instance = erLhcoreClassSystem::instance();
+        
+        $link = ltrim($link,'/');
+        if ($useTranslation == true && $instance->Language != 'en_EN' && $link != '') {  // Full multilanguage including url addreses            
+            self::translateModuleURL($link);
+        }
+        
+        return $instance->WWWDir . $instance->IndexFile .  $instance->WWWDirLang  . '/' . $link;
     }
     
     public static function baseurldirect($link = '')
     {
         $instance = erLhcoreClassSystem::instance();            
         return $instance->WWWDir . $instance->IndexFile . '/' . ltrim($link,'/');
+    }
+    
+    public static function translateToOriginal($module,$function)
+    {
+        $cache = CSCacheAPC::getMem();
+        
+        $cacheKey = 'site_version_'.$cache->getCacheVersion('site_version').'_module_translations_'.erLhcoreClassSystem::instance()->Language;
+        
+        if (is_null(self::$moduleTranslations) || ( self::$moduleTranslations = $cache->restore($cacheKey) ) ) {
+            
+            if (file_exists('translations/'.erLhcoreClassSystem::instance()->Language.'/translations.php')) {
+                include('translations/'.erLhcoreClassSystem::instance()->Language.'/translations.php');
+            } else {
+                return array('module' => $module,'function' => $function);
+            }
+                        
+            self::$moduleTranslations['moduleTranslations'] = $moduleTranslations;
+            self::$moduleTranslations['moduleTranslationsReverse'] = array_flip($moduleTranslations);
+            self::$moduleTranslations['moduleViewTranslations'] = $moduleViewTranslations;   
+            
+            $cache->store($cacheKey,self::$moduleTranslations);      
+        }
+        
+        $moduleTranslated = $module;
+        $functionTranslated = $function;  
+             
+        if (key_exists($module,self::$moduleTranslations['moduleTranslations'])) {            
+            $moduleTranslated = self::$moduleTranslations['moduleTranslations'][$module];               
+        }
+        
+        if (key_exists($moduleTranslated,self::$moduleTranslations['moduleViewTranslations']))
+        {
+            if (key_exists($function,self::$moduleTranslations['moduleViewTranslations'][$moduleTranslated])) { 
+                $functionTranslated = self::$moduleTranslations['moduleViewTranslations'][$moduleTranslated][$function];
+            }
+        }
+        
+        return array('module' => $moduleTranslated,'function' => $functionTranslated);
+        
+    }
+    
+    public static function translateModuleURL(& $link) {        
+        
+        $cache = CSCacheAPC::getMem();
+        
+        $cacheKey = 'site_version_'.$cache->getCacheVersion('site_version').'_module_translations_'.erLhcoreClassSystem::instance()->Language;
+        
+        if (is_null(self::$moduleTranslations) || ( self::$moduleTranslations = $cache->restore($cacheKey) ) ) {
+            
+            if (file_exists('translations/'.erLhcoreClassSystem::instance()->Language.'/translations.php')) {
+                include('translations/'.erLhcoreClassSystem::instance()->Language.'/translations.php');
+            } else {
+                return ;
+            }
+                       
+            self::$moduleTranslations['moduleTranslations'] = $moduleTranslations;
+            self::$moduleTranslations['moduleTranslationsReverse'] = array_flip($moduleTranslations);
+            self::$moduleTranslations['moduleViewTranslations'] = $moduleViewTranslations;   
+            
+            $cache->store($cacheKey,self::$moduleTranslations);      
+        }
+        
+        list($module,$function) = explode('/',$link);
+        
+        $moduleTranslated = $module;
+        $functionTranslated = $function;  
+                
+        if (key_exists($module,self::$moduleTranslations['moduleTranslationsReverse'])) {            
+            $moduleTranslated = self::$moduleTranslations['moduleTranslationsReverse'][$module];               
+        }
+        
+        if (key_exists($module,self::$moduleTranslations['moduleViewTranslations']))
+        {
+            $moduleFunctions = array_flip(self::$moduleTranslations['moduleViewTranslations'][$module]);
+                            
+            if (key_exists($function,$moduleFunctions)) {                
+                $functionTranslated = $moduleFunctions[$function];
+            }
+        }
+        
+        $link = $moduleTranslated . '/' . $functionTranslated; 
     }
     
     public static function designCSS($files)
@@ -203,6 +291,9 @@ class erLhcoreClassDesign
         }
         return $css;
     }
+    
+    
+    private static $moduleTranslations = null;
 }
 
 

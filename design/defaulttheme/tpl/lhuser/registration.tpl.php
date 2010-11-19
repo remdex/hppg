@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>Registration</h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Registration')?></h1>
 </div>
 <? if (isset($errArr)) : ?>
 <div class="error-list">
@@ -14,7 +14,7 @@
 <? endif;?>
 <br />
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/user/registration/')?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('user/registration')?>">
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Username');?></label>
 <input class="inputfield" type="text" name="Username" value="<?=htmlspecialchars($user->username);?>" />
@@ -39,9 +39,9 @@
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Safe code')?></label>
 <input type="text" class="inputfield" name="CaptchaCode" value="" /><br />
-<img src="<?=erLhcoreClassDesign::baseurl('/captcha/image/feedback_form')?>" alt="">
+<img src="<?=erLhcoreClassDesign::baseurl('captcha/image')?>/feedback_form" alt="">
 </div>
 
-<input type="submit" class="default-button" name="Update_account" value="Register"/>
+<input type="submit" class="default-button" name="Update_account" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Register')?>"/>
 
 </form>

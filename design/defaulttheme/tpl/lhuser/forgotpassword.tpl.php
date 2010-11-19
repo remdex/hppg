@@ -7,7 +7,7 @@
 </div>
 <br />
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/user/forgotpassword/')?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('user/forgotpassword')?>">
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','E-mail')?>:</label>
 <input type="text" class="inputfield" name="Email" value="" />

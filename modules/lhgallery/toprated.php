@@ -36,7 +36,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/toprated').$appendResolutionMode;
+    $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/toprated').$appendResolutionMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
@@ -46,15 +46,15 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/toprated'.$appendResolutionMode;
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/toprated'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/toprated'));
     
     $Result['content'] = $tpl->fetch();
     
     $Result['path'] = array(); 
-    $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/toprated'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images'));  
+    $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/toprated'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images'));  
       
     if ($resolution != '') {
-        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/toprated').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Resolution').' - '.$resolution);  
+        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/toprated').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
@@ -62,7 +62,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
     
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/topratedrss/');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/topratedrss');
 
     $cache->store($cacheKey,$Result,0);
 

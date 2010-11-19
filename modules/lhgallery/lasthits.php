@@ -25,7 +25,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lasthits.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/lasthits').$appendResolutionMode;
+    $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/lasthits').$appendResolutionMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
@@ -35,16 +35,16 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/lasthits'.$appendResolutionMode;
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/lasthits'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lasthits'));
         
     $Result['content'] = $tpl->fetch();
     
     $Result['path'] = array();
     
-    $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/lasthits'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Last viewed images'));  
+    $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/lasthits'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Last viewed images'));  
     
     if ($resolution != '') {
-        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('/gallery/lasthits').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Resolution').' - '.$resolution);  
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/lasthits').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Resolution').' - '.$resolution);  
     }
       
     if ($Params['user_parameters_unordered']['page'] > 1) {        
@@ -52,7 +52,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
     
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Last viewed images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lasthitsrss/');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lasthitsrss');
 
     $cache->store($cacheKey,$Result);
 }

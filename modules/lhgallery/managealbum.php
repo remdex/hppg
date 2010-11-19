@@ -6,7 +6,7 @@ $Category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGallery
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $Category->cid)));
 $pages->setItemsPerPage(8);
-$pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/managealbum/').$Category->cid;
+$pages->serverURL = erLhcoreClassDesign::baseurl('gallery/managealbum').'/'.$Category->cid;
 $pages->paginate();
 
 $tpl->set('pages',$pages);
@@ -19,7 +19,7 @@ $pathObjects = array();
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Category->cid);        
 foreach ($pathObjects as $pathItem)
 {
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$pathItem->cid,'title' => $pathItem->name); 
 }
 
 

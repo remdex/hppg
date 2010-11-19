@@ -66,11 +66,11 @@ $pathCategorys = array();
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$CategoryData->cid);        
 foreach ($pathObjects as $pathItem)
 {
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$pathItem->cid,'title' => $pathItem->name); 
    $pathCategorys[] = $pathItem->cid;
 }
  
-$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$CategoryData->cid,'title' => $pathItem->name); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$CategoryData->cid,'title' => $pathItem->name); 
  
 $Result['path'] = $path;
 $Result['path_cid'] = $pathCategorys;

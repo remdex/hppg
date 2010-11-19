@@ -8,11 +8,11 @@
    
   <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/my_albums_list.tpl.php'));?> 
     
-  <p><a class="button-link" href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','New album')?></a></p>
+  <p><a class="button-link" href="<?=erLhcoreClassDesign::baseurl('gallery/createalbum')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','New album')?></a></p>
           
 <? } else { ?>
 
-<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','You do not have any album.')?> <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Create a new album.')?></a></p>
+<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','You do not have any album.')?> <a href="<?=erLhcoreClassDesign::baseurl('gallery/createalbum/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Create a new album.')?></a></p>
 
 <? } ?>
 

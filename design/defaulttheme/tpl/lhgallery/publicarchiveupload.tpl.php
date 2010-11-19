@@ -27,7 +27,7 @@ var fileconverter;
 SWFUpload.onload = function () {
 	var settings = {
 		flash_url : "<?=erLhcoreClassDesign::design('js/swfupload/Flash/swfupload.swf')?>",
-		upload_url: "<?=erLhcoreClassDesign::baseurl('/gallery/uploadarchive')?>",
+		upload_url: "<?=erLhcoreClassDesign::baseurl('gallery/uploadarchive')?>",
 		post_params: {},
 		file_size_limit : "<?=(int)(erLhcoreClassModelSystemConfig::fetch('max_archive_size')->current_value/1024)?> MB",
 		file_types : "*.zip;",

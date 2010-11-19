@@ -6,12 +6,13 @@ $feed->title = erTranslationClassLhTranslation::getInstance()->getTranslation('g
 $feed->description = '';
 $feed->published = time(); 
 $link = $feed->add( 'link' );
-$link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('/gallery/search').'/(keyword)/'.$Params['user_parameters_unordered']['keyword'];
+$link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('gallery/search').'/(keyword)/'.$Params['user_parameters_unordered']['keyword'];
 $searchParams = array('SearchLimit' => 20,'keyword' => urldecode($Params['user_parameters_unordered']['keyword']));
 $searchResult = erLhcoreClassGallery::searchSphinx($searchParams);
-   
+  
 foreach ($searchResult['list'] as $itemRecord)
-{		
+{		    
+    
 	    $item = $feed->add( 'item' ); 
 	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','View image') : $title;
 	    

@@ -5,11 +5,11 @@
 
 <?php if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) : ?>
 
-<a class="ad-html" href="<?=erLhcoreClassDesign::baseurl('/gallery/sharehtml')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Share this page HTML code')?>"></a>
-<a class="ad-phpbb" href="<?=erLhcoreClassDesign::baseurl('/gallery/sharephpbb')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Share PHPBB code')?>"></a>
+<a class="ad-html" href="<?=erLhcoreClassDesign::baseurl('gallery/sharehtml')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Share this page HTML code')?>"></a>
+<a class="ad-phpbb" href="<?=erLhcoreClassDesign::baseurl('gallery/sharephpbb')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Share PHPBB code')?>"></a>
 
 <?php if ($image->anaglyph == 1) : ?>
-<a class="ad-anaglyph" href="<?=erLhcoreClassDesign::baseurl('/gallery/anaglyph')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Anaglyph version')?>" ></a>
+<a class="ad-anaglyph" href="<?=erLhcoreClassDesign::baseurl('gallery/anaglyph')?>/<?=$image->pid;?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Anaglyph version')?>" ></a>
 <?php endif;?>
 
 <?php endif;?>

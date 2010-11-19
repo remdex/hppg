@@ -12,7 +12,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/popularrecent.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryPopular24::getImageCount();
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/popularrecent');
+    $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/popularrecent');
     $pages->paginate();
     
     $tpl->set('pages',$pages);
@@ -20,7 +20,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/popularrecent';
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/popularrecent'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/popularrecent'));
         
     $Result['content'] = $tpl->fetch();
     $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Most popular images in 24 hours')));    

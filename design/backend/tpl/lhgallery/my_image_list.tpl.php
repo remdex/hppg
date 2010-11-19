@@ -3,7 +3,8 @@
 <? endif;?> 
 
 <div class="float-break">
-<? foreach ($items as $key => $item) : ?>
+<? foreach ($items as $key => $item) : 
+?>
     <div class="thumb-edit" id="image_thumb_<?=$item->pid?>">
         <div class="left">
             <label><input type="checkbox" name="PhotoID[]" value="<?=$item->pid?>" /> Select image</label>
@@ -12,7 +13,7 @@
         <a class="cursor" onclick="return hw.deletePhoto(<?=$item->pid?>)" ><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete image');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Delete image');?>" /></a>
         </div>
         <div class="thumb-pic">
-            <a href="<?=$item->url_path?><?=isset($appendImageMode) ? $appendImageMode : ''?>">
+            <a href="<?=$item->url_path.$appendImageMode?>">
             
             <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>
             

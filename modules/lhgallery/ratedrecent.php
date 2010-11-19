@@ -11,7 +11,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/ratedrecent.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryRated24::getImageCount();
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/ratedrecent');
+    $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/ratedrecent');
     $pages->paginate();
     
     $tpl->set('pages',$pages);
@@ -19,7 +19,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/ratedrecent';
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/ratedrecent'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/ratedrecent'));
         
     $Result['content'] = $tpl->fetch();
     $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/ratedrecent','Top rated images in 24 hours')));    

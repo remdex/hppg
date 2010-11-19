@@ -2,7 +2,7 @@
 
 <?php 
 $urlAppendSort = '/(keyword)/'.urlencode($keyword);
-$urlSortBase  = erLhcoreClassDesign::baseurl('/gallery/search');
+$urlSortBase  = erLhcoreClassDesign::baseurl('gallery/search');
 $enableRelevance = true;
 ?> 
 

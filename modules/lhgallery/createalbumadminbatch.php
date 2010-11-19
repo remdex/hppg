@@ -71,7 +71,7 @@ erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$CategoryDa
 foreach ($pathObjects as $pathItem)
 {
    $pathCategorys[] = $pathItem->cid;
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$pathItem->cid,'title' => $pathItem->name); 
 }
 
 $Result['content'] = $tpl->fetch();

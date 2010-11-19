@@ -1,11 +1,11 @@
 <div class="float-break">
 <? 
 $counter = 1;
-foreach ($items as $key => $item) : 
-?>
+foreach ($items as $key => $item) : ?>
     <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
         <div class="thumb-pic">
-            <a href="<?=$item->url_path?><?=isset($appendImageMode) ? $appendImageMode : ''?>">
+                    
+            <a href="<?=$item->url_path.$appendImageMode?>">
             
             <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>
               
@@ -14,7 +14,7 @@ foreach ($items as $key => $item) :
         <div class="thumb-attr">
         
         <div class="tit-item">
-            <h3><a title="<?=htmlspecialchars($item->name_user);?>" rel="<?=$item->url_path?><?=isset($appendImageMode) ? $appendImageMode : ''?>" href="<?=erLhcoreClassDesign::imagePath($item->filepath.$item->filename)?>">
+            <h3><a title="<?=htmlspecialchars($item->name_user);?>" rel="<?=$item->url_path.$appendImageMode?>" href="<?=erLhcoreClassDesign::imagePath($item->filepath.$item->filename)?>">
                 <?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','preview version') : $title;?>          
                 </a>
             </h3>

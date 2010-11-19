@@ -18,6 +18,7 @@ if ($resolution != ''){
 
 $filterArray['approved'] = 1;
     
+    
 $tpl->set('direction',$direction);
 
 if ($mode == 'album')

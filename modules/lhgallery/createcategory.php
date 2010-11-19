@@ -83,7 +83,7 @@ if (isset($CategoryDataParent)) {
     erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$CategoryDataParent->cid);        
     foreach ($pathObjects as $pathItem)
     {
-       $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+       $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$pathItem->cid,'title' => $pathItem->name); 
     } 
 } else {
     $path[] =  array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createcategory','Home')); 

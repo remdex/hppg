@@ -3,6 +3,8 @@
 class erTranslationClassLhTranslation
 {
     private static $instance = null;
+    
+    
     public $cacheObj;
     public $backend;
     public $manager;
@@ -130,6 +132,7 @@ class erTranslationClassLhTranslation
         return self::$instance;
     }
     
+       
 }
 
 

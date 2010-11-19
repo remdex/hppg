@@ -14,7 +14,7 @@
 <? endif;?>
 <br />
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/createalbum/')?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('gallery/createalbum')?>">
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbum','Album name');?> *</label>
 <input class="inputfield" type="text" name="AlbumName" value="<?=htmlspecialchars($album->title);?>" />

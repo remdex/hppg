@@ -1,7 +1,9 @@
 <div class="float-break">
 <? 
 $counter = 1;
-foreach ($items as $item) : ?>
+foreach ($items as $item) : 
+
+?>
     <div class="album-thumb<?=!($counter % 4) ? ' left-thumb' : ''?>">
         <div class="content">        
             <div class="albthumb-img">

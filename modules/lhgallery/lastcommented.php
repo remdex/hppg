@@ -37,7 +37,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
         
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/lastcommented').$appendResolutionMode;
+    $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/lastcommented').$appendResolutionMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
@@ -47,15 +47,15 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/lastcommented'.$appendResolutionMode;
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/lastcommented'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lastcommented'));
        
     $Result['content'] = $tpl->fetch();
        
     $Result['path'] = array();    
-    $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastcommented'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images'));
+    $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/lastcommented'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images'));
      
     if ($resolution != '') {
-        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastcommented').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Resolution').' - '.$resolution);  
+        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/lastcommented').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
@@ -63,7 +63,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
       
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastcommentedrss/');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastcommentedrss');
 
     
 

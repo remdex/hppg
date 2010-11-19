@@ -17,7 +17,7 @@ $order_total = $currencyCodeType.' '.$paymentAmount;
 
 ?>
 
-<form action="<?=erLhcoreClassDesign::baseurl('/shop/reviewcredits/paypal_handler')?>/(token)/<?=$token?>/(paymentAmount)/<?=$paymentAmount?>/(currencyCodeType)/<?=$currencyCodeType?>/(paymentType)/<?=$paymentType?>/(payerID)/<?=$payer_id?>" method="post" name="ExpressCheckoutForm">
+<form action="<?=erLhcoreClassDesign::baseurl('shop/reviewcredits/paypal_handler')?>/(token)/<?=$token?>/(paymentAmount)/<?=$paymentAmount?>/(currencyCodeType)/<?=$currencyCodeType?>/(paymentType)/<?=$paymentType?>/(payerID)/<?=$payer_id?>" method="post" name="ExpressCheckoutForm">
 <table width=400>
 <tr>
    <td><b><?=erTranslationClassLhTranslation::getInstance()->getTranslation('paypal_handler/review','Order amount');?>:</b></td>

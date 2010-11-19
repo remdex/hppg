@@ -21,7 +21,7 @@
 <?if (isset($Result['rss'])) : ?>
 <a class="rss-page" href="<?=$Result['rss']['url'];?>" title="<?=$Result['rss']['title']?>" /></a>
 <? else :?>
-<a class="rss-page" href="<?=erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss/')?>" title="Last uploaded images" /></a>
+<a class="rss-page" href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploadsrss')?>" title="Last uploaded images" /></a>
 <?endif;?>
 
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_top_menu.tpl.php'));?>

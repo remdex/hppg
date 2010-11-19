@@ -1738,32 +1738,32 @@ if ($needSave == true) { // If comment was stored we need to update image
 
 if ($mode == 'lastuploads') {
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastuploadsrss');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last additions')),array('title' => $Image->name_user));
 }elseif ($mode == 'lasthits') {
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last viewed images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lasthitsrss');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lasthitsrss');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last viewed images')),array('title' => $Image->name_user));
 }elseif ($mode == 'lastcommented') {
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last commented images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastcommentedrss');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastcommentedrss');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last commented images')),array('title' => $Image->name_user));
 }elseif ($mode == 'lastrated') {
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last rated images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastratedrss');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastratedrss');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last rated images')),array('title' => $Image->name_user));
 }elseif ($mode == 'toprated') {	
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/topratedrss');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/topratedrss');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Top rated images')),array('title' => $Image->name_user));
 }elseif ($mode == 'popular') {	
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most popular images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/popularrss');
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/popularrss');
     $Result['title_path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Most popular images')),array('title' => $Image->name_user));
 }elseif ($mode == 'search') {
 	
 	$Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search rss by keyword').' - '.htmlspecialchars($Params['user_parameters_unordered']['keyword']);
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/searchrss').'/(keyword)/'.urlencode($Params['user_parameters_unordered']['keyword']);
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/searchrss').'/(keyword)/'.urlencode($Params['user_parameters_unordered']['keyword']);
     
     $sortModesTitle = array (
         'new'               => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded first'),
@@ -1789,7 +1789,7 @@ if ($mode == 'lastuploads') {
    
 } else {
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded images to album').' - '.$Image->album_title;
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss/').$Image->aid; 
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss').'/'.$Image->aid; 
 }
 
 $cache->store($cacheKeyImageView,$Result);

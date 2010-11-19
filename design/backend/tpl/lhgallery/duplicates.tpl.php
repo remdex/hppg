@@ -22,6 +22,7 @@
     <tr class="duplicates-row" id="details-block-<?=$item->id?>" style="display:none;">
     	<td colspan="4">
     	 <?php foreach ($item->duplicate_images as $imageDuplicateItem) : 
+    	 
     	 $imageDuplicate = $imageDuplicateItem->image;
     	 ?>
     	 		<div class="thumb-edit" id="image_thumb_<?=$imageDuplicate->pid?>">
@@ -29,7 +30,7 @@
 			        <a class="cursor" onclick="return hw.deletePhoto(<?=$imageDuplicate->pid?>)" ><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete image');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Delete image');?>" /></a>
 			        </div>
 			        <div class="thumb-pic">
-			            <a href="<?=$imageDuplicate->url_path?>"><img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','View image')?>" src="<?=erLhcoreClassDesign::imagePath($imageDuplicate->filepath.'thumb_'.urlencode($imageDuplicate->filename))?>" alt="<?=htmlspecialchars($imageDuplicate->name_user);?>" /></a>
+			            <a href="<?=$imageDuplicateItem->url_path?>"><img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','View image')?>" src="<?=erLhcoreClassDesign::imagePath($imageDuplicate->filepath.'thumb_'.urlencode($imageDuplicate->filename))?>" alt="<?=htmlspecialchars($imageDuplicate->name_user);?>" /></a>
 			        </div>
 			        <div class="thumb-attr">              
 			           

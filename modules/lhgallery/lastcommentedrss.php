@@ -11,11 +11,10 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_last_lastcommented'))) === f
     $feed->description = '';
     $feed->published = time(); 
     $link = $feed->add( 'link' );
-    $link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('/gallery/lastcommented/');     
+    $link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('gallery/lastcommented');     
     $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'approved' => 1,'disable_sql_cache' => true,'sort' => 'comtime DESC, pid DESC','offset' => 0, 'limit' => 20));    
     foreach ($items as $itemRecord)
     {	
-    	
     	    $item = $feed->add( 'item' ); 
     	    $item->title = ($title = $itemRecord->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommentedrss','View image') : $title;
     	    if ($itemRecord->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE){

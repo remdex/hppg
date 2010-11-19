@@ -7,7 +7,7 @@
  * */
 
 class erLhcoreClassTemplate {
-    var $vars; /// Holds all the template variables
+    private $vars = array(); /// Holds all the template variables
  
     private static $instance = null;   
     private $cacheWriter = null;
@@ -274,7 +274,6 @@ class erLhcoreClassTemplate {
         ob_end_clean();                // End buffering and discard
         return $contents; 
 	}
-	
 	
 }
 

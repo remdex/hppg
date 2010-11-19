@@ -33,7 +33,7 @@ $('input[name=DisplayOption]').change(function() {
         }                
     } else {
         stopAnimation = true;
-        $('#ImageAnaglyphContainer').attr('src','<?=erLhcoreClassDesign::baseurl('/gallery/anaglyphimage').'/'.$Image->pid?>');
+        $('#ImageAnaglyphContainer').attr('src','<?=erLhcoreClassDesign::baseurl('gallery/anaglyphimage').'/'.$Image->pid?>');
     }
 })
 

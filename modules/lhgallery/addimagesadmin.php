@@ -20,11 +20,11 @@ $pathCategorys = array();
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$AlbumData->category);        
 foreach ($pathObjects as $pathItem)
 {
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$pathItem->cid,'title' => $pathItem->name); 
    $pathCategorys[] = $pathItem->cid; 
 }
 
-$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/managealbumimages/').$AlbumData->aid,'title' => $AlbumData->title);
+$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/managealbumimages').'/'.$AlbumData->aid,'title' => $AlbumData->title);
 
 $Result['path'] = $path;
 $Result['path_cid'] = $pathCategorys;

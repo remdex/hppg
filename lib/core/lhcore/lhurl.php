@@ -42,6 +42,13 @@ class erLhcoreClassURL extends ezcUrl {
                 erLhcoreClassSystem::instance()->WWWDirLang = '/'.$siteaccess; 
                 erLhcoreClassSystem::instance()->SiteAccess = $siteaccess; 
                 
+                if ($optionsSiteAccess['locale'] != 'en_EN')
+                {
+                    $params = erLhcoreClassDesign::translateToOriginal($urlInstance->getParam( 'module' ), $urlInstance->getParam( 'function' ));
+                    $urlInstance->setParam('module',$params['module']);
+                    $urlInstance->setParam('function',$params['function']);
+                }
+                
             } else {
                 
                 $optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$defaultSiteAccess);
@@ -56,14 +63,20 @@ class erLhcoreClassURL extends ezcUrl {
                 $urlCfgDefault->removeOrderedParameter('siteaccess');
                 $urlCfgDefault->removeOrderedParameter('module');
                 $urlCfgDefault->removeOrderedParameter('function');
-                
+                         
                 // Reinit parameters
                 $urlCfgDefault->addOrderedParameter( 'module' ); 
                 $urlCfgDefault->addOrderedParameter( 'function' );
                 
                 //Apply default configuration             
                 $urlInstance->applyConfiguration($urlCfgDefault);
-              
+                
+                if ($optionsSiteAccess['locale'] != 'en_EN')
+                {
+                    $params = erLhcoreClassDesign::translateToOriginal($urlInstance->getParam( 'module' ), $urlInstance->getParam( 'function' ));
+                    $urlInstance->setParam('module',$params['module']);
+                    $urlInstance->setParam('function',$params['function']);
+                } 
             }
            
    

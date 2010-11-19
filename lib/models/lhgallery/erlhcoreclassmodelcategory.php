@@ -233,11 +233,12 @@ class erLhcoreClassModelGalleryCategory {
    
    public static function getCategoryPath(& $array,$category_id)
    {     
-      $cache = CSCacheAPC::getMem();     
-      if (($path = $cache->restore(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_path_'.$category_id))) === false)
-      {     
+      $cache = CSCacheAPC::getMem();
+      $cacheKey = md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_path_'.$category_id.'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
+      
+      if (($path = $cache->restore($cacheKey)) === false) {
          erLhcoreClassModelGalleryCategory::calculatePath($array,$category_id);
-         $cache->store(md5('version_'.$cache->getCacheVersion('category_'.$category_id).'category_path_'.$category_id),$array);
+         $cache->store($cacheKey,$array);
       } else {
          $array = $path;        
       } 
@@ -323,21 +324,21 @@ class erLhcoreClassModelGalleryCategory {
        		break;
        	
        	case 'path_url':
-       	    
-       	    if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-       	    {    
-           	    $pathElements = array();           	    
-           	    $arrayPath = array();
-           	    erLhcoreClassModelGalleryCategory::getCategoryPathURL($arrayPath,$this->cid);
-           	    foreach ($arrayPath as $item){
-           	        $pathElements[] = erLhcoreClassCharTransform::TransformToURL($item['title']);
-           	    }       	    
-           	    $this->path_url = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->cid.'c.html');    
-           	    return $this->path_url;
-       	    } else {
-       	        return erLhcoreClassDesign::baseurl('/gallery/category/'.$this->cid);
-       	    } 
-       	    break;
+            
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+            {    
+                    $pathElements = array();                
+                    $arrayPath = array();
+                    erLhcoreClassModelGalleryCategory::getCategoryPathURL($arrayPath,$this->cid);
+                    foreach ($arrayPath as $item){
+                        $pathElements[] = erLhcoreClassCharTransform::TransformToURL($item['title']);
+                    }               
+                    $this->path_url = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->cid.'c.html',false);    
+                    return $this->path_url;
+            } else {
+                return erLhcoreClassDesign::baseurl('gallery/category').'/'.$this->cid;
+            } 
+            break;
        	      	
        	case 'owner':
        	    $this->owner = false;

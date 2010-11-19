@@ -2,6 +2,7 @@
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhuser/forgotpassword.tpl.php');
 
+
 if (isset($_POST['Forgotpassword'])) {
     
 	$definition = array(

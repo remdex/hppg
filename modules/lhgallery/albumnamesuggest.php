@@ -13,6 +13,7 @@ if (count($objects) > 0) {
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/albumnamesuggest.tpl.php');
     $tpl->set('albums',$objects);
     $tpl->set('key_directory',$Params['user_parameters']['directory_id']);
+    
     echo json_encode(array('error' => 'false','result' => $tpl->fetch()));
 } else {
     echo json_encode(array('error' => 'true','result' => 'Nothing found'));

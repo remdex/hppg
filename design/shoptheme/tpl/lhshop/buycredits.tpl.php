@@ -2,7 +2,7 @@
 <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/buycredits','Buy credits')?></h1>
 </div>
 <p>
-<form action="<?=erLhcoreClassDesign::baseurl('/shop/buycredits')?>" method="post">
+<form action="<?=erLhcoreClassDesign::baseurl('shop/buycredits')?>" method="post">
 
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/buycredits','How many credits do want to buy?');?></label>

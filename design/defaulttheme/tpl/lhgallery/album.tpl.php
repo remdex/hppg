@@ -1,8 +1,10 @@
 <div class="header-list">
 
-<?php 
+<?php
+
 $urlAppendSort = '';
 $urlSortBase  = $album->url_path;
+
 ?>
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/order_box.tpl.php'));?>
 

@@ -4,7 +4,7 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/admincategorys.tpl.php');
 
 $pathCategorys = array();
 $path = array(); 
-$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')); 
 
 if (is_numeric($Params['user_parameters']['category_id']) && $Params['user_parameters']['category_id'] > 0)
 {
@@ -16,7 +16,7 @@ if (is_numeric($Params['user_parameters']['category_id']) && $Params['user_param
     foreach ($pathObjects as $pathItem)
     {
        $pathCategorys[] = $pathItem->cid; 
-       $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$pathItem->cid,'title' => $pathItem->name); 
+       $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$pathItem->cid,'title' => $pathItem->name); 
     }
     
 } else {

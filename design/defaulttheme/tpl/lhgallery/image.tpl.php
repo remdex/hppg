@@ -6,8 +6,10 @@
         </div>
         
         <div class="navigator-image float-break">
+                    
         
-            <?php if ($hasNextImage === true) : ?>
+            <?php                        
+            if ($hasNextImage === true) : ?>            
                 <a class="right-image" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','next image')?> - <?=htmlspecialchars($nextImage->name_user)?>" href="<?=$nextImage->url_path.$urlAppend?>"></a>
             <?php endif;?>
             

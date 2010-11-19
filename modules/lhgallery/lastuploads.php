@@ -38,7 +38,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lastuploads.tpl.php');
     $pages = new lhPaginator();
     $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
-    $pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/lastuploads').$appendResolutionMode;
+    $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/lastuploads').$appendResolutionMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
@@ -48,22 +48,22 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/lastuploads'.$appendResolutionMode;
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('/gallery/lastuploads'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lastuploads'));
     
     $Result['content'] = $tpl->fetch();
     
     $Result['path'] = array(); 
-    $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastuploads'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images'));    
+    $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/lastuploads'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images'));    
     if ($resolution != ''){
-        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('/gallery/lastuploads').$appendResolutionMode,'title' => 'Resolution - '.$resolution);  
+        $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/lastuploads').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Resolution').' - '.$resolution);  
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => 'Page - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images');
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/lastuploadsrss').$appendResolutionMode;
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastuploadsrss').$appendResolutionMode;
 
     $cache->store($cacheKey,$Result);
 } 

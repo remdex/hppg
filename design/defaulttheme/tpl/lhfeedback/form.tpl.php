@@ -20,7 +20,7 @@
 <? endif; ?>
 
 <div class="form-content">
-    <form action="<?=erLhcoreClassDesign::baseurl('/feedback/form/')?>" method="post">
+    <form action="<?=erLhcoreClassDesign::baseurl('feedback/form')?>" method="post">
         <table>
             <tr>
                 <td class="td-label"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('feedback/form','Name')?> <span class="requared">*</span></td>

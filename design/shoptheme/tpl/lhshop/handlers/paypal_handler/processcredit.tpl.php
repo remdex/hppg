@@ -2,7 +2,7 @@
 <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('paypal_handler/process','Checkout using Paypal');?></h1>
 </div>
 
-<form action="<?=erLhcoreClassDesign::baseurl('/shop/processcredits/paypal_handler')?>" method="post" name="ExpressCheckoutForm">
+<form action="<?=erLhcoreClassDesign::baseurl('shop/processcredits/paypal_handler')?>" method="post" name="ExpressCheckoutForm">
 	<input type=hidden name=paymentType value=Sale>	
     <table class="api" align="left">        
 	<tr>
