@@ -22,7 +22,7 @@ class erLhcoreClassModelGallerySearchHistory {
    
    public static function addSearch($keyword,$search_count)
    {
-       $keywordClean =  preg_replace('/[^A-Za-z0-9-]/', '',mb_strtolower(trim($keyword)));    
+       $keywordClean =  preg_replace('/[^A-Za-z0-9-\s]/', '',mb_strtolower(trim($keyword)));    
        $items = erLhcoreClassModelGallerySearchHistory::getSearches(array('limit' => 1,'filter' => array('keyword' => $keywordClean)));    
                    
        if  (count($items) == 0  )
