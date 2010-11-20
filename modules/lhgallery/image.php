@@ -132,7 +132,7 @@ if ($mode == 'album') {
        
     $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
     $modeSQL = $sortModes[$modeSort];
-    $keywordDecoded = trim(str_replace('+',' ',$keywordDecoded));
+    $keywordDecoded = trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
        
     switch ($modeSort) {
     	case 'new':
