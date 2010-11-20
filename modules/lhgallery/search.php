@@ -15,9 +15,13 @@ if ( $form->hasValidData( 'SearchText' ) && trim($form->SearchText) != '')
     $searchParams['keyword'] = trim(str_replace('+',' ',$form->SearchText));
     $userParams .= '/(keyword)/'.urlencode(trim($form->SearchText));
 } elseif ($Params['user_parameters_unordered']['keyword'] != '') {
-   $userParams .= '/(keyword)/'.$Params['user_parameters_unordered']['keyword'];
+
+   // We have to reencode because ngnix or php-fpm somwehre wrongly parses it.  
+   $userParams .= '/(keyword)/'.urlencode(trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword']))));
    $searchParams['keyword'] = trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
 }
+
+
 
 /* SORTING */
 $sortModes = array(    
