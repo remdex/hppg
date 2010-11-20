@@ -1,59 +1,47 @@
-server {
-	   listen          9797;
-	   server_name     <server_name>;
-	   root           <site_directory>;  
-	    	           
-       location ~ .php$ {	     
-	 	  include        /etc/nginx/fastcgi_params;
-	      fastcgi_pass   127.0.0.1:9000;
-	      fastcgi_index  index.php;
-	      fastcgi_param  PATH_INFO          $query_string;
-	      fastcgi_param  SCRIPT_FILENAME <site_directory>/$fastcgi_script_name;
-	      
-	   }
-                
-       location ~* \.(gif|jpe?g?|png|css|js|swf|pdf|ico)$ {
-	        ## @todo: add expires headers...
-	        # favicon is only stored in 1 dir, the design one; But browsers ask for it in the root	 
-	       expires max;
-	       root           <site_directory>;      
-	   }
-	   	   
-	   location / {
-	    rewrite "^(.*)-([0-9]*)c.html(.*?)?$" "index.php?/gallery/category/$2$3" last;
-		rewrite "^(.*)-([0-9]*)a.html(.*?)?$" "index.php?/gallery/album/$2$3" last;
-		rewrite "^(.*)-([0-9]*)p.html(.*?)?$" "index.php?/gallery/image/$2$3" last;		
-	    rewrite "^(.*)$" "/index.php?$1" last;
-	   }
-}
+# Ngnix configuration example
 
-
-# Live example
 server {
-	   listen          9797;
-	   server_name     example.com;
-	   root           /home/www/domains/example_lt;  
-	    	           
-       location ~ .php$ {	     
-	 	  include        /etc/nginx/fastcgi_params;
-	      fastcgi_pass   127.0.0.1:9000;
-	      fastcgi_index  index.php;
-	      fastcgi_param  PATH_INFO          $query_string;
-	      fastcgi_param  SCRIPT_FILENAME /home/www/domains/example_lt/$fastcgi_script_name;
-	      
-	   }
-                
-       location ~* \.(gif|jpe?g?|png|css|js|swf|pdf|ico)$ {
-	        ## @todo: add expires headers...
-	        # favicon is only stored in 1 dir, the design one; But browsers ask for it in the root	 
-	       expires max;
-	       root           /home/www/domains/example_lt;      
-	   }
-	   	   
-	   location / {
-	    rewrite "^(.*)-([0-9]*)c.html(.*?)?$" "index.php?/gallery/category/$2$3" last;
-		rewrite "^(.*)-([0-9]*)a.html(.*?)?$" "index.php?/gallery/album/$2$3" last;
-		rewrite "^(.*)-([0-9]*)p.html(.*?)?$" "index.php?/gallery/image/$2$3" last;		
-	    rewrite "^(.*)$" "/index.php?$1" last;
-	   }
+   listen          *:80;
+   server_name    www.example.com example.com;
+   root           /home/www/domains/example_lt;
+
+   location ~ .php$ {	     
+ 	  include        /etc/nginx/fastcgi_params;
+      fastcgi_pass   127.0.0.1:9000;
+      fastcgi_index  index.php;
+      fastcgi_param  PATH_INFO          $query_string;
+      fastcgi_param  SCRIPT_FILENAME /home/www/domains/example_lt/$fastcgi_script_name;
+      
+   }	         
+
+   location ~* \.(gif|jpe?g?|png|bmp|swf|css|js|swf|pdf|ico)$ {
+        ## @todo: add expires headers...
+        # favicon is only stored in 1 dir, the design one; But browsers ask for it in the root
+        
+        # Blocks some site rippers
+       if ($http_user_agent ~* "(WebReaper|wget|Mihov Picture Downloader|TALWinHttpClient|A1 Website Download|WebCopier|Download Ninja|Microsoft URL Control|GetRight|Arachmo|MJ12bot|Gaisbot|Anonymous|Yanga|Twiceler|psbot|Irvine|Indy Library|HTTrack)" ) { 
+            return 403; 
+       }
+       
+       # blocks some hotlinking sites
+       if ($http_referer ~* (hot_linking_site.com)) {
+          return 403;
+       }
+       	 
+       expires max;
+       access_log        off;
+       root           /home/www/domains/example_lt;      
+   }
+
+   location / {
+   
+    rewrite "^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)c.html(.*?)?$" "index.php?/$1/gallery/category/$3$4" last;
+    rewrite "^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)a.html(.*?)?$" "index.php?/$1/gallery/album/$3$4" last;
+    rewrite "^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)p.html(.*?)?$" "index.php?/$1/gallery/image/$3$4" last;
+   
+    rewrite "^(.*)-([0-9]*)c.html(.*?)?$" "index.php?/gallery/category/$2$3" last;
+	rewrite "^(.*)-([0-9]*)a.html(.*?)?$" "index.php?/gallery/album/$2$3" last;
+	rewrite "^(.*)-([0-9]*)p.html(.*?)?$" "index.php?/gallery/image/$2$3" last;		
+    rewrite "^(.*)$" "/index.php?$1" last;
+   }
 }
