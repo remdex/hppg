@@ -26,7 +26,7 @@ server {
    }
    	         
    #Allow hotlinking to normal and thumb size images
-   location ~* \.(gif|jpe?g?|png|bmp|swf|css|js|swf|pdf|ico)$ {
+   location ~* (normal_|thumb_|^/design|^/cache)(.*)\.(gif|jpe?g?|png|bmp|swf|css|js|swf|pdf|ico)$ {
         ## @todo: add expires headers...
         # favicon is only stored in 1 dir, the design one; But browsers ask for it in the root
         
