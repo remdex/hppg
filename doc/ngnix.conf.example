@@ -12,8 +12,9 @@ server {
       fastcgi_param  PATH_INFO          $query_string;
       fastcgi_param  SCRIPT_FILENAME /home/www/domains/example_lt/$fastcgi_script_name;
       
-   }	         
-
+   }
+   	         
+   #Allow hotlinking to normal and thumb size images
    location ~* \.(gif|jpe?g?|png|bmp|swf|css|js|swf|pdf|ico)$ {
         ## @todo: add expires headers...
         # favicon is only stored in 1 dir, the design one; But browsers ask for it in the root
@@ -32,7 +33,29 @@ server {
        access_log        off;
        root           /home/www/domains/example_lt;      
    }
-
+   
+   # Do not allow to hotlink full size images except our self and major search engines
+   location ~* \.(gif|jpe?g?|png|bmp|swf|css|js|swf|pdf|ico)$ {
+            ## @todo: add expires headers...
+                
+           valid_referers none blocked server_names ~(artmight.com|google.|bing.|yahoo.);
+           if ($invalid_referer) {
+                 return 403;
+           }
+    
+           if ($http_user_agent ~* "(WebReaper|wget|Mihov Picture Downloader|TALWinHttpClient|A1 Website Download|WebCopier|Download Ninja|Microsoft URL Control|GetRight|Arachmo|MJ12bot|Gaisbot|Anonymous|Yanga|Twiceler|psbot|Irvine|Indy Library|HTTrack)" ) { 
+                    return 403; 
+           }
+           
+           if ($http_referer ~* (hot_linking_site.com)) {
+              return 403;
+           }
+           #We want to log who is accesing to full size images
+           #access_log        off;
+           expires max;
+           root           /home/www/domains/example_lt;
+   }
+       
    location / {
    
     rewrite "^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)c.html(.*?)?$" "index.php?/$1/gallery/category/$3$4" last;

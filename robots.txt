@@ -3,6 +3,7 @@ Disallow: /gallery/sharehtml/
 Disallow: /gallery/sharephpbb/
 Disallow: /m/
 Disallow: /gallery/anaglyph/
+Disallow: /captcha/image/
 
 Disallow: /gallery/albumrss/
 Disallow: /gallery/lastcommentedrss/
