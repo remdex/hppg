@@ -1,4 +1,15 @@
-# Ngnix configuration example
+# Nginx configuration example
+# In order to use access log image counter log format have to be following
+#
+# log_format  main  '$remote_addr $http_host - [$time_local] "$request" '
+#                    '$status $body_bytes_sent "$http_referer" '
+#                    '"$http_user_agent" "$http_x_forwarded_for"';
+#
+# To allow big file size archives upload you have to edit also nginx directive
+# client_max_body_size 64m;
+# Also do not forget php.ini varialbes realted to upload size
+#
+
 
 server {
    listen          *:80;
