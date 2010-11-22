@@ -104,8 +104,8 @@ class erLhcoreClassGallery{
                   // Make some weightning
                   $cl->SetFieldWeights(array(
                     'title' => 10,
-                    'caption' => 9,
-                    'filename' => 8,
+                    'caption' => 8,
+                    'filename' => 9,
                     'file_path' => 7,
                   ));
                   
@@ -214,8 +214,8 @@ class erLhcoreClassGallery{
       // Make some weightning
       $cl->SetFieldWeights(array(
         'title' => 10,
-        'caption' => 9,
-        'filename' => 8,
+        'caption' => 8,
+        'filename' => 9,
         'file_path' => 7,
       ));
       
