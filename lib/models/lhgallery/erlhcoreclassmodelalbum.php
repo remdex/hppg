@@ -277,7 +277,7 @@ class erLhcoreClassModelGalleryAlbum {
       
       $q->limit($params['limit'],$params['offset']);
           
-      $q->orderBy( isset($paramsSearch['sort']) ? $paramsSearch['sort'] : 'pos DESC' ); 
+      $q->orderBy( isset($paramsSearch['sort']) ? $paramsSearch['sort'] : 'pos ASC' ); 
               
       $objects = $session->find( $q );         
       return $objects; 

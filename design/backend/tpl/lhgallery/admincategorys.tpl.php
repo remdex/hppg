@@ -1,13 +1,11 @@
-<div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></h1>
-</div>
+<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></legend>
+
 <?php
 $categoryID = $category !== false ? $category->cid : 0;
 ?>
-<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createcategory/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create a category');?></a>
 
-<? 
-
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>/<?=$categoryID?>">
+<?php
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $categoryID)));
 $pages->default_ipp = 8;
@@ -19,6 +17,7 @@ if ($pages->items_total > 0) :?>
     <th>ID</th>
     <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Title');?></th>
     <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Owner');?></th>
+    <th width="1%">&nbsp;</th>
     <th width="1%">&nbsp;</th>
     <th width="1%">&nbsp;</th>
 </tr>
@@ -36,22 +35,26 @@ foreach (erLhcoreClassModelGalleryCategory::getParentCategories($filterParams) a
         <td width="1%"><?=$categoryItem->cid?></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys/')?><?=$categoryItem->cid?>"><?=htmlspecialchars($categoryItem->name)?></a></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('user/edit/')?><?=$categoryItem->owner_id?>"><?=htmlspecialchars($categoryItem->owner)?></a></td>
+        <td><input type="text" class="default-input" style="width:30px;" name="Position[]" value="<?=$categoryItem->pos?>" /><input type="hidden" name="CategoryIDs[]" value="<?=$categoryItem->cid?>" /></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/editcategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" /></a></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/deletecategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 
 </table><br />
+<input type="submit" class="default-button" name="UpdatePriority" value="Update priority" /> <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createcategory/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create a category');?></a>
+</form>
+
 <? endif;?>
+</fieldset>
+
 <br />
+
 <? 
-
 if ($category !== false) :  ?>
-<div class="header-list">
-<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category albums');?> <?= $category !== false ? ' - '.htmlspecialchars($category->name) : ' - '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></h3>
-</div>
+<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category albums');?> <?= $category !== false ? ' - '.htmlspecialchars($category->name) : ' - '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></legend>
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>/<?=$categoryID?>">
 <?
-
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $category->cid)));
 $pages->default_ipp = 8;
@@ -66,13 +69,15 @@ $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => a
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/album_list_admin.tpl.php')); ?>
 
 <?php else: ?>
-
 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','This category does not have an album.');?>
+<br />
 
-<?php endif;
+<?php endif; ?>
+</form>
+</fieldset>
+<?php endif;?> 
 
-endif;
-?> 
+
 <? if ($category !== false) : ?>
 <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create an album');?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadminbatch/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Batch album create');?></a>
 <?endif;?>
