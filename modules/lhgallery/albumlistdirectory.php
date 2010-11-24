@@ -3,7 +3,7 @@
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/albumlistdirectory.tpl.php');
 
 
-if (is_writable(urldecode(base64_decode($Params['user_parameters']['directory'])))) {
+if (is_writable(base64_decode(urldecode($Params['user_parameters']['directory'])))) {
 	$writable = true;
     $tpl->set('writable',$writable);        
 } else {
