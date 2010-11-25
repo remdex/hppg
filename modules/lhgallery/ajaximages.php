@@ -10,10 +10,12 @@ $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', '
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';    
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
 
-$filterArray = array();    
+$filterArray = array();   
+$appendMysqlIndex = array(); 
 if ($resolution != ''){
     $filterArray['pwidth'] = $resolutions[$resolution]['width'];
     $filterArray['pheight'] = $resolutions[$resolution]['height'];
+    $appendMysqlIndex[] = 'res';
 }    
 
 $filterArray['approved'] = 1;
@@ -23,6 +25,47 @@ $tpl->set('direction',$direction);
 
 if ($mode == 'album')
 {
+    // Index hint for mysql
+    $useIndexHint = array(
+        'new'               => 'pid_6',
+        'newasc'            => 'pid_6',  
+          
+        'popular'           => 'pid_7',
+        'popularasc'        => 'pid_7',  
+          
+        'lasthits'          => 'pid_8',
+        'lasthitsasc'       => 'pid_8', 
+           
+        'lastcommented'     => 'pid_10',
+        'lastcommentedasc'  => 'pid_10', 
+           
+        'toprated'          => 'pid_9',
+        'topratedasc'       => 'pid_9',    
+        
+        'lastrated'         => 'a_rated_gen',
+        'lastratedasc'      => 'a_rated_gen',
+        
+        //Hint if resolution filter is used
+        'new_res'               => 'aid',
+        'newasc_res'            => 'aid',
+        
+        'popular_res'           => 'pid_11',
+        'popularasc_res'        => 'pid_11',
+        
+        'lasthits_res'          => 'aid_2',
+        'lasthitsasc_res'       => 'aid_2',
+        
+        'lastcommented_res'     => 'aid_4',
+        'lastcommentedasc_res'  => 'aid_4',
+        
+        'toprated_res'          => 'aid_3',
+        'topratedasc_res'       => 'aid_3', 
+        
+        
+        'lastrated_res'         => 'a_rated_gen_res',
+        'lastratedasc_res'      => 'a_rated_gen_res',
+        
+    );
     
     $sortModes = array(    
         'new'              => 'pid DESC',
@@ -41,20 +84,25 @@ if ($mode == 'album')
     
     $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'new';
     $modeSQL = $sortModes[$modeSort];
+        
+    $modeIndex = $modeSort;
+    if (count($appendMysqlIndex) > 0) {
+        $modeIndex .= '_'.implode('_',$appendMysqlIndex);
+    }
     
     if ($modeSort == 'new') {
         
         if ($direction == 'left') {
-            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));
+            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));
             $imagesAjax = array_reverse($imagesAjax);
-        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));        
+        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));        
            
     } elseif ($modeSort == 'newasc') {  
         
         if ($direction == 'left') {      
-            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 6,'sort' => 'pid DESC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));
+            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 6,'sort' => 'pid DESC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));
             $imagesAjax = array_reverse($imagesAjax);
-        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('sort' => 'pid ASC','cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 6,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));        
+        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('use_index' => $useIndexHint[$modeIndex],'sort' => 'pid ASC','cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 6,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));        
         
     } elseif ($modeSort == 'popular') {
 
