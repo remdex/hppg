@@ -264,8 +264,12 @@ class erLhcoreClassModelGalleryImage {
           $q->where( 
                      $conditions   
           );
-      }   
-            
+      } 
+        
+      if (isset($params['use_index'])) {         
+          $q->useIndex( $params['use_index'] );
+      }
+
       $stmt = $q->prepare();       
       $stmt->execute();   
       $result = $stmt->fetchColumn(); 
@@ -341,6 +345,10 @@ class erLhcoreClassModelGalleryImage {
                       );
                   } 
                   
+                  if (isset($params['use_index'])) {         
+                    $q->useIndex( $params['use_index'] );
+                  }
+                  
                   $q->limit($params['limit'],$params['offset']);
                             
                   $q->orderBy(isset($params['sort']) ? $params['sort'] : 'pid DESC' ); 
@@ -386,9 +394,14 @@ class erLhcoreClassModelGalleryImage {
                          $conditions   
               );
           }
-           
+                   
+          if (isset($params['use_index'])) {         
+            $q2->useIndex( $params['use_index'] );
+          }
+          
           $q2->limit($params['limit'],$params['offset']);
           $q2->orderBy(isset($params['sort']) ? $params['sort'] : 'pid DESC');
+                    
           $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );          
        }
        

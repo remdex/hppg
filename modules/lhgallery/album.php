@@ -32,10 +32,13 @@ $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', '
        
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
-$filterArray = array();    
+$filterArray = array(); 
+$appendMysqlIndex = array();
+
 if ($resolution != ''){
     $filterArray['pwidth'] = $resolutions[$resolution]['width'];
     $filterArray['pheight'] = $resolutions[$resolution]['height'];
+    $appendMysqlIndex[] = 'res';
 }
 $filterArray['approved'] = 1;
 
@@ -69,9 +72,54 @@ if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_cachin
 } 
 
 if (($Result = $cache->restore($cacheKey)) === false)
-{  
-    
+{      
+    // Index hint for mysql
+    $useIndexHint = array(
+        'new'               => 'pid_6',
+        'newasc'            => 'pid_6',  
+          
+        'popular'           => 'pid_7',
+        'popularasc'        => 'pid_7',  
+          
+        'lasthits'          => 'pid_8',
+        'lasthitsasc'       => 'pid_8', 
+           
+        'lastcommented'     => 'pid_10',
+        'lastcommentedasc'  => 'pid_10', 
+           
+        'toprated'          => 'pid_9',
+        'topratedasc'       => 'pid_9',    
         
+        'lastrated'         => 'a_rated_gen',
+        'lastratedasc'      => 'a_rated_gen',
+        
+        //Hint if resolution filter is used
+        'new_res'               => 'aid',
+        'newasc_res'            => 'aid',
+        
+        'popular_res'           => 'pid_11',
+        'popularasc_res'        => 'pid_11',
+        
+        'lasthits_res'          => 'aid_2',
+        'lasthitsasc_res'       => 'aid_2',
+        
+        'lastcommented_res'     => 'aid_4',
+        'lastcommentedasc_res'  => 'aid_4',
+        
+        'toprated_res'          => 'aid_3',
+        'topratedasc_res'       => 'aid_3', 
+        
+        
+        'lastrated_res'         => 'a_rated_gen_res',
+        'lastratedasc_res'      => 'a_rated_gen_res',
+        
+    );
+    
+    $modeIndex = $mode;
+    if (count($appendMysqlIndex) > 0) {
+        $modeIndex .= '_'.implode('_',$appendMysqlIndex);
+    }
+       
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/album.tpl.php');
     try {
     $Album = erLhcoreClassModelGalleryAlbum::fetch((int)$Params['user_parameters']['album_id']); 
@@ -100,11 +148,12 @@ if (($Result = $cache->restore($cacheKey)) === false)
     );
       
     $pages = new lhPaginator();
-    $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)+$filterArray));
+    $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('use_index' => $useIndexHint[$modeIndex],'cache_key' => 'albumlist_'.$cache->getCacheVersion('album_'.$Album->aid),'filter' => array('aid' => $Album->aid)+$filterArray));
     $pages->serverURL = $Album->url_path.$appendImageMode;
     $pages->paginate();
     
     $tpl->set('pages',$pages);
+    $tpl->set('use_index',$useIndexHint[$modeIndex]);
     $tpl->set('album',$Album);
     $tpl->set('currentResolution',$resolution);
     $tpl->set('filterArray',$filterArray);

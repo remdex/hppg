@@ -70,6 +70,15 @@ class ezcQuerySelect extends ezcQuery
      * @var string
      */
     protected $fromString = null;
+    
+    
+    /**
+     * Stores the USE INDEX part of the SQL.
+     *
+     * Everything from 'FROM TABLE' until 'WHERE' is stored.
+     * @var string
+     */
+    protected $useIndexString = null;
 
     /**
      * Stores the WHERE part of the SQL.
@@ -663,7 +672,27 @@ class ezcQuerySelect extends ezcQuery
         return $this;
     }
 
+    public function useIndex()
+    {
+        if ( $this->useIndexString == null )
+        {
+            $this->useIndexString = 'USE INDEX ';
+        }
 
+        $args = func_get_args();
+        $expressions = self::arrayFlatten( $args );
+        if ( count( $expressions ) < 1 )
+        {
+            throw new ezcQueryVariableParameterException( 'useindex', count( $args ), 1 );
+        }
+        
+        $this->lastInvokedMethod = 'useindex';
+        
+        $this->useIndexString .= ' ( ' . join( ' , ', $expressions ) . ' ) ';
+        
+        return $this;
+    }
+    
     // limit, order and group
 
     /**
@@ -872,6 +901,12 @@ class ezcQuerySelect extends ezcQuery
         {
             $query = "{$query} {$this->fromString}";
         }
+        
+        if ( $this->useIndexString != null )
+        {
+            $query = "{$query} {$this->useIndexString}";
+        }
+        
         if ( $this->whereString != null )
         {
             $query = "{$query} {$this->whereString}";
@@ -892,6 +927,7 @@ class ezcQuerySelect extends ezcQuery
         {
             $query = "{$query} {$this->limitString}";
         }
+      
         return $query;
     }
 

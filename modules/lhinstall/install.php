@@ -426,7 +426,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           KEY `pic_aid` (`aid`),
                           KEY `mtime` (`mtime`),
                           KEY `pid_3` (`ctime`),
-                          KEY `aid_4` (`aid`,`pwidth`,`pheight`,`comtime`,`pid`),
+                          KEY `aid_4` (`aid`,`approved`,`pwidth`,`pheight`,`comtime`,`pid`),
                           KEY `approved` (`approved`,`pid`),
                           KEY `pid_12` (`pwidth`,`pheight`,`approved`,`pid`),
                           KEY `pid_4` (`approved`,`hits`,`pid`),
