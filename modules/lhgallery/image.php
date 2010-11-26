@@ -393,13 +393,13 @@ if ($mode == 'album')
     }
           
     if ($modeSort == 'new') {                
-        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'limit' => 5,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));
+        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'limit' => 5,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));
         $page = ceil((erLhcoreClassModelGalleryImage::getImageCount(array('use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true, 'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)))+1)/20);
-        $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'limit' => 5,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));        
+        $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'limit' => 5,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));        
     } elseif ($modeSort == 'newasc') {        
-        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'limit' => 5,'sort' => 'pid DESC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));
+        $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'limit' => 5,'sort' => 'pid DESC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));
         $page = ceil((erLhcoreClassModelGalleryImage::getImageCount(array('use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)))+1)/20);
-        $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'sort' => 'pid ASC','limit' => 5,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));        
+        $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'disable_sql_cache' => true,'sort' => 'pid ASC','limit' => 5,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));        
     } elseif ($modeSort == 'popular') {
         
             $db = ezcDbInstance::get(); 
@@ -1445,9 +1445,9 @@ if ($mode == 'album')
 
 } elseif ($mode == 'lastuploads') {
           
-    $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'limit' => 5,'filter' => $filterArray,'sort' => 'pid ASC','filtergt' => array('pid' => $Image->pid)));    	
+    $imagesLeft = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'limit' => 5,'filter' => $filterArray,'sort' => 'pid ASC','filtergt' => array('pid' => $Image->pid)));    	
     $page = ceil((erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filtergt' => array('pid' => $Image->pid),'filter' => $filterArray))+1)/20);
-    $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('disable_sql_cache' => true,'limit' => 5,'filter' => $filterArray,'sort' => 'pid DESC','filterlt' => array('pid' => $Image->pid)));
+    $imagesRight = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'limit' => 5,'filter' => $filterArray,'sort' => 'pid DESC','filterlt' => array('pid' => $Image->pid)));
      	
 	$imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
