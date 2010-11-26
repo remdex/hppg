@@ -213,7 +213,9 @@ if ($mode == 'album')
                 ->orderBy('mtime ASC, pid ASC')
                 ->limit( 6 );
                 $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
-                $imagesAjax = $session->find( $q2, 'erLhcoreClassModelGalleryImage' );
+                          
+                $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+                
                 $imagesAjax = array_reverse($imagesAjax);
             } else {            
                 $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'mtime', $q2->bindValue( $Image->mtime ) ). ' OR '.$q2->expr->eq( 'mtime', $q2->bindValue( $Image->mtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
