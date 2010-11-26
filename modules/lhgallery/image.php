@@ -704,11 +704,11 @@ if ($mode == 'album')
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
             
-            $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
-            
             $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'comtime', $q2->bindValue( $Image->comtime ) ). ' OR '.$q2->expr->eq( 'comtime', $q2->bindValue( $Image->comtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
             ->orderBy('comtime DESC, pid DESC')
             ->limit( 5 );
+            
+            $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
             
             $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
                      
