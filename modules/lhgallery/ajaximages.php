@@ -115,25 +115,30 @@ if ($mode == 'album')
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
             
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
             $filterSQLString = '';
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
                     
             if ($direction == 'left') {  
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'hits', $q2->bindValue( $Image->hits ) ). ' OR '.$q2->expr->eq( 'hits', $q2->bindValue( $Image->hits ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('hits ASC, pid ASC')
-                ->limit( 6 );
+                ->limit( 6 );                
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );                
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
                 $imagesAjax = array_reverse($imagesAjax);   
             } else {            
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'hits', $q2->bindValue( $Image->hits ) ). ' OR '.$q2->expr->eq( 'hits', $q2->bindValue( $Image->hits ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('hits DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );             
             }
             
@@ -149,27 +154,32 @@ if ($mode == 'album')
         {        
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+           
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
                     
             $filterSQLArray = array(); 
             $filterSQLString = '';
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );    
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );    
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
             
             
             if ($direction == 'left') { 
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'hits', $q2->bindValue( $Image->hits ) ). ' OR '.$q2->expr->eq( 'hits', $q2->bindValue( $Image->hits ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('hits DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
                 $imagesAjax = array_reverse($imagesAjax);
             } else {               
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'hits', $q2->bindValue( $Image->hits ) ). ' OR '.$q2->expr->eq( 'hits', $q2->bindValue( $Image->hits ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('hits ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );  
             }  
             
@@ -185,27 +195,31 @@ if ($mode == 'album')
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
             
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
             $filterSQLString = ''; 
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );           
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );           
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-            
-            
+                        
             if ($direction == 'left') {                   
                 
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'mtime', $q2->bindValue( $Image->mtime ) ). ' OR '.$q2->expr->eq( 'mtime', $q2->bindValue( $Image->mtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('mtime ASC, pid ASC')
                 ->limit( 6 );
-                $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
+                $imagesAjax = $session->find( $q2, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
             } else {            
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'mtime', $q2->bindValue( $Image->mtime ) ). ' OR '.$q2->expr->eq( 'mtime', $q2->bindValue( $Image->mtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('mtime DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
             }
             
@@ -222,27 +236,31 @@ if ($mode == 'album')
         {        
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-             
+            
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
-            $filterSQLString = '';
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );             
+            $filterSQLString = ''; 
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );           
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
-            
-            
+                        
             if ($direction == 'left') {                   
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ( '.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ( '.$q2->expr->lt( 'mtime', $q2->bindValue( $Image->mtime ) ). ' OR '.$q2->expr->eq( 'mtime', $q2->bindValue( $Image->mtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('mtime DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
             } else {    
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'mtime', $q2->bindValue( $Image->mtime ) ). ' OR '.$q2->expr->eq( 'mtime', $q2->bindValue( $Image->mtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('mtime ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
             }
             $cache->store($cacheKeyImage,$imagesAjax,0);
@@ -258,26 +276,31 @@ if ($mode == 'album')
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
             
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
-            $filterSQLString = '';
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );             
+            $filterSQLString = ''; 
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );           
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
-            }       
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
+            }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
             
             
             if ($direction == 'left') { 
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'comtime', $q2->bindValue( $Image->comtime ) ). ' OR '.$q2->expr->eq( 'comtime', $q2->bindValue( $Image->comtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('comtime ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
             } else { 
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'comtime', $q2->bindValue( $Image->comtime ) ). ' OR '.$q2->expr->eq( 'comtime', $q2->bindValue( $Image->comtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('comtime DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
             }
             $cache->store($cacheKeyImage,$imagesAjax,0);
@@ -293,26 +316,31 @@ if ($mode == 'album')
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
             
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
-            $filterSQLString = '';  
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );   
+            $filterSQLString = ''; 
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );           
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
             
             
             if ($direction == 'left') {       
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'comtime', $q2->bindValue( $Image->comtime ) ). ' OR '.$q2->expr->eq( 'comtime', $q2->bindValue( $Image->comtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('comtime DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
             } else {                 
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'comtime', $q2->bindValue( $Image->comtime ) ). ' OR '.$q2->expr->eq( 'comtime', $q2->bindValue( $Image->comtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('comtime ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
             }
             $cache->store($cacheKeyImage,$imagesAjax,0);
@@ -328,26 +356,31 @@ if ($mode == 'album')
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
             
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
-            $filterSQLString = '';
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );             
+            $filterSQLString = ''; 
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );           
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
-            }       
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
+            }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
             
             
             if ($direction == 'left') { 
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'rtime', $q->bindValue( $Image->rtime ) ). ' OR '.$q->expr->eq( 'rtime', $q->bindValue( $Image->rtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'rtime', $q2->bindValue( $Image->rtime ) ). ' OR '.$q2->expr->eq( 'rtime', $q2->bindValue( $Image->rtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('rtime ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
             } else { 
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'rtime', $q->bindValue( $Image->rtime ) ). ' OR '.$q->expr->eq( 'rtime', $q->bindValue( $Image->rtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'rtime', $q2->bindValue( $Image->rtime ) ). ' OR '.$q2->expr->eq( 'rtime', $q2->bindValue( $Image->rtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('rtime DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
             }
             $cache->store($cacheKeyImage,$imagesAjax,0);
@@ -363,26 +396,31 @@ if ($mode == 'album')
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
             
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
-            $filterSQLString = '';  
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );   
+            $filterSQLString = ''; 
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );           
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
             
             
             if ($direction == 'left') {       
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'rtime', $q->bindValue( $Image->rtime ) ). ' OR '.$q->expr->eq( 'rtime', $q->bindValue( $Image->rtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'rtime', $q2->bindValue( $Image->rtime ) ). ' OR '.$q2->expr->eq( 'rtime', $q2->bindValue( $Image->rtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('rtime DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
             } else {                 
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'rtime', $q->bindValue( $Image->rtime ) ). ' OR '.$q->expr->eq( 'rtime', $q->bindValue( $Image->rtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ) .')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'rtime', $q2->bindValue( $Image->rtime ) ). ' OR '.$q2->expr->eq( 'rtime', $q2->bindValue( $Image->rtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ) .')')
                 ->orderBy('rtime ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
             }
             $cache->store($cacheKeyImage,$imagesAjax,0);
@@ -398,25 +436,30 @@ if ($mode == 'album')
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
             
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
             $filterSQLString = ''; 
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );           
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );           
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
                      
             if ($direction == 'left') {    
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ). ' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->gt( 'votes', $q2->bindValue( $Image->votes ) ).' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->eq( 'votes', $q2->bindValue( $Image->votes ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')')
                 ->orderBy('pic_rating ASC, votes ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax); 
             } else {              
-                $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')')
+                $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ). ' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->lt( 'votes', $q2->bindValue( $Image->votes ) ).' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->eq( 'votes', $q2->bindValue( $Image->votes ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')')
                 ->orderBy('pic_rating DESC, votes DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
             }     
             $cache->store($cacheKeyImage,$imagesAjax,0);
@@ -432,26 +475,31 @@ if ($mode == 'album')
             $session = erLhcoreClassGallery::getSession();
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
             
+            $q2 = $q->subSelect();
+            $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
             $filterSQLArray = array(); 
             $filterSQLString = ''; 
-            $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );            
+            $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );           
             if ($resolution != '') {
-               $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-               $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );           
+               $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+               $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );           
             }
             $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
             
             
             if ($direction == 'left') {  
-            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')')
+            $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->lt( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ). ' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->lt( 'votes', $q2->bindValue( $Image->votes ) ).' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->eq( 'votes', $q2->bindValue( $Image->votes ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')')
             ->orderBy('pic_rating DESC, votes DESC, pid DESC')
             ->limit( 6 );
+            $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
             $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
             $imagesAjax = array_reverse($imagesAjax);   
              } else {         
-            $q->where( $filterSQLString.$q->expr->eq( 'aid', $q->bindValue( $Image->aid ) ).' AND ('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')')
+            $q2->where( $filterSQLString.$q2->expr->eq( 'aid', $q2->bindValue( $Image->aid ) ).' AND ('.$q2->expr->gt( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ). ' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->gt( 'votes', $q2->bindValue( $Image->votes ) ).' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->eq( 'votes', $q2->bindValue( $Image->votes ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')')
             ->orderBy('pic_rating ASC, votes ASC, pid ASC')
             ->limit( 6 );
+            $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
             $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' ); 
             } 
             $cache->store($cacheKeyImage,$imagesAjax,0);
@@ -827,28 +875,33 @@ if ($mode == 'album')
     {          	
     	$session = erLhcoreClassGallery::getSession();
     	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-    
+    	
+        $q2 = $q->subSelect();
+        $q2->select( 'pid' )->from( 'lh_gallery_images' );
+            
     	 $filterSQLArray = array(); 
          $filterSQLString = '';
          
-         $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );        
+         $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );        
          if ($resolution != '') {
-            $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-            $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );
+            $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+            $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );
          }
          
     	 $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
          
     	if ($direction == 'left'){
-    	   $q->where( $filterSQLString.'('.$q->expr->gt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    	   $q2->where( $filterSQLString.'('.$q2->expr->gt( 'mtime', $q2->bindValue( $Image->mtime ) ). ' OR '.$q2->expr->eq( 'mtime', $q2->bindValue( $Image->mtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
             ->orderBy('mtime ASC, pid ASC')
             ->limit( 6 );
+            $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
             $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
             $imagesAjax = array_reverse($imagesAjax);
     	} else {
-    	   $q->where( $filterSQLString.'('.$q->expr->lt( 'mtime', $q->bindValue( $Image->mtime ) ). ' OR '.$q->expr->eq( 'mtime', $q->bindValue( $Image->mtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    	   $q2->where( $filterSQLString.'('.$q2->expr->lt( 'mtime', $q2->bindValue( $Image->mtime ) ). ' OR '.$q2->expr->eq( 'mtime', $q2->bindValue( $Image->mtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
             ->orderBy('mtime DESC, pid DESC')
             ->limit( 6 );
+            $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
             $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
     	}
     	
@@ -891,28 +944,33 @@ if ($mode == 'album')
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
     {      	
     	$session = erLhcoreClassGallery::getSession();
-    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );   
-    	
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+    	  
+    	$q2 = $q->subSelect();
+        $q2->select( 'pid' )->from( 'lh_gallery_images' );
+        
     	 $filterSQLArray = array(); 
          $filterSQLString = '';  
-         $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );   
+         $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );   
          if ($resolution != '') {
-            $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-            $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );
+            $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+            $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );
          }
               
     	 $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
               
     	if ($direction == 'left'){
-    	    $q->where( $filterSQLString.'('.$q->expr->gt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    	    $q2->where( $filterSQLString.'('.$q2->expr->gt( 'hits', $q2->bindValue( $Image->hits ) ). ' OR '.$q2->expr->eq( 'hits', $q2->bindValue( $Image->hits ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
             ->orderBy('hits ASC, pid ASC')
             ->limit( 6 );
+            $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
             $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
             $imagesAjax = array_reverse($imagesAjax);
     	} else {
-    	    $q->where( $filterSQLString.'('.$q->expr->lt( 'hits', $q->bindValue( $Image->hits ) ). ' OR '.$q->expr->eq( 'hits', $q->bindValue( $Image->hits ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    	    $q2->where( $filterSQLString.'('.$q2->expr->lt( 'hits', $q2->bindValue( $Image->hits ) ). ' OR '.$q2->expr->eq( 'hits', $q2->bindValue( $Image->hits ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
             ->orderBy('hits DESC, pid DESC')
             ->limit( 6 );
+            $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
             $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
     	};	
     	$cache->store($cacheKeyImage,$imagesAjax,0);
@@ -1084,25 +1142,30 @@ if ($mode == 'album')
     	$session = erLhcoreClassGallery::getSession();
     	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
     	
+    	$q2 = $q->subSelect();
+        $q2->select( 'pid' )->from( 'lh_gallery_images' );
+        
     	$filterSQLArray = array(); 
         $filterSQLString = ''; 
-        $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );   
+        $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );   
         if ($resolution != '') {
-            $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-            $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );        
+            $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+            $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );        
         }
         $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
           	
     	if ($direction == 'left'){
-    	    $q->where(  $filterSQLString.'('.$q->expr->gt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    	    $q2->where(  $filterSQLString.'('.$q2->expr->gt( 'comtime', $q2->bindValue( $Image->comtime ) ). ' OR '.$q2->expr->eq( 'comtime', $q2->bindValue( $Image->comtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('comtime ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
     	} else {
-    	       $q->where(  $filterSQLString.'('.$q->expr->lt( 'comtime', $q->bindValue( $Image->comtime ) ). ' OR '.$q->expr->eq( 'comtime', $q->bindValue( $Image->comtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    	     $q2->where(  $filterSQLString.'('.$q2->expr->lt( 'comtime', $q2->bindValue( $Image->comtime ) ). ' OR '.$q2->expr->eq( 'comtime', $q2->bindValue( $Image->comtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('comtime DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
     	};	
     	
@@ -1146,25 +1209,30 @@ if ($mode == 'album')
     	$session = erLhcoreClassGallery::getSession();
     	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
     	
+    	$q2 = $q->subSelect();
+        $q2->select( 'pid' )->from( 'lh_gallery_images' );
+        
     	$filterSQLArray = array(); 
         $filterSQLString = ''; 
-        $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );   
+        $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );   
         if ($resolution != '') {
-            $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-            $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );        
+            $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+            $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );        
         }
         $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
           	
     	if ($direction == 'left'){
-    	    $q->where(  $filterSQLString.'('.$q->expr->gt( 'rtime', $q->bindValue( $Image->rtime ) ). ' OR '.$q->expr->eq( 'rtime', $q->bindValue( $Image->rtime ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    	    $q2->where(  $filterSQLString.'('.$q2->expr->gt( 'rtime', $q2->bindValue( $Image->rtime ) ). ' OR '.$q2->expr->eq( 'rtime', $q2->bindValue( $Image->rtime ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('rtime ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
     	} else {
-    	       $q->where(  $filterSQLString.'('.$q->expr->lt( 'rtime', $q->bindValue( $Image->rtime ) ). ' OR '.$q->expr->eq( 'rtime', $q->bindValue( $Image->rtime ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')' )
+    	    $q2->where(  $filterSQLString.'('.$q2->expr->lt( 'rtime', $q2->bindValue( $Image->rtime ) ). ' OR '.$q2->expr->eq( 'rtime', $q2->bindValue( $Image->rtime ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
                 ->orderBy('rtime DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
     	};	
     	
@@ -1208,27 +1276,32 @@ if ($mode == 'album')
     	$session = erLhcoreClassGallery::getSession();
     	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
     	
+    	$q2 = $q->subSelect();
+        $q2->select( 'pid' )->from( 'lh_gallery_images' );
+        
     	$filterSQLArray = array(); 
-        $filterSQLString = '';
-        $filterSQLArray[] = $q->expr->eq( 'approved', $q->bindValue( 1 ) );    
+        $filterSQLString = ''; 
+        $filterSQLArray[] = $q2->expr->eq( 'approved', $q2->bindValue( 1 ) );   
         if ($resolution != '') {
-           $filterSQLArray[] = $q->expr->eq( 'pwidth', $q->bindValue( $resolutions[$resolution]['width'] ) );
-           $filterSQLArray[] = $q->expr->eq( 'pheight', $q->bindValue( $resolutions[$resolution]['height'] ) );
+            $filterSQLArray[] = $q2->expr->eq( 'pwidth', $q2->bindValue( $resolutions[$resolution]['width'] ) );
+            $filterSQLArray[] = $q2->expr->eq( 'pheight', $q2->bindValue( $resolutions[$resolution]['height'] ) );        
         }
         $filterSQLString = implode(' AND ',$filterSQLArray).' AND ';
               	
     	if ($direction == 'left'){
-    	     $q->where( $filterSQLString.'('.$q->expr->gt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->gt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
-                $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->gt( 'pid', $q->bindValue( $Image->pid ) ).')')
+    	     $q2->where( $filterSQLString.'('.$q2->expr->gt( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ). ' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->gt( 'votes', $q2->bindValue( $Image->votes ) ).' OR '.
+                $q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->eq( 'votes', $q2->bindValue( $Image->votes ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')')
                 ->orderBy('pic_rating ASC, votes ASC, pid ASC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
                 $imagesAjax = array_reverse($imagesAjax);
     	} else {
-    	       $q->where( $filterSQLString.'('.$q->expr->lt( 'pic_rating', $q->bindValue( $Image->pic_rating ) ). ' OR '.$q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->lt( 'votes', $q->bindValue( $Image->votes ) ).' OR '.
-                $q->expr->eq( 'pic_rating', $q->bindValue( $Image->pic_rating ) ).' AND '.$q->expr->eq( 'votes', $q->bindValue( $Image->votes ) ).' AND '.$q->expr->lt( 'pid', $q->bindValue( $Image->pid ) ).')')
+    	       $q2->where( $filterSQLString.'('.$q2->expr->lt( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ). ' OR '.$q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->lt( 'votes', $q2->bindValue( $Image->votes ) ).' OR '.
+                $q2->expr->eq( 'pic_rating', $q2->bindValue( $Image->pic_rating ) ).' AND '.$q2->expr->eq( 'votes', $q2->bindValue( $Image->votes ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')')
                 ->orderBy('pic_rating DESC, votes DESC, pid DESC')
                 ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                 $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
     	};
     	$cache->store($cacheKeyImage,$imagesAjax,0);
