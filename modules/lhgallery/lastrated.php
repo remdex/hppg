@@ -36,7 +36,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lastrated.tpl.php');
         
     $pages = new lhPaginator();
-    $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('disable_sql_cache' => true,'filter' => $filterArray));
+    $pages->items_total = erLhcoreClassModelGalleryImage::getImageCount(array('filter' => $filterArray));
     $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/lastrated').$appendResolutionMode;
     $pages->paginate();
     

@@ -213,7 +213,7 @@ class erLhcoreClassModelGalleryImage {
           $sql = erLhcoreClassGallery::multi_implode(',',$params);  
                        
           $cache = CSCacheAPC::getMem();          
-          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('images_count_site_version_'.$cache->getCacheVersion('site_version').$sql);
           
           if (($result = $cache->restore($cacheKey)) !== false)
           {              
