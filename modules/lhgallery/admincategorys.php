@@ -6,6 +6,11 @@ if (isset($_POST['UpdatePriority'])) {
     
     foreach ($_POST['CategoryIDs'] as $key => $categoryID) {
         $category = erLhcoreClassModelGalleryCategory::fetch($categoryID);
+        
+        if ($category->pos != $_POST['Position'][$key]) {
+           $category->clearCategoryCache();
+        };
+        
         $category->pos = $_POST['Position'][$key];
         erLhcoreClassGallery::getSession()->update( $category );
     }
@@ -15,6 +20,11 @@ if (isset($_POST['UpdatePriorityAlbum'])) {
     
     foreach ($_POST['AlbumIDs'] as $key => $albumID) {
         $album = erLhcoreClassModelGalleryAlbum::fetch($albumID);
+        
+        if ($album->pos != $_POST['Position'][$key]) {
+           $album->clearAlbumCache();
+        };
+        
         $album->pos = $_POST['Position'][$key];
         erLhcoreClassGallery::getSession()->update( $album );
     }

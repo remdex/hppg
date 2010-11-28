@@ -179,6 +179,8 @@ class erLhcoreClassModelGalleryUploadArchive {
 			$archive->next();
 		} 
 		
+		$album->clearAlbumCache();
+		
   		$this->cleanup();  		  	 
    }
    

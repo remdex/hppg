@@ -206,6 +206,28 @@ class erLhcoreClassTemplate {
 				$contentFile = str_replace($Matches[0][$key],'\''.erLhcoreClassDesign::baseurl(trim($UrlAddress,'\'')).'\'',$contentFile);	
 			}
 
+			
+			// Compile config settings, direct output
+			$Matches = array();
+			preg_match_all('/<\?=erConfigClassLhConfig::getInstance\(\)->conf->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)(.*?)\?\>/i',$contentFile,$Matches); 
+			foreach ($Matches[1] as $key => $UrlAddress)
+			{				    
+			    $valueConfig = erConfigClassLhConfig::getInstance()->conf->getSetting($Matches[2][$key],$Matches[5][$key]);
+			    $valueReplace = '';
+			    
+			    if (is_bool($valueConfig)){
+			        $valueReplace = $valueConfig == false ? 'false' : 'true';
+			    } elseif (is_integer($valueConfig)) {
+			        $valueReplace = $valueConfig;
+			    } elseif (is_array($valueConfig)) {
+			        $valueReplace = var_export($valueConfig,true);			    
+			    } else {
+			        $valueReplace = $valueConfig;
+			    }
+			    
+				$contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);				
+			}
+						
 			// Compile config settings
 			$Matches = array();
 			preg_match_all('/erConfigClassLhConfig::getInstance\(\)->conf->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)/i',$contentFile,$Matches); 
@@ -226,6 +248,29 @@ class erLhcoreClassTemplate {
 			    
 				$contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);				
 			}
+			
+			// Compile override config settings, used in title, description override
+			$Matches = array();
+			preg_match_all('/<\?=erConfigClassLhConfig::getInstance\(\)->getOverrideValue\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)(.*?)\?\>/i',$contentFile,$Matches); 
+			foreach ($Matches[1] as $key => $UrlAddress)
+			{
+			    $valueConfig = erConfigClassLhConfig::getInstance()->getOverrideValue($Matches[2][$key],$Matches[5][$key]);
+			    $valueReplace = '';
+			    
+			    if (is_bool($valueConfig)){
+			        $valueReplace = $valueConfig == false ? 'false' : 'true';
+			    } elseif (is_integer($valueConfig)) {
+			        $valueReplace = $valueConfig;
+			    } elseif (is_array($valueConfig)) {
+			        $valueReplace = var_export($valueConfig,true);			    
+			    } else {
+			        $valueReplace = $valueConfig;
+			    }
+			    
+				$contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);				
+			}
+			
+			
 			
 			// Compile content language
 			$contentFile = str_replace('<?=erLhcoreClassSystem::instance()->ContentLanguage?>',erLhcoreClassSystem::instance()->ContentLanguage,$contentFile);
