@@ -5,7 +5,8 @@ return array (
   array (
     'site' => 
     array (
-      'title' => 'Site title',
+      'title' => 'Site title, title can be overrided by siteaccess',
+      'description' => 'Site description, value can be overrided by siteaccess',
       'locale' => 'en_EN',
       'theme' => 'defaulttheme',
       'site_admin_email' => '',
