@@ -4,100 +4,16 @@ Disallow: /gallery/sharephpbb/
 Disallow: /m/
 Disallow: /gallery/anaglyph/
 Disallow: /captcha/image/
-
-Disallow: /gallery/albumrss/
-Disallow: /gallery/lastcommentedrss/
-Disallow: /gallery/popularrss/
-Disallow: /gallery/lastuploadsrss/
-Disallow: /gallery/topratedrss/
-Disallow: /gallery/searchrss/
-
-Disallow: /lit/gallery/albumrss/
-Disallow: /lit/gallery/lastcommentedrss/
-Disallow: /lit/gallery/popularrss/
-Disallow: /lit/gallery/lastuploadsrss/
-Disallow: /lit/gallery/topratedrss/
-Disallow: /lit/gallery/searchrss/
 Disallow: /lit/gallery/anaglyph/
-
-Disallow: /ger/gallery/albumrss/
-Disallow: /ger/gallery/lastcommentedrss/
-Disallow: /ger/gallery/popularrss/
-Disallow: /ger/gallery/lastuploadsrss/
-Disallow: /ger/gallery/topratedrss/
-Disallow: /ger/gallery/searchrss/
 Disallow: /ger/gallery/anaglyph/
-
-Disallow: /fre/gallery/albumrss/
-Disallow: /fre/gallery/lastcommentedrss/
-Disallow: /fre/gallery/popularrss/
-Disallow: /fre/gallery/lastuploadsrss/
-Disallow: /fre/gallery/topratedrss/
-Disallow: /fre/gallery/searchrss/
 Disallow: /fre/gallery/anaglyph/
-
-Disallow: /esp/gallery/albumrss/
-Disallow: /esp/gallery/lastcommentedrss/
-Disallow: /esp/gallery/popularrss/
-Disallow: /esp/gallery/lastuploadsrss/
-Disallow: /esp/gallery/topratedrss/
-Disallow: /esp/gallery/searchrss/
 Disallow: /esp/gallery/anaglyph/
-
-Disallow: /por/gallery/albumrss/
-Disallow: /por/gallery/lastcommentedrss/
-Disallow: /por/gallery/popularrss/
-Disallow: /por/gallery/lastuploadsrss/
-Disallow: /por/gallery/topratedrss/
-Disallow: /por/gallery/searchrss/
 Disallow: /por/gallery/anaglyph/
-
-Disallow: /ita/gallery/albumrss/
-Disallow: /ita/gallery/lastcommentedrss/
-Disallow: /ita/gallery/popularrss/
-Disallow: /ita/gallery/lastuploadsrss/
-Disallow: /ita/gallery/topratedrss/
-Disallow: /ita/gallery/searchrss/
 Disallow: /ita/gallery/anaglyph/
-
-Disallow: /rus/gallery/albumrss/
-Disallow: /rus/gallery/lastcommentedrss/
-Disallow: /rus/gallery/popularrss/
-Disallow: /rus/gallery/lastuploadsrss/
-Disallow: /rus/gallery/topratedrss/
-Disallow: /rus/gallery/searchrss/
 Disallow: /rus/gallery/anaglyph/
-
-Disallow: /jap/gallery/albumrss/
-Disallow: /jap/gallery/lastcommentedrss/
-Disallow: /jap/gallery/popularrss/
-Disallow: /jap/gallery/lastuploadsrss/
-Disallow: /jap/gallery/topratedrss/
-Disallow: /jap/gallery/searchrss/
 Disallow: /jap/gallery/anaglyph/
-
-Disallow: /den/gallery/albumrss/
-Disallow: /den/gallery/lastcommentedrss/
-Disallow: /den/gallery/popularrss/
-Disallow: /den/gallery/lastuploadsrss/
-Disallow: /den/gallery/topratedrss/
-Disallow: /den/gallery/searchrss/
 Disallow: /den/gallery/anaglyph/
-
-Disallow: /nor/gallery/albumrss/
-Disallow: /nor/gallery/lastcommentedrss/
-Disallow: /nor/gallery/popularrss/
-Disallow: /nor/gallery/lastuploadsrss/
-Disallow: /nor/gallery/topratedrss/
-Disallow: /nor/gallery/searchrss/
 Disallow: /nor/gallery/anaglyph/
-
-Disallow: /ind/gallery/albumrss/
-Disallow: /ind/gallery/lastcommentedrss/
-Disallow: /ind/gallery/popularrss/
-Disallow: /ind/gallery/lastuploadsrss/
-Disallow: /ind/gallery/topratedrss/
-Disallow: /ind/gallery/searchrss/
 Disallow: /ind/gallery/anaglyph/
 
 User-agent: ia_archiver
