@@ -364,9 +364,9 @@ class erLhcoreClassModelGalleryImage {
                 if (isset($params['filter_shard']['filter']['shard_deduct_limit'])) {
                     $params['offset'] -=  $params['filter_shard']['filter']['shard_deduct_limit']; 
                 }
-//                echo"<pre>";
-//                print_r($params);
-//                echo "</pre>";
+                /*echo"<pre>";
+                print_r($params);
+                echo "</pre>";*/
            }
 
            if (isset($params['filter']) && count($params['filter']) > 0)

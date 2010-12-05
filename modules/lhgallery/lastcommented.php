@@ -48,8 +48,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
        
     $tpl->set('appendImageMode',$appendImageMode);
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lastcommented'));
-    $tpl->set('filter_shard',erLhcoreClassGallery::getShardFilter(array('identifier' => 'last_commented','filter' => $filterArray, 'sort' => 'comtime DESC, pid DESC','offset' => $pages->low, 'limit' => $pages->items_per_page)));   
-    
+        
     $Result['content'] = $tpl->fetch();
        
     $Result['path'] = array();    

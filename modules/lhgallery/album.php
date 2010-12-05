@@ -164,11 +164,18 @@ if (($Result = $cache->restore($cacheKey)) === false)
         'popular',
         'popularasc',    
         'lasthits',
-        'lasthitsasc'
+        'lasthitsasc',
+        'lastcommented',
+        'lastcommentedasc',
+        'lastrated',
+        'lastratedasc',
+        'toprated',
+        'topratedasc',
     );
 
-    if (!in_array($mode,$skipShardIndex)){
-        $tpl->set('filter_shard',erLhcoreClassGallery::getShardFilter(array('identifier' => 'album_id_'.$Album->aid,'filter' => array('aid' => $Album->aid)+$filterArray, 'sort' => $modeSQL,'offset' => $pages->low, 'limit' => $pages->items_per_page)));
+    if (!in_array($mode,$skipShardIndex)) {
+        $reverseModes = array('newasc');   
+        $tpl->set('filter_shard',erLhcoreClassGallery::getShardFilter(array('reverse' => in_array($mode,$reverseModes),'identifier' => 'album_id_'.$Album->aid,'filter' => array('aid' => $Album->aid)+$filterArray, 'sort' => $modeSQL,'offset' => $pages->low, 'limit' => $pages->items_per_page)));
     } else {
         $tpl->set('filter_shard',array('filter' => false,'append_shard' => false));
     }

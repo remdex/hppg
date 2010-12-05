@@ -79,8 +79,17 @@ class erLhcoreClassGallery{
            $appendShardData = array('filter_key' => $filterKey, 'offset' => $params['offset'], 'identifier' => $params['identifier'],'sort_key' => $sortKey );
            $returnShardFilter = array('filter' => false,'append_shard' => false );
                        
+           $leftFilter = 'filterlte';
+           $rightFilter = 'filtergte';
+           
+           if (isset($params['reverse']) && $params['reverse'] === true) {
+               $leftFilter = 'filtergte';
+               $rightFilter = 'filterlte';
+           }
+       
+           
            if ($data !== false && $data['pid'] !== false ) {              
-               $returnShardFilter['filter']['filterlte'] = array('pid' => $data['pid']);
+               $returnShardFilter['filter'][$leftFilter] = array('pid' => $data['pid']);
                $returnShardFilter['filter']['shard_deduct_limit'] = $data['offset'];                                   
            }
           
@@ -90,7 +99,7 @@ class erLhcoreClassGallery{
               ->from( 'lh_gallery_shard_limit' )
               ->where(
             	   $q2->expr->land(
-            	       $q2->expr->lte( 'offset', $q2->bindValue($params['offset']+$shardPartSplit*2) ),
+            	       /*$q2->expr->lte( 'offset', $q2->bindValue($params['offset']+$shardPartSplit*2) ),*/
             	       $q2->expr->gte( 'offset', $q2->bindValue($params['offset']) ),
             	       $q2->expr->eq(  'identifier', $q2->bindValue($params['identifier']) ),            	       
             	       $q2->expr->eq(  'filter', $q2->bindValue($filterKey )),
@@ -104,7 +113,7 @@ class erLhcoreClassGallery{
            $dataMin = $stmt->fetch(PDO::FETCH_ASSOC);
            
            if ($dataMin !== false && $dataMin['pid'] !== false && ($dataMin['offset'] > $params['offset'] + ($shardPartSplit/10))) {  
-               $returnShardFilter['filter']['filtergte'] =  array('pid' => $dataMin['pid']);                             
+               $returnShardFilter['filter'][$rightFilter] =  array('pid' => $dataMin['pid']);                             
            }
            
            if (isset($data['offset']) && !isset($dataMin['pid']) && ($params['offset'] - $data['offset']) > $shardPartSplit) {               
