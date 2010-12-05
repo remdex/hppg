@@ -29,7 +29,7 @@ class CSCacheAPC {
         $this->increaseCacheVersion('ratedrecent_version'); 
         $this->increaseCacheVersion('sphinx_cache_version');        
         $this->increaseCacheVersion('site_version');  
-        $this->increaseCacheVersion('popularrecent_version',time(),600);  
+        $this->increaseCacheVersion('popularrecent_version',time(),600);          
     }
     
     function __construct() {  

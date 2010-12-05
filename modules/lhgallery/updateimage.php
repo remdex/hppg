@@ -19,8 +19,12 @@ erLhcoreClassGallery::getSession()->update($ImageData);
 $ImageData->clearCache();
 
 // Changed approvement status we have to clear all cache.
-if ($previousApproved != $ImageData->approved)
-CSCacheAPC::getMem()->increaseImageManipulationCache();
+if ($previousApproved != $ImageData->approved){
+    CSCacheAPC::getMem()->increaseImageManipulationCache();
+    
+    // Expires last uploads shard index
+    erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
+}
 
 
 echo json_encode(array('error' => 'false','result' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/updateimage','Image updated')));

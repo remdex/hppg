@@ -74,6 +74,11 @@ class erConfigClassLhCacheConfig
 		$instance = CSCacheAPC::getMem(); 
 		$instance->increaseImageManipulationCache();
 		
+		// Expire all shard index cache
+		$db = ezcDbInstance::get();        		
+        $stmt = $db->prepare("TRUNCATE TABLE `lh_gallery_shard_limit`");	
+        $stmt->execute();
+		
         $this->save();       
     }
     

@@ -20,7 +20,7 @@ if (isset($_POST['MoveImages']) && isset($_POST['AlbumDestinationDirectory0']) &
     
     $AlbumData->clearAlbumCache();
     $newImagesAlbum->clearAlbumCache();
-    
+        	       
     $tpl->set('assigned',true);
     $tpl->set('new_album',$newImagesAlbum);
 }

@@ -100,7 +100,9 @@ class erLhcoreClassModelGalleryAlbum {
        $cache->increaseCacheVersion('site_version');
        
        $category = erLhcoreClassModelGalleryCategory::fetch($this->category);
-       $category->clearCategoryCache();
+       $category->clearCategoryCache();  
+            
+       erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$this->aid));      
    }
    
    public function __get($variable)

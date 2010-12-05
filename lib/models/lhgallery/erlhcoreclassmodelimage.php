@@ -104,6 +104,8 @@ class erLhcoreClassModelGalleryImage {
        erLhcoreClassModelGalleryDuplicateImageHash::deleteByPid($this->pid);
        erLhcoreClassGallery::getSession()->delete($this);
        
+       // Expires last uploads shard index
+	   erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
        
        CSCacheAPC::getMem()->increaseImageManipulationCache();
    }
@@ -355,14 +357,25 @@ class erLhcoreClassModelGalleryImage {
        } else {
            $q2 = $q->subSelect();
            $q2->select( 'pid' )->from( 'lh_gallery_images' );
-           
+                               
+           if (isset($params['filter_shard']) && $params['filter_shard']['filter'] !== false) {
+                $params = $params + $params['filter_shard']['filter']; 
+                                
+                if (isset($params['filter_shard']['filter']['shard_deduct_limit'])) {
+                    $params['offset'] -=  $params['filter_shard']['filter']['shard_deduct_limit']; 
+                }
+//                echo"<pre>";
+//                print_r($params);
+//                echo "</pre>";
+           }
+
            if (isset($params['filter']) && count($params['filter']) > 0)
-          {                     
+           {                     
                foreach ($params['filter'] as $field => $fieldValue)
                {
                    $conditions[] = $q2->expr->eq( $field, $q->bindValue($fieldValue) );
                }
-          } 
+           } 
           
           if (isset($params['filterin']) && count($params['filterin']) > 0)
           {
@@ -380,14 +393,30 @@ class erLhcoreClassModelGalleryImage {
                } 
           }
           
+          if (isset($params['filterlte']) && count($params['filterlte']) > 0)
+          {
+               foreach ($params['filterlte'] as $field => $fieldValue)
+               {
+                   $conditions[] = $q2->expr->lte( $field, $q->bindValue($fieldValue) );
+               } 
+          }
+          
           if (isset($params['filtergt']) && count($params['filtergt']) > 0)
           {
                foreach ($params['filtergt'] as $field => $fieldValue)
                {
                    $conditions[] = $q2->expr->gt( $field,$q->bindValue( $fieldValue) );
                } 
-          }      
+          } 
           
+          if (isset($params['filtergte']) && count($params['filtergte']) > 0)
+          {
+               foreach ($params['filtergte'] as $field => $fieldValue)
+               {
+                   $conditions[] = $q2->expr->gte( $field,$q->bindValue( $fieldValue) );
+               } 
+          }      
+           
           if (count($conditions) > 0)
           {
               $q2->where( 
@@ -406,7 +435,18 @@ class erLhcoreClassModelGalleryImage {
        }
        
       $objects = $session->find( $q );
-             
+      
+      
+      if (isset($params['filter_shard'])) {
+          
+          if ($params['filter_shard']['append_shard'] !== false){
+              $currentImage = current($objects);
+              $params['filter_shard']['append_shard']['pid'] = $currentImage->pid;
+              erLhcoreClassGallery::addShardFilter($params['filter_shard']['append_shard']);
+          }
+      }
+   
+      
       if (!isset($params['disable_sql_cache']))
       {
               $cache->store($cacheKey,$objects);

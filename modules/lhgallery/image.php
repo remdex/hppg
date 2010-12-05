@@ -330,6 +330,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         CSCacheAPC::getMem()->increaseCacheVersion('last_commented_'.$Image->aid);
         CSCacheAPC::getMem()->increaseCacheVersion('last_commented_image_version_'.$Image->pid);
         
+        erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_commented'));
+        
+        erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$image->aid),array('comtime DESC, pid DESC','comtime ASC, pid ASC'));
         
         $tpl->set('commentStored',true);
              

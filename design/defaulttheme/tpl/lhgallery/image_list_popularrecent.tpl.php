@@ -4,6 +4,11 @@ $counter = 1;
 foreach ($items as $key => $itemRecent) : 
 try {
 	$item = $itemRecent->image;
+	
+	if ($item === false) {
+	    continue;
+	}
+	
 } catch (Exception $e){
 	continue;
 }

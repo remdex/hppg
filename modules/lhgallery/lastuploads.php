@@ -48,7 +48,9 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $appendImageMode = '/(mode)/lastuploads'.$appendResolutionMode;
        
     $tpl->set('appendImageMode',$appendImageMode);
-    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lastuploads'));
+    $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lastuploads'));        
+    $tpl->set('filter_shard',erLhcoreClassGallery::getShardFilter(array('identifier' => 'last_uploads','filter' => $filterArray, 'sort' => 'pid DESC','offset' => $pages->low, 'limit' => $pages->items_per_page)));
+    
     
     $Result['content'] = $tpl->fetch();
     

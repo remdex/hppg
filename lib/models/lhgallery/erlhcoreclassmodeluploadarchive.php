@@ -181,6 +181,9 @@ class erLhcoreClassModelGalleryUploadArchive {
 		
 		$album->clearAlbumCache();
 		
+		// Expires last uploads shard index
+	    erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
+	    
   		$this->cleanup();  		  	 
    }
    

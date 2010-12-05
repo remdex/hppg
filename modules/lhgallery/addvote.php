@@ -23,6 +23,9 @@ if (isset($_POST['photo']) && isset($_POST['score']) )
     CSCacheAPC::getMem()->increaseCacheVersion('last_rated');    
     CSCacheAPC::getMem()->increaseCacheVersion('last_rated_'.$image->aid);
     
+    //We expire only custom subshards based on sort mode
+    erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$image->aid),array('pic_rating DESC, votes DESC, pid DESC','pic_rating ASC, votes ASC, pid ASC','rtime DESC, pid DESC','rtime ASC, pid ASC'));
+    
     // Clear rated recetly images cache
     CSCacheAPC::getMem()->increaseCacheVersion('ratedrecent_version');
     

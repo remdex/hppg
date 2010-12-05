@@ -10,6 +10,9 @@ if (count($objects) == 1)
     $session->delete($fileSession);
     
     CSCacheAPC::getMem()->increaseImageManipulationCache();
+    
+    // Expires last uploads shard index
+	erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads'));
 }
 exit;
 

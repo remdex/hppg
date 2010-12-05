@@ -35,7 +35,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
        
     $tpl->set('appendImageMode',$appendImageMode);
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/popular'));
-        
+
     $Result['content'] = $tpl->fetch();
     
     $Result['path'] = array();

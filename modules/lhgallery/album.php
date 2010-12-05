@@ -158,7 +158,21 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('currentResolution',$resolution);
     $tpl->set('filterArray',$filterArray);
     $tpl->set('appendImageMode',$appendImageMode);
-       
+    
+    //Because these modes changes rapidly we skip sharding by index these
+    $skipShardIndex = array(
+        'popular',
+        'popularasc',    
+        'lasthits',
+        'lasthitsasc'
+    );
+
+    if (!in_array($mode,$skipShardIndex)){
+        $tpl->set('filter_shard',erLhcoreClassGallery::getShardFilter(array('identifier' => 'album_id_'.$Album->aid,'filter' => array('aid' => $Album->aid)+$filterArray, 'sort' => $modeSQL,'offset' => $pages->low, 'limit' => $pages->items_per_page)));
+    } else {
+        $tpl->set('filter_shard',array('filter' => false,'append_shard' => false));
+    }
+
     $tpl->set('modeSQL',$modeSQL);
     $tpl->set('mode',$mode);
     

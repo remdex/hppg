@@ -70,6 +70,8 @@ if (count($objects) == 1)
 	       $session->update($image);
 	       $image->clearCache();
            
+	       // Expires last uploads shard index
+	       erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
 	              
 	    } catch (Exception $e) {
 	        $session->delete($image);
