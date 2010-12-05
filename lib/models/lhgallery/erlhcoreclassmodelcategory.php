@@ -154,6 +154,8 @@ class erLhcoreClassModelGalleryCategory {
        {
            $category->removeThis();
        } 
+       
+       $this->clearCategoryCache();
                    
        erLhcoreClassGallery::getSession()->delete($this);        
        CSCacheAPC::getMem()->increaseImageManipulationCache();
