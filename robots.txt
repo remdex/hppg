@@ -16,6 +16,31 @@ Disallow: /den/gallery/anaglyph/
 Disallow: /nor/gallery/anaglyph/
 Disallow: /ind/gallery/anaglyph/
 
+Disallow: /lit/gallery/sharehtml/
+Disallow: /ger/gallery/sharehtml/
+Disallow: /fre/gallery/sharehtml/
+Disallow: /esp/gallery/sharehtml/
+Disallow: /por/gallery/sharehtml/
+Disallow: /ita/gallery/sharehtml/
+Disallow: /rus/gallery/sharehtml/
+Disallow: /jap/gallery/sharehtml/
+Disallow: /den/gallery/sharehtml/
+Disallow: /nor/gallery/sharehtml/
+Disallow: /ind/gallery/sharehtml/
+
+Disallow: /lit/gallery/sharephpbb/
+Disallow: /ger/gallery/sharephpbb/
+Disallow: /fre/gallery/sharephpbb/
+Disallow: /esp/gallery/sharephpbb/
+Disallow: /por/gallery/sharephpbb/
+Disallow: /ita/gallery/sharephpbb/
+Disallow: /rus/gallery/sharephpbb/
+Disallow: /jap/gallery/sharephpbb/
+Disallow: /den/gallery/sharephpbb/
+Disallow: /nor/gallery/sharephpbb/
+Disallow: /ind/gallery/sharephpbb/
+
+
 User-agent: ia_archiver
 Disallow: /
 
