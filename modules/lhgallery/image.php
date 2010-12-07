@@ -257,6 +257,7 @@ if (!($Image instanceof erLhcoreClassModelGalleryImage)){
 
 $CommentData = new erLhcoreClassModelGalleryComment();
 $needSave = false;
+$storeCache = true;
 
 if ($currentUser->isLogged()){
     $CommentData->msg_author = $currentUser->getUserData(true)->username;
@@ -340,6 +341,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
          
         $tpl->set('commentErrArr',$Errors);
     }
+    
+    $storeCache = false;
     
 } 
 
@@ -2006,7 +2009,9 @@ if ($mode == 'lastuploads') {
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss').'/'.$Image->aid; 
 }
 
-$cache->store($cacheKeyImageView,$Result);
+if ($storeCache === true) {
+    $cache->store($cacheKeyImageView,$Result);
+}
 
 } elseif (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true) { // Delay image hit enabled
 	erLhcoreClassModelGalleryDelayImageHit::addHit((int)$Params['user_parameters']['image_id']);

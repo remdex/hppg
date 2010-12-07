@@ -98,8 +98,7 @@ class erLhcoreClassGallery{
            $q2->select( 'pid,offset' )
               ->from( 'lh_gallery_shard_limit' )
               ->where(
-            	   $q2->expr->land(
-            	       /*$q2->expr->lte( 'offset', $q2->bindValue($params['offset']+$shardPartSplit*2) ),*/
+            	   $q2->expr->land (            	       
             	       $q2->expr->gte( 'offset', $q2->bindValue($params['offset']) ),
             	       $q2->expr->eq(  'identifier', $q2->bindValue($params['identifier']) ),            	       
             	       $q2->expr->eq(  'filter', $q2->bindValue($filterKey )),
