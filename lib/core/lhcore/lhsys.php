@@ -144,7 +144,7 @@ class erLhcoreClassSystem{
        
         $instance = erLhcoreClassSystem::instance();
        
- 		$isCGI = ( substr( php_sapi_name(), 0, 3 ) == 'cgi' );
+ 		$isCGI = (stristr(php_sapi_name(),'cgi') !== false);
         $force_VirtualHost = false;        
 
         $phpSelf = $_SERVER['PHP_SELF'];
