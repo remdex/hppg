@@ -41,3 +41,6 @@ svn update "./Zend"
 
 echo "Updating var directory"
 svn update "./var"
+
+echo "Clearing cache"
+php ./bin/php/clear_cache.php
