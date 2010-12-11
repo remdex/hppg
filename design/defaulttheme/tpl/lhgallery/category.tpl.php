@@ -9,7 +9,7 @@
   ?>   
    
   <?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php'));?> 
-          
+           
 <? } else { ?>
 
 <? } ?>
@@ -30,10 +30,9 @@ $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('fi
  
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list_full.tpl.php'));?> 
 
-<?php 
-$pages = $pagesSubcategorys;
-include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
+<?php $pages = $pagesSubcategorys; ?>
 
+<?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 
 <?endif;?>
 
