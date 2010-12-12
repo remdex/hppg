@@ -8,6 +8,7 @@ class erLhcoreClassModelGalleryUploadArchive {
                'id'           => $this->id,
                'album_id'     => $this->album_id,             
                'user_id'      => $this->user_id,             
+               'status'       => $this->status,             
                'filename'     => $this->filename,             
                'album_name'   => $this->album_name,
                'keywords'     => $this->keywords,
@@ -38,7 +39,9 @@ class erLhcoreClassModelGalleryUploadArchive {
    
    public function import()
    {   	
-   		   	
+   		// Other process is already importing it
+        if ($this->status == 1) return ;
+        	
    		try {
    			$archive = ezcArchive::open( "var/archives/{$this->filename}" ); 
    		} catch (Exception $e){
@@ -50,6 +53,10 @@ class erLhcoreClassModelGalleryUploadArchive {
    			$this->cleanup();
    			return ;
    		}
+   		
+   		// Mark archive as in progress
+   		$this->status = 1;
+   		erLhcoreClassGallery::getSession()->update($this);
    		
    		$wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
    		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
@@ -190,6 +197,7 @@ class erLhcoreClassModelGalleryUploadArchive {
    public $id = null;
    public $album_id = 0;
    public $user_id = 0;
+   public $status = 0;
    public $filename = '';
    public $album_name = '';
    public $description = '';

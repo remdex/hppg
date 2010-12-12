@@ -1,0 +1,1 @@
+ALTER TABLE  `lh_gallery_upload_archive` ADD  `status` TINYINT( 1 ) NOT NULL DEFAULT  '0';

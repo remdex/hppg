@@ -492,6 +492,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `description` text NOT NULL,
 				  `keywords` varchar(200) NOT NULL,
 				  `user_id` int(11) NOT NULL DEFAULT '0',
+				  `status` tinyint(1) NOT NULL DEFAULT '0',
 				  PRIMARY KEY (`id`)
 				) ENGINE=MyISAM;");
                                 

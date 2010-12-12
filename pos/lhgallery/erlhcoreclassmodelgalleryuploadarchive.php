@@ -19,6 +19,11 @@ $def->properties['user_id']->columnName   = 'user_id';
 $def->properties['user_id']->propertyName = 'user_id';
 $def->properties['user_id']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
 
+$def->properties['status'] = new ezcPersistentObjectProperty();
+$def->properties['status']->columnName   = 'status';
+$def->properties['status']->propertyName = 'status';
+$def->properties['status']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
+
 $def->properties['filename'] = new ezcPersistentObjectProperty();
 $def->properties['filename']->columnName   = 'filename';
 $def->properties['filename']->propertyName = 'filename';
