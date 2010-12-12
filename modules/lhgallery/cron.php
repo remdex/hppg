@@ -7,7 +7,7 @@ erLhcoreClassModelGalleryRated24::deleteExpired();
 
 $session = erLhcoreClassGallery::getSession();
 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryUploadArchive' );  
-$q->where( $q->expr->gt( 'status', $q->bindValue( 0 ) ) )
+$q->where( $q->expr->eq( 'status', $q->bindValue( 0 ) ) )
   ->limit(2); // Limit import to max 2 archives at once
 $objects = $session->find( $q, 'erLhcoreClassModelGalleryUploadArchive' );
 
