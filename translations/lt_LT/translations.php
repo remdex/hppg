@@ -28,6 +28,7 @@ $moduleViewTranslations = array (
   array (
     'titulinis' => 'index',
     'albumas' => 'album',
+    'spalva' => 'color',
     'catjson' => 'catjson',
     'albumo-rss' => 'albumrss',
     'kategorija' => 'category',

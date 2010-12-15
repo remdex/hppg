@@ -9,7 +9,7 @@
 </div>
 
 <?php if ($show_pallete == true) : ?>
-<h2><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Choose your favorite color')?></h2>
+<h2><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Choose color')?></h2>
 <div class="pallete-main">
 <?php foreach (array_reverse(erLhcoreClassModelGalleryPallete::getList()) as $pallete) : ?>
 <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>);"><a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/<?=$pallete->id?>"></a></div>

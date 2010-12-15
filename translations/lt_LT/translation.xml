@@ -2164,6 +2164,10 @@
       <translation>Tag it!</translation>
     </message>
     <message>
+      <source>Search by color</source>
+      <translation>Paieška pagal spalvą</translation>
+    </message>
+    <message>
       <source>Tag this photo</source>
       <translation>Tag &#x161;i&#x105; nuotrauk&#x105;</translation>
     </message>
@@ -2849,7 +2853,30 @@
       <source>Image variation edit</source>
       <translation>Paveiksliuko variacijos redagavimas</translation>
     </message>
-  </context>
+  </context>  
+  <context>
+    <name>gallery/color</name>
+    <message>
+      <source>Return to pallete</source>
+      <translation>Grįžti į paletę</translation>
+    </message>
+    <message>
+      <source>Choose color</source>
+      <translation>Pasirinkite spalvą</translation>
+    </message>
+    <message>
+      <source>No records.</source>
+      <translation>Nėra įrašų</translation>
+    </message>
+    <message>
+      <source>Images by color</source>
+      <translation>Paveiksliukai pagal spalvą</translation>
+    </message>
+    <message>
+      <source>Page</source>
+      <translation>Puslapis</translation>
+    </message>
+  </context>  
   <context>
     <name>gallery/batchadd</name>
     <message>
@@ -2907,6 +2934,18 @@
   </context>
   <context>
     <name>pagelayout/pagelayout</name>
+    <message>
+      <source>Search</source>
+      <translation>Paieška</translation>
+    </message>
+    <message>
+      <source>Search by keyword</source>
+      <translation>Paieška pagal raktažodį</translation>
+    </message>
+    <message>
+      <source>Search by color</source>
+      <translation>Paieška pagal spalvą</translation>
+    </message>
     <message>
       <source>It's NOT fake!</source>
       <translation>Tai NEpadirbta!</translation>
