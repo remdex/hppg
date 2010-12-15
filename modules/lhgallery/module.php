@@ -57,7 +57,7 @@ $ViewList['lastsearches'] = array(
 $ViewList['image'] = array( 
     'script' => 'image.php',
     'params' => array('image_id'),
-    'uparams' => array('mode','keyword','sort','resolution'),
+    'uparams' => array('mode','keyword','sort','resolution','color'),
     ); 
        
 $ViewList['anaglyph'] = array( 
@@ -96,6 +96,11 @@ $ViewList['lastuploads'] = array(
     'params' => array(),
     'uparams' => array('resolution')
     ); 
+            
+$ViewList['color'] = array( 
+    'script' => 'color.php',
+    'params' => array('pallete_id')
+); 
     
 $ViewList['lastuploadsrss'] = array( 
     'script' => 'lastuploadsrss.php',
@@ -136,7 +141,7 @@ $ViewList['addvote'] = array(
 $ViewList['ajaximages'] = array( 
     'script' => 'ajaximages.php',    
     'params' => array('image_id'),
-    'uparams' => array('mode','keyword','sort','direction','resolution'),
+    'uparams' => array('mode','keyword','sort','direction','resolution','color'),
     );   
       
 $ViewList['lastcommented'] = array( 

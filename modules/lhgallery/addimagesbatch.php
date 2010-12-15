@@ -41,7 +41,10 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            $image->filename = $fileName;
                   
            $session->update($image);
-           $image->clearCache();       
+           $image->clearCache();
+           
+           // Index colors
+	       erLhcoreClassPalleteIndexImage::indexImage($image,true);       
        }
        
     } catch (Exception $e) {

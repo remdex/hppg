@@ -70,6 +70,9 @@ if (count($objects) == 1)
 	       $session->update($image);
 	       $image->clearCache();
            
+	       // Index colors
+	       erLhcoreClassPalleteIndexImage::indexImage($image,true);
+           
 	       // Expires last uploads shard index
 	       erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
 	              

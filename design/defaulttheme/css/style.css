@@ -1035,3 +1035,22 @@ background-color:#f1f1f1;
 	font-weight: normal;
 	margin: -1px;
 } 
+
+div.dominant-colors{
+margin-left:10px;
+float:left;
+border:1px solid #FFFFFF;
+box-shadow:0px 0px 5px #a8a8a8;
+-webkit-box-shadow:0px 0px 5px #a8a8a8;
+-moz-box-shadow: 0px 0px 5px #a8a8a8;
+background-color:#f1f1f1;
+padding:5px;
+}
+
+div.dominant-colors div{margin-bottom:5px;height:20px;width:50px;}
+div.dominant-colors div a{display:block;height:20px;}
+.pallete-main{width:420px;margin:0 auto;}
+.pallete-main div{float:left;width:40px;height:40px;}
+.pallete-main div a{display:block;width:40px;height:40px;}
+.csc{width:40px;height:15px;float:right;}
+.csc a{display:block;width:40px;height:15px;}

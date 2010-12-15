@@ -171,6 +171,9 @@ class erLhcoreClassModelGalleryUploadArchive {
 				    	$session->update($image);
 				    	$image->clearCache();
 				    	
+				    	// Index colors
+	                    erLhcoreClassPalleteIndexImage::indexImage($image,true);
+				    	
 				    } catch (Exception $e) {				    	
 				    	erLhcoreClassLog::writeCronjob('Exception during archive image import'.$e);
 				    	$session->delete($image);

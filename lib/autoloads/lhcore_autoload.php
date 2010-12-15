@@ -59,6 +59,7 @@ return array_merge(array (
         'erLhcoreClassGalleryImagemagickHandler'    => 'lib/core/lhgallery/lhgalleryconverterhandler.php',        
         'erLhcoreClassGalleryGDHandler'             => 'lib/core/lhgallery/lhgallerygdconverterhandler.php',        
         'erLhcoreClassGalleryBatch'                 => 'lib/core/lhgallery/lhbatch.php',
+        'erLhcoreClassPalleteIndexImage'            => 'lib/core/lhgallery/lhpalleteindeximage.php',
         'erLhcoreClassLhMemcache'                   => 'lib/core/lhcore/lhmemcache.php',
         'erLhcoreClassLhAPC'                        => 'lib/core/lhcore/lhapc.php',
         'erLhcoreClassModelGalleryDelayImageHit' 		=> 'lib/models/lhgallery/erlhcoreclassmodeldelayimagehit.php',
@@ -70,6 +71,7 @@ return array_merge(array (
         'erLhcoreClassModelGalleryConfig' 	            => 'lib/models/lhgallery/erlhcoreclassmodelconfig.php',
         'erLhcoreClassModelGalleryFiletype'	            => 'lib/models/lhgallery/erlhcoreclassmodelfiletype.php',
         'erLhcoreClassModelGalleryPendingConvert'	    => 'lib/models/lhgallery/erlhcoreclassmodelpendingconvert.php',
+        'erLhcoreClassModelGalleryPallete'	            => 'lib/models/lhgallery/erlhcoreclassmodelpallete.php',
 
         //Favorites        
         'erLhcoreClassModelGalleryMyfavoritesImage' 	=> 'lib/models/lhgallery/erlhcoreclassmodelmyfavoritesimage.php',

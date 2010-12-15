@@ -5,6 +5,8 @@ erLhcoreClassModelGalleryDelayImageHit::updateMainCounter();
 erLhcoreClassModelGalleryPopular24::deleteExpired();
 erLhcoreClassModelGalleryRated24::deleteExpired();
 
+erLhcoreClassPalleteIndexImage::indexUnindexedImages();
+
 $session = erLhcoreClassGallery::getSession();
 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryUploadArchive' );  
 $q->where( $q->expr->eq( 'status', $q->bindValue( 0 ) ) )

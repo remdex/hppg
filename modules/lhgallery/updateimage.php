@@ -20,6 +20,16 @@ $ImageData->clearCache();
 
 // Changed approvement status we have to clear all cache.
 if ($previousApproved != $ImageData->approved){
+    
+    // Reindex image colors if image is approved
+    if ($ImageData->approved == 1) {
+        erLhcoreClassPalleteIndexImage::indexImage($ImageData);  // We do not use delay, because it's update      
+    } else {
+        erLhcoreClassPalleteIndexImage::removeFromIndex($ImageData->pid);
+    }
+    
+    $this->increaseCacheVersion('color_images');
+        
     CSCacheAPC::getMem()->increaseImageManipulationCache();
     
     // Expires last uploads shard index

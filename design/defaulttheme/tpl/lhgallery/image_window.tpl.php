@@ -1,6 +1,7 @@
 <div class="float-break">
-<div class="img">
 
+
+<div class="img">
 <?php if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) : ?>
 
     <a id="photo_full" href="<?=erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename))?>"><img src="<?=($image->pwidth < 450) ? erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename)) : erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode($image->filename))?>" alt="<?=htmlspecialchars($image->name_user);?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Click to see fullsize')?>" ></a>
@@ -18,18 +19,28 @@
     </object>
         
 <?php elseif ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeFLV ) : ?>
-
     <object id="monFlash" type="application/x-shockwave-flash" data="<?=erLhcoreClassDesign::design('js/player_flv_maxi.swf')?>" width="<?=$image->pwidth?>" height="<?=$image->pheight?>">
 		<param name="movie" value="<?=erLhcoreClassDesign::design('js/player_flv_maxi.swf')?>" />
 		<param name="allowFullScreen" value="true" />
 		<param name="FlashVars" value="flv=<?=erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename))?>&amp;width=<?=$image->pwidth?>&amp;height=<?=$image->pheight?>&amp;startimage=<?=erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode(str_replace('.flv','.jpg',$image->filename)))?>&amp;showstop=1&amp;showvolume=1&amp;showtime=1&amp;bgcolor=F1F1F1" />
 		<p>Texte alternatif</p>
-	</object>
-	
+	</object>	
 <?php endif;?>
 
 <?php if( $image->caption != '') : ?>
 <div class="float-break cap-img"><?=nl2br(htmlspecialchars($image->caption))?></div>
 <?endif;?>
 </div>
+
+<div class="dominant-colors">
+
+<?php foreach (erLhcoreClassModelGalleryPallete::getPictureDominantColors($image->pid,10) as $pallete) : ?>
+<div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>)">
+<a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/<?=$pallete->id?>"></a>
+</div>
+<?php endforeach;?>
+
+</div>
+
+
 </div>

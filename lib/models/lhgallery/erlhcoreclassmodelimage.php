@@ -102,6 +102,8 @@ class erLhcoreClassModelGalleryImage {
        erLhcoreClassModelGalleryPopular24::deleteByPid($this->pid);
        erLhcoreClassModelGalleryRated24::deleteByPid($this->pid);
        erLhcoreClassModelGalleryDuplicateImageHash::deleteByPid($this->pid);
+       erLhcoreClassPalleteIndexImage::removeFromIndex($this->pid);
+       
        erLhcoreClassGallery::getSession()->delete($this);
        
        // Expires last uploads shard index
@@ -435,8 +437,7 @@ class erLhcoreClassModelGalleryImage {
        }
        
       $objects = $session->find( $q );
-      
-      
+            
       if (isset($params['filter_shard'])) {
           
           if ($params['filter_shard']['append_shard'] !== false){

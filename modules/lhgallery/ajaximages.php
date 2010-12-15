@@ -1201,6 +1201,66 @@ if ($mode == 'album')
     $urlAppend .= $appendResolutionMode;        
 	$tpl->set('urlAppend',$urlAppend);
 	
+} elseif ($mode == 'color') {
+
+    $cache = CSCacheAPC::getMem();         
+    $cacheKeyImage = 'color_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('color_images').'_direction_'.$direction.'_filter_color_'.(int)$Params['user_parameters_unordered']['color'];
+    
+    if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
+    {      	
+    	$session = erLhcoreClassGallery::getSession();
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+    	
+    	$q2 = $q->subSelect();
+        $q2->select( 'pid' )->from( 'lh_gallery_pallete_images' );
+        
+        $colorMatchedTimes = erLhcoreClassModelGalleryPallete::getPictureCountByPalleteId($Image->pid,(int)$Params['user_parameters_unordered']['color']);
+    	          	
+    	if ($direction == 'left'){
+    	    $q2->where(  $q2->expr->eq( 'pallete_id', (int)$Params['user_parameters_unordered']['color'] ).' AND ('.$q2->expr->gt( 'count', $q2->bindValue( $colorMatchedTimes ) ). ' OR '.$q2->expr->eq( 'count', $q2->bindValue( $colorMatchedTimes ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
+                ->orderBy('count ASC, pid ASC')
+                ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
+                $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+                $imagesAjax = array_reverse($imagesAjax);
+    	} else {
+    	     $q2->where(  $q2->expr->eq( 'pallete_id', (int)$Params['user_parameters_unordered']['color'] ).' AND ('.$q2->expr->lt( 'count', $q2->bindValue( $colorMatchedTimes ) ). ' OR '.$q2->expr->eq( 'count', $q2->bindValue( $colorMatchedTimes ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
+                ->orderBy('count DESC, pid DESC')
+                ->limit( 6 );
+                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
+                $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
+    	};	
+    	
+    	$cache->store($cacheKeyImage,$imagesAjax,0);
+    }
+    
+	$hasMoreImages = 'false';
+        
+    if (count($imagesAjax) > 5) {
+        $hasMoreImages = 'true';
+        if ($direction == 'left') { 
+            $imagesAjax = array_slice($imagesAjax,1,5);
+        } else {
+            $imagesAjax = array_slice($imagesAjax,0,5);
+        }    
+    }
+
+    $imagesFound = count($imagesAjax);
+    
+    reset($imagesAjax);
+    $ImageLast = current($imagesAjax);    
+    $LeftImagePID = $ImageLast->pid;
+    
+    end($imagesAjax);
+    $ImageLast = current($imagesAjax);
+    $RightImagePID = $ImageLast->pid;
+           
+    $tpl->set('imagesAjax',$imagesAjax);
+     
+	$urlAppend = '/(mode)/color/(color)/'.(int)$Params['user_parameters_unordered']['color'];
+          
+	$tpl->set('urlAppend',$urlAppend);
+	
 } elseif ($mode == 'lastrated') {
 
     $cache = CSCacheAPC::getMem();         

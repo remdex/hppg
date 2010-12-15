@@ -1,3 +1,15 @@
+<?php if ($enter_keyword === true) : ?>
+<div class="header-list">
+<h1>Please enter keyword or phrase</h1>
+</div>
+
+<form action="<?=erLhcoreClassDesign::baseurl('gallery/search')?>">
+<input type="text" class="inputfield" autocomplete="off" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Enter keyword or phrase')?>" class="keywordField" name="SearchText" value="" >
+<input type="submit" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search entire gallery')?>" class="default-button" name="doSearch" value="Search"> enter keyword or phrase
+</form>
+
+<?php else : ?>
+
 <div class="header-list">
 
 <?php 
@@ -21,3 +33,4 @@ $enableRelevance = true;
 
 <? } ?>
 
+<?php endif;?>
