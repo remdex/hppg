@@ -43,6 +43,8 @@ return array (
                              '1920x1080' => array('width' => 1920,'height' => 1080),
       ),
       'public_category_id' => 28,
+      'seach_by_color_enabled' => true,
+      'delay_color_index' => false,      
       'delay_image_hit_enabled' => false,
       'delay_image_hit_log' => false,
       'delay_image_hit_log_settings' => array (      
