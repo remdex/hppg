@@ -11,7 +11,9 @@ class erLhcoreClassPalleteIndexImage {
         $stmt->execute();
         
         $result = $stmt->fetchColumn(); 
-                        
+
+        if ($result === false) $result = 0;
+               
         $imagesUnindexed = erLhcoreClassModelGalleryImage::getImages(array('filtergt' => array('pid' => $result)));
                 
         foreach ($imagesUnindexed as $image)
