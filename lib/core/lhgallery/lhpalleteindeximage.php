@@ -12,7 +12,7 @@ class erLhcoreClassPalleteIndexImage {
         
         $result = (int)$stmt->fetchColumn(); 
                        
-        $imagesUnindexed = erLhcoreClassModelGalleryImage::getImages(array('filtergt' => array('pid' => $result)));
+        $imagesUnindexed = erLhcoreClassModelGalleryImage::getImages(array('sort' =>  'pid ASC','filtergt' => array('pid' => $result)));
                 
         foreach ($imagesUnindexed as $image)
         {
