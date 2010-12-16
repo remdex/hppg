@@ -10,14 +10,13 @@ class erLhcoreClassPalleteIndexImage {
         $stmt = $db->prepare("SELECT MAX(pid) as last_index_image FROM lh_gallery_pallete_images");
         $stmt->execute();
         
-        $result = $stmt->fetchColumn(); 
-
-        if ($result === false) $result = 0;
-               
+        $result = (int)$stmt->fetchColumn(); 
+                       
         $imagesUnindexed = erLhcoreClassModelGalleryImage::getImages(array('filtergt' => array('pid' => $result)));
                 
         foreach ($imagesUnindexed as $image)
         {
+            echo "Indexing image PID - ",$image->pid,"\n";
             self::indexImage($image);
         }
     }
