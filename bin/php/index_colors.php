@@ -121,5 +121,6 @@ $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );
 
 foreach ($objects as $object)
 {
+    echo "Indexing image -> ",$object->pid,"\n";
     erLhcoreClassPalleteIndexImage::indexImage($object);
 }

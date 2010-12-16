@@ -71,6 +71,10 @@ class erLhcoreClassPalleteIndexImage {
                     	     $stmt = $db->prepare("DELETE FROM lh_gallery_pallete_images WHERE pid = {$image->pid}");
                     	     $stmt->execute();
                              
+                    	     $cache = CSCacheAPC::getMem(); 
+                    	     
+                    	     $data_array = array();
+                    	     
                              for ($i = 1; $i < $width;$i++) {
                                 for ($n = 1; $n < $height;$n++) {                        
                                     $thisColor = imagecolorat($img, $i, $n); 
@@ -80,19 +84,39 @@ class erLhcoreClassPalleteIndexImage {
                                     // $stmt = $db->prepare('SELECT id,POW(POW((:red-red),2)+POW((:blue - blue),2)+POW((:green-green),2),0.5) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
                                     
                                     // http://www.compuphase.com/cmetric.htm
-                                    // More reliable version
-                                    $stmt = $db->prepare('SELECT id,SQRT((2+((red+:red)/2)/256)*POW((:red-red),2) + 4*(POW((:green-green),2)) + (2+(255-((red+:red)/2))/256)*POW((:blue - blue),2) ) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
+                                    // More reliable version                                    
+                                    $cacheKey = 'color_pallete_red_'.$rgb['red'].'_blue_'.$rgb['blue'].'_green_'.$rgb['green'];
                                     
-                                    $stmt->bindValue( ':red',$rgb['red']);
-                                    $stmt->bindValue( ':blue',$rgb['blue']);
-                                    $stmt->bindValue( ':green',$rgb['green']);
-                                    $stmt->execute();
-                                    $pallete_id = $stmt->fetchColumn(); 
+                                    if (($pallete_id = $cache->restore($cacheKey)) === false)
+                                    {
+                                        $stmt = $db->prepare('SELECT id,SQRT((2+((red+:red)/2)/256)*POW((:red-red),2) + 4*(POW((:green-green),2)) + (2+(255-((red+:red)/2))/256)*POW((:blue - blue),2) ) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
+                                        $stmt->bindValue( ':red',$rgb['red']);
+                                        $stmt->bindValue( ':blue',$rgb['blue']);
+                                        $stmt->bindValue( ':green',$rgb['green']);
+                                        $stmt->execute();
+                                        $pallete_id = $stmt->fetchColumn();                                         
+                                        $cache->store($cacheKey,$pallete_id,30*60); // Cache stored just for 30 minits
+                                    }
                                     
-                            	    $stmt = $db->prepare("INSERT INTO lh_gallery_pallete_images (pid,pallete_id,count) VALUES ({$image->pid},$pallete_id,1) ON DUPLICATE KEY UPDATE count = count + 1");
-                            	    $stmt->execute();
+                                    if (isset($data_array[$pallete_id])) {
+                                        $data_array[$pallete_id] = $data_array[$pallete_id] + 1;
+                                    } else {
+                                        $data_array[$pallete_id] = 1;
+                                    }
                                 }
                              }
+                                                          
+                             $valuesParts = array();
+                             foreach ($data_array as $pallete => $count)
+                             {
+                                 $valuesParts[] = "({$image->pid},{$pallete},$count)";
+                             }
+                             
+                             if (count($valuesParts) > 0) {
+                                 $sql = 'REPLACE INTO lh_gallery_pallete_images VALUES '.implode(',',$valuesParts).';'; 
+                                 $stmt = $db->prepare($sql);
+                                 $stmt->execute();
+                             }                             
                          }
                      } catch (Exception $e){ 
                          
