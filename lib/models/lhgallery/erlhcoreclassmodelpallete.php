@@ -87,6 +87,19 @@ class erLhcoreClassModelGalleryPallete {
    
    public static function getListCountPalleteImages($params = array())
    {
+       if (!isset($params['disable_sql_cache']))
+       {
+          $sql = erLhcoreClassGallery::multi_implode(',',$params);  
+                       
+          $cache = CSCacheAPC::getMem();          
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('images_pallete_count_site_version_'.$cache->getCacheVersion('site_version').$sql);
+          
+          if (($result = $cache->restore($cacheKey)) !== false)
+          {              
+              return $result;
+          }       
+       }
+       
        $session = erLhcoreClassGallery::getSession();
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_gallery_pallete_images" );     
@@ -136,6 +149,10 @@ class erLhcoreClassModelGalleryPallete {
       $stmt->execute();
       $result = $stmt->fetchColumn(); 
         
+      if (!isset($params['disable_sql_cache'])) {
+              $cache->store($cacheKey,$result);           
+      }
+      
       return $result; 
    }
    
