@@ -480,7 +480,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `red` int(11) NOT NULL DEFAULT '0',
                   `green` int(11) NOT NULL DEFAULT '0',
                   `blue` int(11) NOT NULL DEFAULT '0',
-                  `position` int(11) NOT NULL,
+                  `position` int(11) NOT NULL DEFAULT '0',
                   PRIMARY KEY (`id`),
                   KEY `position` (`position`)
                 ) ENGINE=MyISAM AUTO_INCREMENT=121;");
