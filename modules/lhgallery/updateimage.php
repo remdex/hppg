@@ -28,7 +28,9 @@ if ($previousApproved != $ImageData->approved){
         erLhcoreClassPalleteIndexImage::removeFromIndex($ImageData->pid);
     }
     
-    $this->increaseCacheVersion('color_images');
+//    erLhcoreClassModelGallerySphinxSearch::indexImage($ImageData);
+    
+    CSCacheAPC::getMem()->increaseCacheVersion('color_images');
         
     CSCacheAPC::getMem()->increaseImageManipulationCache();
     
