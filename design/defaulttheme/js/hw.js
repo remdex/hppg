@@ -230,7 +230,20 @@ var hw = {
               $(name+' .choose-sort span').addClass($(name+' .sort-box .selor').hasClass('ar') ? 'ar-ind' : 'da-ind');
           }
         });
-	}		
+	},
+
+	initPalleteFilter : function(current_colors)
+	{	 
+	   var baseURL = this.formAddPath;
+	   $("#color-filter-nav .current-sort").mouseenter(function() {	
+	        if (!$('#pall-comb').is('*')) {
+                $.getJSON(baseURL + 'gallery/getpallete/(color)'+current_colors, {} , function(data) {				
+        			$('#pallete-content').html(data.result);         	
+        		});      
+	        }          
+       })	   
+	}
+
 }
 
 var sessionHash;

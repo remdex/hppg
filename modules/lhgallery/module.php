@@ -25,6 +25,13 @@ $ViewList['catjson'] = array(
 $ViewList['albumrss'] = array( 
     'script' => 'albumrss.php',
     'params' => array('album_id')
+    );  
+      
+$ViewList['getpallete'] = array( 
+    'script' => 'getpallete.php',
+    'params' => array(),
+    'multiple_arguments' => array ( 'color' ),
+    'uparams' => array('color')
     );
         
 $ViewList['category'] = array( 
@@ -57,6 +64,7 @@ $ViewList['lastsearches'] = array(
 $ViewList['image'] = array( 
     'script' => 'image.php',
     'params' => array('image_id'),
+    'multiple_arguments' => array ( 'color' ),
     'uparams' => array('mode','keyword','sort','resolution','color'),
     ); 
        
@@ -99,7 +107,11 @@ $ViewList['lastuploads'] = array(
             
 $ViewList['color'] = array( 
     'script' => 'color.php',
-    'params' => array('pallete_id')
+    'params' => array(),
+    'multiple_arguments' => array (
+        'color'
+    ),
+    'uparams' => array('color')
 ); 
     
 $ViewList['lastuploadsrss'] = array( 
@@ -141,6 +153,9 @@ $ViewList['addvote'] = array(
 $ViewList['ajaximages'] = array( 
     'script' => 'ajaximages.php',    
     'params' => array('image_id'),
+    'multiple_arguments' => array (
+        'color'
+    ),
     'uparams' => array('mode','keyword','sort','direction','resolution','color'),
     );   
       

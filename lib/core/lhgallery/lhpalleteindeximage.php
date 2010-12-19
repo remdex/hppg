@@ -4,7 +4,7 @@ class erLhcoreClassPalleteIndexImage {
            
     public static function indexUnindexedImages()
     {        
-        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'seach_by_color_enabled' ) == false) return ;
+        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) == false) return ;
                        
         $db = ezcDbInstance::get(); 
         $stmt = $db->prepare("SELECT MAX(pid) as last_index_image FROM lh_gallery_pallete_images");
@@ -25,9 +25,13 @@ class erLhcoreClassPalleteIndexImage {
          
         // Do not index not approved images, or in live mode if delay image update is enabled
         if ($image->approved == 0 || 
-            erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'seach_by_color_enabled' ) == false || 
-            ($checkDelayIndex == true && erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_color_index' ) == true) ) return ;
-                
+            erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) == false || 
+            ($checkDelayIndex == true && erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'delay_index' ) == true) ) return ;
+          
+        /**
+         * Minimum number of times pallete color must be matched to get record.
+         * */ 
+        $matchTreshold = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'minimum_color_match' );  
             
         $photoPath = 'albums/'.$image->filepath.'thumb_'.$image->filename;
                
@@ -105,12 +109,14 @@ class erLhcoreClassPalleteIndexImage {
                                     }
                                 }
                              }
-                                                          
+                                                                       
                              $valuesParts = array();
                              foreach ($data_array as $pallete => $count)
                              {
+                                 if ($count > $matchTreshold)
                                  $valuesParts[] = "({$image->pid},{$pallete},$count)";
                              }
+                             
                              
                              if (count($valuesParts) > 0) {
                                  $sql = 'REPLACE INTO lh_gallery_pallete_images VALUES '.implode(',',$valuesParts).';'; 

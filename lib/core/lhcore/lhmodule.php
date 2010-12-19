@@ -25,9 +25,9 @@ class erLhcoreClassModule{
                                                              
             foreach (self::$currentModule[self::$currentView]['uparams'] as $userParameter)
             {           
-               $urlCfgDefault->addUnorderedParameter( $userParameter ); 
+               $urlCfgDefault->addUnorderedParameter( $userParameter,isset(self::$currentModule[self::$currentView]['multiple_arguments']) && in_array($userParameter,self::$currentModule[self::$currentView]['multiple_arguments']) ? ezcUrlConfiguration::MULTIPLE_ARGUMENTS : null ); 
             }
-            
+                       
             $url->applyConfiguration( $urlCfgDefault );
                                  
             foreach (array_merge(self::$currentModule[self::$currentView]['uparams'],self::$currentModule[self::$currentView]['params']) as $userParameter)

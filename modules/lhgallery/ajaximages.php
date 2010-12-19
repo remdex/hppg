@@ -1204,33 +1204,17 @@ if ($mode == 'album')
 } elseif ($mode == 'color') {
 
     $cache = CSCacheAPC::getMem();         
-    $cacheKeyImage = 'color_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('color_images').'_direction_'.$direction.'_filter_color_'.(int)$Params['user_parameters_unordered']['color'];
+    $cacheKeyImage = 'color_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('color_images').'_direction_'.$direction.'_filter_color_'.erLhcoreClassGallery::multi_implode(',',$Params['user_parameters_unordered']['color']);
     
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
-    {      	
-    	$session = erLhcoreClassGallery::getSession();
-    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
-    	
-    	$q2 = $q->subSelect();
-        $q2->select( 'pid' )->from( 'lh_gallery_pallete_images' );
-        
-        $colorMatchedTimes = erLhcoreClassModelGalleryPallete::getPictureCountByPalleteId($Image->pid,(int)$Params['user_parameters_unordered']['color']);
-    	          	
-    	if ($direction == 'left'){
-    	    $q2->where(  $q2->expr->eq( 'pallete_id', (int)$Params['user_parameters_unordered']['color'] ).' AND ('.$q2->expr->gt( 'count', $q2->bindValue( $colorMatchedTimes ) ). ' OR '.$q2->expr->eq( 'count', $q2->bindValue( $colorMatchedTimes ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
-                ->orderBy('count ASC, pid ASC')
-                ->limit( 6 );
-                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
-                $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-                $imagesAjax = array_reverse($imagesAjax);
-    	} else {
-    	     $q2->where(  $q2->expr->eq( 'pallete_id', (int)$Params['user_parameters_unordered']['color'] ).' AND ('.$q2->expr->lt( 'count', $q2->bindValue( $colorMatchedTimes ) ). ' OR '.$q2->expr->eq( 'count', $q2->bindValue( $colorMatchedTimes ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
-                ->orderBy('count DESC, pid DESC')
-                ->limit( 6 );
-                $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
-                $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-    	};	
-    	
+    {      
+        // Protection against to mutch color filters
+        if (count($Params['user_parameters_unordered']['color']) > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
+            $Params['user_parameters_unordered']['color'] = array_slice($Params['user_parameters_unordered']['color'],0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
+        }
+        	
+        $imagesAjax = erLhcoreClassModelGalleryPallete::getAjaxImages($Image->pid,(array)$Params['user_parameters_unordered']['color'],$direction);
+    	    	
     	$cache->store($cacheKeyImage,$imagesAjax,0);
     }
     
@@ -1257,7 +1241,7 @@ if ($mode == 'album')
            
     $tpl->set('imagesAjax',$imagesAjax);
      
-	$urlAppend = '/(mode)/color/(color)/'.(int)$Params['user_parameters_unordered']['color'];
+	$urlAppend = '/(mode)/color/(color)/'.implode('/',$Params['user_parameters_unordered']['color']);
           
 	$tpl->set('urlAppend',$urlAppend);
 	

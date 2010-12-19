@@ -32,15 +32,16 @@
 <?endif;?>
 </div>
 
-<div class="dominant-colors">
+<?php 
 
+/* This functionality is ineficient and need some optimization, will be enabled then I optimise this.
+<div class="dominant-colors">
 <?php foreach (erLhcoreClassModelGalleryPallete::getPictureDominantColors($image->pid,10) as $pallete) : ?>
 <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>)">
-<a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/<?=$pallete->id?>"></a>
+<a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=$pallete->id?>"></a>
 </div>
 <?php endforeach;?>
-
 </div>
-
+*/ ?>
 
 </div>

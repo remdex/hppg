@@ -24,7 +24,7 @@
 		</ul>									
 </div>
 
-<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true || erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'seach_by_color_enabled' ) === true) : ?>
+<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) === true) : ?>
 <div class="left-infobox">
 		<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search')?></h3>
 		<ul>
@@ -32,7 +32,7 @@
 		    <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by keyword');?></a>  
 		    <?php endif;?>
 		    
-		    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'seach_by_color_enabled' ) === true) : ?>               
+		    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) === true) : ?>               
             <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by color');?></a> 
             <?php endif;?>
 		</ul>

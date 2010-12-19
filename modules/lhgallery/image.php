@@ -230,9 +230,8 @@ if ($mode == 'album') {
      
     $appendCacheKey = 'toprated_mode_image_ajax_pid_version_'.$cache->getCacheVersion('top_rated');
     
-} elseif ($mode == 'color') {
-     
-    $appendCacheKey = 'color_mode_image_ajax_pid_version_'.$cache->getCacheVersion('color_images').'_'.(int)$Params['user_parameters_unordered']['color'];
+} elseif ($mode == 'color') {     
+    $appendCacheKey = 'color_mode_image_ajax_pid_version_'.$cache->getCacheVersion('color_images').'_'.erLhcoreClassGallery::multi_implode(',',$Params['user_parameters_unordered']['color']);
 }
 
 // Will be refactored in the future.
@@ -1724,51 +1723,23 @@ if ($mode == 'album')
     $tpl->setArray($imagesParams);         
       	
 } elseif ($mode == 'color') {
-          
-    $colorMatchedTimes = erLhcoreClassModelGalleryPallete::getPictureCountByPalleteId($Image->pid,(int)$Params['user_parameters_unordered']['color']);
-   
-    $db = ezcDbInstance::get(); 
-    $session = erLhcoreClassGallery::getSession(); 
         
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-    $q2 = $q->subSelect();
-    $q2->select( 'pid' )->from( 'lh_gallery_pallete_images' );
-               
-    $q2->where( $q2->expr->eq( 'pallete_id', (int)$Params['user_parameters_unordered']['color'] ).' AND ('.$q2->expr->gt( 'count', $q2->bindValue( $colorMatchedTimes ) ). ' OR '.$q2->expr->eq( 'count', $q2->bindValue( $colorMatchedTimes ) ).' AND '.$q2->expr->gt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
-    ->orderBy('count ASC, pid ASC')
-    ->limit( 5 );
+    // Protection against to mutch color filters
+    if (count($Params['user_parameters_unordered']['color']) > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
+        $Params['user_parameters_unordered']['color'] = array_slice($Params['user_parameters_unordered']['color'],0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
+    }
+
+    $dataParams = erLhcoreClassModelGalleryPallete::getPreviewData($Image->pid,(array)$Params['user_parameters_unordered']['color']);
+    $page = $dataParams['page'];
+    $imagesLeft = $dataParams['imagesLeft'];
+    $imagesRight = $dataParams['imagesRight'];
     
-    $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
-    
-    $imagesLeft = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-          
-    $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
-    $q2 = $q->subSelect();
-    $q2->select( 'pid' )->from( 'lh_gallery_pallete_images' );    
-      
-    $q2->where( $q2->expr->eq( 'pallete_id', (int)$Params['user_parameters_unordered']['color'] ).' AND('.$q2->expr->lt( 'count', $q2->bindValue( $colorMatchedTimes ) ). ' OR '.$q2->expr->eq( 'count', $q2->bindValue( $colorMatchedTimes ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $Image->pid ) ).')' )
-    ->orderBy('count DESC, pid DESC')
-    ->limit( 5 );
-    
-    $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
-    $imagesRight = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-                        
-    $stmt = $db->prepare('SELECT count(pid) FROM lh_gallery_pallete_images WHERE (count > :count OR count = :count AND pid > :pid) AND pallete_id = :pallete_id LIMIT 1');
-    $stmt->bindValue( ':count',$colorMatchedTimes);
-    $stmt->bindValue( ':pallete_id',(int)$Params['user_parameters_unordered']['color']);
-    $stmt->bindValue( ':pid',$Image->pid);
-         
-    $stmt->execute();          
-    $photos = $stmt->fetchColumn();
-        
-    $page = ceil(($photos+1)/20);
-         
     $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
-    $urlAppend = '/(mode)/color/(color)/'.(int)$Params['user_parameters_unordered']['color'];             
+    $urlAppend = '/(mode)/color/(color)/'.implode('/',$Params['user_parameters_unordered']['color']);             
                   
     $tpl->set('urlAppend',$urlAppend);       
-    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/color').'/'.(int)$Params['user_parameters_unordered']['color'].$pageAppend);   
+    $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/color').'/(color)/'.implode('/',$Params['user_parameters_unordered']['color']).$pageAppend);   
     $tpl->setArray($imagesParams);
     
     
@@ -1780,8 +1751,7 @@ if ($mode == 'album')
     $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
     $q2 = $q->subSelect();
     $q2->select( 'pid' )->from( 'lh_gallery_images' );
-    
-    
+        
     $filterSQLArray = array();
     $countSQLArray = array();
     $countSQL = '';

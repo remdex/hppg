@@ -22,7 +22,12 @@ $def->properties['green']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_
 $def->properties['blue'] = new ezcPersistentObjectProperty();
 $def->properties['blue']->columnName   = 'blue';
 $def->properties['blue']->propertyName = 'blue';
-$def->properties['blue']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;  
+$def->properties['blue']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+ 
+$def->properties['position'] = new ezcPersistentObjectProperty();
+$def->properties['position']->columnName   = 'position';
+$def->properties['position']->propertyName = 'position';
+$def->properties['position']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;  
 
 return $def; 
 
