@@ -242,7 +242,7 @@ return array (
     'color_search' => array (
         'search_enabled' => true,
         'delay_index' => false,
-        'memory_table' => true,
+        'memory_table' => false,
         'minimum_color_match' => 25,
         'maximum_filters' => 8
     ),
