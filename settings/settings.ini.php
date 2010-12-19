@@ -42,9 +42,7 @@ return array (
                              '1920x1200' => array('width' => 1920,'height' => 1200),
                              '1920x1080' => array('width' => 1920,'height' => 1080),
       ),
-      'public_category_id' => 28,
-      'seach_by_color_enabled' => true,
-      'delay_color_index' => false,      
+      'public_category_id' => 28,            
       'delay_image_hit_enabled' => false,
       'delay_image_hit_log' => false,
       'delay_image_hit_log_settings' => array (      
@@ -240,6 +238,13 @@ return array (
     		0 => '',
     		1 => '' 		
     	)
+    ),
+    'color_search' => array (
+        'search_enabled' => true,
+        'delay_index' => false,
+        'memory_table' => true,
+        'minimum_color_match' => 25,
+        'maximum_filters' => 8
     ),
     'sphinx' => 
     array (
