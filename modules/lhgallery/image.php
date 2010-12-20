@@ -322,10 +322,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Sutch username is already taken!');
     }
     
-    if ( !$form->hasValidData( 'CommentBody' ) || $form->CommentBody == '' || mb_strlen($form->CommentBody) > 500 || erLhcoreClassModelGalleryComment::isSpam($form->CommentBody))
+    if ( !$form->hasValidData( 'CommentBody' ) || trim($form->CommentBody) == '' || mb_strlen(trim($form->CommentBody)) > 500 || erLhcoreClassModelGalleryComment::isSpam(trim($form->CommentBody)))
     {
         $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Please enter comment!');
-    } else $CommentData->msg_body = $form->CommentBody;
+    } else $CommentData->msg_body = trim($form->CommentBody);
     
     
     if (count($Errors) == 0)
