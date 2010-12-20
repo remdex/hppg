@@ -103,6 +103,7 @@ class erLhcoreClassModelGalleryImage {
        erLhcoreClassModelGalleryRated24::deleteByPid($this->pid);
        erLhcoreClassModelGalleryDuplicateImageHash::deleteByPid($this->pid);
        erLhcoreClassPalleteIndexImage::removeFromIndex($this->pid);
+       erLhcoreClassModelGallerySphinxSearch::removeImage($this->pid);
        
        erLhcoreClassGallery::getSession()->delete($this);
        

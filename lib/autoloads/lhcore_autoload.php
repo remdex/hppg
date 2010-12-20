@@ -53,6 +53,7 @@ return array_merge(array (
         'erLhcoreClassSWFConverter' 	            => 'lib/core/lhgallery/lhswfconverter.php',
         'erLhcoreClassFLVConverter' 	            => 'lib/core/lhgallery/lhflvconverter.php',
         'erLhcoreClassGalleryArchive' 	            => 'lib/core/lhgallery/lharchive.php',
+        'erLhcoreClassModelGallerySphinxSearch'     => 'lib/models/lhgallery/erlhcoreclassmodelsphinxsearch.php',
         'erLhcoreClassModelGalleryLastSearch'       => 'lib/models/lhgallery/erlhcoreclassmodellastsearch.php',
         'erLhcoreClassModelGallerySearchHistory'    => 'lib/models/lhgallery/erlhcoreclassmodelsearchhistory.php',
         'erLhcoreClassImageConverter'               => 'lib/core/lhgallery/lhimageconverter.php',        

@@ -1,6 +1,6 @@
 <?php
 
-ini_set("max_execution_time", "0");
+ini_set("max_execution_time", "9600");
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 
@@ -121,6 +121,6 @@ $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );
 
 foreach ($objects as $object)
 {
-    echo "Indexing image -> ",$object->pid,"\n";
-    erLhcoreClassPalleteIndexImage::indexImage($object);
+    echo "Updating image pallete stats -> ",$object->pid,"\n";
+    erLhcoreClassPalleteIndexImage::storePalleteStats($object->pid);
 }

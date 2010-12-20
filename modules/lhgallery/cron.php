@@ -5,7 +5,12 @@ erLhcoreClassModelGalleryDelayImageHit::updateMainCounter();
 erLhcoreClassModelGalleryPopular24::deleteExpired();
 erLhcoreClassModelGalleryRated24::deleteExpired();
 
+// Index to color attributes
 erLhcoreClassPalleteIndexImage::indexUnindexedImages();
+
+// Index to sphinx search
+erLhcoreClassModelGallerySphinxSearch::indexUnindexedImages();
+
 
 $session = erLhcoreClassGallery::getSession();
 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryUploadArchive' );  

@@ -73,6 +73,9 @@ if (count($objects) == 1)
 	       // Index colors
 	       erLhcoreClassPalleteIndexImage::indexImage($image,true);
            
+	       // Index in search table
+	       erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
+	       
 	       // Expires last uploads shard index
 	       erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
 	              

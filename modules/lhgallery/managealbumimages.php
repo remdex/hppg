@@ -4,13 +4,15 @@
 if (isset($_POST['moveSelectedPhotos']) && isset($_POST['PhotoID']) && count($_POST['PhotoID']) > 0 && is_numeric($_POST['AlbumDestinationDirectory0'])){
     foreach ($_POST['PhotoID'] as $photoID) {        
         $image = erLhcoreClassModelGalleryImage::fetch($photoID);
-        
+
         $album = erLhcoreClassModelGalleryAlbum::fetch($image->aid);
         $album->clearAlbumCache();
-        
+
         $image->aid = $_POST['AlbumDestinationDirectory0'];
         erLhcoreClassGallery::getSession()->update($image); 
         $image->clearCache();
+
+        erLhcoreClassModelGallerySphinxSearch::indexImage($image);
     }
 }
 

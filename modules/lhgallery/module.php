@@ -31,7 +31,7 @@ $ViewList['getpallete'] = array(
     'script' => 'getpallete.php',
     'params' => array(),
     'multiple_arguments' => array ( 'color' ),
-    'uparams' => array('color')
+    'uparams' => array('color','keyword','mode')
     );
         
 $ViewList['category'] = array( 
@@ -184,7 +184,8 @@ $ViewList['lastratedrss'] = array(
 $ViewList['search'] = array( 
     'script' => 'search.php',
     'params' => array(),
-    'uparams' => array('keyword','sort','resolution'),
+    'multiple_arguments' => array ( 'color' ),
+    'uparams' => array('keyword','sort','resolution','color'),
     );
     
 $ViewList['searchrss'] = array( 

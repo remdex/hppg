@@ -44,7 +44,11 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            $image->clearCache();
            
            // Index colors
-	       erLhcoreClassPalleteIndexImage::indexImage($image,true);       
+	       erLhcoreClassPalleteIndexImage::indexImage($image,true);  
+	       
+	       // Index in search table
+	       erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
+	            
        }
        
     } catch (Exception $e) {

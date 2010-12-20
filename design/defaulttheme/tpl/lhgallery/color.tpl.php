@@ -2,7 +2,6 @@
 
 <?php if (isset($palletes)) : ?> 
 
-
 <div class="right order-nav" id="color-filter-nav">
 <ul>
     <li class="current-sort" ><a class="choose-sort"><span class="da-ind"><?php if ($max_filters == false) : ?><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Append color filter');?><?php else : ?><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Maximum');?> <?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','filters');?><?endif;?></span></a>
@@ -15,7 +14,7 @@
 <?php if ($max_filters == false) : ?>
 <script>
 hw.initSortBox('#color-filter-nav');
-hw.initPalleteFilter('/<?=implode('/',$pallete_id)?>');
+hw.initPalleteFilter('/<?=implode('/',$pallete_id)?>','color','');
 </script>
 <?php endif;?>
 
@@ -24,10 +23,16 @@ foreach ($pallete_id as $pallete) :
 $arrayItems = $pallete_id;
 unset($arrayItems[array_search($pallete,$arrayItems)]);
 $palleteCurrent = $palletes[$pallete];
+
+$moreColors = $arrayItems;
+$moreColors[] = $pallete;
+$moreColors[] = $pallete;
+sort($moreColors);
+
 ?>
     <div class="csc" style="background-color:rgb(<?=$palleteCurrent->red?>,<?=$palleteCurrent->green?>,<?=$palleteCurrent->blue?>)">
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Remove color')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode($arrayItems,'/')?>"></a>
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','More color');?>" class="more-color" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode($arrayItems,'/')?>/<?=$pallete.'/'.$pallete?>"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Remove color')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?><? if (count($arrayItems) > 0){ ?>/(color)/<?=implode($arrayItems,'/');};?>"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','More color');?>" class="more-color" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode($moreColors,'/');?>"></a>
     </div>
 <?php endforeach;?>
 

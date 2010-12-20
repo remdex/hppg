@@ -27,8 +27,18 @@ class erLhcoreClassModelGalleryDelayImageHit {
        $stmt->execute();
    }
    
+   /**
+    * Algorithm explanation
+    * 
+    * 1. Creates temporary table for storing updated hits information
+    * 2. Updates popular images in 24 hours
+    * 3. Insert records for update main image table
+    * 4. Updates main table hits and mtime attributes
+    * 5. Updates sphinx table information
+    * 
+    * */
    public static function updateMainCounter()
-   {
+   {       
    		$db = ezcDbInstance::get();   		
 	    $stmt = $db->prepare('CREATE TEMPORARY TABLE tmp_counter (
 		    pid INT(10) UNSIGNED NOT NULL,
@@ -65,6 +75,7 @@ class erLhcoreClassModelGalleryDelayImageHit {
 		DELETE FROM lh_delay_image_hit;
 				
 		UNLOCK TABLE;
+		
 		UPDATE LOW_PRIORITY
 		    lh_gallery_images AS c
 		INNER JOIN
@@ -77,7 +88,21 @@ class erLhcoreClassModelGalleryDelayImageHit {
 		        c.hits + tc.total
 		    ),
 		    c.mtime = tc.mtime
-		;');
+		;
+		
+		UPDATE LOW_PRIORITY
+		    lh_gallery_sphinx_search AS c
+		INNER JOIN
+		    tmp_counter AS tc
+		ON(
+		    c.id = tc.pid
+		)
+		SET
+		    c.hits = (
+		        c.hits + tc.total
+		    ),
+		    c.mtime = tc.mtime
+		    ;');
 	    $stmt->execute();
    }
    

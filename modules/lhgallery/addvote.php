@@ -25,7 +25,10 @@ if (isset($_POST['photo']) && isset($_POST['score']) )
     
     //We expire only custom subshards based on sort mode
     erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$image->aid),array('pic_rating DESC, votes DESC, pid DESC','pic_rating ASC, votes ASC, pid ASC','rtime DESC, pid DESC','rtime ASC, pid ASC'));
-    
+        
+    // Update rating attributes
+    erLhcoreClassModelGallerySphinxSearch::indexAttributes($image,array('pic_rating' => 'pic_rating','votes' => 'votes','rtime' => 'rtime'));
+        
     // Clear rated recetly images cache
     CSCacheAPC::getMem()->increaseCacheVersion('ratedrecent_version');
     

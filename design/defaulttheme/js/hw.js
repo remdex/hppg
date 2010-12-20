@@ -232,12 +232,12 @@ var hw = {
         });
 	},
 
-	initPalleteFilter : function(current_colors)
+	initPalleteFilter : function(current_colors,mode,keyword)
 	{	 
 	   var baseURL = this.formAddPath;
 	   $("#color-filter-nav .current-sort").mouseenter(function() {	
 	        if (!$('#pall-comb').is('*')) {
-                $.getJSON(baseURL + 'gallery/getpallete/(color)'+current_colors, {} , function(data) {				
+                $.getJSON(baseURL + 'gallery/getpallete/(color)'+current_colors + '/(mode)/'+mode+ '/(keyword)/' + keyword, {} , function(data) {				
         			$('#pallete-content').html(data.result);         	
         		});      
 	        }          

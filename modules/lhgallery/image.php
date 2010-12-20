@@ -134,57 +134,74 @@ if ($mode == 'album') {
     // Because sphinx view already includes this filter
     unset($filterArray['approved']);
        
+    $filterColor = array();
+    // Color filter in search mode
+    $appendColorMode = '';
+    $pallete_id = (array)$Params['user_parameters_unordered']['color'];
+    sort($pallete_id);
+    
+    $pallete_items_number = count($pallete_id);
+    if ($pallete_items_number > 0) {  
+        if ($pallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
+            $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
+            $pallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+        }
+        $filterColor = $pallete_id;
+        $appendColorMode = '/(color)/'.implode('/',$pallete_id);
+    }
+
+       
     $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
     $modeSQL = $sortModes[$modeSort];
     $keywordDecoded = trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
        
     switch ($modeSort) {
     	case 'new':
-    		$appendCacheKey = 'album_searc_image_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'newasc':
-    		$appendCacheKey = 'album_searc_image_newasc_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_newasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'popular':
-    		$appendCacheKey = 'album_searc_image_popular_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_popular_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'popularasc':
-    		$appendCacheKey = 'album_searc_image_popularasc_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_popularasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'lasthits':
-    		$appendCacheKey = 'album_searc_image_lasthits_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_lasthits_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'lasthitsasc':
-    		$appendCacheKey = 'album_searc_image_lasthitsasc_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_lasthitsasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'lastcommented':
-    		$appendCacheKey = 'album_searc_image_lastcommented_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_lastcommented_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'lastcommentedasc':
-    		$appendCacheKey = 'album_searc_image_lastcommentedasc_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_lastcommentedasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'toprated':
-    		$appendCacheKey = 'album_searc_image_toprated_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_toprated_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'topratedasc':
-    		$appendCacheKey = 'album_searc_image_topratedasc_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_topratedasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'lastrated':
-    		$appendCacheKey = 'album_searc_image_lastrated_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_lastrated_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
     	
     	case 'lastratedasc':
-    		$appendCacheKey = 'album_searc_image_lastratedasc_'.$keywordDecoded;
+    		$appendCacheKey = 'album_searc_image_lastratedasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
     	break;
         	    	
     	default:
@@ -230,7 +247,8 @@ if ($mode == 'album') {
      
     $appendCacheKey = 'toprated_mode_image_ajax_pid_version_'.$cache->getCacheVersion('top_rated');
     
-} elseif ($mode == 'color') {     
+} elseif ($mode == 'color') {  
+    sort($Params['user_parameters_unordered']['color']);   
     $appendCacheKey = 'color_mode_image_ajax_pid_version_'.$cache->getCacheVersion('color_images').'_'.erLhcoreClassGallery::multi_implode(',',$Params['user_parameters_unordered']['color']);
 }
 
@@ -336,8 +354,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         
         erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_commented'));
         
-        erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$image->aid),array('comtime DESC, pid DESC','comtime ASC, pid ASC'));
-        
+        erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$Image->aid),array('comtime DESC, pid DESC','comtime ASC, pid ASC'));
+                
+        // Update two attributes
+    	erLhcoreClassModelGallerySphinxSearch::indexAttributes($Image,array('comtime' => 'comtime'));
+            	
         $tpl->set('commentStored',true);
              
     }  else {
@@ -1043,8 +1064,8 @@ if ($mode == 'album')
     if ($modeSort == 'new') { 
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@id ASC','Filter' => $filterArray, 'filtergt' => array('pid' => $Image->pid)),
-            array('SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1))
+            array('SearchLimit' => 5,'color_filter' => $filterColor, 'keyword' => $keywordDecoded,'sort' => '@id ASC','Filter' => $filterArray, 'filtergt' => array('pid' => $Image->pid)),
+            array('SearchLimit' => 5,'color_filter' => $filterColor,'keyword' => $keywordDecoded,'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1))
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1065,14 +1086,14 @@ if ($mode == 'album')
     } elseif ($modeSort == 'relevance') {  
            
         // this query cannot be used in AddQuery, because it's result is used  
-        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('relevance' => true, 'SearchLimit' => 1,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)),false);
+        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('relevance' => true,'color_filter' => $filterColor, 'SearchLimit' => 1,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)),false);
                   
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti(
             array (
-                array('filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'),
-                array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'),
-                array('filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'),
-                array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC')
+                array('color_filter' => $filterColor,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'),
+                array('color_filter' => $filterColor,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'),
+                array('color_filter' => $filterColor,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'),
+                array('color_filter' => $filterColor,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC')
             ),false
         );
         
@@ -1122,14 +1143,14 @@ if ($mode == 'album')
                   
     } elseif ($modeSort == 'relevanceasc') {  
              
-        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('relevance' => true, 'SearchLimit' => 1,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)),false);
+        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('color_filter' => $filterColor,'relevance' => true, 'SearchLimit' => 1,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)),false);
                   
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti(
             array (
-                array('filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'),
-                array('filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'),
-                array('filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'),
-                array('filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC')
+                array('color_filter' => $filterColor,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'),
+                array('color_filter' => $filterColor,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'),
+                array('color_filter' => $filterColor,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'),
+                array('color_filter' => $filterColor,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC')
             ),false
         );
         
@@ -1182,8 +1203,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'newasc') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)),
-            array('SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid))
+            array('color_filter' => $filterColor,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)),
+            array('color_filter' => $filterColor,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid))
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1205,8 +1226,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'popular') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'hits ASC, @id ASC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'hits DESC, @id DESC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'hits ASC, @id ASC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'hits DESC, @id DESC')
         ),false);
                 
         $totalPhotos = $resultSearch[0];
@@ -1227,8 +1248,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'popularasc') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'hits DESC, @id DESC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'hits ASC, @id ASC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'hits DESC, @id DESC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'hits ASC, @id ASC')
         ),false);
                 
         $totalPhotos = $resultSearch[0];
@@ -1248,8 +1269,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lasthits') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'mtime ASC, @id ASC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'mtime DESC, @id DESC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'mtime ASC, @id ASC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'mtime DESC, @id DESC')
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1269,8 +1290,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lasthitsasc') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'mtime DESC, @id DESC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'mtime ASC, @id ASC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'mtime DESC, @id DESC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'mtime ASC, @id ASC')
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1290,8 +1311,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastcommented') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'comtime ASC, @id ASC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'comtime DESC, @id DESC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'comtime ASC, @id ASC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'comtime DESC, @id DESC')
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1310,8 +1331,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastcommentedasc') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'comtime DESC, @id DESC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'comtime ASC, @id ASC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'comtime DESC, @id DESC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'comtime ASC, @id ASC')
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1331,8 +1352,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastrated') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (rtime > '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'rtime ASC, @id ASC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (rtime < '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'rtime DESC, @id DESC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (rtime > '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'rtime ASC, @id ASC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (rtime < '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'rtime DESC, @id DESC')
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1351,8 +1372,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastratedasc') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (rtime < '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'rtime DESC, @id DESC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (rtime > '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'rtime ASC, @id ASC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (rtime < '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND pid < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'rtime DESC, @id DESC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (rtime > '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND pid > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'rtime ASC, @id ASC')
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1372,8 +1393,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'toprated') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'pic_rating ASC, votes ASC, @id ASC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'pic_rating DESC, votes DESC, @id DESC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'pic_rating ASC, votes ASC, @id ASC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'pic_rating DESC, votes DESC, @id DESC')
         ),false);
                 
         $totalPhotos = $resultSearch[0];
@@ -1393,8 +1414,8 @@ if ($mode == 'album')
     } elseif ($modeSort == 'topratedasc') {
         
         $resultSearch = erLhcoreClassGallery::searchSphinxMulti( array (
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'pic_rating DESC, votes DESC, @id DESC'),
-            array('custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'pic_rating ASC, votes ASC, @id ASC')
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'pic_rating DESC, votes DESC, @id DESC'),
+            array('color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => '*, (pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND pid > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 5,'keyword' => $keywordDecoded,'sort' => 'pic_rating ASC, votes ASC, @id ASC')
         ),false);
         
         $totalPhotos = $resultSearch[0];
@@ -1411,11 +1432,13 @@ if ($mode == 'album')
         else 
             $imagesRight = array();             
     }
-       
+    
+    
+    
     $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    
     $urlAppend = $modeSort != 'relevance' ? '/(mode)/search/(keyword)/'.urlencode($keywordDecoded).'/(sort)/'.$modeSort : '/(mode)/search/(keyword)/'.urlencode($keywordDecoded);             
-    $urlAppend .= $appendResolutionMode;
+    $urlAppend .= $appendColorMode.$appendResolutionMode;
     
     $tpl->set('urlAppend',$urlAppend);       
     $tpl->set('urlReturnToThumbnails',erLhcoreClassDesign::baseurl('gallery/search').$urlAppend.$pageAppend);   
@@ -1728,7 +1751,7 @@ if ($mode == 'album')
     if (count($Params['user_parameters_unordered']['color']) > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
         $Params['user_parameters_unordered']['color'] = array_slice($Params['user_parameters_unordered']['color'],0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
     }
-
+    
     $dataParams = erLhcoreClassModelGalleryPallete::getPreviewData($Image->pid,(array)$Params['user_parameters_unordered']['color']);
     $page = $dataParams['page'];
     $imagesLeft = $dataParams['imagesLeft'];
@@ -1968,6 +1991,10 @@ if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image
 } elseif (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_log' ) == false) {
 	$Image->hits++;
 	$Image->mtime = time();
+	
+	// Update two attributes
+    erLhcoreClassModelGallerySphinxSearch::indexAttributes($Image,array('hits' => 'hits','mtime' => 'mtime'));
+	
 	erLhcoreClassGallery::getSession()->update($Image);
 	$needSave = false;
 }
@@ -2041,7 +2068,7 @@ if ($storeCache === true) {
 } elseif (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true) { // Delay image hit enabled
 	erLhcoreClassModelGalleryDelayImageHit::addHit((int)$Params['user_parameters']['image_id']);
 } elseif (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_log' ) == false) { // No access log hit enabled, so we must each time update picture stats
-    
+       
     if (!($Image instanceof erLhcoreClassModelGalleryImage)) {
         
         try {
@@ -2052,6 +2079,10 @@ if ($storeCache === true) {
         }
         $Image->hits++;
     	$Image->mtime = time();
+    	
+    	// Update two attributes
+    	erLhcoreClassModelGallerySphinxSearch::indexAttributes($Image,array('hits' => 'hits','mtime' => 'mtime'));
+    	
     	erLhcoreClassGallery::getSession()->update($Image);
     }	
 }

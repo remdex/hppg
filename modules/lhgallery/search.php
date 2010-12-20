@@ -16,13 +16,11 @@ if ( $form->hasValidData( 'SearchText' ) && trim($form->SearchText) != '')
     $userParams .= '/(keyword)/'.urlencode(trim($form->SearchText));
 } elseif ($Params['user_parameters_unordered']['keyword'] != '') {
 
-   // We have to reencode because ngnix or php-fpm somwehre wrongly parses it. 
+   // We have to reencode because ngnix or php-fpm somewhere wrongly parses it. 
    $keywordDecoded =  trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
    $userParams .= '/(keyword)/'.urlencode($keywordDecoded);
    $searchParams['keyword'] = $keywordDecoded;
 }
-
-
 
 /* SORTING */
 $sortModes = array(    
@@ -53,14 +51,29 @@ if ($resolution != ''){
     $searchParams['Filter']['pheight'] = $resolutions[$resolution]['height'];
 }
 
+// Search also includes desirable color
+$appendColorMode = '';
+$pallete_id = (array)$Params['user_parameters_unordered']['color'];
+$pallete_items_number = count($pallete_id);
+if ($pallete_items_number > 0) {  
+    if ($pallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
+        $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
+        $pallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+    }
+    sort($pallete_id);
+    $appendColorMode = '/(color)/'.implode('/',$pallete_id);
+    $searchParams['color_filter'] = $pallete_id;
+}
+
+
 $modeSQL = $sortModes[$mode];         
 $appendImageModeSorting = $mode != 'relevance' ? '/(sort)/'.$mode : '';    
 $searchParams['sort'] = $modeSQL;
 $userParams .= $appendImageModeSorting;
-$userParamsWithoutResolution = $userParams;
-$userParams .= $appendResolutionMode;
+$userParamsWithoutResolution = $userParams.$appendColorMode;
+$userParams .= $appendColorMode.$appendResolutionMode;
 
-$appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendResolutionMode;
+$appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendColorMode.$appendResolutionMode;
 /* SORTING */
 
 $searchParams['SearchLimit'] = 20;
@@ -74,7 +87,15 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/search.tpl.php');
     
     if ($searchParams['keyword'] != '')
-    {
+    {         
+        $tpl->set('max_filters',$pallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
+        $tpl->set('pallete_id',$pallete_id);
+        
+        if ($pallete_items_number > 0) {
+            $tpl->set('palletes',erLhcoreClassModelGalleryPallete::getList(array('filterin' => array('id' => $pallete_id))));
+        }
+             
+          
         $tpl->set('enter_keyword',false);
         $pages = new lhPaginator();
                   

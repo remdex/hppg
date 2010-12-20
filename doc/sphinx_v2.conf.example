@@ -1,0 +1,39 @@
+source anifofsrc
+{
+	type					= mysql
+	sql_host				= <host>
+	sql_user				= <username>
+	sql_pass				= <password>
+	sql_db					= <database>
+	sql_port				= 3306	# optional, default is 3306
+
+	sql_query				= \
+		SELECT * FROM sphinxseearch
+
+	sql_query_info			= SELECT * FROM lh_gallery_sphinx_search WHERE id=$id
+	sql_attr_uint   = pid
+	sql_attr_uint   = hits
+	sql_attr_uint   = mtime
+	sql_attr_uint   = comtime
+	sql_attr_uint   = rtime
+	sql_attr_uint   = pic_rating
+	sql_attr_uint   = votes
+	sql_attr_uint   = pwidth
+	sql_attr_uint   = pheight
+}
+
+index anifof
+{
+	source					= anifofsrc
+	path					= /var/data/anifofsrc
+	docinfo					= extern
+	charset_type=utf-8
+	charset_table   = 0..9, A..Z->a..z, _-> , a..z
+	
+	#Uncomment bellow if you want to have wildcard, 
+	#do not forget enable worldcard in gallery configuration file also
+	
+	#min_word_len = 3
+	#enable_star = 1
+	#min_prefix_len = 3
+}

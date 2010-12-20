@@ -2,23 +2,62 @@
 
 class erLhcoreClassPalleteIndexImage {
            
+    // Used only in cronjob
     public static function indexUnindexedImages()
     {        
         if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) == false) return ;
-                       
-        $db = ezcDbInstance::get(); 
-        $stmt = $db->prepare("SELECT MAX(pid) as last_index_image FROM lh_gallery_pallete_images");
-        $stmt->execute();
-        
-        $result = (int)$stmt->fetchColumn(); 
-                       
-        $imagesUnindexed = erLhcoreClassModelGalleryImage::getImages(array('sort' =>  'pid ASC','filtergt' => array('pid' => $result)));
                 
+        if (($lastIndex = self::getLastIndex('image_index')) == 0)
+        {
+            $db = ezcDbInstance::get(); 
+            $stmt = $db->prepare("SELECT MAX(pid) as last_index_image FROM lh_gallery_pallete_images");
+            $stmt->execute();        
+            $lastIndex = (int)$stmt->fetchColumn(); 
+        }       
+                
+        $imagesUnindexed = erLhcoreClassModelGalleryImage::getImages(array('sort' =>  'pid ASC','filtergt' => array('pid' => $lastIndex)));
+                
+        $lastIndexNew = $lastIndex;
         foreach ($imagesUnindexed as $image)
         {
-            echo "Indexing image PID - ",$image->pid,"\n";
+            echo "Indexing color image PID - ",$image->pid,"\n";
             self::indexImage($image);
+            
+            // We update sphinx index if necessary
+            erLhcoreClassModelGallerySphinxSearch::updateColorAttribute($image);
+            
+            $lastIndexNew = $image->pid;
         }
+        
+        // Changed something
+        if ($lastIndexNew != $lastIndex) {
+            echo "Updating last indexed color PID - ",$lastIndexNew,"\n";
+            self::setLastIndex('image_index',$lastIndexNew);
+        }
+           
+             
+    }
+    
+    public static function setLastIndex($identifier,$value)
+    {
+        $db = ezcDbInstance::get(); 
+        
+        $stmt = $db->prepare('UPDATE lh_gallery_last_index SET `value` = :value WHERE identifier = :identifier');
+        $stmt->bindValue( ':identifier',$identifier);      
+        $stmt->bindValue( ':value',$value);      
+        $stmt->execute();
+    }
+    
+    public static function getLastIndex($identifier)
+    {
+        $db = ezcDbInstance::get(); 
+        
+        $stmt = $db->prepare('SELECT `value` FROM lh_gallery_last_index WHERE identifier = :identifier');
+        $stmt->bindValue( ':identifier',$identifier);      
+        $stmt->execute();
+        $value = (int)$stmt->fetchColumn(); 
+        
+        return $value;  
     }
     
     public static function indexImage($image, $checkDelayIndex = false) {
@@ -119,10 +158,11 @@ class erLhcoreClassPalleteIndexImage {
                              
                              
                              if (count($valuesParts) > 0) {
+                                 self::storePalleteStats($image->pid,$data_array);
                                  $sql = 'REPLACE INTO lh_gallery_pallete_images VALUES '.implode(',',$valuesParts).';'; 
                                  $stmt = $db->prepare($sql);
                                  $stmt->execute();
-                             }                             
+                             }
                          }
                      } catch (Exception $e){ 
                          
@@ -132,10 +172,46 @@ class erLhcoreClassPalleteIndexImage {
         }               
     }
     
+    public static function storePalleteStats($pid,$stats = false)
+    {
+        /**
+         * In first to as have been passed current image stats in other case no stats passed, and we have to fetch then manualy
+         * 
+         * */
+        $statsImploded = '';
+        if (is_array($stats)) {
+           arsort($stats);           
+           if (count($stats) > 10) {
+                $stats = array_slice(array_keys($stats),0,10);
+           } else {
+               $stats = array_keys($stats);
+           }
+           $statsImploded = implode(',',$stats);
+        } else {            
+            $db = ezcDbInstance::get(); 
+            $stmt = $db->prepare('SELECT pallete_id FROM lh_gallery_pallete_images WHERE pid = :pid ORDER BY count DESC LIMIT 10');
+            $stmt->bindValue( ':pid',$pid);            
+            $stmt->execute();            
+            $stats = $stmt->fetchAll(PDO::FETCH_COLUMN,0);  
+            $statsImploded = implode(',',$stats);                           
+        }
+                
+        if (trim($statsImploded) != ''){
+            $db = ezcDbInstance::get(); 
+            $stmt = $db->prepare('REPLACE INTO lh_gallery_pallete_images_stats (pid,colors) VALUES (:pid,:colors);');
+            $stmt->bindValue( ':pid',$pid);            
+            $stmt->bindValue( ':colors',$statsImploded);            
+            $stmt->execute();
+        }
+        
+    }
     
     public static function removeFromIndex($pid){ 
         $db = ezcDbInstance::get(); 
         $stmt = $db->prepare("DELETE FROM lh_gallery_pallete_images WHERE pid = {$pid}");
+        $stmt->execute();
+        
+        $stmt = $db->prepare("DELETE FROM lh_gallery_pallete_images_stats WHERE pid = {$pid}");
         $stmt->execute();
     }
 }

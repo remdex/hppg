@@ -23,7 +23,7 @@
 		<param name="movie" value="<?=erLhcoreClassDesign::design('js/player_flv_maxi.swf')?>" />
 		<param name="allowFullScreen" value="true" />
 		<param name="FlashVars" value="flv=<?=erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename))?>&amp;width=<?=$image->pwidth?>&amp;height=<?=$image->pheight?>&amp;startimage=<?=erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode(str_replace('.flv','.jpg',$image->filename)))?>&amp;showstop=1&amp;showvolume=1&amp;showtime=1&amp;bgcolor=F1F1F1" />
-		<p>Texte alternatif</p>
+		<p>Your browser does not support flash player</p>
 	</object>	
 <?php endif;?>
 
@@ -32,16 +32,20 @@
 <?endif;?>
 </div>
 
-<?php 
-
-/* This functionality is ineficient and need some optimization, will be enabled then I optimise this.
+<?php $colorsDominant = erLhcoreClassModelGalleryPallete::getPictureDominantColors($image->pid,10); if (count($colorsDominant) > 0) : ?>
 <div class="dominant-colors">
-<?php foreach (erLhcoreClassModelGalleryPallete::getPictureDominantColors($image->pid,10) as $pallete) : ?>
-<div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>)">
-<a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=$pallete->id?>"></a>
-</div>
-<?php endforeach;?>
-</div>
-*/ ?>
+    <?php 
+    $topThreeColors = array();
+    foreach (erLhcoreClassModelGalleryPallete::getPictureDominantColors($image->pid,10) as $pallete) : 
+    if (count($topThreeColors) < 3) $topThreeColors[] = $pallete->id;
+    ?>
+    <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>)">
+    <a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=$pallete->id?>"></a>
+    </div>
+    <?php endforeach;sort($topThreeColors);?>
+        
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search for similar colors images')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode('/',$topThreeColors)?>"><img src="<?=erLhcoreClassDesign::design('images/icons/color_wheel.png')?>" alt="" /></a>
 
+</div>
+<?php endif;?>
 </div>

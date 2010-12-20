@@ -18,6 +18,8 @@ $ImageData->approved =  $canChangeApprovement == true ? ((isset($_POST['approved
 erLhcoreClassGallery::getSession()->update($ImageData); 
 $ImageData->clearCache();
 
+
+
 // Changed approvement status we have to clear all cache.
 if ($previousApproved != $ImageData->approved){
     
@@ -28,8 +30,6 @@ if ($previousApproved != $ImageData->approved){
         erLhcoreClassPalleteIndexImage::removeFromIndex($ImageData->pid);
     }
     
-//    erLhcoreClassModelGallerySphinxSearch::indexImage($ImageData);
-    
     CSCacheAPC::getMem()->increaseCacheVersion('color_images');
         
     CSCacheAPC::getMem()->increaseImageManipulationCache();
@@ -38,6 +38,8 @@ if ($previousApproved != $ImageData->approved){
     erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
 }
 
+// Instantly updates index
+erLhcoreClassModelGallerySphinxSearch::indexImage($ImageData);
 
 echo json_encode(array('error' => 'false','result' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/updateimage','Image updated')));
 exit;

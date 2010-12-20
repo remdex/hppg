@@ -230,15 +230,27 @@ class erLhcoreClassGallery{
             
                   $startAppend = $wildCardEnabled == true ? '*' : '';
                   
+                  
+                  $colorSearchText = '';
+                  if (isset($params['color_filter']) && count($params['color_filter']) > 0){
+                      $colorSearchText = '';
+                      foreach ($params['color_filter'] as $color_id)
+                      {
+                          $colorSearchText .= ' pld_'.$color_id;
+                      }     
+                  }
+      
+                  
                   // Make some weightning
                   $cl->SetFieldWeights(array(
+                    'colors' => 11,
                     'title' => 10,
                     'caption' => 8,
                     'filename' => 9,
-                    'file_path' => 7,
+                    'file_path' => 7 
                   ));
                   
-                  $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', $sphinxIndex );
+                  $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : '', $sphinxIndex );
             }
             
             $resultItems = $cl->RunQueries();
@@ -342,13 +354,23 @@ class erLhcoreClassGallery{
       
       // Make some weightning
       $cl->SetFieldWeights(array(
+        'colors' => 11,
         'title' => 10,
         'caption' => 8,
         'filename' => 9,
-        'file_path' => 7,
+        'file_path' => 7        
       ));
       
-      $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
+      $colorSearchText = '';
+      if (isset($params['color_filter']) && count($params['color_filter']) > 0){
+          $colorSearchText = '';
+          foreach ($params['color_filter'] as $color_id)
+          {
+              $colorSearchText .= ' pld_'.$color_id;
+          }     
+      }      
+
+      $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
            
                 
       if ($result['total_found'] == 0 || !isset($result['matches'])){

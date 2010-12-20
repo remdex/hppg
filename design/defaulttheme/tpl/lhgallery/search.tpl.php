@@ -14,11 +14,21 @@
 
 <?php 
 $urlAppendSort = '/(keyword)/'.urlencode($keyword);
+
+if (count($pallete_id) > 0){
+$urlAppendSort .= '/(color)/'.implode('/',$pallete_id);
+}
+
 $urlSortBase  = erLhcoreClassDesign::baseurl('gallery/search');
 $enableRelevance = true;
+$modePallete = 'search';
 ?> 
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/order_box.tpl.php'));?>
+
+<?php include_once(erLhcoreClassDesign::designtpl('lhgallery/pallete_box.tpl.php'));?>
+
+
 
 <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Search results')?> - <?=htmlspecialchars($keyword)?></h1>
 </div>

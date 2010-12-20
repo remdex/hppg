@@ -197,9 +197,37 @@ class erLhcoreClassModelGalleryPallete {
    }
    
    // Returns picture dominant colors palletes
-   public static function getPictureDominantColors($pid,$limit = 5)
+   public static function getPictureDominantColors($pid)
    {
-       $session = erLhcoreClassGallery::getSession();
+              
+       $db = ezcDbInstance::get(); 
+       $stmt = $db->prepare('SELECT colors FROM lh_gallery_pallete_images_stats WHERE pid = :pid');
+       $stmt->bindValue( ':pid',$pid);            
+       $stmt->execute();            
+       $stats = $stmt->fetchColumn();  
+       
+       $result = array();
+       if ($stats !== null) {   
+            $session = erLhcoreClassGallery::getSession();      
+              
+            $statsImploded = explode(',',$stats); 
+
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );
+
+            $q->where( $q->expr->in( 'id', $statsImploded ) );
+                              
+            $objects = $session->find( $q );  
+                                    
+            $result = array()     ;
+            foreach ($statsImploded as $stat)
+            {
+                $result[] = isset($objects[$stat]) ? $objects[$stat] : null;
+            }
+            
+            $result = array_filter($result);
+       }
+              
+       /*$session = erLhcoreClassGallery::getSession();
        
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );
 
@@ -214,9 +242,9 @@ class erLhcoreClassModelGalleryPallete {
 
        $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_pallete.id', 'items.pallete_id' );   
 
-       $objects = $session->find( $q ); 
+       $objects = $session->find( $q ); */
 
-       return $objects;  
+       return $result;  
    }
      
    public static function getList($paramsSearch = array())
