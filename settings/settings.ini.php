@@ -253,7 +253,8 @@ return array (
       'index' => 'index_name',
       'enabled' => false,      
       'max_matches' => 1000000,
-      'enabled_wildcard' => false        
+      'enabled_wildcard' => false, 
+      'delay_index' => false       
     ),
     'cacheEngine' => array(
         'cache_global_key'  => 'global_site_cache_key',
