@@ -1219,8 +1219,8 @@ if ($mode == 'album')
 	
 } elseif ($mode == 'color') {
 
-    
-    sort((array)$Params['user_parameters_unordered']['color']);
+    $Params['user_parameters_unordered']['color'] = (array)$Params['user_parameters_unordered']['color'];
+    sort($Params['user_parameters_unordered']['color']);
     
     $cache = CSCacheAPC::getMem();         
     $cacheKeyImage = 'color_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('color_images').'_direction_'.$direction.'_filter_color_'.erLhcoreClassGallery::multi_implode(',',$Params['user_parameters_unordered']['color']);
