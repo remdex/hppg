@@ -8,7 +8,7 @@ source anifofsrc
 	sql_port				= 3306	# optional, default is 3306
 
 	sql_query				= \
-		SELECT * FROM sphinxseearch
+		SELECT * FROM lh_gallery_sphinx_search
 
 	sql_query_info			= SELECT * FROM lh_gallery_sphinx_search WHERE id=$id
 	sql_attr_uint   = pid

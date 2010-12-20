@@ -1,6 +1,6 @@
 <?php
 
-$pallete_id = $Params['user_parameters_unordered']['color'];
+$pallete_id = (array)$Params['user_parameters_unordered']['color'];
 
 $cache = CSCacheAPC::getMem(); 
 
