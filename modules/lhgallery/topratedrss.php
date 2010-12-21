@@ -11,7 +11,7 @@ if (($xml = $cache->restore(md5($cacheVersion.'_rss_top_rated'))) === false)
     $feed->description = '';
     $feed->published = time(); 
     $link = $feed->add( 'link' );
-    $link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('gallery/toprated',true);
+    $link->href = 'http://'.$_SERVER['HTTP_HOST'].erLhcoreClassDesign::baseurl('gallery/toprated');
     $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'approved' => 1, 'sort' => 'pic_rating DESC, votes DESC, pid DESC','offset' => 0, 'limit' => 20));    
         
     foreach ($items as $itemRecord)
