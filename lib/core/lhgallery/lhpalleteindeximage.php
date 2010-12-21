@@ -113,9 +113,7 @@ class erLhcoreClassPalleteIndexImage {
                                                          
                     	     $stmt = $db->prepare("DELETE FROM lh_gallery_pallete_images WHERE pid = {$image->pid}");
                     	     $stmt->execute();
-                             
-                    	     $cache = CSCacheAPC::getMem(); 
-                    	     
+                                                 	                         	     
                     	     $data_array = array();
                     	     
                              for ($i = 1; $i < $width;$i++) {
@@ -127,19 +125,15 @@ class erLhcoreClassPalleteIndexImage {
                                     // $stmt = $db->prepare('SELECT id,POW(POW((:red-red),2)+POW((:blue - blue),2)+POW((:green-green),2),0.5) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
                                     
                                     // http://www.compuphase.com/cmetric.htm
-                                    // More reliable version                                    
-                                    $cacheKey = 'color_pallete_red_'.$rgb['red'].'_blue_'.$rgb['blue'].'_green_'.$rgb['green'];
-                                    
-                                    if (($pallete_id = $cache->restore($cacheKey)) === false)
-                                    {
-                                        $stmt = $db->prepare('SELECT id,SQRT((2+((red+:red)/2)/256)*POW((:red-red),2) + 4*(POW((:green-green),2)) + (2+(255-((red+:red)/2))/256)*POW((:blue - blue),2) ) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
-                                        $stmt->bindValue( ':red',$rgb['red']);
-                                        $stmt->bindValue( ':blue',$rgb['blue']);
-                                        $stmt->bindValue( ':green',$rgb['green']);
-                                        $stmt->execute();
-                                        $pallete_id = $stmt->fetchColumn();                                         
-                                        $cache->store($cacheKey,$pallete_id,30*60); // Cache stored just for 30 minits
-                                    }
+                                    // More reliable version 
+                                                                       
+                                    $stmt = $db->prepare('SELECT id,SQRT((2+((red+:red)/2)/256)*POW((:red-red),2) + 4*(POW((:green-green),2)) + (2+(255-((red+:red)/2))/256)*POW((:blue - blue),2) ) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
+                                    $stmt->bindValue( ':red',$rgb['red']);
+                                    $stmt->bindValue( ':blue',$rgb['blue']);
+                                    $stmt->bindValue( ':green',$rgb['green']);
+                                    $stmt->execute();
+                                    $pallete_id = $stmt->fetchColumn();                                         
+                                        
                                     
                                     if (isset($data_array[$pallete_id])) {
                                         $data_array[$pallete_id] = $data_array[$pallete_id] + 1;
