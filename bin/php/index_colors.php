@@ -91,7 +91,7 @@ $instance->WWWDirLang = '/'.$siteAccessName;
 
 $session = erLhcoreClassGallery::getSession();
 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
-$q->orderBy('pid DESC' ); 
+$q->orderBy('pid ASC' ); 
 
 $filter = array();
 $filterExpresion = array();
