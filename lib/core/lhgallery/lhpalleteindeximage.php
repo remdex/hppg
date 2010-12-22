@@ -60,6 +60,7 @@ class erLhcoreClassPalleteIndexImage {
         return $value;  
     }
     
+        
     public static function indexImage($image, $checkDelayIndex = false) {
          
         // Do not index not approved images, or in live mode if delay image update is enabled
@@ -121,12 +122,15 @@ class erLhcoreClassPalleteIndexImage {
                                     $thisColor = imagecolorat($img, $i, $n); 
                                     $rgb = imagecolorsforindex($img, $thisColor); 
                                     
-                                    // Standard euclidean distance
-                                    // $stmt = $db->prepare('SELECT id,POW(POW((:red-red),2)+POW((:blue - blue),2)+POW((:green-green),2),0.5) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
-                                    
-                                    // http://www.compuphase.com/cmetric.htm
-                                    // More reliable version 
-                                                                       
+                                    /**
+                                     * Standard euclidean distance
+                                     * $stmt = $db->prepare('SELECT id,POW(POW((:red-red),2)+POW((:blue - blue),2)+POW((:green-green),2),0.5) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
+                                     * 
+                                     * More reliable version 
+                                     * http://www.compuphase.com/cmetric.htm
+                                     * 
+                                     * */
+
                                     $stmt = $db->prepare('SELECT id,SQRT((2+((red+:red)/2)/256)*POW((:red-red),2) + 4*(POW((:green-green),2)) + (2+(255-((red+:red)/2))/256)*POW((:blue - blue),2) ) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
                                     $stmt->bindValue( ':red',$rgb['red']);
                                     $stmt->bindValue( ':blue',$rgb['blue']);

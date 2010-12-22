@@ -118,9 +118,21 @@ if (count($filterExpresion) > 0){
 }
 
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );    
+$currentLastPid = 0;
 
 foreach ($objects as $object)
 {
     echo "Indexing image -> ",$object->pid,"\n";
+    $currentLastPid = $object->pid;
     erLhcoreClassModelGallerySphinxSearch::indexImage($object);
+}
+
+// Update last indexed status
+$db = ezcDbInstance::get(); 
+$stmt = $db->prepare("SELECT MAX(pid) as last_index_image FROM lh_gallery_sphinx_search");
+$stmt->execute();
+$lastIndex = (int)$stmt->fetchColumn(); 
+
+if ($currentLastPid > $lastIndex) {
+    erLhcoreClassPalleteIndexImage::setLastIndex('sphinx_index',$currentLastPid);
 }

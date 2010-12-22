@@ -226,23 +226,7 @@ class erLhcoreClassModelGalleryPallete {
             
             $result = array_filter($result);
        }
-              
-       /*$session = erLhcoreClassGallery::getSession();
        
-       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );
-
-       $q2 = $q->subSelect();
-       $q2->select( 'pallete_id' )->from( 'lh_gallery_pallete_images' );
-
-       $q2->where( 
-                         $q2->expr->eq( 'pid', $q->bindValue($pid) )   
-              );
-       $q2->limit($limit,0);
-       $q2->orderBy('count DESC');
-
-       $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_pallete.id', 'items.pallete_id' );   
-
-       $objects = $session->find( $q ); */
 
        return $result;  
    }

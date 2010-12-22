@@ -91,7 +91,7 @@ $instance->WWWDirLang = '/'.$siteAccessName;
 
 $session = erLhcoreClassGallery::getSession();
 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
-$q->orderBy('pid ASC' ); 
+$q->orderBy('pid DESC' ); 
 
 $filter = array();
 $filterExpresion = array();
@@ -119,8 +119,21 @@ if (count($filterExpresion) > 0){
 
 $objects = $session->findIterator( $q, 'erLhcoreClassModelGalleryImage' );    
 
+$currentLastPid = 0;
 foreach ($objects as $object)
 {
     echo "Indexing image -> ",$object->pid,"\n";
+    $currentLastPid = $object->pid;
     erLhcoreClassPalleteIndexImage::indexImage($object);
 }
+
+// Update last indexed status
+$db = ezcDbInstance::get(); 
+$stmt = $db->prepare("SELECT MAX(pid) as last_index_image FROM lh_gallery_pallete_images");
+$stmt->execute();
+$lastIndex = (int)$stmt->fetchColumn();
+
+if ($currentLastPid > $lastIndex) {
+    erLhcoreClassPalleteIndexImage::setLastIndex('image_index',$currentLastPid);
+}
+

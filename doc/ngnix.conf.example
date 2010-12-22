@@ -31,7 +31,7 @@ server {
         # favicon is only stored in 1 dir, the design one; But browsers ask for it in the root
         
         # Blocks some site rippers
-       if ($http_user_agent ~* "(WebReaper|wget|Mihov Picture Downloader|TALWinHttpClient|A1 Website Download|WebCopier|Download Ninja|Microsoft URL Control|GetRight|Arachmo|MJ12bot|Gaisbot|Anonymous|Yanga|Twiceler|psbot|Irvine|Indy Library|HTTrack)" ) { 
+       if ($http_user_agent ~* "(WebReaper|wget|SiteSucker|Mihov Picture Downloader|TALWinHttpClient|A1 Website Download|WebCopier|Download Ninja|Microsoft URL Control|GetRight|Arachmo|MJ12bot|Gaisbot|Anonymous|Yanga|Twiceler|psbot|Irvine|Indy Library|HTTrack)" ) { 
             return 403; 
        }
        
@@ -54,7 +54,7 @@ server {
                  return 403;
            }
     
-           if ($http_user_agent ~* "(WebReaper|wget|Mihov Picture Downloader|TALWinHttpClient|A1 Website Download|WebCopier|Download Ninja|Microsoft URL Control|GetRight|Arachmo|MJ12bot|Gaisbot|Anonymous|Yanga|Twiceler|psbot|Irvine|Indy Library|HTTrack)" ) { 
+           if ($http_user_agent ~* "(WebReaper|wget|SiteSucker|Mihov Picture Downloader|TALWinHttpClient|A1 Website Download|WebCopier|Download Ninja|Microsoft URL Control|GetRight|Arachmo|MJ12bot|Gaisbot|Anonymous|Yanga|Twiceler|psbot|Irvine|Indy Library|HTTrack)" ) { 
                     return 403; 
            }
            
