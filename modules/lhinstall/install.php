@@ -992,9 +992,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 
                $tpl->set('admin_username',$form->AdminUsername);               
                if ( $form->hasValidData( 'AdminEmail' ) ) $tpl->set('admin_email',$form->AdminEmail);                      
-    	       $tpl->set('admin_name',$form->AdminName);
-    	       $tpl->set('admin_surname',$form->AdminSurname);	       
-    	      	       
+    	          
     	       $tpl->set('errors',$Errors);
     	            
     	       
