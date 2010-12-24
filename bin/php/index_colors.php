@@ -125,6 +125,7 @@ foreach ($objects as $object)
     echo "Indexing image -> ",$object->pid,"\n";
     $currentLastPid = $object->pid;
     erLhcoreClassPalleteIndexImage::indexImage($object);
+    erLhcoreClassModelGallerySphinxSearch::updateColorAttribute($object);
 }
 
 // Update last indexed status
