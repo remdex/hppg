@@ -85,7 +85,119 @@ class erLhcoreClassModelGalleryPallete {
         
       return $result; 
    }
+   public static function getPictureCountByPalleteId($pid,$pallete_id)
+   {
+       $session = erLhcoreClassGallery::getSession();
+       
+       $q = $session->database->createSelectQuery();
+         
+       $q->select( "`count`" )->from( "lh_gallery_pallete_images" ); 
+       $q->where(
+            $q->expr->eq( 'pid', $q->bindValue($pid) ),  
+            $q->expr->eq( 'pallete_id', $q->bindValue($pallete_id) )  
+       );
+       
+       $stmt = $q->prepare();       
+       $stmt->execute();
+       $result = $stmt->fetchColumn();
+       
+       return $result; 
+       
+   }
    
+   public static function getList($paramsSearch = array())
+   {
+       $paramsDefault = array('limit' => 500, 'offset' => 0);
+       
+       $params = array_merge($paramsDefault,$paramsSearch);
+       
+       $session = erLhcoreClassGallery::getSession();
+       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );  
+       
+       $conditions = array(); 
+             
+       if (isset($params['filter']) && count($params['filter']) > 0)
+       {                     
+           foreach ($params['filter'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue) );
+           }
+      } 
+      
+      if (isset($params['filterin']) && count($params['filterin']) > 0)
+       {
+           foreach ($params['filterin'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->in( $field, $fieldValue );
+           } 
+      }
+               
+      if (isset($params['filterlt']) && count($params['filterlt']) > 0)
+       {
+           foreach ($params['filterlt'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->lt( $field, $q->bindValue($fieldValue) );
+           } 
+      }
+      
+      if (isset($params['filtergt']) && count($params['filtergt']) > 0)
+       {
+           foreach ($params['filtergt'] as $field => $fieldValue)
+           {
+               $conditions[] = $q->expr->gt( $field, $q->bindValue($fieldValue) );
+           } 
+      }      
+      
+      if (count($conditions) > 0)
+      {
+          $q->where( 
+                     $conditions   
+          );
+      } 
+      
+      $q->limit($params['limit'],$params['offset']);                
+      $q->orderBy(isset($params['sort']) ? $params['sort'] : 'position DESC' ); 
+       
+      $objects = $session->find( $q );
+                           
+      return $objects; 
+   }
+      
+   // Returns picture dominant colors palletes
+   public static function getPictureDominantColors($pid)
+   {
+              
+       $db = ezcDbInstance::get(); 
+       $stmt = $db->prepare('SELECT colors FROM lh_gallery_pallete_images_stats WHERE pid = :pid');
+       $stmt->bindValue( ':pid',$pid);            
+       $stmt->execute();            
+       $stats = $stmt->fetchColumn();  
+       
+       $result = array();
+       if ($stats !== null) {   
+            $session = erLhcoreClassGallery::getSession();      
+              
+            $statsImploded = explode(',',$stats); 
+
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );
+
+            $q->where( $q->expr->in( 'id', $statsImploded ) );
+                              
+            $objects = $session->find( $q );  
+                                    
+            $result = array()     ;
+            foreach ($statsImploded as $stat)
+            {
+                $result[] = isset($objects[$stat]) ? $objects[$stat] : null;
+            }
+            
+            $result = array_filter($result);
+       }
+       
+
+       return $result;  
+   }
+      
    public static function getListCountPalleteImages($params = array())
    {
        if (!isset($params['disable_sql_cache']))
@@ -166,134 +278,30 @@ class erLhcoreClassModelGalleryPallete {
       $stmt->execute();
       $result = $stmt->fetchColumn(); 
        
-      
+      // We limit result set if more than one color filter used at the same time, due to performance
+      if ($colors_count > 1)
+      {
+          $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'max_matches');
+          if ($result > $maxMatches) {
+              $result = $maxMatches;
+          }
+      }
+   
       if (!isset($params['disable_sql_cache'])) {
               $cache->store($cacheKey,$result);           
       }
          
       return $result; 
    }
-   
-   
-   
-   public static function getPictureCountByPalleteId($pid,$pallete_id)
-   {
-       $session = erLhcoreClassGallery::getSession();
-       
-       $q = $session->database->createSelectQuery();
-         
-       $q->select( "`count`" )->from( "lh_gallery_pallete_images" ); 
-       $q->where(
-            $q->expr->eq( 'pid', $q->bindValue($pid) ),  
-            $q->expr->eq( 'pallete_id', $q->bindValue($pallete_id) )  
-       );
-       
-       $stmt = $q->prepare();       
-       $stmt->execute();
-       $result = $stmt->fetchColumn();
-       
-       return $result; 
-       
-   }
-   
-   // Returns picture dominant colors palletes
-   public static function getPictureDominantColors($pid)
-   {
-              
-       $db = ezcDbInstance::get(); 
-       $stmt = $db->prepare('SELECT colors FROM lh_gallery_pallete_images_stats WHERE pid = :pid');
-       $stmt->bindValue( ':pid',$pid);            
-       $stmt->execute();            
-       $stats = $stmt->fetchColumn();  
-       
-       $result = array();
-       if ($stats !== null) {   
-            $session = erLhcoreClassGallery::getSession();      
-              
-            $statsImploded = explode(',',$stats); 
-
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );
-
-            $q->where( $q->expr->in( 'id', $statsImploded ) );
-                              
-            $objects = $session->find( $q );  
-                                    
-            $result = array()     ;
-            foreach ($statsImploded as $stat)
-            {
-                $result[] = isset($objects[$stat]) ? $objects[$stat] : null;
-            }
-            
-            $result = array_filter($result);
-       }
-       
-
-       return $result;  
-   }
-     
-   public static function getList($paramsSearch = array())
-   {
-       $paramsDefault = array('limit' => 500, 'offset' => 0);
-       
-       $params = array_merge($paramsDefault,$paramsSearch);
-       
-       $session = erLhcoreClassGallery::getSession();
-       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );  
-       
-       $conditions = array(); 
-             
-       if (isset($params['filter']) && count($params['filter']) > 0)
-       {                     
-           foreach ($params['filter'] as $field => $fieldValue)
-           {
-               $conditions[] = $q->expr->eq( $field, $q->bindValue($fieldValue) );
-           }
-      } 
-      
-      if (isset($params['filterin']) && count($params['filterin']) > 0)
-       {
-           foreach ($params['filterin'] as $field => $fieldValue)
-           {
-               $conditions[] = $q->expr->in( $field, $fieldValue );
-           } 
-      }
-               
-      if (isset($params['filterlt']) && count($params['filterlt']) > 0)
-       {
-           foreach ($params['filterlt'] as $field => $fieldValue)
-           {
-               $conditions[] = $q->expr->lt( $field, $q->bindValue($fieldValue) );
-           } 
-      }
-      
-      if (isset($params['filtergt']) && count($params['filtergt']) > 0)
-       {
-           foreach ($params['filtergt'] as $field => $fieldValue)
-           {
-               $conditions[] = $q->expr->gt( $field, $q->bindValue($fieldValue) );
-           } 
-      }      
-      
-      if (count($conditions) > 0)
-      {
-          $q->where( 
-                     $conditions   
-          );
-      } 
-      
-      $q->limit($params['limit'],$params['offset']);                
-      $q->orderBy(isset($params['sort']) ? $params['sort'] : 'position DESC' ); 
-       
-      $objects = $session->find( $q );
-                           
-      return $objects; 
-   }
+        
+  
    
    public static function getAjaxImages($pid,$pallete_ids,$direction)
    {
        
        $count_palletes_ids = count($pallete_ids);
        
+       // No need to limit than only one color filter is used
        if ($count_palletes_ids == 1) {
             
             $pallete_id = $pallete_ids[0];
@@ -320,6 +328,7 @@ class erLhcoreClassModelGalleryPallete {
         	return $imagesAjax;	
         } elseif ($count_palletes_ids > 1) { //If more than one color filter is used
             
+            // we cannot limit in this case either, because sorting is done instantly on calculated row
             if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'memory_table') == false) {
               
                 $orderParts = array();
@@ -398,7 +407,9 @@ class erLhcoreClassModelGalleryPallete {
                    $conditions[] =  'color_'.$i.'.pallete_id = '.(int)$pallete_ids[$i];
                    $selectFields[] = 'LOG(color_'.$i.'.count)';                   
                 }
-                                                
+           
+                $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'max_matches');
+                           
                 // We create memory table and insert to it instantly
                 $sql = "CREATE TEMPORARY TABLE color_search (
                 pid INT( 10 ) UNSIGNED NOT NULL ,
@@ -406,7 +417,7 @@ class erLhcoreClassModelGalleryPallete {
                 INDEX USING BTREE (count,pid),
                 INDEX USING BTREE (pid)
                 ) ENGINE = MEMORY;
-                INSERT INTO color_search (SELECT `lh_gallery_pallete_images`.pid,(".implode('+',$selectFields).")*1000 FROM `lh_gallery_pallete_images` ".implode(' ',$innerJoins)." WHERE ".implode(' AND ',$conditions).");";               
+                INSERT INTO color_search (SELECT `lh_gallery_pallete_images`.pid,(".implode('+',$selectFields).")*1000 FROM `lh_gallery_pallete_images` ".implode(' ',$innerJoins)." WHERE ".implode(' AND ',$conditions)." ORDER BY pid DESC LIMIT 0,{$maxMatches});";               
                 $conditions = array(); 
                 $stmt = $db->prepare($sql);
                 $stmt->execute();
@@ -639,6 +650,9 @@ class erLhcoreClassModelGalleryPallete {
                    $conditions[] =  'color_'.$i.'.pallete_id = '.(int)$pallete_ids[$i];
                    $selectFields[] = 'LOG(color_'.$i.'.count)';                   
                 }
+                
+                $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'max_matches');
+                
                 // SELECT @ @global.tmp_table_size , @ @global.max_heap_table_size ;                                 
                 // We create memory table and insert to it instantly
                 $sql = "CREATE TEMPORARY TABLE color_search (
@@ -647,7 +661,7 @@ class erLhcoreClassModelGalleryPallete {
                 INDEX USING BTREE (count,pid),
                 INDEX USING BTREE (pid)
                 ) ENGINE = MEMORY;
-                INSERT INTO color_search (SELECT `lh_gallery_pallete_images`.pid,(".implode('+',$selectFields).")*1000 FROM `lh_gallery_pallete_images` ".implode(' ',$innerJoins)." WHERE ".implode(' AND ',$conditions).");";               
+                INSERT INTO color_search (SELECT `lh_gallery_pallete_images`.pid,(".implode('+',$selectFields).")*1000 FROM `lh_gallery_pallete_images` ".implode(' ',$innerJoins)." WHERE ".implode(' AND ',$conditions)." ORDER BY pid DESC LIMIT 0,{$maxMatches});";               
                 $conditions = array(); 
                 $stmt = $db->prepare($sql);
                 $stmt->execute();
@@ -770,6 +784,8 @@ class erLhcoreClassModelGalleryPallete {
                    }
                    $selectFields[] = 'LOG(color_'.$i.'.count)';                   
                 }
+                
+                $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'max_matches');
                                                 
                 // We create memory table and insert to it instantly
                 $sql = "CREATE TEMPORARY TABLE color_search (
@@ -777,7 +793,7 @@ class erLhcoreClassModelGalleryPallete {
                 count INT( 6 ) UNSIGNED NOT NULL,
                 INDEX USING BTREE (count,pid)
                 ) ENGINE = MEMORY;
-                INSERT INTO color_search (SELECT `lh_gallery_pallete_images`.pid,(".implode('+',$selectFields).")*1000 FROM `lh_gallery_pallete_images` ".implode(' ',$innerJoins)." WHERE ".implode(' AND ',$conditions).");";               
+                INSERT INTO color_search (SELECT `lh_gallery_pallete_images`.pid,(".implode('+',$selectFields).")*1000 FROM `lh_gallery_pallete_images` ".implode(' ',$innerJoins)." WHERE ".implode(' AND ',$conditions)." ORDER BY pid DESC limit 0,{$maxMatches});";               
                 $conditions = array(); 
                 $stmt = $db->prepare($sql);
                 $stmt->execute();
