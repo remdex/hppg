@@ -618,7 +618,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `count` mediumint(9) NOT NULL,
                   PRIMARY KEY (`pallete_id`,`pid`),
                   KEY `pid` (`pallete_id`,`count`,`pid`),
-                  KEY `pallete_id` (`pallete_id`)
+                  KEY `pallete_id` (`pallete_id`),
+                  KEY `pid_2` (`pid`)
                 ) ENGINE=MyISAM;");
                 
                 
