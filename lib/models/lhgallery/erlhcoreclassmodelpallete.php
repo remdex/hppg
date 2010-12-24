@@ -639,7 +639,7 @@ class erLhcoreClassModelGalleryPallete {
                    $conditions[] =  'color_'.$i.'.pallete_id = '.(int)$pallete_ids[$i];
                    $selectFields[] = 'LOG(color_'.$i.'.count)';                   
                 }
-                                                
+                // SELECT @ @global.tmp_table_size , @ @global.max_heap_table_size ;                                 
                 // We create memory table and insert to it instantly
                 $sql = "CREATE TEMPORARY TABLE color_search (
                 pid INT( 10 ) UNSIGNED NOT NULL ,
