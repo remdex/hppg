@@ -244,7 +244,9 @@ return array (
         'delay_index' => false,
         'memory_table' => false,
         'minimum_color_match' => 25,
-        'maximum_filters' => 8
+        'maximum_filters' => 8,
+        'color_indexer_external' => false,
+        'color_indexer_path' => './bin/color_indexer/color_indexer',
     ),
     'sphinx' => 
     array (
