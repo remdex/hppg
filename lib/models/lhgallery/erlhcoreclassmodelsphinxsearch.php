@@ -172,7 +172,7 @@ class erLhcoreClassModelGallerySphinxSearch {
    }
    
    // Used only in cronjob
-   public static function indexUnindexedImages()
+   public static function indexUnindexedImages($limit = 32)
    {           
         if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) == true)
         {            
@@ -184,7 +184,7 @@ class erLhcoreClassModelGallerySphinxSearch {
                 $lastIndex = (int)$stmt->fetchColumn(); 
             }
 
-            $imagesUnindexed = erLhcoreClassModelGalleryImage::getImages(array('sort' =>  'pid ASC','filtergt' => array('pid' => $lastIndex)));
+            $imagesUnindexed = erLhcoreClassModelGalleryImage::getImages(array('limit' => $limit, 'sort' =>  'pid ASC','filtergt' => array('pid' => $lastIndex)));
             $lastIndexNew = $lastIndex;
             foreach ($imagesUnindexed as $image)
             {
