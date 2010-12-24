@@ -30,7 +30,7 @@ $helpOption = $input->registerOption(
     )
 );
 
-$maximumNumberImages = $input->registerOption(
+$maximumNumberImagesOption = $input->registerOption(
     new ezcConsoleOption(
         'n',
         'number',
@@ -54,9 +54,9 @@ if ( !$helpOption->value === false )
 } 
 
 $maximumNumberImages = 500;
-if ( !$maximumNumberImages->value === false )
+if ( !$maximumNumberImagesOption->value === false )
 {
-    $maximumNumberImages = $maximumNumberImages->value;
+    $maximumNumberImages = $maximumNumberImagesOption->value;
 } 
 
 try
