@@ -242,6 +242,7 @@ return array (
     'color_search' => array (
         'search_enabled' => true,
         'delay_index' => false,
+        'delay_index_portion' => 100,
         'memory_table' => false,
         'minimum_color_match' => 25,
         'maximum_filters' => 8,
@@ -253,10 +254,11 @@ return array (
       'host' => 'localhost',
       'port' => 3312,     
       'index' => 'index_name',
-      'enabled' => false,      
+      'enabled' => false, 
       'max_matches' => 1000000,
       'enabled_wildcard' => false, 
-      'delay_index' => false       
+      'delay_index' => false, 
+      'delay_index_portion' => 500,      
     ),
     'cacheEngine' => array(
         'cache_global_key'  => 'global_site_cache_key',
