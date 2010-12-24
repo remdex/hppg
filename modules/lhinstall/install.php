@@ -614,8 +614,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 // Images colors index
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_pallete_images` (
                   `pid` int(11) NOT NULL,
-                  `pallete_id` mediumint(9) NOT NULL,
-                  `count` mediumint(9) NOT NULL,
+                  `pallete_id` smallint(3) NOT NULL,
+                  `count` smallint(5) NOT NULL,
                   PRIMARY KEY (`pallete_id`,`pid`),
                   KEY `pid` (`pallete_id`,`count`,`pid`),
                   KEY `pallete_id` (`pallete_id`),
