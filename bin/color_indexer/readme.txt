@@ -23,7 +23,7 @@ Example
 
 Expected output:
 1. Left variable represents pallete_id
-2. Represents how many times color item was matched
+2. Right item represents how many times color item was matched
 
 <pallete_id>-<count>
 
@@ -72,12 +72,7 @@ Expected output:
 119-46
 
 /**************************************/
-How to use it in php enviroment?
 
-Example:
-./bin/color_indexer/color_indexer bin/color_indexer/forest.jpg doc/color_palletes/color_pallete.txt 25 > image_stats.txt
-
-/**************************************/
 What is collor_pallete.txt file structure?
 <pallete_id>;<red>;<green>;<blue>
 1;213;245;254;20
