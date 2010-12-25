@@ -239,14 +239,26 @@ class erLhcoreClassModelGallerySphinxSearch {
        $stmt = $q->prepare();
        $stmt->execute();
        $colorsMaximumImage = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    
        /**
-          * Now the tricky part begins, we calculate weight of image based on count value logarithm. That way repeated string stays relativy low, and search gets boost by color
-          * */            
+         * This part was changed based on formula 
+         * 
+         * It fits here better than algorithm
+         * 
+         * http://en.wikipedia.org/wiki/Tag_cloud
+         * */
+       
+       $max = 15400/2;
+       $min = 25;
+       $rmax = 50;
+       $rmin = 1;
+                        
        $colorIndex = array();
        foreach ($colorsMaximumImage as $color)
        {
-           $colorIndex[] = str_repeat(' pld_'.$color['pallete_id'],round(log($color['count'])));
+           $colorIndexString = trim(str_repeat(' pld'.$color['pallete_id'],round((($rmin*($color['count']-25))/($max-$min))*100)));
+           if ($colorIndexString != '')
+           $colorIndex[] = $colorIndexString;
        }
        
        
@@ -315,14 +327,25 @@ class erLhcoreClassModelGallerySphinxSearch {
            $colorsMaximumImage = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
            /**
-              * Now the tricky part begins, we calculate weight of image based on count value logarithm. That way repeated string stays relativy low, and search gets boost by color
+              * This part was changed based on formula 
+              * 
+              * It fits here better than just log
+              * 
+              * http://en.wikipedia.org/wiki/Tag_cloud
               * */            
+           $max = 15400/2; // A little better distribution of color
+           $min = 25;
+           $rmax = 50;
+           $rmin = 1;
+
            $colorIndex = array();
            foreach ($colorsMaximumImage as $color)
            {
-               $colorIndex[] = str_repeat(' pld_'.$color['pallete_id'],round(log($color['count'])));
+               $colorIndexString = trim(str_repeat(' pld'.$color['pallete_id'],round((($rmin*($color['count']-25))/($max-$min))*100)));
+               if ($colorIndexString != '')
+               $colorIndex[] = $colorIndexString;
            }
-
+                      
            $imageIndex->colors = trim(implode(' ',$colorIndex));
 
            erLhcoreClassGallery::getSession()->saveOrUpdate($imageIndex);
