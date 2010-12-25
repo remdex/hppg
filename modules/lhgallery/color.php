@@ -26,10 +26,30 @@ if (($Result = $cache->restore($cacheKey)) === false)
             $tpl->set('max_filters',$pallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
             $tpl->set('show_pallete',false);    
             $pages = new lhPaginator();
-            $pages->items_total = erLhcoreClassModelGalleryPallete::getListCountPalleteImages(array('pallete_id' => $pallete_id));
+            
+            $list = array();
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'database_handler') == true) {
+                $pages->items_total = erLhcoreClassModelGalleryPallete::getListCountPalleteImages(array('pallete_id' => $pallete_id));
+                if ($pages->items_total > 0){
+                    $list = erLhcoreClassModelGalleryPallete::getImages(array('pallete_id' => $pallete_id,'sort' => 'lh_gallery_pallete_images.count DESC, lh_gallery_pallete_images.pid DESC','offset' => $pages->low, 'limit' => $pages->items_per_page));
+                }
+            } else {
+                $searchParams = array();
+                $searchParams['color_filter'] = $pallete_id;         
+                $searchParams['SearchLimit'] = 20;
+                $searchParams['SearchOffset'] = $pages->low;
+                $searchParams['sort'] = '@relevance DESC, @id DESC';
+                $searchParams['color_search_mode'] = true;
+                
+                $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
+                $list = $searchResult['list'];
+                $pages->items_total =  $searchResult['total_found'];
+            }
+            
             $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/color').'/(color)/'.implode('/',$pallete_id);
             $pages->paginate();
             $tpl->set('pages',$pages);
+            $tpl->set('items',$list);
             $tpl->set('appendImageMode','/(mode)/color/(color)/'.implode('/',$pallete_id));
             $tpl->set('pallete_id',$pallete_id);
             $tpl->set('palletes',erLhcoreClassModelGalleryPallete::getList(array('filterin' => array('id' => $pallete_id))));

@@ -367,9 +367,19 @@ class erLhcoreClassGallery{
           foreach ($params['color_filter'] as $color_id)
           {
               $colorSearchText .= ' pld'.$color_id;
-          }     
-      }      
-            
+          }
+          
+          // Works best for search by color, like we are repeating color multiple times, 
+          // that way we get almoust the same result as using database
+          // Reference:
+          // http://sphinxsearch.com/docs/current.html#api-func-setrankingmode
+          if (isset($params['color_search_mode'])){
+            $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
+            $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+          }          
+      }   
+           
+             
       $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
            
                 

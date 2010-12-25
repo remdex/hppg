@@ -1752,10 +1752,68 @@ if ($mode == 'album')
         $Params['user_parameters_unordered']['color'] = array_slice($Params['user_parameters_unordered']['color'],0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
     }
     
-    $dataParams = erLhcoreClassModelGalleryPallete::getPreviewData($Image->pid,(array)$Params['user_parameters_unordered']['color']);
-    $page = $dataParams['page'];
-    $imagesLeft = $dataParams['imagesLeft'];
-    $imagesRight = $dataParams['imagesRight'];
+    if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'database_handler') == true) {    
+        $dataParams = erLhcoreClassModelGalleryPallete::getPreviewData($Image->pid,(array)$Params['user_parameters_unordered']['color']);
+        $page = $dataParams['page'];
+        $imagesLeft = $dataParams['imagesLeft'];
+        $imagesRight = $dataParams['imagesRight'];
+    } else {
+        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'relevance' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'], 'SearchLimit' => 1,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)),false);
+        
+        $resultSearch = erLhcoreClassGallery::searchSphinxMulti(
+            array (
+                array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filtergt' => array('pid' => $Image->pid),'Filter' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance ASC, @id ASC'),
+                array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filtergt' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance ASC, @id ASC'),
+                array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterlt' => array('pid' => $Image->pid-1),'Filter' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance DESC, @id DESC'),
+                array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterlt' => array('@weight' => $relevanceCurrentImage-1),'SearchLimit' => 5,'sort' => '@relevance DESC, @id DESC')
+            ),false
+        );
+        
+        $totalPhotos = $resultSearch[0];
+          
+        if ($totalPhotos['total_found'] < 5) { // We have check is there any better matches images on left
+            $totalPhotosHigher = $resultSearch[1];
+            
+            if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                
+                $totalPhotos['list'] = (array)$totalPhotos['list']+(array)$totalPhotosHigher['list'];
+            } elseif ($totalPhotosHigher['total_found'] > 0) {
+                $totalPhotos['list'] = $totalPhotosHigher['list'];
+            }
+            
+            $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
+        } else { 
+            // Needed for return page calcaution
+            $totalPhotosHigher = $resultSearch[1];
+            $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
+        }        
+            
+        if ($totalPhotos['total_found'] > 0)
+            $imagesLeft = $totalPhotos['list']; 
+        else
+            $imagesLeft = array();
+                              
+        $page = ceil(($totalPhotos['total_found']+1)/20);	
+                        
+        $totalPhotos = $resultSearch[2];
+                     
+        if ($totalPhotos['total_found'] < 5) { // We have check is there any better matches images on left
+            $totalPhotosHigher = $resultSearch[3];
+                                 
+            if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
+                $totalPhotos['list'] = (array)$totalPhotos['list'] + (array)$totalPhotosHigher['list'];
+            } elseif ($totalPhotosHigher['total_found'] > 0) {
+                $totalPhotos['list'] = $totalPhotosHigher['list'];
+            }
+            
+            $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
+        }
+             
+        if ($totalPhotos['total_found'] > 0)               
+            $imagesRight = $totalPhotos['list']; 
+        else 
+            $imagesRight = array();
+    }
+   
     
     $imagesParams = erLhcoreClassModelGalleryImage::getImagesSlices($imagesLeft, $imagesRight, $Image);
     $pageAppend = $page > 1 ? '/(page)/'.$page : '';    

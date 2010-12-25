@@ -57,10 +57,7 @@ sort($moreColors);
 <?php else : ?>
 
     <? if ($pages->items_total > 0) { ?>
-             
-    <?     
-        $items = erLhcoreClassModelGalleryPallete::getImages(array('pallete_id' => $pallete_id,'sort' => 'lh_gallery_pallete_images.count DESC, lh_gallery_pallete_images.pid DESC','offset' => $pages->low, 'limit' => $pages->items_per_page));
-    ?>   
+  
        
     <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_list.tpl.php'));?> 
                      
