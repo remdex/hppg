@@ -279,8 +279,16 @@ class erLhcoreClassGallery{
             
             // We fetch only unique images
             $imagesIDToFetch = array_unique($imagesIDToFetch);
-            $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => $imagesIDToFetch)));
-               
+            if (count($imagesIDToFetch) > 0){            
+                $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => $imagesIDToFetch)));
+            } else {
+                foreach ($resultItems as $keyQuery => $result)
+                {
+                    $resultReturn[$keyQuery] = array('total_found' => 0,'list' => array());
+                }
+                return $resultReturn;
+            }
+      
             foreach ($resultItems as $keyQuery => $result)
             {
                   if ($result['total_found'] == 0 || !isset($result['matches'])) {                  
