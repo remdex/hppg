@@ -268,6 +268,19 @@ class erLhcoreClassGallery{
             $resultItems = $cl->RunQueries();
             $resultReturn = array();
             
+            // Get ID's witch we need to fetch first
+            $imagesIDToFetch = array();
+            foreach ($resultItems as $result)
+            {
+                if ($result['total_found'] != 0 && isset($result['matches'])) {
+                    $imagesIDToFetch = array_merge($imagesIDToFetch,array_keys($result['matches']));
+                }
+            }
+            
+            // We fetch only unique images
+            $imagesIDToFetch = array_unique($imagesIDToFetch);
+            $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => $imagesIDToFetch)));
+               
             foreach ($resultItems as $keyQuery => $result)
             {
                   if ($result['total_found'] == 0 || !isset($result['matches'])) {                  
@@ -286,17 +299,19 @@ class erLhcoreClassGallery{
                       	$resultReturn[$keyQuery] = array('total_found' => 0,'list' => null);   
                       	continue;
             	  }
-                    
-                  $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => array_keys($idMatch))));
                   
-                  foreach ($listObjects as $object)
-                  {     
-                      $idMatch[$object->pid] = $object;
-                  }     
-                  
+            	  foreach ($idMatch as $key => $value) 
+            	  {
+            	      if ( isset($listObjects[$key]) ) {
+            	           $idMatch[$key] = $listObjects[$key];
+            	      } else {
+            	           unset($idMatch[$key]);
+            	      }
+            	  }
+                   
                   $resultReturn[$keyQuery] = array('total_found' => $result['total_found'],'list' => $idMatch);
-            }
-            
+            }  
+                        
             if ($cacheEnabled == true)
             $cache->store($cacheKey,$resultReturn,12000); 
       }
