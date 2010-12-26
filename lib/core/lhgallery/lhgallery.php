@@ -316,7 +316,11 @@ class erLhcoreClassGallery{
             	           unset($idMatch[$key]);
             	      }
             	  }
-                   
+                  
+            	  if ($result['total_found'] > $maxReturn) {
+            	      $result['total_found'] = $maxReturn;
+            	  }            
+            	   
                   $resultReturn[$keyQuery] = array('total_found' => $result['total_found'],'list' => $idMatch);
             }  
                         
@@ -349,8 +353,9 @@ class erLhcoreClassGallery{
       $cl = self::getSphinxInstance();
       $cl->ResetFilters();
       $cl->SetSelect('*');
-                           
-      $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' ));
+      $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' );    
+                       
+      $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxMatches);
                     
       $filter = isset($params['Filter']) ? $params['Filter'] : array();  
        
@@ -455,11 +460,16 @@ class erLhcoreClassGallery{
           $idMatch[$object->pid] = $object;
       }     
        
-        $resultReturn = array('total_found' => $result['total_found'],'list' => $idMatch);
-        
-        if ($cacheEnabled == true) {
+      if ($result['total_found'] > $maxMatches) {
+          $result['total_found'] = $maxMatches;
+      }
+      
+      $resultReturn = array('total_found' => $result['total_found'],'list' => $idMatch);
+      
+      if ($cacheEnabled == true) {
             $cache->store($cacheKey,$resultReturn,12000);
-        }
+      }
+      
         
         
       }
