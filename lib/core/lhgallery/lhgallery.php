@@ -246,7 +246,10 @@ class erLhcoreClassGallery{
                       if (isset($params['color_search_mode'])){
                         $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
                         $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
-                      }   
+                      }  else {  // Works best then keyword and color is used        
+                        $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
+                        $cl->SetRankingMode(SPH_RANK_BM25); 
+                      }
                   }
       
                   
@@ -385,7 +388,10 @@ class erLhcoreClassGallery{
           if (isset($params['color_search_mode'])){
             $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
             $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
-          }          
+          } else {  // Works best then keyword and color is used        
+            $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
+            $cl->SetRankingMode(SPH_RANK_BM25); 
+          }
       }   
            
              
