@@ -157,58 +157,58 @@ if ($mode == 'album') {
        
     switch ($modeSort) {
     	case 'new':
-    		$appendCacheKey = 'album_searc_image_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_'.$keywordDecoded;
     	break;
     	
     	case 'newasc':
-    		$appendCacheKey = 'album_searc_image_newasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_newasc_'.$keywordDecoded;
     	break;
     	
     	case 'popular':
-    		$appendCacheKey = 'album_searc_image_popular_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_popular_'.$keywordDecoded;
     	break;
     	
     	case 'popularasc':
-    		$appendCacheKey = 'album_searc_image_popularasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_popularasc_'.$keywordDecoded;
     	break;
     	
     	case 'lasthits':
-    		$appendCacheKey = 'album_searc_image_lasthits_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_lasthits_'.$keywordDecoded;
     	break;
     	
     	case 'lasthitsasc':
-    		$appendCacheKey = 'album_searc_image_lasthitsasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_lasthitsasc_'.$keywordDecoded;
     	break;
     	
     	case 'lastcommented':
-    		$appendCacheKey = 'album_searc_image_lastcommented_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_lastcommented_'.$keywordDecoded;
     	break;
     	
     	case 'lastcommentedasc':
-    		$appendCacheKey = 'album_searc_image_lastcommentedasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_lastcommentedasc_'.$keywordDecoded;
     	break;
     	
     	case 'toprated':
-    		$appendCacheKey = 'album_searc_image_toprated_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_toprated_'.$keywordDecoded;
     	break;
     	
     	case 'topratedasc':
-    		$appendCacheKey = 'album_searc_image_topratedasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_topratedasc_'.$keywordDecoded;
     	break;
     	
     	case 'lastrated':
-    		$appendCacheKey = 'album_searc_image_lastrated_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_lastrated_'.$keywordDecoded;
     	break;
     	
     	case 'lastratedasc':
-    		$appendCacheKey = 'album_searc_image_lastratedasc_'.$keywordDecoded.erLhcoreClassGallery::multi_implode(',',$filterColor);
+    		$appendCacheKey = 'album_searc_image_lastratedasc_'.$keywordDecoded;
     	break;
         	    	
     	default:
     		break;
     }
     
-    $appendCacheKey .= '_sphinx_cache_version_'.$cache->getCacheVersion('sphinx_cache_version');
+    $appendCacheKey .= '_sphinx_cache_version_'.$cache->getCacheVersion('sphinx_cache_version').'_color_'.erLhcoreClassGallery::multi_implode('_pldid_',$filterColor);
     
 } elseif ($mode == 'myfavorites') {
     
