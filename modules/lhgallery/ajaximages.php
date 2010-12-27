@@ -19,7 +19,7 @@ if ($resolution != ''){
 }    
 
 $filterArray['approved'] = 1;
-    
+$keywordDecoded = '';  
     
 $tpl->set('direction',$direction);
 
