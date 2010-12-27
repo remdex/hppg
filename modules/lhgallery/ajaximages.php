@@ -843,7 +843,7 @@ if ($mode == 'album')
 
        
     $tpl->set('imagesAjax',$imagesAjax); 
-    $urlAppend = $modeSort != 'relevance' ? '/(mode)/search/(keyword)/'.$Params['user_parameters_unordered']['keyword'].'/(sort)/'.$modeSort : '/(mode)/search/(keyword)/'.$Params['user_parameters_unordered']['keyword'];
+    $urlAppend = $modeSort != 'relevance' ? '/(mode)/search/(keyword)/'.urlencode($keywordDecoded).'/(sort)/'.$modeSort : '/(mode)/search/(keyword)/'.urlencode($keywordDecoded);
     $urlAppend .= $appendColorMode.$appendResolutionMode;
      
     $tpl->set('urlAppend',$urlAppend);  
