@@ -243,7 +243,7 @@ class erLhcoreClassModelGallerySphinxSearch {
        /**
          * This part was changed based on formula 
          * 
-         * It fits here better than algorithm
+         * It fits here better than logarithm
          * 
          * http://en.wikipedia.org/wiki/Tag_cloud
          * */
@@ -329,7 +329,7 @@ class erLhcoreClassModelGallerySphinxSearch {
            /**
               * This part was changed based on formula 
               * 
-              * It fits here better than just log
+              * It fits here better than just logarithm
               * 
               * http://en.wikipedia.org/wiki/Tag_cloud
               * */            
