@@ -41,14 +41,13 @@
     if (count($topThreeColors) < 3 && ($lastID == -1 || abs($pallete->id - $lastID) > 10)) {
         
         $blocked = false;
-        foreach ($topThreeColors as $color_id){
+        foreach ($topThreeColors as $color_id) { // Hard check to avoid appending similar collor to top three colors
             if (abs($pallete->id - $color_id) <= 10){
                 $blocked = true;
             }
         }
         
-        if ($blocked === false) {
-            // Hard check to avvoid 
+        if ($blocked === false) {       
             $topThreeColors[] = $pallete->id;
         }
     };
