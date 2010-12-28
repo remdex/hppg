@@ -243,13 +243,15 @@ class erLhcoreClassGallery{
                       // that way we get almoust the same result as using database
                       // Reference:
                       // http://sphinxsearch.com/docs/current.html#api-func-setrankingmode
-                      $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
-                      $cl->SetRankingMode(SPH_RANK_BM25);
-                                              
-                      if (!isset($params['color_search_mode'])){
+                      if (isset($params['color_search_mode'])){
+                        $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
+                        $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+                      }  else {  // Works best then keyword and color is used        
+                        $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
                         $params['keyword'] = '('.implode(' | ',explode(' ',trim($params['keyword']).$startAppend)).') & ';
                         $startAppend = '';
-                      }                    
+                        $cl->SetRankingMode(SPH_RANK_BM25); 
+                      }
                   }
       
                   
@@ -413,12 +415,14 @@ class erLhcoreClassGallery{
           // that way we get almoust the same result as using database
           // Reference:
           // http://sphinxsearch.com/docs/current.html#api-func-setrankingmode
-          $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
-          $cl->SetRankingMode(SPH_RANK_BM25);
-            
-          if (!isset($params['color_search_mode'])){
+          if (isset($params['color_search_mode'])){
+            $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
+            $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+          } else {  // Works best then keyword and color is used        
+            $cl->SetMatchMode( SPH_MATCH_EXTENDED2);                                                       
             $params['keyword'] = '('.implode(' | ',explode(' ',trim($params['keyword']).$startAppend)).') & ';
             $startAppend = '';
+            $cl->SetRankingMode(SPH_RANK_BM25);
           }
       }   
            
