@@ -10,7 +10,7 @@
 <?php if ($max_filters == false) : ?>
 <script>
 hw.initSortBox('#color-filter-nav');
-hw.initPalleteFilter('<?=count($pallete_id) > 0 ? '/'.implode('/',$pallete_id) : ''?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword : ''?>');
+hw.initPalleteFilter('<?=count($pallete_id) > 0 ? '/'.implode('/',$pallete_id) : ''?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend : ''?>');
 </script>
 <?php endif;?>
 

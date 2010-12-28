@@ -31,7 +31,7 @@ $ViewList['getpallete'] = array(
     'script' => 'getpallete.php',
     'params' => array(),
     'multiple_arguments' => array ( 'color' ),
-    'uparams' => array('color','keyword','mode')
+    'uparams' => array('color','keyword','mode','resolution')
     );
         
 $ViewList['category'] = array( 

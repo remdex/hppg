@@ -9,7 +9,7 @@ sort($moreColors);
 <?php if ($mode == 'color') : ?>
     <a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode('/',$moreColors)?>"></a>
 <?php elseif ($mode == 'search') : ?>
-    <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($keyword)?>/(color)/<?=implode('/',$moreColors)?>"></a>    
+    <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($keyword)?>/(color)/<?=implode('/',$moreColors).$resolution?>"></a>    
 <?php endif;?>
 </div>
 <?endforeach;?>
