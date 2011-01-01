@@ -1747,6 +1747,8 @@ if ($mode == 'album')
       	
 } elseif ($mode == 'color') {
         
+    $Params['user_parameters_unordered']['color'] = (array)$Params['user_parameters_unordered']['color'];
+    
     // Protection against to mutch color filters
     if (count($Params['user_parameters_unordered']['color']) > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
         $Params['user_parameters_unordered']['color'] = array_slice($Params['user_parameters_unordered']['color'],0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
@@ -1758,16 +1760,30 @@ if ($mode == 'album')
         $imagesLeft = $dataParams['imagesLeft'];
         $imagesRight = $dataParams['imagesRight'];
     } else {
+        
         $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'relevance' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'], 'SearchLimit' => 1,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)),false);
         
-        $resultSearch = erLhcoreClassGallery::searchSphinxMulti(
-            array (
-                array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filtergt' => array('pid' => $Image->pid),'Filter' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance ASC, @id ASC'),
-                array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filtergt' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance ASC, @id ASC'),
-                array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterlt' => array('pid' => $Image->pid-1),'Filter' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance DESC, @id DESC'),
-                array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterlt' => array('@weight' => $relevanceCurrentImage-1),'SearchLimit' => 5,'sort' => '@relevance DESC, @id DESC')
-            ),false
-        );
+        if ( count($Params['user_parameters_unordered']['color']) == 1 || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search') == false) {   
+            $resultSearch = erLhcoreClassGallery::searchSphinxMulti (
+                array (
+                    array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filtergt' => array('pid' => $Image->pid),'Filter' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance ASC, @id ASC'),
+                    array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filtergt' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance ASC, @id ASC'),
+                    array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterlt' => array('pid' => $Image->pid-1),'Filter' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => '@relevance DESC, @id DESC'),
+                    array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterlt' => array('@weight' => $relevanceCurrentImage-1),'SearchLimit' => 5,'sort' => '@relevance DESC, @id DESC')
+                ),false
+            );
+        } else {
+            $resultSearch = erLhcoreClassGallery::searchSphinxMulti (
+                array (
+                    array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filtergt' => array('pid' => $Image->pid),'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => 'custom_match ASC, @id ASC'),
+                    array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterfloatgt' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => 'custom_match ASC, @id ASC'),
+                    array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterlt' => array('pid' => $Image->pid-1),'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 5,'sort' => 'custom_match DESC, @id DESC'),
+                    array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'filterfloatlt' => array('custom_match' => $relevanceCurrentImage-1),'SearchLimit' => 5,'sort' => 'custom_match DESC, @id DESC')
+                ),false
+            );
+        }
+        
+        
         
         $totalPhotos = $resultSearch[0];
           

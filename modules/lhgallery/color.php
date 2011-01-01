@@ -38,7 +38,15 @@ if (($Result = $cache->restore($cacheKey)) === false)
                 $searchParams['color_filter'] = $pallete_id;         
                 $searchParams['SearchLimit'] = 20;
                 $searchParams['SearchOffset'] = $pages->low;
-                $searchParams['sort'] = '@relevance DESC, @id DESC';
+                      
+                $standardSearch = count($pallete_id) == 1 || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search') == false;
+                
+                if ($standardSearch == true) {
+                    $searchParams['sort'] = '@relevance DESC, @id DESC';
+                } else {
+                    $searchParams['sort'] = 'custom_match DESC @id DESC';
+                }
+                
                 $searchParams['color_search_mode'] = true;
                 
                 $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);

@@ -187,11 +187,12 @@ class erLhcoreClassGallery{
             $maxReturn = $cfg->conf->getSetting( 'sphinx', 'max_matches' );
             $wildCardEnabled = $cfg->conf->getSetting( 'sphinx', 'enabled_wildcard');
             $sphinxIndex = $cfg->conf->getSetting( 'sphinx', 'index' );  
+            $extendedSearch = $cfg->conf->getSetting( 'color_search', 'extended_search');
              
             foreach ($queryesBatch as $params) {
                   
                   $cl->ResetFilters();
-                  $cl->SetSelect('*');
+                  $cl->SetSelect('');
                                                 
                   $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxReturn);
                     
@@ -219,8 +220,27 @@ class erLhcoreClassGallery{
                        foreach ($params['filterlt'] as $attribute => $fieldValue) {          
                            $cl->SetFilterRange( $attribute, (int)0, (int)$fieldValue, false );
                        }
+                  }
+                  
+                  if (isset($params['filterfloatgt'])) {
+                       foreach ($params['filterfloatgt'] as $attribute => $fieldValue) { 
+                           $cl->SetFilterFloatRange( $attribute, (int)0, (int)$fieldValue, true );
+                       }
+                  }  
+                  
+                  if (isset($params['filterfloatlt'])) {
+                       foreach ($params['filterfloatlt'] as $attribute => $fieldValue) {          
+                           $cl->SetFilterFloatRange( $attribute, (int)0, (int)$fieldValue, false );
+                       }
                   } 
             
+                  if (isset($params['FilterFloat'])) {
+                        foreach ($params['FilterFloat'] as $attribute => $fieldValue) {          
+                           $cl->SetFilterFloatRange( $attribute, (int)$fieldValue, (int)$fieldValue, false );
+                       }
+                  }
+                  
+                  
                   if (isset($params['custom_filter'])){
                     $cl->SetSelect ( $params['custom_filter']['filter'] );
                     $cl->SetFilter ( $params['custom_filter']['filter_name'], array(1) );
@@ -234,18 +254,28 @@ class erLhcoreClassGallery{
                   $colorSearchText = '';
                   if (isset($params['color_filter']) && count($params['color_filter']) > 0){
                       $colorSearchText = '';
+                      $selectPart = array();
                       foreach ($params['color_filter'] as $color_id)
                       {
                           $colorSearchText .= ' pld'.$color_id;
+                          $selectPart[] = "ln(pld{$color_id}+1)"; // +1 to avoid infinity
                       }  
                       
                       // Works best for search by color, like we are repeating color multiple times, 
                       // that way we get almoust the same result as using database
                       // Reference:
                       // http://sphinxsearch.com/docs/current.html#api-func-setrankingmode
-                      if (isset($params['color_search_mode'])){
+                      if (isset($params['color_search_mode'])) {
+                                                    
                         $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
-                        $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+                        if (count($params['color_filter']) == 1 || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search') == false) { // If one color we use internal wordcount algorithm                
+                            $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+                        } else {
+                            $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));
+                            $cl->SetRankingMode(SPH_RANK_NONE); 
+                            $cl->SetSelect('FLOOR(('.implode('+',$selectPart).')*10000) as custom_match'); 
+                        }
+                        
                       }  else {  // Works best then keyword and color is used        
                         $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
                         $params['keyword'] = '('.implode(' | ',explode(' ',trim($params['keyword']).$startAppend)).') & ';
@@ -269,6 +299,7 @@ class erLhcoreClassGallery{
             
             $resultItems = $cl->RunQueries();
             $resultReturn = array();
+            
             
             // Get ID's witch we need to fetch first
             $imagesIDToFetch = array();
@@ -354,9 +385,10 @@ class erLhcoreClassGallery{
       
       $cl = self::getSphinxInstance();
       $cl->ResetFilters();
-      $cl->SetSelect('*');
+      $cl->SetSelect('');
       $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' );    
-                       
+      $extendedColorSearch = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search');                
+      
       $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxMatches);
                     
       $filter = isset($params['Filter']) ? $params['Filter'] : array();  
@@ -384,7 +416,25 @@ class erLhcoreClassGallery{
                $cl->SetFilterRange( $attribute, (int)0, (int)$fieldValue, false );
            }
       } 
+      
+      if (isset($params['filterfloatgt'])) {
+           foreach ($params['filterfloatgt'] as $attribute => $fieldValue) { 
+               $cl->SetFilterFloatRange( $attribute, (int)0, (int)$fieldValue, true );
+           }
+      }  
+      
+      if (isset($params['filterfloatlt'])) {
+           foreach ($params['filterfloatlt'] as $attribute => $fieldValue) {          
+               $cl->SetFilterFloatRange( $attribute, (int)0, (int)$fieldValue, false );
+           }
+      } 
 
+      if (isset($params['FilterFloat'])) {
+            foreach ($params['FilterFloat'] as $attribute => $fieldValue) {          
+               $cl->SetFilterFloatRange( $attribute, (int)$fieldValue, (int)$fieldValue, false );
+           }
+      }
+                  
       if (isset($params['custom_filter'])){
         $cl->SetSelect ( $params['custom_filter']['filter'] );
         $cl->SetFilter ( $params['custom_filter']['filter_name'], array(1) );
@@ -406,18 +456,31 @@ class erLhcoreClassGallery{
       $colorSearchText = '';
       if (isset($params['color_filter']) && count($params['color_filter']) > 0){
           $colorSearchText = '';
+          $selectPart = array();
+          
           foreach ($params['color_filter'] as $color_id)
           {
               $colorSearchText .= ' pld'.$color_id;
+              $selectPart[] = "ln(pld{$color_id}+1)"; // +1 to avoid infinity
           }
           
           // Works best for search by color, like we are repeating color multiple times, 
           // that way we get almoust the same result as using database
           // Reference:
           // http://sphinxsearch.com/docs/current.html#api-func-setrankingmode
-          if (isset($params['color_search_mode'])){
-            $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
-            $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+          if (isset($params['color_search_mode'])) {
+              
+            $cl->SetMatchMode( SPH_MATCH_EXTENDED2);  
+   
+            if (count($params['color_filter']) == 1 || $extendedColorSearch == false) { // If one color we use internal wordcount algorithm                
+                $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+            } else {
+                // Just make sure that atleast one color is set              
+                $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));                               
+                $cl->SetRankingMode(SPH_RANK_NONE); 
+                $cl->SetSelect('FLOOR(('.implode('+',$selectPart).')*10000) as custom_match');                               
+            }
+            
           } else {  // Works best then keyword and color is used        
             $cl->SetMatchMode( SPH_MATCH_EXTENDED2);                                                       
             $params['keyword'] = '('.implode(' | ',explode(' ',trim($params['keyword']).$startAppend)).') & ';
@@ -426,10 +489,10 @@ class erLhcoreClassGallery{
           }
       }   
            
-             
       $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
-           
-                
+          
+            
+      
       if ($result['total_found'] == 0 || !isset($result['matches'])){
       
           if (isset($params['relevance'])) { 
@@ -443,10 +506,17 @@ class erLhcoreClassGallery{
         
       if (isset($params['relevance'])) {          
           $itemCurrent = array_shift($result['matches']);
-          if ($cacheEnabled == true ) {
-            $cache->store($cacheKey,$itemCurrent['weight'],12000);
+          
+          if (!isset($params['color_search_mode']) || count($params['color_filter']) == 1 || $extendedColorSearch == false) {
+            $relevanceValue = $itemCurrent['weight'];
+          } else {
+            $relevanceValue = $itemCurrent['attrs']['custom_match'];
           }
-          return $itemCurrent['weight'];
+                    
+          if ($cacheEnabled == true ) {
+            $cache->store($cacheKey,$relevanceValue,12000);
+          }
+          return $relevanceValue;
       }
       
       foreach ($result['matches'] as $key => $match)
@@ -472,9 +542,7 @@ class erLhcoreClassGallery{
       
       if ($cacheEnabled == true) {
             $cache->store($cacheKey,$resultReturn,12000);
-      }
-      
-        
+      } 
         
       }
       

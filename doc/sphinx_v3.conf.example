@@ -1,0 +1,160 @@
+source anifofsrc
+{
+	type					= mysql
+	sql_host				= <host>
+	sql_user				= <username>
+	sql_pass				= <password>
+	sql_db					= <database>
+	sql_port				= 3306	# optional, default is 3306
+
+	sql_query				= \
+		SELECT * FROM lh_gallery_sphinx_search_view
+
+	sql_query_info			= SELECT * FROM lh_gallery_sphinx_search_view WHERE id=$id
+	sql_attr_uint   = pid
+	sql_attr_uint   = hits
+	sql_attr_uint   = mtime
+	sql_attr_uint   = comtime
+	sql_attr_uint   = rtime
+	sql_attr_uint   = pic_rating
+	sql_attr_uint   = votes
+	sql_attr_uint   = pwidth
+	sql_attr_uint   = pheight
+	
+	sql_attr_uint   = pld1
+    sql_attr_uint   = pld2
+    sql_attr_uint   = pld3
+    sql_attr_uint   = pld4
+    sql_attr_uint   = pld5
+    sql_attr_uint   = pld6
+    sql_attr_uint   = pld7
+    sql_attr_uint   = pld8
+    sql_attr_uint   = pld9
+    sql_attr_uint   = pld10
+    sql_attr_uint   = pld11
+    sql_attr_uint   = pld12
+    sql_attr_uint   = pld13
+    sql_attr_uint   = pld14
+    sql_attr_uint   = pld15
+    sql_attr_uint   = pld16
+    sql_attr_uint   = pld17
+    sql_attr_uint   = pld18
+    sql_attr_uint   = pld19
+    sql_attr_uint   = pld20
+    sql_attr_uint   = pld21
+    sql_attr_uint   = pld22
+    sql_attr_uint   = pld23
+    sql_attr_uint   = pld24
+    sql_attr_uint   = pld25
+    sql_attr_uint   = pld26
+    sql_attr_uint   = pld27
+    sql_attr_uint   = pld28
+    sql_attr_uint   = pld29
+    sql_attr_uint   = pld30
+    sql_attr_uint   = pld31
+    sql_attr_uint   = pld32
+    sql_attr_uint   = pld33
+    sql_attr_uint   = pld34
+    sql_attr_uint   = pld35
+    sql_attr_uint   = pld36
+    sql_attr_uint   = pld37
+    sql_attr_uint   = pld38
+    sql_attr_uint   = pld39
+    sql_attr_uint   = pld40
+    sql_attr_uint   = pld41
+    sql_attr_uint   = pld42
+    sql_attr_uint   = pld43
+    sql_attr_uint   = pld44
+    sql_attr_uint   = pld45
+    sql_attr_uint   = pld46
+    sql_attr_uint   = pld47
+    sql_attr_uint   = pld48
+    sql_attr_uint   = pld49
+    sql_attr_uint   = pld50
+    sql_attr_uint   = pld51
+    sql_attr_uint   = pld52
+    sql_attr_uint   = pld53
+    sql_attr_uint   = pld54
+    sql_attr_uint   = pld55
+    sql_attr_uint   = pld56
+    sql_attr_uint   = pld57
+    sql_attr_uint   = pld58
+    sql_attr_uint   = pld59
+    sql_attr_uint   = pld60
+    sql_attr_uint   = pld61
+    sql_attr_uint   = pld62
+    sql_attr_uint   = pld63
+    sql_attr_uint   = pld64
+    sql_attr_uint   = pld65
+    sql_attr_uint   = pld66
+    sql_attr_uint   = pld67
+    sql_attr_uint   = pld68
+    sql_attr_uint   = pld69
+    sql_attr_uint   = pld70
+    sql_attr_uint   = pld71
+    sql_attr_uint   = pld72
+    sql_attr_uint   = pld73
+    sql_attr_uint   = pld74
+    sql_attr_uint   = pld75
+    sql_attr_uint   = pld76
+    sql_attr_uint   = pld77
+    sql_attr_uint   = pld78
+    sql_attr_uint   = pld79
+    sql_attr_uint   = pld80
+    sql_attr_uint   = pld81
+    sql_attr_uint   = pld82
+    sql_attr_uint   = pld83
+    sql_attr_uint   = pld84
+    sql_attr_uint   = pld85
+    sql_attr_uint   = pld86
+    sql_attr_uint   = pld87
+    sql_attr_uint   = pld88
+    sql_attr_uint   = pld89
+    sql_attr_uint   = pld90
+    sql_attr_uint   = pld91
+    sql_attr_uint   = pld92
+    sql_attr_uint   = pld93
+    sql_attr_uint   = pld94
+    sql_attr_uint   = pld95
+    sql_attr_uint   = pld96
+    sql_attr_uint   = pld97
+    sql_attr_uint   = pld98
+    sql_attr_uint   = pld99
+    sql_attr_uint   = pld100
+    sql_attr_uint   = pld101
+    sql_attr_uint   = pld102
+    sql_attr_uint   = pld103
+    sql_attr_uint   = pld104
+    sql_attr_uint   = pld105
+    sql_attr_uint   = pld106
+    sql_attr_uint   = pld107
+    sql_attr_uint   = pld108
+    sql_attr_uint   = pld109
+    sql_attr_uint   = pld110
+    sql_attr_uint   = pld111
+    sql_attr_uint   = pld112
+    sql_attr_uint   = pld113
+    sql_attr_uint   = pld114
+    sql_attr_uint   = pld115
+    sql_attr_uint   = pld116
+    sql_attr_uint   = pld117
+    sql_attr_uint   = pld118
+    sql_attr_uint   = pld119
+    sql_attr_uint   = pld120
+}
+
+index anifof
+{
+	source					= anifofsrc
+	path					= /var/data/anifofsrc
+	docinfo					= extern
+	charset_type=utf-8
+	charset_table   = 0..9, A..Z->a..z, _-> , a..z
+	
+	#Uncomment bellow if you want to have wildcard, 
+	#do not forget enable worldcard in gallery configuration file also
+	
+	#min_word_len = 3
+	#enable_star = 1
+	#min_prefix_len = 3
+}
