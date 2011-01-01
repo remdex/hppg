@@ -224,19 +224,19 @@ class erLhcoreClassGallery{
                   
                   if (isset($params['filterfloatgt'])) {
                        foreach ($params['filterfloatgt'] as $attribute => $fieldValue) { 
-                           $cl->SetFilterFloatRange( $attribute, (int)0, (int)$fieldValue, true );
+                           $cl->SetFilterFloatRange( $attribute, (float)0, (float)$fieldValue, true );
                        }
                   }  
                   
                   if (isset($params['filterfloatlt'])) {
                        foreach ($params['filterfloatlt'] as $attribute => $fieldValue) {          
-                           $cl->SetFilterFloatRange( $attribute, (int)0, (int)$fieldValue, false );
+                           $cl->SetFilterFloatRange( $attribute, (float)0, (float)$fieldValue, false );
                        }
                   } 
             
                   if (isset($params['FilterFloat'])) {
                         foreach ($params['FilterFloat'] as $attribute => $fieldValue) {          
-                           $cl->SetFilterFloatRange( $attribute, (int)$fieldValue, (int)$fieldValue, false );
+                           $cl->SetFilterFloatRange( $attribute, (float)$fieldValue, (float)$fieldValue, false );
                        }
                   }
                   
@@ -419,19 +419,19 @@ class erLhcoreClassGallery{
       
       if (isset($params['filterfloatgt'])) {
            foreach ($params['filterfloatgt'] as $attribute => $fieldValue) { 
-               $cl->SetFilterFloatRange( $attribute, (int)0, (int)$fieldValue, true );
+               $cl->SetFilterFloatRange( $attribute, (float)0, (float)$fieldValue, true );
            }
       }  
       
       if (isset($params['filterfloatlt'])) {
            foreach ($params['filterfloatlt'] as $attribute => $fieldValue) {          
-               $cl->SetFilterFloatRange( $attribute, (int)0, (int)$fieldValue, false );
+               $cl->SetFilterFloatRange( $attribute, (float)0, (float)$fieldValue, false );
            }
       } 
 
       if (isset($params['FilterFloat'])) {
             foreach ($params['FilterFloat'] as $attribute => $fieldValue) {          
-               $cl->SetFilterFloatRange( $attribute, (int)$fieldValue, (int)$fieldValue, false );
+               $cl->SetFilterFloatRange( $attribute, (float)$fieldValue, (float)$fieldValue, false );
            }
       }
                   
