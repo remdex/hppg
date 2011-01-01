@@ -249,7 +249,8 @@ return array (
         'color_indexer_external' => false,
         'color_indexer_path' => './bin/color_indexer/color_indexer',
         'max_matches' => 1000,
-        'database_handler' => true
+        'database_handler' => true,
+        'extended_search' => false
     ),
     'sphinx' => 
     array (
