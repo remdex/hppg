@@ -312,7 +312,7 @@ class erLhcoreClassModelGallerySphinxSearch {
            $imageIndex->file_path = str_replace(array('-','_','/'),array(' ',' ',' '),$image->filepath);
            $imageIndex->filename = str_replace(array('-','_'),array(' ',' '),$image->filename);
            $imageIndex->text_index = implode(' ',array_filter($searchBody));
-           $imageIndex->text_index_length = strlen($imageIndex->text_index);
+           
 
 
            $session = erLhcoreClassGallery::getSession();
@@ -351,6 +351,7 @@ class erLhcoreClassModelGallerySphinxSearch {
            }
                       
            $imageIndex->colors = trim(implode(' ',$colorIndex));
+           $imageIndex->text_index_length = strlen($imageIndex->colors);
 
            erLhcoreClassGallery::getSession()->saveOrUpdate($imageIndex);
        } elseif ($image->approved == 0) {
