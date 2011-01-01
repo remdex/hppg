@@ -921,6 +921,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `text_index` text NOT NULL,
                   `hits` int(11) NOT NULL,
                   `pid` int(11) NOT NULL,
+                  `text_index_length` mediumint(9) NOT NULL,
                   PRIMARY KEY (`id`)
                 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
                 

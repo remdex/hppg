@@ -85,6 +85,11 @@ $def->properties['text_index']->columnName   = 'text_index';
 $def->properties['text_index']->propertyName = 'text_index';
 $def->properties['text_index']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
 
+$def->properties['text_index_length'] = new ezcPersistentObjectProperty();
+$def->properties['text_index_length']->columnName   = 'text_index_length';
+$def->properties['text_index_length']->propertyName = 'text_index_length';
+$def->properties['text_index_length']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+
 return $def; 
 
 ?>

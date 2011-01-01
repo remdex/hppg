@@ -1,0 +1,1 @@
+UPDATE `lh_gallery_sphinx_search` SET `text_index_length` = char_length(`lh_gallery_sphinx_search`.`colors`);

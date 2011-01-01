@@ -21,6 +21,7 @@ class erLhcoreClassModelGallerySphinxSearch {
                'colors'      => $this->colors,           
                'text_index'  => $this->text_index,
                'pid'         => $this->pid,
+               'text_index_length'   => $this->text_index_length
        );
    }
    
@@ -263,9 +264,11 @@ class erLhcoreClassModelGallerySphinxSearch {
        
        
        $db = ezcDbInstance::get();
-       $stmt = $db->prepare('UPDATE `lh_gallery_sphinx_search` SET colors = :colors WHERE id = :id LIMIT 1');
+       $stmt = $db->prepare('UPDATE `lh_gallery_sphinx_search` SET colors = :colors,text_index_length = :text_index_length WHERE id = :id LIMIT 1');
        $stmt->bindValue( ':id',$image->pid);
-       $stmt->bindValue( ':colors',trim(implode(' ',$colorIndex)));
+       $colorsIndex = trim(implode(' ',$colorIndex));
+       $stmt->bindValue( ':colors',$colorsIndex);
+       $stmt->bindValue( ':text_index_length',strlen($colorsIndex));
 
        $stmt->execute(); 
    }
@@ -309,6 +312,7 @@ class erLhcoreClassModelGallerySphinxSearch {
            $imageIndex->file_path = str_replace(array('-','_','/'),array(' ',' ',' '),$image->filepath);
            $imageIndex->filename = str_replace(array('-','_'),array(' ',' '),$image->filename);
            $imageIndex->text_index = implode(' ',array_filter($searchBody));
+           $imageIndex->text_index_length = strlen($imageIndex->text_index);
 
 
            $session = erLhcoreClassGallery::getSession();
@@ -370,6 +374,7 @@ class erLhcoreClassModelGallerySphinxSearch {
    public $pheight = 0;
    public $colors = '';
    public $text_index = '';
+   public $text_index_length = 0;
 
 }
 
