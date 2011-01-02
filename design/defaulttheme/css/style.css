@@ -181,6 +181,7 @@ div.error-list ul li
 .picture-comments .ct{color:#8F8F8F;font-size:11px;}
 .picture-comments ul li{border-bottom:1px solid #EFEFEF;}
 .comment-form{font-size:11px;margin-top:3px;}
+.comment-form h4{font-size:11px;}
 .comment-form textarea{width:100%;}
 .in-blk label{display:block;padding-bottom:2px;}
 .in-blk{padding-bottom:5px;}
@@ -864,7 +865,7 @@ border-bottom-left-radius:14px;}
 .big-button{font-size:14px;}
 .status-img{padding-left:5px;}
 .c-left{clear:left;}
-.act-blc{text-align:left;padding:2px;}
+.act-blc{text-align:right;padding:2px;}
 
 
 .navigator-image{width:424px;padding-bottom:7px;}
@@ -1065,5 +1066,6 @@ div.dominant-colors div a{display:block;height:20px;}
 #color-filter-nav .pallete-filter div a:hover{border:1px solid #FFFFFF;width:14px;height:14px;}
 #color-filter-nav{width:160px;margin-top:-12px;}
 #color-filter-nav .sort-box{width:160px;}
-
 .color-nav a{background-color:transparent;}
+#tags-container{float:right;width:300px;}
+#tags-container input{margin-right:2px;}

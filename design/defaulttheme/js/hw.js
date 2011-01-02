@@ -59,19 +59,42 @@ var hw = {
 		return false;	
 	},
 	
-	addCheck : function (timestamp)
+	addCheck : function (timestamp,pid)
 	{
 	    
 	    $('#CommentButtomStore').attr("disabled","disabled");
+	    var originalLabel = $('#CommentButtomStore').val();
 	    $('#CommentButtomStore').val("Working...");
+	    
+	    var formAddPath = this.formAddPath;
+	    
 		$.getJSON(this.formAddPath + this.captcha_url+timestamp, function(data) {	                
-			var input = $(document.createElement('input'));
-            input.attr("name","captcha_"+data.result);
-            input.attr("value",timestamp);
-            input.attr("type","hidden");
-            input.attr("id","id_captcha_code");
-            $('#comment_form_data').prepend(input);                 
-            document.comment_form.submit();
+			            
+            var pdata = {				
+				Name	     :$('#IDName').val(),				
+				CommentBody  :$('#IDCommentBody').val()								
+		    }		    
+		    pdata["captcha_"+data.result] = timestamp;
+		    
+            $.postJSON(formAddPath + 'gallery/addcomment/'+pid, pdata , function(data) {                
+                $('.error-list').remove();
+                $('.ok').remove(); 
+                
+                if (data.error == 'true') {
+                    $('.comment-form').prepend(data.status);
+                } else { 
+                    $('#comments-list').html(data.comments);
+                    $('.comment-form').prepend(data.status);
+                    $('#com_'+data.id).fadeIn(1500);
+                    $('#IDName').val('');
+                    $('#IDCommentBody').val('');
+                }          
+                
+                $('#CommentButtomStore').removeAttr('disabled');
+                $('#CommentButtomStore').val(originalLabel);
+                
+            });	            	
+            
 		});		  		
 		return false;	
 	},

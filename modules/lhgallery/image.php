@@ -261,7 +261,7 @@ if ($currentUser->isLogged()) {
 // Global image cache key
 $cacheKeyImageView = md5('image_window_'.(int)$Params['user_parameters']['image_id'].'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray).'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.$appendCacheKey).'_comment_version_'.$cache->getCacheVersion('last_commented_image_version_'.(int)$Params['user_parameters']['image_id']);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' || ($Result = $cache->restore($cacheKeyImageView)) === false)
+if (($Result = $cache->restore($cacheKeyImageView)) === false)
 { 
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/image.tpl.php');
@@ -275,102 +275,14 @@ if (!($Image instanceof erLhcoreClassModelGalleryImage)){
     }
 }
 
-
 $CommentData = new erLhcoreClassModelGalleryComment();
 $needSave = false;
-$storeCache = true;
 
-if ($currentUser->isLogged()){
+if ($currentUser->isLogged()) {
     $CommentData->msg_author = $currentUser->getUserData(true)->username;
 } else {
     $CommentData->msg_author = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Guest_');
 }
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{      
-    $nameField = 'captcha_'.$_SESSION[$_SERVER['REMOTE_ADDR']]['comment'];
-    $definition = array(
-        'Name' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
-        ),
-        
-        'CommentBody' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
-        ),   
-            
-        $nameField => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::OPTIONAL, 'string'
-        )
-    );
-  
-    $form = new ezcInputForm( INPUT_POST, $definition );
-    $Errors = array();
-    
-    // Catpcha field expires in 10 minutes
-    if ( !$form->hasValidData( $nameField ) || $form->$nameField == '' || $form->$nameField < time()-10*60 )
-    {
-        $Errors[] =   erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Wrong captcha code!');
-    } 
-    
-    $validUsername = false;
-    if ( !$form->hasValidData( 'Name' ) || $form->Name == '' )
-    {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Please enter nick!');
-    } else {$CommentData->msg_author = $form->Name;$validUsername = true;}
-    
-    if ($validUsername == true && (($currentUser->isLogged() && $currentUser->getUserData()->username != $form->Name) || ($currentUser->isLogged() == false)) && erLhcoreClassUser::getUserCount(array('filter' => array('username' => $form->Name))) > 0){
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Sutch username is already taken!');
-    }
-    
-    if ( !$form->hasValidData( 'CommentBody' ) || trim($form->CommentBody) == '' || mb_strlen(trim($form->CommentBody)) > 500 || erLhcoreClassModelGalleryComment::isSpam(trim($form->CommentBody)))
-    {
-        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Please enter comment!');
-    } else $CommentData->msg_body = trim($form->CommentBody);
-    
-    
-    if (count($Errors) == 0)
-    {  
-        
-        $CommentData->pid = $Image->pid;
-        $CommentData->msg_date = date('Y-m-d H:i:s');
-        $CommentData->msg_hdr_ip = $_SERVER['REMOTE_ADDR'];
-        $CommentData->author_md5_id = md5($CommentData->msg_author);
- 
-        if ($currentUser->isLogged())
-        {
-            $CommentData->author_id = $currentUser->getUserID();
-        }
-         
-        erLhcoreClassGallery::getSession()->save($CommentData);
-        $CommentData = new erLhcoreClassModelGalleryComment();               
-        $Image->comtime = time();
-        $needSave = true;
-        
-        //Clear cache
-        CSCacheAPC::getMem()->delete('comments_'.$Image->pid);
-        CSCacheAPC::getMem()->increaseCacheVersion('last_commented');
-        CSCacheAPC::getMem()->increaseCacheVersion('last_commented_'.$Image->aid);
-        CSCacheAPC::getMem()->increaseCacheVersion('last_commented_image_version_'.$Image->pid);
-        
-        erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_commented'));
-        
-        erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$Image->aid),array('comtime DESC, pid DESC','comtime ASC, pid ASC'));
-                
-        // Update two attributes
-    	erLhcoreClassModelGallerySphinxSearch::indexAttributes($Image,array('comtime' => 'comtime'));
-            	
-        $tpl->set('commentStored',true);
-             
-    }  else {
-         
-        $tpl->set('commentErrArr',$Errors);
-    }
-    
-    $storeCache = false;
-    
-} 
-
-   
 
 if ($mode == 'album')
 {
@@ -2135,9 +2047,7 @@ if ($mode == 'lastuploads') {
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss').'/'.$Image->aid; 
 }
 
-if ($storeCache === true) {
     $cache->store($cacheKeyImageView,$Result);
-}
 
 } elseif (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true) { // Delay image hit enabled
 	erLhcoreClassModelGalleryDelayImageHit::addHit((int)$Params['user_parameters']['image_id']);

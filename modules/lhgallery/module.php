@@ -67,6 +67,12 @@ $ViewList['image'] = array(
     'multiple_arguments' => array ( 'color' ),
     'uparams' => array('mode','keyword','sort','resolution','color'),
     ); 
+           
+$ViewList['addcomment'] = array( 
+    'script' => 'addcomment.php',
+    'params' => array('image_id'),
+    'uparams' => array()
+    ); 
        
 $ViewList['anaglyph'] = array( 
     'script' => 'anaglyph.php',
