@@ -1,6 +1,30 @@
 <div class="header-list">
 
-<?php if (isset($palletes)) : ?> 
+<?php if (isset($palletes)) : 
+
+
+$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
+$resolutionAppend = '';
+if (isset($currentResolution) && key_exists($currentResolution,$resolutions)) {    
+    $resolutionAppend = '/(resolution)/'.$resolutions[$currentResolution]['width'].'x'.$resolutions[$currentResolution]['height'];
+}
+
+?> 
+
+<?php if ($database_handler == false) : ?>
+<div class="right order-nav" id="resolution-nav">
+<ul>
+    <li class="current-sort" ><a class="choose-sort"><span></span></a>
+        <ul class="sort-box">
+            <?php $currentResolution?>
+            <li><a <?=$currentResolution == '' ? 'class="selor" ' : ''?> href="<?=$urlSortBase?><?echo $urlAppendSort?><?php echo $sortArrayAppend[$mode]?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Any resolution')?></a>
+            <?php foreach ($resolutions as $key => $resolution) : ?>
+                <li><a <?=$currentResolution == $key ? 'class="selor" ' : ''?>href="<?=$urlSortBase?><?echo $urlAppendSort?><?php echo $sortArrayAppend[$mode]?>/(resolution)/<?=$resolution['width']?>x<?=$resolution['height']?>"><span><?=$resolution['width']?>x<?=$resolution['height']?></span></a>
+            <?php endforeach;?>            
+        </ul>    
+</ul>
+</div>
+<?php endif;?>
 
 <div class="right order-nav" id="color-filter-nav">
 <ul>
@@ -14,7 +38,12 @@
 <?php if ($max_filters == false) : ?>
 <script>
 hw.initSortBox('#color-filter-nav');
-hw.initPalleteFilter('/<?=implode('/',$pallete_id)?>','color','');
+
+<?php if ($database_handler == false) : ?>
+hw.initSortBox('#resolution-nav');
+<?php endif;?>
+
+hw.initPalleteFilter('/<?=implode('/',$pallete_id).$appendResolutionMode?>','color','');
 </script>
 <?php endif;?>
 
@@ -31,8 +60,8 @@ sort($moreColors);
 
 ?>
     <div class="csc" style="background-color:rgb(<?=$palleteCurrent->red?>,<?=$palleteCurrent->green?>,<?=$palleteCurrent->blue?>)">
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Remove color')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?><? if (count($arrayItems) > 0){ ?>/(color)/<?=implode($arrayItems,'/');};?>"></a>
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','More color');?>" class="more-color" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode($moreColors,'/');?>"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Remove color')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?><? if (count($arrayItems) > 0){ ?>/(color)/<?=implode($arrayItems,'/').$appendResolutionMode;};?>"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','More color');?>" class="more-color" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode($moreColors,'/').$appendResolutionMode;?>"></a>
     </div>
 <?php endforeach;?>
 

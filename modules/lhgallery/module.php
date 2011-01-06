@@ -117,7 +117,7 @@ $ViewList['color'] = array(
     'multiple_arguments' => array (
         'color'
     ),
-    'uparams' => array('color')
+    'uparams' => array('color','resolution')
 ); 
     
 $ViewList['lastuploadsrss'] = array( 

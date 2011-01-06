@@ -1,8 +1,5 @@
 <script type="text/javascript">
 
-$('#photo_full').colorbox({href:$('#photo_full').attr('href')});	
-$('#photo_full').attr('href','');
-
 hw.setAppendURL('<?=$urlAppend?>');
 $('.right-ajax a').click(function(){
     hw.getimages($(this).attr('rel'),'right');

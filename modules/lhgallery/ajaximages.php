@@ -584,7 +584,7 @@ if ($mode == 'album')
         if ($direction == 'left') {
                 
             $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_filter' => $filterColor,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
-            
+                       
             if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
                 $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_filter' => $filterColor,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
                             
@@ -598,8 +598,8 @@ if ($mode == 'album')
            }            
     	   
     	   if ($totalPhotos['total_found'] > 0){
-    	       $imagesAjax = $totalPhotos['list'];
-    	       $imagesAjax = array_reverse($imagesAjax);    
+    	       $imagesAjax = $totalPhotos['list'];    	       
+    	       $imagesAjax = array_reverse($imagesAjax);  
     	   }
     	   
     	} else {
@@ -1223,8 +1223,10 @@ if ($mode == 'album')
     $Params['user_parameters_unordered']['color'] = (array)$Params['user_parameters_unordered']['color'];
     sort($Params['user_parameters_unordered']['color']);
     
+    unset($filterArray['approved']);
+    
     $cache = CSCacheAPC::getMem();         
-    $cacheKeyImage = 'color_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('color_images').'_direction_'.$direction.'_filter_color_'.erLhcoreClassGallery::multi_implode(',',$Params['user_parameters_unordered']['color']);
+    $cacheKeyImage = 'color_mode_image_ajaxslides_pid_'.$Image->pid.'_version_'.$cache->getCacheVersion('color_images').'_direction_'.$direction.'_filter_color_'.erLhcoreClassGallery::multi_implode(',',$Params['user_parameters_unordered']['color']).erLhcoreClassGallery::multi_implode(',',$filterArray);
     
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
     {     
@@ -1241,53 +1243,52 @@ if ($mode == 'album')
         } else {
             
             $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'relevance' => true, 'SearchLimit' => 1,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)));
-           
+                                   
             $standardSearch = count($colorFilter) == 1 || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search') == false;
                         
             if ($direction == 'left') {
-                    
+                  
                 if ($standardSearch == true) {
-                    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filtergt' => array('pid' => $Image->pid),'Filter' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance ASC, @id ASC'));
+                    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance ASC, @id ASC'));
                 } else {
-                    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filtergt' => array('pid' => $Image->pid),'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match ASC, @id ASC'));
+                    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray,'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match ASC, @id ASC'));
                 }            
-                
+                              
                 if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
                     
                     if ($standardSearch == true) {
-                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filtergt' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance ASC, @id ASC'));
+                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => '@relevance ASC, @id ASC'));
                     } else {
-                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterfloatgt' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match ASC, @id ASC'));
+                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterfloatgt' => array('custom_match' => $relevanceCurrentImage),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => 'custom_match ASC, @id ASC'));
                     }                
                     
-                    if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {
+                    if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                                               
                         $totalPhotos['list'] = (array)$totalPhotos['list'] + (array)$totalPhotosHigher['list'];
                     } elseif ($totalPhotosHigher['total_found'] > 0) {
                         $totalPhotos['list'] = $totalPhotosHigher['list'];
                     }
-                    
+                                        
                     $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
                }            
         	   
         	   if ($totalPhotos['total_found'] > 0){
-        	       $imagesAjax = $totalPhotos['list'];
-        	       $imagesAjax = array_reverse($imagesAjax);    
+        	       $imagesAjax = $totalPhotos['list'];  
         	   }
         	   
         	} else {        	    
         	    
             	if ($standardSearch == true) {
-            	    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterlt' => array('pid' => $Image->pid-1),'Filter' => array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance DESC, @id DESC'));
+            	    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance DESC, @id DESC'));
             	} else {             
-            	    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterlt' => array('pid' => $Image->pid-1),'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match DESC, @id DESC'));            	    
+            	    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray,'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match DESC, @id DESC'));            	    
             	}
             	
                 if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
                     
                     if ($standardSearch == true) {
-                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'SearchLimit' => 6,'sort' => '@relevance DESC, @id DESC'));
+                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => '@relevance DESC, @id DESC'));
                     } else {
-                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterfloatlt' => array('custom_match' => $relevanceCurrentImage-1),'SearchLimit' => 6,'sort' => 'custom_match DESC, @id DESC'));
+                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'filterfloatlt' => array('custom_match' => $relevanceCurrentImage-1),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => 'custom_match DESC, @id DESC'));
                     } 
                                 
                     if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
@@ -1315,10 +1316,15 @@ if ($mode == 'album')
     if (count($imagesAjax) > 5) {
         $hasMoreImages = 'true';
         if ($direction == 'left') { 
-            $imagesAjax = array_slice($imagesAjax,1,5);
+            $imagesAjax = array_slice($imagesAjax,0,5);
+            $imagesAjax = array_reverse($imagesAjax);
         } else {
             $imagesAjax = array_slice($imagesAjax,0,5);
         }    
+    } else {
+        if ($direction == 'left') { 
+            $imagesAjax = array_reverse($imagesAjax);
+        }
     }
 
     $imagesFound = count($imagesAjax);
@@ -1333,7 +1339,7 @@ if ($mode == 'album')
            
     $tpl->set('imagesAjax',$imagesAjax);
      
-	$urlAppend = '/(mode)/color/(color)/'.implode('/',$Params['user_parameters_unordered']['color']);
+	$urlAppend = '/(mode)/color/(color)/'.implode('/',$Params['user_parameters_unordered']['color']).$appendResolutionMode;
           
 	$tpl->set('urlAppend',$urlAppend);
 	

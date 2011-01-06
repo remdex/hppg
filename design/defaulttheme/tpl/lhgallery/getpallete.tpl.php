@@ -7,7 +7,7 @@ sort($moreColors);
 ?>
 <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>);">
 <?php if ($mode == 'color') : ?>
-    <a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode('/',$moreColors)?>"></a>
+    <a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode('/',$moreColors).$resolution?>"></a>
 <?php elseif ($mode == 'search') : ?>
     <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($keyword)?>/(color)/<?=implode('/',$moreColors).$resolution?>"></a>    
 <?php endif;?>
