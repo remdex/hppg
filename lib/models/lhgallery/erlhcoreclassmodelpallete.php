@@ -316,7 +316,6 @@ class erLhcoreClassModelGalleryPallete {
                     ->limit( 6 );
                     $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );
                     $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-                    $imagesAjax = array_reverse($imagesAjax);
         	} else {
         	     $q2->where(  $q2->expr->eq( 'pallete_id', (int)$pallete_id ).' AND ('.$q2->expr->lt( 'count', $q2->bindValue( $colorMatchedTimes ) ). ' OR '.$q2->expr->eq( 'count', $q2->bindValue( $colorMatchedTimes ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $pid ) ).')' )
                     ->orderBy('count DESC, pid DESC')
@@ -379,7 +378,6 @@ class erLhcoreClassModelGalleryPallete {
                    $q2->limit(6);              
                    $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );              
                    $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );          
-                   $imagesAjax = array_reverse($imagesAjax); 
                               	               	                                                    
             	} else {    
             	            	    
@@ -450,7 +448,6 @@ class erLhcoreClassModelGalleryPallete {
                     ->limit( 6 );                                
                     $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );                
                     $imagesAjax = $session->find( $q, 'erLhcoreClassModelGalleryImage' );
-                    $imagesAjax = array_reverse($imagesAjax); 
                 } else {
                     $q2->where( ' ('.$q2->expr->lt( 'count', $q2->bindValue( $colorMatchedTimes ) ). ' OR '.$q2->expr->eq( 'count', $q2->bindValue( $colorMatchedTimes ) ).' AND '.$q2->expr->lt( 'pid', $q2->bindValue( $pid ) ).')' )
                     ->orderBy('count DESC, pid DESC')
