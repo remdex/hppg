@@ -576,6 +576,8 @@ if ($mode == 'album')
     }
     
     $keywordDecoded = trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
+    
+    $hasMoreImages = 'false';
       
     if ($modeSort == 'relevance') {
                     
@@ -598,7 +600,11 @@ if ($mode == 'album')
            }            
     	   
     	   if ($totalPhotos['total_found'] > 0){
-    	       $imagesAjax = $totalPhotos['list'];    	       
+    	       $imagesAjax = $totalPhotos['list'];  
+    	       if (count($imagesAjax) > 5) {
+    	           $imagesAjax = array_slice($imagesAjax,0,5);
+    	           $hasMoreImages = 'true';
+    	       }    	   
     	       $imagesAjax = array_reverse($imagesAjax);  
     	   }
     	   
@@ -642,10 +648,14 @@ if ($mode == 'album')
                 $totalPhotos['total_found'] += $totalPhotosHigher['total_found'];
            }            
     	   
-    	   if ($totalPhotos['total_found'] > 0):
+    	   if ($totalPhotos['total_found'] > 0){
     	       $imagesAjax = $totalPhotos['list'];
+    	       if (count($imagesAjax) > 5) {
+    	           $imagesAjax = array_slice($imagesAjax,0,5);
+    	           $hasMoreImages = 'true';
+    	       }
     	       $imagesAjax = array_reverse($imagesAjax);    
-    	   endif;
+    	   }
     	   
     	} else {
         	
@@ -820,7 +830,7 @@ if ($mode == 'album')
     }
     
     
-    $hasMoreImages = 'false';
+    
         
     if (count($imagesAjax) > 5) {
         $hasMoreImages = 'true';
