@@ -43,6 +43,11 @@ $def->properties['public'] = new ezcPersistentObjectProperty();
 $def->properties['public']->columnName   = 'public';
 $def->properties['public']->propertyName = 'public';
 $def->properties['public']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
+ 
+$def->properties['addtime'] = new ezcPersistentObjectProperty();
+$def->properties['addtime']->columnName   = 'addtime';
+$def->properties['addtime']->propertyName = 'addtime';
+$def->properties['addtime']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
 
 
 $def->relations["erLhcoreClassModelGalleryImage"] = new ezcPersistentOneToManyRelation(

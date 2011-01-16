@@ -24,6 +24,14 @@ foreach ($items as $item) :
         <?=$item->images_count;?>
        </span>
        
+       <span class="right">
+        <? if (date('Ymd') == date('Ymd',$item->addtime)) : ?>
+            <?=date('H:i:s',$item->addtime)?>
+        <?php else : ?>
+            <?=date('Y-m-d',$item->addtime)?>
+        <?php endif;?>
+       </span>
+       
        </div>
        
     </div>   

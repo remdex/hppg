@@ -13,6 +13,7 @@ class erLhcoreClassModelGalleryAlbum {
                'keyword'     => $this->keyword,             
                'owner_id'    => $this->owner_id,             
                'public'      => $this->public,             
+               'addtime'     => $this->addtime,             
        );
    }
    
@@ -103,6 +104,30 @@ class erLhcoreClassModelGalleryAlbum {
        $category->clearCategoryCache();  
             
        erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$this->aid));      
+   }
+   
+   
+   public static function updateAddTime($image = false,$album_id = false)
+   {
+       
+       if ($image instanceof erLhcoreClassModelGalleryImage){
+           
+           if ($image->approved == 1) {
+               $q = ezcDbInstance::get()->createUpdateQuery();
+               $q->update( 'lh_gallery_albums' )
+                      ->set( 'addtime', $q->bindValue( $image->ctime ) )
+                      ->where( $q->expr->eq( 'aid', $image->aid ) ); 
+               $stmt = $q->prepare();
+               $stmt->execute();
+           }
+           
+       } else { // We do not have image just some image was deleted in most cases so we mast get last update image
+           $db = ezcDbInstance::get();
+           $stmt = $db->prepare('UPDATE lh_gallery_albums SET addtime = (SELECT MAX(ctime) FROM lh_gallery_images WHERE aid = :aid AND approved = 1) WHERE aid = :aid_2');
+           $stmt->bindValue( ':aid',$album_id);
+           $stmt->bindValue( ':aid_2',$album_id);
+           $stmt->execute();
+       }
    }
    
    public function __get($variable)
@@ -293,6 +318,7 @@ class erLhcoreClassModelGalleryAlbum {
    public $keyword = '';
    public $owner_id = 0;
    public $public = 0;
+   public $addtime = 0;
 
 }
 

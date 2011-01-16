@@ -111,6 +111,9 @@ class erLhcoreClassModelGalleryImage {
 	   erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
        
        CSCacheAPC::getMem()->increaseImageManipulationCache();
+       
+       // Update album last add time
+       erLhcoreClassModelGalleryAlbum::updateAddTime(false,$this->aid);
    }
    
    public function __get($variable)

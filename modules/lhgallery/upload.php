@@ -79,6 +79,8 @@ if (count($objects) == 1)
 	       // Expires last uploads shard index
 	       erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
 	              
+	       erLhcoreClassModelGalleryAlbum::updateAddTime($image);
+	       
 	    } catch (Exception $e) {
 	        $session->delete($image);
 	        erLhcoreClassLog::write('Exception during upload'.$e);

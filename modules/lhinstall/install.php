@@ -348,6 +348,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 // Gallery queries
                 
                 // Albums table
+                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_albums` (
                   `aid` int(11) NOT NULL AUTO_INCREMENT,
                   `title` varchar(255) NOT NULL DEFAULT '',
@@ -357,9 +358,11 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `keyword` varchar(50) DEFAULT NULL,
                   `owner_id` int(11) NOT NULL,
                   `public` int(11) NOT NULL DEFAULT '0',
+                  `addtime` int(11) NOT NULL DEFAULT '0',
                   PRIMARY KEY (`aid`),
                   KEY `alb_category` (`category`),
-                  KEY `owner_id` (`owner_id`)
+                  KEY `owner_id` (`owner_id`),
+                  KEY `addtime` (`addtime`)
                 ) ENGINE=MyISAM");
                 
                 // Categorys

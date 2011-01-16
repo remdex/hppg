@@ -176,6 +176,9 @@ class erLhcoreClassModelGalleryUploadArchive {
 	                    
 	                    // Index in search table
 	                    erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
+	                    	                    
+	                    erLhcoreClassModelGalleryAlbum::updateAddTime($image);
+	                    
 				    	
 				    } catch (Exception $e) {				    	
 				    	erLhcoreClassLog::writeCronjob('Exception during archive image import'.$e);

@@ -48,6 +48,9 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
 	       
 	       // Index in search table
 	       erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
+	       
+	       
+	       erLhcoreClassModelGalleryAlbum::updateAddTime($image);
 	            
        }
        

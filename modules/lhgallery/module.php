@@ -14,6 +14,11 @@ $ViewList['album'] = array(
     'script' => 'album.php',
     'params' => array('album_id'),
     'uparams' => array('sort','resolution')
+    ); 
+      
+$ViewList['lastuploadstoalbums'] = array( 
+    'script' => 'lastuploadstoalbums.php',
+    'params' => array(),
     );
     
 $ViewList['catjson'] = array( 
