@@ -47,7 +47,8 @@
    
    $('#checkAllButton').click(function(){
       
-       $( 'input[name=PhotoID\\[\\]]' ).each( function() {
+      
+       $( '.itemPhoto' ).each( function() {         
 			$( this ).attr( 'checked', $( this ).is( ':checked' ) ? '' : 'checked' );
 		})
         

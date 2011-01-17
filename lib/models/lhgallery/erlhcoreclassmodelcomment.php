@@ -88,6 +88,37 @@ class erLhcoreClassModelGalleryComment {
       return $objects; 
    }
    
+   public function removeThis()
+   {      
+       $pid = $this->pid;
+       
+       erLhcoreClassGallery::getSession()->delete($this);
+              	   	   
+	   // Update image last commented time
+	   $db = ezcDbInstance::get();
+       $stmt = $db->prepare('UPDATE lh_gallery_images SET comtime = (SELECT UNIX_TIMESTAMP(MAX(msg_date)) FROM lh_gallery_comments WHERE pid = :pid) WHERE pid = :pid_2');
+       $stmt->bindValue( ':pid',$pid);
+       $stmt->bindValue( ':pid_2',$pid);
+       $stmt->execute();
+	   
+       $image = erLhcoreClassModelGalleryImage::fetch($pid);
+       
+       // Expires last uploads shard index
+	   erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_commented'));
+	   
+	   $cache = CSCacheAPC::getMem(); 
+	   $cache->increaseCacheVersion('last_commented'); 
+	   $cache->delete('comments_'.$pid);
+	   $cache->increaseCacheVersion('last_commented_'.$image->aid);
+	   $cache->increaseCacheVersion('last_commented_image_version_'.$pid);
+	   
+	   erLhcoreClassGallery::expireShardIndexByIdentifier(array('album_id_'.$image->aid),array('comtime DESC, pid DESC','comtime ASC, pid ASC'));
+	   
+	   // Update two attributes
+	   erLhcoreClassModelGallerySphinxSearch::indexAttributes($image,array('comtime' => 'comtime'));
+   }
+      
+   
    public static function isSpam($body)
    {
        $badWords = '/suck|fuck/i';

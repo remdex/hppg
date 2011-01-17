@@ -1,4 +1,7 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></legend>
+<div class="header-list">
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></h1>
+</div>
+
 
 <?php
 $categoryID = $category !== false ? $category->cid : 0;
@@ -52,7 +55,10 @@ foreach (erLhcoreClassModelGalleryCategory::getParentCategories($filterParams) a
 
 <? 
 if ($category !== false) :  ?>
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category albums');?> <?= $category !== false ? ' - '.htmlspecialchars($category->name) : ' - '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></legend>
+<div class="header-list">
+<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Category albums');?> <?= $category !== false ? ' - '.htmlspecialchars($category->name) : ' - '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')?></h3>
+</div>
+
 <form method="post" action="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>/<?=$categoryID?>">
 <?
 $pages = new lhPaginator();
@@ -74,7 +80,6 @@ $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => a
 
 <?php endif; ?>
 </form>
-</fieldset>
 <?php endif;?> 
 
 

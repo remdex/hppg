@@ -77,7 +77,13 @@ $ViewList['addcomment'] = array(
     'script' => 'addcomment.php',
     'params' => array('image_id'),
     'uparams' => array()
-    ); 
+);   
+            
+$ViewList['deletecomment'] = array( 
+    'script' => 'deletecomment.php',
+    'params' => array('comment_id'),   
+    'functions' => array( 'administrate' ),
+); 
        
 $ViewList['anaglyph'] = array( 
     'script' => 'anaglyph.php',
@@ -368,6 +374,12 @@ $ViewList['updateimage'] = array(
     'script' => 'updateimage.php',
     'params' => array('image_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' =>'administrate'),
+    ); 
+                    
+$ViewList['editimage'] = array( 
+    'script' => 'editimage.php',
+    'params' => array('image_id'),
+    'functions' => array( 'administrate' )
     ); 
                      
 $ViewList['deleteimage'] = array( 

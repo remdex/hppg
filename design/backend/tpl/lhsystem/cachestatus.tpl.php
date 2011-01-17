@@ -68,7 +68,7 @@ Enter album ID above and press Get information
 
 <br />
 
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','Categiry cache status');?></legend>
+<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('system/configuration','Category cache status');?></legend>
 <p class="explain">With help of this window you can get information about custom category cache versions.</p>
 
 <input type="text" id="categoryID" class="default-input" value="" /> <input type="button" class="default-button" name="GetCache" onclick="hw.getcategorycacheinfo($('#categoryID').val())" value="Get information" />

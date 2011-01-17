@@ -1,4 +1,7 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('article/staticlist','Static articles')?></legend>
+<div class="header-list">
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('article/staticlist','Static articles')?></h1>
+</div>
+
     <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
     <tr>
         <th>ID</th>
@@ -14,4 +17,4 @@
     <? endforeach; ?>
     </table>
     <a href="<?=erLhcoreClassDesign::baseurl('article/newstatic')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('article/staticlist','New article')?> &raquo;</a>
-</fieldset>
+

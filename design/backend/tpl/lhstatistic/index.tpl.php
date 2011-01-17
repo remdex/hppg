@@ -1,4 +1,6 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('statistic/index','Google analytics statistic');?></legend> 
+<div class="header-list">
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('statistic/index','Google analytics statistic');?></h1> 
+</div>
 <ul>
 	<li><a href="<?=$auth_url_analytics?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('statistic/index','Grant access application to access google analytics API');?></a></li>
 	<?php if (erLhcoreClassModelSystemConfig::fetch('google_analytics_token')->current_value != '') : ?>
@@ -8,4 +10,3 @@
 	<li><a href="<?=erLhcoreClassDesign::baseurl('statistic/view')?>">&raquo; <?=erTranslationClassLhTranslation::getInstance()->getTranslation('statistic/index','View statistic');?></a></li>
 	<?php endif;?>
 </ul>
-</fieldset>

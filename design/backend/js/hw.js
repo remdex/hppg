@@ -9,7 +9,10 @@ var hw = {
 	updatepath : 'gallery/updateimage/',
 	deletepath : 'gallery/deleteimage/',
 	tagpath : 'gallery/tagphoto/',
+	captcha_url: 'captcha/captchastring/comment/',
+	deletecommentpath: 'gallery/deletecomment/',
 	formAddPath: WWW_DIR_JAVASCRIPT,		
+	appendURL : null,
 		
 	setPath : function (path)
 	{		
@@ -37,6 +40,50 @@ var hw = {
 		});		
 	},
 	
+	setAppendURL : function(appendURLPar){
+	    this.appendURL = appendURLPar;
+	},
+	
+	addCheck : function (timestamp,pid)
+	{
+	    
+	    $('#CommentButtomStore').attr("disabled","disabled");
+	    var originalLabel = $('#CommentButtomStore').val();
+	    $('#CommentButtomStore').val("Working...");
+	    
+	    var formAddPath = this.formAddPath;
+	    
+		$.getJSON(this.formAddPath + this.captcha_url+timestamp, function(data) {	                
+			            
+            var pdata = {				
+				Name	     :$('#IDName').val(),				
+				CommentBody  :$('#IDCommentBody').val()								
+		    }		    
+		    pdata["captcha_"+data.result] = timestamp;
+		    
+            $.postJSON(formAddPath + 'gallery/addcomment/'+pid, pdata , function(data) {                
+                $('.error-list').remove();
+                $('.ok').remove(); 
+                
+                if (data.error == 'true') {
+                    $('.comment-form').prepend(data.status);
+                } else { 
+                    $('#comments-list').html(data.comments);
+                    $('.comment-form').prepend(data.status);
+                    $('#com_'+data.id).fadeIn(1500);
+                    $('#IDName').val('');
+                    $('#IDCommentBody').val('');
+                }          
+                
+                $('#CommentButtomStore').removeAttr('disabled');
+                $('#CommentButtomStore').val(originalLabel);
+                
+            });	            	
+            
+		});		  		
+		return false;	
+	},
+	
 	tagphoto : function (photoid)
 	{
 		var pdata = {
@@ -49,6 +96,18 @@ var hw = {
 			{	
 				 $('#tags-container').html(data.result);
 			} 
+           return true;	          
+		});	
+		return false;	
+	},
+	
+	deleteComment : function (comment_id)
+	{		
+		$.postJSON(this.formAddPath + this.deletecommentpath + comment_id, function(data){	
+		   if (data.error == 'false')
+		   {	
+				 $('#comment_row_id_'+comment_id).fadeOut();
+		   } 
            return true;	          
 		});	
 		return false;	
