@@ -289,13 +289,16 @@ class erLhcoreClassModelGallerySphinxSearch {
 
            $album = erLhcoreClassModelGalleryAlbum::fetch($image->aid);
 
+           /*
+           // To avoid disk space usage and complexity then moving images this part is in mysql view now, it's better solution than index it here.
+           
            $searchBody[] = $album->title;
            $searchBody[] = $album->description;
            $searchBody[] = $album->keyword;
 
            $albumCategory = erLhcoreClassModelGalleryCategory::fetch($album->category);
            $searchBody[] = $albumCategory->name;
-           $searchBody[] = $albumCategory->description;
+           $searchBody[] = $albumCategory->description;*/
 
            $imageIndex->id   = $image->pid;
            $imageIndex->pid   = $image->pid;
@@ -313,8 +316,6 @@ class erLhcoreClassModelGallerySphinxSearch {
            $imageIndex->filename = str_replace(array('-','_'),array(' ',' '),$image->filename);
            $imageIndex->text_index = implode(' ',array_filter($searchBody));
            
-
-
            $session = erLhcoreClassGallery::getSession();
 
            $q = $session->database->createSelectQuery( );
