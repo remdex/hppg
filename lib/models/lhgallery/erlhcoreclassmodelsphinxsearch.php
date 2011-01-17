@@ -287,9 +287,10 @@ class erLhcoreClassModelGallerySphinxSearch {
            $searchBody[] = $image->keywords;
            $searchBody[] = $image->pwidth.'x'.$image->pheight;
 
+           /* 
            $album = erLhcoreClassModelGalleryAlbum::fetch($image->aid);
 
-           /*
+           
            // To avoid disk space usage and complexity then moving images this part is in mysql view now, it's better solution than index it here.
            
            $searchBody[] = $album->title;
