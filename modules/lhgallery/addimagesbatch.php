@@ -28,9 +28,10 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            
            $image->filepath = str_replace('albums/','',$photoDir).'/';
            
+                      
            $image->hits = 0;
            $image->ctime = time();
-           $image->owner_id = 0;
+           $image->owner_id = erLhcoreClassUser::instance()->getUserID();
            $image->pic_rating = 0;
            $image->votes = 0;
            
