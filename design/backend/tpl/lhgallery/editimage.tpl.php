@@ -9,7 +9,7 @@
                
         <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_details_block.tpl.php'));?>
         
-        <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/picture_voting_block.tpl.php'));?>
+        <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/picture_voting_block_admin.tpl.php'));?>
         
         <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_comment_block_admin.tpl.php'));?>
         

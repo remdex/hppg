@@ -6,6 +6,7 @@ $.postJSON = function(url, data, callback) {
 
 var hw = {
 	votepath : 'gallery/addvote/',
+	votedeductpath : 'gallery/deductvote/',
 	updatepath : 'gallery/updateimage/',
 	deletepath : 'gallery/deleteimage/',
 	tagpath : 'gallery/tagphoto/',
@@ -32,6 +33,17 @@ var hw = {
 		}
 
 		$.postJSON(this.formAddPath + this.votepath, pdata , function(data){	
+			if (data.error == 'false')
+			{	
+				$('#vote-content').html(data.result); 
+			} 
+           return true;	          
+		});		
+	},	
+	
+	deductvote : function (photo)
+	{
+		$.postJSON(this.formAddPath + this.votedeductpath + photo, function(data){	
 			if (data.error == 'false')
 			{	
 				$('#vote-content').html(data.result); 

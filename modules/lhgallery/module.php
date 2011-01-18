@@ -380,6 +380,12 @@ $ViewList['editimage'] = array(
     'script' => 'editimage.php',
     'params' => array('image_id'),
     'functions' => array( 'administrate' )
+    );  
+                       
+$ViewList['deductvote'] = array( 
+    'script' => 'deductvote.php',
+    'params' => array('image_id'),
+    'functions' => array( 'administrate' )
     ); 
                      
 $ViewList['deleteimage'] = array( 
