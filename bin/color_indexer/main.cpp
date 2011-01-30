@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
   for(i=0;i<height;i++) {
     for(j=0;j<width;j++) {
         
-            int R, B, G, pallete_id,currentPalleteKey = 0;
+            int R, B, G, currentPalleteKey = 0;
             double minimumdistance = -1,currentDistance = 0;
                        
             B = aPixelIn[ i * img->widthStep + j * 3 + 0 ];
@@ -125,8 +125,7 @@ int main(int argc, char *argv[])
                 currentDistance = getDistance(RGBImage,RGBPallete);
                 
                 if (minimumdistance < 0 ||  minimumdistance > currentDistance){
-                    minimumdistance = currentDistance;
-                    pallete_id = palletesp[k].pallete_id;
+                    minimumdistance = currentDistance;                    
                     currentPalleteKey = k;
                 }
             }
