@@ -203,7 +203,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `name` varchar(50) NOT NULL,
                   PRIMARY KEY (`id`)
-                ) TYPE=MyISAM");
+                ) DEFAULT CHARSET=utf8;");
                
                // Administrators group
                $GroupData = new erLhcoreClassModelGroup();
@@ -225,7 +225,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `name` varchar(50) NOT NULL,
                   PRIMARY KEY (`id`)
-                ) TYPE=MyISAM");
+                ) DEFAULT CHARSET=utf8;");
                
                // Administrators role
                $Role = new erLhcoreClassModelRole();
@@ -250,7 +250,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `role_id` int(11) NOT NULL,
                   PRIMARY KEY (`id`),
                   KEY `group_id` (`role_id`,`group_id`)
-                ) TYPE=MyISAM");
+                ) DEFAULT CHARSET=utf8;");
 
                // Admin group assing admin role
                $GroupRole = new erLhcoreClassModelGroupRole();        
@@ -285,7 +285,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                       `email` varchar(100) NOT NULL,
                       `lastactivity` int(11) NOT NULL,
                       PRIMARY KEY (`id`)
-                    ) TYPE=MyISAM");
+                    ) DEFAULT CHARSET=utf8;");
                
                // Forgot password table
                $db->query("CREATE TABLE IF NOT EXISTS `lh_forgotpasswordhash` (
@@ -296,7 +296,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                       PRIMARY KEY (`id`),
                       KEY `user_id` (`user_id`),
                       KEY `hash` (`hash`)
-                    ) ENGINE=MyISAM");
+                    ) DEFAULT CHARSET=utf8;");
                               
                 // Create admin user
                 $UserData = new erLhcoreClassModelUser();
@@ -321,7 +321,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `group_id` (`group_id`),
                   KEY `user_id` (`user_id`),
                   KEY `group_id_2` (`group_id`,`user_id`)
-                ) TYPE=MyISAM ");
+                )DEFAULT CHARSET=utf8;");
 
                 // Assign admin user to admin group
                 $GroupUser = new erLhcoreClassModelGroupUser();        
@@ -343,7 +343,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `function` varchar(100) NOT NULL,
                   PRIMARY KEY (`id`),
                   KEY `role_id` (`role_id`)
-                ) TYPE=MyISAM");
+                )DEFAULT CHARSET=utf8;");
                 
                 // Gallery queries
                 
@@ -363,7 +363,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `alb_category` (`category`),
                   KEY `owner_id` (`owner_id`),
                   KEY `addtime` (`addtime`)
-                ) ENGINE=MyISAM");
+                )DEFAULT CHARSET=utf8;");
                 
                 // Categorys
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_categorys` (
@@ -379,7 +379,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `cat_parent` (`parent`),
                   KEY `cat_pos` (`pos`),
                   KEY `cat_owner_id` (`owner_id`)
-                ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;");
+                )DEFAULT CHARSET=utf8;");
                 
                 // Comments
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_comments` (
@@ -394,7 +394,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           `author_id` int(11) NOT NULL DEFAULT '0',
                           PRIMARY KEY (`msg_id`),
                           KEY `com_pic_id` (`pid`)
-                        ) ENGINE=MyISAM");
+                        ) DEFAULT CHARSET=utf8;");
                 
                 // Images table
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_images` (
@@ -455,7 +455,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           KEY `rated_gen_res` (`pwidth`,`pheight`,`approved`,`rtime`,`pid`),
                           KEY `a_rated_gen_res` (`aid`,`pwidth`,`pheight`,`approved`,`rtime`,`pid`),
                           KEY `a_rated_gen` (`aid`,`approved`,`rtime`,`pid`)
-                        ) ENGINE=MyISAM;");
+                        ) DEFAULT CHARSET=utf8;;");
                 
                 
                 // Last search table
@@ -464,7 +464,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           `countresult` int(11) NOT NULL,
                           `keyword` varchar(255) NOT NULL,
                           PRIMARY KEY (`id`)
-                        ) ENGINE=MyISAM"); 
+                        ) DEFAULT CHARSET=utf8;"); 
                 
                 // Sharded index
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_shard_limit` (
@@ -475,7 +475,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `identifier` varchar(50) NOT NULL,
                   PRIMARY KEY (`offset`,`sort`,`filter`,`identifier`),
                   KEY `identifier` (`identifier`)
-                ) ENGINE=MyISAM;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 
                 
@@ -488,7 +488,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `position` int(11) NOT NULL DEFAULT '0',
                   PRIMARY KEY (`id`),
                   KEY `position` (`position`)
-                ) ENGINE=MyISAM AUTO_INCREMENT=121;");
+                ) AUTO_INCREMENT=121;");
                 
                 
                 // Standard pallete colors
@@ -623,7 +623,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `pid` (`pallete_id`,`count`,`pid`),
                   KEY `pallete_id` (`pallete_id`),
                   KEY `pid_2` (`pid`)
-                ) ENGINE=MyISAM;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 
                 // Public upload sessions
@@ -634,7 +634,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `created` int(11) NOT NULL,
                   `user_id` int(11) NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=MyISAM");
+                ) DEFAULT CHARSET=utf8;");
                 
                 
                 
@@ -648,7 +648,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `user_id` int(11) NOT NULL DEFAULT '0',
 				  `status` tinyint(1) NOT NULL DEFAULT '0',
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
                                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_myfavorites_images` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -656,7 +656,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `pid` int(11) NOT NULL,
 				  PRIMARY KEY (`id`),
 				  KEY `session_id` (`session_id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
                                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_myfavorites_session` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -665,13 +665,13 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `session_hash` varchar(40) NOT NULL,
 				  `mtime` int(11) NOT NULL,
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM;"); 
+				) DEFAULT CHARSET=utf8;"); 
                                
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_delay_image_hit` (
 				  `pid` int(11) NOT NULL,
 				  `mtime` int(11) NOT NULL,
 				  KEY `pid` (`pid`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
                                
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_popular24` (
                   `pid` int(11) NOT NULL,
@@ -680,7 +680,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   PRIMARY KEY (`pid`),
                   KEY `hits` (`hits`,`pid`),
                   KEY `added` (`added`)
-                ) ENGINE=MyISAM;");
+                ) DEFAULT CHARSET=utf8;");
                                
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_rated24` (
                   `pid` int(11) NOT NULL,
@@ -690,27 +690,27 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   PRIMARY KEY (`pid`),
                   KEY `pic_rating` (`pic_rating`,`votes`,`pid`),
                   KEY `added` (`added`)
-                ) ENGINE=MyISAM;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_duplicate_collection` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
 				  `time` int(11) NOT NULL,
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_duplicate_image` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
 				  `pid` int(11) NOT NULL,
 				  `duplicate_collection_id` int(11) NOT NULL,
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_duplicate_image_hash` (
                   `pid` int(11) NOT NULL AUTO_INCREMENT,
                   `hash` varchar(40) NOT NULL,
                   PRIMARY KEY (`pid`),
                   KEY `hash` (`hash`)
-                ) ENGINE=MyISAM;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_filetypes` (
                   `extension` char(7) NOT NULL DEFAULT '',
@@ -718,7 +718,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `content` char(15) DEFAULT NULL,
                   `player` varchar(5) DEFAULT NULL,
                   PRIMARY KEY (`extension`)
-                ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 
                 $db->query("INSERT INTO `lh_gallery_filetypes` (`extension`, `mime`, `content`, `player`) VALUES
@@ -749,7 +749,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `name` varchar(200) NOT NULL,
 				  `content` text NOT NULL,
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;");
+				) DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;");
                 
                 $db->query("INSERT INTO `lh_article_static` (`id`, `name`, `content`) VALUES
 				(1, 'Contact', '<p>\r\n	Contact information goes here</p>\r\n'),
@@ -764,7 +764,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `explain` varchar(250) NOT NULL,
 				  `hidden` int(11) NOT NULL DEFAULT '0',
 				  PRIMARY KEY (`identifier`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
                 
 				$db->query("INSERT INTO `lh_system_config` (`identifier`, `value`, `type`, `explain`, `hidden`) VALUES
 						('footer_article_id', 'a:3:{s:3:\"eng\";s:1:\"3\";s:3:\"lit\";s:2:\"28\";s:10:\"site_admin\";s:2:\"29\";}', 1, 'Footer article ID', 0),
@@ -796,7 +796,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `value` varchar(100) NOT NULL,
 				  `explain` varchar(100) NOT NULL,
 				  PRIMARY KEY (`identifier`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
 				
 				$db->query("INSERT INTO `lh_shop_base_setting` (`identifier`, `value`, `explain`) VALUES
 				('credit_price', '0.65', 'Credit price'),
@@ -810,7 +810,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `variation_id` int(11) NOT NULL,
 				  PRIMARY KEY (`id`),
 				  KEY `session_id` (`session_id`)
-				) ENGINE=MyISAM");
+				) DEFAULT CHARSET=utf8;");
 				
 				
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_basket_session` (
@@ -820,7 +820,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `session_hash` varchar(40) NOT NULL,
 				  `mtime` int(11) NOT NULL,
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM");
+				) DEFAULT CHARSET=utf8;");
 				
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_image_variation` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -831,7 +831,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `position` int(11) NOT NULL DEFAULT '0',
 				  `type` int(11) NOT NULL DEFAULT '0',
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
 				
 				
 				$db->query("INSERT INTO `lh_shop_image_variation` (`id`, `width`, `height`, `name`, `credits`, `position`, `type`) VALUES
@@ -851,7 +851,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `payment_gateway` varchar(100) NOT NULL,
 				  `currency` varchar(3) NOT NULL,
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
 				
 				
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_order_item` (
@@ -864,7 +864,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `credits` int(11) NOT NULL,
 				  `download_count` int(11) NOT NULL,
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
 				
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_payment_setting` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -879,7 +879,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `user_id` int(11) NOT NULL,
 				  `credits` int(11) NOT NULL DEFAULT '0',
 				  PRIMARY KEY (`user_id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
 								
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_user_credit_order` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -890,13 +890,13 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `payment_gateway` varchar(100) NOT NULL,
 				  `currency` varchar(3) NOT NULL,
 				  PRIMARY KEY (`id`)
-				) ENGINE=MyISAM;");
+				) DEFAULT CHARSET=utf8;");
 				
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_pending_convert` (
                   `pid` int(11) NOT NULL,
                   `status` tinyint(4) NOT NULL,
                   PRIMARY KEY (`pid`)
-                ) ENGINE=MyISAM;");
+                ) DEFAULT CHARSET=utf8;");
 								
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_searchhistory` (
                   `keyword` varchar(100) NOT NULL,
@@ -904,7 +904,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `last_search` int(11) NOT NULL,
                   `searches_done` int(11) NOT NULL,
                   PRIMARY KEY (`keyword`)
-                ) ENGINE=MyISAM;");
+                ) DEFAULT CHARSET=utf8;");
 				
                 // Main search index table
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_sphinx_search` (
@@ -926,20 +926,20 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `pid` int(11) NOT NULL,
                   `text_index_length` mediumint(9) NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 
                 $db->query("CREATE TABLE  `lh_gallery_pallete_images_stats` (
                 `pid` INT NOT NULL ,
                 `colors` VARCHAR( 100 ) NOT NULL ,
                 PRIMARY KEY (  `pid` )
-                ) ENGINE = MYISAM;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_last_index` (
                   `identifier` varchar(50) NOT NULL,
                   `value` int(11) NOT NULL DEFAULT '0',
                   PRIMARY KEY (`identifier`)
-                ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("INSERT INTO `lh_gallery_last_index` (`identifier`, `value`) VALUES
                 ('image_index', 0),
