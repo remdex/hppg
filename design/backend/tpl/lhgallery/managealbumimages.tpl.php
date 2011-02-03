@@ -1,4 +1,7 @@
 <div class="header-list">
+<div class="right"><a href="<?=erLhcoreClassDesign::baseurl('gallery/movebyresolution/')?><?=$album->aid?>">Move images by resolution</a></div>
+
+
 <h1><?=htmlspecialchars($album->title)?></h1>
 </div>
 
@@ -29,33 +32,24 @@
   </form>
   
   
-  <script>
-  
-  $('.newAlbumName').change(function(){	    
-    	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumnamesuggest/')?>0/"+escape($(this).val()), {} , function(data){	
-                       $('#album_select_directory0').html(data.result);
-                       
-                       if (data.error == 'false'){
-                            $('#album_select_directory0 input').eq(0).attr("checked","checked");
-                            $('#moveAction').show();
-                       } else {
-                           $('#moveAction').hide();
-                       }
-                       
-        	});	
-   });
-   
-   $('#checkAllButton').click(function(){
-      
-      
-       $( '.itemPhoto' ).each( function() {         
-			$( this ).attr( 'checked', $( this ).is( ':checked' ) ? '' : 'checked' );
-		})
-        
-   });
-   
-   
-  </script>
+<script>
+$('.newAlbumName').change(function(){	    
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/albumnamesuggest/')?>0/"+escape($(this).val()), {} , function(data){	
+                   $('#album_select_directory0').html(data.result);                       
+                   if (data.error == 'false'){
+                        $('#album_select_directory0 input').eq(0).attr("checked","checked");
+                        $('#moveAction').show();
+                   } else {
+                       $('#moveAction').hide();
+                   }                       
+    	});	
+});
+$('#checkAllButton').click(function() { 
+   $( '.itemPhoto' ).each( function() {         
+		$( this ).attr( 'checked', $( this ).is( ':checked' ) ? '' : 'checked' );
+	})    
+});
+</script>
   
   
   

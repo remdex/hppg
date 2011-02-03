@@ -330,6 +330,12 @@ $ViewList['managealbumimages'] = array(
     'params' => array('album_id'),    
     'functions' => array( 'administrate' ),
     );  
+                 
+$ViewList['movebyresolution'] = array( 
+    'script' => 'movebyresolution.php',
+    'params' => array('album_id'),    
+    'functions' => array( 'administrate' ),
+    );  
              
 $ViewList['editcategory'] = array( 
     'script' => 'editcategory.php',
