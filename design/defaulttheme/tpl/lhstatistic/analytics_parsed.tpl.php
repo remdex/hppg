@@ -19,7 +19,7 @@ foreach ($data_last as $row) {
 	$totalTimeSpent += (int)$row->getMetric('ga:timeOnSite')->__toString();
 }
 foreach ($data as $row) : ?>
-<tr>
+<tr<?=in_array(date('N',mktime(0,0,0,date('m'),(string)$row->getValue('ga:day'),date('Y'))),array(6,7)) ? ' class="wk-d"' : ''?>>
 	<td><?=$row->getValue('ga:day')?></td>
 	<td width="100%">
 	<table width="100%"">
@@ -35,8 +35,9 @@ foreach ($data as $row) : ?>
 	</table>
 	</td>	
 </tr>
-<?php endforeach; foreach ($data_last as $row) : ?>
-<tr>
+<?php endforeach; 
+foreach ($data_last as $row) : ?>
+<tr<?=in_array(date('N',mktime(0,0,0,date('m')-1,(string)$row->getValue('ga:day'),date('Y'))),array(6,7)) ? ' class="wk-d"' : ''?>>
 	<td><?=$row->getValue('ga:day')?></td>
 	<td width="100%">
 	<table width="100%"">
