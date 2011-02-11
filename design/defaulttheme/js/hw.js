@@ -15,7 +15,9 @@ var hw = {
 	captcha_url: 'captcha/captchastring/comment/',
 	appendURL : null,
 	formAddPath: WWW_DIR_JAVASCRIPT,		
-		
+	myTimer : false,
+	fetchingInfo: false,	
+	
 	setPath : function (path)
 	{		
 		this.formAddPath = path;
@@ -226,6 +228,27 @@ var hw = {
 			
 			$('.ad-fv').addClass('ad-fv-ok');
             	
+		});
+	},
+	
+	showImageInfo : function(img)
+	{	
+	    if (hw.fetchingInfo == img.attr('rel')) return;
+	    
+	    hw.fetchingInfo = img.attr('rel');
+	    
+	    clearTimeout(hw.myTimer);	    
+		$.getJSON(this.formAddPath + 'gallery/showimageinfo/'+img.attr('rel'), {} , function(data) {	
+		    $('#imageInfoWindow').remove()
+		    img.before(data.result);
+		    $('#imageInfoWindow').slideDown('fast');
+		    $('#imageInfoWindow').mouseleave(function() {		    
+		        hw.myTimer = setTimeout(function(){
+                    $('#imageInfoWindow').fadeOut();
+                    hw.fetchingInfo = false;
+                },250);
+		    });		    
+		    $('#imageInfoWindow').mouseenter(function(){clearTimeout(hw.myTimer);});		
 		});
 	},
 	

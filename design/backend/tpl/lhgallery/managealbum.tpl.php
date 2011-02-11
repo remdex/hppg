@@ -1,4 +1,8 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Home')?></legend>
+<div class="header-list">
+<h1>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Category');?> - <?= $category !== false ? htmlspecialchars($category->name) : erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Home')?>
+</h1>
+</div>
 
 <? if ($pages->items_total > 0) { ?>         
   <? 
@@ -13,7 +17,7 @@
 
 <? } ?>
 
-</fieldset>
+
 
 <div>
 <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$category->cid?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Create an album');?></a>

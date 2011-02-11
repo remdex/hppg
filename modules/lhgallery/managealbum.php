@@ -14,7 +14,7 @@ if (isset($_POST['UpdatePriorityAlbum'])) {
 
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $Category->cid)));
-$pages->setItemsPerPage(8);
+$pages->setItemsPerPage(20);
 $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/managealbum').'/'.$Category->cid;
 $pages->paginate();
 

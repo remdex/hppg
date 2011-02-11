@@ -71,7 +71,12 @@ $ViewList['image'] = array(
     'params' => array('image_id'),
     'multiple_arguments' => array ( 'color' ),
     'uparams' => array('mode','keyword','sort','resolution','color'),
-    ); 
+    );  
+           
+$ViewList['showimageinfo'] = array( 
+    'script' => 'showimageinfo.php',
+    'params' => array('image_id')
+); 
            
 $ViewList['addcomment'] = array( 
     'script' => 'addcomment.php',

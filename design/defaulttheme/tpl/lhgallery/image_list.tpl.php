@@ -4,11 +4,9 @@ $counter = 1;
 foreach ($items as $key => $item) : ?>
     <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
         <div class="thumb-pic">
-                    
-            <a href="<?=$item->url_path.$appendImageMode?>">
-            
-            <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>
-              
+            <a class="inf-img" rel="<?=$item->pid?>" onmouseover="hw.showImageInfo($(this))"></a>
+            <a href="<?=$item->url_path.$appendImageMode?>">            
+            <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>              
             </a>           
         </div>
         <div class="thumb-attr">
@@ -38,5 +36,9 @@ foreach ($items as $key => $item) : ?>
 <script> 
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
+  })
+  
+  $('.inf-img').mouseover(function() {	
+    	hw.showImageInfo($(this))
   })
 </script>

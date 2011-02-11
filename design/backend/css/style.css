@@ -1677,7 +1677,7 @@ box-shadow:0px 0px 5px #a8a8a8;
 .thumb-pic-small{width:108px;margin:1px;}
 
 .album-thumb .tit-item{margin-top:9px;height:38px;margin-bottom:10px;}
-.album-thumb{height:260px;width:175px;border:1px solid #FFFFFF;}
+.album-thumb{height:280px;width:175px;border:1px solid #FFFFFF;}
 .album-thumb h2{color:#000000;padding-left:0px;}
 .album-thumb h2 a{color:#000000;font-size:13px;}
 .album-thumb div.content{padding:9px;padding-bottom:9px;padding-right:10px;}
@@ -2086,3 +2086,4 @@ div.dominant-colors div a{display:block;height:20px;}
 #tags-container input{margin-right:2px;}
 
 .wk-d td{background-color:#939185;color:#FFFFFF}
+.album-edit-items{clear:both;padding-left:8px;padding-top:5px;padding-right:8px;}
