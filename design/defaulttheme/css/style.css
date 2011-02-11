@@ -774,7 +774,7 @@ margin-right:7px;
 #resolution-nav .choose-sort span{background:none;padding-left:7px;}
 
 
-.sort-box{display:none;position:absolute;width:170px;border:1px solid #e5e5e5;margin-left:-1px;}
+.sort-box{display:none;position:absolute;width:170px;border:1px solid #e5e5e5;margin-left:-1px;z-index:5;}
 .sort-box li{background-color:#FFFFFF;}
 .sort-box li.sep{border-bottom:1px solid #e5e5e5;}
 .order-nav a:hover{text-decoration:none;}
