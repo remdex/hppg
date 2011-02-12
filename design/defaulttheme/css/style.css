@@ -1074,10 +1074,8 @@ div.dominant-colors div a{display:block;height:20px;}
 -moz-border-radius-bottomleft:13px;
 -webkit-border-bottom-left-radius:13px;
 border-bottom-left-radius:13px;
-box-shadow:-2px 2px 4px #a8a8a8;
--webkit-box-shadow:-2px 2px 4px #a8a8a8;
--moz-box-shadow: -2px 2px 4px #a8a8a8;
-background:#f1f1f1 url(../images/icons/information.png) no-repeat 3px 1px;
+
+background:#f1f1f1 url(../images/icons/information.png) no-repeat 4px 0px;
 cursor:pointer;   
 }
 
