@@ -20,6 +20,12 @@ $ViewList['lastuploadstoalbums'] = array(
     'script' => 'lastuploadstoalbums.php',
     'params' => array(),
     );
+          
+$ViewList['lastuploadstoalbumsadmin'] = array( 
+    'script' => 'lastuploadstoalbumsadmin.php',
+    'functions' => array( 'administrate' ),
+    'params' => array(),
+    );
     
 $ViewList['catjson'] = array( 
     'script' => 'catjson.php',
@@ -420,6 +426,7 @@ $ViewList['deletecategory'] = array(
 $ViewList['deletealbumadmin'] = array( 
     'script' => 'deletealbumadmin.php',
     'params' => array('album_id'),
+    'uparams' => array('moduler','functionr','page'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
     ); 
 

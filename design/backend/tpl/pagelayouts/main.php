@@ -16,6 +16,7 @@
         	<ul>
         	   <li><a href="<?=erLhcoreClassDesign::baseurl('system/configuration')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Configuration');?></a></li>    	   
         	   <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Gallery categorys');?></a></li>
+        	   <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbumsadmin')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads to albums');?></a></li>
         	   <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/batchadd')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Batch images add');?></a></li>
         	   <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/duplicates')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Duplicates');?></a></li>
         	   <li><a href="<?=erLhcoreClassDesign::baseurl('article/staticlist')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Static articles');?></a></li>
