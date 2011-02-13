@@ -237,7 +237,7 @@ var hw = {
 	       var inst = $(this);
 	       hw.delayTime = setTimeout(function(){ 
                 hw.fetchImageInfoWindow(inst);
-	       },400);
+	       },300);
       }).mouseleave(function(){
           clearTimeout(hw.delayTime);
       });      
