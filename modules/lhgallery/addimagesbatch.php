@@ -47,6 +47,9 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            // Index colors
 	       erLhcoreClassPalleteIndexImage::indexImage($image,true);  
 	       
+	       // Index face if needed
+	       erLhcoreClassModelGalleryFaceData::indexImage($image,true);
+	       
 	       // Index in search table
 	       erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
 	       

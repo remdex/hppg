@@ -253,7 +253,7 @@ class erLhcoreClassModelGallerySphinxSearch {
        $min = 25;
        $rmax = 50;
        $rmin = 1;
-                        
+
        $colorIndex = array();
        foreach ($colorsMaximumImage as $color)
        {

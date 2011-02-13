@@ -1,0 +1,6 @@
+mans > male
+man > male
+males > male
+woman > female
+females > female
+womans > female

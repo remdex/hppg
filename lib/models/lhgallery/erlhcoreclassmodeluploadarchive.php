@@ -173,7 +173,10 @@ class erLhcoreClassModelGalleryUploadArchive {
 				    	
 				    	// Index colors
 	                    erLhcoreClassPalleteIndexImage::indexImage($image,true);
-	                    
+
+	                    // Index face if needed
+	                    erLhcoreClassModelGalleryFaceData::indexImage($image,true);
+	       
 	                    // Index in search table
 	                    erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
 	                    	                    

@@ -188,6 +188,7 @@ class erLhcoreClassGallery{
             $wildCardEnabled = $cfg->conf->getSetting( 'sphinx', 'enabled_wildcard');
             $sphinxIndex = $cfg->conf->getSetting( 'sphinx', 'index' );  
             $extendedSearch = $cfg->conf->getSetting( 'color_search', 'extended_search');
+            $faceSearch = $cfg->conf->getSetting( 'face_search', 'enabled');
              
             foreach ($queryesBatch as $params) {
                   
@@ -284,15 +285,25 @@ class erLhcoreClassGallery{
                       }
                   }
       
-                  
-                  // Make some weightning
-                  $cl->SetFieldWeights(array(
+                  $weights = array (
                     'colors' => 9,
                     'title' => 10,
                     'caption' => 8,
                     'filename' => 9,
                     'file_path' => 7 
-                  ));
+                  );
+                                                      
+                  if ($faceSearch == true) {                      
+                      $weights['face_data'] = 9;
+                      if (isset($params['keyword'])) {
+                        $params['keyword'] = preg_replace('/^(females|womans|woman)/','female',$params['keyword']);                     
+                        $params['keyword'] = preg_replace('/^(males|mans|man)/','male',$params['keyword']);                     
+                        $params['keyword'] = preg_replace('/^(smile)/','smiling',$params['keyword']);
+                      }
+                  }
+                  
+                  // Make some weightning
+                  $cl->SetFieldWeights($weights);
                   
                   $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), $sphinxIndex );
             }
@@ -388,6 +399,8 @@ class erLhcoreClassGallery{
       $cl->SetSelect('');
       $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' );    
       $extendedColorSearch = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search');                
+      $faceSearch = erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'enabled');
+      
       
       $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxMatches);
                     
@@ -444,14 +457,25 @@ class erLhcoreClassGallery{
 
       $startAppend = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
       
-      // Make some weightning
-      $cl->SetFieldWeights(array(
+      $weights = array (
         'colors' => 9,
         'title' => 10,
         'caption' => 8,
         'filename' => 9,
-        'file_path' => 7        
-      ));
+        'file_path' => 7 
+      );
+      
+      if ($faceSearch == true) {
+          $weights['face_data'] = 9;
+          if (isset($params['keyword'])) {   
+              $params['keyword'] = preg_replace('/^(females|womans|woman)/','female',$params['keyword']);                     
+              $params['keyword'] = preg_replace('/^(males|mans|man)/','male',$params['keyword']);                     
+              $params['keyword'] = preg_replace('/^(smile)/','smiling',$params['keyword']);
+          }
+      }
+        
+      // Make some weightning
+      $cl->SetFieldWeights($weights);
       
       $colorSearchText = '';
       if (isset($params['color_filter']) && count($params['color_filter']) > 0){

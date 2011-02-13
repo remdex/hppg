@@ -8,8 +8,12 @@ erLhcoreClassModelGalleryRated24::deleteExpired();
 // Index to color attributes
 erLhcoreClassPalleteIndexImage::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'delay_index_portion' ));
 
+// Index face data
+erLhcoreClassModelGalleryFaceData::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'delay_index_portion' ));
+
 // Index to sphinx search
 erLhcoreClassModelGallerySphinxSearch::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'delay_index_portion' ));
+
 
 
 $session = erLhcoreClassGallery::getSession();

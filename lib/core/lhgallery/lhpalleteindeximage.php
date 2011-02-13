@@ -79,7 +79,7 @@ class erLhcoreClassPalleteIndexImage {
         if (file_exists($photoPath) && is_file($photoPath)) { 
 
             if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) 
-            {          
+            {
                      try {
                             $imgPath = $photoPath;
                             $img = false;
