@@ -36,6 +36,6 @@ foreach ($items as $key => $item) : ?>
 <script> 
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
-  })  
+  });  
   hw.initInfoWindow();    
 </script>

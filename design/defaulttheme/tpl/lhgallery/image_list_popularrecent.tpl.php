@@ -16,6 +16,7 @@ try {
 ?>
     <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
         <div class="thumb-pic">
+            <a class="inf-img" rel="<?=$item->pid?>"></a>
             <a href="<?=$item->url_path.$appendImageMode?>">
             
             <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>
@@ -50,14 +51,9 @@ try {
 
  </div>
 
-<script type="text/javascript">
-$("div.image-thumb").mouseover(function() {
-    $(this).addClass('image-thumb-shadow');
-  }).mouseout(function(){
-    $(this).removeClass('image-thumb-shadow');
-  });
-  
+<script type="text/javascript"> 
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
-  })
+  });
+  hw.initInfoWindow();
 </script>
