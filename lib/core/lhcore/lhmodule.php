@@ -170,7 +170,7 @@ class erLhcoreClassModule{
             $cacheWriter = new ezcCacheStorageFileArray(erLhcoreClassSystem::instance()->SiteDir . 'cache/cacheconfig/');
             if ( ($cacheModules = $cacheWriter->restore('moduleFunctionsCache_'.$module)) == false)
             {        	
-            	$cacheWriter->store('moduleFunctionsCache_'.$module,array());
+            	//$cacheWriter->store('moduleFunctionsCache_'.$module,array());
             	$cacheModules = array();
             }
                             
@@ -217,8 +217,7 @@ class erLhcoreClassModule{
                 self::$cacheInstance->store('moduleFunctionsCache_'.$module.'_version_'.self::$cacheVersionSite,$ViewListCompiled);
             }            
             return $ViewListCompiled;
-        }
-               
+        }               
         
         // Module does not exists
         return false;
@@ -227,25 +226,22 @@ class erLhcoreClassModule{
     
     public static function moduleInit()
     {                 
-                       
         $url = erLhcoreClassURL::getInstance();
         $cfg = erConfigClassLhConfig::getInstance();
-        
-        self::$currentModuleName = $url->getParam( 'module' );
-        self::$currentView = $url->getParam( 'function' );
+
+        self::$currentModuleName = preg_replace('/[^a-zA-Z0-9\-_]/', '', $url->getParam( 'module' ));
+        self::$currentView = preg_replace('/[^a-zA-Z0-9\-_]/', '', $url->getParam( 'function' ));
+
         self::$cacheInstance = CSCacheAPC::getMem();
         self::$cacheVersionSite = self::$cacheInstance->getCacheVersion('site_version');
-        
-        if (!is_null($url->getParam( 'module' )) && (self::$currentModule = erLhcoreClassModule::getModule(self::$currentModuleName)) !== false) {  
-            
-        } else {	
-        	
+
+        if (self::$currentModuleName == '' || (self::$currentModule = erLhcoreClassModule::getModule(self::$currentModuleName)) === false) {        	
             $params = $cfg->getOverrideValue('site','default_url');
             self::$currentView = $params['view'];
             self::$currentModuleName = $params['module'];
             self::$currentModule = erLhcoreClassModule::getModule(self::$currentModuleName);
         }
-                  
+
         if ($cfg->conf->getSetting( 'site', 'redirect_mobile' ) !== false && ((!isset($_COOKIE['RegularVersion'])  && preg_match("/http_(x_wap|ua)_(.*?)/i",implode(' ',array_keys($_SERVER)))) || ( isset($_COOKIE['RegularVersion']) && $_COOKIE['RegularVersion'] == 2 )) ){
         	erLhcoreClassSystem::instance()->MobileDevice = true;	
         	$optionsSiteAccess = $cfg->conf->getSetting('site_access_options',$cfg->conf->getSetting( 'site', 'redirect_mobile' ));		

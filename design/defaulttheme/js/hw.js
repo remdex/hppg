@@ -16,6 +16,7 @@ var hw = {
 	appendURL : null,
 	formAddPath: WWW_DIR_JAVASCRIPT,		
 	myTimer : false,
+	delayTime: false,
 	fetchingInfo: false,	
 	
 	setPath : function (path)
@@ -230,13 +231,21 @@ var hw = {
             	
 		});
 	},
+		
+	initInfoWindow : function() {	
+	   $('.inf-img').mouseover(function() {		       
+	       var inst = $(this);
+	       hw.delayTime = setTimeout(function(){ 
+                hw.fetchImageInfoWindow(inst);
+	       },400);
+      }).mouseleave(function(){
+          clearTimeout(hw.delayTime);
+      });      
+	},
 	
-	showImageInfo : function(img)
-	{	
-	    if (hw.fetchingInfo == img.attr('rel')) return;
-	    
-	    hw.fetchingInfo = img.attr('rel');
-	    
+	fetchImageInfoWindow : function(img){
+	    if (hw.fetchingInfo == img.attr('rel')) return;	    
+	    hw.fetchingInfo = img.attr('rel');	    
 	    clearTimeout(hw.myTimer);	    
 		$.getJSON(this.formAddPath + 'gallery/showimageinfo/'+img.attr('rel'), {} , function(data) {	
 		    $('#imageInfoWindow').remove()
