@@ -10,6 +10,7 @@ return array (
       'locale' => 'en_EN',
       'theme' => 'defaulttheme',
       'site_admin_email' => '',
+      'site_domain' => '',
       'templatecache' => false,
       'templatecompile' => false,
       'modulecompile' => false,        
@@ -238,6 +239,15 @@ return array (
     		0 => '',
     		1 => '' 		
     	)
+    ),
+    'face_search' => array (
+        'api_key' => 'api_key_of_face_com',
+        'api_secret' => 'api_secret_of_face_com',
+        'enabled' => false,
+        'delay_index' => true,
+        'delay_index_portion' => 50,
+        'request_delay' => 200,
+        'use_full_size' => false
     ),
     'color_search' => array (
         'search_enabled' => true,
