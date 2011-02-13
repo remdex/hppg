@@ -927,13 +927,19 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `text_index_length` mediumint(9) NOT NULL,
                   PRIMARY KEY (`id`)
                 ) DEFAULT CHARSET=utf8;");
-                
-                
+                                
                 $db->query("CREATE TABLE  `lh_gallery_pallete_images_stats` (
                 `pid` INT NOT NULL ,
                 `colors` VARCHAR( 100 ) NOT NULL ,
                 PRIMARY KEY (  `pid` )
                 ) DEFAULT CHARSET=utf8;");
+                
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_face_data` (
+                  `pid` int(11) NOT NULL,
+                  `data` text NOT NULL,
+                  `sphinx_data` varchar(255) NOT NULL,
+                  PRIMARY KEY (`pid`)
+                ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_last_index` (
                   `identifier` varchar(50) NOT NULL,
@@ -941,9 +947,11 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   PRIMARY KEY (`identifier`)
                 ) DEFAULT CHARSET=utf8;");
                 
+                
                 $db->query("INSERT INTO `lh_gallery_last_index` (`identifier`, `value`) VALUES
                 ('image_index', 0),
-                ('sphinx_index', 0);");
+                ('sphinx_index', 0),
+                ('face_index', 0);");
                                 
                                                  
                 $RoleFunction = new erLhcoreClassModelRoleFunction();
