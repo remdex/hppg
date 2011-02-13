@@ -4,3 +4,4 @@ males > male
 woman > female
 females > female
 womans > female
+smile > smiling
