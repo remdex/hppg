@@ -32,6 +32,7 @@ $ViewList['catjson'] = array(
     'functions' => array( 'administrate' ),
     'params' => array('category_id')
     );
+
     
 $ViewList['albumrss'] = array( 
     'script' => 'albumrss.php',
@@ -347,7 +348,13 @@ $ViewList['movebyresolution'] = array(
     'params' => array('album_id'),    
     'functions' => array( 'administrate' ),
     );  
-             
+    
+$ViewList['movealbumphotos'] = array( 
+    'script' => 'movealbumphotos.php',
+    'functions' => array( 'administrate' ),
+    'params' => array('album_id')
+    );
+                 
 $ViewList['editcategory'] = array( 
     'script' => 'editcategory.php',
     'params' => array('category_id'),    
