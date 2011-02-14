@@ -10,8 +10,10 @@ ob_start();
 
 	<?php foreach (erLhcoreClassModelGalleryLastSearch::getSearches() as $search) : ?>									
 	   <li>
-	   <a class="cnt" href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($search->keyword);?>">(<?=$search->countresult;?>)</a>	   
-	   <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($search->keyword);?>"><?=htmlspecialchars($search->keyword);?></a>					  
+	   <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($search->keyword);?>">
+	   <span class="cnt">(<?=$search->countresult;?>)</span>
+	   <span><?=htmlspecialchars($search->keyword);?></span>
+	   </a>					  
 	<?endforeach;?>
 
 <?php 
