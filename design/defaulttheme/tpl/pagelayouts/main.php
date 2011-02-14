@@ -5,7 +5,8 @@
 <div id="container" class="no-right-column">
 
 <div id="main-header-bg" class="float-break">
-    <div id="logo"><a href="<?=erLhcoreClassDesign::baseurl()?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><img src="<?=erLhcoreClassDesign::design('images/newdesign/logo.jpg')?>" alt="<?=erConfigClassLhConfig::getInstance()->getOverrideValue( 'site', 'title' )?>" title="<?=erConfigClassLhConfig::getInstance()->getOverrideValue( 'site', 'title' )?>" ></a></div>
+    
+    <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/logo.tpl.php'));?>
     
     <div class="top-menu float-break">        
     <?if (isset($Result['rss'])) : ?>
