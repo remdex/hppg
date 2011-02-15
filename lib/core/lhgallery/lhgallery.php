@@ -400,8 +400,7 @@ class erLhcoreClassGallery{
       $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' );    
       $extendedColorSearch = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search');                
       $faceSearch = erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'enabled');
-      
-      
+            
       $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxMatches);
                     
       $filter = isset($params['Filter']) ? $params['Filter'] : array();  
