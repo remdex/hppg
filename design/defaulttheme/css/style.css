@@ -824,7 +824,7 @@ input.default-button
 
 .navigator-ajax{padding-top:0px;width:746px;height:217px;text-align:left;}
 .left-ajax,
-.right-ajax{height:217px;width:16px;position:absolute;margin-top:50px;}
+.right-ajax{height:217px;width:16px;position:absolute;margin-top:50px;z-index:10;}
 .left-ajax{margin-left:0;}
 .right-ajax{margin-left:669px;}
 
