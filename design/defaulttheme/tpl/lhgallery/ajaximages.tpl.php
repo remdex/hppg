@@ -5,6 +5,7 @@ foreach ($imagesAjax as $key => $item) :
 ?>
 <div class="image-thumb">
         <div class="thumb-pic">
+            <a class="inf-img" rel="<?=$item->pid?>"></a>
             <a rel="<?=$item->pid?>" href="<?=$item->url_path.$urlAppend?>">
             
             <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>
@@ -32,3 +33,6 @@ foreach ($imagesAjax as $key => $item) :
     </div>      
 <?$counter++;endforeach; ?>
 <?endif;?>
+<script>
+hw.initInfoWindow();
+</script>

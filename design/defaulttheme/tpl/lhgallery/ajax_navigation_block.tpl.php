@@ -12,11 +12,8 @@
     <? foreach ($imagesAjax as $key => $item) : ?>
         <div class="image-thumb<?=$item->pid == $image->pid ? ' image-thumb-cur' : ''?>">
             <div class="thumb-pic">
-                <a rel="<?=$item->pid?>" href="<?=$item->url_path.$urlAppend?>">
-                
-               <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>          
-                
-                </a>           
+                <a class="inf-img" rel="<?=$item->pid?>"></a>    
+                <a rel="<?=$item->pid?>" href="<?=$item->url_path.$urlAppend?>"><?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?></a>           
             </div>
             <div class="thumb-attr">
             

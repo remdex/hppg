@@ -250,7 +250,7 @@ var hw = {
 		$.getJSON(this.formAddPath + 'gallery/showimageinfo/'+img.attr('rel'), {} , function(data) {	
 		    $('#imageInfoWindow').remove()
 		    img.before(data.result);
-		    $('#imageInfoWindow').slideDown('fast');
+		    $('#imageInfoWindow').fadeIn('fast');
 		    $('#imageInfoWindow').mouseleave(function() {		    
 		        hw.myTimer = setTimeout(function(){
                     $('#imageInfoWindow').fadeOut();

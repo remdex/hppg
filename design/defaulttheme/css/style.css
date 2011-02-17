@@ -824,7 +824,7 @@ input.default-button
 
 .navigator-ajax{padding-top:0px;width:746px;height:217px;text-align:left;}
 .left-ajax,
-.right-ajax{height:217px;width:16px;position:absolute;margin-top:50px;z-index:10;}
+.right-ajax{height:217px;width:16px;position:absolute;margin-top:50px;z-index:10;overflow:visible;}
 .left-ajax{margin-left:0;}
 .right-ajax{margin-left:669px;}
 
@@ -1083,10 +1083,11 @@ margin-left:100px;
 border-bottom-left-radius:13px;
 background:#f1f1f1 url(../images/icons/information.png) no-repeat 4px 0px;
 cursor:pointer;   
-z-index:0;
-}
+z-index:0;}
 
-#imageInfoWindow{position:absolute;background-color:red;
+#imageInfoWindow{
+position:absolute;
+background-color:red;
 box-shadow:1px 1px 7px #a8a8a8;
 -webkit-box-shadow:-2px 2px 7px #a8a8a8;
 -moz-box-shadow: -2px 2px 7px #a8a8a8;
@@ -1101,6 +1102,6 @@ padding:7px;
 width:180px;
 margin-left:-74px;
 display:none;
-z-index:2;overflow:hidden;
+overflow:hidden;
 border:1px solid #ececec;
-}
+z-index:2;}
