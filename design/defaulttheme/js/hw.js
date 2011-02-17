@@ -232,22 +232,22 @@ var hw = {
 		});
 	},
 		
-	initInfoWindow : function() {	
+	initInfoWindow : function(sort) {	
 	   $('.inf-img').mouseover(function() {		       
 	       var inst = $(this);
 	       hw.delayTime = setTimeout(function(){ 
-                hw.fetchImageInfoWindow(inst);
+                hw.fetchImageInfoWindow(inst,sort);
 	       },300);
       }).mouseleave(function(){
           clearTimeout(hw.delayTime);
       });      
 	},
 	
-	fetchImageInfoWindow : function(img){
+	fetchImageInfoWindow : function(img,sort){
 	    if (hw.fetchingInfo == img.attr('rel')) return;	    
 	    hw.fetchingInfo = img.attr('rel');	    
 	    clearTimeout(hw.myTimer);	    
-		$.getJSON(this.formAddPath + 'gallery/showimageinfo/'+img.attr('rel'), {} , function(data) {	
+		$.getJSON(this.formAddPath + 'gallery/showimageinfo/'+img.attr('rel')+'/'+sort, {} , function(data) {	
 		    $('#imageInfoWindow').remove()
 		    img.before(data.result);
 		    $('#imageInfoWindow').fadeIn('fast');

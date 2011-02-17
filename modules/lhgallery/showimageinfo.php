@@ -9,6 +9,7 @@ try {
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/showimageinfo.tpl.php');
 $tpl->set('image',$Image);
+$tpl->set('sort',urldecode($Params['user_parameters']['sort']));
 
 echo json_encode(array('result' =>$tpl->fetch()));
 exit;

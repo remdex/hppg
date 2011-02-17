@@ -82,7 +82,7 @@ $ViewList['image'] = array(
            
 $ViewList['showimageinfo'] = array( 
     'script' => 'showimageinfo.php',
-    'params' => array('image_id')
+    'params' => array('image_id','sort')
 ); 
            
 $ViewList['addcomment'] = array( 

@@ -43,5 +43,5 @@ if ($item === false) continue;
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
   });
-  hw.initInfoWindow();
+  hw.initInfoWindow('<?=urlencode($appendImageMode)?>');
 </script>

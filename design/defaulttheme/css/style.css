@@ -1076,7 +1076,6 @@ div.dominant-colors div a{display:block;height:20px;}
 position:absolute;
 width:20px;
 height:20px;
-background-color:red;
 margin-left:100px;
 -moz-border-radius-bottomleft:13px;
 -webkit-border-bottom-left-radius:13px;
@@ -1105,3 +1104,4 @@ display:none;
 overflow:hidden;
 border:1px solid #ececec;
 z-index:2;}
+#imageInfoWindow h3 a{text-decoration:underline;}

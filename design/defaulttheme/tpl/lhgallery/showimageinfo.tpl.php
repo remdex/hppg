@@ -1,6 +1,6 @@
 <div id="imageInfoWindow">
 <ul>  
-    <li><h3><?=htmlspecialchars($image->name_user);?></h3>
+    <li><h3><a href="<?=$image->url_path.$sort?>"><?=htmlspecialchars($image->name_user);?></a></h3>
     <li><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Filename')?>:</strong> <?=htmlspecialchars($image->filename);?>
     <li><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','File size')?>:</strong> <?=$image->filesize_user;?>
     <li><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Image rating')?></strong><?=$image->votes > 0 ? ' ('.$image->votes.' '.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','votes').')' : ''?>: <img src="<?php echo erLhcoreClassDesign::design('images/gallery/rating'.round($image->pic_rating/2000).'.gif');?>" alt="">

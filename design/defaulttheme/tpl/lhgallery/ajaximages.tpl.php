@@ -34,5 +34,5 @@ foreach ($imagesAjax as $key => $item) :
 <?$counter++;endforeach; ?>
 <?endif;?>
 <script>
-hw.initInfoWindow();
+hw.initInfoWindow('<?=urlencode($urlAppend)?>');
 </script>

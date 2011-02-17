@@ -20,5 +20,5 @@ $('.ad-phpbb').colorbox();
 <?php if ($image->anaglyph == 1) : ?>
 $('.ad-anaglyph').colorbox({width:'<?=$image->pwidth+50?>px',height:'<?=$image->pheight+130?>px'});
 <?php endif;?>
-hw.initInfoWindow();
+hw.initInfoWindow('<?=urlencode($urlAppend)?>');
 </script>
