@@ -1104,4 +1104,4 @@ display:none;
 overflow:hidden;
 border:1px solid #ececec;
 z-index:2;}
-#imageInfoWindow h3 a{text-decoration:underline;}
+#imageInfoWindow h3 a{text-decoration:none;display:block;border-bottom:1px solid #b0b0b0;padding-bottom:3px;}
