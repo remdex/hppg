@@ -296,8 +296,8 @@ class erLhcoreClassGallery{
                   if ($faceSearch == true) {                      
                       $weights['face_data'] = 9;
                       if (isset($params['keyword'])) {
-                        $params['keyword'] = preg_replace('/^(females|womans|woman)/','female',$params['keyword']);                     
-                        $params['keyword'] = preg_replace('/^(males|mans|man)/','male',$params['keyword']);                     
+                        $params['keyword'] = preg_replace('/^(females|womens|women|woman)/','female',$params['keyword']);                     
+                        $params['keyword'] = preg_replace('/^(males|mens|man|men)/','male',$params['keyword']);                     
                         $params['keyword'] = preg_replace('/^(smile)/','smiling',$params['keyword']);
                       }
                   }
