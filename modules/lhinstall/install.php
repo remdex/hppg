@@ -873,7 +873,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				  `value` varchar(100) NOT NULL,
 				  PRIMARY KEY (`id`),
 				  KEY `identifier` (`identifier`,`param`)
-				) ENGINE=MyISAM ;");
+				) DEFAULT CHARSET=utf8;");
 				
 				$db->query("CREATE TABLE IF NOT EXISTS `lh_shop_user_credit` (
 				  `user_id` int(11) NOT NULL,
@@ -939,7 +939,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `data` text NOT NULL,
                   `sphinx_data` varchar(255) NOT NULL,
                   PRIMARY KEY (`pid`)
-                ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+                ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_last_index` (
                   `identifier` varchar(50) NOT NULL,
