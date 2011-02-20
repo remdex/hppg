@@ -14,10 +14,10 @@
 
             if ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE){
                 $ResultCache .= '<img title="'.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size').'" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode($item->filename)).'" alt="'.htmlspecialchars($item->name_user).'">';
-            } elseif ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV) {
+            } elseif ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV || $item->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO) {
 
                 if ($item->has_preview) {
-                    $ResultCache .= '<img title="'.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size').'" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode(str_replace('.ogv','.jpg',$item->filename))).'" alt="'.htmlspecialchars($item->name_user).'">';
+                    $ResultCache .= '<img title="'.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size').'" src="'.erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode(str_replace(array('.ogv','.avi','.mpg','.mpeg'),'.jpg',$item->filename))).'" alt="'.htmlspecialchars($item->name_user).'">';
                 } else {
                     $ResultCache .= '<img title="'.erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size').'" src="'.erLhcoreClassDesign::design('images/icons/ogv.jpg').'" alt="'.htmlspecialchars($item->name_user).'">';
                 }

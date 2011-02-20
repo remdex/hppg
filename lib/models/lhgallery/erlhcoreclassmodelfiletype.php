@@ -7,7 +7,8 @@ class erLhcoreClassModelGalleryFiletype {
         'IMAGE' => 'erLhcoreClassImageConverter::isPhoto',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::isVideo',
         'SWF'   => 'erLhcoreClassSWFConverter::isSWF',
-        'FLV'   => 'erLhcoreClassFLVConverter::isVideo'
+        'FLV'   => 'erLhcoreClassFLVConverter::isVideo',
+        'VIDEO' => 'erLhcoreClassVideoConverter::isVideo',
    ); 
    
    // Validation handlers from local
@@ -16,6 +17,7 @@ class erLhcoreClassModelGalleryFiletype {
         'HTMLV' => 'erLhcoreClassHTMLVConverter::isVideoLocal',
         'SWF'   => 'erLhcoreClassSWFConverter::isSWFLocal',
         'FLV'   => 'erLhcoreClassFLVConverter::isVideoLocal',
+        'VIDEO' => 'erLhcoreClassVideoConverter::isVideoLocal',
    );
    
    // Conversion handlers from post
@@ -23,7 +25,8 @@ class erLhcoreClassModelGalleryFiletype {
         'IMAGE' => 'erLhcoreClassImageConverter::handleUpload',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::handleUpload',
         'SWF'   => 'erLhcoreClassSWFConverter::handleUpload',
-        'FLV'   => 'erLhcoreClassFLVConverter::handleUpload'
+        'FLV'   => 'erLhcoreClassFLVConverter::handleUpload',
+        'VIDEO' => 'erLhcoreClassVideoConverter::handleUpload',
    );
    
    // Conversion handlers from post
@@ -31,7 +34,8 @@ class erLhcoreClassModelGalleryFiletype {
         'IMAGE' => 'erLhcoreClassImageConverter::handleUploadLocal',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::handleUploadLocal',
         'SWF'   => 'erLhcoreClassSWFConverter::handleUploadLocal',
-        'FLV'   => 'erLhcoreClassFLVConverter::handleUploadLocal'
+        'FLV'   => 'erLhcoreClassFLVConverter::handleUploadLocal',
+        'VIDEO' => 'erLhcoreClassVideoConverter::handleUploadLocal'
    );
    
    // Conversion handlers from post
@@ -39,7 +43,8 @@ class erLhcoreClassModelGalleryFiletype {
         'IMAGE' => 'erLhcoreClassImageConverter::handleUploadBatch',
         'HTMLV' => 'erLhcoreClassHTMLVConverter::handleUploadBatch',
         'SWF'   => 'erLhcoreClassSWFConverter::handleUploadBatch',
-        'FLV'   => 'erLhcoreClassFLVConverter::handleUploadBatch'
+        'FLV'   => 'erLhcoreClassFLVConverter::handleUploadBatch',
+        'VIDEO' => 'erLhcoreClassVideoConverter::handleUploadBatch'
    );
    
    public function getState()

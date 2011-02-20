@@ -24,6 +24,14 @@
 		<param name="allowFullScreen" value="true" />
 		<param name="FlashVars" value="flv=<?=erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename))?>&amp;width=<?=$image->pwidth?>&amp;height=<?=$image->pheight?>&amp;startimage=<?=erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode(str_replace('.flv','.jpg',$image->filename)))?>&amp;showstop=1&amp;showvolume=1&amp;showtime=1&amp;bgcolor=F1F1F1" />
 		<p>Your browser does not support flash player</p>
+	</object>
+	
+<?php elseif ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO ) : ?>
+    <object id="monFlash" type="application/x-shockwave-flash" data="<?=erLhcoreClassDesign::design('js/player_flv_maxi.swf')?>" width="<?=$image->pwidth?>" height="<?=$image->pheight?>">
+		<param name="movie" value="<?=erLhcoreClassDesign::design('js/player_flv_maxi.swf')?>" />
+		<param name="allowFullScreen" value="true" />
+		<param name="FlashVars" value="flv=<?=erLhcoreClassDesign::imagePath($image->filepath.urlencode(str_replace(array('.avi','.mpg','.mpeg'),'.flv',$image->filename)))?>&amp;width=<?=$image->pwidth?>&amp;height=<?=$image->pheight?>&amp;startimage=<?=erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode(str_replace(array('.avi','.mpg','.mpeg'),'.jpg',$image->filename)))?>&amp;showstop=1&amp;showvolume=1&amp;showtime=1&amp;bgcolor=F1F1F1" />
+		<p>Your browser does not support flash player</p>
 	</object>	
 <?php endif;?>
 

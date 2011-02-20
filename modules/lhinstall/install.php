@@ -719,8 +719,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `player` varchar(5) DEFAULT NULL,
                   PRIMARY KEY (`extension`)
                 ) DEFAULT CHARSET=utf8;");
-                
-                
+                                
                 $db->query("INSERT INTO `lh_gallery_filetypes` (`extension`, `mime`, `content`, `player`) VALUES
                 ('jpg', 'image/jpg', 'image', 'IMAGE'),
                 ('jpeg', 'image/jpeg', 'image', 'IMAGE'),
@@ -738,11 +737,12 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 ('ogg', 'audio/ogg', 'audio', 'HTMLA'),
                 ('oga', 'audio/ogg', 'audio', 'HTMLA'),
                 ('ogv', 'video/ogg', 'movie', 'HTMLV'),
+                ('mpg', 'video/mpeg','movie', 'VIDEO'), 
+                ('mpeg','video/mpeg','movie', 'VIDEO'), 
+                ('avi', 'video/x-msvideo',  'movie',  'VIDEO'),
                 ('swf', 'application/x-shockwave-flash', 'movie', 'SWF'),
                 ('flv', 'video/x-flv', 'movie', 'FLV');");
-                
-                
-                
+                     
                 // Create article module tables
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_article_static` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -774,8 +774,9 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('file_upload_limit', '200', 0, 'How many files upload during one session', 0),
 						('thumbnail_width_x', '120', 0, 'Small thumbnail width - x', 0),
 						('thumbnail_width_y', '130', 0, 'Small thumbnail width - Y', 0),
+						('video_convert_command',  'ffmpeg -y -i {original_file} -qmax 15 -s 580x440 -ar 22050 -ab 32 -f flv {converted_file} &> /dev/null',  '0',  '',  '0'),
 						('flash_screenshot_command',  'bin/shell/xvfb-run.sh --server-args=\"-screen 0, 1024x2730x24\" bin/shell/screenshot.sh',  '0',  'Command witch is executed for making flash screenshot',  '0'),
-						('allowed_file_types', '*.jpg;*.gif;*.png;*.png;*.bmp;*.ogv;*.swf', 0, 'List of allowed file types to upload', 0),
+						('allowed_file_types', '*.jpg;*.gif;*.png;*.png;*.bmp;*.ogv;*.swf;*.mpeg;*.avi;*.mpg', 0, 'List of allowed file types to upload', 0),
 						('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x', 0),
 						('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y', 0),
 						('loop_video', '0', 0, 'Should HTML5 video be looped? (1 - yes,0 - no))', 0),

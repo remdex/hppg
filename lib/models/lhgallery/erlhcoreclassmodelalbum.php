@@ -175,20 +175,13 @@ class erLhcoreClassModelGalleryAlbum {
            	    {
            	        if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) {
            	            return $image->filepath.'thumb_'.urlencode($image->filename);
-           	        } elseif ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV ) {   
+           	        } elseif ( $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV || 
+           	                   $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeFLV   || 
+           	                   $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeSWF   || 
+           	                   $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO ) {   
            	                  
            	           if ($image->has_preview == 1) {           	               
-                            return $image->filepath.'thumb_'.urlencode(str_replace('.ogv','.jpg',$image->filename));
-           	           }
-           	        } elseif ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeFLV ) {   
-           	                  
-           	           if ($image->has_preview == 1) {           	               
-                            return $image->filepath.'thumb_'.urlencode(str_replace('.flv','.jpg',$image->filename));
-           	           }
-           	        } elseif ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeSWF ) {   
-           	                  
-           	           if ($image->has_preview == 1) {           	               
-                            return $image->filepath.'thumb_'.urlencode(str_replace('.swf','.jpg',$image->filename));
+                            return $image->filepath.'thumb_'.urlencode(str_replace(array('.swf','.flv','.ogv','.avi','.mpg','.mpeg'),'.jpg',$image->filename));
            	           }
            	        }
            	    }        
