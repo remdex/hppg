@@ -22,6 +22,16 @@ class erLhcoreClassGallery{
         return self::$persistentSession;
    }
    
+   public static function make_clickable($text)
+   {
+        $ret = ' ' . $text;
+        $ret = preg_replace("#(^|[\n ])([\w]+?://[\w]+[^ \"\n\r\t<]*)#ise", "'\\1<a target=\"_blank\" href=\"\\2\" >\\2</a>'", $ret);
+        $ret = preg_replace("#(^|[\n ])((www|ftp)\.[^ \"\t\n\r<]*)#ise", "'\\1<a target=\"_blank\" href=\"http://\\2\" >\\2</a>'", $ret);
+        $ret = preg_replace("#(^|[\n ])([a-z0-9&\-_\.]+?)@([\w\-]+\.([\w\-\.]+\.)*[\w]+)#i", "\\1<a href=\"mailto:\\2@\\3\">\\2@\\3</a>", $ret);
+        $ret = substr($ret, 1);
+        return($ret);
+   }
+    
    public static function multi_implode($glue, $pieces, $key = null)
    {
        $string='';

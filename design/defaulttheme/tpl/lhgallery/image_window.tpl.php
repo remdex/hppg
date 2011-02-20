@@ -36,7 +36,7 @@
 <?php endif;?>
 
 <?php if( $image->caption != '') : ?>
-<div class="float-break cap-img"><?=nl2br(htmlspecialchars($image->caption))?></div>
+<div class="float-break cap-img"><?=erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($image->caption)))?></div>
 <?endif;?>
 </div>
 
