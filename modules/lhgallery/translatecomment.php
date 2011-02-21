@@ -1,7 +1,11 @@
 <?php
 
-$comment = erLhcoreClassModelGalleryComment::fetch($Params['user_parameters']['msg_id']);
-$apiKey = erLhcoreClassModelSystemConfig::fetch('google_translate_api_key')->current_value;
+try {
+    $comment = erLhcoreClassModelGalleryComment::fetch((int)$Params['user_parameters']['msg_id']);
+    $apiKey = erLhcoreClassModelSystemConfig::fetch('google_translate_api_key')->current_value;
+} catch (Exception $e){
+    exit;
+}
 
 if ($apiKey != '') {    
     $sourceTarget = '';
