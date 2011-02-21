@@ -18,7 +18,7 @@ if (count($comments) > 0) :
 <li id="com_<?=$comment->msg_id?>"<?php if ($comment_id == $comment->msg_id) :?> style="display:none;"<?php endif;?>>
 <span class="author"><?=htmlspecialchars($comment->msg_author);?></span>
 <div class="right ct"><?=$comment->msg_date;?></div>
-<p class="msg-body"><?=nl2br(htmlspecialchars($comment->msg_body))?>    
+<p class="msg-body"><?=erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($comment->msg_body)))?>    
 <?php endforeach;?>
 </ul>
 <?else:?>

@@ -13,6 +13,7 @@ class erLhcoreClassModelGalleryComment {
                'msg_hdr_ip'     => $this->msg_hdr_ip,             
                'author_md5_id'  => $this->author_md5_id,             
                'author_id'      => $this->author_id,             
+               'lang'           => $this->lang,
        );
    }
    
@@ -23,6 +24,18 @@ class erLhcoreClassModelGalleryComment {
            $this->$key = $val;
        }
    } 
+   
+   public static function fetch($msg_id)
+   {
+       $msg = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryComment', (int)$msg_id );
+       return $msg;
+   }
+   
+   public function saveThis()
+   {
+       erLhcoreClassGallery::getSession()->saveOrUpdate( $this );      
+   }
+   
    public static function getComments($paramsSearch = array())
    {
        $paramsDefault = array('limit' => 100, 'offset' => 0);
@@ -139,6 +152,7 @@ class erLhcoreClassModelGalleryComment {
    public $msg_hdr_ip = '';
    public $author_md5_id = '';
    public $author_id = 0;
+   public $lang = '';
 }
 
 

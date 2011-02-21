@@ -44,6 +44,11 @@ $def->properties['msg_author']->columnName   = 'msg_author';
 $def->properties['msg_author']->propertyName = 'msg_author';
 $def->properties['msg_author']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
 
+$def->properties['lang'] = new ezcPersistentObjectProperty();
+$def->properties['lang']->columnName   = 'lang';
+$def->properties['lang']->propertyName = 'lang';
+$def->properties['lang']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING;
+
 return $def; 
 
 ?>

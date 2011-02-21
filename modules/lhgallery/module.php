@@ -8,6 +8,16 @@ $ViewList = array();
 $ViewList['index'] = array( 
     'script' => 'index.php',
     'params' => array()
+    ); 
+      
+$ViewList['translatebox'] = array( 
+    'script' => 'translatebox.php',
+    'params' => array('msg_id')
+    );
+          
+$ViewList['translatecomment'] = array( 
+    'script' => 'translatecomment.php',
+    'params' => array('msg_id','siteaccess')
     );
    
 $ViewList['album'] = array( 

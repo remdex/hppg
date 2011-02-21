@@ -287,6 +287,31 @@ var hw = {
         });
 	},
 
+	showTransteToBox : function(inst,msg_id) {
+	    $.getJSON(this.formAddPath + 'gallery/translatebox/'+msg_id, {} , function(data) {				
+			 inst.prepend(data.result);
+		});
+	},
+	
+	translateComment : function(msg_id,lang) {
+	    $.getJSON(this.formAddPath + 'gallery/translatecomment/'+msg_id + '/' + lang, {} , function(data) {				
+			 $('#msg_bd_'+msg_id).html(data.result);
+		});
+	},
+	
+	initCommentTranslations : function() {
+	    $('.lang-box').mouseenter(function(){  
+            if ($(this).find('.lng-cmt').size() == 0)
+            {
+                hw.showTransteToBox($(this),$(this).find('a.tr-lnk').attr('rel'));   
+            } else {
+                $(this).find('.lng-cmt').show();
+            }        
+        }).mouseleave(function() {
+            $(this).find('.lng-cmt').hide();
+        });
+	},
+	
 	initPalleteFilter : function(current_colors,mode,keyword)
 	{	 
 	   var baseURL = this.formAddPath;

@@ -392,6 +392,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           `msg_hdr_ip` tinytext,
                           `author_md5_id` varchar(32) NOT NULL DEFAULT '',
                           `author_id` int(11) NOT NULL DEFAULT '0',
+                          `lang` varchar(5) NOT NULL,
                           PRIMARY KEY (`msg_id`),
                           KEY `com_pic_id` (`pid`)
                         ) DEFAULT CHARSET=utf8;");
@@ -787,6 +788,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('normal_thumbnail_quality', '93', 0, 'Converted normal thumbnail quality', 0),
 						('watermark_data', 'a:9:{s:17:\"watermark_enabled\";b:0;s:21:\"watermark_enabled_all\";b:0;s:9:\"watermark\";s:0:\"\";s:6:\"size_x\";i:200;s:6:\"size_y\";i:50;s:18:\"watermark_disabled\";b:1;s:18:\"watermark_position\";s:12:\"bottom_right\";s:28:\"watermark_position_padding_x\";i:10;s:28:\"watermark_position_padding_y\";i:10;}', 0, 'Not shown public, editing is done in watermark module', 1),
 						('full_image_quality', '93', 0, 'Full image quality', 0),
+						('google_translate_api_key',  '',  '0',  'Google translate API key, can be obtained from https://code.google.com/apis/console/',  '0'),
 						('popularrecent_timeout', '24', 0, 'Most popular images timeout in hours', 0),
 						('ratedrecent_timeout', '24', 0, 'Recently images timeout in hours', 0);");
 
