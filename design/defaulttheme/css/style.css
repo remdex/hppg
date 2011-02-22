@@ -1108,6 +1108,7 @@ z-index:2;}
 
 .lang-box{font-size:11px;padding-left:3px;margin-left:3px;}
 .lang-box a{color:#8F8F8F;cursor:pointer;}
-.lang-box a img{padding-top:2px;}
+.lang-box a img{padding-top:0px;}
 .lng-cmt{padding-left:5px;}
+.lng-cmt a{padding-left:2px;}
 .head-sub-com{height:20px;}
