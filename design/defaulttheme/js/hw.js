@@ -300,15 +300,19 @@ var hw = {
 	},
 	
 	initCommentTranslations : function() {
-	    $('.lang-box').mouseenter(function(){  
+	    $('.lang-box').mouseenter(function(){ 
+	        $('.lng-cmt').hide(); 
+	        clearTimeout(hw.delayTime);
             if ($(this).find('.lng-cmt').size() == 0)
             {
                 hw.showTransteToBox($(this),$(this).find('a.tr-lnk').attr('rel'));   
             } else {
                 $(this).find('.lng-cmt').show();
             }        
-        }).mouseleave(function() {
-            $(this).find('.lng-cmt').hide();
+        }).mouseleave(function() {   
+             hw.delayTime = setTimeout(function(){ 
+                    $('.lng-cmt').fadeOut();
+    	     },1000);
         });
 	},
 	
