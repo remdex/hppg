@@ -17,8 +17,9 @@ $ViewList['logout'] = array(
 $ViewList['loginwithgoogle'] = array( 
     'script' => 'loginwithgoogle.php',
     'params' => array()
-    );  
-           
+    );   
+          
+          
 $ViewList['mapaccounts'] = array( 
     'script' => 'mapaccounts.php',
     'params' => array()
