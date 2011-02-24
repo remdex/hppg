@@ -58,7 +58,8 @@ if (count($list) > 0) : ?>
 </li>
 <?php endforeach; ?>
 </ul>
-<?php endif;?>
+<?php else :?>
 <br />
 <a href="<?=erLhcoreClassDesign::baseurl('user/loginwithgoogle')?>">Add google account &raquo;</a>
+<?php endif;?>
 </div>

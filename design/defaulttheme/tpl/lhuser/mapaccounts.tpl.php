@@ -21,7 +21,12 @@
     </div>
 </div>
 
+<?php if (isset($multiple_action)) : ?>
+<strong>OR</strong>
+<label><input type="checkbox" value="1" name="CreateAccount" /> create account</label>
+<?php endif;?>
+
 </div>
 
-<input class="default-button" type="submit" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Login and assign');?>" name="MapAccounts" />
+<input class="default-button" type="submit" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Next');?>" name="MapAccounts" />
 </form>
