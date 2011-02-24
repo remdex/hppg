@@ -2,6 +2,9 @@
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhuser/account.tpl.php' );
 
+$currentUser = erLhcoreClassUser::instance();
+$UserData = $currentUser->getUserData();
+                
 if (isset($_POST['Update_account']))
 {    
    $definition = array(
@@ -13,6 +16,9 @@ if (isset($_POST['Update_account']))
         ),
         'Password1' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::OPTIONAL, 'string'
+        ),
+        'Username' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::REQUIRED, 'string'
         ),
         'Email' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'validate_email'
@@ -32,10 +38,14 @@ if (isset($_POST['Update_account']))
         $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Passwords mismatch');
     }
     
+    if ( !$form->hasValidData( 'Username' ) || $form->Username == '' || ($form->Username != $UserData->username && erLhcoreClassModelUser::userExists($form->Username) === true) )
+    {
+        $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','User exists');
+    }
+    
     if (count($Errors) == 0)
     {        
-        $currentUser = erLhcoreClassUser::instance();
-        $UserData = $currentUser->getUserData();
+        $UserData->username = $form->Username;
 
         // Update password if neccesary
         if ($form->hasInputField( 'Password' ) && $form->hasInputField( 'Password1' ) && $form->Password != '' && $form->Password1 != '')

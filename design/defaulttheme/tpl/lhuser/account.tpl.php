@@ -21,7 +21,7 @@
 			<table>
 				<tr><td colspan="2"><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Login information')?></strong></td></tr>
 				<tr>
-					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Username');?></td><td><input class="inputfield" type="text" name="" disabled value="<?=htmlspecialchars($user->username);?>" /></td>
+					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Username');?></td><td><input class="inputfield" type="text" name="Username" value="<?=htmlspecialchars($user->username);?>" /></td>
 				</tr>
 				<tr>
 					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Password');?></td>
@@ -45,3 +45,20 @@
 	</div>
 </div>
 <br />
+
+
+<div class="open-id-block">
+<h2>Open ID - Google authentification</h2>
+<?php $list = erLhcoreClassModelOidMap::getList(array('filter' => array('user_id' => $user->id,'open_id_type' => erLhcoreClassModelOidMap::OPEN_ID_GOOGLE)));
+if (count($list) > 0) : ?>
+<ul>
+<?php foreach ($list as $open_id) : ?>
+<li><img src="<?=erLhcoreClassDesign::design('images/icons/open_id_1.png')?>" alt="" title="<?=htmlspecialchars($open_id->open_id);?>" />
+<span title="<?=htmlspecialchars($open_id->open_id);?>">(<?=$open_id->email?>)</span> <a href="<?=erLhcoreClassDesign::baseurl('user/removeopenid')?>/<?=$open_id->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myfavorites','Remove Open ID');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myfavorites','Remove Open ID');?>"></a>
+</li>
+<?php endforeach; ?>
+</ul>
+<?php endif;?>
+<br />
+<a href="/user/loginwithgoogle">Add google account &raquo;</a>
+</div>

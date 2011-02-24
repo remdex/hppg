@@ -13,6 +13,21 @@ $ViewList['logout'] = array(
     'script' => 'logout.php',
     'params' => array()
     );
+         
+$ViewList['loginwithgoogle'] = array( 
+    'script' => 'loginwithgoogle.php',
+    'params' => array()
+    );  
+           
+$ViewList['mapaccounts'] = array( 
+    'script' => 'mapaccounts.php',
+    'params' => array()
+    );
+    
+$ViewList['finishgoogleauth'] = array( 
+    'script' => 'finishgoogleauth.php',
+    'params' => array()
+    );
     
 $ViewList['account'] = array( 
     'script' => 'account.php',
@@ -24,6 +39,13 @@ $ViewList['index'] = array(
     'script' => 'index.php',
     'params' => array(),    
     'functions' => array( 'selfedit' )
+    );  
+         
+$ViewList['removeopenid'] = array( 
+    'script' => 'removeopenid.php',
+    'params' => array('open_id'),    
+    'functions' => array( 'selfedit' ),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelOidMap::isOwner','param' => 'open_id'),'global' =>'administrate'),
     );  
       
 $ViewList['userlist'] = array( 

@@ -203,7 +203,11 @@ class erLhcoreClassModelUser {
        $stmt->execute();
        $rows = $stmt->fetchAll();
        
-       return $rows[0]['id']; 
+       if (isset($rows[0]['id'])) {
+            return $rows[0]['id']; 
+       } else {
+            return false; 
+       }
    }
       
     public $id = null;

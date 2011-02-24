@@ -21,6 +21,7 @@ return array_merge(array (
         'erLhcoreClassGroupRole'  			=> 'lib/core/lhpermission/lhgrouprole.php',
         'erLhcoreClassGroupUser'  			=> 'lib/core/lhuser/lhgroupuser.php',
         'erLhcoreClassModelForgotPassword'  => 'lib/models/lhuser/erlhcoreclassmodelforgotpassword.php',
+        'erLhcoreClassModelOidMap'          => 'lib/models/lhuser/erlhcoreclassmodeloidmap.php',
                  
         // Translations
         'erTranslationClassLhTranslation' 	=> 'lib/core/lhcore/lhtranslation.php',
@@ -31,6 +32,7 @@ return array_merge(array (
         'erLhcoreClassGroup'        		=> 'lib/core/lhuser/lhgroup.php',
         'SphinxClient'        		        => 'lib/core/lhgallery/sphinxapi.php',
         'PHPMailer'                         => 'lib/core/lhmailer/class.phpmailer.php',
+        'ezcAuthenticationDatabaseCredentialFilter'  => 'lib/core/lhuser/lhauthenticationdatabasecredentialfilter.php',
                  
         // Core models
         'erLhcoreClassModelUser' 			=> 'lib/models/lhuser/erlhcoreclassmodeluser.php',

@@ -39,10 +39,47 @@ class erLhcoreClassUser{
        } 
    }
    
+   function setLoggedUserInstantly($user_id)
+   {
+       $this->session->destroy();
+       
+       $cfgSite = erConfigClassLhConfig::getInstance();
+	   $secretHash = $cfgSite->conf->getSetting( 'site', 'secrethash' );
+    
+       $this->credentials = new ezcAuthenticationIdCredentials( $user_id );       
+       $this->authentication = new ezcAuthentication( $this->credentials );  
+            
+       $database = new ezcAuthenticationDatabaseInfo( ezcDbInstance::get(), 'lh_users', array( 'id', 'password' ) );       
+       $this->filter = new ezcAuthenticationDatabaseCredentialFilter( $database );
+       $this->filter->registerFetchData(array('id','username','email'));              
+       $this->authentication->addFilter( $this->filter ); 
+              
+       $this->authentication->session = $this->session;
+                   
+       if ( !$this->authentication->run() )
+       {  
+            return false;
+            // build an error message based on $status
+       }
+       else
+       {       
+           $data = $this->filter->fetchData();         
+           // Anonymous user does not have access to login
+           if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' ) != $data['id'][0])
+           {                 
+                $_SESSION['user_id'] = $data['id'][0];
+                $this->userid = $data['id'][0];                        
+                $this->authenticated = true;                
+                unset($_SESSION['access_array']);                
+                return true;
+           }
+           
+           return false;
+       }
+   }
+   
    function authenticate($username,$password)
    {
-//       if ($this->authenticated) return true;
-       
        $this->session->destroy();
        
        $cfgSite = erConfigClassLhConfig::getInstance();
@@ -67,9 +104,10 @@ class erLhcoreClassUser{
        else
        {       
            // Anonymous user does not have access to login
+           $data = $this->filter->fetchData();
            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' ) != $data['id'][0])
            {
-                $data = $this->filter->fetchData();  
+                  
                 $_SESSION['user_id'] = $data['id'][0];
                 $this->userid = $data['id'][0];                        
                 $this->authenticated = true;                
