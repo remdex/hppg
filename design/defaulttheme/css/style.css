@@ -1112,3 +1112,7 @@ z-index:2;}
 .lng-cmt{padding-left:5px;}
 .lng-cmt a{padding-left:2px;}
 .head-sub-com{height:20px;}
+.open-id-block{float:right;padding-right:300px;border-left:1px solid #b0b0b0;padding-left:20px;min-height:300px;}
+.open-id-block h2{padding-bottom:10px;}
+.open-id-block a img{bordeR:1px solid #FFFFFF;}
+.open-id-block a:hover img{bordeR:1px solid #b0b0b0;}

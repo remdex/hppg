@@ -14,12 +14,7 @@
 <? endif;?>
 <br />
 
-
-<div class="right" style="padding-right:300px;">
-<h2>OR login with</h2>
-<a href="<?=erLhcoreClassDesign::baseurl('user/loginwithgoogle')?>" title="Login with google account" ><img src="<?=erLhcoreClassDesign::design('images/icons/open_id_1.png')?>" alt="" title="" /></a>
-</div>
-
+<?php include_once(erLhcoreClassDesign::designtpl('lhuser/open_id_block.tpl.php'));?>
 
 <form method="post" action="<?=erLhcoreClassDesign::baseurl('user/registration')?>">
 <div class="in-blk">

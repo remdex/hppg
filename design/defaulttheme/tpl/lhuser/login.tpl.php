@@ -3,6 +3,7 @@
 </div>
 <? if (isset($error)) : ?><h2 class="error-h2"><?=$error;?></h2><? endif;?>
 
+<?php include_once(erLhcoreClassDesign::designtpl('lhuser/open_id_block.tpl.php'));?>
 
 <form method="post" action="<?=erLhcoreClassDesign::baseurl('user/login')?>">
 <div class="in-blk">

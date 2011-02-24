@@ -60,5 +60,5 @@ if (count($list) > 0) : ?>
 </ul>
 <?php endif;?>
 <br />
-<a href="/user/loginwithgoogle">Add google account &raquo;</a>
+<a href="<?=erLhcoreClassDesign::baseurl('user/loginwithgoogle')?>">Add google account &raquo;</a>
 </div>
