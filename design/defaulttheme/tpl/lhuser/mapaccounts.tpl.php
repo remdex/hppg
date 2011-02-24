@@ -1,13 +1,27 @@
 <div class="header-list">
-<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Map OpenID to existing or create a new account');?></h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Map Open ID to existing account');?></h1>
 </div>
 
 <form method="post" action="<?=erLhcoreClassDesign::baseurl('user/mapaccounts')?>">
 
 <div class="in-blk">
-<label><input type="radio" class="mtype" name="MapOption" checked value="1">Map to <?=$user->email?>, Username (<?=$user->username?>)</label>
-<label><input type="radio" class="mtype" name="MapOption" value="2">Create account</label>
+<h2>Map to <?=$user->email?></h2>
+
+<div class="map-login">
+    <? if (isset($failed_authenticate)) : ?><h2 class="error-h2">Incorrect login or password</h2><? endif;?>
+    
+    <div class="in-blk">
+    <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Username');?></label>
+    <input class="inputfield" type="text" name="Username" value="" />
+    </div>
+    
+    <div class="in-blk">
+    <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Password');?></label>
+    <input class="inputfield" type="password" name="Password" value="" />
+    </div>
 </div>
 
-<input class="default-button" type="submit" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Next');?>" name="MapAccounts" />
+</div>
+
+<input class="default-button" type="submit" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Login and assign');?>" name="MapAccounts" />
 </form>
