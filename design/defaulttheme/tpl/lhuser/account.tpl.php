@@ -47,7 +47,7 @@
 <br />
 
 
-<div class="open-id-block">
+<div class="open-id-item">
 <h2>Open ID - Google authentification</h2>
 <?php $list = erLhcoreClassModelOidMap::getList(array('filter' => array('user_id' => $user->id,'open_id_type' => erLhcoreClassModelOidMap::OPEN_ID_GOOGLE)));
 if (count($list) > 0) : ?>
