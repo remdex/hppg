@@ -133,7 +133,8 @@ if ($user === false && isset($_SESSION['open_id_identity_url']) && isset($_SESSI
     }
     
 } elseif (isset($_POST['MapAccounts']) ) {
-
+  
+    $tpl->set('create_account',3);    
     $currentUser = erLhcoreClassUser::instance();
     if ($currentUser->authenticate($_POST['Username'],$_POST['Password']))
     {
