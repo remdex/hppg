@@ -12,9 +12,37 @@ if (is_array($users) && count($users)){
 if ($user === false && isset($_SESSION['open_id_identity_url']) && isset($_SESSION['open_id_type'])){
           
     $tpl->set('multiple_action',true);
+    $tpl->set('create_account',3);
     
+    
+    $currentUser = erLhcoreClassUser::instance();    
+    if ($currentUser->isLogged()){
+        $tpl->set('map_to_current',true);
+        $tpl->set('current_user',$currentUser->getUserData());
+        $tpl->set('create_account',2);
+    }  
+    
+    if (isset($_POST['MapAccounts']) && isset($_POST['CreateAccount']) && $_POST['CreateAccount'] == 2) {
+    
+        if ($currentUser->isLogged()) {
+            $oidMap = new erLhcoreClassModelOidMap();
+            $oidMap->user_id = $currentUser->getUserID();
+            $oidMap->open_id = $_SESSION['open_id_identity_url'];
+            $oidMap->open_id_type = $_SESSION['open_id_type'];
+            $oidMap->email = $_SESSION['open_id_email'];
+            $oidMap->saveThis();
+            erLhcoreClassUser::instance()->setLoggedUserInstantly($currentUser->getUserID());     
+    
+            unset($_SESSION['open_id_type']);
+            unset($_SESSION['open_id_identity_url']);
+            unset($_SESSION['open_id_email']);
+    
+            erLhcoreClassModule::redirect('user/account');
+            exit;
+        }
+        
     // User decided to create account
-    if (isset($_POST['MapAccounts']) && isset($_POST['CreateAccount']) && $_POST['CreateAccount'] == 1) {
+    } elseif (isset($_POST['MapAccounts']) && isset($_POST['CreateAccount']) && $_POST['CreateAccount'] == 1) {
         $usernameFilled = false;
         $username = 'user_'.time();    
         if (isset($_SESSION['open_id_email'])) {        
@@ -81,7 +109,7 @@ if ($user === false && isset($_SESSION['open_id_identity_url']) && isset($_SESSI
         erLhcoreClassUser::instance()->setLoggedUserInstantly($UserData->id);        
         erLhcoreClassModule::redirect('user/account');
         exit;
-    } elseif (isset($_POST['MapAccounts'])) {
+    } elseif (isset($_POST['MapAccounts']) &&  $_POST['CreateAccount'] == 3) {
         $currentUser = erLhcoreClassUser::instance();
         if ($currentUser->authenticate($_POST['Username'],$_POST['Password']))
         {

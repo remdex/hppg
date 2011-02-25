@@ -62,6 +62,19 @@ var hw = {
 		return false;	
 	},
 	
+	loginOpenID : function() {    
+        $('#googe-login-block').hide();
+        $('#loading-block').fadeIn();    
+        $.getJSON(this.formAddPath + 'user/loginwithgoogle', function(data){	
+    			if (data.error == 'false')
+    			{
+    				 $('.open-id-block').prepend(data.result);
+    				 $('#openid_message').submit();
+    			}
+               return true;	          
+    	});	
+    },
+    
 	addCheck : function (timestamp,pid)
 	{
 	    

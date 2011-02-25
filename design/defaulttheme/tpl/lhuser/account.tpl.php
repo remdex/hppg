@@ -46,7 +46,6 @@
 </div>
 <br />
 
-
 <div class="open-id-item">
 <h2>Open ID - Google authentification</h2>
 <?php $list = erLhcoreClassModelOidMap::getList(array('filter' => array('user_id' => $user->id,'open_id_type' => erLhcoreClassModelOidMap::OPEN_ID_GOOGLE)));
@@ -60,6 +59,18 @@ if (count($list) > 0) : ?>
 </ul>
 <?php else :?>
 <br />
-<a href="<?=erLhcoreClassDesign::baseurl('user/loginwithgoogle')?>">Add google account &raquo;</a>
+
+<div class="open-id-block">
+
+<div id="googe-login-block">
+<a onclick="hw.loginOpenID()" style="cursor:pointer;" title="Add google account" ><img src="<?=erLhcoreClassDesign::design('images/icons/open_id_1.png')?>" alt="" title="" /></a>
+</div>
+
+<div id="loading-block" style="display:none;">
+<img src="<?=erLhcoreClassDesign::design('images/newdesign/ajax-loader.gif')?>" alt="Working" title="Working" /> Working...
+</div>
+
+</div>
+
 <?php endif;?>
 </div>
