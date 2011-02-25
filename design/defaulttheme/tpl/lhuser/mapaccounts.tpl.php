@@ -17,11 +17,9 @@
 <?php else : ?>
 
 <div class="left map-option">
-    <?php if (isset($multiple_action)) : ?>
-    <h2>Login with other user</h2>
-    <?php else :?>
-    <h2>Login to map account</h2>
-    <?php endif;?>
+
+    <h2>Login</h2>
+    
     
     <label><input type="radio" value="3" name="CreateAccount" <?=$create_account == 3 ? 'checked="checked"' : ''?>/> map to other account</label>
      
