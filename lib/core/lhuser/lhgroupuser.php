@@ -34,8 +34,7 @@ class erLhcoreClassGroupUser{
    {
        $AssignedUser = erLhcoreClassUser::getSession()->load( 'erLhcoreClassModelGroupUser', $AssigneID);
        erLhcoreClassUser::getSession()->delete($AssignedUser);
-   }
-
+   }      
 }
 
 
