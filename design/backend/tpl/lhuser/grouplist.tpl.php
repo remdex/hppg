@@ -1,5 +1,4 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Groups');?></legend>
-
+<div class="header-list"><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Groups');?></h1></div>
 <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
 <tr>
     <th>ID</th>
@@ -12,7 +11,7 @@
         <td width="1%"><?=$user['id']?></td>
         <td><?=$user['name']?></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('user/editgroup/')?><?=$user['id']?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Edit group');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Edit group');?>" /></a></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('user/deletegroup/')?><?=$user['id']?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete group');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete group');?>" /></a></td>
+        <td><a onclick="return confirm('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Are you sure?');?>')" href="<?=erLhcoreClassDesign::baseurl('user/deletegroup/')?><?=$user['id']?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete group');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete group');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 </table>
@@ -21,4 +20,3 @@
 <div>
 <a href="<?=erLhcoreClassDesign::baseurl('user/newgroup/')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','New group');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','New group');?>" /></a>
 </div>
-</fieldset>

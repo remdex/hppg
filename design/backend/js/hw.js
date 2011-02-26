@@ -175,27 +175,29 @@ var hw = {
 	
 	deletePhoto : function(photo_id){
 	    
-        $.postJSON(this.formAddPath + this.deletepath+photo_id, {} , function(data){	
-			if (data.error == 'false')
-			{	
-				$('#image_thumb_'+photo_id).fadeOut();				
-			} 
-                     
-		});		
-		
+	    if (confirm('Are you sure?')) {
+            $.postJSON(this.formAddPath + this.deletepath+photo_id, {} , function(data){	
+    			if (data.error == 'false')
+    			{	
+    				$('#image_thumb_'+photo_id).fadeOut();				
+    			} 
+                         
+    		});		
+	    }
 		return false;	
 	},
 	
 	deletePhotoQuick : function(photo_id,message){
 	    
-        $.postJSON(this.formAddPath + this.deletepath+photo_id, {} , function(data){	
-			if (data.error == 'false')
-			{	
-				alert(message);			
-			} 
-                     
-		});		
-		
+	    if (confirm('Are you sure?')) {
+            $.postJSON(this.formAddPath + this.deletepath+photo_id, {} , function(data){	
+    			if (data.error == 'false')
+    			{	
+    				alert(message);			
+    			} 
+                         
+    		});		
+	    }
 		return false;	
 	},
 	

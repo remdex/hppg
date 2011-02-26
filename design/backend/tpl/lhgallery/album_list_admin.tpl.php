@@ -41,7 +41,7 @@ foreach ($items as $item) :
        <input title="Album priority" type="text" class="default-input" style="width:30px;" name="Position[]" value="<?=$item->pos?>" /><input type="hidden" name="AlbumIDs[]" value="<?=$item->aid?>" />
               
        <div class="right">
-       <a href="<?=erLhcoreClassDesign::baseurl('gallery/deletealbumadmin/')?><?=$item->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" /></a>
+       <a onclick="return confirm('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Are you sure?');?>')" href="<?=erLhcoreClassDesign::baseurl('gallery/deletealbumadmin/')?><?=$item->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" /></a>
        </div>
        
        </div>

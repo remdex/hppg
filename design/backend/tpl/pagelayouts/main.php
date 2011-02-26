@@ -50,6 +50,8 @@
     			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/user_box.tpl.php'));?>	
     			    				
     			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/file_delete_box.tpl.php'));?>	
+    			
+    			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/go_to_album_box.tpl.php'));?>	
     				
     			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/clear_cache_box.tpl.php'));?>		
     			
