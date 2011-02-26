@@ -18,8 +18,7 @@ return array_merge(array (
         'erLhcoreClassRole'     			=> 'lib/core/lhpermission/lhrole.php',
         'erLhcoreClassModules'  			=> 'lib/core/lhpermission/lhmodules.php',
         'erLhcoreClassRoleFunction'  		=> 'lib/core/lhpermission/lhrolefunction.php',
-        'erLhcoreClassGroupRole'  			=> 'lib/core/lhpermission/lhgrouprole.php',
-        'erLhcoreClassGroupUser'  			=> 'lib/core/lhuser/lhgroupuser.php',
+        'erLhcoreClassGroupRole'  			=> 'lib/core/lhpermission/lhgrouprole.php',        
         'erLhcoreClassModelForgotPassword'  => 'lib/models/lhuser/erlhcoreclassmodelforgotpassword.php',
         'erLhcoreClassModelOidMap'          => 'lib/models/lhuser/erlhcoreclassmodeloidmap.php',
                  
