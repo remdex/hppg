@@ -1,4 +1,4 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/newgroup','New group');?></legend> 
+<div class="header-list"><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/newgroup','New group');?></h1></div> 
 
 <div class="articlebody">
 <? if (isset($errArr)) : ?>
@@ -22,4 +22,3 @@
 	</div>
 </div>
 
-</fieldset>

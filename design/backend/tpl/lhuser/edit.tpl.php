@@ -1,6 +1,4 @@
-
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','User edit');?> - <? echo $user->username?></legend> 
-
+<div class="header-list"><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','User edit');?> - <? echo $user->username?></h1></div>
 
 <div class="articlebody">
 
@@ -39,5 +37,3 @@
 		</form>
 	</div>
 </div>
-<br />
-</fieldset>

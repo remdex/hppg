@@ -1,5 +1,4 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','New user');?></legend> 
-
+<div class="header-list"><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','New user');?></h1></div>
 
 
 <div class="articlebody">
@@ -38,6 +37,5 @@
 			
 		</form>
 	</div>
+	
 </div>
-
-</fieldset>

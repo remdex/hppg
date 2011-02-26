@@ -28,7 +28,6 @@ return array_merge(array (
          
         // Core clases
         'erLhcoreClassUser'        			=> 'lib/core/lhuser/lhuser.php',
-        'erLhcoreClassGroup'        		=> 'lib/core/lhuser/lhgroup.php',
         'SphinxClient'        		        => 'lib/core/lhgallery/sphinxapi.php',
         'PHPMailer'                         => 'lib/core/lhmailer/class.phpmailer.php',
         'ezcAuthenticationDatabaseCredentialFilter'  => 'lib/core/lhuser/lhauthenticationdatabasecredentialfilter.php',
