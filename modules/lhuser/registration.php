@@ -68,10 +68,7 @@ if (isset($_POST['Update_account']))
         $GroupUser->group_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'default_user_group' ); //User group
         $GroupUser->user_id = $UserData->id;        
         erLhcoreClassUser::getSession()->save($GroupUser);
-        
-        $CacheManager = erConfigClassLhCacheConfig::getInstance();
-        $CacheManager->expireCache();
-       
+               
         try {
             $defaultUserCategoryParent = erLhcoreClassModelGalleryCategory::fetch(erConfigClassLhConfig::getInstance()->conf->getSetting( 'gallery_settings', 'default_gallery_category' ));
             $userCategory = new erLhcoreClassModelGalleryCategory();

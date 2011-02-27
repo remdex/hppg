@@ -11,6 +11,7 @@ source anifofsrc
 		SELECT * FROM lh_gallery_sphinx_search_view
 
 	sql_query_info			= SELECT * FROM lh_gallery_sphinx_search_view WHERE id=$id
+	sql_query_post			= DELETE FROM lh_gallery_images_delta
 	sql_attr_uint   = pid
 	sql_attr_uint   = hits
 	sql_attr_uint   = mtime
@@ -20,6 +21,18 @@ source anifofsrc
 	sql_attr_uint   = votes
 	sql_attr_uint   = pwidth
 	sql_attr_uint   = pheight
+}
+
+source anifofdeltasrc : anifofsrc
+{
+    sql_query_pre = SET NAMES utf8
+    sql_query_post = SET NAMES utf8
+    
+    sql_query				= \
+		SELECT lh_gallery_sphinx_search_view.* FROM lh_gallery_sphinx_search_view \
+		INNER JOIN lh_gallery_images_delta ON lh_gallery_images_delta.pid = lh_gallery_sphinx_search_view.id
+									
+	sql_query_killlist = SELECT pid FROM lh_gallery_images_delta
 }
 
 index anifof
@@ -39,4 +52,10 @@ index anifof
 	#min_word_len = 3
 	#enable_star = 1
 	#min_prefix_len = 3
+}
+
+index anifofdelta : anifof
+{
+    source          = anifofdeltasrc
+    path            = /var/data/anifofdeltasrc
 }

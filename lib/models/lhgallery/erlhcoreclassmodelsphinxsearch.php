@@ -158,9 +158,16 @@ class erLhcoreClassModelGallerySphinxSearch {
 
    public static function removeImage($pid) {
        
-       try {           
+       try {     
+           
+           $db = ezcDbInstance::get();
+           $stmt = $db->prepare('REPLACE INTO `lh_gallery_images_delta` (`pid`) VALUES (:pid)');
+           $stmt->bindValue( ':pid',$pid);
+           $stmt->execute();
+                 
            $imageIndex = self::fetch($pid);
-           $imageIndex->removeThis();           
+           $imageIndex->removeThis();
+           
        } catch (Exception $e) {
            
        }
@@ -356,6 +363,13 @@ class erLhcoreClassModelGallerySphinxSearch {
            $imageIndex->text_index_length = strlen($imageIndex->colors);
 
            erLhcoreClassGallery::getSession()->saveOrUpdate($imageIndex);
+           
+           $db = ezcDbInstance::get();
+           $stmt = $db->prepare('REPLACE INTO `lh_gallery_images_delta` (`pid`) VALUES (:pid)');
+           $stmt->bindValue( ':pid',$image->pid);
+           $stmt->execute();
+           
+           
        } elseif ($image->approved == 0) {
            self::removeImage($image->pid);
        }

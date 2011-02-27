@@ -523,8 +523,7 @@ class erLhcoreClassGallery{
       }   
            
       $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
-          
-            
+     
       
       if ($result['total_found'] == 0 || !isset($result['matches'])){
       

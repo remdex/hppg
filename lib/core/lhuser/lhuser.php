@@ -29,9 +29,7 @@ class erLhcoreClassUser{
            {
                unset($_SESSION['user_id']);
            }      
-       }
-       else
-       {
+       } else {
           $this->session->save( $this->session->load() ); 
            
           $this->userid = $_SESSION['user_id'];
@@ -107,7 +105,6 @@ class erLhcoreClassUser{
            $data = $this->filter->fetchData();
            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' ) != $data['id'][0])
            {
-                  
                 $_SESSION['user_id'] = $data['id'][0];
                 $this->userid = $data['id'][0];                        
                 $this->authenticated = true;                

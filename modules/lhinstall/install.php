@@ -344,9 +344,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   PRIMARY KEY (`id`),
                   KEY `role_id` (`role_id`)
                 )DEFAULT CHARSET=utf8;");
-                
-                // Gallery queries
-                
+                                               
                 // Albums table
                  
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_albums` (
@@ -958,7 +956,14 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `text_index_length` mediumint(9) NOT NULL,
                   PRIMARY KEY (`id`)
                 ) DEFAULT CHARSET=utf8;");
-                                
+                
+                // Sphinx delta table
+                $db->query("CREATE TABLE `lh_gallery_images_delta` (
+                `pid` INT NOT NULL ,
+                PRIMARY KEY (  `pid` )
+                );");
+
+                               
                 $db->query("CREATE TABLE  `lh_gallery_pallete_images_stats` (
                 `pid` INT NOT NULL ,
                 `colors` VARCHAR( 100 ) NOT NULL ,
