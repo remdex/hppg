@@ -21,7 +21,7 @@
 			<table>
 				<tr><td colspan="2"><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Login information')?></strong></td></tr>
 				<tr>
-					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Username');?></td><td><input class="inputfield" type="text" name="" disabled value="<?=htmlspecialchars($user->username);?>" /></td>
+					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Username');?></td><td><input class="inputfield" type="text" name="Username" value="<?=htmlspecialchars($user->username);?>" /></td>
 				</tr>
 				<tr>
 					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Password');?></td>
