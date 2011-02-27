@@ -21,7 +21,7 @@
     <h2>Login</h2>
     
     
-    <label><input type="radio" value="3" name="CreateAccount" <?=$create_account == 3 ? 'checked="checked"' : ''?>/> map to other account</label>
+    <label><input type="radio" value="3" name="CreateAccount" <?=$create_account == 3 ? 'checked="checked"' : ''?>/> map to account</label>
      
     <div class="map-login"<?php if (isset($map_to_current) && $create_account != 3) :?>style="display:none"<?php endif; ?>>
         <? if (isset($failed_authenticate)) : ?><h2 class="error">Incorrect login or password</h2><? endif;?>

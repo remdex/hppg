@@ -132,30 +132,32 @@ if ($user === false && isset($_SESSION['open_id_identity_url']) && isset($_SESSI
         }
     }
     
-} elseif (isset($_POST['MapAccounts']) ) {
-  
-    $tpl->set('create_account',3);    
-    $currentUser = erLhcoreClassUser::instance();
-    if ($currentUser->authenticate($_POST['Username'],$_POST['Password']))
-    {
-        $oidMap = new erLhcoreClassModelOidMap();
-        $oidMap->user_id = $currentUser->getUserID();
-        $oidMap->open_id = $_SESSION['open_id_identity_url'];
-        $oidMap->open_id_type = $_SESSION['open_id_type'];
-        $oidMap->email = $_SESSION['open_id_email'];
-        $oidMap->saveThis();
-        erLhcoreClassUser::instance()->setLoggedUserInstantly($currentUser->getUserID());     
-
-        unset($_SESSION['open_id_type']);
-        unset($_SESSION['open_id_identity_url']);
-        unset($_SESSION['open_id_email']);
-
-        erLhcoreClassModule::redirect('user/account');
-        exit;
-    } else {
-        $tpl->set('failed_authenticate',true);
+} else  {
+    
+    $tpl->set('create_account',3);
+        
+    if (isset($_POST['MapAccounts'])) {    
+        $currentUser = erLhcoreClassUser::instance();
+        if ($currentUser->authenticate($_POST['Username'],$_POST['Password']))
+        {
+            $oidMap = new erLhcoreClassModelOidMap();
+            $oidMap->user_id = $currentUser->getUserID();
+            $oidMap->open_id = $_SESSION['open_id_identity_url'];
+            $oidMap->open_id_type = $_SESSION['open_id_type'];
+            $oidMap->email = $_SESSION['open_id_email'];
+            $oidMap->saveThis();
+            erLhcoreClassUser::instance()->setLoggedUserInstantly($currentUser->getUserID());     
+    
+            unset($_SESSION['open_id_type']);
+            unset($_SESSION['open_id_identity_url']);
+            unset($_SESSION['open_id_email']);
+    
+            erLhcoreClassModule::redirect('user/account');
+            exit;
+        } else {
+            $tpl->set('failed_authenticate',true);
+        }
     }
-
 }
 
 $tpl->set('user',$user);
