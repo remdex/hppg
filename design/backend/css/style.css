@@ -2088,3 +2088,11 @@ div.dominant-colors div a{display:block;height:20px;}
 .wk-d td{background-color:#939185;color:#FFFFFF}
 .album-edit-items{clear:both;padding-left:8px;padding-top:5px;padding-right:8px;}
 .popup-page-layout{background-color:#FFFFFF;}
+
+.open-id-block{float:left;padding-left:20px;}
+.open-id-item .open-id-block{border:0;padding:0;float:none;}
+.open-id-block h2{padding-bottom:10px;}
+.open-id-block a img{bordeR:1px solid #FFFFFF;}
+.open-id-block a:hover img{border:1px solid #b0b0b0;}
+#openid_message input{display:none;}
+.open-id-item{padding-top:15px;}

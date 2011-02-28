@@ -38,7 +38,6 @@ function getOpenIDURL() {
 function getStore() {    
 
     return new Auth_OpenID_MySQLStore(new lhMysqlStore(),'lh_oid_associations','lh_oid_nonces');
-    //return new Auth_OpenID_FileStore('cache/cacheconfig');
 }
 
 function &getConsumer() {
@@ -65,7 +64,7 @@ function getReturnTo() {
 }
 
 function getTrustRoot() {   
-    return getScheme().'://'.$_SERVER['SERVER_NAME']. erLhcoreClassDesign::baseurl('/');
+    return getScheme().'://'.$_SERVER['SERVER_NAME']. erLhcoreClassDesign::baseurldirect('/');
 }
 
 
