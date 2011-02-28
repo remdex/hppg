@@ -22,7 +22,7 @@
 
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Description');?></label>
-<textarea name="AlbumDescription" class="default-textarea"><?=htmlspecialchars($album->description);?></textarea>
+<textarea name="AlbumDescription" class="default-textarea big-textarea"><?=htmlspecialchars($album->description);?></textarea>
 </div>
 
 <div class="in-blk">
