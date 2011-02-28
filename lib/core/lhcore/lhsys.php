@@ -16,6 +16,7 @@ class CSCacheAPC {
     'ratedrecent_version',      // Recently rated images
     'site_version',             // Global site version
     'color_images',             // Global color pages version
+    'album_version',            // Albums version key
     'sphinx_cache_version',     // Sphinx search cache version
     );
     
@@ -31,6 +32,7 @@ class CSCacheAPC {
         $this->increaseCacheVersion('sphinx_cache_version');        
         $this->increaseCacheVersion('site_version');  
         $this->increaseCacheVersion('color_images');  
+        $this->increaseCacheVersion('album_version');  
         $this->increaseCacheVersion('popularrecent_version',time(),600);          
     }
     
