@@ -1,8 +1,5 @@
 <div class="header-list"><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','Users');?></h1></div>
 
-<?php if (isset($pages)) : ?>
-    <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
-<? endif;?>
 <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
 <tr>
     <th>ID</th>

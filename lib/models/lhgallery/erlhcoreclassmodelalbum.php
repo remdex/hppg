@@ -99,6 +99,7 @@ class erLhcoreClassModelGalleryAlbum {
        $cache = CSCacheAPC::getMem(); 
        $cache->increaseCacheVersion('album_'.$this->aid);
        $cache->increaseCacheVersion('site_version');
+       $cache->increaseCacheVersion('album_version');
        
        $category = erLhcoreClassModelGalleryCategory::fetch($this->category);
        $category->clearCategoryCache();  

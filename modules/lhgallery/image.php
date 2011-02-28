@@ -259,7 +259,7 @@ if ($currentUser->isLogged()) {
 
 
 // Global image cache key
-$cacheKeyImageView = md5('image_window_'.(int)$Params['user_parameters']['image_id'].'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray).'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.$appendCacheKey).'_comment_version_'.$cache->getCacheVersion('last_commented_image_version_'.(int)$Params['user_parameters']['image_id']);
+$cacheKeyImageView = md5('image_window_'.(int)$Params['user_parameters']['image_id'].'_filter_'.erLhcoreClassGallery::multi_implode(',',$filterArray).'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.$appendCacheKey).'_comment_version_'.$cache->getCacheVersion('last_commented_image_version_'.(int)$Params['user_parameters']['image_id']).'_album_version_'.$cache->getCacheVersion('album_version');
 
 if (($Result = $cache->restore($cacheKeyImageView)) === false)
 { 

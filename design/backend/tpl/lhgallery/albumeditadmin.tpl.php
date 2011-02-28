@@ -1,4 +1,6 @@
-<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Album edit')?></legend>
+<div class="header-list">
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Album edit')?></h1>
+</div>
 
 <? if (isset($errArr)) : ?>
 <div class="error-list">
@@ -20,4 +22,3 @@
 
 </form>
 
-</fieldset>
