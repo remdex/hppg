@@ -349,18 +349,24 @@ var hw = {
          $('<img/>').attr({
                 src: orig
             }).appendTo(inst);
-            
+                        
+        $(window).resize(function() {                    
+          $('#img-view').css({'max-width':($('#container').width()-250)+'px'});
+        });   
+         
         if (!inst.hasClass('full-mode')){
-            inst.attr('rel',$('#container').width());        
-            inst.find('img').attr('title','Return to normal size');        
+            inst.attr('rel',$('#container').width());
+            inst.find('img').attr('title','Return to normal size');
             $('#container').css('width','98%');
             inst.addClass('full-mode');
-            $('#img-view .hide-full').hide();
+            $('#img-view .hide-full').hide();  
+            $('#img-view').css({'max-width':($('#container').width()-250)+'px','overflow-x':'auto','overflow-y':'hidden'});
         } else {
             inst.find('img').attr('title','Click to see full image');
-            $('#container').css('width',inst.attr('rel')+'px');
+            $('#container').css('width',inst.attr('rel')+'px');            
             inst.removeClass('full-mode');
             $('#img-view .hide-full').show();
+            $('#img-view').css({'max-width':'auto','overflow':'visible'});
         } 
         
         return false;        	   

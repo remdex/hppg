@@ -14,7 +14,7 @@ h2{font-size:12px;}
 h3{font-size:12px;}
 
 form{display:inline;margin:0;padding:0;}
-a,a:visited{color:#101010;text-decoration:none;}
+a,a:visited{color:#101010;text-decoration:none;outline:0;}
 a:hover{text-decoration:underline;}
 
 ul{padding:0;margin:0;list-style-type: none;}
@@ -1124,5 +1124,4 @@ z-index:2;}
 .map-option{width:200px;border-right:1px solid #b0b0b0;padding-left:20px;}
 .index-more a{color:#F94000}
 .index-more{padding-bottom:20px;}
-.big-textarea{width:600px;
-height:120px;}
+.big-textarea{width:600px;height:120px;}
