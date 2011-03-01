@@ -351,20 +351,32 @@ var hw = {
             }).appendTo(inst);
                         
         $(window).resize(function() {                    
-          $('#img-view').css({'max-width':($('#container').width()-250)+'px'});
+          $('#img-view').css({'max-width':($('#container').width())+'px'});
         });   
          
-        if (!inst.hasClass('full-mode')){
+        if (!inst.hasClass('full-mode')) {            
+            $('<a/>').attr({
+                'id': 'close-zoom',
+                'title' : 'Return to normal size'
+            }).click(function(){
+                hw.showFullImage(inst);
+            }).prependTo($('#img-view .img'));
+            
             inst.attr('rel',$('#container').width());
             inst.find('img').attr('title','Return to normal size');
             $('#container').css('width','98%');
             inst.addClass('full-mode');
             $('#img-view .hide-full').hide();  
-            $('#img-view').css({'max-width':($('#container').width()-250)+'px','overflow-x':'auto','overflow-y':'hidden'});
-        } else {
+            $('#leftmenucont').hide();  
+            $('#container').addClass('no-left-column'); 
+            $('#img-view').css({'max-width':($('#container').width())+'px','overflow-x':'auto','overflow-y':'hidden'});
+        } else {            
+            $('#close-zoom').remove();
             inst.find('img').attr('title','Click to see full image');
             $('#container').css('width',inst.attr('rel')+'px');            
             inst.removeClass('full-mode');
+            $('#leftmenucont').show(); 
+            $('#container').removeClass('no-left-column'); 
             $('#img-view .hide-full').show();
             $('#img-view').css({'max-width':'auto','overflow':'visible'});
         } 
@@ -686,3 +698,5 @@ $(document).ready(function() {
 		}
 	});	
 });
+// http://candrews.net/sandbox/spryMap/
+// http://americangallery.wordpress.com/2011/02/27/kent-williams-1962/

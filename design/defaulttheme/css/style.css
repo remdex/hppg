@@ -1125,3 +1125,13 @@ z-index:2;}
 .index-more a{color:#F94000}
 .index-more{padding-bottom:20px;}
 .big-textarea{width:600px;height:120px;}
+#close-zoom{position:absolute;width:100px;height:100px;margin-top:9px;margin-left:9px;
+background:#FFFFFF url(../images/icons/close.png) no-repeat 0px 0px;
+box-shadow:1px 1px 7px #a8a8a8;
+-webkit-box-shadow:-2px 2px 7px #a8a8a8;
+-moz-box-shadow: -2px 2px 7px #a8a8a8;
+-moz-border-radius-bottomright:13px;
+-webkit-border-bottom-right-radius:13px;
+opacity: 0.7; 
+filter:Alpha(Opacity=70);
+cursor:pointer;}
