@@ -349,7 +349,7 @@ var hw = {
          $('<img/>').attr({
                 src: orig
             }).appendTo(inst);
-                        
+	                        
         $(window).resize(function() {                    
           $('#img-view').css({'max-width':($('#container').width())+'px'});
         });   
@@ -362,15 +362,25 @@ var hw = {
                 hw.showFullImage(inst);
             }).prependTo($('#img-view .img'));
             
+            var imageWidth = parseInt(inst.attr('rel'));
+            $('#img-view .img').css({width:(imageWidth+18),'margin':'0 auto','float':'none'});
+                                    
             inst.attr('rel',$('#container').width());
             inst.find('img').attr('title','Return to normal size');
             $('#container').css('width','98%');
+            
+            if ($('#container').width() > imageWidth){
+                $('.navigator-image').css('padding-left',(($('#container').width()-imageWidth-60)/2)+'px');              
+            }
+            
             inst.addClass('full-mode');
             $('#img-view .hide-full').hide();  
             $('#leftmenucont').hide();  
             $('#container').addClass('no-left-column'); 
             $('#img-view').css({'max-width':($('#container').width())+'px','overflow-x':'auto','overflow-y':'hidden'});
-        } else {            
+            $('#ajax-navigator-content').css({'margin':'0 auto'});
+            
+        } else {                 
             $('#close-zoom').remove();
             inst.find('img').attr('title','Click to see full image');
             $('#container').css('width',inst.attr('rel')+'px');            
@@ -379,6 +389,10 @@ var hw = {
             $('#container').removeClass('no-left-column'); 
             $('#img-view .hide-full').show();
             $('#img-view').css({'max-width':'auto','overflow':'visible'});
+            inst.attr('rel',parseInt($('#img-view .img').width())-18);
+            $('#img-view .img').css({width:'auto','margin':'0','float':'left'});
+            $('html, body').scrollTop(0);
+            $('.navigator-image').css('padding-left','0');
         } 
         
         return false;        	   

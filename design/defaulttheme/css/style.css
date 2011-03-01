@@ -822,6 +822,7 @@ input.default-button
 -webkit-box-shadow:0px 0px 2px #a8a8a8;
 -moz-box-shadow: 0px 0px 2px #a8a8a8;}
 
+#ajax-navigator-content,
 .navigator-ajax{padding-top:0px;width:746px;height:217px;text-align:left;}
 .left-ajax,
 .right-ajax{height:217px;width:16px;position:absolute;margin-top:50px;z-index:10;overflow:visible;}
