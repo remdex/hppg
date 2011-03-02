@@ -344,7 +344,8 @@ var hw = {
 	showFullImage : function(inst)
 	{	 	   		   
 	     var orig = inst.attr('href');
-         inst.attr('href',inst.find('img').attr('src'));               
+         inst.attr('href',inst.find('img').attr('src'));     
+
          inst.find('img').remove();       
          $('<img/>').attr({
                 src: orig
@@ -354,7 +355,10 @@ var hw = {
           $('#img-view').css({'max-width':($('#container').width())+'px'});
         });   
          
-        if (!inst.hasClass('full-mode')) {            
+        if (!inst.hasClass('full-mode')) {  
+            
+            inst.attr('scrtop',$(window).scrollTop());  
+                    
             $('<a/>').attr({
                 'id': 'close-zoom',
                 'title' : 'Return to normal size'
@@ -390,8 +394,8 @@ var hw = {
             $('#img-view .hide-full').show();
             $('#img-view').css({'max-width':'auto','overflow':'visible'});
             inst.attr('rel',parseInt($('#img-view .img').width())-18);
-            $('#img-view .img').css({width:'auto','margin':'0','float':'left'});
-            $('html, body').scrollTop(0);
+            $('#img-view .img').css({width:'auto','margin':'0','float':'left'});            
+            $('html, body').scrollTop(parseInt(inst.attr('scrtop')));            
             $('.navigator-image').css('padding-left','0');
         } 
         
