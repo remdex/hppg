@@ -321,8 +321,12 @@ class erLhcoreClassUser{
                 $data['access_timestamp'] = $AccessTimestamp;
                 $this->AccessTimestamp = $AccessTimestamp;
             }
-                                    
-            $cache->store( $id, $data );                       
+
+            // Do not store empty access_array
+            if ( !empty($data['access_array']) ) {
+                $cache->store( $id, $data );
+            }
+                        
             $_SESSION['access_array'] = $this->AccessArray;
                         
             
@@ -338,7 +342,10 @@ class erLhcoreClassUser{
            $this->AccessTimestamp = $AccessTimestamp;
            $data['access_timestamp'] = $AccessTimestamp;
            $data['access_array'] = $this->AccessArray;
-           $cache->store( $id, $data );  
+           
+           if ( !empty($data['access_array']) ) {      
+               $cache->store( $id, $data );  
+           }
        }
           
        $_SESSION['access_array'] = $this->AccessArray;
