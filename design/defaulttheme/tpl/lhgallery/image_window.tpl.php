@@ -37,6 +37,9 @@
 <?php if( $image->caption != '') : ?>
 <div class="float-break cap-img"><?=erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($image->caption)))?></div>
 <?endif;?>
+
+<a href="javascript:void(0)" onclick="$.colorbox({href:'<?=erLhcoreClassDesign::baseurl('issue/report')?>/<?=$image->pid?>'});">Report issue within an image</a>
+
 </div>
 
 <?php $colorsDominant = erLhcoreClassModelGalleryPallete::getPictureDominantColors($image->pid,10); if (count($colorsDominant) > 0) : ?>
