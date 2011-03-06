@@ -1,37 +1,81 @@
-<?php 
-
-$cache = CSCacheAPC::getMem();
-foreach (erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => 0),'cache_key' => 'version_'.$cache->getCacheVersion('category_0'))) as $category) : ?>
 <div class="category">
-<div class="header-list"><h1><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1></div>
-<? if ($category->description != '') : ?>
-<p><?=$category->description?></p>
-<?endif;?>
-<? 
-$pages = new lhPaginator();
-$pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $category->cid)));
-$pages->setItemsPerPage(8);
-$pages->serverURL = $category->path_url;
-$pages->paginate();    
-
-if ($pages->items_total > 0) :
-
-$items=erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $category->cid),'offset' => $pages->low, 'limit' => $pages->items_per_page));
-?>  
-
-<?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php')); ?>
-
-<?php endif;?>    
-    
-<?php if ($category->hide_frontpage != 1) :
-
-$subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => $category->cid),'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$category->cid)));
-if (count($subcategorys) > 0) : ?>
- <?php include(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list.tpl.php'));?> 
-<?endif;
-
-
-endif;?>
-
+<div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbums')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads to albums');?> &raquo;</a></h1></div>
+<?php $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('sort' => 'addtime DESC','offset' => 0, 'limit' => 4)); 
+if (!empty($items)) : ?>
+<?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php'));?>
+<?php else : ?>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','No records')?>.
+<?php endif;?>
 </div>
-<?php endforeach;?>
+
+<div class="category">
+<div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploads')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads');?> &raquo;</a></h1></div>
+<?php 
+$items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'filter' => array('approved' => 1), 'sort' => 'pid DESC','offset' => 0, 'limit' => 5));
+$appendImageMode = '/(mode)/lastuploads';
+if (!empty($items)) : ?>
+<?php include(erLhcoreClassDesign::designtpl('lhgallery/image_list.tpl.php'));?> 
+<?php else : ?>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','No records')?>.
+<?php endif;?>
+</div>
+
+<div class="category">
+<div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastcommented')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last commented');?> &raquo;</a></h1></div>
+<?php 
+$items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'filter' => array('approved' => 1), 'sort' => 'comtime DESC, pid DESC','offset' => 0, 'limit' => 5));
+$appendImageMode = '/(mode)/lastcommented';
+if (!empty($items)) : ?>
+<?php include(erLhcoreClassDesign::designtpl('lhgallery/image_list.tpl.php'));?> 
+<?php else : ?>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','No records')?>.
+<?php endif;?>
+</div>
+
+<div class="category">
+<div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/lasthits')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last hits');?> &raquo;</a></h1></div>
+<?php 
+$items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'filter' => array('approved' => 1), 'sort' => 'mtime DESC, pid DESC','offset' => 0, 'limit' => 5));
+$appendImageMode = '/(mode)/lasthits';
+if (!empty($items)) : ?>
+<?php include(erLhcoreClassDesign::designtpl('lhgallery/image_list.tpl.php'));?> 
+<?php else : ?>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','No records')?>.
+<?php endif;?>
+</div>
+
+<div class="category">
+<div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastrated')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last rated');?> &raquo;</a></h1></div>
+<?php 
+$items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'disable_sql_cache' => true,'filter' => array('approved' => 1), 'sort' => 'rtime DESC, pid DESC','offset' => 0, 'limit' => 5));
+$appendImageMode = '/(mode)/lastrated';
+if (!empty($items)) : ?>
+<?php include(erLhcoreClassDesign::designtpl('lhgallery/image_list.tpl.php'));?> 
+<?php else : ?>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','No records')?>.
+<?php endif;?>
+</div>
+
+<div class="category">
+<div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/popularrecent')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last 24 h.')?> - <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Most popular');?> &raquo;</a></h1></div>
+<?php 
+$appendImageMode = '/(mode)/popularrecent';	 
+$items = erLhcoreClassModelGalleryPopular24::getImages(array('disable_sql_cache' => true,'sort' => 'hits DESC, pid DESC','offset' => 0, 'limit' => 4));
+if (!empty($items)) : ?>
+<?php include(erLhcoreClassDesign::designtpl('lhgallery/image_list_popularrecent.tpl.php'));?> 
+<?php else : ?>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','No records')?>.
+<?php endif;?>
+</div>
+
+<div class="category">
+<div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/ratedrecent')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last 24 h.')?> - <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Top rated');?> &raquo;</a></h1></div>
+<?php 
+$appendImageMode = '/(mode)/ratedrecent';
+$items = erLhcoreClassModelGalleryRated24::getImages(array('disable_sql_cache' => true,'offset' => 0, 'limit' => 4));       
+if (!empty($items)) : ?>
+<?php include(erLhcoreClassDesign::designtpl('lhgallery/image_list_popularrecent.tpl.php'));?> 
+<?php else : ?>
+<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','No records')?>.
+<?php endif;?>
+</div>

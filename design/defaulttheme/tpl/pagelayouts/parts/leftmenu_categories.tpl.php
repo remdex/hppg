@@ -1,4 +1,25 @@
 <div class="left-infobox">				
+		
+		<ul>													
+		<?php 		
+		$cache = CSCacheAPC::getMem();		
+		$cacheKey = md5('leftmenu_categories_tpl_categories_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.'_category_0_version'.$cache->getCacheVersion('category_0'));
+        if (($resultLeftMenuCategoriesBlock = $cache->restore($cacheKey)) === false) :
+        ob_start(); ?>        
+        <h3><a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','View all categorys')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/rootcategory')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Root category')?> (<?=erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => 0)))?>) &raquo;</a></h3>
+        <? foreach (erLhcoreClassModelGalleryCategory::getParentCategories(array('limit' => 5,'filter' => array('parent' => 0),'cache_key' => 'version_'.$cache->getCacheVersion('category_0'))) as $category) : ?>
+		    <li><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a>  
+        <?php endforeach; 
+        $resultLeftMenuCategoriesBlock = ob_get_clean();   
+        $cache->store($cacheKey,$resultLeftMenuCategoriesBlock);
+        endif;
+        echo $resultLeftMenuCategoriesBlock;
+        ?>
+		</ul>									
+</div>
+
+
+<div class="left-infobox">				
 		<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','All time')?></h3>
 		<ul>													
 		    <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/popular')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Most popular');?></a>                 
@@ -10,7 +31,7 @@
 		<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Interactive')?></h3>
 		<ul>           
             <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploads')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads');?></a>  
-            <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/lasthits')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last hits');?> </a>                 
+            <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/lasthits')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last hits');?></a>                 
             <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastcommented')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last commented');?></a>                 
             <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastrated')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last rated');?></a>                 
             <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbums')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads to albums');?></a>                 

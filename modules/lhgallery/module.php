@@ -8,6 +8,11 @@ $ViewList = array();
 $ViewList['index'] = array( 
     'script' => 'index.php',
     'params' => array()
+    );
+        
+$ViewList['rootcategory'] = array( 
+    'script' => 'rootcategory.php',
+    'params' => array()
     ); 
       
 $ViewList['translatebox'] = array( 

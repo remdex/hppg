@@ -218,15 +218,17 @@ class erLhcoreClassModelGalleryRated24 {
               $cache->store($cacheKey,$objects);
           }          
       }  else { $objects = $session->find( $q ); }
-                  
-      $pids = array();
-      foreach ($objects as $item){
-          $pids[] = $item->pid;
-      }
-      
-      $images = erLhcoreClassModelGalleryImage::getImages(array('filterin' => array('pid' => $pids)));
-      foreach ($objects as $item){
-          $item->image = $images[$item->pid];
+              
+      if (!empty($objects)) {
+          $pids = array();
+          foreach ($objects as $item){
+              $pids[] = $item->pid;
+          }
+          
+          $images = erLhcoreClassModelGalleryImage::getImages(array('filterin' => array('pid' => $pids)));
+          foreach ($objects as $item){
+              $item->image = $images[$item->pid];
+          }
       }
       
       return $objects; 
