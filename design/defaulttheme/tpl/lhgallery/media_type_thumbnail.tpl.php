@@ -23,7 +23,7 @@
 <?php elseif ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO) : ?>                               
    
     <?php if ($item->has_preview) : ?>
-        <img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size')?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode(str_replace(array('.avi','.mpg','.mpeg'),'.jpg',$item->filename)),true,$item->pid)?>" alt="<?=htmlspecialchars($item->name_user);?>">
+        <img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size')?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode(str_replace(array('.avi','.mpg','.mpeg','.wmv'),'.jpg',$item->filename)),true,$item->pid)?>" alt="<?=htmlspecialchars($item->name_user);?>">
     <?php else : ?>
         <img title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','See full size')?>" src="<?=erLhcoreClassDesign::design('images/icons/avi.jpg')?>" alt="<?=htmlspecialchars($item->name_user);?>">
     <?php endif;?>
