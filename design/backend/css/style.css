@@ -1195,7 +1195,7 @@ div.error-list ul li
 .title-gallery{padding:10px;}
 .picture-comments,.picture-details{padding-top:10px;padding-bottom:10px;}
 .picture-comments .ct{color:#8F8F8F;font-size:11px;}
-.picture-comments ul li{border-bottom:1px solid #EFEFEF;}
+.picture-comments ul li{border-bottom:1px solid #EFEFEF;padding-top:10px;}
 .comment-form{font-size:11px;margin-top:3px;}
 .comment-form h4{font-size:11px;}
 .comment-form textarea{width:100%;}

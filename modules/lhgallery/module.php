@@ -421,6 +421,13 @@ $ViewList['deductvote'] = array(
     'params' => array('image_id'),
     'functions' => array( 'administrate' )
     ); 
+                          
+$ViewList['editcomment'] = array( 
+    'script' => 'editcomment.php',
+    'params' => array('msg_id'),
+    'uparams' => array('action'),
+    'functions' => array( 'administrate' )
+    ); 
                      
 $ViewList['deleteimage'] = array( 
     'script' => 'deleteimage.php',

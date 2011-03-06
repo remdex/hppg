@@ -6,7 +6,9 @@
         </div>
                         
         <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_window.tpl.php'));?>
-               
+             
+        <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_edit_block.tpl.php'));?>
+            
         <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_details_block.tpl.php'));?>
         
         <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/picture_voting_block_admin.tpl.php'));?>

@@ -858,7 +858,7 @@ if ($mode == 'album')
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
-    	}                     
+    	}
     }
              
     if (count($imagesAjax) > 5) {
@@ -879,7 +879,6 @@ if ($mode == 'album')
     end($imagesAjax);
     $ImageLast = current($imagesAjax);
     $RightImagePID = $ImageLast->pid;
-
        
     $tpl->set('imagesAjax',$imagesAjax); 
     $urlAppend = $modeSort != 'relevance' ? '/(mode)/search/(keyword)/'.urlencode($keywordDecoded).'/(sort)/'.$modeSort : '/(mode)/search/(keyword)/'.urlencode($keywordDecoded);

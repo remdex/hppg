@@ -230,6 +230,91 @@ var hw = {
 	    
 	    $('.duplicates-row').hide();	    
 	    $('#details-block-'+idBlock).fadeIn();
+	},
+	
+	editComment : function(msg_id){
+	    
+	    $.getJSON(this.formAddPath + "gallery/editcomment/"+msg_id+"/(action)/form", {} , function(data){	
+            if (data.error != 'true'){			
+			     $('#comment_edit_body_'+msg_id).html(data.result);	
+            }
+		});			
+		return false;
+	},
+	
+	updateComment : function(msg_id){	    
+	    var pdata = {
+	       'msg_author' : $('#MessageAuthor_'+msg_id).val(),       
+	       'msg_body' : $('#MessageBody_'+msg_id).val() 
+	    };
+		    
+	    $.postJSON(this.formAddPath + "gallery/editcomment/"+msg_id+"/(action)/edit", pdata , function(data){	
+            if (data.error != 'true') {
+			     $('#comment_edit_body_'+msg_id).html(data.result);	
+            }
+		});			
+		return false;
+	},
+	
+	showFullImage : function(inst)
+	{	 	   		   
+	     var orig = inst.attr('href');
+         inst.attr('href',inst.find('img').attr('src'));     
+
+         inst.find('img').remove();       
+         $('<img/>').attr({
+                src: orig
+            }).appendTo(inst);
+	                        
+        $(window).resize(function() {                    
+          $('#img-view').css({'max-width':($('#container').width())+'px'});
+        });   
+         
+        if (!inst.hasClass('full-mode')) {  
+            
+            inst.attr('scrtop',$(window).scrollTop());  
+                    
+            $('<a/>').attr({
+                'id': 'close-zoom',
+                'title' : 'Return to normal size'
+            }).click(function(){
+                hw.showFullImage(inst);
+            }).prependTo($('#img-view .img'));
+            
+            var imageWidth = parseInt(inst.attr('rel'));
+            $('#img-view .img').css({width:(imageWidth+18),'margin':'0 auto','float':'none'});
+                                    
+            inst.attr('rel',$('#container').width());
+            inst.find('img').attr('title','Return to normal size');
+            $('#container').css('width','98%');
+            
+            if ($('#container').width() > imageWidth){
+                $('.navigator-image').css('padding-left',(($('#container').width()-imageWidth-60)/2)+'px');              
+            }
+            
+            inst.addClass('full-mode');
+            $('#img-view .hide-full').hide();  
+            $('#leftmenucont').hide();  
+            $('#container').addClass('no-left-column'); 
+            $('#img-view').css({'max-width':($('#container').width())+'px','overflow-x':'auto','overflow-y':'hidden'});
+            $('#ajax-navigator-content').css({'margin':'0 auto'});
+            
+        } else {                 
+            $('#close-zoom').remove();
+            inst.find('img').attr('title','Click to see full image');
+            $('#container').css('width',inst.attr('rel')+'px');            
+            inst.removeClass('full-mode');
+            $('#leftmenucont').show(); 
+            $('#container').removeClass('no-left-column'); 
+            $('#img-view .hide-full').show();
+            $('#img-view').css({'max-width':'auto','overflow':'visible'});
+            inst.attr('rel',parseInt($('#img-view .img').width())-18);
+            $('#img-view .img').css({width:'auto','margin':'0','float':'left'});            
+            $('html, body').scrollTop(parseInt(inst.attr('scrtop')));            
+            $('.navigator-image').css('padding-left','0');
+        } 
+        
+        return false;        	   
 	}
 		
 }
