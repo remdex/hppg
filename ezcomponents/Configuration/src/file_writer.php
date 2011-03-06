@@ -280,7 +280,7 @@ abstract class ezcConfigurationFileWriter extends ezcConfigurationWriter
     {
         fclose( $fp );
         $oldUmask = umask( 0 );
-        chmod( $this->path, $this->permissions );
+        @chmod( $this->path, $this->permissions );
         umask( $oldUmask );
     }
 
