@@ -181,7 +181,7 @@ class erLhcoreClassGallery{
    }
 
    
-   public static function searchSphinxMulti($queryesBatch,$cacheEnabled = true)
+   public static function searchSphinxMulti($queryesBatch,$cacheEnabled = true,$asSingle = false)
    {
       if ($cacheEnabled == true) {
         $cache = CSCacheAPC::getMem();        
@@ -199,7 +199,8 @@ class erLhcoreClassGallery{
             $sphinxIndex = $cfg->conf->getSetting( 'sphinx', 'index' );  
             $extendedSearch = $cfg->conf->getSetting( 'color_search', 'extended_search');
             $faceSearch = $cfg->conf->getSetting( 'face_search', 'enabled');
-             
+            $resultItems = array();
+            
             foreach ($queryesBatch as $params) {
                   
                   $cl->ResetFilters();
@@ -315,10 +316,18 @@ class erLhcoreClassGallery{
                   // Make some weightning
                   $cl->SetFieldWeights($weights);
                   
-                  $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), $sphinxIndex );
+                  if ($asSingle == false){
+                      $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), $sphinxIndex );
+                  } else {
+                      $resultItems[] = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), $sphinxIndex );
+                  }
             }
             
-            $resultItems = $cl->RunQueries();
+            if ($asSingle == false) {
+                $resultItems = $cl->RunQueries();
+            }
+            
+            
             $resultReturn = array();
             
             
