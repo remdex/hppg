@@ -27,12 +27,16 @@ class erLhcoreClassModelGallerySearchHistory {
                    
        if  (count($items) == 0  )
        {       
-           $search = new erLhcoreClassModelGallerySearchHistory();
-           $search->keyword = $keywordClean;
-           $search->countresult = $search_count;       
-           $search->last_search = time();       
-           $search->searches_done = 1;
-           erLhcoreClassGallery::getSession()->save($search);
+           try {
+               $search = new erLhcoreClassModelGallerySearchHistory();
+               $search->keyword = $keywordClean;
+               $search->countresult = $search_count;       
+               $search->last_search = time();       
+               $search->searches_done = 1;
+               erLhcoreClassGallery::getSession()->save($search);
+           } catch (Exception $e){
+               // Do nothing
+           }
                         
        } else {
            $itemCurrent = array_pop($items);
