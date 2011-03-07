@@ -3,7 +3,7 @@ $items = erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' =
 ?>
 <div id="categories">
 	<ul>
-		<li><span class='dvcat' style="margin-left:15px;"><a rel="0" class="cat-href" href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys/')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Root category');?></a></span>
+		<li><span class='dvcat' style="margin-left:15px;"><a rel="0" class="cat-href" href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Root category');?></a></span>
 		
 		<ul>
 		<?php
@@ -222,7 +222,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 					var htmla2 = $(document.createElement('a'));
 
 					if (data[index].type == 1) {
-						htmla2.attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/managealbumimages/')?>"+data[index].id);
+						htmla2.attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/managealbumimages')?>/"+data[index].id);
 						htmla2.addClass('al-href');	
 
 						if (<?=isset($Result['album_id']) ? $Result['album_id'] : 0?> == data[index].id){
@@ -230,7 +230,7 @@ var selectedItems = [<? if (isset($Result['path_cid'])) { echo implode(',',$Resu
 						}
 											
 					} else {
-						htmla2.attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/admincategorys/')?>"+data[index].id);
+						htmla2.attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>/"+data[index].id);
 						htmla2.addClass('cat-href');
 																		
 						if (jQuery.inArray(parseInt(data[index].id), selectedItems) >= 0) {													
