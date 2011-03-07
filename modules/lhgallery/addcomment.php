@@ -31,8 +31,8 @@ $definition = array(
 $form = new ezcInputForm( INPUT_POST, $definition );
 $Errors = array();
 
-// Catpcha field expires in 10 minutes
-if ( !$form->hasValidData( $nameField ) || $form->$nameField == '' || $form->$nameField < time()-10*60 )
+// Range is as big as image data cache
+if ( !$form->hasValidData( $nameField ) || $form->$nameField == '' || $form->$nameField < time()-144000)
 {
     $Errors[] =   erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Wrong captcha code!');
 } 
