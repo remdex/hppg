@@ -9,7 +9,7 @@
 <? endif;?>
 
 	<div><br />
-		<form action="<?=erLhcoreClassDesign::baseurl('/permission/editrole/')?><?=$role->id?>" method="post">
+		<form action="<?=erLhcoreClassDesign::baseurl('/permission/editrole')?>/<?=$role->id?>" method="post">
 			<table>
 				<tr>
 					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/editrole','Title');?></td><td><input class="inputfield" type="text" name="Name"  value="<?=htmlspecialchars($role->name);?>" /></td>
@@ -44,7 +44,7 @@
 <br />
 <fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/editrole','Role assigned groups');?></legend>
 	<div>
-		<form action="<?=erLhcoreClassDesign::baseurl('/permission/editrole/')?><?=$role->id?>" method="post">			
+		<form action="<?=erLhcoreClassDesign::baseurl('/permission/editrole')?>/<?=$role->id?>" method="post">			
 			<table class="lentele" cellpadding="0" cellspacing="0">
 			<tr>
 			     <th width="1%">&nbsp;</th>
@@ -60,7 +60,7 @@
 			<br />
 
 			<input type="submit" class="default-button" name="Remove_group_from_role" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/editrole','Remove selected');?>"/>	
-			<input type="button" class="default-button" onclick="lhinst.abstractDialog('assign-group-dialog','<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/editrole','Group assignement to role');?>','<?=erLhcoreClassDesign::baseurl('permission/roleassigngroup/')?><?=$role->id?>')" name="Assign_group_role" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/editrole','Assign group');?>"/>	
+			<input type="button" class="default-button" onclick="lhinst.abstractDialog('assign-group-dialog','<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/editrole','Group assignement to role');?>','<?=erLhcoreClassDesign::baseurl('permission/roleassigngroup')?>/<?=$role->id?>')" name="Assign_group_role" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/editrole','Assign group');?>"/>	
 		</form>
 	</div>
 </fieldset>

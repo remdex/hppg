@@ -3,7 +3,7 @@
 <?php 
 foreach ($directoryList  as $key => $directory) : ?>
 <li class="dir-item" id="directory_id<?=$key?>">
-<a id="directoryListLink<?=$key?>" rel="<?=urlencode(base64_encode($directory));?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode(base64_encode($directory));?>"><?=$directory?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode(base64_encode($directory));?>/(import)/1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import')?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode(base64_encode($directory));?>/(importrecur)/1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import recursive this directory')?></a>
+<a id="directoryListLink<?=$key?>" rel="<?=urlencode(base64_encode($directory));?>" href="<?=erLhcoreClassDesign::baseurl('gallery/batchadd')?>/(directory)/<?=urlencode(base64_encode($directory));?>"><?=$directory?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/batchadd')?>/(directory)/<?=urlencode(base64_encode($directory));?>/(import)/1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import')?></a> | <a href="<?=erLhcoreClassDesign::baseurl('gallery/batchadd')?>/(directory)/<?=urlencode(base64_encode($directory));?>/(importrecur)/1"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Import recursive this directory')?></a>
 
 <div class="album-search-row"><input type="text" rel="<?=$key?>" class="AlbumNameInput default-input" value="" />&nbsp;<input class="default-button" type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Search')?>" /></div>
 <br />
@@ -74,14 +74,14 @@ endforeach;?>
 
 $('.AlbumNameInput').change(function(){	
 	var albumInputInstanceDirecoty = $(this).attr('rel');
-	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumnamesuggest/')?>"+albumInputInstanceDirecoty+"/"+escape($(this).val()), {} , function(data){	
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/albumnamesuggest')?>/"+albumInputInstanceDirecoty+"/"+escape($(this).val()), {} , function(data){	
                    $('#album_select_directory'+albumInputInstanceDirecoty).html(data.result);
     	});	
 });
 
 $('.listImagesButton').click(function(){	
 	var albumInputInstanceDirecoty = $(this).attr('rel');
-	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumlistdirectory/')?>"+$('#directoryListLink'+albumInputInstanceDirecoty).attr('rel'), {} , function(data){	
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/albumlistdirectory')?>/"+$('#directoryListLink'+albumInputInstanceDirecoty).attr('rel'), {} , function(data){	
                    $('#import-images'+albumInputInstanceDirecoty).html(data.result);
                    if (data.is_writable == true) {                   		
                    	 	$('#ImportDirectoryButton'+albumInputInstanceDirecoty).removeAttr("disabled");
@@ -93,7 +93,7 @@ $('.listImagesButton').click(function(){
 
 $('.listRecursiveImagesButton').click(function(){	
 	var albumInputInstanceDirecoty = $(this).attr('rel');
-	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumlistdirectory/')?>"+$('#directoryListLink'+albumInputInstanceDirecoty).attr('rel')+'/true', {} , function(data){	
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumlistdirectory')?>/"+$('#directoryListLink'+albumInputInstanceDirecoty).attr('rel')+'/true', {} , function(data){	
                    $('#import-images'+albumInputInstanceDirecoty).html(data.result);
                    if (data.is_writable == true) {                   		
                    	 	$('#ImportDirectoryButton'+albumInputInstanceDirecoty).removeAttr("disabled");
@@ -118,7 +118,7 @@ function startImportQuick(currentDirectoryImportID,currentImportAlbumID)
 {
 	if ($('#import-images'+currentDirectoryImportID+' .image_import').eq(0).attr('rel') != undefined)
     {    	    	
-        $.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/addimagesbatch/')?>"+currentImportAlbumID+"/(image)/"+$('#import-images'+currentDirectoryImportID+' .image_import').eq(0).attr('rel'), {} , function(data){	
+        $.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/addimagesbatch')?>/"+currentImportAlbumID+"/(image)/"+$('#import-images'+currentDirectoryImportID+' .image_import').eq(0).attr('rel'), {} , function(data){	
               $('#import-images'+currentDirectoryImportID+' .image_import').eq(0).attr('src','<?=erLhcoreClassDesign::design('images/icons/accept.png')?>');
               $('#import-images'+currentDirectoryImportID+' .image_import').eq(0).removeClass('image_import');	
     		   startImportQuick(currentDirectoryImportID,currentImportAlbumID);        
@@ -130,7 +130,7 @@ function startImport()
 {
     if ($('.image_import').eq(0).attr('rel') != undefined)
     {
-        $.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/addimagesbatch/')?>"+$('#AlbumID').val()+"/(image)/"+$('.image_import').eq(0).attr('rel'), {} , function(data){	
+        $.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/addimagesbatch')?>/"+$('#AlbumID').val()+"/(image)/"+$('.image_import').eq(0).attr('rel'), {} , function(data){	
               $('.image_import').eq(0).attr('src','<?=erLhcoreClassDesign::design('images/icons/accept.png')?>');
               $('.image_import').eq(0).removeClass('image_import');	
     		   startImport();        

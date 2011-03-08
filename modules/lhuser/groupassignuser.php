@@ -35,7 +35,7 @@ if (isset($_POST['AssignUsers']) && isset($_POST['UserID']) && count($_POST['Use
     $pages = new lhPaginator();
     $pages->items_total = $result;
     $pages->setItemsPerPage(10);
-    $pages->serverURL = erLhcoreClassDesign::baseurl('user/groupassignuser/').(int)$Params['user_parameters']['group_id'];
+    $pages->serverURL = erLhcoreClassDesign::baseurl('user/groupassignuser').'/'.(int)$Params['user_parameters']['group_id'];
     $pages->paginate();
     
     $tpl->set('pages',$pages);

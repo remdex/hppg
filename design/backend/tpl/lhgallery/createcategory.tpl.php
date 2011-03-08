@@ -8,14 +8,14 @@
     <? endforeach; ?>
 <? endif;?>
 	
-		<form action="<?=erLhcoreClassDesign::baseurl('/gallery/createcategory/')?><?=isset($category_parent) ? $category_parent->cid : ''?>" method="post">
+		<form action="<?=erLhcoreClassDesign::baseurl('gallery/createcategory')?>/<?=isset($category_parent) ? $category_parent->cid : ''?>" method="post">
 					
 		<?php include_once(erLhcoreClassDesign::designtpl('lhgallery/editcategory_form.tpl.php'));?>
 		
 		<input type="submit" class="default-button" name="Update_Category" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createcategory','Save');?>"/> 
 					
 		<?php if (isset($category_parent)) : ?>			
-		&laquo; <a href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys/')?><?=$category_parent->cid?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createcategory','back')?></a>
+		&laquo; <a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>/<?=$category_parent->cid?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createcategory','back')?></a>
 		<?endif;?>					
 			
 		</form>

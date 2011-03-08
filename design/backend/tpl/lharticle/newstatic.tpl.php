@@ -1,5 +1,5 @@
 <fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('article/newstatic','New article')?></legend>
-<form action="<?=erLhcoreClassDesign::baseurl('article/newstatic/')?>" method="post">
+<form action="<?=erLhcoreClassDesign::baseurl('article/newstatic')?>" method="post">
   
 <?php include_once(erLhcoreClassDesign::designtpl('lharticle/edit_form.tpl.php'));?>
   

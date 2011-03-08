@@ -14,7 +14,7 @@
 <? endif;?>
 
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/albumeditadmin/')?><?=$album->aid?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('gallery/albumeditadmin')?>/<?=$album->aid?>">
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/albumeditadmin_form.tpl.php'));?>
 

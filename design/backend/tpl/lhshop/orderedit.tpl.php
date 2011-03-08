@@ -60,7 +60,7 @@
 		<td><?=$item->image_variation->credits?> (<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/orderedit','Credits');?>)</td>
 		<td><?=$item->download_count?></td>
 		<td><?=$item->download_left?></td>
-		<td><a href="<?=erLhcoreClassDesign::baseurl('shop/deleteorderitem/')?><?=$item->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Delete order item');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Delete order item');?>" /></a></td>
+		<td><a href="<?=erLhcoreClassDesign::baseurl('shop/deleteorderitem')?>/<?=$item->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Delete order item');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Delete order item');?>" /></a></td>
 	</tr>
 <?php endforeach;?>
 </table>

@@ -12,7 +12,7 @@
         <td><?=$item->identifier?></td>
         <td><?=$item->explain?></td>
         <td><?=$item->value?></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('shop/settingedit/')?><?=$item->identifier?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/settinglist','Edit value');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/settinglist','Edit value');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('shop/settingedit')?>/<?=$item->identifier?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/settinglist','Edit value');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/settinglist','Edit value');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 </table>

@@ -9,7 +9,7 @@
 <? endif;?>
 
 	<div><br />
-		<form action="<?=erLhcoreClassDesign::baseurl('/permission/editrole/')?><?=$role->id?>" method="post">
+		<form action="<?=erLhcoreClassDesign::baseurl('/permission/editrole')?>/<?=$role->id?>" method="post">
 						
 			<fieldset><legend><?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/newpolicy','Assigned functions');?></legend> 			
 			<table class="lentele" cellpadding="0" cellspacing="0">
@@ -50,7 +50,7 @@ $( "#ModuleSelectedID" ).change( function () {
 	var module_val = $( "#ModuleSelectedID" ).val();
 	if (module_val != '*'){
 	    
-	    $.getJSON('<?=erLhcoreClassDesign::baseurl('/permission/modulefunctions/')?>'+module_val ,{ }, function(data){ 
+	    $.getJSON('<?=erLhcoreClassDesign::baseurl('/permission/modulefunctions')?>/'+module_val ,{ }, function(data){ 
 	        // If no error
 	        if (data.error == 'false')
 	        {	 

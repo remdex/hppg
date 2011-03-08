@@ -12,7 +12,7 @@
         <tr>
             <td width="1%"><?=htmlspecialchars($article->id)?></td>
             <td><?=htmlspecialchars($article->name)?></td>      
-            <td><a href="<?=erLhcoreClassDesign::baseurl('article/editstatic/')?><?=$article->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('article/staticlist','Edit')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('article/staticlist','Edit')?>" /></a></td>       
+            <td><a href="<?=erLhcoreClassDesign::baseurl('article/editstatic')?>/<?=$article->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('article/staticlist','Edit')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('article/staticlist','Edit')?>" /></a></td>       
         </tr>
     <? endforeach; ?>
     </table>

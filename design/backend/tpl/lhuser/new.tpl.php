@@ -10,7 +10,7 @@
 <? endif;?>
 
 	<div><br />
-		<form action="<?=erLhcoreClassDesign::baseurl('/user/new/')?>" method="post">
+		<form action="<?=erLhcoreClassDesign::baseurl('user/new')?>" method="post">
 			<table>
 				<tr><td colspan="2"><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Login information')?></strong></td></tr>
 				<tr>

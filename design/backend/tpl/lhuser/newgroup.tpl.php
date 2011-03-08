@@ -8,7 +8,7 @@
 <? endif;?>
 
 	<div><br />
-		<form action="<?=erLhcoreClassDesign::baseurl('/user/newgroup/')?>" method="post">
+		<form action="<?=erLhcoreClassDesign::baseurl('user/newgroup')?>" method="post">
 			<table>
 				<tr>
 					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/newgroup','Title');?></td><td><input class="inputfield" type="text" name="Name"  value="" /></td>

@@ -12,7 +12,7 @@ $categoryID = $category !== false ? $category->cid : 0;
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $categoryID)));
 $pages->default_ipp = 8;
-$pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/admincategorys/').$categoryID;
+$pages->serverURL = erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$categoryID;
 $pages->paginate();
 if ($pages->items_total > 0) :?>
 <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
@@ -36,16 +36,16 @@ $filterParams = array('filter' => array('parent' => $categoryFilterID),'limit' =
 foreach (erLhcoreClassModelGalleryCategory::getParentCategories($filterParams) as $categoryItem) : ?>
     <tr>
         <td width="1%"><?=$categoryItem->cid?></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys/')?><?=$categoryItem->cid?>"><?=htmlspecialchars($categoryItem->name)?></a></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('user/edit/')?><?=$categoryItem->owner_id?>"><?=htmlspecialchars($categoryItem->owner)?></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>/<?=$categoryItem->cid?>"><?=htmlspecialchars($categoryItem->name)?></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('user/edit')?>/<?=$categoryItem->owner_id?>"><?=htmlspecialchars($categoryItem->owner)?></a></td>
         <td><input type="text" class="default-input" style="width:30px;" name="Position[]" value="<?=$categoryItem->pos?>" /><input type="hidden" name="CategoryIDs[]" value="<?=$categoryItem->cid?>" /></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/editcategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" /></a></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/deletecategory/')?><?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/editcategory')?>/<?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Edit category');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/deletecategory')?>/<?=$categoryItem->cid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Delete category');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 
 </table><br />
-<input type="submit" class="default-button" name="UpdatePriority" value="Update priority" /> <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createcategory/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create a category');?></a>
+<input type="submit" class="default-button" name="UpdatePriority" value="Update priority" /> <a href="<?=erLhcoreClassDesign::baseurl('gallery/createcategory')?>/<?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create a category');?></a>
 </form>
 
 <? endif;?>
@@ -64,7 +64,7 @@ if ($category !== false) :  ?>
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $category->cid)));
 $pages->default_ipp = 8;
-$pages->serverURL = erLhcoreClassDesign::baseurl('/gallery/managealbum/').$category->cid;
+$pages->serverURL = erLhcoreClassDesign::baseurl('gallery/managealbum').'/'.$category->cid;
 $pages->paginate();
 
 if ($pages->items_total > 0) :                   
@@ -84,5 +84,5 @@ $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => a
 
 
 <? if ($category !== false) : ?>
-<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create an album');?></a> | <a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadminbatch/')?><?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Batch album create');?></a>
+<a href="<?=erLhcoreClassDesign::baseurl('gallery/createalbumadmin')?>/<?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Create an album');?></a> | <a href="<?=erLhcoreClassDesign::baseurl('gallery/createalbumadminbatch')?>/<?=$categoryID?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Batch album create');?></a>
 <?endif;?>

@@ -42,7 +42,7 @@
 	?>
 	</td>
 	<td><a href="<?=erLhcoreClassDesign::baseurl('shop/orderedit')?>/<?=$order->id?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/orderslist','Order view');?></a></td>
-	<td><a href="<?=erLhcoreClassDesign::baseurl('shop/deleteorder/')?><?=$order->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Delete order');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Delete order');?>" /></a></td>
+	<td><a href="<?=erLhcoreClassDesign::baseurl('shop/deleteorder')?>/<?=$order->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Delete order');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Delete order');?>" /></a></td>
 
 </tr>
 <? endforeach; ?>

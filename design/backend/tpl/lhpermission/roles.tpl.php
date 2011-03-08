@@ -19,6 +19,6 @@
 <br />
 
 <div>
-<a href="<?=erLhcoreClassDesign::baseurl('permission/newrole/')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','New role');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','New role');?>" /></a>
+<a href="<?=erLhcoreClassDesign::baseurl('permission/newrole')?>"><img src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','New role');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/roles','New role');?>" /></a>
 </div>
 </fieldset>

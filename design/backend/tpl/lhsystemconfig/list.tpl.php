@@ -10,7 +10,7 @@
     <tr>
         <td><?=$item->identifier?></td>
         <td><?=$item->explain?></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('systemconfig/edit/')?><?=$item->identifier?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Edit value');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Edit value');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('systemconfig/edit')?>/<?=$item->identifier?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Edit value');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/list','Edit value');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 </table>

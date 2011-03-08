@@ -17,8 +17,8 @@
         <td><?=$item->height?></td>
         <td><?=$item->credits?></td>
         <td><?=$item->type == erLhcoreClassModelShopImageVariation::CUSTOM_VARIATION ? erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','No') : erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Yes') ?></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('shop/imagevariationedit/')?><?=$item->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Edit');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Edit');?>" /></a></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('shop/imagevariationdelete/')?><?=$item->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Delete');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Delete');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('shop/imagevariationedit')?>/<?=$item->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Edit');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Edit');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('shop/imagevariationdelete')?>/<?=$item->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Delete');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/imagevariation','Delete');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 </table>

@@ -9,7 +9,7 @@
 <? endif;?>
 
 	<div><br />
-		<form action="<?=erLhcoreClassDesign::baseurl('/permission/newrole/')?>" method="post">
+		<form action="<?=erLhcoreClassDesign::baseurl('permission/newrole')?>" method="post">
 			<table>
 				<tr>
 					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('permission/newrole','Title');?></td><td><input class="inputfield" type="text" name="Name"  value="" /></td>

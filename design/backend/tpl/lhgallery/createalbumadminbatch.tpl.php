@@ -14,7 +14,7 @@
 <? endif;?>
 <br />
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadminbatch/')?><?=$categoryID?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadminbatch')?>/<?=$categoryID?>">
 
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Paste album names separated by new line');?></label>

@@ -41,7 +41,7 @@
 <script>
 $('.newAlbumName').change(function(){	
     if ($(this).val() != '') {
-	$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/albumnamesuggest/')?>0/"+escape($(this).val()), {} , function(data){	
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/albumnamesuggest')?>/0/"+escape($(this).val()), {} , function(data){	
                    $('#album_select_directory0').html(data.result);                       
                    if (data.error == 'false'){
                         $('#album_select_directory0 input').eq(0).attr("checked","checked");

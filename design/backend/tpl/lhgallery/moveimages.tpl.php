@@ -18,7 +18,7 @@
 
 <script>
 $('#findButton').click(function(){	
-	$.getJSON("<?=erLhcoreClassDesign::baseurl('/gallery/albumnamesuggest/')?>0/"+escape($('#album_suggest_name').val()), {} , function(data){	
+	$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/albumnamesuggest')?>/0/"+escape($('#album_suggest_name').val()), {} , function(data){	
                    $('#album-suggest').html(data.result);
     });	
 });

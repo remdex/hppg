@@ -15,7 +15,7 @@
 
 <div class="explain"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Do not enter password unless you want to change it');?></div>
 	
-<form action="<?=erLhcoreClassDesign::baseurl('/user/account/')?>" method="post">
+<form action="<?=erLhcoreClassDesign::baseurl('user/account')?>" method="post">
 	<table>
 		<tr><td colspan="2"><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Login information')?></strong></td></tr>
 		<tr>

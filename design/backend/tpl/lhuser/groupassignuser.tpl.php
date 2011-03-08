@@ -2,11 +2,11 @@
 
 <script>
 window.parent.$('#assign-user-dialog').dialog('close');
-window.parent.document.location = '<?=erLhcoreClassDesign::baseurl('user/editgroup/')?><?=$group_id?>';
+window.parent.document.location = '<?=erLhcoreClassDesign::baseurl('user/editgroup')?>/<?=$group_id?>';
 </script>
 
 <?php else : ?>
-<form action="<?=erLhcoreClassDesign::baseurl('user/groupassignuser/')?><?=$group_id?>" method="post">
+<form action="<?=erLhcoreClassDesign::baseurl('user/groupassignuser')?>/<?=$group_id?>" method="post">
 <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
 <tr>
     <th>ID</th>

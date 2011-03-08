@@ -20,5 +20,5 @@
 
 
 <div>
-<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin/')?><?=$category->cid?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Create an album');?></a>
+<a href="<?=erLhcoreClassDesign::baseurl('/gallery/createalbumadmin')?>/<?=$category->cid?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbum','Create an album');?></a>
 </div>

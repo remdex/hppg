@@ -11,7 +11,7 @@
 <br />
 <? endif;?>
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/shop/paymentoptionedit/')?><?=$payment_handler->identifier?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('shop/paymentoptionedit')?>/<?=$payment_handler->identifier?>">
 
 
 <div class="in-blk">

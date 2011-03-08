@@ -35,12 +35,12 @@ $Result['content'] = $tpl->fetch();
 $pathDirectorys = explode('/',$directory);     
 $previousFolder = '';
 
-$path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/batchadd').'/(directory)/'.urlencode(base64_encode(rtrim($previousFolder,'/'))),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Mass image upload')); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/batchadd').'/(directory)/'.urlencode(base64_encode(rtrim($previousFolder,'/'))),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/batchadd','Mass image upload')); 
 
 foreach ($pathDirectorys as $pathItem)
 {
    $previousFolder .= $pathItem.'/';
-   $path[] = array('url' => erLhcoreClassDesign::baseurl('/gallery/batchadd').'/(directory)/'.urlencode(base64_encode(rtrim($previousFolder,'/'))),'title' => $pathItem); 
+   $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/batchadd').'/(directory)/'.urlencode(base64_encode(rtrim($previousFolder,'/'))),'title' => $pathItem); 
 }
  
 $Result['path'] = $path;

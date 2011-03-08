@@ -44,10 +44,10 @@ if (isset($_POST['Forgotpassword'])) {
 			$mail->Subject = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Password remind');
 		
 			// HTML body
-			$body  = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Click this link and to You will be send new password').' -  <a href="http://'.$host.erLhcoreClassDesign::baseurl('/user/remindpassword/').$hash.'">http://'.$host.erLhcoreClassDesign::baseurl('/user/remindpassword/').$hash.'</a>';
+			$body  = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Click this link and to You will be send new password').' -  <a href="http://'.$host.erLhcoreClassDesign::baseurl('user/remindpassword').'/'.$hash.'">http://'.$host.erLhcoreClassDesign::baseurl('user/remindpassword').'/'.$hash.'</a>';
 
 			// Plain text body
-			$text_body  = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Click this link and to You will be send new password').' - http://'.$host.erLhcoreClassDesign::baseurl('/user/remindpassword/').$hash;		
+			$text_body  = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Click this link and to You will be send new password').' - http://'.$host.erLhcoreClassDesign::baseurl('user/remindpassword').'/'.$hash;		
 
 			$mail->Body    = $body;
 			$mail->AltBody = $text_body;

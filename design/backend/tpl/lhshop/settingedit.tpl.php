@@ -15,7 +15,7 @@
 	<div class="dataupdate"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/edit','Data updated');?></div>
 <? endif; ?>
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/shop/settingedit/')?><?=$systemconfig->identifier?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('/shop/settingedit')?>/<?=$systemconfig->identifier?>">
 
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/edit','Identifier');?></label>

@@ -1,4 +1,4 @@
-<form action="<?=erLhcoreClassDesign::baseurl('/permission/editrole/')?><?=$role_id?>" method="post">
+<form action="<?=erLhcoreClassDesign::baseurl('/permission/editrole')?>/<?=$role_id?>" method="post">
 <table class="lentele" cellpadding="0" cellspacing="0" width="100%">
 <tr>
     <th width="1%">ID</th>

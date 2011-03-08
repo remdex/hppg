@@ -17,7 +17,7 @@
         <td width="1%"><?=$item->id?></td>
        <td><?=$item->total_grouped?></td>
        <td><a onclick="hw.expandBlock(<?=$item->id?>)"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/duplicates','More');?></a></td>
-       <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/deleteduplicatesession/')?><?=$item->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/duplicates','Delete duplicate session');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/duplicates','Delete duplicate session');?>" /></a></td>
+       <td><a href="<?=erLhcoreClassDesign::baseurl('gallery/deleteduplicatesession')?>/<?=$item->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/duplicates','Delete duplicate session');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/duplicates','Delete duplicate session');?>" /></a></td>
     </tr>  
     <tr class="duplicates-row" id="details-block-<?=$item->id?>" style="display:none;">
     	<td colspan="4">

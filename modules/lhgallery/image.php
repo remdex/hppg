@@ -2046,7 +2046,7 @@ if ($mode == 'lastuploads') {
    
 } else {
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Last uploaded images to album').' - '.$Image->album_title;
-    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('/gallery/albumrss').'/'.$Image->aid; 
+    $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/albumrss').'/'.$Image->aid; 
 }
 
     $cache->store($cacheKeyImageView,$Result);

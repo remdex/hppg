@@ -66,7 +66,7 @@ if (isset($_POST['Remove_role_from_group']) && isset($_POST['AssignedID']) && co
 $pages = new lhPaginator();
 $pages->items_total = erLhcoreClassModelGroupUser::getCount(array('filter' => array('group_id' => $Group->id)));
 $pages->setItemsPerPage(20);
-$pages->serverURL = erLhcoreClassDesign::baseurl('user/editgroup/').$Group->id;
+$pages->serverURL = erLhcoreClassDesign::baseurl('user/editgroup').'/'.$Group->id;
 $pages->paginate();
 
 $tpl->set('pages',$pages);

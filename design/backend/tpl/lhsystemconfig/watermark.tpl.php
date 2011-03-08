@@ -6,7 +6,7 @@
 <? endif; ?>
 
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/systemconfig/watermark/')?>" enctype="multipart/form-data">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('systemconfig/watermark')?>" enctype="multipart/form-data">
 
 <?php $data = $systemconfig->data; ?>
 <?php if (isset($data['watermark']) && $data['watermark'] != '') : ?>

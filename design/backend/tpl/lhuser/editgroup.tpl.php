@@ -7,7 +7,7 @@
 <? endif;?>
 
 	<div>
-		<form action="<?=erLhcoreClassDesign::baseurl('/user/editgroup/')?><?=$group->id?>" method="post">
+		<form action="<?=erLhcoreClassDesign::baseurl('user/editgroup')?>/<?=$group->id?>" method="post">
 			<table>
 				<tr>
 					<td><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Title');?></td><td><input class="inputfield" type="text" name="Name"  value="<?=htmlspecialchars($group->name);?>" /></td>
@@ -24,7 +24,7 @@
 
 
 <div class="header-list"><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Assigned users');?> - <?=$group->name?></h1></div>
-<form action="<?=erLhcoreClassDesign::baseurl('/user/editgroup/')?><?=$group->id?>" method="post">
+<form action="<?=erLhcoreClassDesign::baseurl('user/editgroup')?>/<?=$group->id?>" method="post">
 
 <table class="lentele" cellpadding="0" cellspacing="0">
 <tr>
@@ -46,14 +46,14 @@
 
 <div>
 <br />
-<input type="submit" class="default-button" name="Remove_user_from_group" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Remove user from group');?>" /> <input class="default-button" type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Assign user');?>" onclick="lhinst.abstractDialogFrame('assign-user-dialog','<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','User assignment');?>','<?=erLhcoreClassDesign::baseurl('user/groupassignuser/')?><?=$group->id?>')" />
+<input type="submit" class="default-button" name="Remove_user_from_group" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Remove user from group');?>" /> <input class="default-button" type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Assign user');?>" onclick="lhinst.abstractDialogFrame('assign-user-dialog','<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','User assignment');?>','<?=erLhcoreClassDesign::baseurl('user/groupassignuser')?>/<?=$group->id?>')" />
 </div>
 </form>
 
 <br />
 
 <div class="header-list"><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Assigned roles');?> - <?=$group->name?></h1></div>
-<form action="<?=erLhcoreClassDesign::baseurl('/user/editgroup/')?><?=$group->id?>" method="post">
+<form action="<?=erLhcoreClassDesign::baseurl('user/editgroup')?>/<?=$group->id?>" method="post">
 
 <table class="lentele" cellpadding="0" cellspacing="0">
 <tr>
@@ -70,7 +70,7 @@
 </table>
 <div>
 <br />
-<input type="submit" class="default-button" name="Remove_role_from_group" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Remove role from group');?>" /> <input class="default-button" type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Assign role');?>" onclick="lhinst.abstractDialog('assign-role-dialog','<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Role assignment');?>','<?=erLhcoreClassDesign::baseurl('permission/groupassignrole/')?><?=$group->id?>')" />
+<input type="submit" class="default-button" name="Remove_role_from_group" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Remove role from group');?>" /> <input class="default-button" type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Assign role');?>" onclick="lhinst.abstractDialog('assign-role-dialog','<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','Role assignment');?>','<?=erLhcoreClassDesign::baseurl('permission/groupassignrole')?>/<?=$group->id?>')" />
 </div>
 </form>
 </fieldset>
@@ -83,7 +83,7 @@
 <? if (isset($adduser)) : ?>
 <script type="text/javascript">
 $(function() {
-    lhinst.abstractDialog('assign-user-dialog','<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','User assignment');?>','<?=erLhcoreClassDesign::baseurl('user/groupassignuser/')?><?=$group->id?>');
+    lhinst.abstractDialog('assign-user-dialog','<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/editgroup','User assignment');?>','<?=erLhcoreClassDesign::baseurl('user/groupassignuser')?>/<?=$group->id?>');
 })
 </script>
 <? endif; ?>

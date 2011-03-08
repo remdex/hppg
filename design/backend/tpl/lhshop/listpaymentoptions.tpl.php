@@ -14,7 +14,7 @@
         <td><?=$item->name?></td>
         <td><?=$item->active == true ? 'Yes' : 'No'?></td>
         <td><?=$item->author?></td>
-        <td><a href="<?=erLhcoreClassDesign::baseurl('shop/paymentoptionedit/')?><?=$item->identifier?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/listpaymentoptions','Edit');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/listpaymentoptions','Edit');?>" /></a></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('shop/paymentoptionedit')?>/<?=$item->identifier?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/listpaymentoptions','Edit');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('shop/listpaymentoptions','Edit');?>" /></a></td>
     </tr>
 <? endforeach; ?>
 </table>

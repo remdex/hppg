@@ -10,7 +10,7 @@
 		
 <div class="in-blk">
 	<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editcategory','Owner');?>*</label>
-	<a href="<?=erLhcoreClassDesign::baseurl('/user/edit/')?><?=$category->owner_id?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editcategory','Owner');?></a><br />
+	<a href="<?=erLhcoreClassDesign::baseurl('/user/edit')?>/<?=$category->owner_id?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editcategory','Owner');?></a><br />
 	<select name="UserID" class="default-select">
 		<?php foreach (erLhcoreClassUser::getUserList() as $user) : ?>
 			<option value="<?=$user['id']?>" <?=$user['id'] == $category->owner_id ? 'selected="selected"' : ''?>><?=htmlspecialchars($user['username'])?></option>

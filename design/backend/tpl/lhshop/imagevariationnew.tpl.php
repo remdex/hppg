@@ -11,7 +11,7 @@
 <br />
 <? endif;?>
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/shop/imagevariationnew/')?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('shop/imagevariationnew')?>">
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhshop/imagevariation_form.tpl.php'));?>
 

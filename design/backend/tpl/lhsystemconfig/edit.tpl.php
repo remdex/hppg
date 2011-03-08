@@ -16,7 +16,7 @@
 <? endif; ?>
 
 
-<form method="post" action="<?=erLhcoreClassDesign::baseurl('/systemconfig/edit/')?><?=$systemconfig->identifier?>">
+<form method="post" action="<?=erLhcoreClassDesign::baseurl('systemconfig/edit')?>/<?=$systemconfig->identifier?>">
 
 
 <div class="in-blk">
