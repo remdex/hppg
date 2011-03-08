@@ -1,6 +1,6 @@
 RewriteEngine On
 
-// Siteaccess
+# Siteaccess
 RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)c.html(.*?)?$ index.php/$1/gallery/category/$3$4
 RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)a.html(.*?)?$ index.php/$1/gallery/album/$3$4
 RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)p.html(.*?)?$ index.php/$1/gallery/image/$3$4
