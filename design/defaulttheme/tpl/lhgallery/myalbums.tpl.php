@@ -9,7 +9,7 @@
   <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/my_albums_list.tpl.php'));?> 
     
   <p>
-  <a class="button-link" href="<?=erLhcoreClassDesign::baseurl('gallery/createalbum')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','New album')?></a>&nbsp;<input type="submit" class="default-button" name="UpdatePriorityAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Update priority');?>"/>
+  <a class="button-link" href="<?=erLhcoreClassDesign::baseurl('gallery/createalbum')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','New album')?></a>&nbsp;<input type="submit" class="default-button" name="UpdatePriorityAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Update priority');?>"/>
   </p>
   </form>
   
