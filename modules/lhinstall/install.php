@@ -349,7 +349,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                  
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_albums` (
                   `aid` int(11) NOT NULL AUTO_INCREMENT,
-                  `title` varchar(200) NOT NULL DEFAULT '',
+                  `title` varchar(255) NOT NULL DEFAULT '',
                   `description` text NOT NULL,
                   `pos` int(11) NOT NULL DEFAULT '0',
                   `category` int(11) NOT NULL DEFAULT '0',
@@ -360,7 +360,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   PRIMARY KEY (`aid`),
                   KEY `alb_category` (`category`),
                   KEY `owner_id` (`owner_id`),
-                  KEY `addtime` (`addtime`)
+                  KEY `addtime` (`addtime`),
+                  KEY `aid` (`pos`,`aid`)
                 )DEFAULT CHARSET=utf8;");
                 
                 // Categorys

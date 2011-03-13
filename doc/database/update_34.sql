@@ -1,0 +1,1 @@
+ALTER TABLE  `lh_gallery_albums` ADD INDEX  `aid` (  `pos` ,  `aid` );

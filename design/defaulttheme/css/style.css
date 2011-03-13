@@ -806,6 +806,7 @@ input.default-button
     padding-left:14px;
     padding-right:17px;
     cursor:pointer;
+    margin:0;
 }
 
 .button-link,
@@ -813,11 +814,12 @@ input.default-button
 .button-link:hover
 
 {display:block;float:left;padding:7px;
-    padding-left:14px;
+    padding-left:14px;font-size:14px;
     padding-right:17px;color:#FFFFFF;text-decoration:none;}
     
 
 .inputfield{font-size:12px;border:1px solid #CCCCCC;padding:5px;}
+.smlinputfield{padding:1px;}
 .inputfield:focus{box-shadow:0px 0px 2px #a8a8a8;
 -webkit-box-shadow:0px 0px 2px #a8a8a8;
 -moz-box-shadow: 0px 0px 2px #a8a8a8;}
