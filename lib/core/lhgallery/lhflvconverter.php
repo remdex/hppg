@@ -52,7 +52,7 @@ class erLhcoreClassFLVConverter {
        
         $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
         $image->total_filesize = $image->filesize;
-        $image->filepath = 'userpics/'.$fileSession->user_id.'/'.$fileSession->album_id.'/'; 
+        $image->filepath = $params['photo_dir_photo']; 
                 
         $movie = new ffmpeg_movie( $photoDir.'/'.$fileNamePhysic ); 
                       
@@ -104,7 +104,7 @@ class erLhcoreClassFLVConverter {
     	 
     	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
     	$image->total_filesize = $image->filesize;
-    	$image->filepath = 'userpics/'.$fileSession->user_id.'/'.$album->aid.'/';
+    	$image->filepath = $params['photo_dir_photo'];
     	
     	$movie = new ffmpeg_movie( $photoDir.'/'.$fileNamePhysic ); 
     	$frame = $movie->getFrame( $movie->getFrameCount()/2 );

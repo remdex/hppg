@@ -193,7 +193,7 @@ class erLhcoreClassImageConverter {
     }
     
     public static function handleUpload(& $image,$params = array())
-    {
+    {        
         $photoDir = $params['photo_dir'];
         $fileNamePhysic = $params['file_name_physic'];
         $fileSession = $params['file_session'];
@@ -218,7 +218,7 @@ class erLhcoreClassImageConverter {
        
         $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
         $image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
-        $image->filepath = 'userpics/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
+        $image->filepath = $params['photo_dir_photo'];
        
         $imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic ); 	       
         $image->pwidth = $imageAnalyze->data->width;
@@ -264,7 +264,7 @@ class erLhcoreClassImageConverter {
     	
     	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
     	$image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
-    	$image->filepath = 'userpics/'.$fileSession->user_id.'/'.$album->aid.'/';
+    	$image->filepath = $params['photo_dir_photo'];
 
     	$imageAnalyze = new ezcImageAnalyzer( $photoDir.'/'.$fileNamePhysic );
     	$image->pwidth = $imageAnalyze->data->width;
@@ -358,8 +358,30 @@ class erLhcoreClassImageConverter {
       return $return;
     }
     
-    public static function getExtension($fileName){
+    public static function getExtension($fileName) {
         return current(end(explode('.',$fileName)));
+    }
+    
+    
+    public static function mkdirRecursive($path, $chown = false) {        
+        $partsPath = explode('/',$path);
+        $pathCurrent = '';
+        
+        $config = erConfigClassLhConfig::getInstance();
+        $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
+   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+   		   		
+        foreach ($partsPath as $key => $path)
+        {
+            $pathCurrent .= $path . '/';
+            if ( !is_dir($pathCurrent) ) {
+                mkdir($pathCurrent,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
+                if ($chown == true){
+                    chown($pathCurrent,$wwwUser);
+				    chgrp($pathCurrent,$wwwUserGroup);
+                }
+            }
+        }
     }
  
 }

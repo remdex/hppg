@@ -49,7 +49,7 @@ class erLhcoreClassSWFConverter {
        
         $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
         $image->total_filesize = $image->filesize;
-        $image->filepath = 'userpics/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
+        $image->filepath = $params['photo_dir_photo'];
        
         list($width, $height, $type, $attr) = getimagesize($photoDir.'/'.$fileNamePhysic);
         
@@ -82,7 +82,7 @@ class erLhcoreClassSWFConverter {
     	
     	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
     	$image->total_filesize = $image->filesize;
-    	$image->filepath = 'userpics/'.$fileSession->user_id.'/'.$album->aid.'/';
+    	$image->filepath = $params['photo_dir_photo'];
 
     	list($width, $height, $type, $attr) = getimagesize($photoDir.'/'.$fileNamePhysic);
         $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeSWF;

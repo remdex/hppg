@@ -69,11 +69,12 @@ class erLhcoreClassModelGalleryAlbum {
            $image->removeThis();
        }
          
-       $photoPath = 'albums/userpics/'.$this->owner_id.'/'. $this->aid;
-       
+       // Because of scalable photos upload by date this method does not fit anymore.
+       /*$photoPath = 'albums/userpics/'.$this->owner_id.'/'. $this->aid;       
        if (file_exists($photoPath))
-            @rmdir($photoPath);
-                         
+            @rmdir($photoPath);*/
+                        
+             
        $this->clearAlbumCache(); 
        erLhcoreClassGallery::getSession()->delete($this); 
        

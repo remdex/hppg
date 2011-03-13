@@ -10,8 +10,7 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
        $fileName = basename($imagePath);
        
        if (!file_exists($photoDir.'/normal_'.$fileName) && !file_exists($photoDir.'/thumb_'.$fileName))
-       {      
-       	
+       {             	
        	   $config = erConfigClassLhConfig::getInstance();
        	    
            $session = erLhcoreClassGallery::getSession();
@@ -27,8 +26,7 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
 	       ));
            
            $image->filepath = str_replace('albums/','',$photoDir).'/';
-           
-                      
+                                 
            $image->hits = 0;
            $image->ctime = time();
            $image->owner_id = erLhcoreClassUser::instance()->getUserID();

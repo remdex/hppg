@@ -23,15 +23,10 @@ if (count($objects) == 1)
 	    
 	   	   $config = erConfigClassLhConfig::getInstance();
 	   	
-	       $photoDir = 'albums/userpics/'.$fileSession->user_id;
-	       if (!file_exists($photoDir))
-	       mkdir($photoDir,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
-	       
-	       
-	       $photoDir = 'albums/userpics/'.$fileSession->user_id.'/'.$fileSession->album_id;
-	       if (!file_exists($photoDir))
-	       mkdir($photoDir,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));	       
-	       
+	   	   $photoDir = 'albums/userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$fileSession->user_id.'/'.$fileSession->album_id;
+	   	   $photoDirPhoto = 'userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
+	   	   erLhcoreClassImageConverter::mkdirRecursive($photoDir);
+	   	   
 	       $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']);
 	       
 	       if (file_exists($photoDir.'/'.$fileNamePhysic)) {
@@ -40,11 +35,12 @@ if (count($objects) == 1)
 	       
 	       $filetype->process($image,array(
     	       'photo_dir'        => $photoDir,
+    	       'photo_dir_photo'  => $photoDirPhoto,
     	       'file_name_physic' => $fileNamePhysic,
     	       'post_file_name'   => 'Filedata',
     	       'file_session'     => $fileSession
 	       ));
-	       	       	          
+
 	       $image->hits = 0;
 	       $image->ctime = time();
 	       $image->owner_id = $fileSession->user_id;

@@ -46,7 +46,7 @@ class erLhcoreClassVideoConverter {
        
         $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
         $image->total_filesize = $image->filesize;
-        $image->filepath = 'userpics/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
+        $image->filepath = $params['photo_dir_photo'];
        
         $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeVIDEO;
         
@@ -74,7 +74,7 @@ class erLhcoreClassVideoConverter {
     	
     	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
     	$image->total_filesize = $image->filesize;
-    	$image->filepath = 'userpics/'.$fileSession->user_id.'/'.$album->aid.'/';
+    	$image->filepath = $params['photo_dir_photo'];
     	
         $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeVIDEO;
                             

@@ -118,28 +118,18 @@ class erLhcoreClassModelGalleryUploadArchive {
 				$pathExtracted = "var/tmpfiles/{$this->id}/" . $entry->getPath();								
 				$archive->extractCurrent( "var/tmpfiles/{$this->id}/" );
 				
-				if (($filetype = erLhcoreClassModelGalleryFiletype::isValidLocal($pathExtracted)) !== false /*erLhcoreClassImageConverter::isPhotoLocal($pathExtracted)*/) {
+				if (($filetype = erLhcoreClassModelGalleryFiletype::isValidLocal($pathExtracted)) !== false) {
 										
 					$image = new erLhcoreClassModelGalleryImage();
 				    $image->aid = $album->aid;				    				    	
 				    $session->save($image);
 
-				    try {
-
-				    	$photoDir = 'albums/userpics/'.$this->user_id;
-				    	if (!file_exists($photoDir)) {
-				    		mkdir($photoDir,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
-				    		chown($photoDir,$wwwUser);
-				    		chgrp($photoDir,$wwwUserGroup);
-				    	}
-
-				    	$photoDir = 'albums/userpics/'.$this->user_id.'/'.$album->aid;
-				    	if (!file_exists($photoDir)) {
-				    		mkdir($photoDir,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));				    		
-				    		chown($photoDir,$wwwUser);
-				    		chgrp($photoDir,$wwwUserGroup);
-				    	}
-
+				    try {				    	
+				    					    	
+				    	$photoDir = 'albums/userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$this->user_id.'/'.$album->aid;
+	   	                $photoDirPhoto = 'userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$this->user_id.'/'.$album->aid.'/';
+	   	                erLhcoreClassImageConverter::mkdirRecursive($photoDir,true);
+	   	   
 				    	$pathElements = explode('/',$pathExtracted);
 				    	end($pathElements);
 
@@ -151,6 +141,7 @@ class erLhcoreClassModelGalleryUploadArchive {
 				    	
 				    	$filetype->processLocal($image,array(
                 	       'photo_dir'        => $photoDir,
+                	       'photo_dir_photo'  => $photoDirPhoto,
                 	       'file_name_physic' => $fileNamePhysic,
                 	       'post_file_name'   => $pathExtracted,
                 	       'file_session'     => $this,

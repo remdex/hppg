@@ -151,23 +151,31 @@ class erLhcoreClassModelGalleryPendingConvert {
                     $movie = new ffmpeg_movie( $filePath );                       
                     $this->image->pwidth = $movie->getFrameWidth();
                     $this->image->pheight = $movie->getFrameHeight();                    
-                    $frame = $movie->getFrame( $movie->getFrameCount()/2 );
-                    $imageFrame = $frame->toGDImage();            
-                    $this->image->has_preview = 1;
-                                        
-                    $parts = explode('.',$this->image->filename);
-                    array_pop($parts);
-                                                           
-                    imagejpeg($imageFrame,'albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg');
-
-                    erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', 'albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg',  'albums/'.$this->image->filepath.'normal_'.implode('.',$parts).'.jpg' ); 
-                    erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', 'albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg',  'albums/'.$this->image->filepath.'thumb_'.implode('.',$parts).'.jpg' ); 
-                   	       
-                    chmod('albums/'.$this->image->filepath.'normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-                    chmod('albums/'.$this->image->filepath.'thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                    $frame = $movie->getFrame( round($movie->getFrameCount()/2) );
                     
-                    unlink('albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg');    // Delete original screenshot  
-                                        
+                    if ($frame === false) {
+                        $frame = $movie->getFrame( 1 );
+                    }
+                    // If something wrong
+                    if ($frame !== false ) {        
+                        $imageFrame = $frame->toGDImage();                     
+                                   
+                        $this->image->has_preview = 1;
+                                            
+                        $parts = explode('.',$this->image->filename);
+                        array_pop($parts);
+                        
+                        imagejpeg($imageFrame,'albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg');
+    
+                        erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', 'albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg',  'albums/'.$this->image->filepath.'normal_'.implode('.',$parts).'.jpg' ); 
+                        erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', 'albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg',  'albums/'.$this->image->filepath.'thumb_'.implode('.',$parts).'.jpg' ); 
+                       	
+                        chmod('albums/'.$this->image->filepath.'normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                        chmod('albums/'.$this->image->filepath.'thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                        
+                        unlink('albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg');    // Delete original screenshot  
+                    }
+                    
                     $session = erLhcoreClassGallery::getSession();
             	    $session->update($this->image);
             	    $this->image->clearCache();
