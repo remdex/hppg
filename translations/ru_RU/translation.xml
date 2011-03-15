@@ -1524,6 +1524,18 @@
       <source>Home</source>
       <translation>&#x413;&#x43B;&#x430;&#x432;&#x43D;&#x430;&#x44F;</translation>
     </message>
+     <message>
+      <source>Search by keyword</source>
+      <translation>Поиск по ключевым словам</translation>
+    </message>
+    <message>
+      <source>Search by color</source>
+      <translation>Поиск по цвету</translation>
+    </message> 
+    <message>
+      <source>Search</source>
+      <translation>Поиск</translation>
+    </message>
     <message>
       <source>Configuration</source>
       <translation>&#x41A;&#x43E;&#x43D;&#x444;&#x438;&#x433;&#x443;&#x440;&#x430;&#x446;&#x438;&#x44F;</translation>
@@ -1628,6 +1640,10 @@
       <source>Last uploaded images</source>
       <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; &#x437;&#x430;&#x433;&#x440;&#x443;&#x436;&#x435;&#x43D;&#x43D;&#x44B;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
     </message>
+      <message>
+      <source>Last uploads to albums</source>
+      <translation>Последние добавления в альбомы</translation>
+    </message> 
     <message>
       <source>All time</source>
       <translation>&#x417;&#x430; &#x432;&#x441;&#x435; &#x432;&#x440;&#x435;&#x43C;&#x44F;</translation>
@@ -3374,5 +3390,16 @@
       <source>No records</source>
       <translation>&#x41D;&#x435;&#x442; &#x437;&#x430;&#x43F;&#x438;&#x441;&#x435;&#x439;</translation>
     </message>
+  </context>
+  <context>
+    <name>gallery/color</name>
+    <message>
+      <source>Images by color</source>
+      <translation>Изображения по цвету</translation>
+    </message>  
+    <message>
+      <source>Choose color</source>
+      <translation>Выберите цвет</translation>
+    </message> 
   </context>
 </TS>

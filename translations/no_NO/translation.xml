@@ -1512,6 +1512,18 @@
       <source>Home</source>
       <translation type="unfinished">Hjem</translation>
     </message>
+     <message>
+      <source>Search</source>
+      <translation>Søk</translation>
+    </message>
+    <message>
+      <source>Search by keyword</source>
+      <translation>Søk etter nøkkelord</translation>
+    </message>
+    <message>
+      <source>Search by color</source>
+      <translation>Søk etter farge</translation>
+    </message>
     <message>
       <source>Configuration</source>
       <translation type="unfinished">Konfigurasjon</translation>
@@ -1616,6 +1628,10 @@
       <source>Last uploaded images</source>
       <translation type="unfinished">Sist opplastede bilder</translation>
     </message>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation>Siste opplastninger til album</translation>
+    </message> 
     <message>
       <source>All time</source>
       <translation type="unfinished">All time</translation>
@@ -3343,5 +3359,16 @@
       <source>System administration panel</source>
       <translation type="unfinished">System administrasjonspanel</translation>
     </message>
+  </context>
+  <context>
+    <name>gallery/color</name>
+    <message>
+      <source>Images by color</source>
+      <translation>Bilder etter farge</translation>
+    </message>  
+    <message>
+      <source>Choose color</source>
+      <translation>Velg farge</translation>
+    </message> 
   </context>
 </TS>

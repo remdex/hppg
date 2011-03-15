@@ -3078,6 +3078,10 @@
       <source>Last uploaded images</source>
       <translation>Naujausi paveikslėliai</translation>
     </message>
+      <message>
+      <source>Last uploads to albums</source>
+      <translation>Naujausi albumo paveiksliukai</translation>
+    </message> 
     <message>
       <source>All time</source>
       <translation>Vis&#x105; laik&#x105;</translation>

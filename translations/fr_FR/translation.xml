@@ -1528,6 +1528,18 @@
       <source>Configuration</source>
       <translation type="unfinished">Configuration</translation>
     </message>
+      <message>
+      <source>Search by keyword</source>
+      <translation>Recherche par mot-clé</translation>
+    </message> 
+     <message>
+      <source>Search</source>
+      <translation>Recherche</translation>
+    </message>
+    <message>
+      <source>Search by color</source>
+      <translation>Recherche par couleur</translation>
+    </message>
     <message>
       <source>Gallery categorys</source>
       <translation type="unfinished">Galerie Cat&#xE9;gories</translation>
@@ -1628,6 +1640,10 @@
       <source>Last uploaded images</source>
       <translation type="unfinished">Derni&#xE8;re images t&#xE9;l&#xE9;charg&#xE9;es</translation>
     </message>
+      <message>
+      <source>Last uploads to albums</source>
+      <translation>Derniers ajouts aux albums</translation>
+    </message> 
     <message>
       <source>All time</source>
       <translation type="unfinished">Tous les temps</translation>
@@ -3343,6 +3359,17 @@
       <source>System administration panel</source>
       <translation type="unfinished">panneau d&amp;#39;administration syst&#xE8;me</translation>
     </message>
+  </context>
+  <context>
+    <name>gallery/color</name>
+    <message>
+      <source>Images by color</source>
+      <translation>Images par couleur</translation>
+    </message>  
+    <message>
+      <source>Choose color</source>
+      <translation>Choisissez la couleur</translation>
+    </message> 
   </context>
   <context>
     <name>core/paginator</name>

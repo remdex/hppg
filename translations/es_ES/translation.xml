@@ -1525,6 +1525,18 @@
       <translation type="unfinished">Inicio</translation>
     </message>
     <message>
+      <source>Search by keyword</source>
+      <translation>Buscar por palabra clave</translation>
+    </message>
+    <message>
+      <source>Search</source>
+      <translation>Buscar</translation>
+    </message>
+    <message>
+      <source>Search by color</source>
+      <translation>Buscar por color</translation>
+    </message>
+    <message>
       <source>Configuration</source>
       <translation type="unfinished">Configuraci&#xF3;n</translation>
     </message>
@@ -1628,6 +1640,10 @@
       <source>Last uploaded images</source>
       <translation type="unfinished">&#xDA;ltimas im&#xE1;genes subido</translation>
     </message>
+      <message>
+      <source>Last uploads to albums</source>
+      <translation>Últimos archivos a Álbumes</translation>
+    </message> 
     <message>
       <source>All time</source>
       <translation type="unfinished">Todo el tiempo</translation>
@@ -3370,5 +3386,16 @@
       <source>Go to page</source>
       <translation>Ir a la página</translation>
     </message>
+  </context>
+  <context>
+    <name>gallery/color</name>
+    <message>
+      <source>Images by color</source>
+      <translation>Las imágenes por color</translation>
+    </message>  
+    <message>
+      <source>Choose color</source>
+      <translation>Elige el color</translation>
+    </message> 
   </context>
 </TS>

@@ -1138,3 +1138,6 @@ box-shadow:1px 1px 7px #a8a8a8;
 opacity: 0.7; 
 filter:Alpha(Opacity=70);
 cursor:pointer;}
+
+.link{background:url(../images/icons/link.png) no-repeat 0 0px;padding-left:18px;}
+.mail{background:url(../images/icons/email.png) no-repeat 0 0px;padding-left:20px;}
