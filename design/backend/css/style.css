@@ -680,7 +680,7 @@ div.pagercontent a{color: #4D8F35;}
 .image-thumb,
 .album-thumb{float:left;height:150px;overflow:hidden;width:150px;border:1px solid #C7C2BB;margin:5px;font-size:11px;}
 .thumb-attr a:hover{text-decoration:underline;}
-.thumb-pic{padding:2px;}
+.thumb-pic{padding:2px;clear:both;}
 .thumb-pic img{border:1px solid #CCCCCC;}
 .thumb-pic,
 .thumb-attr{text-align:center;padding:3px;font-size:11px;}
@@ -1664,9 +1664,9 @@ box-shadow:0px 0px 5px #a8a8a8;
 .thumb-pic{padding:2px;}
 .thumb-pic img{}
 .thumb-pic,
-.thumb-attr{padding:9px;font-size:11px;padding-bottom:8px;}
+.thumb-attr{padding:9px;font-size:11px;padding-bottom:8px;padding-top:0;}
 .thumb-pic{min-height:129px;}
-.thumb-attr{padding-top:0;}
+
 
 .tit-item{height:31px;border-bottom:1px solid #b0b0b0;margin-bottom:12px;overflow:hidden;}
 
@@ -2096,3 +2096,5 @@ div.dominant-colors div a{display:block;height:20px;}
 .open-id-block a:hover img{border:1px solid #b0b0b0;}
 #openid_message input{display:none;}
 .open-id-item{padding-top:15px;}
+.rotate{background:url(../images/icons/arrow_rotate_clockwise.png) no-repeat 0px 0px;width:16px;height:16px;cursor:pointer;display:block;margin-right:7px;}
+.loading-item{background: url(../images/newdesign/ajax-loader.gif) no-repeat center center;}

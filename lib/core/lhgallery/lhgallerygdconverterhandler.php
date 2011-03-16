@@ -186,6 +186,13 @@ class erLhcoreClassGalleryGDHandler extends ezcImageGdHandler {
         }            
     }
     
+    public function rotateImage() {
+         $oldResource = $this->getActiveResource();
+         $newResource = imagerotate($oldResource, 90, 0);
+         imagedestroy( $oldResource );
+         $this->setActiveResource( $newResource );
+    }
+    
     public function extractAnimatedGifFrame($frame = 0) {
          
     }

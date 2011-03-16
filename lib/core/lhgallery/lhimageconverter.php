@@ -156,6 +156,22 @@ class erLhcoreClassImageConverter {
                 ),
                 new ezcImageSaveOptions(array('quality' => 100))
             );
+                        
+            $this->converter->createTransformation(
+                'rotate_original',
+                array( 
+                    new ezcImageFilter( 
+                        'rotateImage',
+                        array(
+                        )
+                    ),
+                ),
+                array( 
+                    'image/jpeg',
+                    'image/png',
+                ),
+                new ezcImageSaveOptions(array('quality' => 100))
+            );
                          
                     
         }

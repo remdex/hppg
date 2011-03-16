@@ -438,6 +438,12 @@ $ViewList['deleteimage'] = array(
     'script' => 'deleteimage.php',
     'params' => array('image_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' => 'administrate'),
+    );   
+                       
+$ViewList['rotate'] = array( 
+    'script' => 'rotate.php',
+    'params' => array('image_id'),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' => 'administrate'),
     ); 
                          
 $ViewList['deletealbum'] = array( 

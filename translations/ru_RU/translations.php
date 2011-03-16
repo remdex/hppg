@@ -29,6 +29,7 @@ $moduleViewTranslations = array (
     'indeks' => 'index',
     'albom' => 'album',
     'catjson' => 'catjson',
+    'cvet' => 'color',
     'albomrss' => 'albumrss',
     'kategorii' => 'category',
     'vladelec-kategorii' => 'ownercategorys',

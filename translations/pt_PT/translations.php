@@ -28,6 +28,7 @@ $moduleViewTranslations = array (
   array (
     'indice' => 'index',
     'album' => 'album',
+    'cor' => 'color',
     'catjson' => 'catjson',
     'album-rss' => 'albumrss',
     'categoria' => 'category',

@@ -346,6 +346,15 @@ class erLhcoreClassGalleryImagemagickHandler extends ezcImageImagemagickHandler 
        $this->saveComposite( $this->getActiveReference() );        
     }
     
+    
+    public function rotateImage(){
+        $this->addFilterOption(
+            $this->getActiveReference(),
+            '-rotate',
+            90
+        );
+    }
+    
     public function extractAnimatedGifFrame($frame = 0) {
          
     }
