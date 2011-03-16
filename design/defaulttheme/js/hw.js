@@ -496,6 +496,20 @@ var hw = {
         });
 	},
 	
+	rotateImage : function (image_id)
+	{		
+	    $('#pid_thumb_'+image_id).addClass('loading-item');
+	    $('#pid_thumb_'+image_id+' > a > img').hide();
+	    
+		$.getJSON(this.formAddPath + 'gallery/rotate/'+image_id,  function(data) {
+		    $('#pid_thumb_'+image_id+' > a > img').show();		
+		    $('#pid_thumb_'+image_id+' > a > img').attr('src',$('#pid_thumb_'+image_id+' > a > img').attr('src')+'?time='+data.time);	
+		    $('#pid_thumb_'+image_id).removeClass('loading-item');	 
+           return true;	          
+		});	
+		return false;	
+	},
+	
 	initPalleteFilter : function(current_colors,mode,keyword)
 	{	 
 	   var baseURL = this.formAddPath;

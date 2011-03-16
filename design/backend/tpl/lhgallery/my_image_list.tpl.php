@@ -7,11 +7,11 @@ foreach ($items as $key => $item) : ?>
 <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?> thumb-edit" id="image_thumb_<?=$item->pid?>">
 
 <?php if ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) : ?> 
-    <a title="Rotate image right" class="rotate right" onclick="hw.rotateImage(<?=$item->pid?>)"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Rotate image clockwise');?>" class="rotate right" onclick="hw.rotateImage(<?=$item->pid?>)"></a>
 <?php endif;?>
 
     <div class="left">
-            <label><input type="checkbox" class="itemPhoto" name="PhotoID[]" value="<?=$item->pid?>" /> Select image</label>
+            <label><input type="checkbox" class="itemPhoto" name="PhotoID[]" value="<?=$item->pid?>" /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Select image');?></label>
     </div>       
         
     <div class="thumb-pic" id="pid_thumb_<?=$item->pid?>">        

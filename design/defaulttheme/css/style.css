@@ -1141,3 +1141,5 @@ cursor:pointer;}
 
 .link{background:url(../images/icons/link.png) no-repeat 0 0px;padding-left:18px;}
 .mail{background:url(../images/icons/email.png) no-repeat 0 0px;padding-left:20px;}
+.rotate{background:url(../images/icons/arrow_rotate_clockwise.png) no-repeat 0px 0px;width:16px;height:16px;cursor:pointer;display:block;margin-right:7px;}
+.loading-item{background: url(../images/newdesign/ajax-loader.gif) no-repeat center center;}

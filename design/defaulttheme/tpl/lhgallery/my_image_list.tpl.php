@@ -7,7 +7,11 @@ $canApproveSelfImages = erLhcoreClassUser::instance()->hasAccessTo('lhgallery','
 foreach ($items as $key => $item) : ?>
 
 <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?> thumb-edit" id="image_thumb_<?=$item->pid?>">
-    <div class="thumb-pic">
+    <?php if ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) : ?> 
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Rotate image clockwise');?>" class="rotate right" onclick="hw.rotateImage(<?=$item->pid?>)"></a>
+    <?php endif;?>
+
+    <div class="thumb-pic" id="pid_thumb_<?=$item->pid?>">
         <a href="<?=$item->url_path.$appendImageMode?>">
         
         <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>
@@ -39,7 +43,7 @@ foreach ($items as $key => $item) : ?>
 				<textarea class="default-textarea" id="PhotoDescription_<?=$item->pid?>"><?=htmlspecialchars($item->caption)?></textarea>	  
     
     <div class="right">
-        <a class="cursor" onclick="return hw.deletePhoto(<?=$item->pid?>)" ><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/grouplist','Delete image');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Delete image');?>" /></a>
+        <a class="cursor" onclick="return hw.deletePhoto(<?=$item->pid?>)" ><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Delete image');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Delete image');?>" /></a>
     </div>               
     
     <input type="button" onclick="hw.updatePhoto(<?=$item->pid?>)"class="default-button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Update');?>" /><span class="status-img" id="image_status_<?=$item->pid?>"></span>            
