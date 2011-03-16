@@ -486,6 +486,15 @@ var hw = {
 		return false;
 	},
 	
+	setFolderImage : function (image_id)
+	{			   	    
+		$.getJSON(this.formAddPath + 'gallery/setfolderthumb/'+image_id,  function(data) {		    	 
+		    alert(data.result);
+            return true;	          
+		});	
+		return false;	
+	},
+	
 	updateComment : function(msg_id){	    
 	    var pdata = {
 	       'msg_author' : $('#MessageAuthor_'+msg_id).val(),       

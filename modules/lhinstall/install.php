@@ -357,6 +357,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `owner_id` int(11) NOT NULL,
                   `public` int(11) NOT NULL DEFAULT '0',
                   `addtime` int(11) NOT NULL DEFAULT '0',
+                  `album_pid` int(11) NOT NULL DEFAULT '0',
                   PRIMARY KEY (`aid`),
                   KEY `alb_category` (`category`),
                   KEY `owner_id` (`owner_id`),

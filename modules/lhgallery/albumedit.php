@@ -4,6 +4,12 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/albumedit.tpl.php');
 
 $AlbumData = $Params['user_object'] ;
 
+
+if (isset($Params['user_parameters_unordered']['action']) && $Params['user_parameters_unordered']['action'] == 'removethumb') {
+    $AlbumData->album_pid = 0;
+    $AlbumData->updateThis();
+}
+
 if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
 {      
     $definition = array(
@@ -59,7 +65,7 @@ $Result['content'] = $tpl->fetch();
 $Result['path'] = array(
 array('url' => erLhcoreClassDesign::baseurl('gallery/albumedit'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My account')),
 
-array('url' => erLhcoreClassDesign::baseurl('gallery/albumedit'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My albums')),
+array('url' => erLhcoreClassDesign::baseurl('gallery/myalbums'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My albums')),
 array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit',$AlbumData->title)),
 
 

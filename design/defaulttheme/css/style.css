@@ -860,7 +860,7 @@ border-bottom-left-radius:14px;}
 .control-block .left{padding-top:5px;}
 .cap-img{padding:9px;}
 
-.thumb-edit{height:420px;}
+.thumb-edit{height:430px;}
 .thumb-edit input.inputfield,
 .thumb-edit input.default-button{font-size:11px;padding:2px;width:110px;}
 .thumb-edit input.default-button{width:auto;}
@@ -1142,4 +1142,6 @@ cursor:pointer;}
 .link{background:url(../images/icons/link.png) no-repeat 0 0px;padding-left:18px;}
 .mail{background:url(../images/icons/email.png) no-repeat 0 0px;padding-left:20px;}
 .rotate{background:url(../images/icons/arrow_rotate_clockwise.png) no-repeat 0px 0px;width:16px;height:16px;cursor:pointer;display:block;margin-right:7px;}
+.foldericon{background:url(../images/icons/folder_image.png) no-repeat 0px 0px;width:16px;height:16px;cursor:pointer;display:block;margin-right:7px;}
 .loading-item{background: url(../images/newdesign/ajax-loader.gif) no-repeat center center;}
+.top-img-cntr{padding-top:4px;padding-bottom:6px;}

@@ -7,15 +7,16 @@ $canApproveSelfImages = erLhcoreClassUser::instance()->hasAccessTo('lhgallery','
 foreach ($items as $key => $item) : ?>
 
 <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?> thumb-edit" id="image_thumb_<?=$item->pid?>">
+    <div class="top-img-cntr float-break">
     <?php if ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) : ?> 
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Rotate image clockwise');?>" class="rotate right" onclick="hw.rotateImage(<?=$item->pid?>)"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Rotate image clockwise');?>" class="rotate right" onclick="hw.rotateImage(<?=$item->pid?>)"></a>    
     <?php endif;?>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Set as folder thumbnail');?>" class="foldericon right" onclick="hw.setFolderImage(<?=$item->pid?>)"></a>
+    </div>
 
     <div class="thumb-pic" id="pid_thumb_<?=$item->pid?>">
-        <a href="<?=$item->url_path.$appendImageMode?>">
-        
-        <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>
-                
+        <a href="<?=$item->url_path.$appendImageMode?>">        
+        <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>                
         </a>           
     </div>
     <div class="thumb-attr">

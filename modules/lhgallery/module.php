@@ -271,12 +271,14 @@ $ViewList['createcategory'] = array(
 $ViewList['albumedit'] = array( 
     'script' => 'albumedit.php',
     'params' => array('album_id'),
+    'uparams' => array('action'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' =>'administrate'),
     ); 
        
 $ViewList['albumeditadmin'] = array( 
     'script' => 'albumeditadmin.php',
     'params' => array('album_id'),
+    'uparams' => array('action'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' =>'administrate'),
     );
     
@@ -444,13 +446,19 @@ $ViewList['rotate'] = array(
     'script' => 'rotate.php',
     'params' => array('image_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' => 'administrate'),
-    ); 
+); 
                          
 $ViewList['deletealbum'] = array( 
     'script' => 'deletealbum.php',
     'params' => array('album_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
-    );   
+);  
+                            
+$ViewList['setfolderthumb'] = array( 
+    'script' => 'setfolderthumb.php',
+    'params' => array('image_id'),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' => 'administrate'),
+);   
                            
 $ViewList['deletecategory'] = array( 
     'script' => 'deletecategory.php',

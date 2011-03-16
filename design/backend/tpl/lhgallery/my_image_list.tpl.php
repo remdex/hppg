@@ -9,6 +9,7 @@ foreach ($items as $key => $item) : ?>
 <?php if ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) : ?> 
     <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Rotate image clockwise');?>" class="rotate right" onclick="hw.rotateImage(<?=$item->pid?>)"></a>
 <?php endif;?>
+<a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Set as folder thumbnail');?>" class="foldericon right" onclick="hw.setFolderImage(<?=$item->pid?>)"></a>
 
     <div class="left">
             <label><input type="checkbox" class="itemPhoto" name="PhotoID[]" value="<?=$item->pid?>" /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Select image');?></label>

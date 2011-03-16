@@ -30,6 +30,26 @@
 <input class="inputfield" type="text" name="AlbumKeywords" value="<?=htmlspecialchars($album->keyword);?>" />
 </div>
 
+
+<div class="in-blk">
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Album thumbnail');?></label>
+<?php if ($album->album_pid == 0) : ?>
+    <?php if ($album->album_thumb_path !== false) :?> 
+    <img src="<?=erLhcoreClassDesign::imagePath($album->album_thumb_path)?>" alt="" width="130" height="140">
+    <?php else :?>
+    <img src="<?=erLhcoreClassDesign::design('images/newdesign/nophoto.jpg')?>" alt="" width="130" height="140">            
+    <?php endif;?><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Newest album image');?>.
+<?php else : ?>
+    <?php if ($album->album_thumb_path !== false) :?> 
+    <img src="<?=erLhcoreClassDesign::imagePath($album->album_thumb_path)?>" alt="" width="130" height="140">
+    <?php else :?>
+    <img src="<?=erLhcoreClassDesign::design('images/newdesign/nophoto.jpg')?>" alt="" width="130" height="140">            
+    <?php endif;?>Assigned image. <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Revert to newest album image display mode')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/albumedit')?>/<?=$album->aid?>/(action)/removethumb"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Remove');?></a>
+<?php endif;?>
+</div>
+
+
+
 <input type="submit" class="default-button" name="CreateAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Update')?>"/>
 
 </form>

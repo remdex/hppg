@@ -505,7 +505,16 @@ var hw = {
 		    $('#pid_thumb_'+image_id+' > a > img').show();		
 		    $('#pid_thumb_'+image_id+' > a > img').attr('src',$('#pid_thumb_'+image_id+' > a > img').attr('src')+'?time='+data.time);	
 		    $('#pid_thumb_'+image_id).removeClass('loading-item');	 
-           return true;	          
+            return true;	          
+		});	
+		return false;	
+	},
+	
+	setFolderImage : function (image_id)
+	{			   	    
+		$.getJSON(this.formAddPath + 'gallery/setfolderthumb/'+image_id,  function(data) {		    	 
+		    alert(data.result);
+            return true;	          
 		});	
 		return false;	
 	},

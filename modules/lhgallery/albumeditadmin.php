@@ -4,6 +4,11 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/albumeditadmin.tpl.php');
 
 $AlbumData = $Params['user_object'] ;
 
+if (isset($Params['user_parameters_unordered']['action']) && $Params['user_parameters_unordered']['action'] == 'removethumb') {
+    $AlbumData->album_pid = 0;
+    $AlbumData->updateThis();
+}
+
 if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
 {      
     $definition = array(

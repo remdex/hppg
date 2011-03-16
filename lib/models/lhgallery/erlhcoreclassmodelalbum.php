@@ -14,6 +14,7 @@ class erLhcoreClassModelGalleryAlbum {
                'owner_id'    => $this->owner_id,             
                'public'      => $this->public,             
                'addtime'     => $this->addtime,             
+               'album_pid'   => $this->album_pid           
        );
    }
    
@@ -171,7 +172,30 @@ class erLhcoreClassModelGalleryAlbum {
             break;	
        	       	    	
         case 'album_thumb_path':
-                // FIX me, we show only approved photo, but we should check if user has access to see all images.        	    
+                // FIX me, we show only approved photo, but we should check if user has access to see all images.      
+                
+                if ( $this->album_pid > 0 ){
+                    try {
+                        $image = erLhcoreClassModelGalleryImage::fetch( $this->album_pid);
+                        
+                        if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) {
+               	            return $image->filepath.'thumb_'.urlencode($image->filename);
+               	        } elseif ( $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV || 
+               	                   $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeFLV   || 
+               	                   $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeSWF   || 
+               	                   $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO ) {   
+               	                  
+               	           if ($image->has_preview == 1) {           	               
+                                return $image->filepath.'thumb_'.urlencode(str_replace(array('.swf','.flv','.ogv','.avi','.mpg','.wmv','.mpeg'),'.jpg',$image->filename));
+               	           }
+               	        }               	        
+               	    // Image does not exist, just set to zero
+                    } catch (Exception $e){
+                        $this->album_pid = 0;
+                        $this->updateThis();
+                    }
+                }
+                                 
            	    $images = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('album_'.$this->aid),'filter' => array('aid' => $this->aid,'approved' => 1),'limit' => 1));
            	    foreach ($images as $image)
            	    {
@@ -186,7 +210,8 @@ class erLhcoreClassModelGalleryAlbum {
                             return $image->filepath.'thumb_'.urlencode(str_replace(array('.swf','.flv','.ogv','.avi','.mpg','.wmv','.mpeg'),'.jpg',$image->filename));
            	           }
            	        }
-           	    }        
+           	    }
+                        
            	    return false;   	    
        		break;
        				
@@ -365,6 +390,7 @@ class erLhcoreClassModelGalleryAlbum {
    public $owner_id = 0;
    public $public = 0;
    public $addtime = 0;
+   public $album_pid = 0;
 
 }
 

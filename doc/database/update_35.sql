@@ -1,0 +1,1 @@
+ALTER TABLE  `lh_gallery_albums` ADD  `album_pid` INT NOT NULL DEFAULT  '0';
