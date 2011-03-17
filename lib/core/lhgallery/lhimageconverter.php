@@ -171,6 +171,38 @@ class erLhcoreClassImageConverter {
                     'image/png',
                 ),
                 new ezcImageSaveOptions(array('quality' => 100))
+            ); 
+                       
+            $this->converter->createTransformation(
+                'switch_original',
+                array( 
+                    new ezcImageFilter( 
+                        'switchImage',
+                        array(
+                        )
+                    ),
+                ),
+                array( 
+                    'image/jpeg',
+                    'image/png',
+                ),
+                new ezcImageSaveOptions(array('quality' => 100))
+            );
+                        
+            $this->converter->createTransformation(
+                'switchv_original',
+                array( 
+                    new ezcImageFilter( 
+                        'switchvImage',
+                        array(
+                        )
+                    ),
+                ),
+                array( 
+                    'image/jpeg',
+                    'image/png',
+                ),
+                new ezcImageSaveOptions(array('quality' => 100))
             );
                          
                     

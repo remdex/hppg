@@ -496,12 +496,12 @@ var hw = {
         });
 	},
 	
-	rotateImage : function (image_id)
+	rotateImage : function (image_id,action)
 	{		
 	    $('#pid_thumb_'+image_id).addClass('loading-item');
 	    $('#pid_thumb_'+image_id+' > a > img').hide();
 	    
-		$.getJSON(this.formAddPath + 'gallery/rotate/'+image_id,  function(data) {
+		$.getJSON(this.formAddPath + 'gallery/rotate/'+image_id+'/' + action,  function(data) {
 		    $('#pid_thumb_'+image_id+' > a > img').show();		
 		    $('#pid_thumb_'+image_id+' > a > img').attr('src',$('#pid_thumb_'+image_id+' > a > img').attr('src')+'?time='+data.time);	
 		    $('#pid_thumb_'+image_id).removeClass('loading-item');	 

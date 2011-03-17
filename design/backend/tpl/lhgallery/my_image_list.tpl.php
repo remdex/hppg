@@ -7,12 +7,14 @@ foreach ($items as $key => $item) : ?>
 <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?> thumb-edit" id="image_thumb_<?=$item->pid?>">
 
 <?php if ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) : ?> 
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Rotate image clockwise');?>" class="rotate right" onclick="hw.rotateImage(<?=$item->pid?>)"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Rotate image clockwise');?>" class="rotate right" onclick="hw.rotateImage(<?=$item->pid?>,'rotate')"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Flip horizontaly');?>" class="switchicon right" onclick="hw.rotateImage(<?=$item->pid?>,'switch')"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Flip verticaly');?>" class="switchiconv right" onclick="hw.rotateImage(<?=$item->pid?>,'switchv')"></a>
 <?php endif;?>
 <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Set as folder thumbnail');?>" class="foldericon right" onclick="hw.setFolderImage(<?=$item->pid?>)"></a>
 
     <div class="left">
-            <label><input type="checkbox" class="itemPhoto" name="PhotoID[]" value="<?=$item->pid?>" /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Select image');?></label>
+            <label><input type="checkbox" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Select image');?>" class="itemPhoto" name="PhotoID[]" value="<?=$item->pid?>" /></label>
     </div>       
         
     <div class="thumb-pic" id="pid_thumb_<?=$item->pid?>">        

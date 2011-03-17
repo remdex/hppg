@@ -444,7 +444,7 @@ $ViewList['deleteimage'] = array(
                        
 $ViewList['rotate'] = array( 
     'script' => 'rotate.php',
-    'params' => array('image_id'),
+    'params' => array('image_id','action'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' => 'administrate'),
 ); 
                          
