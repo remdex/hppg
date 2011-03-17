@@ -357,6 +357,7 @@ $ViewList['managealbum'] = array(
 $ViewList['managealbumimages'] = array( 
     'script' => 'managealbumimages.php',
     'params' => array('album_id'),    
+    'uparams' => array('action'),    
     'functions' => array( 'administrate' ),
     );  
                  

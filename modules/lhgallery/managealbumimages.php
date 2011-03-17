@@ -16,6 +16,27 @@ if (isset($_POST['moveSelectedPhotos']) && isset($_POST['PhotoID']) && count($_P
     }
 }
 
+// Batch images approvement and disapprovement
+if (isset($Params['user_parameters_unordered']['action']) && $Params['user_parameters_unordered']['action'] != '') {
+    
+    $db = ezcDbInstance::get();
+    $images = erLhcoreClassModelGalleryImage::getImages(array('filter' => array('aid' => (int)$Params['user_parameters']['album_id'],'approved' => $Params['user_parameters_unordered']['action'] == 'approve' ? 0 : 1)));
+    foreach ($images as $image) {
+        if ($Params['user_parameters_unordered']['action'] == 'approve') {            
+            $image->approved = 1;
+        } else {
+            $image->approved = 0;
+        }
+               
+        erLhcoreClassModelGallerySphinxSearch::indexImage($image);
+        erLhcoreClassGallery::getSession()->update($image);        
+    }
+    
+    $album = erLhcoreClassModelGalleryAlbum::fetch((int)$Params['user_parameters']['album_id']);
+    $album->clearAlbumCache();
+}
+
+
 $cache = CSCacheAPC::getMem();
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/managealbumimages.tpl.php');
 $Album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', (int)$Params['user_parameters']['album_id'] );    
