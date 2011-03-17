@@ -34,7 +34,6 @@ foreach ($items as $item) :
        <a href="<?=erLhcoreClassDesign::baseurl('gallery/addimagesadmin')?>/<?=$item->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Add images');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Add images');?>" /></a>
        <a href="<?=erLhcoreClassDesign::baseurl('gallery/albumeditadmin')?>/<?=$item->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Edit album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Edit album');?>" /></a>
        <a href="<?=erLhcoreClassDesign::baseurl('gallery/deletealbumadmin')?>/<?=$item->aid?>/(moduler)/gallery/(functionr)/lastuploadstoalbumsadmin/(page)/<?=$pages->current_page?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" /></a>
-             
        </div>
        
        
