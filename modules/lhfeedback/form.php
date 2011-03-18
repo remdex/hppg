@@ -67,8 +67,7 @@ if (isset($_POST['SendRequest']))
         $tplMail->set('FormEmail',$form->FormEmail);
         $tplMail->set('FormText',$form->FormText);
                 
-        $phpMailer->Body = nl2br($tplMail->fetch());
-        $phpMailer->AltBody = $tplMail->fetch();
+        $phpMailer->MsgHTML($tplMail->fetch());        
                   
         if ($phpMailer->Send())
         {
