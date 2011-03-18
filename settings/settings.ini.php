@@ -11,6 +11,7 @@ return array (
       'theme' => 'defaulttheme',
       'site_admin_email' => '',
       'site_domain' => '',
+      'extract_exif_data' => false,
       'templatecache' => false,
       'templatecompile' => false,
       'modulecompile' => false,        
