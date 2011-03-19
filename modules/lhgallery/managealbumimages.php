@@ -20,7 +20,7 @@ if (isset($_POST['moveSelectedPhotos']) && isset($_POST['PhotoID']) && count($_P
 if (isset($Params['user_parameters_unordered']['action']) && $Params['user_parameters_unordered']['action'] != '') {
     
     $db = ezcDbInstance::get();
-    $images = erLhcoreClassModelGalleryImage::getImages(array('filter' => array('aid' => (int)$Params['user_parameters']['album_id'],'approved' => $Params['user_parameters_unordered']['action'] == 'approve' ? 0 : 1)));
+    $images = erLhcoreClassModelGalleryImage::getImages(array('limit' => 5000,'filter' => array('aid' => (int)$Params['user_parameters']['album_id'],'approved' => $Params['user_parameters_unordered']['action'] == 'approve' ? 0 : 1)));
     foreach ($images as $image) {
         if ($Params['user_parameters_unordered']['action'] == 'approve') {            
             $image->approved = 1;
