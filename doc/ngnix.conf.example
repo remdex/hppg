@@ -79,3 +79,55 @@ server {
     rewrite "^(.*)$" "/index.php?$1" last;
    }
 }
+
+server {
+   listen          *:80;
+   server_name    static.example.com static1.example.com static2.example.com static3.example.com static4.example.com;
+   root           /home/www/domains/example_lt;
+     
+   #Allow hotlinking to normal and thumb size images
+   location ~* (normal_|thumb_|^/design|^/cache)(.*)\.(gif|txt|jpe?g?|png|bmp|swf|css|js|swf|pdf|ico)$ {
+        ## @todo: add expires headers...
+        # favicon is only stored in 1 dir, the design one; But browsers ask for it in the root
+        
+        # Blocks some site rippers
+       if ($http_user_agent ~* "(WebReaper|wget|SiteSucker|Mihov Picture Downloader|TALWinHttpClient|A1 Website Download|WebCopier|Download Ninja|Microsoft URL Control|GetRight|Arachmo|MJ12bot|Gaisbot|Anonymous|Yanga|Twiceler|psbot|Irvine|Indy Library|HTTrack)" ) { 
+            return 403; 
+       }
+       
+       # blocks some hotlinking sites
+       if ($http_referer ~* (hot_linking_site.com)) {
+          return 403;
+       }
+       	 
+       expires max;
+       access_log        off;
+       root           /home/www/domains/example_lt;      
+   }
+   
+   # Do not allow to hotlink full size images except our self and major search engines
+   location ~* \.(gif|jpe?g?|png|bmp|swf|css|js|swf|txt|pdf|ico)$ {
+            ## @todo: add expires headers...
+                
+           valid_referers none blocked server_names ~(artmight.com|google.|bing.|yahoo.);
+           if ($invalid_referer) {
+                 return 403;
+           }
+    
+           if ($http_user_agent ~* "(WebReaper|wget|SiteSucker|Mihov Picture Downloader|TALWinHttpClient|A1 Website Download|WebCopier|Download Ninja|Microsoft URL Control|GetRight|Arachmo|MJ12bot|Gaisbot|Anonymous|Yanga|Twiceler|psbot|Irvine|Indy Library|HTTrack)" ) { 
+                    return 403; 
+           }
+           
+           if ($http_referer ~* (hot_linking_site.com)) {
+              return 403;
+           }
+           #We want to log who is accesing to full size images
+           #access_log        off;
+           expires max;
+           root           /home/www/domains/example_lt;
+   }
+       
+   location / {	   
+    rewrite  ^/(.*)$  http://example.com/$1  permanent;
+   }
+}
