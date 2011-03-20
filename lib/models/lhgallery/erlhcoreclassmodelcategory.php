@@ -327,19 +327,26 @@ class erLhcoreClassModelGalleryCategory {
        	
        	case 'path':
        	            $arrayPath = array();
-                    erLhcoreClassModelGalleryCategory::getCategoryPathURL($arrayPath,$this->cid);
+                    self::getCategoryPathURL($arrayPath,$this->cid);
                     $this->path = $arrayPath;
                     return $this->path;
        	    break;
+       	    
+       	case 'path_site':
+       	            $arrayPath = array();
+                    self::getCategoryPath($arrayPath,$this->cid);
+                    $this->path_site = $arrayPath;
+                    return $this->path_site;
+       	    break;
        		
        	case 'path_url':            
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-            {
-                    $this->path_url = erLhcoreClassDesign::baseurl($this->nice_path_base,false);    
-                    return $this->path_url;
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)  {
+                $this->path_url = erLhcoreClassDesign::baseurl($this->nice_path_base,false);                     
             } else {
-                return erLhcoreClassDesign::baseurl('gallery/category').'/'.$this->cid;
+                $this->path_url = erLhcoreClassDesign::baseurl('gallery/category').'/'.$this->cid;
             }
+            
+            return $this->path_url;
             break;                        
             
        	case 'nice_path_base':
@@ -352,14 +359,13 @@ class erLhcoreClassModelGalleryCategory {
        	break;
        	       	
        	case 'url_path_base':
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-            { 
-                    $this->url_path = erLhcoreClassDesign::baseurldirect($this->nice_path_base,false); 
-                    return $this->url_path;
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true) { 
+                    $this->url_path_base = erLhcoreClassDesign::baseurldirect($this->nice_path_base);                     
             } else {
-                return erLhcoreClassDesign::baseurldirect('gallery/category').'/'.$this->cid;
+                    $this->url_path_base = erLhcoreClassDesign::baseurldirect('gallery/category').'/'.$this->cid;
             }
             
+            return $this->url_path_base;
             break;
             
        	      	

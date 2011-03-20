@@ -196,13 +196,12 @@ class erLhcoreClassModelGalleryImage {
        	break;
        	    
        	case 'url_path_base':
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-            { 
-                    $this->url_path = erLhcoreClassDesign::baseurldirect($this->nice_path_base,false); 
-                    return $this->url_path;
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true) { 
+                    $this->url_path_base = erLhcoreClassDesign::baseurldirect($this->nice_path_base);
             } else {
-                return erLhcoreClassDesign::baseurldirect('gallery/image').'/'.$this->pid;
-            }            
+                    $this->url_path_base = erLhcoreClassDesign::baseurldirect('gallery/image').'/'.$this->pid;
+            } 
+            return $this->url_path_base;           
             break;
             	     		
        	case 'filesize_user':        	    

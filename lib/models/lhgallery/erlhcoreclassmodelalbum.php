@@ -172,24 +172,24 @@ class erLhcoreClassModelGalleryAlbum {
        	break;       
        		
         case 'url_path':        
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-            { 
-                    $this->url_path = erLhcoreClassDesign::baseurl($this->nice_path_base,false); 
-                    return $this->url_path;
-            } else {
-                $this->url_path = erLhcoreClassDesign::baseurl('gallery/album').'/'.$this->aid;
+                if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+                { 
+                     $this->url_path = erLhcoreClassDesign::baseurl($this->nice_path_base,false);                     
+                } else {
+                    $this->url_path = erLhcoreClassDesign::baseurl('gallery/album').'/'.$this->aid;
+                    
+                }   
                 return $this->url_path;
-            }               
             break;	
 
         case 'url_path_base':
             if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
             { 
-                    $this->url_path = erLhcoreClassDesign::baseurldirect($this->nice_path_base,false); 
-                    return $this->url_path;
+                    $this->url_path_base = erLhcoreClassDesign::baseurldirect($this->nice_path_base);                     
             } else {
-                return erLhcoreClassDesign::baseurldirect('gallery/album').'/'.$this->aid;
+                $this->url_path_base = erLhcoreClassDesign::baseurldirect('gallery/album').'/'.$this->aid;                
             }
+            return $this->url_path_base;
             
             break;
              	    	

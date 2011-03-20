@@ -40,7 +40,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('category',$Category);
     
     $Result['content'] = $tpl->fetch();  
-    $Result['path'] = $Category->path;
+    $Result['path'] = $Category->path_site;
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
         $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/category','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
