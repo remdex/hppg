@@ -647,8 +647,9 @@ box-shadow:0px 0px 5px #a8a8a8;
 -webkit-box-shadow:0px 0px 5px #a8a8a8;
 -moz-box-shadow: 0px 0px 5px #a8a8a8;}
 
+div.image-thumb:hover{z-index:9;}
 div.image-thumb:hover .tit-item{height:auto;min-height:31px;}
-div.image-thumb:hover .thumb-attr{min-height:59px;position:absolute;background-color:#F1F1F1;border: 1px solid white;margin-left:-1px;width:120px;border-bottom:0;border-top:0;}
+div.image-thumb:hover .thumb-attr{min-height:59px;position:absolute;background-color:#F1F1F1;border: 1px solid white;margin-left:-1px;width:120px;border-top:0;}
 
 .thumb-attr a:hover{text-decoration:underline;}
 .thumb-pic{padding:2px;}
