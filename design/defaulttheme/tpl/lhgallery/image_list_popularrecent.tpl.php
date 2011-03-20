@@ -49,11 +49,12 @@ try {
 <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 
 
- </div>
-
+</div>
+<?php if (!isset($skipImageListJS)) : ?>
 <script type="text/javascript"> 
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
   });
   hw.initInfoWindow('<?=base64_encode($appendImageMode)?>');
 </script>
+<?php endif;?>

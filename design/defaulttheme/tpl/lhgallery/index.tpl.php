@@ -1,3 +1,4 @@
+<?php $skipImageListJS = true; ?>
 <div class="category">
 <div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbums')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads to albums');?> &raquo;</a></h1></div>
 <?php $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('sort' => 'addtime DESC','offset' => 0, 'limit' => 4)); 
@@ -79,3 +80,10 @@ if (!empty($items)) : ?>
 <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','No records')?>.
 <?php endif;?>
 </div>
+
+<script> 
+  $('.thumb-attr a').each(function(index) {	
+    	$(this).attr('href',$(this).attr('rel'));
+  });
+  hw.initInfoWindow('<?=base64_encode($appendImageMode)?>');    
+</script>
