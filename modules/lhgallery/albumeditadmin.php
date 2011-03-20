@@ -72,7 +72,7 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     	
     	$AlbumData->updateThis();
             
-        erLhcoreClassModule::redirect('gallery/admincategorys/'.$AlbumData->category);
+        erLhcoreClassModule::redirect('gallery/managealbumimages/'.$AlbumData->aid);
         exit;  
          
     }  else {         

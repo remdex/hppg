@@ -67,9 +67,9 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         $AlbumData->owner_id = $form->UserID;
         $AlbumData->category = $form->AlbumCategoryID;
         $AlbumData->storeThis();
-                         
-        erLhcoreClassModule::redirect('/gallery/admincategorys/'.$AlbumData->category);
-        exit;  
+                       
+        erLhcoreClassModule::redirect('gallery/managealbumimages/'.$AlbumData->aid);
+        exit; 
          
     }  else {         
         $tpl->set('errArr',$Errors);
