@@ -32,7 +32,7 @@ $tpl->set('album',$Album);
 $Result['content'] = $tpl->fetch();
 
 $path = array();
-$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbumimages','Home')); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbumimages','Root category')); 
 $pathObjects = array();
 erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$Album->category);   
  
@@ -44,7 +44,7 @@ foreach ($pathObjects as $pathItem)
 }
 
 $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/managealbumimages').'/'.$Album->aid,'title' => $Album->title);
-
+$path[] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/movebyresolution','Move by resolution'));
 
 $Result['path'] = $path;
 $Result['path_cid'] = $pathCategorys;

@@ -17,7 +17,8 @@ $Result['additional_js'] = '<script type="text/javascript" language="javascript"
 
 $pathObjects = array();
 $pathCategorys = array();
-erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$AlbumData->category);        
+erLhcoreClassModelGalleryCategory::calculatePathObjects($pathObjects,$AlbumData->category);   
+$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/managealbumimages'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumeditadmin','Root category'));     
 foreach ($pathObjects as $pathItem)
 {
    $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys').'/'.$pathItem->cid,'title' => $pathItem->name); 

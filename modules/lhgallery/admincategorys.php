@@ -33,7 +33,7 @@ if (isset($_POST['UpdatePriorityAlbum'])) {
 
 $pathCategorys = array();
 $path = array(); 
-$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Home')); 
+$path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/admincategorys'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/admincategorys','Root category')); 
 
 if (is_numeric($Params['user_parameters']['category_id']) && $Params['user_parameters']['category_id'] > 0)
 {

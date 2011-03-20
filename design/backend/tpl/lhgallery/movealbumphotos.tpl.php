@@ -12,13 +12,13 @@
         <td valign="top">        
             <table cellpadding="0" cellspacing="0">
                 <tr>
-                    <td valign="top"><div><input type="text" class="default-input newAlbumName" value="" > <input class="default-button" type="button" value="Search album" /></div> </td>
+                    <td valign="top"><div><input type="text" class="default-input newAlbumName" value="" > <input class="default-button" type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/movealbumphotos','Search album')?>" /></div> </td>
                     <td><div id="album_select_directory0"></div></td>
                 </tr>
             </table>
         </td>
         <td valign="top">
-        <input type="submit" class="default-button" value="Move photos" id="moveAction" style="display:none" name="moveSelectedPhotos" /> 
+        <input type="submit" class="default-button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/movealbumphotos','Move photos')?>" id="moveAction" style="display:none" name="moveSelectedPhotos" /> 
         </td>
     </tr>
     
@@ -26,7 +26,7 @@
 </form>
     
 <?php if (isset($effected_images)) : ?>
-<h2>We moved <?=$effected_images?> images</h2>
+<h2><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/movealbumphotos','We moved')?> <?=$effected_images?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/movealbumphotos','images')?></h2>
 <?php endif;?>
 
 <script>
