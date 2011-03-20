@@ -651,12 +651,18 @@ box-shadow:0px 0px 5px #a8a8a8;
 
 div.album-thumb:hover,
 div.image-thumb:hover{z-index:9;}
+
+
 div.image-thumb:hover .tit-item{height:auto;min-height:31px;}
 div.image-thumb:hover .thumb-attr{min-height:59px;position:absolute;background-color:#F1F1F1;border: 1px solid white;margin-left:-1px;width:120px;border-top:0;}
-
 div.album-thumb:hover .tit-item{height:auto;min-height:38px;}
 div.album-thumb:hover .thumb-attr{min-height:10px;position:absolute;background-color:#F1F1F1;border: 1px solid white;margin-left:-10px;width:138px;border-top:0;padding-left:18px;padding-right:19px;padding-bottom:6px;}
 
+div.image-thumb:hover .thumb-attr,
+div.album-thumb:hover .thumb-attr{
+box-shadow:0px 2px 5px #e1e1e1;
+-webkit-box-shadow:0px 2px 5px #e1e1e1;
+-moz-box-shadow: 0px 2px 5px #e1e1e1;}
 
 
 .thumb-attr a:hover{text-decoration:underline;}
