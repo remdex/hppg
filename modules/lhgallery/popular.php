@@ -40,7 +40,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $Result['path'] = array();
     $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/popular'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Most popular images'));
-
+    $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/popular').$appendResolutionMode.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : ''); 
+    
     if ($resolution != '') {
         $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/popular').$appendResolutionMode,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popular','Resolution').' - '.$resolution);  
     }

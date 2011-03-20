@@ -36,7 +36,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
        
     $tpl->set('appendImageMode',$appendImageMode);
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lasthits'));
-        
+    
+    $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/lasthits').$appendResolutionMode.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : ''); 
     $Result['content'] = $tpl->fetch();
     
     $Result['path'] = array();

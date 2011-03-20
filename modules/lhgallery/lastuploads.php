@@ -53,6 +53,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     
     $Result['content'] = $tpl->fetch();
+    $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/lastuploads').$appendResolutionMode.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : ''); 
     
     $Result['path'] = array(); 
     $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/lastuploads'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images'));    

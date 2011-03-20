@@ -64,8 +64,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
       
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastrated','Last rated images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastratedrss');
-
-    
+    $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/lastrated').$appendResolutionMode.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
 
     $cache->store($cacheKey,$Result);
 }

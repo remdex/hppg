@@ -25,6 +25,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
     
     $cache->store($cacheKey,$Result);
+    $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/lastuploadstoalbums').($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
 } 
 
 ?>

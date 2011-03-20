@@ -177,19 +177,34 @@ class erLhcoreClassModelGalleryImage {
            	
        	case 'url_path':         
             if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-            {         
-                    $pathElements = array();
-                    foreach ($this->path as $item){
-                        $pathElements[] = urlencode(erLhcoreClassCharTransform::TransformToURL($item['title']));
-                    }     
-                    $this->url_path = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->pid.'p.html',false);             
+            {                         
+                    $this->url_path = erLhcoreClassDesign::baseurl($this->nice_path_base,false);            
                     return $this->url_path;
             } else {
                 $this->url_path = erLhcoreClassDesign::baseurl('gallery/image').'/'.$this->pid;
                 return $this->url_path;
             }               
             break;
-       		     		
+            
+        case 'nice_path_base':
+       	     $pathElements = array();
+             foreach ($this->path as $item){
+                $pathElements[] = urlencode(erLhcoreClassCharTransform::TransformToURL($item['title']));
+             }
+             $this->nice_path_base = implode('/',$pathElements).'-'.$this->pid.'p.html';
+             return $this->nice_path_base;             
+       	break;
+       	    
+       	case 'url_path_base':
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+            { 
+                    $this->url_path = erLhcoreClassDesign::baseurldirect($this->nice_path_base,false); 
+                    return $this->url_path;
+            } else {
+                return erLhcoreClassDesign::baseurldirect('gallery/image').'/'.$this->pid;
+            }            
+            break;
+            	     		
        	case 'filesize_user':        	    
        	    $this->filesize_user = round(($this->filesize/1024),2) . ' KB';
        	    return $this->filesize_user;

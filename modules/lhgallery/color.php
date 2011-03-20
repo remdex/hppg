@@ -67,16 +67,20 @@ if (($Result = $cache->restore($cacheKey)) === false)
             $pages->paginate();
             $tpl->set('pages',$pages);
             $tpl->set('items',$list);
-            $tpl->set('appendImageMode','/(mode)/color/(color)/'.implode('/',$pallete_id).$appendResolutionMode);
+            $tpl->set('appendImageMode','/(mode)/color/(color)/'.implode('/',$pallete_id).$appendResolutionMode); 
             $tpl->set('appendResolutionMode',$appendResolutionMode);
             $tpl->set('currentResolution',$resolution);
             $tpl->set('pallete_id',$pallete_id);
             $tpl->set('database_handler',erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'database_handler'));
             $tpl->set('palletes',erLhcoreClassModelGalleryPallete::getList(array('filterin' => array('id' => $pallete_id))));
-            $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/color').'/(color)/'.implode('/',$pallete_id));                  
+            $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/color').'/(color)/'.implode('/',$pallete_id));  
+            $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/color').'/(color)/'.implode('/',$pallete_id).$appendResolutionMode.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
+                       
         } catch (Exception $e) {
             
         }
+    } else {
+        $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/color');
     }
     
     $Result['content'] = $tpl->fetch();

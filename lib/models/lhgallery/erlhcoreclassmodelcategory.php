@@ -325,22 +325,43 @@ class erLhcoreClassModelGalleryCategory {
        		return  $this->albums_count;
        		break;
        	
-       	case 'path_url':
-            
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-            {    
-                    $pathElements = array();                
-                    $arrayPath = array();
+       	case 'path':
+       	            $arrayPath = array();
                     erLhcoreClassModelGalleryCategory::getCategoryPathURL($arrayPath,$this->cid);
-                    foreach ($arrayPath as $item){
-                        $pathElements[] = erLhcoreClassCharTransform::TransformToURL($item['title']);
-                    }               
-                    $this->path_url = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->cid.'c.html',false);    
+                    $this->path = $arrayPath;
+                    return $this->path;
+       	    break;
+       		
+       	case 'path_url':            
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+            {
+                    $this->path_url = erLhcoreClassDesign::baseurl($this->nice_path_base,false);    
                     return $this->path_url;
             } else {
                 return erLhcoreClassDesign::baseurl('gallery/category').'/'.$this->cid;
-            } 
+            }
+            break;                        
+            
+       	case 'nice_path_base':
+       	     $pathElements = array();
+             foreach ($this->path as $item){
+                $pathElements[] = erLhcoreClassCharTransform::TransformToURL($item['title']);
+             }
+             $this->nice_path_base = implode('/',$pathElements).'-'.$this->cid.'c.html';
+             return $this->nice_path_base;             
+       	break;
+       	       	
+       	case 'url_path_base':
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+            { 
+                    $this->url_path = erLhcoreClassDesign::baseurldirect($this->nice_path_base,false); 
+                    return $this->url_path;
+            } else {
+                return erLhcoreClassDesign::baseurldirect('gallery/category').'/'.$this->cid;
+            }
+            
             break;
+            
        	      	
        	case 'owner':
        	    $this->owner = false;

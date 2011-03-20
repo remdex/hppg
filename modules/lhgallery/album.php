@@ -195,10 +195,12 @@ if (($Result = $cache->restore($cacheKey)) === false)
         $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
+    
+    
     $Result['tittle_prepend'] = $sortModesTitle[$mode];
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last uploaded images to album').' - '.$Album->title;
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/albumrss').'/'.$Album->aid;  
-    
+    $Result['path_base'] = $Album->url_path_base.$appendImageMode.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
     $cache->store($cacheKey,$Result);
 }
 

@@ -29,5 +29,6 @@ if (($Result = $cache->restore($cacheKey)) === false)
         $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
+    $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/popularrecent').($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
     $cache->store($cacheKey,$Result);
 }

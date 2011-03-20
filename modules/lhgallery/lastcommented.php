@@ -50,7 +50,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/lastcommented'));
         
     $Result['content'] = $tpl->fetch();
-       
+    $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/lastcommented').$appendResolutionMode.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');        
     $Result['path'] = array();    
     $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/lastcommented'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images'));
      

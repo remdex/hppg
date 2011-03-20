@@ -49,7 +49,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/toprated'));
     
     $Result['content'] = $tpl->fetch();
-    
+    $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/toprated').$appendResolutionMode.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : ''); 
     $Result['path'] = array(); 
     $Result['path'][] = array('url' =>erLhcoreClassDesign::baseurl('gallery/toprated'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images'));  
       

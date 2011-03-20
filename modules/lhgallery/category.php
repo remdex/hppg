@@ -39,14 +39,14 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('pagesCurrent',$pages);
     $tpl->set('category',$Category);
     
-    $Result['content'] = $tpl->fetch();
-    $path = array();
-    erLhcoreClassModelGalleryCategory::getCategoryPath($path,$Category->cid);
-    $Result['path'] = $path;
+    $Result['content'] = $tpl->fetch();  
+    $Result['path'] = $Category->path;
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
         $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/category','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
+    
+    $Result['path_base'] = $Category->url_path_base.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
     
     $cache->store($cacheKey,$Result);
 } 

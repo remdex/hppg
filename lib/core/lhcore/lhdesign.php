@@ -97,7 +97,7 @@ class erLhcoreClassDesign
     
     public static function baseurldirect($link = '')
     {
-        $instance = erLhcoreClassSystem::instance();            
+        $instance = erLhcoreClassSystem::instance();                      
         return $instance->WWWDir . $instance->IndexFile . '/' . ltrim($link,'/');
     }
     

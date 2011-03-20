@@ -108,8 +108,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
         
         $pages->items_total = $searchResult['total_found'];
         $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/search').$userParams;
-        $pages->paginate();
-        
+        $pages->paginate();        
+        $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/search').$userParams.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');        
         $sortModesTitle = array(    
             'new' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded first'),
             'newasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded last'),    
@@ -157,7 +157,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
         $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/searchrss').'/(keyword)/'.urlencode($searchParams['keyword']); 
         $cache->store($cacheKey,$Result,12000);
     } else {
-        
+        $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/search');
         $tpl->set('enter_keyword',true);
         $Result['path'] = array(array('url' =>erLhcoreClassDesign::baseurl('gallery/search'), 'title' =>  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','Search')));
         $Result['content'] = $tpl->fetch();

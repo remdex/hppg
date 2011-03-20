@@ -140,37 +140,59 @@ class erLhcoreClassModelGalleryAlbum {
        	       $this->images_count = erLhcoreClassModelGalleryImage::getImageCount(array('cache_key' => CSCacheAPC::getMem()->getCacheVersion('album_'.$this->aid),'filter' => array('aid' => $this->aid,'approved' => 1)));
        		   return $this->images_count;
        		break;
-       		
-       	case 'path':        	    
-           	    $categoryPath = array();
+       	
+       	case 'parent_path':
+       	        $categoryPath = array();
            	    erLhcoreClassModelGalleryCategory::getCategoryPath($categoryPath,$this->category); 
-           	    $categoryPath[] = array('title' =>$this->title,'url' => $this->url_path); 
+           	    $this->parent_path = $categoryPath;
+           	    return $this->parent_path;
+       	    break;
+       			
+       	case 'path':        	    
+           	    $categoryPath = $this->parent_path;
+           	    $categoryPath[] = array('title' =>$this->title,'url' => $this->url_path);            	    
            	    $this->path = $categoryPath;         	    
            	    return $this->path;
        		break;
        		
        	case 'path_album':
-           	    $categoryPath = array();
-           	    erLhcoreClassModelGalleryCategory::getCategoryPath($categoryPath,$this->category); 
+           	    $categoryPath = $this->parent_path;           	   
            	    $categoryPath[] = array('title' =>$this->title);  
            	    $this->path_album = $categoryPath;         	    
            	    return $this->path_album;
        		break;
 
+       	case 'nice_path_base':
+       	     $pathElements = array();
+             foreach ($this->path_album as $item){
+                $pathElements[] = erLhcoreClassCharTransform::TransformToURL($item['title']);
+             }
+             $this->nice_path_base = implode('/',$pathElements).'-'.$this->aid.'a.html';
+             return $this->nice_path_base;
+       	break;       
+       		
         case 'url_path':        
             if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
-            {    
-                    $pathElements = array();
-                    foreach ($this->path_album as $item){
-                        $pathElements[] = erLhcoreClassCharTransform::TransformToURL($item['title']);
-                    }      
-                    $this->url_path     = erLhcoreClassDesign::baseurl(implode('/',$pathElements).'-'.$this->aid.'a.html',false); 
+            { 
+                    $this->url_path = erLhcoreClassDesign::baseurl($this->nice_path_base,false); 
                     return $this->url_path;
-            } else {                    
-                return erLhcoreClassDesign::baseurl('gallery/album').'/'.$this->aid;
+            } else {
+                $this->url_path = erLhcoreClassDesign::baseurl('gallery/album').'/'.$this->aid;
+                return $this->url_path;
             }               
             break;	
-       	       	    	
+
+        case 'url_path_base':
+            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+            { 
+                    $this->url_path = erLhcoreClassDesign::baseurldirect($this->nice_path_base,false); 
+                    return $this->url_path;
+            } else {
+                return erLhcoreClassDesign::baseurldirect('gallery/album').'/'.$this->aid;
+            }
+            
+            break;
+             	    	
         case 'album_thumb_path':
                 // FIX me, we show only approved photo, but we should check if user has access to see all images.      
                 
