@@ -448,6 +448,22 @@ var hw = {
 		});
 		
 		return false;
+	},
+	
+	explandAlbumInfo : function(item)
+	{	    
+	    var nextElement = item.next();
+	    var tempName = item.attr('rel');
+	    var currentName = item.html();
+	    item.html(tempName);
+		item.attr('rel',currentName);
+		  
+	    if (!nextElement.hasClass('expanded-alb-desc')) {
+		  nextElement.addClass('expanded-alb-desc');		  
+	    } else {
+	      nextElement.removeClass('expanded-alb-desc');
+	    };
+	
 	}, 
 	
 	initSortBox : function(name)
