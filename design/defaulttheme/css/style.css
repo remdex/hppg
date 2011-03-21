@@ -1176,5 +1176,5 @@ box-shadow: 0 0 5px #A8A8A8;
 -moz-box-shadow: 0 0 5px #A8A8A8;
 background-color: #f6f6f6;margin-bottom:10px;padding:5px;}
 .expand-icon{float:right;font-weight:bold;cursor:pointer;}
-.album-desc{height:12px;overflow:hidden;}
+.album-desc{height:14px;overflow:hidden;}
 .expanded-alb-desc{height:auto;}
