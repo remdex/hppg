@@ -14,7 +14,7 @@ foreach ($items as $item) :
             <?php endif;?></a>      
             </div>
         
-            <div class="thumb-attr">
+            <div class="album-attr">
                 <div class="tit-item">
                 <h2><a title="<?=htmlspecialchars($item->title)?>" href="<?=$item->url_path?>"><?=htmlspecialchars($item->title)?></a></h2>      
                 </div>
@@ -41,15 +41,3 @@ endforeach; ?>
 <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 
 </div>
-
-<script>
-$("div.album-thumb").mouseover(function() {
-    $(this).addClass('image-thumb-shadow');
-  }).mouseout(function(){
-    $(this).removeClass('image-thumb-shadow');
-  });
-  
-  $('.thumb-attr a').each(function(index) {	
-    	$(this).attr('href',$(this).attr('rel'));
-  })
-</script>
