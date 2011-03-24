@@ -23,7 +23,7 @@
 <?php elseif ($item->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO) : ?>                               
    
     <?php if ($item->has_preview) : ?>
-        <img title="<?=htmlspecialchars($item->name_user);?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode(str_replace(array('.avi','.mpg','.mpeg','.wmv'),'.jpg',$item->filename)),true,$item->pid)?>" alt="<?=htmlspecialchars($item->name_user);?>">
+        <img title="<?=htmlspecialchars($item->name_user);?>" src="<?=erLhcoreClassDesign::imagePath($item->filepath.'thumb_'.urlencode(str_replace(array('.avi','.mpg','.mpeg','.wmv','.mp4'),'.jpg',$item->filename)),true,$item->pid)?>" alt="<?=htmlspecialchars($item->name_user);?>">
     <?php else : ?>
         <img title="<?=htmlspecialchars($item->name_user);?>" src="<?=erLhcoreClassDesign::design('images/icons/avi.jpg')?>" alt="<?=htmlspecialchars($item->name_user);?>">
     <?php endif;?>

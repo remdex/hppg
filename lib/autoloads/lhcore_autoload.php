@@ -76,6 +76,8 @@ return array_merge(array (
         'erLhcoreClassModelGalleryPendingConvert'	    => 'lib/models/lhgallery/erlhcoreclassmodelpendingconvert.php',
         'erLhcoreClassModelGalleryPallete'	            => 'lib/models/lhgallery/erlhcoreclassmodelpallete.php',
         'erLhcoreClassModelGalleryFaceData'	            => 'lib/models/lhgallery/erlhcoreclassmodelfacedata.php',
+        'erLhcoreClassModelGalleryRateBanIP'	        => 'lib/models/lhgallery/erlhcoreclassmodelratebanip.php',
+        'erLhcoreClassModelGalleryCommentBanIP'	        => 'lib/models/lhgallery/erlhcoreclassmodelcommentbanip.php',
 
         //Favorites        
         'erLhcoreClassModelGalleryMyfavoritesImage' 	=> 'lib/models/lhgallery/erlhcoreclassmodelmyfavoritesimage.php',

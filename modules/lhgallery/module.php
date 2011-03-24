@@ -509,6 +509,20 @@ $ViewList['sharehtml'] = array(
 $ViewList['sharephpbb'] = array( 
     'script' => 'sharephpbb.php',
     'params' => array('image_id')
+    ); 
+                         
+$ViewList['ratebanlist'] = array( 
+    'script' => 'ratebanlist.php',
+    'params' => array(),
+    'uparams' => array('delete'),
+    'functions' => array( 'administrate' )
+    );
+                             
+$ViewList['commentbanlist'] = array( 
+    'script' => 'commentbanlist.php',
+    'params' => array(),
+    'uparams' => array('delete'),
+    'functions' => array( 'administrate' )
     );
     
 $FunctionList = array();  

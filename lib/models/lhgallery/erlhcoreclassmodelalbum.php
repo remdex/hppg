@@ -208,7 +208,7 @@ class erLhcoreClassModelGalleryAlbum {
                	                   $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO ) {   
                	                  
                	           if ($image->has_preview == 1) {           	               
-                                return $image->filepath.'thumb_'.urlencode(str_replace(array('.swf','.flv','.ogv','.avi','.mpg','.wmv','.mpeg'),'.jpg',$image->filename));
+                                return $image->filepath.'thumb_'.urlencode(str_replace(array('.swf','.flv','.ogv','.avi','.mpg','.wmv','.mpeg','.mp4'),'.jpg',$image->filename));
                	           }
                	        }               	        
                	    // Image does not exist, just set to zero
@@ -229,7 +229,7 @@ class erLhcoreClassModelGalleryAlbum {
            	                   $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO ) {   
            	                  
            	           if ($image->has_preview == 1) {           	               
-                            return $image->filepath.'thumb_'.urlencode(str_replace(array('.swf','.flv','.ogv','.avi','.mpg','.wmv','.mpeg'),'.jpg',$image->filename));
+                            return $image->filepath.'thumb_'.urlencode(str_replace(array('.swf','.flv','.ogv','.avi','.mpg','.wmv','.mpeg','.mp4'),'.jpg',$image->filename));
            	           }
            	        }
            	    }

@@ -89,16 +89,16 @@ class erLhcoreClassModelGalleryImage {
            }
        } elseif ($this->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO ) {
                   
-           if (file_exists($photoPath.str_replace(array('.avi','.mpg','.wmv','.mpeg'),'.flv',$this->filename)))
-                    unlink($photoPath.str_replace(array('.avi','.mpg','.wmv','.mpeg'),'.flv',$this->filename));
+           if (file_exists($photoPath.str_replace(array('.avi','.mpg','.wmv','.mpeg','.mp4'),'.flv',$this->filename)))
+                    unlink($photoPath.str_replace(array('.avi','.mpg','.wmv','.mpeg','.mp4'),'.flv',$this->filename));
            
            if ($this->has_preview == 1) {      
 
-              if (file_exists($photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg'),'.jpg',$this->filename)))
-                    unlink($photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg'),'.jpg',$this->filename)); 
+              if (file_exists($photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)))
+                    unlink($photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)); 
                          
-             if (file_exists($photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg'),'.jpg',$this->filename)))
-                    unlink($photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg'),'.jpg',$this->filename));                           
+             if (file_exists($photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)))
+                    unlink($photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename));                           
            }
            
        } elseif ($this->media_type == erLhcoreClassModelGalleryImage::mediaTypeSWF ) {

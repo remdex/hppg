@@ -395,7 +395,30 @@ switch ((int)$Params['user_parameters']['step_id']) {
                           `lang` varchar(5) NOT NULL,
                           PRIMARY KEY (`msg_id`),
                           KEY `com_pic_id` (`pid`)
-                        ) DEFAULT CHARSET=utf8;");
+                        ) DEFAULT CHARSET=utf8;"); 
+                
+                // Banned rate IP
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_images_rate_ban_ip` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `ip` varchar(39) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `ip` (`ip`)
+                ) DEFAULT CHARSET=utf8;");
+                
+                // Protection against rating from same ip multiple times
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_images_rate_last_ip` (
+                  `pid` int(11) NOT NULL,
+                  `ip` varchar(39) NOT NULL,
+                  PRIMARY KEY (`pid`)
+                ) DEFAULT CHARSET=utf8;");
+                
+                // Banned IP
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_images_comment_ban_ip` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `ip` varchar(39) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `ip` (`ip`)
+                ) DEFAULT CHARSET=utf8;");
                 
                 // Images table
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_images` (
@@ -769,6 +792,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 ('mpg', 'video/mpeg','movie', 'VIDEO'),
                 ('wmv', 'video/x-ms-wmv','movie', 'VIDEO'),
                 ('mpeg','video/mpeg','movie', 'VIDEO'),
+                ('mp4','video/mp4','movie', 'VIDEO'),
                 ('avi', 'video/x-msvideo',  'movie',  'VIDEO'),
                 ('swf', 'application/x-shockwave-flash', 'movie', 'SWF'),
                 ('flv', 'video/x-flv', 'movie', 'FLV');");

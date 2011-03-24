@@ -53,6 +53,22 @@ if ( !$form->hasValidData( 'CommentBody' ) || trim($form->CommentBody) == '' || 
 } else $CommentData->msg_body = trim($form->CommentBody);
 
 
+// Save query on invalid data request
+if (count($Errors) == 0)
+{
+    /*Is IP banned*/
+    $db = ezcDbInstance::get(); 
+    $stmt = $db->prepare('SELECT id FROM lh_gallery_images_comment_ban_ip WHERE ip = :ip');   
+    $stmt->bindValue( ':ip',$_SERVER['REMOTE_ADDR']);
+    $stmt->execute();
+    $ipBanned = $stmt->fetchColumn();
+    
+    if ( is_numeric($ipBanned) )   
+    {
+         $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','You are not allowed to leave a comments!');
+    }
+}
+
 if (count($Errors) == 0)
 {  
     

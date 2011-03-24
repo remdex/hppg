@@ -21,17 +21,60 @@ class erLhcoreClassGallery{
         }
         return self::$persistentSession;
    }
-   
-   public static function make_clickable($text)
-   {
-        $ret = ' ' . $text;
-        $ret = preg_replace("#(^|[\n ])([\w]+?://[\w]+[^ \"\n\r\t<]*)#ise", "'\\1<a class=\"link\" target=\"_blank\" href=\"\\2\" >\\2</a>'", $ret);
-        $ret = preg_replace("#(^|[\n ])((www|ftp)\.[^ \"\t\n\r<]*)#ise", "'\\1<a class=\"link\" target=\"_blank\" href=\"http://\\2\" >\\2</a>'", $ret);
-        $ret = preg_replace("#(^|[\n ])([a-z0-9&\-_\.]+?)@([\w\-]+\.([\w\-\.]+\.)*[\w]+)#i", "\\1<a class=\"mail\" href=\"mailto:\\2@\\3\">\\2@\\3</a>", $ret);
-        $ret = substr($ret, 1);
-        return($ret);
+      
+   // From WP, that's why we love open source :)
+   public static function _make_url_clickable_cb($matches) {
+    	$url = $matches[2];
+    	$suffix = '';
+    
+    	/** Include parentheses in the URL only if paired **/
+    	while ( substr_count( $url, '(' ) < substr_count( $url, ')' ) ) {
+    		$suffix = strrchr( $url, ')' ) . $suffix;
+    		$url = substr( $url, 0, strrpos( $url, ')' ) );
+    	}
+    
+    	if ( empty($url) )
+    		return $matches[0];
+    
+    	return $matches[1] . "<a href=\"$url\" class=\"link\" target=\"_blank\">$url</a>" . $suffix;
    }
     
+   // From WP :)
+   public static function _make_web_ftp_clickable_cb($matches) {
+    	$ret = '';
+    	$dest = $matches[2];
+    	$dest = 'http://' . $dest;
+    	if ( empty($dest) )
+    		return $matches[0];
+    
+    	// removed trailing [.,;:)] from URL
+    	if ( in_array( substr($dest, -1), array('.', ',', ';', ':', ')') ) === true ) {
+    		$ret = substr($dest, -1);
+    		$dest = substr($dest, 0, strlen($dest)-1);
+    	}
+    	return $matches[1] . "<a href=\"$dest\" class=\"link\" target=\"_blank\">$dest</a>$ret";
+   }
+    
+   // From WP :)
+   function _make_email_clickable_cb($matches) {
+    	$email = $matches[2] . '@' . $matches[3];
+    	return $matches[1] . "<a href=\"mailto:$email\" class=\"mail\">$email</a>";
+   }
+   
+   // From WP :)
+   public static function make_clickable($ret) {
+    	$ret = ' ' . $ret;
+    	// in testing, using arrays here was found to be faster
+    	$ret = preg_replace_callback('#(?<!=[\'"])(?<=[*\')+.,;:!&$\s>])(\()?([\w]+?://(?:[\w\\x80-\\xff\#%~/?@\[\]-]|[\'*(+.,;:!=&$](?![\b\)]|(\))?([\s]|$))|(?(1)\)(?![\s<.,;:]|$)|\)))+)#is', 'erLhcoreClassGallery::_make_url_clickable_cb', $ret);
+    	$ret = preg_replace_callback('#([\s>])((www|ftp)\.[\w\\x80-\\xff\#$%&~/.\-;:=,?@\[\]+]+)#is', 'erLhcoreClassGallery::_make_web_ftp_clickable_cb', $ret);
+    	$ret = preg_replace_callback('#([\s>])([.0-9a-z_+-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})#i', 'erLhcoreClassGallery::_make_email_clickable_cb', $ret);
+    	
+    	// this one is not in an array because we need it to run last, for cleanup of accidental links within links
+    	$ret = preg_replace("#(<a( [^>]+?>|>))<a [^>]+?>([^>]+?)</a></a>#i", "$1$3</a>", $ret);
+    	$ret = trim($ret);
+    	return $ret;
+   }
+      
    public static function multi_implode($glue, $pieces, $key = null)
    {
        $string='';

@@ -358,13 +358,15 @@ var hw = {
 	
 	deleteComment : function (comment_id)
 	{		
-		$.postJSON(this.formAddPath + this.deletecommentpath + comment_id, function(data){	
-		   if (data.error == 'false')
-		   {	
-				 $('#comment_row_id_'+comment_id).fadeOut();
-		   } 
-           return true;	          
-		});	
+	    if ( confirm('Are you sure?') ) {
+    		$.postJSON(this.formAddPath + this.deletecommentpath + comment_id, function(data){	
+    		   if (data.error == 'false')
+    		   {	
+    				 $('#comment_row_id_'+comment_id).fadeOut();
+    		   } 
+               return true;	          
+    		});	
+	    }
 		return false;	
 	},
 	
