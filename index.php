@@ -50,7 +50,7 @@ include_once 'xhprof_lib/utils/xhprof_runs.php';
 
 $profiler_namespace = 'myapp';  // namespace for your application
 $xhprof_data = xhprof_disable();
-
+ 
 $xhprof_runs = new XHProfRuns_Default();
 $run_id = $xhprof_runs->save_run($xhprof_data, $profiler_namespace);
 
