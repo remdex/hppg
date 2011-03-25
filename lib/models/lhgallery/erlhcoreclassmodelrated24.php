@@ -74,6 +74,12 @@ class erLhcoreClassModelGalleryRated24 {
    				try {
    					$this->image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
    				} catch (Exception $e) {
+   				    
+   				    $this->removeThis();
+   				    
+   				    $cache = CSCacheAPC::getMem(); 
+   				    $cache->increaseCacheVersion('ratedrecent_version');
+   				    
    					$this->image = false;
    				}
    				return $this->image;
@@ -226,8 +232,10 @@ class erLhcoreClassModelGalleryRated24 {
           }
           
           $images = erLhcoreClassModelGalleryImage::getImages(array('filterin' => array('pid' => $pids)));
-          foreach ($objects as $item){
-              $item->image = $images[$item->pid];
+          foreach ($objects as $item) {
+              if (isset($images[$item->pid])) {
+                  $item->image = $images[$item->pid];
+              }
           }
       }
       

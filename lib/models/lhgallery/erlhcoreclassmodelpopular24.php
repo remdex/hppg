@@ -57,6 +57,12 @@ class erLhcoreClassModelGalleryPopular24 {
    				try {
    					$this->image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
    				} catch (Exception $e) {
+   				    
+   				    $this->removeThis();
+   				    
+   				    $cache = CSCacheAPC::getMem(); 
+   				    $cache->increaseCacheVersion('popularrecent_version',time(),600);
+   				    
    					$this->image = false;
    				}
    				return $this->image;
@@ -210,7 +216,9 @@ class erLhcoreClassModelGalleryPopular24 {
           
           $images = erLhcoreClassModelGalleryImage::getImages(array('filterin' => array('pid' => $pids)));
           foreach ($objects as $item){
-              $item->image = $images[$item->pid];
+              if (isset($images[$item->pid])){
+                $item->image = $images[$item->pid];
+              }
           }
       }
       
