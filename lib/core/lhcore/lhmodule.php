@@ -150,6 +150,17 @@ class erLhcoreClassModule{
 				$contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);	
 			}
 			
+			// Compile config settings
+            $Matches = array();
+            preg_match_all('/erLhcoreClassModelSystemConfig::fetch\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)->current_value/i',$contentFile,$Matches); 
+            foreach ($Matches[1] as $key => $UrlAddress)
+            {
+                $valueConfig = erLhcoreClassModelSystemConfig::fetch($Matches[2][$key])->current_value;
+                $valueReplace = '';
+                $valueReplace = '\''.$valueConfig.'\'';
+                $contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);                               
+            }                        
+                        
 			file_put_contents($fileCompiled,$contentFile);
             
 			$cacheModules[$cacheKey] = $fileCompiled;		

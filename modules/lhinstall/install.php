@@ -828,6 +828,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('file_upload_limit', '200', 0, 'How many files upload during one session', 0),
 						('thumbnail_width_x', '120', 0, 'Small thumbnail width - x', 0),
 						('thumbnail_width_y', '130', 0, 'Small thumbnail width - Y', 0),
+						('max_comment_length',  '1000',  '0',  'Maximum comment length',  '0'),
 						('video_convert_command',  'ffmpeg -y -i {original_file} -qmax 15 -s 580x440 -ar 22050 -ab 32 -f flv {converted_file} &> /dev/null',  '0',  '',  '0'),
 						('flash_screenshot_command',  'bin/shell/xvfb-run.sh --server-args=\"-screen 0, 1024x2730x24\" bin/shell/screenshot.sh',  '0',  'Command witch is executed for making flash screenshot',  '0'),
 						('allowed_file_types', '*.jpg;*.gif;*.png;*.png;*.bmp;*.ogv;*.swf;*.mpeg;*.avi;*.mpg;*.wmv', 0, 'List of allowed file types to upload', 0),
