@@ -56,9 +56,27 @@ class erLhcoreClassGallery{
    }
     
    // From WP :)
-   function _make_email_clickable_cb($matches) {
+   public static function _make_email_clickable_cb($matches) {
     	$email = $matches[2] . '@' . $matches[3];
     	return $matches[1] . "<a href=\"mailto:$email\" class=\"mail\">$email</a>";
+   }
+   
+   public static function _make_paypal_button($matches){
+       
+         if (filter_var($matches[1],FILTER_VALIDATE_EMAIL)) {            
+            return '<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="'.$matches[1].'">
+            <input type="hidden" name="lc" value="US">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_SM.gif:NonHostedGuest">
+            <input type="image" title="Support an artist" src="https://www.paypalobjects.com/WEBSCR-640-20110306-1/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/WEBSCR-640-20110306-1/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>';
+        } else {
+            return $matches[0];
+        }
    }
    
    // From WP :)
@@ -71,6 +89,10 @@ class erLhcoreClassGallery{
     	
     	// this one is not in an array because we need it to run last, for cleanup of accidental links within links
     	$ret = preg_replace("#(<a( [^>]+?>|>))<a [^>]+?>([^>]+?)</a></a>#i", "$1$3</a>", $ret);
+    	
+    	// Paypal button
+    	$ret = preg_replace_callback('#\[paypal\](.*?)\[/paypal\]#is', 'erLhcoreClassGallery::_make_paypal_button', $ret);
+    	    	
     	$ret = trim($ret);
     	return $ret;
    }
