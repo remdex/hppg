@@ -77,6 +77,16 @@ class erLhcoreClassGallery{
         } else {
             return $matches[0];
         }
+   } 
+   
+   public static function _make_youtube_block($matches) {       
+         $data = parse_url($matches[1]);
+         parse_str($data['query'],$query);                           
+         if (stristr($data['host'],'youtube.com') && isset($query['v']) && ($query['v'] != '')) {             
+             return '<iframe title="YouTube video player" width="480" height="300" src="http://www.youtube.com/embed/'.urlencode($query['v']).'" frameborder="0" allowfullscreen></iframe>';             
+         } else {
+             return $matches[0]; 
+         }
    }
    
    // From WP :)
@@ -92,6 +102,9 @@ class erLhcoreClassGallery{
     	
     	// Paypal button
     	$ret = preg_replace_callback('#\[paypal\](.*?)\[/paypal\]#is', 'erLhcoreClassGallery::_make_paypal_button', $ret);
+    	    	
+    	// Youtube block
+    	$ret = preg_replace_callback('#\[youtube\](.*?)\[/youtube\]#is', 'erLhcoreClassGallery::_make_youtube_block', $ret);
     	    	
     	$ret = trim($ret);
     	return $ret;
