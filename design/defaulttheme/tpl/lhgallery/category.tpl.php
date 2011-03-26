@@ -2,6 +2,16 @@
 <h1><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1>
 </div>
 
+<?php if ($category->description != '') : ?>
+<div class="album-description">
+<a class="expand-icon" onclick="hw.explandAlbumInfo($(this))" rel="Less &raquo;">More &raquo;</a>
+<div class="album-desc">
+<?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($category->description))?>
+</div>
+</div>
+<?php endif;?>
+
+
 <? if ($pagesCurrent->items_total > 0) { ?>         
   <? 
       $pages = $pagesCurrent;

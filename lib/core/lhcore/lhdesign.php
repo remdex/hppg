@@ -225,8 +225,9 @@ class erLhcoreClassDesign
                            }
                        }
                     }
-                                     
+                    
                     $filesToCompress .= $fileContent;
+                	break;
                 	
                 } else { 
                 	if ($debugOutput == true)
@@ -246,6 +247,59 @@ class erLhcoreClassDesign
         }
         
         return $instance->wwwDir() . '/cache/compiledtemplates/'.$fileName.'.css'; 
+    }
+    
+    public static function designJS($files)
+    {
+        $debugOutput = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' );
+    	$items = explode(';',$files);
+        
+    	if ($debugOutput == true) {
+    		$logString = '';
+    		$debug = ezcDebug::getInstance(); 
+    	}
+    	    	
+    	$filesToCompress = '';
+    	foreach ($items as $path)
+    	{	
+            $instance = erLhcoreClassSystem::instance();  
+            foreach ($instance->ThemeSite as $designDirectory)
+            {
+                $fileDir = $instance->SiteDir . 'design/'. $designDirectory .'/' . $path; 
+                                           
+                if (file_exists($fileDir)) {  
+                	
+                    $fileContent = file_get_contents($fileDir);
+                                        
+                    // normalize line feeds
+                    $script = str_replace( array( "\r\n", "\r" ), "\n", $fileContent );
+        
+                    // remove multiline comments
+                    $script = preg_replace( '!(?:\n|\s|^)/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $script );
+                    $script = preg_replace( '!(?:;)/\*[^*]*\*+([^/][^*]*\*+)*/!', ';', $script );
+        
+                    // remove whitespace from start & end of line + singelline comment + multiple linefeeds
+                    $script = preg_replace( array( '/\n\s+/', '/\s+\n/', '#\n\s*//.*#', '/\n+/' ), "\n", $script );
+                                     
+                    $filesToCompress .= $script."\n";
+                	break;
+                	
+                } else { 
+                	if ($debugOutput == true)
+    	            $logString .= "Not found IN - ".$fileDir."<br/>";
+                }
+            } 
+    	}
+   	   	
+        $sys = erLhcoreClassSystem::instance()->SiteDir;        
+        $fileName = md5($filesToCompress.$instance->WWWDirLang);
+        $file = $sys . 'cache/compiledtemplates/'.$fileName.'.js'; 
+        
+        if (!file_exists($file)) {    		   
+            file_put_contents($file,$filesToCompress);
+        }
+        
+        return $instance->wwwDir() . '/cache/compiledtemplates/'.$fileName.'.js'; 
     }
     
     

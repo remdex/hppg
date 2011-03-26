@@ -1,3 +1,6 @@
+<?php $bbcodeElementID = '#PhotoDescription_'.$image->pid;?>
+<?php include(erLhcoreClassDesign::designtpl('lhbbcode/bbcode_js_css.tpl.php'));?>
+
 <div class="picture-details">
     <div class="sub-header">
     <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Image edit')?></h3>

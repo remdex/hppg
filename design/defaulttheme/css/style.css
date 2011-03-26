@@ -182,10 +182,10 @@ div.error-list ul li
 .picture-comments ul li{border-bottom:1px solid #EFEFEF;padding-top:10px;}
 .comment-form{font-size:11px;margin-top:3px;}
 .comment-form h4{font-size:11px;}
-.comment-form textarea{width:100%;}
+.comment-form textarea{width:99.9%;}
 .in-blk label{display:block;padding-bottom:2px;}
 .in-blk{padding-bottom:5px;}
-.default-textarea{border:1px solid #CCCCCC;}
+.default-textarea{border:1px solid #CCCCCC;padding:5px;}
 .author{text-decoration:underline;}
 .picture-comments ul.error-list li,
  ul.error-list li{color:red;border:0;}
@@ -744,13 +744,8 @@ font-size:11px;
 .navigator a.previous{font-weight:normal;background-position:100% -103px;padding-right:8px;}
 .navigator a.previous{background-position:0 -115px;padding-left:8px;}
 
-
 .image-full .default-button{font-size:12px;padding:2px;padding-left:4px;padding-right:4px;}
-.image-full input.inputfield{font-size:12px;padding:2px;padding-left:4px;padding-right:4px;}
 .image-full .sub-header{margin-top:10px;}
-
-
-
 
 .found-total{color:#b0b0b0;}
 .category{padding-bottom:10px;}
@@ -838,7 +833,7 @@ input.default-button
     padding-right:17px;color:#FFFFFF;text-decoration:none;}
     
 
-.inputfield{font-size:12px;border:1px solid #CCCCCC;padding:5px;}
+.inputfield{font-size:12px;border:1px solid #CCCCCC;padding:5px;width:180px}
 .smlinputfield{padding:1px;}
 .inputfield:focus{box-shadow:0px 0px 2px #a8a8a8;
 -webkit-box-shadow:0px 0px 2px #a8a8a8;
@@ -907,7 +902,9 @@ box-shadow:0px 0px 5px #a8a8a8;
 -moz-box-shadow: 0px 0px 5px #a8a8a8;
 background-color:#f1f1f1;
 }
-.img img{border:9px solid #f1f1f1;}
+
+.img img.main{border:9px solid #f1f1f1;}
+.img p{margin:0;padding:0;}
 .ajax-loading-items{background: url(../images/images/loading_ajax.gif) no-repeat center center;height: 217px;margin-bottom:2px;}
 
 
@@ -1095,6 +1092,7 @@ div.dominant-colors div a{display:block;height:20px;}
 .color-nav a{background-color:transparent;}
 #tags-container{float:right;width:300px;}
 #tags-container input{margin-right:2px;}
+#IDtagsPhoto{width:150px;padding:2px;}
 .wk-d td{background-color:#939185;color:#FFFFFF}
 
 .inf-img{
@@ -1177,4 +1175,10 @@ box-shadow: 0 0 5px #A8A8A8;
 background-color: #f6f6f6;margin-bottom:10px;padding:5px;}
 .expand-icon{float:right;font-weight:bold;cursor:pointer;}
 .album-desc{height:14px;overflow:hidden;}
+.album-desc p{padding:0;margin:0}
 .expanded-alb-desc{height:auto;}
+blockquote{
+background-color:#FFFFFF;border:1px solid #CCCCCC;
+margin-left:10px;
+padding:5px;
+}

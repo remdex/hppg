@@ -64,7 +64,7 @@ class erConfigClassLhCacheConfig
 			unlink($compiledClass);
 		}
 		
-		$compiledTemplates = ezcBaseFile::findRecursive( 'cache/compiledtemplates',array( '@\.php@' ) );
+		$compiledTemplates = ezcBaseFile::findRecursive( 'cache/compiledtemplates',array( '@(\.php|\.js|\.css)@' ) );
 		
 		foreach ($compiledTemplates as $compiledTemplate)
 		{

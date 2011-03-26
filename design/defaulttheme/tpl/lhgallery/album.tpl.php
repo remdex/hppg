@@ -11,7 +11,7 @@ $urlSortBase  = $album->url_path;
 <div class="album-description">
 <a class="expand-icon" onclick="hw.explandAlbumInfo($(this))" rel="Less &raquo;">More &raquo;</a>
 <div class="album-desc">
-<?=erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($album->description)))?>
+<?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($album->description))?>
 </div>
 </div>
 <?php endif;?>

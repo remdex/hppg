@@ -22,7 +22,7 @@
         </div>
         
         
-        <p class="msg-body" id="msg_bd_<?=$comment->msg_id?>"><?=erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($comment->msg_body)))?>    
+        <p class="msg-body" id="msg_bd_<?=$comment->msg_id?>"><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($comment->msg_body))?>    
         <?php endforeach;?>
 
         </ul>
@@ -56,10 +56,10 @@
         <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Nick')?>:</label>
         <input type="text" id="IDName" value="<?=htmlspecialchars($comment_new->msg_author)?>" maxlength="25" class="inputfield"/><i> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Max 25 characters')?></i>
         </div>
-    
-        <div class="in-blk">
+            
+        <div class="in-blk">      
         <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Message')?>:</label>
-        <textarea id="IDCommentBody" rows="5" cols="10" class="default-textarea" ><?=htmlspecialchars($comment_new->msg_body)?></textarea>
+        <textarea id="IDCommentBody" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Supported BB Code style tags: [b] [i] [u] [quote] :) :D :( :o :p ;)')?>" rows="5" cols="10" class="default-textarea" ><?=htmlspecialchars($comment_new->msg_body)?></textarea>
         </div>
                        
         <input type="button" class="default-button" id="CommentButtomStore" onclick="hw.addCheck(<?=time()?>,<?=$image->pid?>)" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Send')?>"/>

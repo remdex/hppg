@@ -21,16 +21,16 @@ if ($apiKey != '') {
     
     if (isset($data['data']['translations'][0]['translatedText']))
     {
-        $translatedText = erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($data['data']['translations'][0]['translatedText'])));    
+        $translatedText = erLhcoreClassBBCode::make_clickable(htmlspecialchars($data['data']['translations'][0]['translatedText']));    
         if ($comment->lang == '') {
             $comment->lang = $data['data']['translations'][0]['detectedSourceLanguage'];
             $comment->saveThis();
         }
     } else {
-       $translatedText = erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($comment->msg_body)));
+       $translatedText = erLhcoreClassBBCode::make_clickable(htmlspecialchars($comment->msg_body));
     }
 } else {
-    $translatedText = erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($comment->msg_body)));
+    $translatedText = erLhcoreClassBBCode::make_clickable(htmlspecialchars($comment->msg_body));
 }
 
 echo json_encode(array('result' => $translatedText));

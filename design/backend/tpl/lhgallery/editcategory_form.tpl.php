@@ -3,9 +3,11 @@
 	<input type="text" class="default-input" name="CategoryName" value="<?=htmlspecialchars($category->name)?>"/>
 </div>
 
+<?php $bbcodeElementID = '#IDDescriptionCategory';?>
+<?php include(erLhcoreClassDesign::designtpl('lhbbcode/bbcode_js_css.tpl.php'));?>
 <div class="in-blk">
 	<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/editcategory','Description');?>*</label>
-	<textarea name="DescriptionCategory" class="default-textarea big-textarea"><?=htmlspecialchars($category->description)?></textarea>
+	<textarea name="DescriptionCategory" id="IDDescriptionCategory" class="default-textarea big-textarea"><?=htmlspecialchars($category->description)?></textarea>
 </div>
 		
 <div class="in-blk">

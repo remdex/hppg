@@ -789,7 +789,7 @@ jQuery.cookie = function(name, value, options) {
         if (value === null) {
             value = '';
             options.expires = -1;
-        }
+        };
         var expires = '';
         if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
             var date;

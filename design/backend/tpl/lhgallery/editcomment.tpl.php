@@ -15,6 +15,6 @@
 
 <span class="author"><?=htmlspecialchars($comment->msg_author);?></span>            
 <div class="right ct"><?=$comment->msg_date;?></div>
-<p class="msg-body"><?=erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($comment->msg_body)))?>
+<p class="msg-body"><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($comment->msg_body))?>
             
 <?php endif;?>

@@ -3,7 +3,7 @@
 <div class="img">
 <?php if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) : ?>
 
-    <a onclick="return hw.showFullImage($(this))" rel="<?=$image->pwidth?>" href="<?=erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename))?>"><img src="<?=($image->pwidth < 450) ? erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename)) : erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode($image->filename))?>" alt="<?=htmlspecialchars($image->name_user);?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Click to see fullsize')?>" ></a>
+    <a onclick="return hw.showFullImage($(this))" rel="<?=$image->pwidth?>" href="<?=erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename))?>"><img class="main" src="<?=($image->pwidth < 450) ? erLhcoreClassDesign::imagePath($image->filepath.urlencode($image->filename)) : erLhcoreClassDesign::imagePath($image->filepath.'normal_'.urlencode($image->filename))?>" alt="<?=htmlspecialchars($image->name_user);?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Click to see fullsize')?>" ></a>
 
 <?php elseif ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV ) : ?>
 
@@ -35,7 +35,7 @@
 <?php endif;?>
 
 <?php if( $image->caption != '') : ?>
-<div class="float-break cap-img"><?=erLhcoreClassGallery::make_clickable(nl2br(htmlspecialchars($image->caption)))?></div>
+<div class="float-break cap-img"><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($image->caption))?></div>
 <?endif;?>
 
 </div>

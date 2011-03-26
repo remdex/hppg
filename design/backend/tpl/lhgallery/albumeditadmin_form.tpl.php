@@ -29,9 +29,13 @@
 </tr>
 </table>
 
+
+<?php $bbcodeElementID = '#IDAlbumDescription';?>
+<?php include(erLhcoreClassDesign::designtpl('lhbbcode/bbcode_js_css.tpl.php'));?>
+
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Description');?></label>
-<textarea name="AlbumDescription" class="default-textarea big-textarea"><?=htmlspecialchars($album->description);?></textarea>
+<textarea name="AlbumDescription" id="IDAlbumDescription" class="default-textarea big-textarea"><?=htmlspecialchars($album->description);?></textarea>
 </div>
 
 <div class="in-blk">

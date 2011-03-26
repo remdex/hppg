@@ -106,6 +106,9 @@ return array_merge(array (
          'erLhcoreClassModelShopUserCredit' 	=> 'lib/models/lhshop/erlhcoreclassmodelusercredit.php',
          'erLhcoreClassModelShopUserCreditOrder'=> 'lib/models/lhshop/erlhcoreclassmodelusercreditorder.php',
          'erLhcoreClassShopMail'				=> 'lib/core/lhshop/lhshopmail.php',
+         
+         
+         'erLhcoreClassBBCode'				    => 'lib/core/lhbbcode/lhbbcode.php',
                   
          // Paypal handler options
          'erLhcoreClassShopPaymentHandlerPaypal' => 'lib/core/lhshop/paymenthandlers/paypal_handler/classes/handler.php',
