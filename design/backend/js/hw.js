@@ -528,7 +528,8 @@ var hw = {
 
          inst.find('img').remove();       
          $('<img/>').attr({
-                src: orig
+                src: orig,
+                class:'main'
             }).appendTo(inst);
 	                        
         $(window).resize(function() {                    

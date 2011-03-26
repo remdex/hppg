@@ -5,7 +5,7 @@
 <a href="<?=erLhcoreClassDesign::baseurl('gallery/movealbumphotos')?>/<?=$album->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/move_photos.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Move all album photos to another album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Move all album photos to another album');?>" /></a>
 <a href="<?=erLhcoreClassDesign::baseurl('gallery/movebyresolution')?>/<?=$album->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/move_photos_resolution.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Move photos by resolution');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Move photos by resolution');?>" /></a>
 <a href="<?=erLhcoreClassDesign::baseurl('gallery/managealbumimages')?>/<?=$album->aid?>/(action)/approve"><img src="<?=erLhcoreClassDesign::design('images/icons/eye.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Approve all images');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Approve all images');?>" /></a>
-<a href="<?=erLhcoreClassDesign::baseurl('gallery/managealbumimages')?>/<?=$album->aid?>/(action)/disapprove"><img src="<?=erLhcoreClassDesign::design('images/icons/eye_cross.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Disapprove all images');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Disapprove all images');?>" /></a>
+<a onclick="return confirm('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Are you sure?');?>')" href="<?=erLhcoreClassDesign::baseurl('gallery/managealbumimages')?>/<?=$album->aid?>/(action)/disapprove"><img src="<?=erLhcoreClassDesign::design('images/icons/eye_cross.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Disapprove all images');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Disapprove all images');?>" /></a>
 <a href="<?=$album->url_path_base?>" target="_blank"><img src="<?=erLhcoreClassDesign::design('images/icons/link.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','View on site');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','View on site');?>" /></a>
 <a onclick="return confirm('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Are you sure?');?>')" href="<?=erLhcoreClassDesign::baseurl('gallery/deletealbumadmin')?>/<?=$album->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" /></a>
 </div>
@@ -26,13 +26,13 @@
 
    
   <fieldset><legend>Change selected images album</legend> 
-  Move selected images to 
+  <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbumimages','Move selected images to')?>
   <div><input type="text" class="default-input newAlbumName" value="" > <input class="default-button" type="button" value="Search album" /></div>
   
   <div id="album_select_directory0"></div>
    
   <input type="submit" class="default-button" value="Move photos" id="moveAction" style="display:none" name="moveSelectedPhotos" />  
-  <input type="button" id="checkAllButton" class="default-button" value="Check all" />  
+  <input type="button" id="checkAllButton" class="default-button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/managealbumimages','Check all')?>" />  
   
   </fieldset>
   
