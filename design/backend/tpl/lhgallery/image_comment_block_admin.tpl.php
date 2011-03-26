@@ -3,11 +3,16 @@
     <div class="sub-header">
     <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Picture comments')?></h3>
     </div>
-    
+                
     <div id="comments-list">
-        <?php $comments = erLhcoreClassModelGalleryComment::getComments(array('cache_key' => 'comments_'.$image->pid,'filter' => array('pid' => $image->pid)));     
-        if (count($comments) > 0) :
+        <?php 
+        $imageCommentVersion = CSCacheAPC::getMem()->getCacheVersion('comments_'.$image->pid);         
+        $commentCount = erLhcoreClassModelGalleryComment::getCount(array('cache_key' => 'comments_count_v_'.$image->pid.'_'.$imageCommentVersion,'filter' => array('pid' => $image->pid)));
+                
+        if ($commentCount > 0) :
+        $comments = erLhcoreClassModelGalleryComment::getComments(array('cache_key' => 'comments_v_'.$image->pid.'_'.$imageCommentVersion,'filter' => array('pid' => $image->pid)));
         ?>
+        
         <ul>
         <?php foreach ($comments as $comment): ?>
         <li id="comment_row_id_<?=$comment->msg_id?>">
@@ -20,15 +25,32 @@
             <span class="author"><?=htmlspecialchars($comment->msg_author);?></span>            
             <div class="right ct"><?=$comment->msg_date;?> | <?=$comment->msg_hdr_ip?></div>                                   
             <p class="msg-body"><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($comment->msg_body))?>  
-            </div>
-              
+            </div>              
         <?php endforeach;?>
         </ul>
+        
+        <?php 
+        $pages = new lhPaginator();
+        $pages->items_total = $commentCount;
+        $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/commentsajax').'/'.$image->pid;
+        $pages->setItemsPerPage(10);
+        $pages->paginate();
+        ?>
+                
+        <div class="comments-paginator">
+        <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator_ajax.tpl.php')); ?>
+        </div>
+                
+        <script>
+        hw.initCommentTranslations();
+        </script>
+        
         <?else:?>
         <p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','No comments')?></p>
         <?endif;?>
     </div>
-        
+    
+    
     <div class="comment-form">
         
         <? if (isset($commentErrArr)) : ?>

@@ -88,7 +88,7 @@ if (count($Errors) == 0)
     erLhcoreClassGallery::getSession()->update($Image);
     
     //Clear cache
-    CSCacheAPC::getMem()->delete('comments_'.$Image->pid);
+    CSCacheAPC::getMem()->increaseCacheVersion('comments_'.$Image->pid);
     CSCacheAPC::getMem()->increaseCacheVersion('last_commented');
     CSCacheAPC::getMem()->increaseCacheVersion('last_commented_'.$Image->aid);
     CSCacheAPC::getMem()->increaseCacheVersion('last_commented_image_version_'.$Image->pid);

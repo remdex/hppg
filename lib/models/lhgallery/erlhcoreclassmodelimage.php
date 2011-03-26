@@ -476,8 +476,7 @@ class erLhcoreClassModelGalleryImage {
               erLhcoreClassGallery::addShardFilter($params['filter_shard']['append_shard']);
           }
       }
-   
-      
+         
       if (!isset($params['disable_sql_cache']))
       {
               $cache->store($cacheKey,$objects);

@@ -504,16 +504,21 @@ var hw = {
 	initCommentTranslations : function() {
 	    $('.lang-box').mouseenter(function(){ 
 	        $('.lng-cmt').hide(); 
+	        $('.tr-lnk').show();
+	        
 	        clearTimeout(hw.delayTime);
             if ($(this).find('.lng-cmt').size() == 0)
             {
-                hw.showTransteToBox($(this),$(this).find('a.tr-lnk').attr('rel'));   
+                hw.showTransteToBox($(this),$(this).find('a.tr-lnk').attr('rel'));  
+                $(this).find('.tr-lnk').hide(); 
             } else {
                 $(this).find('.lng-cmt').show();
+                $(this).find('.tr-lnk').hide();
             }        
         }).mouseleave(function() {   
              hw.delayTime = setTimeout(function(){ 
-                    $('.lng-cmt').fadeOut();
+                    $('.lng-cmt').hide();
+                    $('.tr-lnk').show();
     	     },1000);
         });
 	},
@@ -551,6 +556,16 @@ var hw = {
         		});      
 	        }          
        })	   
+	},
+	
+	goToPage : function(url)
+	{	 
+        $.getJSON(url, function(data) {				
+			if (data.error == 'false') {
+			    $('#'+data.container).html(data.result);
+			    document.location = '#'+data.scrollto;			   
+			};        
+		});
 	},
 	
 	showFullImage : function(inst)

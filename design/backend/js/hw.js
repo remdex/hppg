@@ -497,6 +497,16 @@ var hw = {
 		return false;	
 	},
 	
+	goToPage : function(url)
+	{	 
+        $.getJSON(url, function(data) {				
+			if (data.error == 'false') {
+			    $('#'+data.container).html(data.result);
+			    document.location = '#'+data.scrollto;			   
+			};        
+		});
+	},
+	
 	updateComment : function(msg_id){	    
 	    var pdata = {
 	       'msg_author' : $('#MessageAuthor_'+msg_id).val(),       

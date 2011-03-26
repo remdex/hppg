@@ -93,7 +93,12 @@ $ViewList['image'] = array(
     'params' => array('image_id'),
     'multiple_arguments' => array ( 'color' ),
     'uparams' => array('mode','keyword','sort','resolution','color'),
-    );  
+    ); 
+            
+$ViewList['commentsajax'] = array( 
+    'script' => 'commentsajax.php',
+    'params' => array('image_id')
+);  
            
 $ViewList['showimageinfo'] = array( 
     'script' => 'showimageinfo.php',

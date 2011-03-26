@@ -5,30 +5,32 @@
     </div>
     
     <div id="comments-list">
-        <?php $comments = erLhcoreClassModelGalleryComment::getComments(array('cache_key' => 'comments_'.$image->pid,'filter' => array('pid' => $image->pid)));     
-        if (count($comments) > 0) :
+        <?php 
+        $imageCommentVersion = CSCacheAPC::getMem()->getCacheVersion('comments_'.$image->pid);         
+        $commentCount = erLhcoreClassModelGalleryComment::getCount(array('cache_key' => 'comments_count_v_'.$image->pid.'_'.$imageCommentVersion,'filter' => array('pid' => $image->pid)));
+                
+        if ($commentCount > 0) :
+        $comments = erLhcoreClassModelGalleryComment::getComments(array('cache_key' => 'comments_v_'.$image->pid.'_'.$imageCommentVersion,'filter' => array('pid' => $image->pid)));
         ?>
-        <ul>
-        <?php foreach ($comments as $comment): ?>
-        <li>
         
-        <div class="float-break head-sub-com">
-            <div class="right lang-box">
-            <a href="#" class="tr-lnk" rel="<?=$comment->msg_id?>" title="Click to translate comment to other language">| Translate to</a>
-            </div>
-              
-            <span class="author"><?=htmlspecialchars($comment->msg_author);?></span>
-            <div class="right ct"><?=$comment->msg_date;?></div>
+        <?php include(erLhcoreClassDesign::designtpl('lhgallery/comment_list_items.tpl.php')); ?>
+        
+        <?php 
+        $pages = new lhPaginator();
+        $pages->items_total = $commentCount;
+        $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/commentsajax').'/'.$image->pid;
+        $pages->setItemsPerPage(10);
+        $pages->paginate();
+        ?>
+                
+        <div class="comments-paginator">
+        <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator_ajax.tpl.php')); ?>
         </div>
-        
-        
-        <p class="msg-body" id="msg_bd_<?=$comment->msg_id?>"><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($comment->msg_body))?>    
-        <?php endforeach;?>
-
-        </ul>
+                
         <script>
         hw.initCommentTranslations();
         </script>
+        
         <?else:?>
         <p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','No comments')?></p>
         <?endif;?>

@@ -10,18 +10,31 @@
     <li><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Comment stored')?>
 </ul>
 <--[SPLITTER]-->
-<?php $comments = erLhcoreClassModelGalleryComment::getComments(array('cache_key' => 'comments_'.$image->pid,'filter' => array('pid' => $image->pid)));     
-if (count($comments) > 0) :
+
+<?php 
+$imageCommentVersion = CSCacheAPC::getMem()->getCacheVersion('comments_'.$image->pid);         
+$commentCount = erLhcoreClassModelGalleryComment::getCount(array('cache_key' => 'comments_count_v_'.$image->pid.'_'.$imageCommentVersion,'filter' => array('pid' => $image->pid)));
+
+if ($commentCount > 0) :
+$comments = erLhcoreClassModelGalleryComment::getComments(array('cache_key' => 'comments_v_'.$image->pid.'_'.$imageCommentVersion,'filter' => array('pid' => $image->pid)));
 ?>
-<ul>
-<?php foreach ($comments as $comment): ?>
-<li id="com_<?=$comment->msg_id?>"<?php if ($comment_id == $comment->msg_id) :?> style="display:none;"<?php endif;?>>
-<span class="author"><?=htmlspecialchars($comment->msg_author);?></span>
-<div class="right ct"><?=$comment->msg_date;?></div>
-<p class="msg-body"><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($comment->msg_body))?>    
-<?php endforeach;?>
-</ul>
-<?else:?>
-<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','No comments')?></p>
-<?endif;?>      
+
+<?php include(erLhcoreClassDesign::designtpl('lhgallery/comment_list_items.tpl.php')); ?>
+
+<?php 
+$pages = new lhPaginator();
+$pages->items_total = $commentCount;
+$pages->serverURL = erLhcoreClassDesign::baseurl('gallery/commentsajax').'/'.$image->pid;
+$pages->setItemsPerPage(10);
+$pages->paginate();
+?>
+        
+<div class="comments-paginator">
+<?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator_ajax.tpl.php')); ?>
+</div>
+        
+<script>
+hw.initCommentTranslations();
+</script>
+<?endif;?>
 <?endif;?>
