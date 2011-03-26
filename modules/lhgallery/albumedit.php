@@ -33,17 +33,20 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     {
         $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Please enter album name!');
     } else {$AlbumData->title = $form->AlbumName;}
-    
-    
+        
     if ( $form->hasValidData( 'AlbumDescription' ) && $form->AlbumDescription != '' )
     {
         $AlbumData->description = $form->AlbumDescription;
+    } else {
+        $AlbumData->description = '';
     }
     
     if ( $form->hasValidData( 'AlbumKeywords' ) && $form->AlbumKeywords != '' )
     {
         $AlbumData->keyword = $form->AlbumKeywords;
-    } 
+    } else {
+        $AlbumData->keyword = '';
+    }
     
     if (count($Errors) == 0)
     {                        
