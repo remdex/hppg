@@ -3,12 +3,18 @@
 $AlbumData = $Params['user_object'] ;
 $imagePath = base64_decode($Params['user_parameters_unordered']['image']);
 
+$photoDir = dirname($imagePath);
+$fileName = basename($imagePath);
+
+$photoDir = erLhcoreClassGalleryBatch::normalizePath($photoDir);       
+$fileName = erLhcoreClassGalleryBatch::normalizeFilename($fileName,$photoDir);
+$imagePath = $photoDir . '/' . $fileName;
+
+
 if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePath) && ($filetype = erLhcoreClassModelGalleryFiletype::isValidLocal($imagePath)) !== false )
-{           	        
+{
    try {
-       $photoDir = dirname($imagePath);
-       $fileName = basename($imagePath);
-       
+               
        if (!file_exists($photoDir.'/normal_'.$fileName) && !file_exists($photoDir.'/thumb_'.$fileName))
        {             	
        	   $config = erConfigClassLhConfig::getInstance();
@@ -18,11 +24,11 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            $image->aid = $AlbumData->aid;
                   
            $session->save($image); 
-           
+         
            $filetype->processLocalBatch($image,array(
     	       'photo_dir'        => $photoDir,
     	       'file_name_physic' => $fileName,
-    	       'post_file_name'   => $imagePath    	      
+    	       'post_file_name'   => $photoDir . '/' . $fileName
 	       ));
            
            $image->filepath = str_replace('albums/','',$photoDir).'/';
@@ -54,11 +60,14 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
 	       
 	       erLhcoreClassModelGalleryAlbum::updateAddTime($image);
 	            
+       } else {
+           erLhcoreClassLog::write('File not found - '.$photoDir.'/'.$fileName);
        }
        
     } catch (Exception $e) {
+        
         $session->delete($image);
-        erLhcoreClassLog::write('Exception during upload'.$e);
+        erLhcoreClassLog::write('Exception during upload'.$e.'. File to import - '.$photoDir.'/'.$fileName);
         echo json_encode(array('result' => 'item'));
         exit;
         return ;

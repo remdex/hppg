@@ -43,6 +43,43 @@ class erLhcoreClassGalleryBatch {
 		return $hasDir;
 	}
 
+	/**
+	 * Normalize path to web safe structure
+	 * */
+	public static function normalizePath($dir)
+	{
+	    $partsPath = explode('/',$dir);
+        $pathCurrent = '';
+        
+        foreach ($partsPath as $key => $path)
+        {
+            $pathOriginal = $pathCurrent;
+            $pathCurrent .= $path . '/';            
+            $normalisedPath = preg_replace('#[^a-zA-Z0-9_-]+#','',$path);            
+            // If paths differs and directory was not already normalized
+            if ( $normalisedPath != $path && !is_dir($pathOriginal . $normalisedPath) && is_dir(rtrim($pathCurrent,'/')) ) {                
+                rename(rtrim($pathCurrent,'/') , $pathOriginal . $normalisedPath);
+            }
+            $pathCurrent = $pathOriginal . $normalisedPath . '/';           
+        }
+        
+        return rtrim($pathCurrent,'/');	    
+	}
+	
+	/**
+	 * Normalize filename to avoid any erros on urlencode, etc.
+	 * */
+	public static function normalizeFilename($filename,$path)
+	{	    
+	    $normalisedFilename = preg_replace("#[^a-zA-Z0-9_\.-]+#",'',$filename); 	    	    
+	    if ($normalisedFilename != $filename && file_exists($path . '/' . $filename)) {
+	        rename($path . '/' . $filename,$path . '/' . $normalisedFilename);
+	        $filename = $normalisedFilename;
+	    }
+	    
+	    return $filename;
+	}
+	
 	public static function listDirectoryRecursive($dir = 'albums')
 	{
 		$data = ezcBaseFile::findRecursive(
@@ -51,6 +88,8 @@ class erLhcoreClassGalleryBatch {
 		);
 		return $data;
 	}
+	
+	
 }
 
 ?>
