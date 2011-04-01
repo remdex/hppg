@@ -267,7 +267,8 @@ return array (
     array (
       'host' => 'localhost',
       'port' => 3312,     
-      'index' => 'index_name',
+      'index' => 'index_name index_name_delta',
+      'index_forum' => 'index_forum_name index_forum_delta',
       'enabled' => false, 
       'max_matches' => 1000000,
       'enabled_wildcard' => false, 
