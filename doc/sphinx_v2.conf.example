@@ -35,6 +35,36 @@ source anifofdeltasrc : anifofsrc
 	sql_query_killlist = SELECT pid FROM lh_gallery_images_delta
 }
 
+source forumsearchsrc
+{
+	type					= mysql
+	sql_host				= <host>
+	sql_user				= <username>
+	sql_pass				= <password>
+	sql_db					= <database>
+	sql_port				= 3306	# optional, default is 3306
+
+	sql_query				= \
+		SELECT lh_forum_sphinx.* FROM lh_forum_sphinx
+		
+    sql_attr_uint           = topic_id
+	sql_query_info			= SELECT * FROM lh_forum_message WHERE id=$id	
+	sql_query_post			= DELETE FROM lh_forum_message_delta	
+}
+
+source forumsearchdeltasrc : forumsearchsrc
+{
+    sql_query_pre = SET NAMES utf8
+    sql_query_post = SET NAMES utf8
+    
+    sql_query				= \
+		SELECT lh_forum_sphinx.* FROM lh_forum_sphinx \
+		INNER JOIN lh_forum_message_delta ON lh_forum_message_delta.id = lh_forum_sphinx.id
+		
+	sql_attr_uint          = topic_id
+	sql_query_killlist     = SELECT id FROM lh_forum_message_delta
+}
+
 index anifof
 {
 	source					= anifofsrc
@@ -58,4 +88,23 @@ index anifofdelta : anifof
 {
     source          = anifofdeltasrc
     path            = /var/data/anifofdeltasrc
+}
+
+index forumsearch
+{
+	source					= forumsearchsrc
+	path					= /var/data/forumsearchsrc
+	docinfo					= extern
+	charset_type=utf-8
+	charset_table   = 0..9, A..Z->a..z, _-> , a..z
+	
+	min_word_len = 3
+	enable_star = 1
+	min_prefix_len = 3
+}
+
+index forumsearchdelta : forumsearch
+{
+    source          = forumsearchdeltasrc
+    path            = /var/data/forumsearchdeltasrc
 }

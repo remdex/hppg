@@ -28,8 +28,6 @@ $modePallete = 'search';
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/pallete_box.tpl.php'));?>
 
-
-
 <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Search results')?> - <?=htmlspecialchars($keyword)?></h1>
 </div>
 

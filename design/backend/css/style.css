@@ -1610,6 +1610,8 @@ padding-bottom:5px;
 background-position:-63px -44px;
 }
 
+.left-infobox{margin-left:10px;}
+
 .left-infobox ul.last-hits-infobox li a{
 padding:0;
 background:none;
@@ -2109,3 +2111,62 @@ margin-left:10px;
 padding:5px;}
 .comments-paginator a{cursor:pointer;}
 .comments-paginator .navigator{border-top:0;font-size:11px;}
+
+
+/* FORUM */
+.forum-message{padding: 0px 100px 0 100px;border-bottom:1px solid #B0B0B0;}
+.forum-message{padding-top:10px;padding-bottom:10px;}
+.author-info{width: 100px;
+float: left;
+margin-left: -100px;
+display: inline;}
+.msg-body{
+width: 100%;
+float: left;}
+
+.reply-block {
+width: 100;
+float: right;
+overflow: hidden;
+margin-right: -100px;
+display: inline;
+font-size:11px;}
+
+.reply-block a{display:block;padding-top:4px;padding-bottom:4px;}
+
+.forum-paginator .navigator{border-top:0;}
+.author-info span{display:block;font-size:11px;}
+.author-info span.nick{font-weight:bold;}
+.author-info span.msgcnt{color:#b3b3b3;}
+.msg-body blockquote{background-color:#efefef;margin:10px;}
+.ctime{color:#808080}
+.msg-ctime{border-bottom:1px solid #d0d0d0;font-size:11px;margin-bottom:10px;}
+
+
+.header-row h1{font-size:12px;padding-bottom:0;}
+.topic-item h3,
+.header-row h2{padding-bottom:0;}
+.header-row th.hitem{text-align:left;}
+.header-row th{background-color:#ededed;padding:5px;font-weight:normal;vertical-align:bottom;}
+.cat-desc{padding-bottom:0;font-size:11px;font-style:italic;}
+
+.forumsubcategory h3{padding-bottom:0;}
+tr.topic-item td,
+.forumsubcategory td{border-bottom:1px solid #B0B0B0;padding:5px;}
+
+.topic-item:hover td,
+.forumsubcategory:hover td{background-color:#f4f4f4}
+
+.ctime{font-size:11px;white-space:nowrap;}
+tr.topic-item td h3{font-weight:normal;}
+td.ptd{text-align:center;font-size:11px;}
+
+th.top-th{width:50px;}
+th.msg-th{width:50px;}
+th.lst-th{width:50px;}
+.img_embed{overflow:auto;max-height:600px;}
+.error-link{background:url(../images/icons/error.png) no-repeat center left;padding-left:20px;}
+.reply-link{background:url(../images/icons/arrow_turn_left.png) no-repeat center left;padding-left:20px; }
+.edit-link{background:url(../images/icons/page_edit.png) no-repeat center left;padding-left:20px; }
+.delete-link{background:url(../images/icons/delete.png) no-repeat center left;padding-left:20px; }
+.menu-left-standard{padding-left:10px;}

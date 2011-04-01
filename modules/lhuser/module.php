@@ -60,6 +60,12 @@ $ViewList['grouplist'] = array(
     'params' => array(),
     'functions' => array( 'grouplist' ),
     );
+              
+$ViewList['manageprofile'] = array( 
+    'script' => 'manageprofile.php',
+    'params' => array('user_id'),
+    'functions' => array( 'edituser' ),
+);
     
 $ViewList['edit'] = array( 
     'script' => 'edit.php',

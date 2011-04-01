@@ -31,8 +31,7 @@
 	<div id="bodcont" class="float-break">
 		
 				
-        <div id="leftmenucont">
-              
+        <div id="leftmenucont">              
             <?php if (erLhcoreClassUser::instance()->isLogged()) : ?>
             <div class="left-infobox">
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_user.tpl.php'));?>	
@@ -46,8 +45,7 @@
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_last_hits.tpl.php'));?>	 
                	      
         </div>
-        
-        	
+                	
 		<div id="middcont">
 			<div id="mainartcont">
 			

@@ -26,5 +26,9 @@
 		
         <?php if (erLhcoreClassUser::instance()->hasAccessTo('lhgallery','public_upload_archive')) : ?>
 		<li><a href="<?=erLhcoreClassDesign::baseurl('gallery/publicarchiveupload')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Upload zip');?></a> 
+		<?php endif;?>	
+		
+        <?php if (erLhcoreClassUser::instance()->hasAccessTo('lhforum','use_anonymous')) : ?>
+		<li><a href="<?=erLhcoreClassDesign::baseurl('forum/index')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Forum');?></a> 
 		<?php endif;?>		
 </ul>

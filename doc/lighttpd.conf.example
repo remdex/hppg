@@ -9,9 +9,16 @@ url.rewrite-once = (
 "^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/$1/gallery/album/$3$5",
 "^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/$1/gallery/image/$3$5",
 
+# Gallery
 "^/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/gallery/category/$2$4",
 "^/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/gallery/album/$2$4",
 "^/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/gallery/image/$2$4",
+
+# Forum
+"^/(.*)-([0-9]*)(fc\.html)(.*?)$" =>  "/index.php?/forum/category/$2$4",
+"^/(.*)-([0-9]*)(ft\.html)(.*?)$" =>  "/index.php?/forum/topic/$2$4",
+"^/(.*)-([0-9]*)(fm\.html)(.*?)$" =>  "/index.php?/forum/message/$2$4",
+
 "^/design/defaulttheme/js/(.*)" =>  "/design/defaulttheme/js/$1",
 "^/design/backend/js/(.*)" =>  "/design/backend/js/$1",
 "^/design/shoptheme/js/(.*)" =>  "/design/shoptheme/js/$1",

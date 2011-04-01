@@ -78,7 +78,28 @@ class erLhcoreClassImageConverter {
                 ),
                 new ezcImageSaveOptions(array('quality' => (int)erLhcoreClassModelSystemConfig::fetch('normal_thumbnail_quality')->current_value))
             );
-
+            
+            
+            $this->converter->createTransformation(
+                'photoforum',
+                array(
+                     new ezcImageFilter( 'scale',
+                        array( 
+                            'width'     => (int)erLhcoreClassModelSystemConfig::fetch('forum_photo_width')->current_value,                        
+                            'height'     => (int)erLhcoreClassModelSystemConfig::fetch('forum_photo_height')->current_value,                        
+                            'direction' => ezcImageGeometryFilters::SCALE_DOWN,
+                        )
+                   )
+                ),
+                array( 
+                    'image/jpeg',
+                    'image/png',
+                ),
+                new ezcImageSaveOptions(array('quality' => (int)erLhcoreClassModelSystemConfig::fetch('normal_thumbnail_quality')->current_value))
+            );
+            
+            
+            
             if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true){
             	$filterWatermarkAll[] = $waterMarkFilter;
             }    

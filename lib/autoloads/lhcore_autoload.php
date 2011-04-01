@@ -112,6 +112,14 @@ return array_merge(array (
                   
          // Paypal handler options
          'erLhcoreClassShopPaymentHandlerPaypal' => 'lib/core/lhshop/paymenthandlers/paypal_handler/classes/handler.php',
+         
+         // Forum autoloads
+         'erLhcoreClassForum'                    => 'lib/core/lhforum/lhforum.php',
+         'erLhcoreClassModelForumCategory'       => 'lib/models/lhforum/erlhcoreclassmodelcategory.php',
+         'erLhcoreClassModelForumMessage'        => 'lib/models/lhforum/erlhcoreclassmodelmessage.php',
+         'erLhcoreClassModelForumTopic'          => 'lib/models/lhforum/erlhcoreclassmodeltopic.php',
+         'erLhcoreClassModelForumFile'           => 'lib/models/lhforum/erlhcoreclassmodelfile.php',
+         'erLhcoreClassModelForumReport'         => 'lib/models/lhforum/erlhcoreclassmodelreport.php'
                 
          
 ),

@@ -22,6 +22,7 @@
         	   <li><a href="<?=erLhcoreClassDesign::baseurl('article/staticlist')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Static articles');?></a></li>
         	   <li><a href="<?=erLhcoreClassDesign::baseurl('statistic/index')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Statistic');?></a></li>
         	   <li><a href="<?=erLhcoreClassDesign::baseurl('shop/index')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Shop');?></a></li>
+        	   <li><a href="<?=erLhcoreClassDesign::baseurl('forum/admincategorys')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Forum');?></a></li>
         	</ul>
         </div>
         
@@ -32,7 +33,20 @@
 	<div id="bodcont" class="float-break">	
 	
 		<div id="leftmenucont">
-		      <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_admin.tpl.php'));?>		      
+		      <?php if (isset($Result['left_menu'])) : ?>
+		          <?php switch ($Result['left_menu']) {
+		          	case 'forum': ?>
+		          		
+		          	       <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_forum.tpl.php'));?>	
+		          		
+		          		<?php break;
+		          
+		          	default:
+		          		break;
+		          }
+		      else : ?>
+		          <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_admin.tpl.php'));?>		      
+		      <?php endif;?>
 		</div>
 
 		

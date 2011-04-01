@@ -5,10 +5,17 @@ RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)c.htm
 RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)a.html(.*?)?$ index.php/$1/gallery/album/$3$4
 RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)p.html(.*?)?$ index.php/$1/gallery/image/$3$4
 
+RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)fc.html(.*?)?$ index.php/$1/forum/category/$3$4
+RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)ft.html(.*?)?$ index.php/$1/forum/topic/$3$4
+RewriteRule ^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind)/(.*)-([0-9]*)fm.html(.*?)?$ index.php/$1/forum/message/$3$4
 
 RewriteRule ^(.*)-([0-9]*)c.html(.*?)?$ index.php/gallery/category/$2$3
 RewriteRule ^(.*)-([0-9]*)a.html(.*?)?$ index.php/gallery/album/$2$3
 RewriteRule ^(.*)-([0-9]*)p.html(.*?)?$ index.php/gallery/image/$2$3
+
+RewriteRule ^(.*)-([0-9]*)fc.html(.*?)?$ index.php/forum/category/$2$3
+RewriteRule ^(.*)-([0-9]*)ft.html(.*?)?$ index.php/forum/topic/$2$3
+RewriteRule ^(.*)-([0-9]*)fm.html(.*?)?$ index.php/forum/message/$2$3
 
 # Uncomment four lines bellow for disable access to fullsize images.
 #RewriteCond %{REQUEST_FILENAME} /albums [NC]
