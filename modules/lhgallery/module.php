@@ -426,7 +426,13 @@ $ViewList['updateimage'] = array(
 $ViewList['editimage'] = array( 
     'script' => 'editimage.php',
     'params' => array('image_id'),
-    'functions' => array( 'administrate' )
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' =>'administrate')
+    );
+                         
+$ViewList['editimageuser'] = array( 
+    'script' => 'editimageuser.php',
+    'params' => array('image_id'),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' =>'administrate')
     );  
                        
 $ViewList['deductvote'] = array( 

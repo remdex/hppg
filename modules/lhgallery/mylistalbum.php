@@ -18,7 +18,7 @@ $Result['path'] = $Album->path_album;
 $Result['path'] = array (
 
 array('url' => erLhcoreClassDesign::baseurl('user/index'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','Account')),
-array('url' => erLhcoreClassDesign::baseurl('gallery/myalbums'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','My albums')),
+array('url' => erLhcoreClassDesign::baseurl('gallery/myalbums'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/mylistalbum','Albums')),
 array('title' => $Album->title),
 
 );

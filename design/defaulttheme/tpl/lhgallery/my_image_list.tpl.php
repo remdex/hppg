@@ -17,9 +17,9 @@ foreach ($items as $key => $item) : ?>
     </div>
 
     <div class="thumb-pic" id="pid_thumb_<?=$item->pid?>">
-        <a href="<?=$item->url_path.$appendImageMode?>">        
+        <a href="<?=erLhcoreClassDesign::baseurl('gallery/editimageuser')?>/<?=$item->pid?>">        
         <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>                
-        </a>           
+        </a>
     </div>
     <div class="thumb-attr">
     
@@ -46,6 +46,7 @@ foreach ($items as $key => $item) : ?>
 				<textarea class="default-textarea" id="PhotoDescription_<?=$item->pid?>"><?=htmlspecialchars($item->caption)?></textarea>	  
     
     <div class="right">
+        
         <a class="cursor" onclick="return hw.deletePhoto(<?=$item->pid?>)" ><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Delete image');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Delete image');?>" /></a>
     </div>               
     

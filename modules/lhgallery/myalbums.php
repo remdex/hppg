@@ -26,8 +26,5 @@ $Result['content'] = $tpl->fetch();
 
 $Result['path'] = array(
 array('url' => erLhcoreClassDesign::baseurl('user/index'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Account')),
-
-array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','My albums'))
-
-
+array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/myalbums','Albums'))
 );
