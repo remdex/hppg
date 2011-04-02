@@ -553,6 +553,11 @@ var hw = {
 		return false;	
 	},
 	
+	setNewImage : function (image_id)
+	{	
+	    $.colorbox({href:this.formAddPath + 'gallery/switchimage/'+image_id,iframe:true,width:400,height:300});
+	},
+	
 	setFolderImage : function (image_id)
 	{			   	    
 		$.getJSON(this.formAddPath + 'gallery/setfolderthumb/'+image_id,  function(data) {		    	 

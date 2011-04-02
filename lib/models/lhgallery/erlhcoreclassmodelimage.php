@@ -65,6 +65,33 @@ class erLhcoreClassModelGalleryImage {
    
    public function removeThis(){
                  
+       $this->removeFiles();
+       
+       erLhcoreClassImageConverter::removeRecursiveIfEmpty('albums/',$this->filepath);
+       
+       $this->clearCache();
+       erLhcoreClassModelGalleryDuplicateImage::deleteByPid($this->pid);
+       erLhcoreClassModelGalleryMyfavoritesImage::deleteByPid($this->pid);
+       erLhcoreClassModelGalleryPopular24::deleteByPid($this->pid);
+       erLhcoreClassModelGalleryRated24::deleteByPid($this->pid);
+       erLhcoreClassModelGalleryDuplicateImageHash::deleteByPid($this->pid);
+       erLhcoreClassPalleteIndexImage::removeFromIndex($this->pid);
+       erLhcoreClassModelGallerySphinxSearch::removeImage($this->pid);
+       erLhcoreClassModelGalleryFaceData::removeImage($this->pid);
+       
+       erLhcoreClassGallery::getSession()->delete($this);
+       
+       // Expires last uploads shard index
+	   erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
+       
+       CSCacheAPC::getMem()->increaseImageManipulationCache();
+       
+       // Update album last add time
+       erLhcoreClassModelGalleryAlbum::updateAddTime(false,$this->aid);
+   }
+   
+   public function removeFiles()
+   {
        $photoPath = 'albums/'.$this->filepath;
        if (file_exists($photoPath.$this->filename))
             unlink($photoPath.$this->filename);
@@ -109,28 +136,6 @@ class erLhcoreClassModelGalleryImage {
                     unlink($photoPath.'thumb_'.str_replace('.swf','.jpg',$this->filename));                           
            }
        }
-       
-       erLhcoreClassImageConverter::removeRecursiveIfEmpty('albums/',$this->filepath);
-       
-       $this->clearCache();
-       erLhcoreClassModelGalleryDuplicateImage::deleteByPid($this->pid);
-       erLhcoreClassModelGalleryMyfavoritesImage::deleteByPid($this->pid);
-       erLhcoreClassModelGalleryPopular24::deleteByPid($this->pid);
-       erLhcoreClassModelGalleryRated24::deleteByPid($this->pid);
-       erLhcoreClassModelGalleryDuplicateImageHash::deleteByPid($this->pid);
-       erLhcoreClassPalleteIndexImage::removeFromIndex($this->pid);
-       erLhcoreClassModelGallerySphinxSearch::removeImage($this->pid);
-       erLhcoreClassModelGalleryFaceData::removeImage($this->pid);
-       
-       erLhcoreClassGallery::getSession()->delete($this);
-       
-       // Expires last uploads shard index
-	   erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
-       
-       CSCacheAPC::getMem()->increaseImageManipulationCache();
-       
-       // Update album last add time
-       erLhcoreClassModelGalleryAlbum::updateAddTime(false,$this->aid);
    }
    
    public function __get($variable)

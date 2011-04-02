@@ -13,6 +13,7 @@ foreach ($items as $key => $item) : ?>
     <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Flip horizontaly');?>" class="switchicon right" onclick="hw.rotateImage(<?=$item->pid?>,'switch')"></a>
     <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Flip verticaly');?>" class="switchiconv right" onclick="hw.rotateImage(<?=$item->pid?>,'switchv')"></a>
     <?php endif;?>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Upload new image');?>" class="switchiconimg right" onclick="hw.setNewImage(<?=$item->pid?>)"></a>
     <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_image_list','Set as folder thumbnail');?>" class="foldericon right" onclick="hw.setFolderImage(<?=$item->pid?>)"></a>
     </div>
 

@@ -428,6 +428,12 @@ $ViewList['editimage'] = array(
     'params' => array('image_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' =>'administrate')
     );
+                        
+$ViewList['switchimage'] = array( 
+    'script' => 'switchimage.php',
+    'params' => array('image_id'),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' =>'administrate')
+    );
                          
 $ViewList['editimageuser'] = array( 
     'script' => 'editimageuser.php',
