@@ -68,6 +68,8 @@
     			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/go_to_album_box.tpl.php'));?>	
     			
     			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/go_to_image_box.tpl.php'));?>	
+    			
+    			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/go_to_forum_box.tpl.php'));?>	
     				
     			<?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/clear_cache_box.tpl.php'));?>		
     			
