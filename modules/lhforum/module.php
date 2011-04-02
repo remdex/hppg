@@ -1,6 +1,7 @@
 <?php
 
 $Module = array( "name" => "Forum",
+                 'default_function' => 'index',
 				 'variable_params' => true );
 
 $ViewList = array();

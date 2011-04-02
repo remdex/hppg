@@ -40,7 +40,7 @@ class erLhcoreClassModule{
             {                                 
                 if (!$currentUser->hasAccessTo('lh'.self::$currentModuleName,$Params['module']['functions']))
                 {
-                   erLhcoreClassModule::redirect('user/login');
+                   self::redirect('user/login');
                    exit;
                 }
             }
@@ -57,7 +57,7 @@ class erLhcoreClassModule{
                 }                                
             }
                         
-            include_once(erLhcoreClassModule::getModuleFile(self::$currentModuleName,self::$currentView)); 
+            include_once(self::getModuleFile(self::$currentModuleName,self::$currentView)); 
                         
             if (isset($Params['module']['pagelayout']) && !isset($Result['pagelayout'])) {
                 $Result['pagelayout'] = $Params['module']['pagelayout'];
@@ -65,11 +65,40 @@ class erLhcoreClassModule{
                
             return $Result;
         } else {
-            erLhcoreClassModule::redirect();
+            
+            // Default module view
+            if (($viewDefault = self::getModuleDefaultView(self::$currentModuleName)) !== false) {
+                self::redirect(self::$currentModuleName . '/' . $viewDefault);
+                exit;
+            }
+            // No sutch module etc, redirect to frontpage
+            self::redirect();
             exit;
         }
     }
     
+    public static function getModuleDefaultView($module)
+    {
+        $cfg = erConfigClassLhConfig::getInstance();
+        $extensions = $cfg->conf->getSetting('site','extensions');
+                      
+        // Is it core module
+        if (file_exists('modules/lh'.$module.'/module.php')) {
+            include('modules/lh'.$module.'/module.php');             
+        }
+        
+        // Is it extension module        
+        foreach ($extensions as $extension)
+        {   
+            if (file_exists('extension/'.$extension.'/modules/lh'.$module.'/module.php')){              
+                include('extension/'.$extension.'/modules/lh'.$module.'/module.php');                                        
+             }
+        }        
+        
+        if (isset($Module['default_function'])) return $Module['default_function'];
+ 
+        return false;        
+    }
     
     public static function getModuleFile() {
         
@@ -253,11 +282,11 @@ class erLhcoreClassModule{
         self::$cacheInstance = CSCacheAPC::getMem();
         self::$cacheVersionSite = self::$cacheInstance->getCacheVersion('site_version');
 
-        if (self::$currentModuleName == '' || (self::$currentModule = erLhcoreClassModule::getModule(self::$currentModuleName)) === false) {        	
+        if (self::$currentModuleName == '' || (self::$currentModule = self::getModule(self::$currentModuleName)) === false) {        	
             $params = $cfg->getOverrideValue('site','default_url');
             self::$currentView = $params['view'];
             self::$currentModuleName = $params['module'];
-            self::$currentModule = erLhcoreClassModule::getModule(self::$currentModuleName);
+            self::$currentModule = self::getModule(self::$currentModuleName);
         }
 
         if ($cfg->conf->getSetting( 'site', 'redirect_mobile' ) !== false && ((!isset($_COOKIE['RegularVersion'])  && preg_match("/http_(x_wap|ua)_(.*?)/i",implode(' ',array_keys($_SERVER)))) || ( isset($_COOKIE['RegularVersion']) && $_COOKIE['RegularVersion'] == 2 )) ){
@@ -272,7 +301,7 @@ class erLhcoreClassModule{
                 setcookie('RegularVersion','1',time()+30*24*3600,"/");  // Regular version
         }
         
-        return erLhcoreClassModule::runModule();
+        return self::runModule();
         
     }
     
