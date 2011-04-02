@@ -67,8 +67,11 @@ class erLhcoreClassModelForumMessage {
            // We increase topic counter
            $this->topic->incCounter();
        } else {
+           $this->topic->chearTopicCache();
            erLhcoreClassForum::getSession()->update($this); 
        }
+       
+       
        
        CSCacheAPC::getMem()->increaseCacheVersion('forum_user_version_'.$this->user_id);
        erLhcoreClassForum::addToSphinx($this->id);        

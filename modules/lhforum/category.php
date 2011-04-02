@@ -89,7 +89,9 @@ if (isset($_POST['PublishTopic']) || ($Result = $cache->restore($cacheKey)) === 
         	       		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
         	        }
     
-                    erLhcoreClassImageConverter::getInstance()->converter->transform( 'photoforum', $_FILES['LocalFile']['tmp_name'], $photoDir.'/'.$fileNamePhysic );
+                    erLhcoreClassImageConverter::getInstance()->converter->transform( 'photoforum', $_FILES['LocalFile']['tmp_name'], $photoDir.'/'.$fileNamePhysic );                    
+                    chmod($photoDir.'/'.$fileNamePhysic,erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'StorageFilePermissions' ));                    
+                    
                     $instance = erLhcoreClassSystem::instance();                    
                     $message->content .= "\n[img]" . $instance->wwwDir() . '/' . $photoDir . '/' . $fileNamePhysic.'[/img]';
                     

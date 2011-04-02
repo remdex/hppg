@@ -47,6 +47,8 @@ if (isset($_POST['PublishTopic']) && erLhcoreClassUser::instance()->isLogged() &
     	        }
     	        
                 erLhcoreClassImageConverter::getInstance()->converter->transform( 'photoforum', $_FILES['LocalFile']['tmp_name'], $photoDir.'/'.$fileNamePhysic );
+                chmod($photoDir.'/'.$fileNamePhysic,erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                
                 $instance = erLhcoreClassSystem::instance();                    
                 $message->content .= "\n[img]" . $instance->wwwDir() . '/' . $photoDir . '/' . $fileNamePhysic.'[/img]';
                 
