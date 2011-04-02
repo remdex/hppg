@@ -1211,9 +1211,9 @@ display: inline;}
 .msg-body{
 width: 100%;
 float: left;}
-
 #comments-list .msg-body{float:none;width:auto;}
 
+.msg-body ul li{list-style:square inside;}
 
 .reply-block {
 width: 100;
@@ -1279,5 +1279,4 @@ th.lst-th{width:50px;}
 .forum-search-box input.default-button{font-size:12px;padding:3px;padding-left:4px;padding-right:4px;}
 .id-msg-lnk,
 .id-msg-lnk:visited{color:#CCCCCC;}
-
 .fileinput{padding:5px;}
