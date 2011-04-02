@@ -1073,6 +1073,27 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   PRIMARY KEY (`id`),
                   KEY `msg_id` (`msg_id`)
                 ) DEFAULT CHARSET=utf8;");
+                
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_forum_topic` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `ctime` int(11) NOT NULL DEFAULT '0',
+                  `topic_name` varchar(200) NOT NULL,
+                  `path_1` int(11) NOT NULL DEFAULT '0',
+                  `path_2` int(11) NOT NULL,
+                  `path_3` int(11) NOT NULL,
+                  `user_id` int(11) NOT NULL,
+                  `path_0` int(11) NOT NULL DEFAULT '0',
+                  `message_count` int(11) NOT NULL DEFAULT '0' COMMENT 'Static counter for performance',
+                  `last_message_ctime` int(11) NOT NULL DEFAULT '0',
+                  `topic_status` tinyint(1) NOT NULL DEFAULT '0',
+                  `main_category_id` int(11) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `user_id` (`user_id`),
+                  KEY `path_1` (`path_1`,`last_message_ctime`),
+                  KEY `path_3` (`path_3`,`last_message_ctime`),
+                  KEY `path_2` (`path_2`,`last_message_ctime`),
+                  KEY `path_0` (`path_0`,`last_message_ctime`)
+                ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18;");
                                                  
                 $RoleFunction = new erLhcoreClassModelRoleFunction();
                 $RoleFunction->role_id = $Role->id;
