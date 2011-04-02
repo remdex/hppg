@@ -85,4 +85,4 @@ CREATE TABLE IF NOT EXISTS `lh_forum_topic` (
   KEY `path_3` (`path_3`,`last_message_ctime`),
   KEY `path_2` (`path_2`,`last_message_ctime`),
   KEY `path_0` (`path_0`,`last_message_ctime`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) DEFAULT CHARSET=utf8;
