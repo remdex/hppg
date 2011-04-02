@@ -452,7 +452,58 @@ class erLhcoreClassImageConverter {
             }
         }
     }
- 
+    
+    
+    public static function hasFiles($sourceDir)
+    {
+        if ( !is_dir( $sourceDir ) )
+        {
+             return true;
+        }
+        
+        $elements = array();
+        $d = @dir( $sourceDir );
+        if ( !$d )
+        {
+            return true;
+        }
+
+        while ( ( $entry = $d->read() ) !== false )
+        {
+            if ( $entry == '.' || $entry == '..' )
+            {
+                continue;
+            }
+                        
+            return true;            
+        }      
+        
+        return false;
+    }
+
+    public static function removeRecursiveIfEmpty($basePath,$removePath)
+    {
+        $removePath = trim($removePath,'/');
+        $partsRemove = explode('/',$removePath);
+
+        // Avoid removement of userpics folder
+        if ($partsRemove[0] == 'userpics') {
+            $basePath .= 'userpics/';
+            array_shift($partsRemove);
+        }
+        
+        $pathElementsCount = count($partsRemove);               
+        foreach ($partsRemove as $part) {
+    		// We found some files/folders, so we have to exit    		
+    		if (self::hasFiles( $basePath . implode('/',$partsRemove) ) === true) {
+    		    return ;
+    		} else {     		
+    		    //Folder is empty, delete this folder
+    		    @rmdir($basePath . implode('/',$partsRemove));
+    		}
+    		array_pop($partsRemove);		
+        } 
+    }
 }
 
 ?>

@@ -110,6 +110,8 @@ class erLhcoreClassModelGalleryImage {
            }
        }
        
+       erLhcoreClassImageConverter::removeRecursiveIfEmpty('albums/',$this->filepath);
+       
        $this->clearCache();
        erLhcoreClassModelGalleryDuplicateImage::deleteByPid($this->pid);
        erLhcoreClassModelGalleryMyfavoritesImage::deleteByPid($this->pid);

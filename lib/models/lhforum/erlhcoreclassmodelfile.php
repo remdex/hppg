@@ -32,7 +32,9 @@ class erLhcoreClassModelForumFile {
        if (file_exists($this->file_path . '/' . $this->name)){
            @unlink($this->file_path . '/' . $this->name);
        }
-       
+
+       erLhcoreClassImageConverter::removeRecursiveIfEmpty('var/forum/',str_replace('var/forum/','',$this->file_path));
+
        erLhcoreClassForum::getSession()->delete($this); 
    }
 
