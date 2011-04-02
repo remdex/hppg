@@ -23,7 +23,7 @@ mySettings = {
 		{name:'Quotes', openWith:'[quote]', closeWith:'[/quote]'},		
 		{name:'Paypal donate button', openWith:'[paypal]', closeWith:'[/paypal]', placeHolder:'Your paypal email address'},	
 		{name:'Flattr', openWith:'[flattr]', closeWith:'[/flattr]',placeHolder:'Link to flattr page...'},	
-		{name:'Youtube', replaceWith:'[youtube][![Url]!][/youtube]',placeHolder:'Link to youtube video...'},		
+		{name:'Youtube', openWith:'[youtube]', closeWith:'[/youtube]',placeHolder:'Link to youtube video...'},		
 		{name:'Picture', key:'P', replaceWith:'[img][![Url]!][/img]'},
 		{name:'Link', key:'L', openWith:'[url=[![Url]!]]', closeWith:'[/url]', placeHolder:'Your text to link here...'},	
 		{separator:'---------------' },				
