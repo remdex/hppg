@@ -1207,9 +1207,13 @@ blockquote{background-color:#FFFFFF;border:1px solid #CCCCCC;margin-left:10px;pa
 float: left;
 margin-left: -100px;
 display: inline;}
+
 .msg-body{
 width: 100%;
 float: left;}
+
+#comments-list .msg-body{float:none;width:auto;}
+
 
 .reply-block {
 width: 100;
