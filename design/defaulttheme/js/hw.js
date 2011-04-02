@@ -598,21 +598,26 @@ var hw = {
         if (!inst.hasClass('full-mode')) {  
             
             inst.attr('scrtop',$(window).scrollTop());  
+            
+            var imageWidth = parseInt(inst.attr('rel'));
                     
             $('<a/>').attr({
                 'id': 'close-zoom',
-                'title' : 'Return to normal size'
+                'title' : 'Return to normal size',
+                'rel':imageWidth
             }).click(function(){
                 hw.showFullImage(inst);
             }).prependTo($('#img-view .img'));
             
-            var imageWidth = parseInt(inst.attr('rel'));
+            
                         
             $(window).resize(function() {                    
               $('#img-view').css({'max-width':($('#container').width())+'px'});
                if ($('#container').width()-60 <= imageWidth){
                     imgFull.attr('width',$('#container').width()-60);
-               }
+               } else {
+                   imgFull.attr('width',imageWidth);
+               }            
                if ($('#container').width() > imageWidth){
                     $('.navigator-image').css('padding-left',(($('#container').width()-imageWidth-60)/2)+'px');              
                 }
@@ -642,7 +647,7 @@ var hw = {
             }
             
         } else {                 
-            $('#close-zoom').remove();
+            
             inst.find('img').attr('title','Click to see full image');
             $('#container').css('width',inst.attr('rel')+'px');            
             inst.removeClass('full-mode');
@@ -650,12 +655,12 @@ var hw = {
             $('#container').removeClass('no-left-column'); 
             $('#img-view .hide-full').show();
             $('#img-view').css({'max-width':'auto','overflow':'visible'});
-            inst.attr('rel',parseInt($('#img-view .img').width())-18);
+            inst.attr('rel',$('#close-zoom').attr('rel'));
+            $('#close-zoom').remove();            
             $('#img-view .img').css({width:'auto','margin':'0','float':'left'});            
             $('html, body').scrollTop(parseInt(inst.attr('scrtop')));            
             $('.navigator-image').css('padding-left','0');
-        } 
-        
+        }         
         return false;        	   
 	}
 
