@@ -529,6 +529,29 @@ var hw = {
 		return false;
 	},
 	
+	initSortBox : function(name)
+	{
+	    $(document).ready(function() {
+            $(name+" .current-sort").mouseenter(function() {
+            $(name+" .sort-box").fadeIn();
+            $(name+' .choose-sort').addClass('active-sort'); 
+          }).mouseleave(function() {
+            $(name+' .sort-box').hide();
+            $(name+' .choose-sort').removeClass('active-sort');
+          });
+          if ($(name+' .sort-box .selor').size() > 0) {
+              $(name+' .choose-sort span').addClass($(name+' .sort-box .selor').hasClass('ar') ? 'ar-ind' : 'da-ind');                                      
+              var lengthString = $(name+' .sort-box .selor').text().length;  
+              var stringName = $(name+' .sort-box .selor').text();                                         
+              if (lengthString > 10){
+                  stringName = stringName.substring(0, 10)+'...';
+              };                        
+              $(name+' .choose-sort span').text(stringName);                
+              
+          };
+        });
+	},
+	
 	showFullImage : function(inst)
 	{	 	   		   
 	     var orig = inst.attr('href');

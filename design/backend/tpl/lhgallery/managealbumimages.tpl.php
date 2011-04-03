@@ -1,4 +1,5 @@
 <div class="header-list">
+
 <div class="right">
 <a href="<?=erLhcoreClassDesign::baseurl('gallery/addimagesadmin')?>/<?=$album->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Add images');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Add images');?>" /></a>
 <a href="<?=erLhcoreClassDesign::baseurl('gallery/albumeditadmin')?>/<?=$album->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Edit album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Edit album');?>" /></a>
@@ -9,6 +10,11 @@
 <a href="<?=$album->url_path_base?>" target="_blank"><img src="<?=erLhcoreClassDesign::design('images/icons/link.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','View on site');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','View on site');?>" /></a>
 <a onclick="return confirm('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Are you sure?');?>')" href="<?=erLhcoreClassDesign::baseurl('gallery/deletealbumadmin')?>/<?=$album->aid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Delete album');?>" /></a>
 </div>
+<?php
+$urlAppendSort = '';
+$urlSortBase  = erLhcoreClassDesign::baseurl('gallery/managealbumimages').'/'.$album->aid;
+?>
+<?php include_once(erLhcoreClassDesign::designtpl('lhgallery/order_box.tpl.php'));?>
        
 <h1><?=htmlspecialchars($album->title)?></h1>
 </div>
@@ -16,7 +22,7 @@
 <? if ($pages->items_total > 0) { ?>
          
   <? 
-            $items = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'albumlist_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$album->aid),'filter' => array('aid' => $album->aid),'offset' => $pages->low, 'limit' => $pages->items_per_page));
+            $items = erLhcoreClassModelGalleryImage::getImages(array('cache_key' => 'albumlist_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$album->aid),'use_index' => $use_index,'sort' => $modeSQL,'filter' => array('aid' => $album->aid),'offset' => $pages->low, 'limit' => $pages->items_per_page));
   ?>   
   
   <form action="" method="post">
