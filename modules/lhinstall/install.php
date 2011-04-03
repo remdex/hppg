@@ -44,7 +44,10 @@ switch ((int)$Params['user_parameters']['step_id']) {
 	       $Errors[] = "var/tmpfiles is not writable";
 	             	           
 		if (!is_writable("var/watermark"))
-	       $Errors[] = "var/watermark is not writable";	
+	       $Errors[] = "var/watermark is not writable";
+	       	        	           
+		if (!is_writable("var/forum"))
+	       $Errors[] = "var/forum is not writable";	
 	           
 	       if (count($Errors) == 0)
 	           $tpl->setFile('lhinstall/install2.tpl.php');	              
@@ -1089,11 +1092,11 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `main_category_id` int(11) NOT NULL,
                   PRIMARY KEY (`id`),
                   KEY `user_id` (`user_id`),
-                  KEY `path_1` (`path_1`,`last_message_ctime`),
-                  KEY `path_3` (`path_3`,`last_message_ctime`),
-                  KEY `path_2` (`path_2`,`last_message_ctime`),
-                  KEY `path_0` (`path_0`,`last_message_ctime`)
-                ) DEFAULT CHARSET=utf8;");
+                  KEY `path_1` (`path_1`,`last_message_ctime`,`id`),
+                  KEY `path_0` (`path_0`,`last_message_ctime`,`id`),
+                  KEY `path_3` (`path_3`,`last_message_ctime`,`id`),
+                  KEY `path_2` (`path_2`,`last_message_ctime`,`id`)
+                )DEFAULT CHARSET=utf8;");
                                                  
                 $RoleFunction = new erLhcoreClassModelRoleFunction();
                 $RoleFunction->role_id = $Role->id;
