@@ -14,15 +14,8 @@ foreach ($subcategorys as $subcategory) : ?>
         <?=$subcategory->images_count;?>
        </span>
         
-      
         <h3><a href="<?=$subcategory->path_url?>"><?=htmlspecialchars($subcategory->name)?></a></h3>
-        
-        
-        <? if ($subcategory->description != '') : ?>
-        <p><?=$subcategory->description?></p>
-        <?endif;?>
-        
-        
+             
     </div>
 </div>
 <?php $counter++;endforeach;?>    
