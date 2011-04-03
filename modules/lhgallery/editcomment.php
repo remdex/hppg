@@ -12,6 +12,7 @@ try {
         $comment->saveThis(); 
         
         CSCacheAPC::getMem()->increaseCacheVersion('last_commented_image_version_'.$comment->pid);
+        CSCacheAPC::getMem()->increaseCacheVersion('comments_'.$comment->pid);
     }
     
     
