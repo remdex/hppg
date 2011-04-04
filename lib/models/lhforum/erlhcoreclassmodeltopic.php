@@ -368,7 +368,7 @@ class erLhcoreClassModelForumTopic {
       $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_forum_topic.id', 'items.id' );
                 
       // This is hack, because in general it's not neccesary, but I have no idea why mysql does not sort peroperly sometimes.
-      // It should cost a lot of performance because we are sorting just small portion of returned record's
+      // It should not cost a lot of performance, because we are sorting just small portion of returned record's
       $q->orderBy( isset($params['sort']) ? $params['sort'] : 'last_message_ctime DESC, id DESC' );          
             
       $objects = $session->find( $q );         
