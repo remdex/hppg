@@ -553,6 +553,27 @@ var hw = {
 		return false;	
 	},
 	
+	setNewImageFull : function (image_id)
+	{	
+	    $.colorbox({href:this.formAddPath + 'gallery/switchimage/'+image_id+'/(type)/full',iframe:true,width:400,height:300});
+	},
+	
+	moveImageToAnotherAlbum : function (image_id)
+	{	
+	    $.colorbox({href:this.formAddPath + 'gallery/moveimage/'+image_id,iframe:true,width:400,height:300});
+	},
+	
+	rotateImageFromEditWindow : function (image_id,action)
+	{		
+	    $('.main').fadeTo('slow', 0.5);
+		$.getJSON(this.formAddPath + 'gallery/rotate/'+image_id + '/' + action,  function(data) {		    
+		    $('.main').fadeTo('slow', 1);
+		    $('.main').attr('src',$('.main').attr('src')+'?time='+data.time);	
+           return true;	          
+		});	
+		return false;	
+	},
+	
 	setNewImage : function (image_id)
 	{	
 	    $.colorbox({href:this.formAddPath + 'gallery/switchimage/'+image_id,iframe:true,width:400,height:300});

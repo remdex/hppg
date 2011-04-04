@@ -396,6 +396,17 @@ var hw = {
 		return false;	
 	},
 	
+	rotateImageFromEditWindow : function (image_id,action)
+	{		
+	    $('.main').fadeTo('slow', 0.5);
+		$.getJSON(this.formAddPath + 'gallery/rotate/'+image_id + '/' + action,  function(data) {		    
+		    $('.main').fadeTo('slow', 1);
+		    $('.main').attr('src',$('.main').attr('src')+'?time='+data.time);	
+           return true;	          
+		});	
+		return false;	
+	},
+	
 	getcategorycacheinfo : function (category_id)
 	{		
 		$.postJSON(this.formAddPath + 'system/categorycacheinfo/'+category_id,  function(data) {			    
@@ -503,6 +514,16 @@ var hw = {
 	setNewImage : function (image_id)
 	{	
 	    $.colorbox({href:this.formAddPath + 'gallery/switchimage/'+image_id,iframe:true,width:400,height:300});
+	},
+	
+	setNewImageFull : function (image_id)
+	{	
+	    $.colorbox({href:this.formAddPath + 'gallery/switchimage/'+image_id+'/(type)/full',iframe:true,width:400,height:300});
+	},
+	
+	moveImageToAnotherAlbum : function (image_id)
+	{	
+	    $.colorbox({href:this.formAddPath + 'gallery/moveimage/'+image_id,iframe:true,width:400,height:300});
 	},
 	
 	goToPage : function(url)

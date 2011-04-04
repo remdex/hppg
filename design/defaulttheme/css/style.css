@@ -1206,6 +1206,7 @@ cursor:pointer;}
 .switchiconimg{background:url(../images/icons/arrow_switch.png) no-repeat 0px 0px;width:16px;height:16px;cursor:pointer;display:block;margin-right:7px;}
 .loading-item{background: url(../images/newdesign/ajax-loader.gif) no-repeat center center;}
 .top-img-cntr{padding-top:4px;padding-bottom:6px;}
+.moveimageicon{background:url(../images/icons/move_photos.png) no-repeat 0px 0px;width:16px;height:16px;cursor:pointer;display:block;margin-right:7px;}
 
 .album-description{border: 1px solid white;
 box-shadow: 0 0 5px #A8A8A8;

@@ -74,7 +74,7 @@ $ViewList['ownercategorys'] = array(
 $ViewList['albumnamesuggest'] = array( 
     'script' => 'albumnamesuggest.php',
     'params' => array('directory_id','name'),
-    'functions' => array( 'administrate' ),
+    'functions' => array( 'personal_albums' ),
 );     
     
 $ViewList['albumlistdirectory'] = array( 
@@ -303,13 +303,19 @@ $ViewList['moveimages'] = array(
     'script' => 'moveimages.php',
     'params' => array('album_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::isAlbumOwner','param' => 'album_id'),'global' => 'administrate'),
-    );
-    
+);  
+
+$ViewList['moveimage'] = array( 
+    'script' => 'moveimage.php',
+    'params' => array('image_id'),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' =>'administrate')
+);
+
 $ViewList['fileuploadcontainer'] = array( 
     'script' => 'fileuploadcontainer.php',
     'params' => array('fileID','album_id'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryAlbum::canUpload','param' => 'album_id'),'global' => 'administrate'),
-    );
+);
         
 $ViewList['fileuploadcontainerarchive'] = array( 
     'script' => 'fileuploadcontainerarchive.php',
@@ -432,6 +438,7 @@ $ViewList['editimage'] = array(
 $ViewList['switchimage'] = array( 
     'script' => 'switchimage.php',
     'params' => array('image_id'),
+    'uparams' => array('type'),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelGalleryImage::isImageOwner','param' => 'image_id'),'global' =>'administrate')
     );
                          

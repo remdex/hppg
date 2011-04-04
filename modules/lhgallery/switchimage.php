@@ -57,5 +57,6 @@ if (isset($_POST['UploadPhoto'])) {
 }
 
 $tpl->set('image',$Image);
+$tpl->set('type',$Params['user_parameters_unordered']['type']);
 $Result['content'] = $tpl->fetch();
 $Result['pagelayout'] = 'popup';
