@@ -49,7 +49,7 @@ foreach (erLhcoreClassModelGalleryCategory::getParentCategories($filterParams) a
 </form>
 
 <? endif;?>
-</fieldset>
+
 
 <br />
 

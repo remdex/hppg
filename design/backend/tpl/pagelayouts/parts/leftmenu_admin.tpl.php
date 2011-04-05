@@ -12,9 +12,9 @@ $items = erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' =
 				$subcat = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('parent' => $item->cid),'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$item->cid)));
 				$subalbum = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $item->cid)));
 				if ((count($subcat) + count($subalbum)) > 0) : ?>
-					<li id="c<?=$item->cid?>" ><a href="<?=$item->cid?>" class='isplesti'><img src="<?=erLhcoreClassDesign::design('images/gallery/plus.gif')?>" alt="" align="top" /></a><span class="dvcat"><a class="cat-href<?php if (isset($Result['path_cid']) && in_array($item->cid,$Result['path_cid'])){ print ' selected'; }?>" rel="<?=$item->cid?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys')?>/<?=$item->cid?>" ><?=htmlspecialchars($item->name)?></a></span></li>
+					<li id="c<?=$item->cid?>" ><a href="<?=$item->cid?>" class='isplesti'><img src="<?=erLhcoreClassDesign::design('images/gallery/plus.gif')?>" alt="" align="top" /></a><span class="dvcat"><a class="cat-href<?php if (isset($Result['path_cid']) && in_array($item->cid,$Result['path_cid'])){ print ' selected'; }?>" rel="<?=$item->cid?>" href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>/<?=$item->cid?>" ><?=htmlspecialchars($item->name)?></a></span></li>
 				<?php else : ?> 
-					<li><span class="none"><span class="dvcat"><a class="cat-href<?php if (isset($Result['path_cid']) && in_array($item->cid,$Result['path_cid'])){ print ' selected'; }?>" rel="<?=$item->cid?>" href="<?=erLhcoreClassDesign::baseurl('/gallery/admincategorys')?>/<?=$item->cid?>"><?=htmlspecialchars($item->name)?></a></span></span></li>
+					<li><span class="none"><span class="dvcat"><a class="cat-href<?php if (isset($Result['path_cid']) && in_array($item->cid,$Result['path_cid'])){ print ' selected'; }?>" rel="<?=$item->cid?>" href="<?=erLhcoreClassDesign::baseurl('gallery/admincategorys')?>/<?=$item->cid?>"><?=htmlspecialchars($item->name)?></a></span></span></li>
 				<?php endif;
 			}
 		?>
