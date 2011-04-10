@@ -298,6 +298,23 @@ return array (
       'password' => '',
       'database' => '',
       'port' => 3306,
+      'use_slaves' => false,
+      'db_slaves' => array(
+        array (
+         'host' => '',
+         'user' => '',
+         'port' => 3306,
+         'password' => '',
+         'database' => '',
+        ),
+        array (
+         'host' => '',
+         'user' => '',
+         'port' => 3306,
+         'password' => '',
+         'database' => '',
+        )       
+      )
     ),
   ),
   'comments' => NULL,
