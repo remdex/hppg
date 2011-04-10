@@ -2,18 +2,38 @@
 
 class erLhcoreClassLhMemcache extends Memcache
 {
+    private $memcache;
+    
     public function __construct()
-    {               
+    {             
+        
+         $this->memcache = new Memcache();          
          $hosts = erConfigClassLhConfig::getInstance()->conf->getSetting( 'memecache', 'servers' );
          foreach ($hosts as $server) {
-                $this->addServer($server['host'],$server['port'],$server['weight']);
+                $this->memcache->addServer($server['host'],$server['port'],$server['weight']);
          }
     }  
     
+    public function set($key, $value, $compress, $ttl = 0)
+    {      
+         $this->memcache->set($key,$value,$compress,$ttl);       
+    }
+    
     public function __destruct()
     {
-        $this->close();
+        $this->memcache->close();
     }   
+    
+    public function get($var)
+    {
+        return $this->memcache->get($var);
+    }
+    
+    public function increment($var,$version)
+    {
+        return $this->memcache->increment($var);
+    }
+    
 }
 
 

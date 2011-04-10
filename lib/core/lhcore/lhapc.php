@@ -12,7 +12,7 @@ class erLhcoreClassLhAPC
         return apc_fetch($var);
     }
     
-    public function increment($var)
+    public function increment($var,$version)
     {
         apc_inc($var);
     }

@@ -65,6 +65,7 @@ return array_merge(array (
         'erLhcoreClassPalleteIndexImage'            => 'lib/core/lhgallery/lhpalleteindeximage.php',
         'erLhcoreClassLhMemcache'                   => 'lib/core/lhcore/lhmemcache.php',
         'erLhcoreClassLhAPC'                        => 'lib/core/lhcore/lhapc.php',
+        'erLhcoreClassLhRedis'                      => 'lib/core/lhcore/lhredis.php',
         'erLhcoreClassModelGalleryDelayImageHit' 		=> 'lib/models/lhgallery/erlhcoreclassmodeldelayimagehit.php',
         'erLhcoreClassModelGalleryPopular24' 		    => 'lib/models/lhgallery/erlhcoreclassmodelpopular24.php',
         'erLhcoreClassModelGalleryRated24' 		        => 'lib/models/lhgallery/erlhcoreclassmodelrated24.php',
