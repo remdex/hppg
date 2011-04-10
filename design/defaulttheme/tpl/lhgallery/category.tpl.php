@@ -15,7 +15,7 @@
 <? if ($pagesCurrent->items_total > 0) { ?>         
   <? 
       $pages = $pagesCurrent;
-      $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $category->cid,'hidden' => 1),'offset' => $pagesCurrent->low, 'limit' => $pagesCurrent->items_per_page));
+      $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('category' => $category->cid,'hidden' => 0),'offset' => $pagesCurrent->low, 'limit' => $pagesCurrent->items_per_page));
   ?>   
    
   <?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php'));?> 
