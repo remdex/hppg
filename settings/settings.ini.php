@@ -277,13 +277,19 @@ return array (
     ),
     'cacheEngine' => array(
         'cache_global_key'  => 'global_site_cache_key',
-        'className'         => false //'erLhcoreClassLhMemcache' //false if none
+        'className'         => false //'erLhcoreClassLhMemcache erLhcoreClassLhRedis' //false if none
     ),
     'memecache' => 
     array (
       'servers' => array( array('host' => '127.0.0.1',
                                 'port' => '11211',     
                                 'weight' => 1 ) )     
+    ),
+    'redis' => array (
+        'server' => array ( 
+            'host' => 'localhost', 
+            'port' => 6379
+        )
     ), 
     'db' => 
     array (
