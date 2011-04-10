@@ -36,8 +36,8 @@ $pagesSubcategorys->paginate();
      
 if ($pagesSubcategorys->items_total > 0) : 
 $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' => array('parent' => $category->cid),'cache_key' => 'version_'.$cache->getCacheVersion('category_'.$category->cid),'offset' => $pagesSubcategorys->low, 'limit' => $pagesSubcategorys->items_per_page));
- ?>
- 
+?>
+
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/subcategory_list_full.tpl.php'));?> 
 
 <?php $pages = $pagesSubcategorys; ?>
