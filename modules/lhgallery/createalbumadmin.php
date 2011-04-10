@@ -33,6 +33,9 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         ), 
         'AlbumCategoryID' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'int'
+        ),
+        'AlbumHidden' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::OPTIONAL, 'boolean'
         )
     );
     
@@ -43,23 +46,29 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
     {
         $Errors[] =  erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbumadmin','Please enter album name!');
     } else {$AlbumData->title = $form->AlbumName;}
-    
-    
+
     if ( $form->hasValidData( 'AlbumDescription' ) && $form->AlbumDescription != '' )
     {
         $AlbumData->description = $form->AlbumDescription;
     }
-    
+
     if ( $form->hasValidData( 'AlbumKeywords' ) && $form->AlbumKeywords != '' )
     {
         $AlbumData->keyword = $form->AlbumKeywords;
     } 
-    
+
     if ( $form->hasValidData( 'AlbumPublic' ) && $form->AlbumPublic == true )
     {
         $AlbumData->public = 1;
     } else {
         $AlbumData->public = 0;
+    }
+
+    if ( $form->hasValidData( 'AlbumHidden' ) && $form->AlbumHidden == true )
+    {
+        $AlbumData->hidden = 1;
+    } else {
+        $AlbumData->hidden = 0;
     }
     
     if (count($Errors) == 0)

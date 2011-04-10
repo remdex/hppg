@@ -185,6 +185,7 @@ var hw = {
 	myTimer : false,
 	delayTime: false,
 	fetchingInfo: false,	
+	processing:false,
 	
 	setPath : function (path)
 	{		
@@ -324,8 +325,43 @@ var hw = {
 	    this.appendURL = appendURLPar;
 	},
 	
+	initAjaxNavigation : function(){
+	   $('.right-ajax a').click(function(){
+            hw.getimages($(this).attr('rel'),'right');
+           return false;
+        });
+        $('.left-ajax a').click(function(){
+            hw.getimages($(this).attr('rel'),'left');
+           return false;
+        });
+        
+        
+        $('.ad-html').colorbox();
+        $('.ad-phpbb').colorbox();
+        
+        /*
+        $("#images-ajax-container").mousewheel(function(event, delta) {
+          if (delta < 0) { 
+              if ($('.right-ajax:visible a').size() > 0) {
+                hw.getimages($('.right-ajax a').attr('rel'),'right');
+                event.preventDefault();
+              }
+          } else {
+              if ($('.left-ajax:visible a').size() > 0) {
+                hw.getimages($('.left-ajax:visible a').attr('rel'),'left');
+                event.preventDefault();
+              }
+          } 
+        });*/
+	      
+	},
+	
 	getimages : function(url,direction) {	
-	    	    	  
+	    	    	
+	   if (this.processing == true) {
+	       return false;
+	   }	
+	    
 	   var appendUrlToUser = this.appendURL;
 	   var ajaxImagesURL = this.ajaximages;
 	   var urlmain = this.formAddPath;
@@ -334,6 +370,8 @@ var hw = {
 	   $('#images-ajax-container').hide();
 	   $('.right-ajax').hide();
 	   $('.left-ajax').hide();
+	   this.processing = true;
+	   
 	   
        $.getJSON(url + "/(direction)/"+direction, {} , function(data) {	
             
@@ -341,7 +379,8 @@ var hw = {
             $('#images-ajax-container').show();
     	    $('.right-ajax').show();
     	    $('.left-ajax').show();
-	   
+	        hw.processing = false;
+	        
             if (data.error != 'true'){	
                  
                  if (data.has_more_images == 'true') {                     
@@ -1022,4 +1061,3 @@ $(document).ready(function() {
 		}
 	});	
 });
-// http://candrews.net/sandbox/spryMap/

@@ -47,6 +47,14 @@ class erLhcoreClassModelGallerySearchHistory {
        }
    }
    
+   public static function deleteLegacySearch()
+   {
+       $db = ezcDbInstance::get();
+       $stmt = $db->prepare('DELETE FROM `lh_gallery_searchhistory` WHERE last_search < :last_search'); 
+       $stmt->bindValue( ':last_search',time()-(3600*24*31*6)); // Delete six month old search queries
+       $stmt->execute(); 	   
+   }
+   
    public static function getSearches($paramsSearch = array())
    {
        $paramsDefault = array('limit' => 32, 'offset' => 0);       

@@ -31,7 +31,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     } 
     
     $pages = new lhPaginator();
-    $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $Category->cid)));
+    $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('category' => $Category->cid,'hidden' => 1)));
     $pages->setItemsPerPage(16);
     $pages->serverURL = $Category->path_url;
     $pages->paginate();

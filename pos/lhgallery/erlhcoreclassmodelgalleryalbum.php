@@ -52,7 +52,12 @@ $def->properties['addtime']->propertyType = ezcPersistentObjectProperty::PHP_TYP
 $def->properties['album_pid'] = new ezcPersistentObjectProperty();
 $def->properties['album_pid']->columnName   = 'album_pid';
 $def->properties['album_pid']->propertyName = 'album_pid';
-$def->properties['album_pid']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
+$def->properties['album_pid']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
+  
+$def->properties['hidden'] = new ezcPersistentObjectProperty();
+$def->properties['hidden']->columnName   = 'hidden';
+$def->properties['hidden']->propertyName = 'hidden';
+$def->properties['hidden']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT; 
 
 
 $def->relations["erLhcoreClassModelGalleryImage"] = new ezcPersistentOneToManyRelation(

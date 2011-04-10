@@ -14,7 +14,8 @@ class erLhcoreClassModelGalleryAlbum {
                'owner_id'    => $this->owner_id,             
                'public'      => $this->public,             
                'addtime'     => $this->addtime,             
-               'album_pid'   => $this->album_pid           
+               'album_pid'   => $this->album_pid,           
+               'hidden'      => $this->hidden         
        );
    }
    
@@ -413,6 +414,7 @@ class erLhcoreClassModelGalleryAlbum {
    public $public = 0;
    public $addtime = 0;
    public $album_pid = 0;
+   public $hidden = 0;
 
 }
 

@@ -30,6 +30,11 @@
 <input class="inputfield" type="text" name="AlbumKeywords" value="<?=htmlspecialchars($album->keyword);?>" />
 </div>
 
+<div class="in-blk">
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Hidden');?></label>
+<input type="checkbox" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Hide album from users');?>" value="on" <?=$album->hidden == 1 ? 'checked="checked"' : ''?> name="AlbumHidden" />
+</div>
+
 <input type="submit" class="default-button" name="CreateAlbum" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbum','Create')?>"/> <input type="submit" class="default-button" name="CreateAlbumAndUpload" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/createalbum','Create and upload photos')?> &raquo;"/>
 
 </form>

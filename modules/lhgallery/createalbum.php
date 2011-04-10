@@ -13,10 +13,12 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         
         'AlbumDescription' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
-        ),   
-            
+        ),
         'AlbumKeywords' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
+        ),
+        'AlbumHidden' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::OPTIONAL, 'boolean'
         )
     );
     
@@ -39,8 +41,15 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         $AlbumData->keyword = $form->AlbumKeywords;
     } 
     
+    if ( $form->hasValidData( 'AlbumHidden' ) && $form->AlbumHidden == true )
+    {
+        $AlbumData->hidden = 1;
+    } else {
+        $AlbumData->hidden = 0;
+    }
+    
     if (count($Errors) == 0)
-    {     
+    {
         $currentUser = erLhcoreClassUser::instance();
         $AlbumData->owner_id = $currentUser->getUserID(); 
         $AlbumData->category = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('owner_id' => $currentUser->getUserID())),'cid');  

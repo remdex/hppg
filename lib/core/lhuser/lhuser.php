@@ -28,15 +28,24 @@ class erLhcoreClassUser{
            if ( isset($_SESSION['user_id']) )
            {
                unset($_SESSION['user_id']);
+           }
+           
+           if ( isset($_SESSION['access_array']) )
+           {
+               unset($_SESSION['access_array']);
+           }
+           
+           if ( isset($_SESSION['access_timestamp']) )
+           {
+               unset($_SESSION['access_timestamp']);
            }      
        } else {
-          $this->session->save( $this->session->load() ); 
-           
+          $this->session->save( $this->session->load() );        
           $this->userid = $_SESSION['user_id'];
           $this->authenticated = true;
        } 
    }
-   
+      
    function setLoggedUserInstantly($user_id)
    {
        $this->session->destroy();

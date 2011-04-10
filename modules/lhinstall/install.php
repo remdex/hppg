@@ -348,8 +348,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `role_id` (`role_id`)
                 )DEFAULT CHARSET=utf8;");
                                                
-                // Albums table
-                 
+                // Albums table                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_albums` (
                   `aid` int(11) NOT NULL AUTO_INCREMENT,
                   `title` varchar(255) NOT NULL DEFAULT '',
@@ -361,11 +360,12 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `public` int(11) NOT NULL DEFAULT '0',
                   `addtime` int(11) NOT NULL DEFAULT '0',
                   `album_pid` int(11) NOT NULL DEFAULT '0',
+                  `hidden` int(11) NOT NULL DEFAULT '0',
                   PRIMARY KEY (`aid`),
-                  KEY `alb_category` (`category`),
                   KEY `owner_id` (`owner_id`),
                   KEY `addtime` (`addtime`),
-                  KEY `aid` (`pos`,`aid`)
+                  KEY `alb_category` (`category`,`hidden`,`pos`,`aid`),
+                  KEY `aid` (`category`,`pos`,`aid`)
                 )DEFAULT CHARSET=utf8;");
                 
                 // Categorys
@@ -967,7 +967,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   `countresult` int(11) NOT NULL,
                   `last_search` int(11) NOT NULL,
                   `searches_done` int(11) NOT NULL,
-                  PRIMARY KEY (`keyword`)
+                  PRIMARY KEY (`keyword`),
+                  KEY `last_search` (`last_search`)
                 ) DEFAULT CHARSET=utf8;");
 				
                 // Main search index table

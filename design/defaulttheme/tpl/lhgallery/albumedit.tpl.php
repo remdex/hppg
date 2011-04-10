@@ -35,6 +35,12 @@
 
 
 <div class="in-blk">
+<label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Hidden');?></label>
+<input type="checkbox" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Hide album from users');?>" value="on" <?=$album->hidden == 1 ? 'checked="checked"' : ''?> name="AlbumHidden" />
+</div>
+
+
+<div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumedit','Album thumbnail');?></label>
 <?php if ($album->album_pid == 0) : ?>
     <?php if ($album->album_thumb_path !== false) :?> 

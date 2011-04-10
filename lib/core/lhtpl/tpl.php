@@ -196,6 +196,14 @@ class erLhcoreClassTemplate {
 			foreach ($Matches[1] as $key => $UrlAddress)
 			{	
 				$contentFile = str_replace($Matches[0][$key],erLhcoreClassDesign::designCSS(trim($UrlAddress,'\'')),$contentFile);	
+			}	
+							
+			// Compile css url addresses
+			$Matches = array();
+			preg_match_all('/<\?=erLhcoreClassDesign::designJS\((.*?)\)(.*?)\?\>/i',$contentFile,$Matches); 
+			foreach ($Matches[1] as $key => $UrlAddress)
+			{
+				$contentFile = str_replace($Matches[0][$key],erLhcoreClassDesign::designJS(trim($UrlAddress,'\'')),$contentFile);	
 			}
 			
 			// Compile url addresses in logical operations

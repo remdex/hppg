@@ -27,6 +27,9 @@ foreach ($pathObjects as $pathItem)
 
 $path[] = array('url' => erLhcoreClassDesign::baseurl('gallery/managealbumimages').'/'.$AlbumData->aid,'title' => $AlbumData->title);
 
+$path[] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/albumeditadmin','Add images'));
+
+
 $Result['path'] = $path;
 $Result['path_cid'] = $pathCategorys;
 $Result['album_id'] = $AlbumData->aid;

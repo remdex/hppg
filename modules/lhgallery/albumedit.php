@@ -23,6 +23,10 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
             
         'AlbumKeywords' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::REQUIRED, 'unsafe_raw'
+        ),   
+            
+        'AlbumHidden' => new ezcInputFormDefinitionElement(
+            ezcInputFormDefinitionElement::OPTIONAL, 'boolean'
         )
     );
     
@@ -46,6 +50,13 @@ if (isset($_POST['CreateAlbum']) || isset($_POST['CreateAlbumAndUpload']))
         $AlbumData->keyword = $form->AlbumKeywords;
     } else {
         $AlbumData->keyword = '';
+    }
+    
+    if ( $form->hasValidData( 'AlbumHidden' ) && $form->AlbumHidden == true )
+    {
+        $AlbumData->hidden = 1;
+    } else {
+        $AlbumData->hidden = 0;
     }
     
     if (count($Errors) == 0)
