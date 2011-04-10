@@ -42,7 +42,7 @@ class erLhcoreClassModelGalleryImage {
    
    public static function fetch($pid)
    {
-       $Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$pid );
+       $Image = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryImage', (int)$pid );
        return $Image;
    }
    
@@ -173,7 +173,7 @@ class erLhcoreClassModelGalleryImage {
        	    $cacheKey = md5($cache->getCacheVersion('album_'.$this->aid).'album_path_'.$this->aid.'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);     
             if (($categoryPath = $cache->restore($cacheKey)) === false)
             {           	          	    
-           	    $album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', $this->aid );       	     
+           	    $album = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryAlbum', $this->aid );       	     
            	    $categoryPath = $album->path;
            	    $cache->store($cacheKey,$categoryPath);
             }                   	  
@@ -265,7 +265,7 @@ class erLhcoreClassModelGalleryImage {
           }       
        }    
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_gallery_images" );     
        
@@ -344,7 +344,7 @@ class erLhcoreClassModelGalleryImage {
           }       
        }
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );  
        
        $conditions = array(); 

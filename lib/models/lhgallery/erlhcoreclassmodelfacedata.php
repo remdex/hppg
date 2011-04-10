@@ -13,7 +13,7 @@ class erLhcoreClassModelGalleryFaceData {
 
    public static function fetch($pid)
    {
-       $pallete = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryFaceData', (int)$pid );
+       $pallete = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryFaceData', (int)$pid );
        return $pallete;
    }
    
@@ -32,7 +32,7 @@ class erLhcoreClassModelGalleryFaceData {
    
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_gallery_face_data" );     
          
@@ -90,7 +90,7 @@ class erLhcoreClassModelGalleryFaceData {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryFaceData' );  
        
        $conditions = array(); 
@@ -165,7 +165,7 @@ class erLhcoreClassModelGalleryFaceData {
         {            
             if (($lastIndex = erLhcoreClassPalleteIndexImage::getLastIndex('face_index')) == 0)
             {
-                $db = ezcDbInstance::get(); 
+                $db = ezcDbInstance::get('slave');
                 $stmt = $db->prepare("SELECT MAX(pid) as last_index_image FROM lh_gallery_face_data");
                 $stmt->execute();
                 $lastIndex = (int)$stmt->fetchColumn(); 

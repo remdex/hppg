@@ -152,19 +152,26 @@ class erLhcoreClassUser{
        unset($_SESSION['access_timestamp']);
        $this->session->destroy();
    }
-   
-   public static function getSession()
-   {
-        if ( !isset( self::$persistentSession ) )
-        {            
+         
+   public static function getSession($type = false)
+   {                
+        if ($type === false && !isset( self::$persistentSession ) )
+        {
             self::$persistentSession = new ezcPersistentSession(
                 ezcDbInstance::get(),
                 new ezcPersistentCodeManager( './pos/lhuser' )
             );
+        } elseif ($type !== false && !isset( self::$persistentSessionSlave ) ) {            
+            self::$persistentSessionSlave = new ezcPersistentSession(
+                ezcDbInstance::get($type),
+                new ezcPersistentCodeManager( './pos/lhuser' )
+            );
         }
-        return self::$persistentSession;
+        
+        return $type === false ? self::$persistentSession : self::$persistentSessionSlave;
+        
    }
-      
+   
    function getUserData($canUseCache = false)
    {
       if ($canUseCache == true && isset($GLOBALS['CacheUserData_'.$this->userid])) return $GLOBALS['CacheUserData_'.$this->userid];
@@ -378,6 +385,10 @@ class erLhcoreClassUser{
    }
     
    private static $persistentSession;
+   
+   // For selects
+   private static $persistentSessionSlave;
+   
    private static $instance = null; 
    
    private $userid;   

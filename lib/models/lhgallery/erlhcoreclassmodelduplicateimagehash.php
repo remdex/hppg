@@ -20,7 +20,7 @@ class erLhcoreClassModelGalleryDuplicateImageHash {
    
    public static function fetch($pid)
    {
-       $Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryDuplicateImageHash', (int)$pid );
+       $Image = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryDuplicateImageHash', (int)$pid );
        return $Image;
    }
    
@@ -37,7 +37,7 @@ class erLhcoreClassModelGalleryDuplicateImageHash {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryDuplicateImageHash' );  
        
        $conditions = array(); 
@@ -92,7 +92,7 @@ class erLhcoreClassModelGalleryDuplicateImageHash {
    
    public static function getImageCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_gallery_duplicate_image_hash" );     
          

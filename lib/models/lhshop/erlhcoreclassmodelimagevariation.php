@@ -25,7 +25,7 @@ class erLhcoreClassModelShopImageVariation {
    
    public static function fetch($id)
    {
-       $imageVariation = erLhcoreClassShop::getSession()->load( 'erLhcoreClassModelShopImageVariation', (int)$id );     
+       $imageVariation = erLhcoreClassShop::getSession('slave')->load( 'erLhcoreClassModelShopImageVariation', (int)$id );     
        return $imageVariation;
    } 
    
@@ -63,7 +63,7 @@ class erLhcoreClassModelShopImageVariation {
      
    public static function getImageVariationCount($params = array())
    {
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_shop_image_variation" );   
          
@@ -94,7 +94,7 @@ class erLhcoreClassModelShopImageVariation {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelShopImageVariation' );  
               
        if (isset($params['filter']) && count($params['filter']) > 0)

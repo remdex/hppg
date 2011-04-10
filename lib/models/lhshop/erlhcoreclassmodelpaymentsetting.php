@@ -28,7 +28,7 @@ class erLhcoreClassModelShopPaymentSetting {
    
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_shop_payment_setting" );     
          
@@ -91,7 +91,7 @@ class erLhcoreClassModelShopPaymentSetting {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelShopPaymentSetting' );  
        
        $conditions = array(); 

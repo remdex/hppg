@@ -27,7 +27,7 @@ class erLhcoreClassModelGallerySphinxSearch {
    
    public static function fetch($pid)
    {
-       $pallete = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGallerySphinxSearch', (int)$pid );
+       $pallete = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGallerySphinxSearch', (int)$pid );
        return $pallete;
    }
    
@@ -46,7 +46,7 @@ class erLhcoreClassModelGallerySphinxSearch {
    
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_gallery_sphinx_search" );     
          
@@ -104,7 +104,7 @@ class erLhcoreClassModelGallerySphinxSearch {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGallerySphinxSearch' );  
        
        $conditions = array(); 
@@ -186,7 +186,7 @@ class erLhcoreClassModelGallerySphinxSearch {
         {            
             if (($lastIndex = erLhcoreClassPalleteIndexImage::getLastIndex('sphinx_index')) == 0)
             {
-                $db = ezcDbInstance::get(); 
+                $db = ezcDbInstance::get('slave'); 
                 $stmt = $db->prepare("SELECT MAX(pid) as last_index_image FROM lh_gallery_sphinx_search");
                 $stmt->execute();
                 $lastIndex = (int)$stmt->fetchColumn(); 
@@ -324,7 +324,7 @@ class erLhcoreClassModelGallerySphinxSearch {
            $imageIndex->filename = str_replace(array('-','_'),array(' ',' '),$image->filename);
            $imageIndex->text_index = implode(' ',array_filter($searchBody));
            
-           $session = erLhcoreClassGallery::getSession();
+           $session = erLhcoreClassGallery::getSession('slave');
 
            $q = $session->database->createSelectQuery( );
            $q->select( 'pallete_id,count' )->from( 'lh_gallery_pallete_images' );

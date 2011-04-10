@@ -68,7 +68,7 @@ class erLhcoreClassModelGalleryFiletype {
    public static function fetch($extension)
    {
        try {
-           return erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryFiletype', $extension );         
+           return erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryFiletype', $extension );         
        } catch (Exception $e){
            return false;
        }
@@ -155,7 +155,7 @@ class erLhcoreClassModelGalleryFiletype {
        $paramsDefault = array('limit' => 32, 'offset' => 0);       
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryFiletype' );  
        
        $conditions = array(); 
@@ -210,7 +210,7 @@ class erLhcoreClassModelGalleryFiletype {
    
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_gallery_filetypes" );     
          

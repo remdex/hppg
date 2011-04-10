@@ -28,13 +28,13 @@ class erLhcoreClassModelUser {
    
    public static function fetch($user_id)
    {
-   	 $user = erLhcoreClassUser::getSession()->load( 'erLhcoreClassModelUser', (int)$user_id );
+   	 $user = erLhcoreClassUser::getSession('slave')->load( 'erLhcoreClassModelUser', (int)$user_id );
    	 return $user;
    }
    
    public static function getUserCount($params = array())
    {
-       $session = erLhcoreClassUser::getSession();
+       $session = erLhcoreClassUser::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_users" );   
          
@@ -72,7 +72,7 @@ class erLhcoreClassModelUser {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassUser::getSession();
+       $session = erLhcoreClassUser::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelUser' );  
        
        $conditions = array(); 
@@ -175,7 +175,7 @@ class erLhcoreClassModelUser {
    
    public static function userExists($username)
    {
-       $db = ezcDbInstance::get();
+       $db = ezcDbInstance::get('slave');
        $stmt = $db->prepare('SELECT count(*) as foundusers FROM lh_users WHERE username = :username');
        $stmt->bindValue( ':username',$username);       
        $stmt->execute();
@@ -186,7 +186,7 @@ class erLhcoreClassModelUser {
    
    public static function userEmailExists($email)
    {
-       $db = ezcDbInstance::get();
+       $db = ezcDbInstance::get('slave');
        $stmt = $db->prepare('SELECT count(*) as foundusers FROM lh_users WHERE email = :email');
        $stmt->bindValue( ':email',$email);       
        $stmt->execute();
@@ -197,7 +197,7 @@ class erLhcoreClassModelUser {
    
    public static function fetchUserByEmail($email)
    {
-       $db = ezcDbInstance::get();
+       $db = ezcDbInstance::get('slave');
        $stmt = $db->prepare('SELECT id FROM lh_users WHERE email = :email');
        $stmt->bindValue( ':email',$email);       
        $stmt->execute();

@@ -30,7 +30,7 @@ class erLhcoreClassModelGalleryAlbum {
    public static function fetch($aid)
    {
        try {
-        $Album = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryAlbum', (int)$aid );
+        $Album = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryAlbum', (int)$aid );
        } catch (Exception $e){
         erLhcoreClassModule::redirect('/');
         exit;
@@ -65,7 +65,7 @@ class erLhcoreClassModelGalleryAlbum {
    
    public function removeThis()
    {
-       $images = erLhcoreClassGallery::getSession()->getRelatedObjects( $this, "erLhcoreClassModelGalleryImage" );       
+       $images = erLhcoreClassGallery::getSession('slave')->getRelatedObjects( $this, "erLhcoreClassModelGalleryImage" );       
        foreach ($images as $image) 
        {
            $image->removeThis();
@@ -247,7 +247,7 @@ class erLhcoreClassModelGalleryAlbum {
    public static function getAlbumsIDByFilter($params)
    {
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "aid" )->from( "lh_gallery_albums" );     
          
@@ -280,7 +280,7 @@ class erLhcoreClassModelGalleryAlbum {
    
    public static function getAlbumCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(aid)" )->from( "lh_gallery_albums" );   
          
@@ -328,7 +328,7 @@ class erLhcoreClassModelGalleryAlbum {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryAlbum' );  
 
        $conditions = array();

@@ -23,7 +23,7 @@ class erLhcoreClassModelOidMap {
 
    public static function fetch($id)
    {
-       $open_id = erLhcoreClassUser::getSession()->load( 'erLhcoreClassModelOidMap', (int)$id );
+       $open_id = erLhcoreClassUser::getSession('slave')->load( 'erLhcoreClassModelOidMap', (int)$id );
        return $open_id;
    }
      
@@ -40,7 +40,7 @@ class erLhcoreClassModelOidMap {
    
    public static function getCount($params = array())
    {
-       $session = erLhcoreClassUser::getSession();
+       $session = erLhcoreClassUser::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_oid_map" );   
          
@@ -71,7 +71,7 @@ class erLhcoreClassModelOidMap {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassUser::getSession();
+       $session = erLhcoreClassUser::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelOidMap' );  
        
        $conditions = array(); 

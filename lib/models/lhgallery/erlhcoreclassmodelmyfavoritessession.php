@@ -70,7 +70,7 @@ class erLhcoreClassModelGalleryMyfavoritesSession {
 	{		
 		if (strlen($_COOKIE[erLhcoreClassModelGalleryMyfavoritesSession::COMPARE_COOKIE_VARIABLE]) != 40) return false;		
 		
-		$session = erLhcoreClassGallery::getSession();
+		$session = erLhcoreClassGallery::getSession('slave');
        	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryMyfavoritesSession' ); 
        	
        	$currentUser = erLhcoreClassUser::instance();

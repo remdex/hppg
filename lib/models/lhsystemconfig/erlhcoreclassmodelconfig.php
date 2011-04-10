@@ -15,7 +15,7 @@ class erLhcoreClassModelSystemConfig {
 
    public static function fetch($identifier)
    {       
-       $identifierObj = erLhcoreClassSystemConfig::getSession()->load( 'erLhcoreClassModelSystemConfig', $identifier );     
+       $identifierObj = erLhcoreClassSystemConfig::getSession('slave')->load( 'erLhcoreClassModelSystemConfig', $identifier );     
        return $identifierObj;
    }
 
@@ -69,7 +69,7 @@ class erLhcoreClassModelSystemConfig {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassSystemConfig::getSession();
+       $session = erLhcoreClassSystemConfig::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelSystemConfig' );  
        
        $conditions = array(); 

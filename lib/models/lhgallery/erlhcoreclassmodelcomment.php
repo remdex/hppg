@@ -27,7 +27,7 @@ class erLhcoreClassModelGalleryComment {
    
    public static function fetch($msg_id)
    {
-       $msg = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryComment', (int)$msg_id );
+       $msg = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryComment', (int)$msg_id );
        return $msg;
    }
    
@@ -54,7 +54,7 @@ class erLhcoreClassModelGalleryComment {
           }
        }
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryComment' );  
        
        $conditions = array(); 
@@ -153,7 +153,7 @@ class erLhcoreClassModelGalleryComment {
           }       
        }
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(msg_id)" )->from( "lh_gallery_comments" );     
        

@@ -60,7 +60,7 @@ class erLhcoreClassModelGallerySearchHistory {
        $paramsDefault = array('limit' => 32, 'offset' => 0);       
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGallerySearchHistory' );  
        
        $conditions = array(); 
@@ -115,7 +115,7 @@ class erLhcoreClassModelGallerySearchHistory {
    
    public static function getSearchCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(keyword)" )->from( "lh_gallery_searchhistory" );     
          

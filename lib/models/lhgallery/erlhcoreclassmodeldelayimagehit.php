@@ -112,7 +112,7 @@ class erLhcoreClassModelGalleryDelayImageHit {
    			case 'image':
    				
    				try {
-   					$this->image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
+   					$this->image = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
    				} catch (Exception $e) {
    					$this->image = false;
    				}

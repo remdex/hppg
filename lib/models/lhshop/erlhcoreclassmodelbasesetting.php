@@ -22,13 +22,13 @@ class erLhcoreClassModelShopBaseSetting {
    
    public static function fetch($identifier)
    {
-       $baseSetting = erLhcoreClassShop::getSession()->load( 'erLhcoreClassModelShopBaseSetting', $identifier );     
+       $baseSetting = erLhcoreClassShop::getSession('slave')->load( 'erLhcoreClassModelShopBaseSetting', $identifier );     
        return $baseSetting;
    } 
    
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(identifier)" )->from( "lh_shop_base_setting" );     
          
@@ -87,7 +87,7 @@ class erLhcoreClassModelShopBaseSetting {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelShopBaseSetting' );  
        
        $conditions = array(); 

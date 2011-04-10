@@ -24,7 +24,7 @@ class erLhcoreClassModelForumMessage {
 
    public static function fetch($aid)
    {    
-        $topic = erLhcoreClassForum::getSession()->load( 'erLhcoreClassModelForumMessage', (int)$aid );     
+        $topic = erLhcoreClassForum::getSession('slave')->load( 'erLhcoreClassModelForumMessage', (int)$aid );     
        return $topic;
    }
    
@@ -190,7 +190,7 @@ class erLhcoreClassModelForumMessage {
 
    public static function getCount($params = array())
    {              
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_forum_message" );     
        
@@ -252,7 +252,7 @@ class erLhcoreClassModelForumMessage {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassForum::getSession();
+       $session = erLhcoreClassForum::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelForumMessage' );  
 
        $conditions = array();

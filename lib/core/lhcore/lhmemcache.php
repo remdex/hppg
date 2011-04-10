@@ -5,8 +5,7 @@ class erLhcoreClassLhMemcache extends Memcache
     private $memcache;
     
     public function __construct()
-    {             
-        
+    {     
          $this->memcache = new Memcache();          
          $hosts = erConfigClassLhConfig::getInstance()->conf->getSetting( 'memecache', 'servers' );
          foreach ($hosts as $server) {

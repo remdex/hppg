@@ -25,7 +25,7 @@ class erLhcoreClassModelShopUserCreditOrder {
    
    public static function fetch($order_id)
    {   	
-       $UserCredits = erLhcoreClassShop::getSession()->load( 'erLhcoreClassModelShopUserCreditOrder', (int)$order_id );
+       $UserCredits = erLhcoreClassShop::getSession('slave')->load( 'erLhcoreClassModelShopUserCreditOrder', (int)$order_id );
    		   		
        return $UserCredits;
    }
@@ -56,7 +56,7 @@ class erLhcoreClassModelShopUserCreditOrder {
      
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(user_id)" )->from( "lh_shop_user_credit_order" );     
          
@@ -119,7 +119,7 @@ class erLhcoreClassModelShopUserCreditOrder {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelShopUserCreditOrder' );  
        
        $conditions = array(); 

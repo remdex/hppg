@@ -29,7 +29,7 @@ class erLhcoreClassModelGalleryMyfavoritesImage {
    
    public static function getImageCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_gallery_myfavorites_images" );     
          
@@ -115,7 +115,7 @@ class erLhcoreClassModelGalleryMyfavoritesImage {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryMyfavoritesImage' );  
        
        $conditions = array(); 

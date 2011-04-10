@@ -9,7 +9,7 @@ class erLhcoreClassRole{
    
    public static function getRoleList()
    {
-        $db = ezcDbInstance::get();
+        $db = ezcDbInstance::get('slave');
                  
         $stmt = $db->prepare('SELECT * FROM lh_role ORDER BY id ASC');           
         $stmt->execute();
@@ -18,18 +18,25 @@ class erLhcoreClassRole{
         return $rows;  
    }
    
-   public static function getSession()
+      
+   public static function getSession($type = false)
    {
-        if ( !isset( self::$persistentSession ) )
+        if ($type === false && !isset( self::$persistentSession ) )
         {            
             self::$persistentSession = new ezcPersistentSession(
                 ezcDbInstance::get(),
                 new ezcPersistentCodeManager( './pos/lhpermission' )
             );
+        } elseif ($type !== false && !isset( self::$persistentSessionSlave ) ) {            
+            self::$persistentSessionSlave = new ezcPersistentSession(
+                ezcDbInstance::get($type),
+                new ezcPersistentCodeManager( './pos/lhpermission' )
+            );            
         }
-        return self::$persistentSession;
+        
+        return $type === false ? self::$persistentSession : self::$persistentSessionSlave;
    }
-      
+     
    /**
     * Returns something like that
     * Array
@@ -49,7 +56,7 @@ class erLhcoreClassRole{
     * */  
    public static function accessArrayByUserID($user_id)
    {
-       $db = ezcDbInstance::get();
+       $db = ezcDbInstance::get('slave');
        
        $stmt = $db->prepare('SELECT lh_rolefunction.module,lh_rolefunction.function       
        FROM `lh_rolefunction`
@@ -76,6 +83,9 @@ class erLhcoreClassRole{
    }
    
    private static $persistentSession;
+   
+   // For selects
+   private static $persistentSessionSlave;
 
 }
 

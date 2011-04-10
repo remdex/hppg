@@ -15,7 +15,7 @@ class erLhcoreClassModelGalleryPallete {
    
    public static function fetch($pallete_id)
    {
-       $pallete = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryPallete', (int)$pallete_id );
+       $pallete = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryPallete', (int)$pallete_id );
        return $pallete;
    }
    
@@ -34,7 +34,7 @@ class erLhcoreClassModelGalleryPallete {
    
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_gallery_pallete" );     
          
@@ -85,9 +85,10 @@ class erLhcoreClassModelGalleryPallete {
         
       return $result; 
    }
+   
    public static function getPictureCountByPalleteId($pid,$pallete_id)
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        
        $q = $session->database->createSelectQuery();
          
@@ -111,7 +112,7 @@ class erLhcoreClassModelGalleryPallete {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );  
        
        $conditions = array(); 
@@ -167,7 +168,7 @@ class erLhcoreClassModelGalleryPallete {
    public static function getPictureDominantColors($pid)
    {
               
-       $db = ezcDbInstance::get(); 
+       $db = ezcDbInstance::get('slave'); 
        $stmt = $db->prepare('SELECT colors FROM lh_gallery_pallete_images_stats WHERE pid = :pid');
        $stmt->bindValue( ':pid',$pid);            
        $stmt->execute();            
@@ -175,7 +176,7 @@ class erLhcoreClassModelGalleryPallete {
        
        $result = array();
        if ($stats !== null) {   
-            $session = erLhcoreClassGallery::getSession();      
+            $session = erLhcoreClassGallery::getSession('slave');      
               
             $statsImploded = explode(',',$stats); 
 
@@ -213,7 +214,7 @@ class erLhcoreClassModelGalleryPallete {
           }       
        }
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(lh_gallery_pallete_images.pid)" )->from( "lh_gallery_pallete_images" ); 
        
@@ -305,7 +306,7 @@ class erLhcoreClassModelGalleryPallete {
        if ($count_palletes_ids == 1) {
             
             $pallete_id = $pallete_ids[0];
-            $session = erLhcoreClassGallery::getSession();
+            $session = erLhcoreClassGallery::getSession('slave');
         	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );     	
         	$q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_pallete_images' );        
@@ -337,7 +338,7 @@ class erLhcoreClassModelGalleryPallete {
                 }
                             
                 // We have to find out our image match coeficient
-               $session = erLhcoreClassGallery::getSession();       
+               $session = erLhcoreClassGallery::getSession('slave');       
                $q = $session->database->createSelectQuery();                 
                $q->select( 'round(('.implode('+',$orderParts).')*1000) AS count' )->from( "lh_gallery_pallete_images" ); 
                
@@ -396,7 +397,7 @@ class erLhcoreClassModelGalleryPallete {
                    * */                
                 $selectFields = array();
                 $selectFields[] = 'LOG(`lh_gallery_pallete_images`.count)';
-                $db = ezcDbInstance::get();   
+                $db = ezcDbInstance::get('slave');   
                                       
                 $innerJoins = array();
                 $conditions[] = 'lh_gallery_pallete_images.pallete_id = '.(int)$pallete_ids[0];
@@ -421,7 +422,7 @@ class erLhcoreClassModelGalleryPallete {
                 $stmt->execute();
                 
                 // We fetch from memory table current image match status
-                $session = erLhcoreClassGallery::getSession();
+                $session = erLhcoreClassGallery::getSession('slave');
        
                 $q = $session->database->createSelectQuery();
                  
@@ -436,7 +437,7 @@ class erLhcoreClassModelGalleryPallete {
         
                 
                 $db = ezcDbInstance::get(); 
-                $session = erLhcoreClassGallery::getSession(); 
+                $session = erLhcoreClassGallery::getSession('slave'); 
                 
                 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
                 $q2 = $q->subSelect();
@@ -482,7 +483,7 @@ class erLhcoreClassModelGalleryPallete {
            $colorMatchedTimes = erLhcoreClassModelGalleryPallete::getPictureCountByPalleteId($pid,$pallete_id);
            
            $db = ezcDbInstance::get(); 
-           $session = erLhcoreClassGallery::getSession(); 
+           $session = erLhcoreClassGallery::getSession('slave'); 
                 
            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
            $q2 = $q->subSelect();
@@ -537,7 +538,7 @@ class erLhcoreClassModelGalleryPallete {
             
                 
                 // We have to find out our image match coeficient
-               $session = erLhcoreClassGallery::getSession();       
+               $session = erLhcoreClassGallery::getSession('slave');       
                $q = $session->database->createSelectQuery();                 
                $q->select( 'round(('.implode('+',$orderParts).')*1000) AS count' )->from( "lh_gallery_pallete_images" ); 
                
@@ -638,7 +639,7 @@ class erLhcoreClassModelGalleryPallete {
                    * */
                 $selectFields = array();
                 $selectFields[] = 'LOG(`lh_gallery_pallete_images`.count)';
-                $db = ezcDbInstance::get();   
+                $db = ezcDbInstance::get('slave');   
                                       
                 $innerJoins = array();
                 $conditions[] = 'lh_gallery_pallete_images.pallete_id = '.(int)$pallete_ids[0];
@@ -664,7 +665,7 @@ class erLhcoreClassModelGalleryPallete {
                 $stmt->execute();
                 
                 // We fetch from memory table current image match status
-                $session = erLhcoreClassGallery::getSession();
+                $session = erLhcoreClassGallery::getSession('slave');
        
                 $q = $session->database->createSelectQuery();
                  
@@ -678,7 +679,7 @@ class erLhcoreClassModelGalleryPallete {
                 $colorMatchedTimes = $stmt->fetchColumn();
                                
                 $db = ezcDbInstance::get(); 
-                $session = erLhcoreClassGallery::getSession(); 
+                $session = erLhcoreClassGallery::getSession('slave'); 
                     
                 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
                 $q2 = $q->subSelect();
@@ -735,7 +736,7 @@ class erLhcoreClassModelGalleryPallete {
         // Standard query if one color
        if ($count_palletes_ids == 1) { 
            
-           $session = erLhcoreClassGallery::getSession();
+           $session = erLhcoreClassGallery::getSession('slave');
            $q = $session->database->createSelectQuery();            
            $q->select( "*" )->from( "lh_gallery_images" );
             
@@ -749,7 +750,7 @@ class erLhcoreClassModelGalleryPallete {
           // Do not use memory table          
           if ($useMemoryTable == false) {
               
-              $session = erLhcoreClassGallery::getSession();
+              $session = erLhcoreClassGallery::getSession('slave');
               $q = $session->database->createSelectQuery();               
               $q->select( "*" )->from( "lh_gallery_images" );  
                 
@@ -769,7 +770,7 @@ class erLhcoreClassModelGalleryPallete {
                    
                 $selectFields = array();
                 $selectFields[] = 'LOG(`lh_gallery_pallete_images`.count)';
-                $db = ezcDbInstance::get();   
+                $db = ezcDbInstance::get('slave');   
                                       
                 $innerJoins = array();
                 $conditions[] = 'lh_gallery_pallete_images.pallete_id = '.(int)$params['pallete_id'][0];

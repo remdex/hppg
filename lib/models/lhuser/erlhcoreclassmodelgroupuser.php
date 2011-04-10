@@ -21,7 +21,7 @@ class erLhcoreClassModelGroupUser {
    
    public static function fetch($assignee_id)
    {
-   	 $group_user = erLhcoreClassUser::getSession()->load( 'erLhcoreClassModelGroupUser', (int)$assignee_id );
+   	 $group_user = erLhcoreClassUser::getSession('slave')->load( 'erLhcoreClassModelGroupUser', (int)$assignee_id );
    	 return $group_user;
    }
    
@@ -52,7 +52,7 @@ class erLhcoreClassModelGroupUser {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassUser::getSession();
+       $session = erLhcoreClassUser::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGroupUser' );  
        
        $conditions = array(); 
@@ -115,7 +115,7 @@ class erLhcoreClassModelGroupUser {
    
    public static function getCount($params = array())
    {
-       $session = erLhcoreClassUser::getSession();
+       $session = erLhcoreClassUser::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_groupuser" );   
          

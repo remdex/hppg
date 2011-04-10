@@ -26,7 +26,7 @@ class erLhcoreClassModelShopOrder {
    
    public static function fetch($id)
    {
-       $imageVariation = erLhcoreClassShop::getSession()->load( 'erLhcoreClassModelShopOrder', (int)$id );     
+       $imageVariation = erLhcoreClassShop::getSession('slave')->load( 'erLhcoreClassModelShopOrder', (int)$id );     
        return $imageVariation;
    } 
    
@@ -131,7 +131,7 @@ class erLhcoreClassModelShopOrder {
         
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_shop_order" );   
          
@@ -171,7 +171,7 @@ class erLhcoreClassModelShopOrder {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelShopOrder' ); 
         
        $conditions = array();

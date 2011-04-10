@@ -23,7 +23,7 @@ class erLhcoreClassModelForumFile {
 
    public static function fetch($aid)
    {    
-       $topic = erLhcoreClassForum::getSession()->load( 'erLhcoreClassModelForumFile', (int)$aid );     
+       $topic = erLhcoreClassForum::getSession('slave')->load( 'erLhcoreClassModelForumFile', (int)$aid );     
        return $topic;
    } 
 
@@ -59,7 +59,7 @@ class erLhcoreClassModelForumFile {
             
    public static function getCount($params = array())
    {
-       $session = erLhcoreClassForum::getSession();
+       $session = erLhcoreClassForum::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_forum_file" );   
          
@@ -91,7 +91,7 @@ class erLhcoreClassModelForumFile {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassForum::getSession();
+       $session = erLhcoreClassForum::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelForumFile' );  
 
        $conditions = array();

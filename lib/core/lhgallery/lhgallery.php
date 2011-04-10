@@ -9,16 +9,22 @@ class erLhcoreClassGallery{
  
    }
    
-   public static function getSession()
+   public static function getSession($type = false)
    {
-        if ( !isset( self::$persistentSession ) )
+        if ($type === false && !isset( self::$persistentSession ) )
         {            
             self::$persistentSession = new ezcPersistentSession(
                 ezcDbInstance::get(),
                 new ezcPersistentCodeManager( './pos/lhgallery' )
             );
+        } elseif ($type !== false && !isset( self::$persistentSessionSlave ) ) {            
+            self::$persistentSessionSlave = new ezcPersistentSession(
+                ezcDbInstance::get($type),
+                new ezcPersistentCodeManager( './pos/lhgallery' )
+            );            
         }
-        return self::$persistentSession;
+        
+        return $type === false ? self::$persistentSession : self::$persistentSessionSlave;
    }
       
    public static function multi_implode($glue, $pieces, $key = null)
@@ -168,7 +174,6 @@ class erLhcoreClassGallery{
            $stmt->execute();
        }
    }
-
    
    public static function searchSphinxMulti($queryesBatch,$cacheEnabled = true,$asSingle = false)
    {
@@ -580,7 +585,11 @@ class erLhcoreClassGallery{
        
    }
         
+   // For all others
    private static $persistentSession;
+   
+   // For selects
+   private static $persistentSessionSlave;
 
 }
 

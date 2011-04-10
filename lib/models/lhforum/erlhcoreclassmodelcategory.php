@@ -45,7 +45,7 @@ class erLhcoreClassModelForumCategory {
    
    public static function fetch($cid)
    {
-       $Category = erLhcoreClassForum::getSession()->load( 'erLhcoreClassModelForumCategory', (int)$cid );
+       $Category = erLhcoreClassForum::getSession('slave')->load( 'erLhcoreClassModelForumCategory', (int)$cid );
        return $Category;
    }
    
@@ -57,7 +57,7 @@ class erLhcoreClassModelForumCategory {
         
         $conditions = array();
         
-        $session = erLhcoreClassForum::getSession();
+        $session = erLhcoreClassForum::getSession('slave');
         $q = $session->createFindQuery( 'erLhcoreClassModelForumCategory' ); 
            
         if (isset($params['filter']) && count($params['filter']) > 0)
@@ -134,7 +134,7 @@ class erLhcoreClassModelForumCategory {
    
    public static function fetchCategoryColumn($params = array(),$column = 'COUNT(id)')
    {
-       $session = erLhcoreClassForum::getSession();
+       $session = erLhcoreClassForum::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( $column )->from( "lh_forum_category" );     
          
@@ -217,7 +217,7 @@ class erLhcoreClassModelForumCategory {
    public static function calculatePath(& $array,$category_id){
        static $recursionProtect = 0;
        
-       $category = erLhcoreClassForum::getSession()->load( 'erLhcoreClassModelForumCategory', (int)$category_id );
+       $category = erLhcoreClassForum::getSession('slave')->load( 'erLhcoreClassModelForumCategory', (int)$category_id );
        
        $array[] = array('url' => $category->path_url,'title' => $category->name);   
            
@@ -234,7 +234,7 @@ class erLhcoreClassModelForumCategory {
    public static function calculatePathObjects(& $array,$category_id){
        static $recursionProtect = 0;
        
-       $category = erLhcoreClassForum::getSession()->load( 'erLhcoreClassModelForumCategory', (int)$category_id );
+       $category = erLhcoreClassForum::getSession('slave')->load( 'erLhcoreClassModelForumCategory', (int)$category_id );
        
        $array[] = $category;   
            
@@ -251,7 +251,7 @@ class erLhcoreClassModelForumCategory {
    public static function calculatePathURL(& $array,$category_id){
        static $recursionProtect = 0;
        
-       $category = erLhcoreClassForum::getSession()->load( 'erLhcoreClassModelForumCategory', (int)$category_id );
+       $category = erLhcoreClassForum::getSession('slave')->load( 'erLhcoreClassModelForumCategory', (int)$category_id );
        
        $array[] = array('title' => $category->name);   
            
@@ -411,7 +411,7 @@ class erLhcoreClassModelForumCategory {
    public function getCategoryLastTopic()
    {
        // Update last_message_ctime
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "id" )->from( "lh_forum_topic" );
        $q->where( 

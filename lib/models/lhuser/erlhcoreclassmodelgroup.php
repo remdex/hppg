@@ -24,7 +24,7 @@ class erLhcoreClassModelGroup {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassUser::getSession();
+       $session = erLhcoreClassUser::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGroup' );  
        
        $conditions = array(); 
@@ -87,7 +87,7 @@ class erLhcoreClassModelGroup {
    
    public static function getCount($params = array())
    {
-       $session = erLhcoreClassUser::getSession();
+       $session = erLhcoreClassUser::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_group" );   
          
@@ -114,7 +114,7 @@ class erLhcoreClassModelGroup {
 
    public static function fetch($group_id)
    {
-   	 $group = erLhcoreClassUser::getSession()->load( 'erLhcoreClassModelGroup', (int)$group_id );
+   	 $group = erLhcoreClassUser::getSession('slave')->load( 'erLhcoreClassModelGroup', (int)$group_id );
    	 return $group;
    }
        

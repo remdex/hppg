@@ -21,7 +21,7 @@ class erLhcoreClassModelGalleryLastSearch {
    
    public static function addSearch($keyword,$search_count)
    {
-       $db = ezcDbInstance::get();
+       $db = ezcDbInstance::get('slave');
        $stmt = $db->prepare('SELECT count(id) FROM `lh_gallery_lastsearch` WHERE keyword = :keyword');  
        $stmt->bindValue( ':keyword',$keyword);
        $stmt->execute(); 
@@ -39,7 +39,8 @@ class erLhcoreClassModelGalleryLastSearch {
            } catch (Exception $e) { // Sometimes table gets crushed if a lot of searches is done
                
            }
-                      
+           
+           $db = ezcDbInstance::get();
            $stmt = $db->prepare('SELECT id FROM `lh_gallery_lastsearch` order by id desc limit 9,1');    
            $stmt->execute();
            $idlast = $stmt->fetchColumn();        
@@ -55,7 +56,7 @@ class erLhcoreClassModelGalleryLastSearch {
        $paramsDefault = array('limit' => 32, 'offset' => 0);       
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryLastSearch' );  
        
        $conditions = array(); 

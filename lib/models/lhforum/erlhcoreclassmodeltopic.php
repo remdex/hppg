@@ -40,7 +40,7 @@ class erLhcoreClassModelForumTopic {
    {    
        if ($canUseCache === true && isset($GLOBALS['ForumTopicCacheObject_'.$aid])) return $GLOBALS['ForumTopicCacheObject_'.$aid];
        
-       $topic = erLhcoreClassForum::getSession()->load( 'erLhcoreClassModelForumTopic', (int)$aid );  
+       $topic = erLhcoreClassForum::getSession('slave')->load( 'erLhcoreClassModelForumTopic', (int)$aid );  
        
        if ($canUseCache === true){
            $GLOBALS['ForumTopicCacheObject_'.$aid] = $topic;
@@ -229,7 +229,7 @@ class erLhcoreClassModelForumTopic {
             
    public static function getCount($params = array())
    {
-       $session = erLhcoreClassForum::getSession();
+       $session = erLhcoreClassForum::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_forum_topic" );   
          
@@ -295,7 +295,7 @@ class erLhcoreClassModelForumTopic {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassForum::getSession();
+       $session = erLhcoreClassForum::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelForumTopic' );  
 
        $conditions = array();

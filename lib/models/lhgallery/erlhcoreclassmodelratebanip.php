@@ -20,7 +20,7 @@ class erLhcoreClassModelGalleryRateBanIP {
    
    public static function fetch($pid)
    {     
-       $hitpopular = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryRateBanIP', (int)$pid );     
+       $hitpopular = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryRateBanIP', (int)$pid );     
        return $hitpopular;
    }
       
@@ -32,7 +32,7 @@ class erLhcoreClassModelGalleryRateBanIP {
    
    public static function getCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_gallery_images_rate_ban_ip" );     
          
@@ -90,7 +90,7 @@ class erLhcoreClassModelGalleryRateBanIP {
       
       $params = array_merge($paramsDefault,$paramsSearch);
       
-      $session = erLhcoreClassGallery::getSession();
+      $session = erLhcoreClassGallery::getSession('slave');
       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryRateBanIP' );  
       
       $conditions = array(); 

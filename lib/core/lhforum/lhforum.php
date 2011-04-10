@@ -6,17 +6,23 @@ class erLhcoreClassForum {
    {
  
    }
-   
-   public static function getSession()
+
+   public static function getSession($type = false)
    {
-        if ( !isset( self::$persistentSession ) )
-        {            
+        if ($type === false && !isset( self::$persistentSession ) )
+        {
             self::$persistentSession = new ezcPersistentSession(
                 ezcDbInstance::get(),
                 new ezcPersistentCodeManager( './pos/lhforum' )
             );
+        } elseif ($type !== false && !isset( self::$persistentSessionSlave ) ) {            
+            self::$persistentSessionSlave = new ezcPersistentSession(
+                ezcDbInstance::get($type),
+                new ezcPersistentCodeManager( './pos/lhforum' )
+            );
         }
-        return self::$persistentSession;
+
+        return $type === false ? self::$persistentSession : self::$persistentSessionSlave;
    }
    
    public static function addToSphinx($msg_id) {
@@ -164,5 +170,9 @@ class erLhcoreClassForum {
        
    }
    
+   // For all other
    private static $persistentSession;
+   
+   // For selects
+   private static $persistentSessionSlave;
 }

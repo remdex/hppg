@@ -20,7 +20,7 @@ class erLhcoreClassModelGalleryCommentBanIP {
    
    public static function fetch($pid)
    {     
-       $hitpopular = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCommentBanIP', (int)$pid );     
+       $hitpopular = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryCommentBanIP', (int)$pid );     
        return $hitpopular;
    }
       
@@ -32,7 +32,7 @@ class erLhcoreClassModelGalleryCommentBanIP {
    
    public static function getCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_gallery_images_comment_ban_ip" );     
          
@@ -90,7 +90,7 @@ class erLhcoreClassModelGalleryCommentBanIP {
       
       $params = array_merge($paramsDefault,$paramsSearch);
       
-      $session = erLhcoreClassGallery::getSession();
+      $session = erLhcoreClassGallery::getSession('slave');
       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryCommentBanIP' );  
       
       $conditions = array(); 

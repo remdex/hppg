@@ -47,7 +47,7 @@ class erLhcoreClassModelForgotPassword {
 	
 	public static function checkHash($hash) {
 		
-		$db = ezcDbInstance::get();		
+		$db = ezcDbInstance::get('slave');		
        	$stmt = $db->prepare('SELECT * FROM lh_forgotpasswordhash WHERE hash = :hash LIMIT 1');
        	$stmt->bindValue( ':hash',$hash);
        	$stmt->setFetchMode(PDO::FETCH_ASSOC);        

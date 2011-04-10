@@ -22,7 +22,7 @@ class erLhcoreClassModelGalleryPopular24 {
    public static function fetch($pid)
    {
        try {
-            $hitpopular = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryPopular24', (int)$pid );
+            $hitpopular = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryPopular24', (int)$pid );
        } catch (Exception $e){
             erLhcoreClassModule::redirect('/');
         exit;
@@ -55,7 +55,7 @@ class erLhcoreClassModelGalleryPopular24 {
    		switch ($variable) {
    			case 'image':   				
    				try {
-   					$this->image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
+   					$this->image = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
    				} catch (Exception $e) {
    				    
    				    $this->removeThis();
@@ -88,7 +88,7 @@ class erLhcoreClassModelGalleryPopular24 {
    
    public static function getImageCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_gallery_popular24" );     
          
@@ -146,7 +146,7 @@ class erLhcoreClassModelGalleryPopular24 {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPopular24' );  
        
        $conditions = array(); 

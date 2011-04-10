@@ -22,7 +22,7 @@ class erLhcoreClassModelShopBasketImage {
    
    public static function getImageCount($params = array())
    {
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_shop_basket_image" );     
          
@@ -109,7 +109,7 @@ class erLhcoreClassModelShopBasketImage {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelShopBasketImage' );  
        
        $conditions = array(); 

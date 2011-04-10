@@ -23,7 +23,7 @@ class erLhcoreClassModelGalleryRated24 {
    public static function fetch($pid)
    {
        try {
-            $hitpopular = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryRated24', (int)$pid );
+            $hitpopular = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryRated24', (int)$pid );
        } catch (Exception $e){
             erLhcoreClassModule::redirect('/');
         exit;
@@ -49,7 +49,7 @@ class erLhcoreClassModelGalleryRated24 {
    public static function addRate($pid, $rate) {
        
        try {
-            $hitpopular = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryRated24', (int)$pid );
+            $hitpopular = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryRated24', (int)$pid );
        } catch (Exception $e){
             $hitpopular = new erLhcoreClassModelGalleryRated24();
             $hitpopular->added = time();
@@ -72,7 +72,7 @@ class erLhcoreClassModelGalleryRated24 {
    		switch ($variable) {
    			case 'image':   				
    				try {
-   					$this->image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
+   					$this->image = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryImage', (int)$this->pid );
    				} catch (Exception $e) {
    				    
    				    $this->removeThis();
@@ -105,7 +105,7 @@ class erLhcoreClassModelGalleryRated24 {
    
    public static function getImageCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(pid)" )->from( "lh_gallery_rated24" );     
          
@@ -163,7 +163,7 @@ class erLhcoreClassModelGalleryRated24 {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryRated24' );  
        
        $conditions = array(); 

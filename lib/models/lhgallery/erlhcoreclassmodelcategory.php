@@ -26,7 +26,7 @@ class erLhcoreClassModelGalleryCategory {
    
    public static function fetch($cid)
    {
-       $Category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$cid );
+       $Category = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryCategory', (int)$cid );
        return $Category;
    }
    
@@ -69,7 +69,7 @@ class erLhcoreClassModelGalleryCategory {
         
         $conditions = array();
         
-        $session = erLhcoreClassGallery::getSession();
+        $session = erLhcoreClassGallery::getSession('slave');
         $q = $session->createFindQuery( 'erLhcoreClassModelGalleryCategory' ); 
            
         if (isset($params['filter']) && count($params['filter']) > 0)
@@ -143,13 +143,13 @@ class erLhcoreClassModelGalleryCategory {
    
    public function removeThis()
    {
-       $albums = erLhcoreClassGallery::getSession()->getRelatedObjects( $this, "erLhcoreClassModelGalleryAlbum" );
+       $albums = erLhcoreClassGallery::getSession('slave')->getRelatedObjects( $this, "erLhcoreClassModelGalleryAlbum" );
        foreach ($albums as $album) 
        {
            $album->removeThis();
        }
         
-       $parentCategorys = erLhcoreClassGallery::getSession()->getRelatedObjects( $this, "erLhcoreClassModelGalleryCategory" ); 
+       $parentCategorys = erLhcoreClassGallery::getSession('slave')->getRelatedObjects( $this, "erLhcoreClassModelGalleryCategory" ); 
        foreach ($parentCategorys as $category) 
        {
            $category->removeThis();
@@ -165,7 +165,7 @@ class erLhcoreClassModelGalleryCategory {
    
    public static function fetchCategoryColumn($params = array(),$column = 'COUNT(cid)')
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( $column )->from( "lh_gallery_categorys" );     
          
@@ -261,7 +261,7 @@ class erLhcoreClassModelGalleryCategory {
    public static function calculatePath(& $array,$category_id){
        static $recursionProtect = 0;
        
-       $category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
+       $category = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
        
        $array[] = array('url' => $category->path_url,'title' => $category->name);   
            
@@ -278,7 +278,7 @@ class erLhcoreClassModelGalleryCategory {
    public static function calculatePathObjects(& $array,$category_id){
        static $recursionProtect = 0;
        
-       $category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
+       $category = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
        
        $array[] = $category;   
            
@@ -295,7 +295,7 @@ class erLhcoreClassModelGalleryCategory {
    public static function calculatePathURL(& $array,$category_id){
        static $recursionProtect = 0;
        
-       $category = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
+       $category = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryCategory', (int)$category_id );
        
        $array[] = array('title' => $category->name);   
            

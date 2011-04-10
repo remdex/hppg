@@ -96,7 +96,7 @@ class erLhcoreClassModelShopBasketSession {
 	{		
 		if (strlen($_COOKIE[erLhcoreClassModelShopBasketSession::COMPARE_COOKIE_VARIABLE]) != 40) return false;		
 		
-		$session = erLhcoreClassShop::getSession();
+		$session = erLhcoreClassShop::getSession('slave');
        	$q = $session->createFindQuery( 'erLhcoreClassModelShopBasketSession' ); 
        	
        	$currentUser = erLhcoreClassUser::instance();

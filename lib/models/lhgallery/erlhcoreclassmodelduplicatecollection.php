@@ -13,7 +13,7 @@ class erLhcoreClassModelGalleryDuplicateCollection {
    public static function fetch($dcid)
    {
        try {
-        $DuplicateCollection = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryDuplicateCollection', (int)$dcid );
+        $DuplicateCollection = erLhcoreClassGallery::getSession('slave')->load( 'erLhcoreClassModelGalleryDuplicateCollection', (int)$dcid );
        } catch (Exception $e){
        
        }
@@ -49,7 +49,7 @@ class erLhcoreClassModelGalleryDuplicateCollection {
    
    public static function getDuplicatesCount($params = array())
    {
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_gallery_duplicate_collection" );     
          
@@ -108,7 +108,7 @@ class erLhcoreClassModelGalleryDuplicateCollection {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassGallery::getSession();
+       $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryDuplicateCollection' );  
        
        $conditions = array(); 
@@ -172,7 +172,7 @@ class erLhcoreClassModelGalleryDuplicateCollection {
    			break;
    	
    		case 'duplicate_images':   				
-   				$this->duplicate_images = erLhcoreClassGallery::getSession()->getRelatedObjects( $this, "erLhcoreClassModelGalleryDuplicateImage" ); 
+   				$this->duplicate_images = erLhcoreClassGallery::getSession('slave')->getRelatedObjects( $this, "erLhcoreClassModelGalleryDuplicateImage" ); 
    				return $this->duplicate_images;
    			break;
    		default:

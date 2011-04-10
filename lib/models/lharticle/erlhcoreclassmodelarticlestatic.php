@@ -10,7 +10,7 @@ class erLhcoreClassModelArticleStatic {
                'name'            	 => $this->name
        );
    }
-   
+
    public function setState( array $properties )
    {
        foreach ( $properties as $key => $val )
@@ -18,10 +18,10 @@ class erLhcoreClassModelArticleStatic {
            $this->$key = $val;
        }
    } 
-   
+
    public static function fetch($id)
    {       
-       $articleObj = erLhcoreClassArticle::getSession()->load( 'erLhcoreClassModelArticleStatic', $id );     
+       $articleObj = erLhcoreClassArticle::getSession('slave')->load( 'erLhcoreClassModelArticleStatic', $id );     
        return $articleObj;
    }
    
@@ -54,7 +54,7 @@ class erLhcoreClassModelArticleStatic {
 	
 	   	$params = array_merge($paramsDefault,$paramsSearch);
 	
-	   	$session = erLhcoreClassArticle::getSession();
+	   	$session = erLhcoreClassArticle::getSession('slave');
 	   	$q = $session->createFindQuery( 'erLhcoreClassModelArticleStatic' );
 	
 	   	$conditions = array();

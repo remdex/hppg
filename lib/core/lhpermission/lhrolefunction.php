@@ -9,7 +9,7 @@ class erLhcoreClassRoleFunction{
       
    public static function getRoleFunctions($role_id)
    {
-        $db = ezcDbInstance::get();
+        $db = ezcDbInstance::get('slave');
                  
         $stmt = $db->prepare('SELECT * FROM lh_rolefunction WHERE role_id = :role_id ORDER BY id ASC');   
         $stmt->bindValue( ':role_id',$role_id);                 
@@ -21,7 +21,7 @@ class erLhcoreClassRoleFunction{
    
    public static function deleteRolePolicy($PolicyID)
    {
-       $RoleFunction = erLhcoreClassRole::getSession()->load( 'erLhcoreClassModelRoleFunction', $PolicyID);
+       $RoleFunction = erLhcoreClassRole::getSession('slave')->load( 'erLhcoreClassModelRoleFunction', $PolicyID);
        erLhcoreClassRole::getSession()->delete($RoleFunction);
    }
 

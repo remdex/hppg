@@ -67,7 +67,7 @@ class erLhcoreClassModelShopOrderItem {
    
    public static function getListCount($params = array())
    {
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->database->createSelectQuery();  
        $q->select( "COUNT(id)" )->from( "lh_shop_order_item" );     
          
@@ -130,7 +130,7 @@ class erLhcoreClassModelShopOrderItem {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
-       $session = erLhcoreClassShop::getSession();
+       $session = erLhcoreClassShop::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelShopOrderItem' );  
        
        $conditions = array(); 
