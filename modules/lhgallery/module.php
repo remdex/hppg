@@ -58,7 +58,7 @@ $ViewList['getpallete'] = array(
     'script' => 'getpallete.php',
     'params' => array(),
     'multiple_arguments' => array ( 'color' ),
-    'uparams' => array('color','keyword','mode','resolution')
+    'uparams' => array('color','keyword','mode','resolution','match')
     );
         
 $ViewList['category'] = array( 
@@ -92,7 +92,7 @@ $ViewList['image'] = array(
     'script' => 'image.php',
     'params' => array('image_id'),
     'multiple_arguments' => array ( 'color' ),
-    'uparams' => array('mode','keyword','sort','resolution','color'),
+    'uparams' => array('mode','keyword','sort','resolution','color','match'),
     ); 
             
 $ViewList['commentsajax'] = array( 
@@ -205,7 +205,7 @@ $ViewList['ajaximages'] = array(
     'multiple_arguments' => array (
         'color'
     ),
-    'uparams' => array('mode','keyword','sort','direction','resolution','color'),
+    'uparams' => array('mode','keyword','sort','direction','resolution','color','match'),
     );   
       
 $ViewList['lastcommented'] = array( 
@@ -234,7 +234,7 @@ $ViewList['search'] = array(
     'script' => 'search.php',
     'params' => array(),
     'multiple_arguments' => array ( 'color' ),
-    'uparams' => array('keyword','sort','resolution','color'),
+    'uparams' => array('keyword','sort','resolution','color','match'),
     );
     
 $ViewList['searchrss'] = array( 

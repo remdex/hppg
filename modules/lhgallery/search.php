@@ -44,11 +44,18 @@ $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', '
     
 $mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
+$matchMode = $Params['user_parameters_unordered']['match'] == 'all' ? 'all' : '';
 
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
 if ($resolution != ''){
     $searchParams['Filter']['pwidth'] = $resolutions[$resolution]['width'];
     $searchParams['Filter']['pheight'] = $resolutions[$resolution]['height'];
+}
+
+$appendMatchMode = '';
+if ($matchMode != ''){
+    $searchParams['MatchMode'] = 'all';
+    $appendMatchMode = '/(match)/all';
 }
 
 // Search also includes desirable color
@@ -71,9 +78,9 @@ $appendImageModeSorting = $mode != 'relevance' ? '/(sort)/'.$mode : '';
 $searchParams['sort'] = $modeSQL;
 $userParams .= $appendImageModeSorting;
 $userParamsWithoutResolution = $userParams.$appendColorMode;
-$userParams .= $appendColorMode.$appendResolutionMode;
+$userParams .= $appendColorMode.$appendResolutionMode.$appendMatchMode;
 
-$appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendColorMode.$appendResolutionMode;
+$appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendColorMode.$appendResolutionMode.$appendMatchMode;
 /* SORTING */
 
 $searchParams['SearchLimit'] = 20;
@@ -133,6 +140,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
                 'keyword'           => $searchParams['keyword'],
                 'appendImageMode'   => $appendImageMode,
                 'mode'              => $mode,
+                'matchMode'         => $matchMode,
                 'currentResolution' => $resolution
         ) );
         

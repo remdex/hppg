@@ -251,11 +251,25 @@ class erLhcoreClassGallery{
                     $cl->SetSelect ( $params['custom_filter']['filter'] );
                     $cl->SetFilter ( $params['custom_filter']['filter_name'], array(1) );
                   }
-                  
+                  // Currently we only support all and any match modes
+                  $matchModeAll = false;
+                  if (isset($params['MatchMode'])) {          
+                    switch ($params['MatchMode']) {
+                    	case 'all':
+                    		  $cl->SetMatchMode(SPH_MATCH_ALL);
+                    		  $matchModeAll = true;
+                    		break;
+                    
+                    	default:
+                    		break;
+                    }
+                  }
+      
                   $cl->SetSortMode(SPH_SORT_EXTENDED, isset($params['sort']) ? $params['sort'] : '@id DESC');
             
                   $startAppend = $wildCardEnabled == true ? '*' : '';
                   
+                
                   
                   $colorSearchText = '';
                   if (isset($params['color_filter']) && count($params['color_filter']) > 0){
@@ -284,7 +298,7 @@ class erLhcoreClassGallery{
                         
                       }  else {  // Works best then keyword and color is used        
                         $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
-                        $params['keyword'] = '('.implode(' | ',explode(' ',trim($params['keyword']).$startAppend)).') & ';
+                        $params['keyword'] = '('.implode($matchModeAll == true ? ' & ' : ' | ',explode(' ',trim($params['keyword']).$startAppend)).') & ';
                         $startAppend = '';
                         $cl->SetRankingMode(SPH_RANK_BM25); 
                       }
@@ -465,6 +479,20 @@ class erLhcoreClassGallery{
         $cl->SetFilter ( $params['custom_filter']['filter_name'], array(1) );
       }
       
+      // Currently we only support all and any match modes
+      $matchModeAll = false;
+      if (isset($params['MatchMode'])) {          
+        switch ($params['MatchMode']) {
+        	case 'all':
+        		  $cl->SetMatchMode(SPH_MATCH_ALL);
+        		  $matchModeAll = true;
+        		break;
+        
+        	default:
+        		break;
+        }
+      }
+      
       $cl->SetSortMode(SPH_SORT_EXTENDED, isset($params['sort']) ? $params['sort'] : '@id DESC');
 
       $startAppend = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
@@ -519,14 +547,13 @@ class erLhcoreClassGallery{
             
           } else {  // Works best then keyword and color is used        
             $cl->SetMatchMode( SPH_MATCH_EXTENDED2);                                                       
-            $params['keyword'] = '('.implode(' | ',explode(' ',trim($params['keyword']).$startAppend)).') & ';
+            $params['keyword'] = '('.implode($matchModeAll == true ? ' & ' : ' | ',explode(' ',trim($params['keyword']).$startAppend)).') & ';
             $startAppend = '';
             $cl->SetRankingMode(SPH_RANK_BM25);
           }
       }   
-           
+
       $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
-     
       
       if ($result['total_found'] == 0 || !isset($result['matches'])){
       

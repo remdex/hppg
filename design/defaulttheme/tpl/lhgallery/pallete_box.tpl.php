@@ -10,7 +10,7 @@
 <?php if ($max_filters == false) : ?>
 <script>
 hw.initSortBox('#color-filter-nav');
-hw.initPalleteFilter('<?=count($pallete_id) > 0 ? '/'.implode('/',$pallete_id) : ''?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend : ''?>');
+hw.initPalleteFilter('<?=count($pallete_id) > 0 ? '/'.implode('/',$pallete_id) : ''?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend : ''?>');
 </script>
 <?php endif;?>
 
@@ -27,7 +27,7 @@ sort($moreColors);
 
 ?>
     <div class="csc" style="background-color:rgb(<?=$palleteCurrent->red?>,<?=$palleteCurrent->green?>,<?=$palleteCurrent->blue?>)">
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Remove color')?>" href="<?=$modePallete == 'color' ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search') .'/(keyword)/'.urlencode($keyword) ?><?=count($arrayItems) > 0 ? '/(color)/'.implode($arrayItems,'/') : ''?>"></a>
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','More color');?>" class="more-color" href="<?=$modePallete == 'color' ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search') .'/(keyword)/'.urlencode($keyword) ?>/(color)/<?=implode($moreColors,'/')?>"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Remove color')?>" href="<?=$modePallete == 'color' ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search') .'/(keyword)/'.urlencode($keyword) ?><?=count($arrayItems) > 0 ? '/(color)/'.implode($arrayItems,'/') : ''?><?echo $resolutionAppend,$matchModeAppend?>"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','More color');?>" class="more-color" href="<?=$modePallete == 'color' ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search') .'/(keyword)/'.urlencode($keyword) ?>/(color)/<?=implode($moreColors,'/')?><?echo $resolutionAppend,$matchModeAppend?>"></a>
     </div>
 <?php endforeach;?>
