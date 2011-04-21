@@ -3,7 +3,7 @@
     <?php 
     $topThreeColors = array();
     $lastID = -1;   
-    foreach (erLhcoreClassModelGalleryPallete::getPictureDominantColors($image->pid,10) as $pallete) : 
+    foreach ($colorsDominant as $pallete) : 
     if (count($topThreeColors) < 3 && ($lastID == -1 || abs($pallete->id - $lastID) > 10)) {
         
         $blocked = false;
