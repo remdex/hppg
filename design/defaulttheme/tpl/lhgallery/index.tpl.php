@@ -61,7 +61,7 @@ if (!empty($items)) : ?>
 <div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/popularrecent')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last 24 h.')?> - <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Most popular');?> &raquo;</a></h1></div>
 <?php 
 $appendImageMode = '/(mode)/popularrecent';	 
-$items = erLhcoreClassModelGalleryPopular24::getImages(array('disable_sql_cache' => true,'sort' => 'hits DESC, pid DESC','offset' => 0, 'limit' => 4));
+$items = erLhcoreClassModelGalleryPopular24::getImages(array('disable_sql_cache' => true,'sort' => 'hits DESC, pid DESC','offset' => 0, 'limit' => 5));
 if (!empty($items)) : ?>
 <?php include(erLhcoreClassDesign::designtpl('lhgallery/image_list_popularrecent.tpl.php'));?> 
 <?php else : ?>
@@ -73,7 +73,7 @@ if (!empty($items)) : ?>
 <div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/ratedrecent')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last 24 h.')?> - <?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Top rated');?> &raquo;</a></h1></div>
 <?php 
 $appendImageMode = '/(mode)/ratedrecent';
-$items = erLhcoreClassModelGalleryRated24::getImages(array('disable_sql_cache' => true,'offset' => 0, 'limit' => 4));       
+$items = erLhcoreClassModelGalleryRated24::getImages(array('disable_sql_cache' => true,'offset' => 0, 'limit' => 5));       
 if (!empty($items)) : ?>
 <?php include(erLhcoreClassDesign::designtpl('lhgallery/image_list_popularrecent.tpl.php'));?> 
 <?php else : ?>

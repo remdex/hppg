@@ -28,17 +28,10 @@ class erLhcoreClassUser{
            if ( isset($_SESSION['user_id']) )
            {
                unset($_SESSION['user_id']);
-           }
-           
-           if ( isset($_SESSION['access_array']) )
-           {
                unset($_SESSION['access_array']);
-           }
-           
-           if ( isset($_SESSION['access_timestamp']) )
-           {
                unset($_SESSION['access_timestamp']);
-           }      
+           }           
+               
        } else {
           $this->session->save( $this->session->load() );        
           $this->userid = $_SESSION['user_id'];
@@ -150,6 +143,7 @@ class erLhcoreClassUser{
    {
        unset($_SESSION['access_array']);
        unset($_SESSION['access_timestamp']);
+       unset($_SESSION['user_id']);
        $this->session->destroy();
    }
          
@@ -286,7 +280,7 @@ class erLhcoreClassUser{
    {
            
        if ($this->AccessArray !== false) return $this->AccessArray;
-             
+
        if (isset($_SESSION['access_array'])) {
                     
            $this->AccessArray = $_SESSION['access_array'];
@@ -306,6 +300,8 @@ class erLhcoreClassUser{
                return $this->AccessArray;
            }
        }
+       
+   
        
        if ($this->cacheCreated == false) {
            $this->cacheCreated = true;
