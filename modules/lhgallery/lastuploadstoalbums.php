@@ -8,7 +8,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/lastuploadstoalbums.tpl.php');    
         
     $pages = new lhPaginator();
-    $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true));
+    $pages->items_total = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('disable_sql_cache' => true,'filter' => array('hidden' => 0)));
     $pages->setItemsPerPage(20);
     $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbums');
     $pages->paginate();
