@@ -42,6 +42,12 @@ if ($mode == 'album') {
             erLhcoreClassModule::redirect('/');
             exit;
         }
+        
+        if ($Image->approved == 0){
+            erLhcoreClassModule::redirect('/');
+            exit;
+        }
+        
         $albumID = $Image->aid;
         $cache->store('album_id_by_pid'.(int)$Params['user_parameters']['image_id'],$albumID);
     }
@@ -278,6 +284,12 @@ if (!($Image instanceof erLhcoreClassModelGalleryImage)){
         erLhcoreClassModule::redirect('/');
         exit;
     }
+    
+    if ($Image->approved == 0){
+        erLhcoreClassModule::redirect('/');
+        exit;
+    }
+    
 }
 
 $CommentData = new erLhcoreClassModelGalleryComment();

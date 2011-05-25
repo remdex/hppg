@@ -126,7 +126,12 @@ if (($Result = $cache->restore($cacheKey)) === false)
     } catch (Exception $e){
         erLhcoreClassModule::redirect('/');
         exit;
-    }    
+    }   
+     
+    if ($Album->hidden == 1){
+        erLhcoreClassModule::redirect('/');
+        exit;
+    }
     
     $modeSQL = $sortModes[$mode];         
     $appendImageMode = $mode != 'new' ? '/(sort)/'.$mode : '';

@@ -1,7 +1,7 @@
 <?php $skipImageListJS = true; ?>
 <div class="category">
 <div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbums')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads to albums');?> &raquo;</a></h1></div>
-<?php $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('sort' => 'addtime DESC','offset' => 0, 'limit' => 4)); 
+<?php $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter'=> array('hidden' => 0),'sort' => 'addtime DESC','offset' => 0, 'limit' => 4)); 
 if (!empty($items)) : ?>
 <?php include(erLhcoreClassDesign::designtpl('lhgallery/album_list.tpl.php'));?>
 <?php else : ?>
