@@ -240,6 +240,17 @@ class erLhcoreClassPalleteIndexImage {
         
     }
        
+    public static function getFlattedStats($stats)
+    {
+        $parts = array();
+        foreach ($stats as $pallete => $count)
+        {
+           $parts[] = $pallete.'|'.$count;
+        }
+        
+        return implode(',',$parts);
+    }
+    
     public static function storePalleteStats($pid,$stats = false)
     {
         /**
@@ -248,20 +259,24 @@ class erLhcoreClassPalleteIndexImage {
          * */
         $statsImploded = '';
         if (is_array($stats)) {
-           arsort($stats);           
+           arsort($stats);
            if (count($stats) > 10) {
-                $stats = array_slice(array_keys($stats),0,10);
-           } else {
-               $stats = array_keys($stats);
-           }
-           $statsImploded = implode(',',$stats);
+                $stats = array_slice($stats,0,10,true);
+           }                                 
+           $statsImploded = self::getFlattedStats($stats);           
         } else {            
             $db = ezcDbInstance::get(); 
-            $stmt = $db->prepare('SELECT pallete_id FROM lh_gallery_pallete_images WHERE pid = :pid ORDER BY count DESC LIMIT 10');
+            $stmt = $db->prepare('SELECT pallete_id,count FROM lh_gallery_pallete_images WHERE pid = :pid ORDER BY count DESC LIMIT 10');
             $stmt->bindValue( ':pid',$pid);            
             $stmt->execute();            
-            $stats = $stmt->fetchAll(PDO::FETCH_COLUMN,0);  
-            $statsImploded = implode(',',$stats);                           
+            $statsResult = $stmt->fetchAll();
+            
+            $stats = array();
+            foreach ($statsResult as $stat)
+            {
+                $stats[$stat['pallete_id']] = $stat['count'];
+            }            
+            $statsImploded = self::getFlattedStats($stats);                           
         }
                 
         if (trim($statsImploded) != ''){

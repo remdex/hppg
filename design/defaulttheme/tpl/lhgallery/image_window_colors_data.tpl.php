@@ -3,18 +3,28 @@
     <?php 
     $topThreeColors = array();
     $lastID = -1;   
+    $max = 15400/2;
+    $min = 1;
+    $rmax = 3;
+    $rmin = 1;
+    $topThreeColorsCounter = 0;
+    
     foreach ($colorsDominant as $pallete) : 
-    if (count($topThreeColors) < 3 && ($lastID == -1 || abs($pallete->id - $lastID) > 10)) {
+    if ($topThreeColorsCounter < 4 && ($lastID == -1 || abs($pallete->id - $lastID) > 10)) {
         
         $blocked = false;
         foreach ($topThreeColors as $color_id) { // Hard check to avoid appending similar collor to top three colors
-            if (abs($pallete->id - $color_id) <= 10){
+            if (abs($pallete->id - $color_id) <= 10) {
                 $blocked = true;
             }
         }
         
-        if ($blocked === false) {       
-            $topThreeColors[] = $pallete->id;
+        if ($blocked === false) { 
+            $repeatPallete = ceil(((3*($pallete->matches))/($max-$min)));
+            for ( $i = 1; $i <= $repeatPallete; $i++ ) {
+                $topThreeColors[] = $pallete->id;
+            }
+            $topThreeColorsCounter++;
         }
     };
     $lastID = $pallete->id;

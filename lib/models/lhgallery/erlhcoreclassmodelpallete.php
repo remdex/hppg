@@ -178,18 +178,28 @@ class erLhcoreClassModelGalleryPallete {
        if ($stats !== null) {   
             $session = erLhcoreClassGallery::getSession('slave');      
               
-            $statsImploded = explode(',',$stats); 
-
+            $statsImplodedParts = explode(',',$stats); 
+            $statsImploded = array();
+            foreach ($statsImplodedParts as $part)
+            {
+                list($pallete,$matched) = explode('|',$part);
+                $statsImploded[$pallete] = $matched;
+            }       
+            
+            
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );
 
-            $q->where( $q->expr->in( 'id', $statsImploded ) );
+            $q->where( $q->expr->in( 'id', array_keys($statsImploded) ) );
                               
             $objects = $session->find( $q );  
-                                    
-            $result = array()     ;
-            foreach ($statsImploded as $stat)
+                     
+            $result = array();
+            foreach ($statsImploded as $pallete => $matches)
             {
-                $result[] = isset($objects[$stat]) ? $objects[$stat] : null;
+                if (isset($objects[$pallete])) {
+                    $objects[$pallete]->matches = $matches;
+                    $result[] = $objects[$pallete];
+                }
             }
             
             $result = array_filter($result);
@@ -893,6 +903,8 @@ class erLhcoreClassModelGalleryPallete {
    public $green = null;
    public $blue = null;
    public $position = 0;
+   
+   public $matches = 0;
 
 }
 
