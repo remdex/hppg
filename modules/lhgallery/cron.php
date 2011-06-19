@@ -20,7 +20,7 @@ erLhcoreClassModelGallerySearchHistory::deleteLegacySearch();
 $session = erLhcoreClassGallery::getSession();
 $q = $session->createFindQuery( 'erLhcoreClassModelGalleryUploadArchive' );  
 $q->where( $q->expr->eq( 'status', $q->bindValue( 0 ) ) )
-  ->limit(1); // Limit import to max 1 archives at once
+  ->limit(1); // Limit import to max 2 archives at once
 $objects = $session->find( $q, 'erLhcoreClassModelGalleryUploadArchive' );
 
 foreach ($objects as $object)

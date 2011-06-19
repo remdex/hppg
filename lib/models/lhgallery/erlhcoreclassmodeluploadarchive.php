@@ -115,11 +115,10 @@ class erLhcoreClassModelGalleryUploadArchive {
 				if (!file_exists("var/tmpfiles/".$this->id))
 				mkdir("var/tmpfiles/".$this->id,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
 				    					
-				$pathExtracted = "var/tmpfiles/{$this->id}/" . $entry->getPath();
-
-				try {			
-				$archive->extractCurrent( "var/tmpfiles/{$this->id}/" );
-				} catch (Exception $e) {
+				$pathExtracted = "var/tmpfiles/{$this->id}/" . $entry->getPath();	
+				try {							
+				    $archive->extractCurrent( "var/tmpfiles/{$this->id}/" );
+				} catch (Exception $e){
 				    
 				}
 				
