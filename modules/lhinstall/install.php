@@ -680,7 +680,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_oid_associations` (
                   `server_url` blob NOT NULL,
-                  `handle` varchar(100) NOT NULL,
+                  `handle` varchar(255) NOT NULL,
                   `secret` blob NOT NULL,
                   `issued` int(11) NOT NULL,
                   `lifetime` int(11) NOT NULL,
@@ -699,7 +699,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_oid_nonces` (
-                  `server_url` varchar(100) NOT NULL,
+                  `server_url` varchar(2047) NOT NULL,
                   `timestamp` int(11) NOT NULL,
                   `salt` char(40) NOT NULL,
                   UNIQUE KEY `server_url` (`server_url`(100),`timestamp`,`salt`)
