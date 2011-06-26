@@ -699,7 +699,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_oid_nonces` (
-                  `server_url` varchar(2047) NOT NULL,
+                  `server_url` varchar(255) NOT NULL,
                   `timestamp` int(11) NOT NULL,
                   `salt` char(40) NOT NULL,
                   UNIQUE KEY `server_url` (`server_url`(255),`timestamp`,`salt`)
