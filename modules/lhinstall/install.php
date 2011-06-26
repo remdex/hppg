@@ -680,12 +680,12 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_oid_associations` (
                   `server_url` blob NOT NULL,
-                  `handle` varchar(255) NOT NULL,
+                  `handle` varchar(100) NOT NULL,
                   `secret` blob NOT NULL,
                   `issued` int(11) NOT NULL,
                   `lifetime` int(11) NOT NULL,
                   `assoc_type` varchar(64) NOT NULL,
-                  PRIMARY KEY (`server_url`(255),`handle`)
+                  PRIMARY KEY (`server_url`(100),`handle`)
                 ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_oid_map` (
@@ -699,10 +699,10 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 ) DEFAULT CHARSET=utf8;");
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_oid_nonces` (
-                  `server_url` varchar(255) NOT NULL,
+                  `server_url` varchar(100) NOT NULL,
                   `timestamp` int(11) NOT NULL,
                   `salt` char(40) NOT NULL,
-                  UNIQUE KEY `server_url` (`server_url`(255),`timestamp`,`salt`)
+                  UNIQUE KEY `server_url` (`server_url`(100),`timestamp`,`salt`)
                 ) DEFAULT CHARSET=utf8;");
                                
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_myfavorites_images` (
