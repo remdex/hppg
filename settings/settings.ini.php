@@ -240,7 +240,8 @@ return array (
     	'images' => array(
     		0 => '',
     		1 => '' 		
-    	)
+    	),
+    	'full_img_cdn' => ''
     ),
     'face_search' => array (
         'api_key' => 'api_key_of_face_com',
