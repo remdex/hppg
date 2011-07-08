@@ -14,7 +14,8 @@ return array (
       'extract_exif_data' => false,
       'templatecache' => false,
       'templatecompile' => false,
-      'modulecompile' => false,        
+      'modulecompile' => false,
+      'file_storage_backend' => 'filesystem',         
       'extensions' => array (           
       ), 
       'nice_url_enabled' => false,
@@ -284,6 +285,12 @@ return array (
       'servers' => array( array('host' => '127.0.0.1',
                                 'port' => '11211',     
                                 'weight' => 1 ) )     
+    ),
+    'amazons3' => array (
+        'bucket'            => '',
+        'endpoint'          => '',
+        'aws_access_key'    => '',
+        'aws_secret_key'    => ''
     ),
     'redis' => array (
         'server' => array ( 
