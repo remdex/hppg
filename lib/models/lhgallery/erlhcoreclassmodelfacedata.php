@@ -210,9 +210,18 @@ class erLhcoreClassModelGalleryFaceData {
                $photoPath = 'albums/'.$image->filepath.'normal_'. $image->filename;
            }
 
-           if (file_exists($photoPath) && is_file($photoPath) && $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) { 
+           if ( ((erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' && file_exists($photoPath) && is_file($photoPath)) || erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'amazons3')&& $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) { 
 
-               $url = 'http://' . erConfigClassLhConfig::getInstance()->conf->getSetting( 'site','site_domain') . '/' . $photoPath;
+               if ( erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' ) {
+                    $url = 'http://' . erConfigClassLhConfig::getInstance()->conf->getSetting( 'site','site_domain') . '/' . $photoPath;
+               } else {
+                   if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'use_full_size') === true) {
+                       $url = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.$image->filename;
+                   } else {
+                       $url = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
+                   }
+               }
+           
                
                $response = self::getFaceRestClientInstance()->faces_detect($url);           
                $tagsData = array();
@@ -237,6 +246,11 @@ class erLhcoreClassModelGalleryFaceData {
                                    		break;
             
                                    	case 'gender':                       	       
+                                   	       // Similarity
+                                   		   $tagsData[] = trim(str_repeat(' '.$data->value,round((($rmin*($data->confidence-$min))/($max-$min))*5)));                       		   
+                                   		break;
+                                   		
+                                   	case 'mood':
                                    	       // Similarity
                                    		   $tagsData[] = trim(str_repeat(' '.$data->value,round((($rmin*($data->confidence-$min))/($max-$min))*5)));                       		   
                                    		break;

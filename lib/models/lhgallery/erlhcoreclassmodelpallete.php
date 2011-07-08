@@ -173,9 +173,9 @@ class erLhcoreClassModelGalleryPallete {
        $stmt->bindValue( ':pid',$pid);            
        $stmt->execute();            
        $stats = $stmt->fetchColumn();  
-       
+                    
        $result = array();
-       if ($stats !== null) {   
+       if ($stats !== false) {   
             $session = erLhcoreClassGallery::getSession('slave');      
               
             $statsImplodedParts = explode(',',$stats); 

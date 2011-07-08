@@ -136,8 +136,16 @@ class erLhcoreClassModelGalleryImage {
                     unlink($photoPath.'thumb_'.str_replace('.swf','.jpg',$this->filename));                           
            }
        }
+
+       $config = erConfigClassLhConfig::getInstance();       
+       if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
+           S3::setAuth($config->conf->getSetting( 'amazons3', 'aws_access_key' ), $config->conf->getSetting( 'amazons3', 'aws_secret_key'));           
+           S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . $this->filename );
+           S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . 'normal_' . $this->filename );
+           S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . 'thumb_' . $this->filename );
+       }
    }
-   
+
    public function __get($variable)
    {
        switch ($variable) {

@@ -58,6 +58,8 @@ class erLhcoreClassSWFConverter {
         $image->pwidth = $width;
         $image->pheight = $height;
         
+        $image->filename = $fileNamePhysic;
+        
         erLhcoreClassModelGalleryPendingConvert::addImage($image->pid);
     }
     

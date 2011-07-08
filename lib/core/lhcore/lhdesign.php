@@ -73,9 +73,9 @@ class erLhcoreClassDesign
     public static function imagePath($path, $useCDN = false, $id = 0)   
     {             
         $instance = erLhcoreClassSystem::instance();
-        if ($useCDN == false ) {    
-        	return $instance->wwwDir() . '/albums/' . $path; 
-        } else {                	
+        if ($useCDN == false ) {
+        	return erConfigClassLhConfig::getInstance()->conf->getSetting( 'cdn', 'full_img_cdn' ) . $instance->wwwDir() . '/albums/' . $path; 
+        } else {
     		$cfg = erConfigClassLhConfig::getInstance();
     		$cdnServers = $cfg->conf->getSetting( 'cdn', 'images' );        		 
     		return $cdnServers[$id % count($cdnServers)] . $instance->wwwDir() . '/albums/' . $path; 

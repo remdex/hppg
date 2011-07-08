@@ -26,13 +26,15 @@ if (count($objects) == 1)
 	   	   $photoDir = 'albums/userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$fileSession->user_id.'/'.$fileSession->album_id;
 	   	   $photoDirPhoto = 'userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
 	   	   erLhcoreClassImageConverter::mkdirRecursive($photoDir);
+	   	   $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']);
 	   	   
-	       $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']);
-	       
-	       if (file_exists($photoDir.'/'.$fileNamePhysic)) {
-	       		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
-	       }
-	       
+	   	   if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+           {    	       
+    	       if (file_exists($photoDir.'/'.$fileNamePhysic)) {
+    	       		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
+    	       }
+           }
+            
 	       $filetype->process($image,array(
     	       'photo_dir'        => $photoDir,
     	       'photo_dir_photo'  => $photoDirPhoto,
@@ -61,8 +63,7 @@ if (count($objects) == 1)
 	       $image->approved = $canChangeApprovement == true ? 1 : 0;
 	       	       	       
 	       $image->anaglyph =  (isset($_POST['anaglyph']) && $_POST['anaglyph'] == 'true') ? 1 : 0;
-	       $image->filename = $fileNamePhysic;
-	              
+	      
 	       $session->update($image);
 	       $image->clearCache();
            

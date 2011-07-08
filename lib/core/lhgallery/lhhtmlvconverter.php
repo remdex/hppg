@@ -51,42 +51,49 @@ class erLhcoreClassHTMLVConverter {
         
         $config = erConfigClassLhConfig::getInstance();
         
-       	move_uploaded_file($_FILES[$params['post_file_name']]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
-        
-        chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-       
-        $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
-        $image->total_filesize = $image->filesize;
-        $image->filepath = $params['photo_dir_photo']; 
-
-        $tag = new erLhcoreClassOgg( $photoDir.'/'.$fileNamePhysic);
-               
-        $image->pwidth = $tag->Streams['theora']['width'];
-        $image->pheight = $tag->Streams['theora']['height'];
-        
-        $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeHTMLV;
-        
-        if ($tag->Streams['picturable']) {
-            $image->has_preview = 1;
+        if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+        {
+           	move_uploaded_file($_FILES[$params['post_file_name']]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
             
-            $parts = explode('.',$fileNamePhysic);
-            array_pop($parts);
+            chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+           
+            $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
+            $image->total_filesize = $image->filesize;
+            $image->filepath = $params['photo_dir_photo']; 
+    
+            $tag = new erLhcoreClassOgg( $photoDir.'/'.$fileNamePhysic);
+                   
+            $image->pwidth = $tag->Streams['theora']['width'];
+            $image->pheight = $tag->Streams['theora']['height'];
             
-            if (isset($tag->Streams['theora']['framecount'])) {                
-               $tag->GetPicture(round($tag->Streams['theora']['framecount']/2),$photoDir.'/original_'.implode('.',$parts).'.jpg');
-            } else {
-               $tag->GetPicture(1,$photoDir.'/original_'.implode('.',$parts).'.jpg');  
+            $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeHTMLV;
+            
+            if ($tag->Streams['picturable']) {
+                $image->has_preview = 1;
+                
+                $parts = explode('.',$fileNamePhysic);
+                array_pop($parts);
+                
+                if (isset($tag->Streams['theora']['framecount'])) {                
+                   $tag->GetPicture(round($tag->Streams['theora']['framecount']/2),$photoDir.'/original_'.implode('.',$parts).'.jpg');
+                } else {
+                   $tag->GetPicture(1,$photoDir.'/original_'.implode('.',$parts).'.jpg');  
+                }
+                
+                erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/normal_'.implode('.',$parts).'.jpg' ); 
+                erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/thumb_'.implode('.',$parts).'.jpg' ); 
+               	       
+                chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                
+                unlink($photoDir.'/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot
             }
             
-            erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/normal_'.implode('.',$parts).'.jpg' ); 
-            erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/thumb_'.implode('.',$parts).'.jpg' ); 
-           	       
-            chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-            chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            $image->filename = $fileNamePhysic;
             
-            unlink($photoDir.'/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot
-        }        
-        
+        } elseif ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
+            // Not implemented yet
+        }
     }
     
     // Handles uploads from archive, cronjob mode

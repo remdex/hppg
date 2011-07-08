@@ -73,8 +73,17 @@ class erLhcoreClassPalleteIndexImage {
          * */ 
         $matchTreshold = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'minimum_color_match' );  
         $color_indexer_external = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'color_indexer_external' );  
-            
-        $photoPath = 'albums/'.$image->filepath.'thumb_'.$image->filename;
+                       
+        $deletePhotoPath = false;
+        if (erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem') {
+            $photoPath = 'albums/'.$image->filepath.'thumb_'.$image->filename;
+        } else {
+            $deletePhotoPath = true;            
+            $content = file_get_contents(erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'thumb_'.$image->filename);
+            erLhcoreClassLog::write(erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'thumb_'.$image->filename);
+            $photoPath = 'var/tmpupload/thumbfile_'.$image->filename;
+            file_put_contents($photoPath,$content);
+        }        
                
         if (file_exists($photoPath) && is_file($photoPath)) { 
 
@@ -179,6 +188,10 @@ class erLhcoreClassPalleteIndexImage {
                      }
                                                    
             }
+            
+            if ($deletePhotoPath === true){
+                 unlink($photoPath);
+            }            
         }               
     }
 

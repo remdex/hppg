@@ -10,6 +10,8 @@ return array_merge(array (
         'erLhcoreClassTemplate'     		=> 'lib/core/lhtpl/tpl.php',
         'erLhcoreClassURL'          		=> 'lib/core/lhcore/lhurl.php', 
         'lhPaginator'               		=> 'lib/core/lhexternal/lhpagination.php', 
+        'S3'               		            => 'lib/core/lhexternal/S3.php',
+
         'erLhcoreClassLog'          		=> 'lib/core/lhcore/lhlog.php',                  
         'erLhcoreClassLazyDatabaseConfiguration' => 'lib/core/lhcore/lhdb.php', 
         'erConfigClassLhConfig'     		=> 'lib/core/lhconfig/lhconfig.php',      

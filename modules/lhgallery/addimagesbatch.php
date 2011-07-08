@@ -10,7 +10,6 @@ $photoDir = erLhcoreClassGalleryBatch::normalizePath($photoDir);
 $fileName = erLhcoreClassGalleryBatch::normalizeFilename($fileName,$photoDir);
 $imagePath = $photoDir . '/' . $fileName;
 
-
 if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePath) && ($filetype = erLhcoreClassModelGalleryFiletype::isValidLocal($imagePath)) !== false )
 {
    try {
@@ -44,20 +43,19 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
            $image->keywords =  '';
            $image->approved =  1;
            $image->filename = $fileName;
-                  
+
            $session->update($image);
            $image->clearCache();
-           
+
            // Index colors
 	       erLhcoreClassPalleteIndexImage::indexImage($image,true);  
-	       
+
 	       // Index face if needed
 	       erLhcoreClassModelGalleryFaceData::indexImage($image,true);
-	       
+
 	       // Index in search table
 	       erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
-	       
-	       
+
 	       erLhcoreClassModelGalleryAlbum::updateAddTime($image);
 	            
        } else {

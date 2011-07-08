@@ -50,6 +50,8 @@ class erLhcoreClassVideoConverter {
        
         $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeVIDEO;
         
+        $image->filename = $fileNamePhysic;
+        
         erLhcoreClassModelGalleryPendingConvert::addImage($image->pid);
     }
     
