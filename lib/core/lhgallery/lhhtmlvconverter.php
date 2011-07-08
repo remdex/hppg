@@ -92,7 +92,50 @@ class erLhcoreClassHTMLVConverter {
             $image->filename = $fileNamePhysic;
             
         } elseif ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
-            // Not implemented yet
+            
+            $fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().$fileNamePhysic;
+            move_uploaded_file($_FILES[$params['post_file_name']]["tmp_name"],'var/tmpupload/'.$fileNamePhysic);
+            
+            $image->filesize = filesize('var/tmpupload/'.$fileNamePhysic);
+            $image->total_filesize = $image->filesize;
+            $image->filepath = $params['photo_dir_photo']; 
+    
+            $tag = new erLhcoreClassOgg( 'var/tmpupload/'.$fileNamePhysic);
+                   
+            $image->pwidth = $tag->Streams['theora']['width'];
+            $image->pheight = $tag->Streams['theora']['height'];
+            
+            $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeHTMLV;
+            
+            S3::setAuth($config->conf->getSetting( 'amazons3', 'aws_access_key' ), $config->conf->getSetting( 'amazons3', 'aws_secret_key')); 
+            
+            if ($tag->Streams['picturable']) {
+                $image->has_preview = 1;
+                
+                $parts = explode('.',$fileNamePhysic);
+                array_pop($parts);
+                
+                if (isset($tag->Streams['theora']['framecount'])) {                
+                   $tag->GetPicture(round($tag->Streams['theora']['framecount']/2),'var/tmpupload/original_'.implode('.',$parts).'.jpg');
+                } else {
+                   $tag->GetPicture(1,'var/tmpupload/original_'.implode('.',$parts).'.jpg');  
+                }
+                
+                erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', 'var/tmpupload/original_'.implode('.',$parts).'.jpg','var/tmpupload/normal_'.implode('.',$parts).'.jpg' ); 
+                erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', 'var/tmpupload/original_'.implode('.',$parts).'.jpg', 'var/tmpupload/thumb_'.implode('.',$parts).'.jpg' ); 
+
+                S3::putObject(S3::inputFile('var/tmpupload/thumb_'.implode('.',$parts).'.jpg', false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_'.implode('.',$parts).'.jpg', S3::ACL_PUBLIC_READ);
+                S3::putObject(S3::inputFile('var/tmpupload/normal_'.implode('.',$parts).'.jpg', false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_'.implode('.',$parts).'.jpg', S3::ACL_PUBLIC_READ);
+                
+                unlink('var/tmpupload/normal_'.implode('.',$parts).'.jpg');    // Delete original screenshot
+                unlink('var/tmpupload/thumb_'.implode('.',$parts).'.jpg');    // Delete original screenshot
+            }
+         
+            S3::putObject(S3::inputFile('var/tmpupload/'.$fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
+                
+            unlink('var/tmpupload/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot
+            unlink('var/tmpupload/'.$fileNamePhysic);    // Delete original screenshot
+            $image->filename = $fileNamePhysic;
         }
     }
     

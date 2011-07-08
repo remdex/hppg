@@ -93,6 +93,13 @@ class erLhcoreClassModelGalleryImage {
    public function removeFiles()
    {
        $photoPath = 'albums/'.$this->filepath;
+       
+       $config = erConfigClassLhConfig::getInstance();
+       if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
+           S3::setAuth($config->conf->getSetting( 'amazons3', 'aws_access_key' ), $config->conf->getSetting( 'amazons3', 'aws_secret_key'));           
+           S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . $this->filename );
+       }
+       
        if (file_exists($photoPath.$this->filename))
             unlink($photoPath.$this->filename);
        
@@ -102,17 +109,28 @@ class erLhcoreClassModelGalleryImage {
                 unlink($photoPath.'normal_'.$this->filename); 
                      
            if (file_exists($photoPath.'thumb_'.$this->filename))
-                unlink($photoPath.'thumb_'.$this->filename);                    
-           	            
+                unlink($photoPath.'thumb_'.$this->filename);  
+                                  
+           if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
+               S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . 'normal_' . $this->filename );
+               S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . 'thumb_' . $this->filename );
+           }
+           
        } elseif ($this->media_type == erLhcoreClassModelGalleryImage::mediaTypeHTMLV ) {
                   
            if ($this->has_preview == 1) {      
 
-              if (file_exists($photoPath.'normal_'.str_replace('.ogv','.jpg',$this->filename)))
+             if (file_exists($photoPath.'normal_'.str_replace('.ogv','.jpg',$this->filename)))
                     unlink($photoPath.'normal_'.str_replace('.ogv','.jpg',$this->filename)); 
                          
              if (file_exists($photoPath.'thumb_'.str_replace('.ogv','.jpg',$this->filename)))
-                    unlink($photoPath.'thumb_'.str_replace('.ogv','.jpg',$this->filename));                           
+                    unlink($photoPath.'thumb_'.str_replace('.ogv','.jpg',$this->filename));  
+                    
+             if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
+                S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath.'thumb_'.str_replace('.ogv','.jpg',$this->filename) );
+                S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath.'normal_'.str_replace('.ogv','.jpg',$this->filename) );
+             }
+                              
            }
        } elseif ($this->media_type == erLhcoreClassModelGalleryImage::mediaTypeVIDEO ) {
                   
@@ -120,12 +138,16 @@ class erLhcoreClassModelGalleryImage {
                     unlink($photoPath.str_replace(array('.avi','.mpg','.wmv','.mpeg','.mp4'),'.flv',$this->filename));
            
            if ($this->has_preview == 1) {      
-
-              if (file_exists($photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)))
-                    unlink($photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)); 
-                         
-             if (file_exists($photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)))
-                    unlink($photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename));                           
+                 if (file_exists($photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)))
+                        unlink($photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)); 
+                             
+                 if (file_exists($photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename)))
+                        unlink($photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename));    
+    
+                 if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
+                    S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath.'thumb_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename) );
+                    S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath.'normal_'.str_replace(array('.avi','.wmv','.mpg','.mpeg','.mp4'),'.jpg',$this->filename) );
+                 }
            }
            
        } elseif ($this->media_type == erLhcoreClassModelGalleryImage::mediaTypeSWF ) {
@@ -133,17 +155,16 @@ class erLhcoreClassModelGalleryImage {
            if ($this->has_preview == 1) {      
                        
              if (file_exists($photoPath.'thumb_'.str_replace('.swf','.jpg',$this->filename)))
-                    unlink($photoPath.'thumb_'.str_replace('.swf','.jpg',$this->filename));                           
+                    unlink($photoPath.'thumb_'.str_replace('.swf','.jpg',$this->filename));   
+
+                 if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
+                    S3::deleteObject($photoPath.'thumb_'.str_replace('.swf','.jpg',$this->filename));
+                 }                   
            }
        }
 
-       $config = erConfigClassLhConfig::getInstance();       
-       if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
-           S3::setAuth($config->conf->getSetting( 'amazons3', 'aws_access_key' ), $config->conf->getSetting( 'amazons3', 'aws_secret_key'));           
-           S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . $this->filename );
-           S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . 'normal_' . $this->filename );
-           S3::deleteObject($config->conf->getSetting( 'amazons3', 'bucket' ), $photoPath . 'thumb_' . $this->filename );
-       }
+              
+      
    }
 
    public function __get($variable)
