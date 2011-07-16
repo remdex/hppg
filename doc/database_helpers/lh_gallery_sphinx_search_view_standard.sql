@@ -22,7 +22,8 @@ VIEW `lh_gallery_sphinx_search_view` AS select
 `lh_gallery_sphinx_search`.`colors` AS `colors`,
 `lh_gallery_sphinx_search`.`text_index` AS `text_index`,
 `lh_gallery_sphinx_search`.`hits` AS `hits`,
-`lh_gallery_sphinx_search`.`pid` AS `pid`
+`lh_gallery_sphinx_search`.`pid` AS `pid`,
+'imgan' AS `fake_keyword`
  
 from 
 
