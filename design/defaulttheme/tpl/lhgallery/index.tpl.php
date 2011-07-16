@@ -16,9 +16,8 @@
     $counter = 0;
     $arrayFormated = array();
     foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete){
-    $arrayFormated[$counter][] = $pallete;
-   
-    $counter = ($counter == 10) ? 0 : $counter;   
+    $counter = ($counter == 10) ? 0 : $counter; 
+    $arrayFormated[$counter][] = $pallete;  
     $counter++;
     };    
      foreach ($arrayFormated as $package):
@@ -35,9 +34,8 @@
     $counter = 0;
     $arrayFormated = array();
     foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete){
-    $arrayFormated[$counter][] = $pallete;
-   
-    $counter = ($counter == 10) ? 0 : $counter;   
+    $counter = ($counter == 10) ? 0 : $counter;  
+    $arrayFormated[$counter][] = $pallete; 
     $counter++;
     };    
      foreach ($arrayFormated as $package):
