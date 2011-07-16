@@ -16,7 +16,7 @@ if ($resolution != ''){
     $searchParams['Filter']['pheight'] = $resolutions[$resolution]['height'];
 }
 
-$cacheKey = md5('version_'.$cache->getCacheVersion('color_images').'_color_view_url_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.'_color_id_'.erLhcoreClassGallery::multi_implode(',',$pallete_id).erLhcoreClassGallery::multi_implode(',',$searchParams).erLhcoreClassGallery::multi_implode(',',$npallete_id));
+$cacheKey = md5('version_'.$cache->getCacheVersion('color_images').'_color_view_url_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.'_color_id_'.erLhcoreClassGallery::multi_implode(',',$pallete_id).erLhcoreClassGallery::multi_implode(',',$searchParams).'_ncolor_id_'.erLhcoreClassGallery::multi_implode(',',$npallete_id));
 
 if (($Result = $cache->restore($cacheKey)) === false)
 {
