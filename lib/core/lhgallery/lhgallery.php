@@ -295,7 +295,20 @@ class erLhcoreClassGallery{
                                                     
                         $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
                         if (count($params['color_filter']) == 1 || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search') == false) { // If one color we use internal wordcount algorithm                
-                            $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+                            if (!empty($params['color_filter'])){             
+                                $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+                            } else {
+                                // Just make sure that atleast one color is set              
+                                $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));
+                                
+                                $parts = array();                    
+                                foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete)
+                                {
+                                    $parts[] =  'pld'.$pallete->id;                       
+                                }
+                                $colorSearchText .= ' ('.implode(' | ',$parts).')';
+                            }
+                
                         } else {
                             $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));
                             if (isset($params['color_filter']) && count($params['color_filter']) > 0 ) {
@@ -556,8 +569,22 @@ class erLhcoreClassGallery{
               
             $cl->SetMatchMode( SPH_MATCH_EXTENDED2);  
    
-            if (count($params['color_filter']) == 1 || $extendedColorSearch == false) { // If one color we use internal wordcount algorithm                
-                $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+            if (count($params['color_filter']) == 1 || $extendedColorSearch == false) { // If one color we use internal wordcount algorithm  
+                
+                if (!empty($params['color_filter'])){             
+                    $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
+                } else {
+                    // Just make sure that atleast one color is set              
+                    $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));
+                    
+                    $parts = array();                    
+                    foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete)
+                    {
+                        $parts[] =  'pld'.$pallete->id;                       
+                    }
+                    $colorSearchText .= ' ('.implode(' | ',$parts).')';
+                }
+                
             } else {
                 // Just make sure that atleast one color is set              
                 $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText)))); 
