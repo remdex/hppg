@@ -149,10 +149,12 @@ if ($mode == 'album') {
     // Color filter in search mode
     $appendColorMode = '';
     
-    $pallete_id = (array)$Params['user_parameters_unordered']['color'];
+    $Params['user_parameters_unordered']['color'] = (array)$Params['user_parameters_unordered']['color'];
+    $pallete_id = $Params['user_parameters_unordered']['color'];
     sort($pallete_id);
     
-    $npallete_id = (array)$Params['user_parameters_unordered']['ncolor'];
+    $Params['user_parameters_unordered']['ncolor'] = (array)$Params['user_parameters_unordered']['ncolor'];
+    $npallete_id = $Params['user_parameters_unordered']['ncolor'];
     sort($npallete_id);
     
     $pallete_items_number = count($pallete_id);
