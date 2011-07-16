@@ -276,9 +276,13 @@ if ($mode == 'album') {
      
     $appendCacheKey = 'toprated_mode_image_ajax_pid_version_'.$cache->getCacheVersion('top_rated');
     
-} elseif ($mode == 'color') {  
+} elseif ($mode == 'color') {
+    $Params['user_parameters_unordered']['color'] = (array)$Params['user_parameters_unordered']['color'];
+    $Params['user_parameters_unordered']['ncolor'] = (array)$Params['user_parameters_unordered']['ncolor'];
     sort($Params['user_parameters_unordered']['color']);   
     sort($Params['user_parameters_unordered']['ncolor']);   
+    
+    
     $appendCacheKey = 'color_mode_image_ajax_pid_version_'.$cache->getCacheVersion('color_images').'_'.erLhcoreClassGallery::multi_implode(',',$Params['user_parameters_unordered']['color']);
     $appendCacheKey .= 'ncolor_mode_image_ajax_pid_version_'.$cache->getCacheVersion('color_images').'_'.erLhcoreClassGallery::multi_implode(',',$Params['user_parameters_unordered']['ncolor']);
 }
