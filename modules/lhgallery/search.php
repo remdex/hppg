@@ -72,6 +72,19 @@ if ($pallete_items_number > 0) {
     $searchParams['color_filter'] = $pallete_id;
 }
 
+$npallete_id = (array)$Params['user_parameters_unordered']['ncolor'];
+$npallete_items_number = count($npallete_id);
+if ($npallete_items_number > 0) {  
+    if ($npallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
+        $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
+        $npallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+    }
+    sort($npallete_id);
+    $appendColorMode .= '/(ncolor)/'.implode('/',$npallete_id);
+    $searchParams['ncolor_filter'] = $npallete_id;
+}
+
+
 
 $modeSQL = $sortModes[$mode];         
 $appendImageModeSorting = $mode != 'relevance' ? '/(sort)/'.$mode : '';    
@@ -95,14 +108,40 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     if ($searchParams['keyword'] != '')
     {         
-        $tpl->set('max_filters',$pallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
+        $tpl->set('max_filters',$pallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')); 
+        $tpl->set('nmax_filters',$npallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')); 
+           
         $tpl->set('pallete_id',$pallete_id);
+        $tpl->set('npallete_id',$npallete_id);
         
         if ($pallete_items_number > 0) {
             $tpl->set('palletes',erLhcoreClassModelGalleryPallete::getList(array('filterin' => array('id' => $pallete_id))));
         }
-             
-          
+        
+        if ($npallete_items_number > 0) {
+            $tpl->set('npalletes',erLhcoreClassModelGalleryPallete::getList(array('filterin' => array('id' => $npallete_id))));
+        }
+        
+        $colorURL = '';
+        $yesColor = '';
+        $noColor = '';
+        
+        if ($pallete_items_number > 0)
+        {
+            $yesColor = '/(color)/'.implode('/',$pallete_id);
+            $colorURL .= $yesColor;
+        }
+        
+        if ($npallete_items_number > 0)
+        {
+            $noColor = '/(ncolor)/'.implode('/',$npallete_id);
+            $colorURL .= $noColor;
+        }
+        
+        $tpl->set('yes_color',$yesColor);
+        $tpl->set('no_color',$noColor);
+            
+        
         $tpl->set('enter_keyword',false);
         $pages = new lhPaginator();
                   

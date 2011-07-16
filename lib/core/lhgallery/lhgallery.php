@@ -272,7 +272,7 @@ class erLhcoreClassGallery{
                 
                   
                   $colorSearchText = '';
-                  if (isset($params['color_filter']) && count($params['color_filter']) > 0){
+                  if ((isset($params['color_filter']) && count($params['color_filter']) > 0)  || (isset($params['ncolor_filter']) && count($params['ncolor_filter']) > 0)){
                       $colorSearchText = '';
                       $selectPart = array();
                       foreach ($params['color_filter'] as $color_id)
@@ -281,6 +281,12 @@ class erLhcoreClassGallery{
                           $selectPart[] = "ln(pld{$color_id}+1)"; // +1 to avoid infinity
                       }  
                       
+                      // Must not be present
+                      foreach ($params['ncolor_filter'] as $color_id)
+                      {
+                          $colorSearchText .= ' -pld'.$color_id;
+                      } 
+          
                       // Works best for search by color, like we are repeating color multiple times, 
                       // that way we get almoust the same result as using database
                       // Reference:
@@ -292,8 +298,17 @@ class erLhcoreClassGallery{
                             $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
                         } else {
                             $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));
-                            $cl->SetRankingMode(SPH_RANK_NONE); 
-                            $cl->SetSelect('FLOOR(('.implode('+',$selectPart).')*10000) as custom_match'); 
+                            if (isset($params['color_filter']) && count($params['color_filter']) > 0 ) {
+                                $cl->SetRankingMode(SPH_RANK_NONE); 
+                                $cl->SetSelect('FLOOR(('.implode('+',$selectPart).')*10000) as custom_match'); 
+                            } else {
+                                $parts = array();                    
+                                foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete)
+                                {
+                                    $parts[] =  'pld'.$pallete->id;                       
+                                }
+                                $colorSearchText .= ' ('.implode(' | ',$parts).')';
+                            }
                         }
                         
                       }  else {  // Works best then keyword and color is used        
@@ -334,8 +349,7 @@ class erLhcoreClassGallery{
             if ($asSingle == false) {
                 $resultItems = $cl->RunQueries();
             }
-            
-            
+           
             $resultReturn = array();
             
             
@@ -518,7 +532,7 @@ class erLhcoreClassGallery{
       $cl->SetFieldWeights($weights);
       
       $colorSearchText = '';
-      if (isset($params['color_filter']) && count($params['color_filter']) > 0){
+      if ( (isset($params['color_filter']) && count($params['color_filter']) > 0) || (isset($params['ncolor_filter']) && count($params['ncolor_filter']) > 0) ){
           $colorSearchText = '';
           $selectPart = array();
           
@@ -528,6 +542,12 @@ class erLhcoreClassGallery{
               $selectPart[] = "ln(pld{$color_id}+1)"; // +1 to avoid infinity
           }
           
+          // Must not be present
+          foreach ($params['ncolor_filter'] as $color_id)
+          {
+              $colorSearchText .= ' -pld'.$color_id;
+          }      
+         
           // Works best for search by color, like we are repeating color multiple times, 
           // that way we get almoust the same result as using database
           // Reference:
@@ -540,9 +560,19 @@ class erLhcoreClassGallery{
                 $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
             } else {
                 // Just make sure that atleast one color is set              
-                $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));                               
-                $cl->SetRankingMode(SPH_RANK_NONE); 
-                $cl->SetSelect('FLOOR(('.implode('+',$selectPart).')*10000) as custom_match');                               
+                $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText)))); 
+
+                if (isset($params['color_filter']) && count($params['color_filter']) > 0 ) {               
+                    $cl->SetRankingMode(SPH_RANK_NONE); 
+                    $cl->SetSelect('FLOOR(('.implode('+',$selectPart).')*10000) as custom_match'); 
+                } else {
+                    $parts = array();                    
+                    foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete)
+                    {
+                        $parts[] =  'pld'.$pallete->id;                       
+                    }
+                    $colorSearchText .= ' ('.implode(' | ',$parts).')';
+                }
             }
             
           } else {  // Works best then keyword and color is used        
@@ -569,10 +599,15 @@ class erLhcoreClassGallery{
       if (isset($params['relevance'])) {          
           $itemCurrent = array_shift($result['matches']);
           
-          if (!isset($params['color_search_mode']) || count($params['color_filter']) == 1 || $extendedColorSearch == false) {
+          if (!isset($params['color_search_mode']) || count($params['color_filter']) == 1 || empty($params['color_filter']) || $extendedColorSearch == false) {
             $relevanceValue = $itemCurrent['weight'];
+            
           } else {
-            $relevanceValue = $itemCurrent['attrs']['custom_match'];
+            if (isset($itemCurrent['attrs']['custom_match'])){
+                $relevanceValue = $itemCurrent['attrs']['custom_match'];
+            } else {
+                $relevanceValue = $itemCurrent['weight'];
+            }
           }
                     
           if ($cacheEnabled == true ) {

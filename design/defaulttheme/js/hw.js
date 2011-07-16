@@ -632,8 +632,20 @@ var hw = {
 	   var baseURL = this.formAddPath;
 	   $("#color-filter-nav .current-sort").mouseenter(function() {	
 	        if (!$('#pall-comb').is('*')) {
-                $.getJSON(baseURL + 'gallery/getpallete/(color)'+current_colors + '/(mode)/'+mode+ '/(keyword)/' + keyword, {} , function(data) {				
+                $.getJSON(baseURL + 'gallery/getpallete'+current_colors + '/(mode)/'+mode+ '/(keyword)/' + keyword, {} , function(data) {				
         			$('#pallete-content').html(data.result);         	
+        		});      
+	        }          
+       })	   
+	},
+	
+	initNPalleteFilter : function(current_colors,mode,keyword)
+	{	 
+	   var baseURL = this.formAddPath;
+	   $("#ncolor-filter-nav .current-sort").mouseenter(function() {	
+	        if (!$('#npall-comb').is('*')) {
+                $.getJSON(baseURL + 'gallery/getnpallete'+current_colors + '/(mode)/'+mode+ '/(keyword)/' + keyword, {} , function(data) {				
+        			$('#npallete-content').html(data.result);
         		});      
 	        }          
        })	   

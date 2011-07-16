@@ -1,4 +1,56 @@
 <?php $skipImageListJS = true; ?>
+
+
+<div class="category float-break pallete-sub">
+<div class="header-list"><h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Search by color and keyword, just try to see how fun it is!')?></h2></div>
+    <form action="<?=erLhcoreClassDesign::baseurl('gallery/search')?>">
+    <input type="text" autocomplete="off" id="KeywordColorSearch" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Enter keyword or phrase')?>" class="keywordField inputfield" name="SearchText" value="">&nbsp;<input type="submit" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Search entire gallery')?>" class="default-button" name="doSearch" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Search')?>">&nbsp;<i>(<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','enter keyword and click color, or just click color')?>)</i>
+    </form>
+    
+    <br />
+    <br />
+    
+    <div id="pallete-include" class="pallete-main float-break pallete-sub left">
+    <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Include color')?></h3>
+    <?php 
+    $counter = 0;
+    $arrayFormated = array(0);
+    foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete){
+    $arrayFormated[$counter][] = $pallete;
+   
+    $counter = ($counter == 10) ? 0 : $counter;   
+    $counter++;
+    };    
+     foreach ($arrayFormated as $package):
+     foreach ($package as $pallete): ?>
+     
+    <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>);"><a rel="<?=$pallete->id?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=$pallete->id?>"></a></div>
+    <?endforeach;?>
+    <?endforeach;?>
+    </div>
+    
+    <div id="pallete-exclude" class="pallete-main float-break pallete-sub right">
+    <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Exclude color')?></h3>
+    <?php 
+    $counter = 0;
+    $arrayFormated = array(0);
+    foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete){
+    $arrayFormated[$counter][] = $pallete;
+   
+    $counter = ($counter == 10) ? 0 : $counter;   
+    $counter++;
+    };    
+     foreach ($arrayFormated as $package):
+     foreach ($package as $pallete): ?>
+     
+    <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>);"><a rel="<?=$pallete->id?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(ncolor)/<?=$pallete->id?>"></a></div>
+    <?endforeach;?>
+    <?endforeach;?>
+    </div>
+</div>
+
+
+
 <div class="category">
 <div class="header-list"><h1><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbums')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploads to albums');?> &raquo;</a></h1></div>
 <?php $items = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter'=> array('hidden' => 0),'sort' => 'addtime DESC','offset' => 0, 'limit' => 4)); 
@@ -85,5 +137,23 @@ if (!empty($items)) : ?>
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
   });
-  hw.initInfoWindow('<?=base64_encode($appendImageMode)?>');    
+  hw.initInfoWindow('<?=base64_encode($appendImageMode)?>'); 
+  $('#KeywordColorSearch').change(function(){ 
+      var keyword = $(this).val();
+      if ($(this).val() == '') {
+            $('#pallete-include a').each(function(index) {
+                	$(this).attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/"+$(this).attr('rel'));
+            });
+            $('#pallete-exclude a').each(function(index) {
+                	$(this).attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(ncolor)/"+$(this).attr('rel'));
+            });
+      } else { 
+            $('#pallete-include a').each(function(index) {
+                	$(this).attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/"+escape(keyword)+"/(color)/"+$(this).attr('rel'));
+            }); 
+            $('#pallete-exclude a').each(function(index) {
+                	$(this).attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/"+escape(keyword)+"/(ncolor)/"+$(this).attr('rel'));
+            });
+      }
+  });   
 </script>

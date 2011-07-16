@@ -57,8 +57,15 @@ $ViewList['albumrss'] = array(
 $ViewList['getpallete'] = array( 
     'script' => 'getpallete.php',
     'params' => array(),
-    'multiple_arguments' => array ( 'color' ),
-    'uparams' => array('color','keyword','mode','resolution','match')
+    'multiple_arguments' => array ( 'color', 'ncolor' ),
+    'uparams' => array('color','ncolor','keyword','mode','resolution','match')
+    );
+          
+$ViewList['getnpallete'] = array( 
+    'script' => 'getnpallete.php',
+    'params' => array(),
+    'multiple_arguments' => array ( 'color', 'ncolor' ),
+    'uparams' => array('color','ncolor','keyword','mode','resolution','match')
     );
         
 $ViewList['category'] = array( 
@@ -91,8 +98,8 @@ $ViewList['lastsearches'] = array(
 $ViewList['image'] = array( 
     'script' => 'image.php',
     'params' => array('image_id'),
-    'multiple_arguments' => array ( 'color' ),
-    'uparams' => array('mode','keyword','sort','resolution','color','match'),
+    'multiple_arguments' => array ( 'color','ncolor' ),
+    'uparams' => array('mode','keyword','sort','resolution','color','match','ncolor'),
     ); 
             
 $ViewList['commentsajax'] = array( 
@@ -158,9 +165,10 @@ $ViewList['color'] = array(
     'script' => 'color.php',
     'params' => array(),
     'multiple_arguments' => array (
-        'color'
+        'color',
+        'ncolor'
     ),
-    'uparams' => array('color','resolution')
+    'uparams' => array('color','ncolor','resolution')
 ); 
     
 $ViewList['lastuploadsrss'] = array( 
@@ -203,10 +211,11 @@ $ViewList['ajaximages'] = array(
     'script' => 'ajaximages.php',    
     'params' => array('image_id'),
     'multiple_arguments' => array (
-        'color'
+        'color',
+        'ncolor'
     ),
-    'uparams' => array('mode','keyword','sort','direction','resolution','color','match'),
-    );   
+    'uparams' => array('mode','keyword','sort','direction','resolution','color','ncolor','match'),
+);   
       
 $ViewList['lastcommented'] = array( 
     'script' => 'lastcommented.php',
@@ -233,8 +242,8 @@ $ViewList['lastratedrss'] = array(
 $ViewList['search'] = array( 
     'script' => 'search.php',
     'params' => array(),
-    'multiple_arguments' => array ( 'color' ),
-    'uparams' => array('keyword','sort','resolution','color','match'),
+    'multiple_arguments' => array ( 'color','ncolor' ),
+    'uparams' => array('keyword','sort','resolution','ncolor','color','match'),
     );
     
 $ViewList['searchrss'] = array( 

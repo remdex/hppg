@@ -1,15 +1,15 @@
 <?php
 
-$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/getpallete.tpl.php');
+$tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/getnpallete.tpl.php');
 
-$pallete_id = (array)$Params['user_parameters_unordered']['color'];
+$pallete_id = (array)$Params['user_parameters_unordered']['ncolor'];
 sort($pallete_id);
 
-$npallete_id = (array)$Params['user_parameters_unordered']['ncolor'];
+$npallete_id = (array)$Params['user_parameters_unordered']['color'];
 sort($npallete_id);
 
 if (count($npallete_id) > 0){
-    $tpl->set('no_color','/(ncolor)/'.implode('/',$npallete_id));
+    $tpl->set('no_color','/(color)/'.implode('/',$npallete_id));
 } else {
     $tpl->set('no_color','');
 }

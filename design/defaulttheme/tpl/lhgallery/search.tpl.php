@@ -19,6 +19,10 @@ if (count($pallete_id) > 0){
 $urlAppendSort .= '/(color)/'.implode('/',$pallete_id);
 }
 
+if (count($npallete_id) > 0){
+$urlAppendSort .= '/(ncolor)/'.implode('/',$npallete_id);
+}
+
 $urlSortBase  = erLhcoreClassDesign::baseurl('gallery/search');
 $enableRelevance = true;
 $modePallete = 'search';

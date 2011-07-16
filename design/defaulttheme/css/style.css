@@ -1097,15 +1097,33 @@ div.dominant-colors div a{display:block;height:20px;}
 .csc{width:40px;height:21px;float:right;margin-left:10px;border:1px solid #E5E5E5;margin-top:-12px;}
 .csc a{display:inline;width:20px;height:21px;float:left;background:url(../images/icons/delete.png) no-repeat 2px 3px;}
 .csc a.more-color{background:url(../images/icons/add.png) no-repeat 2px 3px;border-left:1px solid #FFF;width:17px;}
-#color-filter-nav span.da-ind{background-image:none;padding-left:10px;}
+.cscr{border-color:red;border-width:2px;height:19px;}
+.cscr a{height:19px;background-position:12px 1px;width:auto;display:block;float:none;}
+.inctype{float:right;margin-top:-8px;}
+.exccl{color:#ff5151;background:url(../images/icons/eye_cross.png) no-repeat 0px 0px;padding-left:20px;margin-left:6px;}
+.inccl{color:#549f54;background:url(../images/icons/eye.png) no-repeat 0px 0px;padding-left:20px;}
+
+#color-filter-nav span.da-ind,
+#matchmode-nav span.da-ind,
+#ncolor-filter-nav span.da-ind{background-image:none;padding-left:10px;}
 #pallete-initial-filter{float:right;width:300px;}
 
 .pallete-filter{background-color:#FFFFFF;height:170px;width:172px;}
 .pallete-filter div{float:left;width:16px;height:16px;}
+
+#ncolor-filter-nav .pallete-filter div a,
 #color-filter-nav .pallete-filter div a{display:block;margin:0;padding:0;width:16px;height:16px;background-color:transparent;}
+#ncolor-filter-nav .pallete-filter div a:hover,
 #color-filter-nav .pallete-filter div a:hover{border:1px solid #FFFFFF;width:14px;height:14px;}
+
+
 #color-filter-nav{width:160px;margin-top:-12px;}
 #color-filter-nav .sort-box{width:160px;}
+
+#ncolor-filter-nav{width:160px;margin-top:-12px;}
+#ncolor-filter-nav .sort-box{width:160px;}
+
+
 .color-nav a{background-color:transparent;}
 #tags-container{float:right;width:300px;}
 #tags-container input{margin-right:2px;}
@@ -1303,3 +1321,8 @@ th.lst-th{width:50px;}
 .id-msg-lnk,
 .id-msg-lnk:visited{color:#CCCCCC;}
 .fileinput{padding:5px;}
+
+.pallete-sub .pallete-main div,
+.pallete-sub .pallete-main div a{width:30px;height:20px;}
+.pallete-sub .pallete-main div a:hover{width:28px;height:18px;}
+.pallete-sub .pallete-main{width:360px;}
