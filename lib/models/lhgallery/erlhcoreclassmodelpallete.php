@@ -112,6 +112,20 @@ class erLhcoreClassModelGalleryPallete {
        
        $params = array_merge($paramsDefault,$paramsSearch);
        
+       if (!isset($params['disable_sql_cache']))
+       {
+          $sql = 'pallete_list'.erLhcoreClassGallery::multi_implode(',',$params);  
+                       
+          $cache = CSCacheAPC::getMem();          
+          $cacheKey = isset($params['cache_key']) ? md5($sql.$params['cache_key']) : md5('site_version_'.$cache->getCacheVersion('site_version').$sql);
+          
+          if (($result = $cache->restore($cacheKey)) !== false)
+          {     
+              return $result;
+          }       
+       }
+       
+       
        $session = erLhcoreClassGallery::getSession('slave');
        $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );  
        
@@ -160,6 +174,11 @@ class erLhcoreClassModelGalleryPallete {
       $q->orderBy(isset($params['sort']) ? $params['sort'] : 'position DESC' ); 
        
       $objects = $session->find( $q );
+      
+      if (!isset($params['disable_sql_cache']))
+      {
+              $cache->store($cacheKey,$objects);
+      }
                            
       return $objects; 
    }
