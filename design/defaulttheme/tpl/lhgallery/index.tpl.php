@@ -14,7 +14,7 @@
     <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Include color')?></h3>
     <?php 
     $counter = 0;
-    $arrayFormated = array(0);
+    $arrayFormated = array();
     foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete){
     $arrayFormated[$counter][] = $pallete;
    
@@ -33,7 +33,7 @@
     <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Exclude color')?></h3>
     <?php 
     $counter = 0;
-    $arrayFormated = array(0);
+    $arrayFormated = array();
     foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete){
     $arrayFormated[$counter][] = $pallete;
    
