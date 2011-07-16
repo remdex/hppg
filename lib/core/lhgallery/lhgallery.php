@@ -299,14 +299,7 @@ class erLhcoreClassGallery{
                                 $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
                             } else {
                                 // Just make sure that atleast one color is set              
-                                $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));
-                                
-                                $parts = array();                    
-                                foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete)
-                                {
-                                    $parts[] =  'pld'.$pallete->id;                       
-                                }
-                                $colorSearchText .= ' ('.implode(' | ',$parts).')';
+                                $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText)))).' imgan';
                             }
                 
                         } else {
@@ -315,12 +308,7 @@ class erLhcoreClassGallery{
                                 $cl->SetRankingMode(SPH_RANK_NONE); 
                                 $cl->SetSelect('FLOOR(('.implode('+',$selectPart).')*10000) as custom_match'); 
                             } else {
-                                $parts = array();                    
-                                foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete)
-                                {
-                                    $parts[] =  'pld'.$pallete->id;                       
-                                }
-                                $colorSearchText .= ' ('.implode(' | ',$parts).')';
+                                $colorSearchText .= ' imgan';
                             }
                         }
                         
@@ -575,14 +563,7 @@ class erLhcoreClassGallery{
                     $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
                 } else {
                     // Just make sure that atleast one color is set              
-                    $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText))));
-                    
-                    $parts = array();                    
-                    foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete)
-                    {
-                        $parts[] =  'pld'.$pallete->id;                       
-                    }
-                    $colorSearchText .= ' ('.implode(' | ',$parts).')';
+                    $colorSearchText = implode(' ',array_unique(explode(' ',trim($colorSearchText)))).' imgan';
                 }
                 
             } else {
@@ -593,12 +574,7 @@ class erLhcoreClassGallery{
                     $cl->SetRankingMode(SPH_RANK_NONE); 
                     $cl->SetSelect('FLOOR(('.implode('+',$selectPart).')*10000) as custom_match'); 
                 } else {
-                    $parts = array();                    
-                    foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete)
-                    {
-                        $parts[] =  'pld'.$pallete->id;                       
-                    }
-                    $colorSearchText .= ' ('.implode(' | ',$parts).')';
+                    $colorSearchText .= ' imgan';
                 }
             }
             
