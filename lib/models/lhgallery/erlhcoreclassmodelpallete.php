@@ -205,7 +205,6 @@ class erLhcoreClassModelGalleryPallete {
                 $statsImploded[$pallete] = $matched;
             }       
             
-            
             $q = $session->createFindQuery( 'erLhcoreClassModelGalleryPallete' );
 
             $q->where( $q->expr->in( 'id', array_keys($statsImploded) ) );

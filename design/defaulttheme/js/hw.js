@@ -184,6 +184,7 @@ var hw = {
 	formAddPath: WWW_DIR_JAVASCRIPT,		
 	myTimer : false,
 	delayTime: false,
+	delayTimeAlbum:false,
 	fetchingInfo: false,	
 	processing:false,
 	
@@ -465,11 +466,11 @@ var hw = {
 	initInfoWindowAlbum : function() {	
 	   $('.inf-alb').mouseover(function() {		       
 	       var inst = $(this);
-	       hw.delayTime = setTimeout(function(){ 
+	       hw.delayTimeAlbum = setTimeout(function(){ 
                 hw.fetchImageInfoWindowAlbum(inst);
 	       },300);
       }).mouseleave(function(){
-          clearTimeout(hw.delayTime);
+          clearTimeout(hw.delayTimeAlbum);
       });      
 	},
 	
