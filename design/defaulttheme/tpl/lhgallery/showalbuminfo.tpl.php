@@ -9,4 +9,9 @@ $items = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/image_list.tpl.php'));?>   
 
+<?php if( $album->description != '') : ?>
+<div class="dominant-colors nml nfloat"><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($album->description))?></div>
+<?endif;?>
+
+
 </div>
