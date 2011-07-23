@@ -112,6 +112,11 @@ $ViewList['showimageinfo'] = array(
     'params' => array('image_id','sort')
 ); 
            
+$ViewList['showalbuminfo'] = array( 
+    'script' => 'showalbuminfo.php',
+    'params' => array('album_id')
+); 
+           
 $ViewList['addcomment'] = array( 
     'script' => 'addcomment.php',
     'params' => array('image_id'),

@@ -670,7 +670,8 @@ div.image-thumb:hover{z-index:9;}
 .album-attr{padding-left:9px;padding-right:9px;}
 div.image-thumb:hover .tit-item{height:auto;min-height:31px;}
 div.image-thumb:hover .thumb-attr{min-height:59px;position:absolute;background-color:#F1F1F1;border: 1px solid white;margin-left:-1px;width:120px;border-top:0;}
-div.album-thumb:hover .tit-item{height:auto;min-height:38px;}
+
+div.album-thumb:hover .tit-itema{height:auto;min-height:38px;}
 div.album-thumb:hover .album-attr{min-height:10px;position:absolute;background-color:#F1F1F1;border: 1px solid white;margin-left:-10px;width:138px;border-top:0;padding-left:18px;padding-right:19px;padding-bottom:6px;}
 
 div.image-thumb:hover .thumb-attr,
@@ -691,6 +692,7 @@ box-shadow:0px 2px 5px #e1e1e1;
 .thumb-pic{min-height:129px;}
 .thumb-attr{padding-top:0;}
 
+.tit-itema,
 .tit-item{height:31px;border-bottom:1px solid #b0b0b0;margin-bottom:12px;overflow:hidden;}
 .thumb-attr h3{font-size:11px;font-weight:bold;color:#000000;padding-bottom:3px;}
 .thumb-attr h3 a{color:#000000;text-transform:uppercase;}
@@ -698,10 +700,10 @@ box-shadow:0px 2px 5px #e1e1e1;
 
 .thumb-pic-small{width:108px;margin:1px;}
 
-.album-thumb .tit-item{margin-top:9px;height:38px;margin-bottom:10px;}
+.album-thumb .tit-itema{margin-top:9px;height:38px;margin-bottom:10px;}
 .album-thumb{height:260px;width:175px;border:1px solid #FFFFFF;}
-.album-thumb h2{color:#000000;padding-left:0px;}
-.album-thumb h2 a{color:#000000;font-size:13px;}
+.album-thumb .tit-itema h2{color:#000000;padding-left:0px;}
+.album-thumb .tit-itema h2 a{color:#000000;font-size:13px;}
 .album-thumb div.content{padding:9px;padding-bottom:9px;padding-right:10px;}
 
 .status-album{color:#b0b0b0;}
@@ -1142,6 +1144,11 @@ background:#f1f1f1 url(../images/icons/information.png) no-repeat 4px 0px;
 cursor:pointer;   
 z-index:0;}
 
+.inf-alb{
+margin-left:110px;
+}
+
+#imageInfoWindowAlbum,
 #imageInfoWindow{
 position:absolute;
 background-color:red;
@@ -1161,8 +1168,13 @@ margin-left:-74px;
 display:none;
 overflow:hidden;
 border:1px solid #ececec;
-z-index:2;}
+z-index:3;}
+
+#imageInfoWindowAlbum h3 a,
 #imageInfoWindow h3 a{text-decoration:none;display:block;border-bottom:1px solid #b0b0b0;padding-bottom:3px;}
+#imageInfoWindowAlbum{width:450px;margin-left:-335px;z-index:2;overflow:visible;}
+
+#imageInfoWindowAlbum .tit-item h3 a{border-bottom:0;}
 
 .lang-box{font-size:11px;padding-left:3px;}
 .lang-box a{color:#8F8F8F;cursor:pointer;}

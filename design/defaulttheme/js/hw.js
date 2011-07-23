@@ -460,6 +460,35 @@ var hw = {
       }).mouseleave(function(){
           clearTimeout(hw.delayTime);
       });      
+	},	
+	
+	initInfoWindowAlbum : function() {	
+	   $('.inf-alb').mouseover(function() {		       
+	       var inst = $(this);
+	       hw.delayTime = setTimeout(function(){ 
+                hw.fetchImageInfoWindowAlbum(inst);
+	       },300);
+      }).mouseleave(function(){
+          clearTimeout(hw.delayTime);
+      });      
+	},
+	
+	fetchImageInfoWindowAlbum : function(img){
+	    if (hw.fetchingInfo == img.attr('rel')) return;	    
+	    hw.fetchingInfo = img.attr('rel');	    
+	    clearTimeout(hw.myTimer);	    
+		$.getJSON(this.formAddPath + 'gallery/showalbuminfo/'+img.attr('rel'), {} , function(data) {	
+		    $('#imageInfoWindowAlbum').remove()
+		    img.before(data.result);
+		    $('#imageInfoWindowAlbum').fadeIn('fast');
+		    $('#imageInfoWindowAlbum').mouseleave(function() {		    
+		        hw.myTimer = setTimeout(function(){
+                    $('#imageInfoWindowAlbum').fadeOut();
+                    hw.fetchingInfo = false;
+                },100);
+		    });		    
+		    $('#imageInfoWindowAlbum').mouseenter(function(){clearTimeout(hw.myTimer);});		
+		});
 	},
 	
 	fetchImageInfoWindow : function(img,sort){

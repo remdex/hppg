@@ -7,6 +7,7 @@ foreach ($items as $item) :
     <div class="album-thumb<?=!($counter % 4) ? ' left-thumb' : ''?>">
         <div class="content">        
             <div class="albthumb-img">
+            <a class="inf-img inf-alb" rel="<?=$item->aid?>"></a>
             <a title="<?=htmlspecialchars($item->title)?>" href="<?=$item->url_path?>"><?php if ($item->album_thumb_path !== false) :?> 
             <img src="<?=erLhcoreClassDesign::imagePath($item->album_thumb_path)?>" alt="" width="130" height="140">
             <?php else :?>
@@ -15,7 +16,7 @@ foreach ($items as $item) :
             </div>
         
             <div class="album-attr">
-                <div class="tit-item">
+                <div class="tit-itema">
                 <h2><a title="<?=htmlspecialchars($item->title)?>" href="<?=$item->url_path?>"><?=htmlspecialchars($item->title)?></a></h2>      
                 </div>
                
@@ -41,3 +42,7 @@ endforeach; ?>
 <?php include(erLhcoreClassDesign::designtpl('lhkernel/paginator.tpl.php')); ?>
 
 </div>
+
+<script>
+hw.initInfoWindowAlbum();
+</script>
