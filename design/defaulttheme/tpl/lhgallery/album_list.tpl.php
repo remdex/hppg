@@ -43,6 +43,8 @@ endforeach; ?>
 
 </div>
 
+<?php if (!isset($skipAlbumListJS)) : ?>
 <script>
 hw.initInfoWindowAlbum();
 </script>
+<?php endif;?>

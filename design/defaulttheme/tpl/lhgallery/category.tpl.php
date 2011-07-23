@@ -2,7 +2,9 @@
 <h1><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1>
 </div>
 
-<?php if ($category->description != '') : ?>
+<?php 
+$skipAlbumListJS = true;
+if ($category->description != '') : ?>
 <div class="album-description">
 <a class="expand-icon" onclick="hw.explandAlbumInfo($(this))" rel="Less &raquo;">More &raquo;</a>
 <div class="album-desc">
@@ -46,5 +48,7 @@ $subcategorys = erLhcoreClassModelGalleryCategory::getParentCategories(array('fi
 
 <?endif;?>
 
-
+<script>
+hw.initInfoWindowAlbum();
+</script>
 
