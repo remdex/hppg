@@ -135,7 +135,7 @@ if (!empty($items)) : ?>
   $('.thumb-attr a').each(function(index) {	
     	$(this).attr('href',$(this).attr('rel'));
   });
-  hw.initInfoWindow('<?=base64_encode($appendImageMode)?>'); 
+  hw.initInfoWindow(''); 
   $('#KeywordColorSearch').change(function(){ 
       var keyword = $(this).val();
       if ($(this).val() == '') {
