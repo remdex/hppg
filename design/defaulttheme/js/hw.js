@@ -183,6 +183,7 @@ var hw = {
 	appendURL : null,
 	formAddPath: WWW_DIR_JAVASCRIPT,		
 	myTimer : false,
+	myTimerAlbum:false,
 	delayTime: false,
 	delayTimeAlbum:false,
 	fetchingInfo: false,	
@@ -477,18 +478,18 @@ var hw = {
 	fetchImageInfoWindowAlbum : function(img){
 	    if (hw.fetchingInfo == img.attr('rel')) return;	    
 	    hw.fetchingInfo = img.attr('rel');	    
-	    clearTimeout(hw.myTimer);	    
+	    clearTimeout(hw.myTimerAlbum);	    
 		$.getJSON(this.formAddPath + 'gallery/showalbuminfo/'+img.attr('rel'), {} , function(data) {	
 		    $('#imageInfoWindowAlbum').remove()
 		    img.before(data.result);
 		    $('#imageInfoWindowAlbum').fadeIn('fast');
 		    $('#imageInfoWindowAlbum').mouseleave(function() {		    
-		        hw.myTimer = setTimeout(function(){
+		        hw.myTimerAlbum = setTimeout(function(){
                     $('#imageInfoWindowAlbum').fadeOut();
                     hw.fetchingInfo = false;
                 },100);
 		    });		    
-		    $('#imageInfoWindowAlbum').mouseenter(function(){clearTimeout(hw.myTimer);});		
+		    $('#imageInfoWindowAlbum').mouseenter(function(){clearTimeout(hw.myTimerAlbum);});		
 		});
 	},
 	

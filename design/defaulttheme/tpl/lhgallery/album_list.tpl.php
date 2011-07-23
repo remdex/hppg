@@ -7,7 +7,7 @@ foreach ($items as $item) :
     <div class="album-thumb<?=!($counter % 4) ? ' left-thumb' : ''?>">
         <div class="content">        
             <div class="albthumb-img">
-            <a class="inf-img inf-alb" rel="<?=$item->aid?>"></a>
+            <a class="inf-alb" rel="<?=$item->aid?>"></a>
             <a title="<?=htmlspecialchars($item->title)?>" href="<?=$item->url_path?>"><?php if ($item->album_thumb_path !== false) :?> 
             <img src="<?=erLhcoreClassDesign::imagePath($item->album_thumb_path)?>" alt="" width="130" height="140">
             <?php else :?>
