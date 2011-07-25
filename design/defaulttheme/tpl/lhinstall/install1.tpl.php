@@ -40,6 +40,10 @@
         <td>I can write to &quot;var/watermark&quot; directory</td>
         <td><?=is_writable("var/watermark") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
     </tr>
+    <tr>
+        <td>I can write to &quot;var/forum&quot; directory</td>
+        <td><?=is_writable("var/forum") ? '<span class="ok">Yes</span>' : '<span class="error">No</span>'?></td>
+    </tr>
 </table>
 </fieldset>
 <br>
