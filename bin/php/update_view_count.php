@@ -214,7 +214,7 @@ if (count($partsInsert) > 0) {
 
 echo "Total updated - ".$totalItems,"\n";
 
-$stmt = $db->prepare("DELETE FROM lh_delay_image_hit WHERE pid NOT IN (SELECT pid FROM lh_gallery_images)");
+$stmt = $db->prepare("DELETE FROM lh_delay_image_hit WHERE pid NOT IN (SELECT pid FROM lh_gallery_images WHERE approved = 1)");
 $stmt->execute();
 
 $fh = fopen( $updateViewLogPath, "w" );
