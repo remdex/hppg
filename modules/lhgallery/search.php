@@ -149,7 +149,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
         $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
         
         if ($pages->low == 0 && $searchResult['total_found'] > 0) {
-            erLhcoreClassModelGalleryLastSearch::addSearch($searchParams['keyword'],$searchResult['total_found']); 
+            erLhcoreClassModelGalleryLastSearch::addSearch(strip_tags($searchParams['keyword']),$searchResult['total_found']); 
         }
         
         $pages->items_total = $searchResult['total_found'];
