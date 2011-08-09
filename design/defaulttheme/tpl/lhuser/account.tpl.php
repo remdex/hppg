@@ -47,3 +47,5 @@
 
 <?php include_once(erLhcoreClassDesign::designtpl('lhuser/open_id_items.tpl.php'));?>
 
+<?php include_once(erLhcoreClassDesign::designtpl('lhuser/facebook_items.tpl.php'));?>
+

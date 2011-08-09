@@ -36,6 +36,8 @@ return array_merge(array (
                  
         // Core models
         'erLhcoreClassModelUser' 			=> 'lib/models/lhuser/erlhcoreclassmodeluser.php',
+        'erLhcoreClassModelUserFB' 			=> 'lib/models/lhuser/erlhcoreclassmodeluserfb.php',
+        
         'erLhcoreClassModelGroup' 			=> 'lib/models/lhuser/erlhcoreclassmodelgroup.php',
         'erLhcoreClassModelGroupUser' 		=> 'lib/models/lhuser/erlhcoreclassmodelgroupuser.php',
         'erLhcoreClassModelGroupRole' 		=> 'lib/models/lhpermission/erlhcoreclassmodelgrouprole.php',
@@ -122,7 +124,10 @@ return array_merge(array (
          'erLhcoreClassModelForumMessage'        => 'lib/models/lhforum/erlhcoreclassmodelmessage.php',
          'erLhcoreClassModelForumTopic'          => 'lib/models/lhforum/erlhcoreclassmodeltopic.php',
          'erLhcoreClassModelForumFile'           => 'lib/models/lhforum/erlhcoreclassmodelfile.php',
-         'erLhcoreClassModelForumReport'         => 'lib/models/lhforum/erlhcoreclassmodelreport.php'
+         'erLhcoreClassModelForumReport'         => 'lib/models/lhforum/erlhcoreclassmodelreport.php',
+         
+         
+         'Facebook'                              => 'lib/core/lhexternal/facebook/facebook.php'
                 
          
 ),

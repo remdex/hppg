@@ -128,6 +128,11 @@ $ViewList['remindpassword'] = array(
     'script' => 'remindpassword.php',
     'params' => array('hash'),
     ); 
+    
+$ViewList['completefblogin'] = array( 
+    'script' => 'completefblogin.php',
+    'params' => array(),
+    ); 
            
 $FunctionList = array();
 $FunctionList['groupassignuser'] = array('explain' => 'Allow logged user to assing user to group');  
