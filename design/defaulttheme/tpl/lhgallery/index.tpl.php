@@ -27,24 +27,28 @@
     <?endforeach;?>
     <?endforeach;?>
     </div>
+        
+    <?php if ( erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'database_handler') === false) : ?>
+        <div id="pallete-exclude" class="pallete-main float-break pallete-sub right">
+        <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Exclude color')?></h3>
+        <?php 
+        $counter = 0;
+        $arrayFormated = array();
+        foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete){
+        $counter = ($counter == 10) ? 0 : $counter;  
+        $arrayFormated[$counter][] = $pallete; 
+        $counter++;
+        };    
+         foreach ($arrayFormated as $package):
+         foreach ($package as $pallete): ?>
+         
+        <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>);"><a rel="<?=$pallete->id?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(ncolor)/<?=$pallete->id?>"></a></div>
+        <?endforeach;?>
+        <?endforeach;?>
+        </div>
+    <?php endif;?>
     
-    <div id="pallete-exclude" class="pallete-main float-break pallete-sub right">
-    <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Exclude color')?></h3>
-    <?php 
-    $counter = 0;
-    $arrayFormated = array();
-    foreach (erLhcoreClassModelGalleryPallete::getList() as $pallete){
-    $counter = ($counter == 10) ? 0 : $counter;  
-    $arrayFormated[$counter][] = $pallete; 
-    $counter++;
-    };    
-     foreach ($arrayFormated as $package):
-     foreach ($package as $pallete): ?>
-     
-    <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>);"><a rel="<?=$pallete->id?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(ncolor)/<?=$pallete->id?>"></a></div>
-    <?endforeach;?>
-    <?endforeach;?>
-    </div>
+    
 </div>
 
 

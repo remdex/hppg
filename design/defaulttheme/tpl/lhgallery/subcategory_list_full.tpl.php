@@ -13,8 +13,8 @@
                 <h3><a href="<?=$subcategory->path_url?>"><?=htmlspecialchars($subcategory->name)?></a></h3>
                 </div>
                 
-               <? if ($subcategory->description != '') : ?>
-                <p><?=$subcategory->description?></p>
+                <? if ($subcategory->description != '') : ?>
+                <?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($subcategory->description))?>
                 <?endif;?>
                   
                 <? 
