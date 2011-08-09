@@ -132,7 +132,13 @@ $ViewList['remindpassword'] = array(
 $ViewList['completefblogin'] = array( 
     'script' => 'completefblogin.php',
     'params' => array(),
-    ); 
+    );   
+      
+$ViewList['removefblogin'] = array( 
+    'script' => 'removefblogin.php',
+    'params' => array('user_id'),
+    'limitations' => array('self' => array('method' => 'erLhcoreClassModelUserFB::isFBLoginOwner','param' => 'user_id'),'global' =>'administrate'),
+);
            
 $FunctionList = array();
 $FunctionList['groupassignuser'] = array('explain' => 'Allow logged user to assing user to group');  

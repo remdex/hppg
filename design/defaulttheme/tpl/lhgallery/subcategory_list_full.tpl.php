@@ -14,7 +14,7 @@
                 </div>
                 
                 <? if ($subcategory->description != '') : ?>
-                <?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($subcategory->description))?>
+                <p><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($subcategory->description))?></p>
                 <?endif;?>
                   
                 <? 

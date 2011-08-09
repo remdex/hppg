@@ -14,8 +14,6 @@
     
     <br />
 
-    <div class="open-id-block">
-    
         <div id="googe-login-block">
             <a onclick="hw.loginOpenID()" style="cursor:pointer;" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Add google account');?>" ><img src="<?=erLhcoreClassDesign::design('images/icons/open_id_1.png')?>" alt="" title="" /></a>
         </div>
@@ -24,7 +22,6 @@
             <img src="<?=erLhcoreClassDesign::design('images/newdesign/ajax-loader.gif')?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Working');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Working');?>" /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Working');?>...
         </div>
     
-    </div>
 
     <?php endif;?>
 

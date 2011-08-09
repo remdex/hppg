@@ -2,8 +2,6 @@
 <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Logged user');?> - <? echo $user->username?></h1>
 </div>
 
-
-
 <? if (isset($errArr)) : ?>
     <? foreach ((array)$errArr as $error) : ?>
     	<div class="error">*&nbsp;<?=$error;?></div>
@@ -13,7 +11,6 @@
 <? if (isset($account_updated) && $account_updated == 'done') : ?>
 	<div class="dataupdate"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Account updated');?></div>
 <? endif; ?>
-
 
 <div class="explain"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Do not enter password unless you want to change it');?></div>
 <br />
@@ -44,8 +41,10 @@
 	</table>		
 </form>
 
-
 <?php include_once(erLhcoreClassDesign::designtpl('lhuser/open_id_items.tpl.php'));?>
 
-<?php include_once(erLhcoreClassDesign::designtpl('lhuser/facebook_items.tpl.php'));?>
+<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'enabled' ) == true) : ?>
 
+    <?php include_once(erLhcoreClassDesign::designtpl('lhuser/facebook_items.tpl.php'));?>
+
+<?php endif;?>

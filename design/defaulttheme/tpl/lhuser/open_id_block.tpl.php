@@ -9,6 +9,8 @@
 <img src="<?=erLhcoreClassDesign::design('images/newdesign/ajax-loader.gif')?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Working');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Working');?>" /> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/new','Working...');?>
 </div>
 
-<?php //include_once(erLhcoreClassDesign::designtpl('lhuser/facebook_login.tpl.php'));?>
+<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'enabled' ) == true) : ?>
+    <?php include_once(erLhcoreClassDesign::designtpl('lhuser/facebook_login.tpl.php'));?>
+<?php endif;?>
 
 </div>
