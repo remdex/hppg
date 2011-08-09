@@ -287,6 +287,11 @@ return array (
                                 'port' => '11211',     
                                 'weight' => 1 ) )     
     ),
+    'facebook' => array (
+        'enabled' => false,
+        'app_id' => '',
+        'secret' => ''
+    ),
     'amazons3' => array (
         'bucket'            => '',
         'endpoint'          => '',
