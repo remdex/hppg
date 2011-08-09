@@ -137,6 +137,7 @@ $ViewList['completefblogin'] = array(
 $ViewList['removefblogin'] = array( 
     'script' => 'removefblogin.php',
     'params' => array('user_id'),
+    'functions' => array( 'selfedit' ),
     'limitations' => array('self' => array('method' => 'erLhcoreClassModelUserFB::isFBLoginOwner','param' => 'user_id'),'global' =>'administrate'),
 );
            
