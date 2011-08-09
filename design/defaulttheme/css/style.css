@@ -1180,7 +1180,7 @@ z-index:3;}
 
 #imageInfoWindowAlbum h3 a,
 #imageInfoWindow h3 a{text-decoration:none;display:block;border-bottom:1px solid #b0b0b0;padding-bottom:3px;}
-#imageInfoWindowAlbum{width:auto;min-width:442px;margin-left:-335px;z-index:2;overflow:visible;}
+#imageInfoWindowAlbum{width:auto;width:442px;margin-left:-335px;z-index:2;overflow:visible;}
 #imageInfoWindowAlbum .tit-item h3 a{border-bottom:0;}
 #imageInfoWindowAlbum .image-thumb:last-child{margin-right:0px;}
 #imageInfoWindowAlbum .image-thumb{margin-bottom:10px;}
