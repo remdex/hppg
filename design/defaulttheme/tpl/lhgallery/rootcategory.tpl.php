@@ -4,7 +4,7 @@ foreach (erLhcoreClassModelGalleryCategory::getParentCategories(array('filter' =
 <div class="category">
 <div class="header-list"><h1><a href="<?=$category->path_url?>"><?=htmlspecialchars($category->name)?></a></h1></div>
 <? if ($category->description != '') : ?>
-<p><?=$category->description?></p>
+<p><?=erLhcoreClassBBCode::make_clickable(htmlspecialchars($category->description))?></p>
 <?endif;?>
 <? 
 $pages = new lhPaginator();
