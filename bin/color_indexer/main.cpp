@@ -21,6 +21,19 @@ double getDistance(RGB e1, RGB e2)
   return sqrt((((512+rmean)*r*r)>>8) + 4*g*g + (((767-rmean)*b*b)>>8));
 }
 
+bool pointIsInsideEllipse(int pointToCheckX, int pointToCheckY, int ellipsePosX, int ellipsePosY, int ellipseHeight, int ellipseWidth) 
+{ 
+    double xComponent = (float)(pow((float)pointToCheckX - (float)ellipsePosX, 2.0) / (float)pow((float)ellipseWidth/2, 2.0)); 
+    double yComponent = (float)(pow((float)pointToCheckY - (float)ellipsePosY, 2.0) / (float)pow((float)ellipseHeight/2, 2.0)); 
+
+    double value = xComponent + yComponent; 
+
+    if (value <= 1.0) 
+        return true; 
+
+    return false; 
+} 
+
 // Our pallete item
 typedef struct {
     int pallete_id,red,green,blue,count;
@@ -31,20 +44,20 @@ int main(int argc, char *argv[])
   IplImage* img = 0; 
   int height,width,step,channels;
   uchar *data;
-  int i,j,k,treshold;
+  int i,j,k,treshold,insideHeight,insideWidth;
   RGB RGBImage,RGBPallete;
   palleteItem palletesp[200];
   
   FILE * filehandle;
   char lyne[121];
     
-  char *item,*palleteFile;
+  char *item,*palleteFile,*methodForm;
   int reccount = 0;
   
   uchar *aPixelIn, *aPixelOut;
     
   if(argc<4){
-    printf("Usage: color_indexer <image-file-name> <pallete-file-name> <threshold>\n\7");
+    printf("Usage: color_indexer <image-file-name> <pallete-file-name> <threshold> <inside_height> <inside_width> <method>\n\7");
     exit(0);
   }
   
@@ -54,6 +67,14 @@ int main(int argc, char *argv[])
   // Pallete txt file
   palleteFile = argv[2];
    
+  // How many percent inside image height pixels
+  insideHeight = atoi(argv[4]);
+  
+  // How many percent inside image width pixels
+  insideWidth = atoi(argv[5]);
+
+  // Rectangle or ellipse
+  methodForm = argv[6];
   
   // load an image  
   img=cvLoadImage(argv[1]);
@@ -94,6 +115,11 @@ int main(int argc, char *argv[])
   // get the image data
   height    = img->height;
   width     = img->width;
+  int heightOriginal = height;
+  int widthOriginal = width;
+  int startI = 0;
+  int startJ = 0;
+  
   step      = img->widthStep;
   channels  = img->nChannels;
   data      = (uchar *)img->imageData;
@@ -103,35 +129,76 @@ int main(int argc, char *argv[])
   aPixelOut = (uchar *)img->imageData;
     
   
-  for(i=0;i<height;i++) {
-    for(j=0;j<width;j++) {
+  int ellipsePosX = 0,
+      ellipsePosY = 0,
+      ellipseHeight = 0,
+      ellipseWidth = 0;
+      
+  if (strcmp(methodForm,"ellipse") == 0)
+  {
+      ellipsePosX = (int)((float)widthOriginal/2);
+      ellipsePosY = (int)((float)heightOriginal/2);
+      
+      if (insideHeight != 100) {
+        height = (int)(height * ((float)insideHeight / 100));
+        startI = (int)((float)(heightOriginal - height) / 2);
+      }
+      
+      if (insideWidth != 100) {
+        width =  (int)(width * ((float)insideWidth / 100));
+        startJ = (int)((float)(widthOriginal - width) / 2);
+      }
         
-            int R, B, G, currentPalleteKey = 0;
-            double minimumdistance = -1,currentDistance = 0;
-                       
-            B = aPixelIn[ i * img->widthStep + j * 3 + 0 ];
-            G = aPixelIn[ i * img->widthStep + j * 3 + 1 ];
-            R = aPixelIn[ i * img->widthStep + j * 3 + 2 ];
-            
-            RGBImage.r = (char)R;
-            RGBImage.g = (char)G;
-            RGBImage.b = (char)B;
-            
-            for (k=0; k<reccount; k++) {
-                RGBPallete.r = palletesp[k].red;
-                RGBPallete.g = palletesp[k].green;
-                RGBPallete.b = palletesp[k].blue;
+      ellipseHeight = height; 
+      ellipseWidth = width;
+      
+  } else {
+  
+      if (insideHeight != 100) {
+        height = (int)(height * ((float)insideHeight / 100));
+        startI = (int)((float)(heightOriginal - height) / 2);
+      }
+      
+      if (insideWidth != 100) {
+        width =  (int)(width * ((float)insideWidth / 100));
+        startJ = (int)((float)(widthOriginal - width) / 2);
+      }
+      
+  } 
+  
+  for(i=0;i<heightOriginal;i++) {
+    for(j=0;j<widthOriginal;j++) {
+        
+            if ( (strcmp(methodForm,"rectangle") == 0 && i < height+startI && i > startI && j > startJ && j<width+startJ) || (strcmp(methodForm,"ellipse") == 0 && pointIsInsideEllipse(j, i, ellipsePosX, ellipsePosY, ellipseHeight, ellipseWidth) == true )) {
+    
+                int R, B, G, currentPalleteKey = 0;
+                double minimumdistance = -1,currentDistance = 0;
+                           
+                B = aPixelIn[ i * img->widthStep + j * 3 + 0 ];
+                G = aPixelIn[ i * img->widthStep + j * 3 + 1 ];
+                R = aPixelIn[ i * img->widthStep + j * 3 + 2 ];
                 
-                currentDistance = getDistance(RGBImage,RGBPallete);
+                RGBImage.r = (char)R;
+                RGBImage.g = (char)G;
+                RGBImage.b = (char)B;
                 
-                if (minimumdistance < 0 ||  minimumdistance > currentDistance){
-                    minimumdistance = currentDistance;                    
-                    currentPalleteKey = k;
+                for (k=0; k<reccount; k++) {
+                    RGBPallete.r = palletesp[k].red;
+                    RGBPallete.g = palletesp[k].green;
+                    RGBPallete.b = palletesp[k].blue;
+                    
+                    currentDistance = getDistance(RGBImage,RGBPallete);
+                    
+                    if (minimumdistance < 0 ||  minimumdistance > currentDistance){
+                        minimumdistance = currentDistance;                    
+                        currentPalleteKey = k;
+                    }
                 }
-            }
-            
-            palletesp[currentPalleteKey].count++;                                    
+                
+                palletesp[currentPalleteKey].count++; 
+            }                               
     }
+
   }
 
   for (k=0; k<reccount; k++) {

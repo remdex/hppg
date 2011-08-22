@@ -60,6 +60,18 @@ class erLhcoreClassPalleteIndexImage {
         return $value;  
     }
     
+    public static function pointIsInsideEllipse($pointToCheckX, $pointToCheckY, $ellipsePosX, $ellipsePosY, $ellipseHeight, $ellipseWidth) 
+    { 
+        $xComponent = (float)(pow((float)$pointToCheckX - (float)$ellipsePosX, 2.0) / (float)pow((float)$ellipseWidth/2, 2.0)); 
+        $yComponent = (float)(pow((float)$pointToCheckY - (float)$ellipsePosY, 2.0) / (float)pow((float)$ellipseHeight/2, 2.0)); 
+    
+        $value = $xComponent + $yComponent; 
+    
+        if ($value <= 1.0) 
+            return true; 
+    
+        return false; 
+    }
         
     public static function indexImage($image, $checkDelayIndex = false) {
          
@@ -73,7 +85,11 @@ class erLhcoreClassPalleteIndexImage {
          * */ 
         $matchTreshold = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'minimum_color_match' );  
         $color_indexer_external = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'color_indexer_external' );  
-                       
+        
+        $inside_width = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_width' );
+        $inside_height = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_height' );   
+        $roi_form = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'roi_form' );
+        
         $deletePhotoPath = false;
         if (erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem') {
             $photoPath = 'albums/'.$image->filepath.'thumb_'.$image->filename;
@@ -120,41 +136,89 @@ class erLhcoreClassPalleteIndexImage {
                          {               
                              list($width,$height) = getimagesize($photoPath);	
                              
+                             $widthOriginal = $width;
+                             $heightOriginal = $height;
+                             
                              $db = ezcDbInstance::get(); 
                                             
                              // Delete old indexed images             
                     	     $stmt = $db->prepare("DELETE FROM lh_gallery_pallete_images WHERE pid = {$image->pid}");
                     	     $stmt->execute();
 
+                    	     
                              
                     	     if ($color_indexer_external == false)
                     	     {
+                    	         
+                    	         $ellipsePosX = 0;
+                                 $ellipsePosY = 0;
+                                 $ellipseHeight = 0;
+                                 $ellipseWidth = 0;
+                                 $startI = 0;
+                                 $startJ = 0;  
+                                 
+                                  if ($roi_form == 'ellipse')
+                                  {
+                                      $ellipsePosX = (int)((float)$widthOriginal/2);
+                                      $ellipsePosY = (int)((float)$heightOriginal/2);
+                                      
+                                      if ($inside_height != 100) {
+                                        $height = (int)($height * ((float)$inside_height / 100));
+                                        $startI = (int)((float)($heightOriginal - $height) / 2);
+                                      }
+                                      
+                                      if ($inside_width != 100) {
+                                        $width =  (int)($width * ((float)$inside_width / 100));
+                                        $startJ = (int)((float)($widthOriginal - $width) / 2);
+                                      }
+                                        
+                                      $ellipseHeight = $height; 
+                                      $ellipseWidth = $width;
+                                      
+                                  } else {
+                                  
+                                      if ($inside_height != 100) {
+                                        $height = (int)($height * ((float)$inside_height / 100));
+                                        $startI = (int)((float)($heightOriginal - $height) / 2);
+                                      }
+                                      
+                                      if ($inside_width != 100) {
+                                        $width =  (int)($width * ((float)$inside_width / 100));
+                                        $startJ = (int)((float)($widthOriginal - $width) / 2);
+                                      }
+                                      
+                                  } 
+                    	         
+                                  
                         	     $data_array = array();                    	     
-                                 for ($i = 1; $i < $width;$i++) {
-                                    for ($n = 1; $n < $height;$n++) {                        
-                                        $thisColor = imagecolorat($img, $i, $n); 
-                                        $rgb = imagecolorsforindex($img, $thisColor); 
+                                 for ($i = 1; $i < $widthOriginal;$i++) {
+                                    for ($n = 1; $n < $heightOriginal;$n++) {   
                                         
-                                        /**
-                                         * Standard euclidean distance
-                                         * $stmt = $db->prepare('SELECT id,POW(POW((:red-red),2)+POW((:blue - blue),2)+POW((:green-green),2),0.5) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
-                                         * 
-                                         * More reliable version 
-                                         * http://www.compuphase.com/cmetric.htm
-                                         * 
-                                         * */
-                                        $stmt = $db->prepare('SELECT id,SQRT((2+((red+:red)/2)/256)*POW((:red-red),2) + 4*(POW((:green-green),2)) + (2+(255-((red+:red)/2))/256)*POW((:blue - blue),2) ) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
-                                        $stmt->bindValue( ':red',$rgb['red']);
-                                        $stmt->bindValue( ':blue',$rgb['blue']);
-                                        $stmt->bindValue( ':green',$rgb['green']);
-                                        $stmt->execute();
-                                        $pallete_id = $stmt->fetchColumn();                                         
+                                        if ( ($roi_form == 'rectangle' && $n < $height+$startI && $n > $startI && $i > $startJ && $i<$width+$startJ) || ($roi_form == 'ellipse' && self::pointIsInsideEllipse($i, $n, $ellipsePosX, $ellipsePosY, $ellipseHeight, $ellipseWidth) == true )) {
+                                            $thisColor = imagecolorat($img, $i, $n); 
+                                            $rgb = imagecolorsforindex($img, $thisColor); 
                                             
-                                        
-                                        if (isset($data_array[$pallete_id])) {
-                                            $data_array[$pallete_id] = $data_array[$pallete_id] + 1;
-                                        } else {
-                                            $data_array[$pallete_id] = 1;
+                                            /**
+                                             * Standard euclidean distance
+                                             * $stmt = $db->prepare('SELECT id,POW(POW((:red-red),2)+POW((:blue - blue),2)+POW((:green-green),2),0.5) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
+                                             * 
+                                             * More reliable version 
+                                             * http://www.compuphase.com/cmetric.htm
+                                             * 
+                                             * */
+                                            $stmt = $db->prepare('SELECT id,SQRT((2+((red+:red)/2)/256)*POW((:red-red),2) + 4*(POW((:green-green),2)) + (2+(255-((red+:red)/2))/256)*POW((:blue - blue),2) ) as distance FROM lh_gallery_pallete ORDER BY distance ASC LIMIT 1');
+                                            $stmt->bindValue( ':red',$rgb['red']);
+                                            $stmt->bindValue( ':blue',$rgb['blue']);
+                                            $stmt->bindValue( ':green',$rgb['green']);
+                                            $stmt->execute();
+                                            $pallete_id = $stmt->fetchColumn();                                         
+                                                
+                                            
+                                            if (isset($data_array[$pallete_id])) {
+                                                $data_array[$pallete_id] = $data_array[$pallete_id] + 1;
+                                            } else {
+                                                $data_array[$pallete_id] = 1;
+                                            }
                                         }
                                     }
                                  }
@@ -198,9 +262,12 @@ class erLhcoreClassPalleteIndexImage {
     public static function indexColorsExternal($img_path)
     {
         $binary_indexer = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'color_indexer_path' );
-        $matchTreshold = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'minimum_color_match' );
-             
-        $command = $binary_indexer . ' ' .escapeshellarg( $img_path ). ' ' . escapeshellarg('doc/color_palletes/color_pallete.txt') . ' ' . $matchTreshold;
+        $matchTreshold = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'minimum_color_match' );             
+        $inside_width = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_width' );
+        $inside_height = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_height' );   
+        $roi_form = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'roi_form' );
+//        exit;
+        $command = $binary_indexer . ' ' .escapeshellarg( $img_path ). ' ' . escapeshellarg('doc/color_palletes/color_pallete.txt') . ' ' . $matchTreshold . ' ' . $inside_height . ' ' . $inside_width . ' ' . $roi_form;
              
         // Prepare to run ImageMagick command
         $descriptors = array( 
