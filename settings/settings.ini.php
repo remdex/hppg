@@ -263,7 +263,10 @@ return array (
         'color_indexer_path' => './bin/color_indexer/color_indexer',
         'max_matches' => 1000,
         'database_handler' => true,
-        'extended_search' => false
+        'extended_search' => false,
+        'inside_width' => 100,
+        'inside_height' => 100,
+        'roi_form' => 'rectangle',
     ),
     'sphinx' => 
     array (
