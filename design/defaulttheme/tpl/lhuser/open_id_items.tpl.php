@@ -14,7 +14,7 @@
     
     <br />
 
-        <div id="googe-login-block">
+        <div id="googe-login-block" class="open-id-block" style="min-height:10px;">
             <a onclick="hw.loginOpenID()" style="cursor:pointer;" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/account','Add google account');?>" ><img src="<?=erLhcoreClassDesign::design('images/icons/open_id_1.png')?>" alt="" title="" /></a>
         </div>
         
