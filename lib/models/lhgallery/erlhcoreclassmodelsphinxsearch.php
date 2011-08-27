@@ -255,8 +255,10 @@ class erLhcoreClassModelGallerySphinxSearch {
          * 
          * http://en.wikipedia.org/wiki/Tag_cloud
          * */
-       
-       $max = 15400/2;
+       $widthThumbnail = 120 * (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_width' ) / 100 );
+       $heightThumbnail = 130 * (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_height' ) / 100 );
+           
+       $max = ($widthThumbnail * $heightThumbnail) / 2; // A little better distribution of color
        $min = 25;
        $rmax = 50;
        $rmin = 1;
@@ -345,8 +347,11 @@ class erLhcoreClassModelGallerySphinxSearch {
               * It fits here better than just logarithm
               * 
               * http://en.wikipedia.org/wiki/Tag_cloud
-              * */            
-           $max = 15400/2; // A little better distribution of color
+              * */  
+           $widthThumbnail = 120 * (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_width' ) / 100 );
+           $heightThumbnail = 130 * (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_height' ) / 100 );
+             
+           $max = ($widthThumbnail * $heightThumbnail) / 2; // A little better distribution of color
            $min = 25;
            $rmax = 50;
            $rmin = 1;
