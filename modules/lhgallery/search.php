@@ -10,17 +10,40 @@ $form = new ezcInputForm( INPUT_GET, $definition );
 $searchParams = array('SearchLimit' => 25,'keyword' => '');
 $userParams ='';
 
+$reset_keywords = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'reset_keywords' );
+$ban_keywords = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'ban_keywords' );
+
 if ( $form->hasValidData( 'SearchText' ) && trim($form->SearchText) != '')
 {
     $searchParams['keyword'] = trim(str_replace('+',' ',$form->SearchText));
+    
+    if ( !empty($reset_keywords) ) {
+        $searchParams['keyword'] = trim(str_replace($reset_keywords,'',$searchParams['keyword']));
+    }
+    
+    if ( !empty($ban_keywords) && preg_match("/(".$ban_keywords.")/i",$searchParams['keyword']) ) {
+        $searchParams['keyword'] = null;
+    }
+    
     $userParams .= '/(keyword)/'.urlencode(trim($form->SearchText));
 } elseif ($Params['user_parameters_unordered']['keyword'] != '') {
 
    // We have to reencode because ngnix or php-fpm somewhere wrongly parses it. 
    $keywordDecoded =  trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
+   
+   if ( !empty($reset_keywords) ) {
+        $keywordDecoded = trim(str_replace($reset_keywords,'',$keywordDecoded));
+   }
+   
+   if ( !empty($ban_keywords) && preg_match("/(".$ban_keywords.")/i",$keywordDecoded) ) {
+       $keywordDecoded = null;
+   }
+   
    $userParams .= '/(keyword)/'.urlencode($keywordDecoded);
    $searchParams['keyword'] = $keywordDecoded;
 }
+
+
 
 /* SORTING */
 $sortModes = array(    
