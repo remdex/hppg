@@ -278,7 +278,9 @@ return array (
       'max_matches' => 1000000,
       'enabled_wildcard' => false, 
       'delay_index' => false, 
-      'delay_index_portion' => 500,      
+      'delay_index_portion' => 500,
+      'reset_keywords' => array(),
+      'ban_keywords' => ''     
     ),
     'cacheEngine' => array(
         'cache_global_key'  => 'global_site_cache_key',
