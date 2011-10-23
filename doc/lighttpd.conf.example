@@ -23,6 +23,9 @@ url.rewrite-once = (
 "^/design/backend/js/(.*)" =>  "/design/backend/js/$1",
 "^/design/shoptheme/js/(.*)" =>  "/design/shoptheme/js/$1",
 
+"^/albums/(.*)" =>  "/albums/$1",
+"^/design/(.*)" =>  "/design/$1",
+
 # START Uncomment for shop funcionality
 # Allow normal_ and thumb_ images directly, uncomment line below
 #"^/albums/(.*?)(normal_|thumb_)(.*)\.(css|html|htm|pdf|txt|js|bmp|ico|png|JPG|PNG|gif|jpe?g|swf)(.*?)$" =>  "$0",
