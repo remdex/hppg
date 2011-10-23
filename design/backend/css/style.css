@@ -2262,6 +2262,7 @@ margin-bottom:5px;
 
 .qq-upload-file {}
 .qq-upload-spinner {display:none; background: url("../images/swf/loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
+.active-spinner{display:inline-block;}
 .qq-upload-size,.qq-upload-cancel {font-size:11px;}
 .qq-upload-cancel{background:url(../images/icons/delete.png) no-repeat center left;padding-left:20px}
 .qq-upload-failed-text {display:none;}
