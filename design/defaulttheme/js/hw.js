@@ -790,7 +790,7 @@ var hw = {
         return false;        	   
 	}
 
-}
+};
 
 /*!
  * jQuery UI 1.8.6
