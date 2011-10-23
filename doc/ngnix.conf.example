@@ -46,7 +46,7 @@ server {
    }
    
    # Do not allow to hotlink full size images except our self and major search engines
-   location ~* (^/albums)(.*)\.(gif|jpe?g?|png|bmp|swf|css|js|swf|txt|pdf|ico)$ {
+   location ~* \.(gif|jpe?g?|png|bmp|swf|css|js|swf|pdf|ico|txt)$ {
             ## @todo: add expires headers...
                 
            valid_referers none blocked server_names ~(artmight.com|google.|bing.|yahoo.);
