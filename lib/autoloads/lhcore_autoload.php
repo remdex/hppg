@@ -63,6 +63,10 @@ return array_merge(array (
         'erLhcoreClassModelGalleryLastSearch'       => 'lib/models/lhgallery/erlhcoreclassmodellastsearch.php',
         'erLhcoreClassModelGallerySearchHistory'    => 'lib/models/lhgallery/erlhcoreclassmodelsearchhistory.php',
         'erLhcoreClassImageConverter'               => 'lib/core/lhgallery/lhimageconverter.php',        
+        'qqFileUploader'                            => 'lib/core/lhgallery/lhimageconverter.php',  
+        'qqUploadedFileForm'                        => 'lib/core/lhgallery/lhimageconverter.php',  
+        'qqUploadedFileXhr'                         => 'lib/core/lhgallery/lhimageconverter.php',  
+              
         'erLhcoreClassGalleryImagemagickHandler'    => 'lib/core/lhgallery/lhgalleryconverterhandler.php',        
         'erLhcoreClassGalleryGDHandler'             => 'lib/core/lhgallery/lhgallerygdconverterhandler.php',        
         'erLhcoreClassGalleryBatch'                 => 'lib/core/lhgallery/lhbatch.php',

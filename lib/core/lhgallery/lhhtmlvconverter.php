@@ -47,13 +47,12 @@ class erLhcoreClassHTMLVConverter {
     {
         $photoDir = $params['photo_dir'];
         $fileNamePhysic = $params['file_name_physic'];
-        $fileSession = $params['file_session'];
         
         $config = erConfigClassLhConfig::getInstance();
         
         if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
         {
-           	move_uploaded_file($_FILES[$params['post_file_name']]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
+           	rename($params['file_upload_path'],$photoDir.'/'.$fileNamePhysic);
             
             chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
            
@@ -94,7 +93,7 @@ class erLhcoreClassHTMLVConverter {
         } elseif ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
             
             $fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().$fileNamePhysic;
-            move_uploaded_file($_FILES[$params['post_file_name']]["tmp_name"],'var/tmpupload/'.$fileNamePhysic);
+            rename($params['file_upload_path'],'var/tmpupload/'.$fileNamePhysic);
             
             $image->filesize = filesize('var/tmpupload/'.$fileNamePhysic);
             $image->total_filesize = $image->filesize;
@@ -144,7 +143,6 @@ class erLhcoreClassHTMLVConverter {
     {
         $photoDir = $params['photo_dir'];
         $fileNamePhysic = $params['file_name_physic'];
-        $fileSession = $params['file_session'];
         $pathExtracted = $params['post_file_name'];
         $album = $params['album'];
         

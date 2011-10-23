@@ -8,11 +8,11 @@ if ($cfgSite->conf->getSetting( 'site', 'installed' ) == true)
 {
     $Params['module']['functions'] = array('install');
     include_once('modules/lhkernel/nopermission.php'); 
-     
+
     $Result['pagelayout'] = 'install';
     $Result['path'] = array(array('title' => 'High performance photo gallery install'));
     return $Result;
-    
+
     exit;
 }
 
@@ -651,19 +651,6 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   KEY `pallete_id` (`pallete_id`),
                   KEY `pid_2` (`pid`)
                 ) DEFAULT CHARSET=utf8;");
-                
-                
-                // Public upload sessions
-                $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_upload` (
-                  `id` int(11) NOT NULL AUTO_INCREMENT,
-                  `album_id` int(11) NOT NULL,
-                  `hash` varchar(40) NOT NULL,
-                  `created` int(11) NOT NULL,
-                  `user_id` int(11) NOT NULL,
-                  PRIMARY KEY (`id`)
-                ) DEFAULT CHARSET=utf8;");
-                
-                
                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_upload_archive` (
 				  `id` int(11) NOT NULL AUTO_INCREMENT,

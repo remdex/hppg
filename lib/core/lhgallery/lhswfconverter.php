@@ -39,11 +39,10 @@ class erLhcoreClassSWFConverter {
     {
         $photoDir = $params['photo_dir'];
         $fileNamePhysic = $params['file_name_physic'];
-        $fileSession = $params['file_session'];
         
         $config = erConfigClassLhConfig::getInstance();
         
-       	move_uploaded_file($_FILES[$params['post_file_name']]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
+       	rename($params['file_upload_path'],$photoDir.'/'.$fileNamePhysic);
                
         chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
        
@@ -67,7 +66,6 @@ class erLhcoreClassSWFConverter {
     {
         $photoDir = $params['photo_dir'];
         $fileNamePhysic = $params['file_name_physic'];
-        $fileSession = $params['file_session'];
         $pathExtracted = $params['post_file_name'];
         $album = $params['album'];
         

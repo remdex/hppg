@@ -1,68 +1,71 @@
 <?php
 
-$sessionID = $_POST['sessionupload'];
+$uploader = new qqFileUploader(explode(',',str_replace('\'','',erLhcoreClassModelSystemConfig::fetch('allowed_file_types')->current_value)), erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value*1024);
+$result = $uploader->handleUpload('var/tmpfiles/');
+$currentUser = erLhcoreClassUser::instance();
+ 
+if ( ($albumto = erLhcoreClassModelGalleryAlbum::canUpload($uploader->getParam('album_id'),$currentUser->hasAccessTo('lhgallery','administrate')) ) !== false ){
 
-$session = erLhcoreClassGallery::getSession();
-
-$q = $session->createFindQuery( 'erLhcoreClassModelGalleryUpload' );
-$q->where( $q->expr->eq( 'hash', $q->bindValue( $sessionID ) ) )->limit( 1 );
-$objects = $session->find( $q, 'erLhcoreClassModelGalleryUpload' ); 
-
-if (count($objects) == 1)
-{	
-	if (isset($_FILES["Filedata"]) && is_uploaded_file($_FILES["Filedata"]["tmp_name"]) && $_FILES["Filedata"]["error"] == 0 && ($filetype = erLhcoreClassModelGalleryFiletype::isValid('Filedata')) !== false)
+	if (isset($result['success']) && $result['success'] == 'true' && ($filetype = erLhcoreClassModelGalleryFiletype::isValidLocal($uploader->getFilePath())) !== false)
 	{
-	    
-	    $fileSession = array_pop($objects);
-	    
-	    $image = new erLhcoreClassModelGalleryImage();
-	    $image->aid = $fileSession->album_id;	
-	    $session->save($image);
-	    	        
+	    $result['filepath'] = $uploader->getFilePath();  
+        $result['filename'] = $uploader->getFileName();
+        $result['filename_user'] = $uploader->getUserFileName();
+
+        $db = ezcDbInstance::get();
+        $db->beginTransaction();
+    
+        $session = erLhcoreClassGallery::getSession();
+        
+        if ($currentUser->isLogged())
+            $user_id = $currentUser->getUserID();	
+        else 
+            $user_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' );	
+
+	   $image = new erLhcoreClassModelGalleryImage();
+	   $image->aid = $albumto->aid;	
+	   $session->save($image);
+
 	   try {
-	    
+
 	   	   $config = erConfigClassLhConfig::getInstance();
-	   	
-	   	   $photoDir = 'albums/userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$fileSession->user_id.'/'.$fileSession->album_id;
-	   	   $photoDirPhoto = 'userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$fileSession->user_id.'/'.$fileSession->album_id.'/';
+
+	   	   $photoDir = 'albums/userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$user_id.'/'.$albumto->aid;
+	   	   $photoDirPhoto = 'userpics/'.date('Y').'y/'.date('m').'/'.date('d').'/'.$user_id.'/'.$albumto->aid.'/';
 	   	   erLhcoreClassImageConverter::mkdirRecursive($photoDir);
-	   	   $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($_FILES['Filedata']['name']);
-	   	   
+	   	   $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($result['filename_user']);
+
 	   	   if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
            {    	       
     	       if (file_exists($photoDir.'/'.$fileNamePhysic)) {
     	       		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
     	       }
            }
-            
+
 	       $filetype->process($image,array(
     	       'photo_dir'        => $photoDir,
     	       'photo_dir_photo'  => $photoDirPhoto,
     	       'file_name_physic' => $fileNamePhysic,
-    	       'post_file_name'   => 'Filedata',
-    	       'file_session'     => $fileSession
+    	       'file_upload_path' => $result['filepath']
 	       ));
 
 	       $image->hits = 0;
 	       $image->ctime = time();
-	       $image->owner_id = $fileSession->user_id;
+	       $image->owner_id = $user_id;
 	       $image->pic_rating = 0;
 	       $image->votes = 0;
 	       
-	       $image->title = $_POST['title'];
-	       $image->caption = $_POST['description'];
-	       $image->keywords =  $_POST['keyword'];
+	       $image->title = $uploader->getParam('title');
+	       $image->caption = $uploader->getParam('description');
+	       $image->keywords =  $uploader->getParam('keywords');
 	       
-	       $userOwner = erLhcoreClassUser::instance();
-	       $userOwner->setLoggedUser($fileSession->user_id);	  
-	       
-           $canApproveSelfImages = $userOwner->hasAccessTo('lhgallery','auto_approve_self_photos');
-           $canApproveAllImages =  $userOwner->hasAccessTo('lhgallery','auto_approve');           
-           $canChangeApprovement = ($image->owner_id == $userOwner->getUserID() && $canApproveSelfImages) || ($canApproveAllImages == true);
+           $canApproveSelfImages = $currentUser->hasAccessTo('lhgallery','auto_approve_self_photos');
+           $canApproveAllImages =  $currentUser->hasAccessTo('lhgallery','auto_approve');           
+           $canChangeApprovement = ($image->owner_id == $currentUser->getUserID() && $canApproveSelfImages) || ($canApproveAllImages == true);
 
 	       $image->approved = $canChangeApprovement == true ? 1 : 0;
 	       	       	       
-	       $image->anaglyph =  (isset($_POST['anaglyph']) && $_POST['anaglyph'] == 'true') ? 1 : 0;
+	       $image->anaglyph =  ($uploader->getParam('anaglyph') == 'true') ? 1 : 0;
 	      
 	       $session->update($image);
 	       $image->clearCache();
@@ -81,19 +84,18 @@ if (count($objects) == 1)
 	              
 	       erLhcoreClassModelGalleryAlbum::updateAddTime($image);
 	       
+	       echo json_encode(array('success' => 'true'));	       
 	    } catch (Exception $e) {
 	        $session->delete($image);
 	        erLhcoreClassLog::write('Exception during upload'.$e);
 	        return ;
 	    }  	    
 	    
-		
+		$db->commit();
+		 
 	} else {
 	    erLhcoreClassLog::write('Upload failed: '.print_r($_FILES,true));
 	}
-
-} else {
-	erLhcoreClassLog::write('Not found: '.$sessionID);
 }
 
 

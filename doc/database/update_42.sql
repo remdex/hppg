@@ -1,0 +1,2 @@
+DROP TABLE  `lh_gallery_upload`;
+UPDATE  `lh_system_config` SET  `value` =  '''jpg'',''gif'',''png'',''png'',''bmp'',''ogv'',''swf'',''flv'',''mpeg'',''avi'',''mpg'',''wmv''' WHERE `lh_system_config`.`identifier` = 'allowed_file_types' LIMIT 1 ;

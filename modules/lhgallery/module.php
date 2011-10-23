@@ -561,7 +561,8 @@ $ViewList['commentbanlist'] = array(
     'params' => array(),
     'uparams' => array('delete'),
     'functions' => array( 'administrate' )
-    );
+); 
+                            
     
 $FunctionList = array();  
 $FunctionList['use'] = array('explain' => 'General registered user permission [use]');
