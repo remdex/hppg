@@ -23,12 +23,15 @@ if (isset($_POST['UploadPhoto'])) {
 
 	        $Image->removeFiles();
 
+	        $tmpPath = 'var/tmpfiles/'.md5(uniqid().time());
+	        move_uploaded_file($_FILES['Filedata']['tmp_name'],$tmpPath);
+	        
 	        $filetype->process($Image,array(
     	       'photo_dir'        => $photoDir,
     	       'photo_dir_photo'  => $Image->filepath,
     	       'file_name_physic' => $fileNamePhysic,
-    	       'post_file_name'   => 'Filedata',
-    	       'file_session'     => array()
+    	       'file_session'     => array(),
+    	       'file_upload_path' => $tmpPath
 	        ));
 
 	        $Image->filename = $fileNamePhysic;
