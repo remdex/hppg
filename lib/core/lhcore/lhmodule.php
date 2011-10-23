@@ -186,7 +186,7 @@ class erLhcoreClassModule{
             {
                 $valueConfig = erLhcoreClassModelSystemConfig::fetch($Matches[2][$key])->current_value;
                 $valueReplace = '';
-                $valueReplace = '\''.$valueConfig.'\'';
+                $valueReplace = '\''.str_replace("'","\'",$valueConfig).'\'';
                 $contentFile = str_replace($Matches[0][$key],$valueReplace,$contentFile);                               
             }                        
                         
