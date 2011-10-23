@@ -49,7 +49,6 @@ return array_merge(array (
         'erLhcoreClassModelGalleryCategory' => 'lib/models/lhgallery/erlhcoreclassmodelcategory.php',
         'erLhcoreClassModelGalleryImage' 	=> 'lib/models/lhgallery/erlhcoreclassmodelimage.php',
         'erLhcoreClassModelGalleryComment' 	=> 'lib/models/lhgallery/erlhcoreclassmodelcomment.php',
-        'erLhcoreClassModelGalleryUpload' 	=> 'lib/models/lhgallery/erlhcoreclassmodelupload.php',
         'erLhcoreClassModelGalleryUploadArchive' 	=> 'lib/models/lhgallery/erlhcoreclassmodeluploadarchive.php',
         'erLhcoreClassGallery' 	                    => 'lib/core/lhgallery/lhgallery.php',
         'erLhcoreClassOgg' 	                        => 'lib/core/lhgallery/lhogg.php',
