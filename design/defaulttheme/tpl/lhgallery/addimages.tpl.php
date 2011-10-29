@@ -57,7 +57,7 @@ var uploader = new qq.FileUploader({
     },
 	template: '<div class="qq-uploader">' + 
                 '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/publicupload','Click to choose images to upload, you can also Drag and Drop files here (Darg and rop only for FF, Chrome).')?></div>' +
+                '<div class="qq-upload-button"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/publicupload','Click to choose images to upload, you can also Drag and Drop files here (Darg and drop only for FF, Chrome).')?></div>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
     fileTemplate: '<li class="float-break" id="file_id_row_{file_id}"><span class="qq-upload-file"></span>' +
