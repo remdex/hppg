@@ -35,7 +35,7 @@
             <h2>Import selected images to</h2>
         </div>
 
-          To what album you want to import images, start typing album name and click search <div><input type="text" value="" class="inputfield newAlbumName"> <input type="button" value="Search for album" class="default-button"> <input type="button" value="Check all" class="default-button" id="checkAllButton"> </div>
+          To what album you want to import images, start typing album name and click search <div><input type="text" value="" class="inputfield newAlbumName">&nbsp;<input type="button" value="Search for album" class="default-button">&nbsp;<input type="button" value="Check all" class="default-button" id="checkAllButton"> </div>
           <div id="album_select_directory0" style="padding-top:5px;padding-bottom:5px;">
           <ul>
           <?php 
@@ -48,9 +48,7 @@
           </div>
           <input type="button" name="moveSelectedPhotos" <?php if (empty($albums)) : ?>style="display:none"<?php endif;?> id="moveAction" value="Import selected images" class="default-button">  
 
-          <span id="total_to_import">
-          
-          </span>
+          &nbsp;<span id="total_to_import"></span>
           
           <script>
             $('#checkAllButton').click(function() { 
