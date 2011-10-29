@@ -1111,6 +1111,12 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 $RoleFunctionRegisteredGallery->module = 'lhgallery';
                 $RoleFunctionRegisteredGallery->function = 'use';                
                 erLhcoreClassRole::getSession()->save($RoleFunctionRegisteredGallery);
+                
+                $RoleFunctionRegisteredGallery = new erLhcoreClassModelRoleFunction();
+                $RoleFunctionRegisteredGallery->role_id = $RoleRegistered->id;
+                $RoleFunctionRegisteredGallery->module = 'lhfb';
+                $RoleFunctionRegisteredGallery->function = 'use_registered';                
+                erLhcoreClassRole::getSession()->save($RoleFunctionRegisteredGallery);
                                 
                 $RoleFunctionRegisteredGallery = new erLhcoreClassModelRoleFunction();
                 $RoleFunctionRegisteredGallery->role_id = $RoleRegistered->id;
