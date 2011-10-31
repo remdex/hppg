@@ -12,7 +12,9 @@ $sortModes = array(
     'toprated' => 'pic_rating DESC, votes DESC, pid DESC',
     'topratedasc' => 'pic_rating ASC, votes ASC, pid ASC',    
     'lastrated' => 'rtime DESC, pid DESC',
-    'lastratedasc' => 'rtime ASC, pid ASC'
+    'lastratedasc' => 'rtime ASC, pid ASC',
+    'filename' => 'filename DESC, pid DESC',
+    'filenameasc' => 'filename ASC, pid ASC'
     );
     
 $modeIndex = $mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'new';
@@ -37,7 +39,10 @@ $useIndexHint = array(
     'topratedasc'       => 'pid_9',    
     
     'lastrated'         => 'a_rated_gen',
-    'lastratedasc'      => 'a_rated_gen'
+    'lastratedasc'      => 'a_rated_gen',
+    
+    'filename'         => 'pid_6',
+    'filenameasc'      => 'pid_6'
 );
  
 if (isset($_POST['moveSelectedPhotos']) && isset($_POST['PhotoID']) && count($_POST['PhotoID']) > 0 && is_numeric($_POST['AlbumDestinationDirectory0'])){

@@ -36,7 +36,9 @@ $sortArrayAppend = array(
             <li><a class="da<?=$mode == 'lastrated' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastrated"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last rated')?></a>
             <li class="sep"><a class="ar<?=$mode == 'lastratedasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastratedasc"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last rated')?></a>
             <li><a class="da<?=$mode == 'lastcommented' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastcommented"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented')?></a>
-            <li><a class="ar<?=$mode == 'lastcommentedasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastcommentedasc"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented')?></a>
+            <li class="sep"><a class="ar<?=$mode == 'lastcommentedasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/lastcommentedasc"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last commented')?></a> 
+            <li><a class="da<?=$mode == 'filename' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/filename"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Filename')?></a>
+            <li><a class="ar<?=$mode == 'filenameasc' ? ' selor' : ''?>" href="<?=$urlSortBase?><?echo $urlAppendSort?>/(sort)/filenameasc"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Filename')?></a>
         </ul>
 </ul>
 </div>
