@@ -1,6 +1,8 @@
 <div id="colors_demo">
 <div class="tools">
   <a href="#colors_sketch" data-download="jpg" data-url="/similar/uploadcanvas" style="float: right; width: 100px;">Search</a>
+  &nbsp;
+  <a href="#colors_sketch" data-resetmap="data-reset" style="float: right; width: 100px;margin-right:5px;">Reset painting</a>
 </div>
 <canvas id="colors_sketch" width="400" height="400"></canvas>
 </div>
