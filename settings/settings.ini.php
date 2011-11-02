@@ -303,6 +303,16 @@ return array (
         'aws_access_key'    => '',
         'aws_secret_key'    => ''
     ),
+    'imgseek' => array(
+        'database_id' => 1,
+        'host' => 'localhost',
+        'port' => 31128,
+        'path' => '/RPC',
+        'enabled' => true,
+        'delay_index' => true,
+        'delay_index_portion' => 10,
+        'image_random_start' => 1000000
+    ),
     'redis' => array (
         'server' => array ( 
             'host' => 'localhost', 
