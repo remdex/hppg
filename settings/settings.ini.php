@@ -308,8 +308,8 @@ return array (
         'host' => 'localhost',
         'port' => 31128,
         'path' => '/RPC',
-        'enabled' => true,
-        'delay_index' => true,
+        'enabled' => false,
+        'delay_index' => false,
         'delay_index_portion' => 10,
         'image_random_start' => 1000000
     ),
