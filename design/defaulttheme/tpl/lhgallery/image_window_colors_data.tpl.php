@@ -36,5 +36,9 @@
         
     <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search for similar colors images')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/<?=implode('/',$topThreeColors)?>"><img src="<?=erLhcoreClassDesign::design('images/icons/color_wheel.png')?>" alt="" /></a>
 
+    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) === true) : ?>
+    &nbsp;<a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search for visualy similar images')?>" href="<?=erLhcoreClassDesign::baseurl('similar/image')?>/<?=$image->pid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/eye.png')?>" alt="" /></a>
+    <?php endif;?>
+    
 </div>
 <?php endif;?>

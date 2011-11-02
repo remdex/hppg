@@ -56,6 +56,9 @@ if (isset($Params['user_parameters_unordered']['image']) && file_exists($imagePa
 	       // Index in search table
 	       erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
 
+	       // Index in imgseek service
+	       erLhcoreClassModelGalleryImgSeekData::indexImage($image,true);
+	       	       
 	       erLhcoreClassModelGalleryAlbum::updateAddTime($image);
 	            
        } else {

@@ -57,6 +57,12 @@
 		    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) === true) : ?>               
             <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by color');?></a> 
             <?php endif;?>
+            
+		    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) === true) : ?>               
+            <li><a href="<?=erLhcoreClassDesign::baseurl('similar/image')?>">Search by similarity</a></li>
+            <li><a href="<?=erLhcoreClassDesign::baseurl('similar/sketch')?>">Search by sketch</a></li>
+            <?php endif;?>
+            
 		</ul>
 </div>
 <?php endif;?>

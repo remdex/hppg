@@ -14,6 +14,9 @@ erLhcoreClassModelGalleryFaceData::indexUnindexedImages(erConfigClassLhConfig::g
 // Index to sphinx search
 erLhcoreClassModelGallerySphinxSearch::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'delay_index_portion' ));
 
+// Index to imgseek service
+erLhcoreClassModelGalleryImgSeekData::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'delay_index_portion' ));
+
 // Delete legacy search
 erLhcoreClassModelGallerySearchHistory::deleteLegacySearch();
 

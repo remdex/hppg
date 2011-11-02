@@ -1415,3 +1415,20 @@ margin-bottom:5px;
 .qq-upload-cancel{background:url(../images/icons/delete.png) no-repeat center left;padding-left:20px}
 .qq-upload-failed-text {display:none;}
 .qq-upload-fail .qq-upload-failed-text {display:inline;}
+
+
+.tools{padding-bottom:10px;}
+.tools a {
+border: 1px solid black;
+height: 30px;
+line-height: 30px;
+padding: 0 10px;
+vertical-align: middle;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+color: black;
+font-weight: bold;
+}
+
+#colors_sketch{border:1px solid black;}

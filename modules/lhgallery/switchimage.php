@@ -45,6 +45,9 @@ if (isset($_POST['UploadPhoto'])) {
 	        // Index in search table
 	        erLhcoreClassModelGallerySphinxSearch::indexImage($Image);
  
+	        // Index in imgseek service
+	        erLhcoreClassModelGalleryFaceData::indexImage($Image);
+	        
 	        $session->update($Image);
 	        
 	    } else {

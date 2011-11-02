@@ -1018,7 +1018,8 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 $db->query("INSERT INTO `lh_gallery_last_index` (`identifier`, `value`) VALUES
                 ('image_index', 0),
                 ('sphinx_index', 0),
-                ('face_index', 0);");
+                ('face_index', 0),
+                ('imgseek_index', 0);");
                    
                 
                 // Forum tables

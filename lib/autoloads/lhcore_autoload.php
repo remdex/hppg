@@ -95,6 +95,9 @@ return array_merge(array (
         'erLhcoreClassModelArticleStatic' 	=> 'lib/models/lharticle/erlhcoreclassmodelarticlestatic.php',
         'erLhcoreClassArticle' 	  			=> 'lib/core/lharticle/lharticle.php', 
         'CKEditor' 	  						=> 'lib/core/lharticle/ckeditor_php5.php',
+        'XmlRpcClient' 	  				      => 'lib/core/lhgallery/lhxmlrpcclient.php',
+        
+        'erLhcoreClassModelGalleryImgSeekData'=> 'lib/models/lhgallery/erlhcoreclassmodelimgseekdata.php',
         
         // System config
         'erLhcoreClassSystemConfig'			=> 'lib/core/lhsystemconfig/lhsystemconfig.php',

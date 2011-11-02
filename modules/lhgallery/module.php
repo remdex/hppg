@@ -554,7 +554,7 @@ $ViewList['ratebanlist'] = array(
     'params' => array(),
     'uparams' => array('delete'),
     'functions' => array( 'administrate' )
-    );
+);
                              
 $ViewList['commentbanlist'] = array( 
     'script' => 'commentbanlist.php',

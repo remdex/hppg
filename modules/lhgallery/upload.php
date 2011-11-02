@@ -79,6 +79,9 @@ if ( ($albumto = erLhcoreClassModelGalleryAlbum::canUpload($uploader->getParam('
 	       // Index in search table
 	       erLhcoreClassModelGallerySphinxSearch::indexImage($image,true);
 	       
+	       // Index in imgseek service
+	       erLhcoreClassModelGalleryImgSeekData::indexImage($image,true);
+	       	       
 	       // Expires last uploads shard index
 	       erLhcoreClassGallery::expireShardIndexByIdentifier(array('last_uploads','last_commented'));
 	              

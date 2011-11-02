@@ -27,7 +27,9 @@ if ($previousApproved != $ImageData->approved){
     if ($ImageData->approved == 1) {
         erLhcoreClassPalleteIndexImage::indexImage($ImageData);  // We do not use delay, because it's update      
     } else {
-        erLhcoreClassPalleteIndexImage::removeFromIndex($ImageData->pid);        
+        erLhcoreClassPalleteIndexImage::removeFromIndex($ImageData->pid); 
+        // Index in imgseek service
+	    erLhcoreClassModelGalleryImgSeekData::removeImage($ImageData->pid);
     }
     
     erLhcoreClassModelGalleryAlbum::updateAddTime($ImageData);

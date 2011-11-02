@@ -41,7 +41,7 @@ if (isset($Result['pagelayout']))
 	$tpl->setFile('pagelayouts/'.$Result['pagelayout'].'.php');
 }
 
-echo $tpl->fetch();
+echo $tpl->fetch(); 
    
 
 

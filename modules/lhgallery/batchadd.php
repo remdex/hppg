@@ -31,7 +31,6 @@ if (isset($Params['user_parameters_unordered']['importrecur']) && $Params['user_
 
 $Result['content'] = $tpl->fetch();
 
-
 $pathDirectorys = explode('/',$directory);     
 $previousFolder = '';
 

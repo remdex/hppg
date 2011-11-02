@@ -78,6 +78,7 @@ class erLhcoreClassModelGalleryImage {
        erLhcoreClassPalleteIndexImage::removeFromIndex($this->pid);
        erLhcoreClassModelGallerySphinxSearch::removeImage($this->pid);
        erLhcoreClassModelGalleryFaceData::removeImage($this->pid);
+       erLhcoreClassModelGalleryImgSeekData::removeImage($this->pid);
        
        erLhcoreClassGallery::getSession()->delete($this);
        
