@@ -6,7 +6,7 @@ class erLhcoreClassModelGalleryImgSeekData {
        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) == true)
        {
            try {           
-               $xmlRPCClient = self::getFaceRestClientInstance();
+               $xmlRPCClient = self::getImgSeekClientInstance();
                $xmlRPCClient->removeImg(erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),$pid);                     
            } catch (Exception $e) {
                
