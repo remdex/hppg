@@ -13,62 +13,36 @@
     <script type="text/javascript">
 (function () { 
   function pwInit (ev) {
-    var initTime = (new Date()).getTime() - timeStart,
-        str = 'Demo: Yay, PaintWeb loaded in ' + initTime + ' ms! ' +
-              pw.toString();
-
+    var initTime = (new Date()).getTime() - timeStart,str = 'Demo: Yay, PaintWeb loaded in ' + initTime + ' ms! ' + pw.toString();
     document.body.removeChild(loadp);
-
     if (ev.state === PaintWeb.INIT_ERROR) {
       alert('Demo: PaintWeb initialization failed.');
       return;
-
     } else if (ev.state === PaintWeb.INIT_DONE) {
       if (window.console && console.log) {
         console.log(str);
       } else if (window.opera) {
         opera.postError(str);
       }
-
     } else {
       alert('Demo: Unrecognized PaintWeb initialization state ' + ev.state);
-
       return;
     }
     img.style.display = 'none';
   };
-
   var img    = document.getElementById('editableImage'),
       target = document.getElementById('PaintWebTarget'),
       loadp  = document.createElement('p'),
       timeStart = null,
-
-      // Create a PaintWeb instance.
       pw = new PaintWeb();
-
       pw.config.guiPlaceholder = target;
       pw.config.imageLoad      = img; 
       pw.config.uploadCanvasURL      = '<?=erLhcoreClassDesign::baseurl('similar/uploadcanvas')?>';
       pw.config.configFile     = 'config-example.json';
       loadp.appendChild(document.createTextNode('Loading, please wait...'));
-    
       timeStart = (new Date()).getTime();
       pw.init(pwInit);
-
 })();</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div id="img-list-search">
 </div>
