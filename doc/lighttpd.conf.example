@@ -31,11 +31,11 @@ url.rewrite-once = (
 #"^/albums/(.*?)(normal_|thumb_)(.*)\.(css|html|htm|pdf|txt|js|bmp|ico|png|JPG|PNG|gif|jpe?g|swf)(.*?)$" =>  "$0",
 
 # Deny access to full size images, uncomment line bellow
-#"^/albums/(.*?)\.(css|html|htm|pdf|txt|js|bmp|ico|png|JPG|PNG|gif|jpe?g|swf)$" =>  "/index.php",
+#"^/albums/(.*?)\.(css|html|htm|pdf|txt|js|bmp|json|ico|png|JPG|PNG|gif|jpe?g|swf)$" =>  "/index.php",
 # END uncomoment shop functionality
 
 
-"^/.*\.(css|html|htm|pdf|txt|js|bmp|ico|png|JPG|PNG|flv|ogv|gif|jpe?g|swf)(.*?)$" => "$0",
+"^/.*\.(css|html|htm|pdf|txt|js|bmp|ico|json|png|JPG|PNG|flv|ogv|gif|jpe?g|swf)(.*?)$" => "$0",
 "^/index(.*)" => "/index$1",
 "^/(.+)\?(.*)/?$" => "/index.php?/$1&$2",
 "^/(.+)/?$" => "/index.php?/$1"

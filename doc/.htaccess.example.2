@@ -26,5 +26,5 @@ RewriteRule ^(.*)-([0-9]*)fm.html(.*?)?$ index.php?/forum/message/$2$3 [L]
 
 RewriteRule ^/var/[^/]+/cache/(stylesheets|images|javascripts?)/.* - [L]
 
-RewriteCond %{REQUEST_FILENAME} !\.(gif|jpe?g|png|bmp|css|ogv|js|xml|flv|html|swf|php)|var(.+)storage.pdf(.+)\.pdf$ [NC]
+RewriteCond %{REQUEST_FILENAME} !\.(gif|jpe?g|json|png|bmp|css|ogv|js|xml|flv|html|swf|php)|var(.+)storage.pdf(.+)\.pdf$ [NC]
 RewriteRule ^(.*)?$ index.php?/$1 [L]
