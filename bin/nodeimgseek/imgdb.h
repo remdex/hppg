@@ -274,6 +274,7 @@ typedef std::map<const int, dbSpaceStruct*>::iterator  dpspaceIterator;
 double_vector queryImgID(const int dbId, long int id,int numres);
 double_vector queryImgIDFast(const int dbId, long int id, int numres);
 double_vector queryImgFile(char* filename,const int dbId, int numres,int sketch);
+double_vector queryImgFileFast(char* filename,const int dbId, int numres,int sketch);
 double_vector queryImgData(const int dbId, Idx * sig1, Idx * sig2, Idx * sig3, double *avgl, int numres, int sketch);
 int addImage(const int dbId, const long int id, char* filename);
 int savedb(const int dbId, char* filename);

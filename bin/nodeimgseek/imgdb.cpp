@@ -1006,6 +1006,81 @@ std::vector<double> queryImgFile(char* filename,const int dbId, int numres,int s
     return queryImgData(dbId, sig1,sig2,sig3,avgl, numres, sketch);
 }
 
+std::vector<double> queryImgFileFast(char* filename,const int dbId, int numres,int sketch = 0)
+{
+  /*query for images similar to the one on filename
+    numres is the maximum number of results
+    sketch should be 1 if this image is a drawing
+  */
+  
+  double avgl[3];
+  Idx sig1[NUM_COEFS];
+  Idx sig2[NUM_COEFS];
+  Idx sig3[NUM_COEFS];
+  int cn = 0;
+  
+  static Unit cdata1[16384];
+  static Unit cdata2[16384];
+  static Unit cdata3[16384];
+ 
+  int width, height;
+	
+  
+    ExceptionInfo exception;
+    GetExceptionInfo(&exception);
+
+    ImageInfo *image_info;
+	image_info = CloneImageInfo((ImageInfo *) NULL);
+	(void) strcpy(image_info->filename, filename);
+	Image *image = ReadImage(image_info, &exception);
+	if (exception.severity != UndefinedException) CatchException(&exception);
+	DestroyImageInfo(image_info);
+	DestroyExceptionInfo(&exception);
+
+	if (image == (Image *) NULL) {
+    	cerr << "ERROR: unable to read image" << endl;
+    	std::vector<double> vect;
+    	return vect;
+    }
+	
+	Image *resize_image;
+
+	/*
+	Initialize the image info structure and read an image.
+	 */
+	GetExceptionInfo(&exception);
+	
+	width = image->columns;
+	height = image->rows;
+
+	resize_image = SampleImage(image, 128, 128, &exception);
+
+	DestroyImage(image);
+
+	DestroyExceptionInfo(&exception);
+		
+	unsigned char rchan[16384];
+	unsigned char gchan[16384];
+	unsigned char bchan[16384];
+
+	GetExceptionInfo(&exception);
+
+	const PixelPacket *pixel_cache = AcquireImagePixels(resize_image, 0, 0, 128, 128, &exception);
+
+	for (int idx = 0; idx < 16384; idx++) {
+		rchan[idx] = pixel_cache->red;
+		gchan[idx] = pixel_cache->green;
+		bchan[idx] = pixel_cache->blue;
+		pixel_cache++;
+	}
+	
+	DestroyImage(resize_image);
+	transformChar(rchan, gchan, bchan, cdata1, cdata2, cdata3);
+	calcHaar(cdata1,cdata2,cdata3,sig1,sig2,sig3,avgl);
+
+    return queryImgDataFast(dbId, sig1,sig2,sig3,avgl, numres, sketch);
+}
+
 std::vector<double> queryImgIDFiltered(const int dbId, long int id, int numres, bloom_filter* bf) {
 	/*query for images similar to the one that has this id
 	numres is the maximum number of results

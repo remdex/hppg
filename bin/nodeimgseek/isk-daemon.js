@@ -52,6 +52,22 @@ http.createServer(function (req, res) {
         ret = {'status' : false,'msg' : "Please provide database id <dbid>, file path <fp>,number of result <nr>, is sketch 0|1 <sk>"};
       }
       
+  } else if (arguments.query.op == 'queryimgfilefast') {
+      
+      if (arguments.query.dbid !== undefined && arguments.query.fp !== undefined && arguments.query.nr !== undefined  && arguments.query.sk !== undefined ){           
+        ret = {'status' : true,'result' : H.queryimgfilefast(arguments.query.fp, arguments.query.dbid, arguments.query.nr, arguments.query.sk)};
+      } else {
+        ret = {'status' : false,'msg' : "Please provide database id <dbid>, file path <fp>,number of result <nr>, is sketch 0|1 <sk>"};
+      }
+      
+  } else if (arguments.query.op == 'queryimgidfast') {
+      
+      if (arguments.query.dbid !== undefined && arguments.query.id !== undefined && arguments.query.nr !== undefined ){           
+        ret = {'status' : true,'result' : H.queryimgidfast(arguments.query.dbid,arguments.query.id,arguments.query.nr)};
+      } else {
+        ret = {'status' : false,'msg' : "Please provide database id <dbid>, image id <id>, number of result <nr>"};
+      }
+      
   } else if (arguments.query.op == 'getimgcount') {
       
       if (arguments.query.dbid !== undefined){           

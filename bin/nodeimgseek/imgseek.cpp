@@ -38,9 +38,11 @@ public:
     NODE_SET_PROTOTYPE_METHOD(s_ct, "addimage", AddImageSeek);
     NODE_SET_PROTOTYPE_METHOD(s_ct, "isimageondb", isImageOnDBSeek);
     NODE_SET_PROTOTYPE_METHOD(s_ct, "queryimgid", queryImgIDSeek);
+    NODE_SET_PROTOTYPE_METHOD(s_ct, "queryimgidfast", queryImgIDFastSeek);
     NODE_SET_PROTOTYPE_METHOD(s_ct, "removeid", removeIDSeek);
     NODE_SET_PROTOTYPE_METHOD(s_ct, "isvaliddb", isValidDBSeek);
     NODE_SET_PROTOTYPE_METHOD(s_ct, "queryimgfile", queryImgFileSeek);
+    NODE_SET_PROTOTYPE_METHOD(s_ct, "queryimgfilefast", queryImgFileFastSeek);
     NODE_SET_PROTOTYPE_METHOD(s_ct, "getdblist", getDBListSeek);
 
     target->Set(String::NewSymbol("ImgSeek"),
@@ -203,6 +205,32 @@ public:
     return scope.Close(tuples);
   }
   
+  static Handle<Value> queryImgIDFastSeek(const Arguments& args)
+  {  
+    HandleScope scope;
+  
+    int db_id = args[0]->ToInteger()->Value();
+    long int pid = args[1]->ToInteger()->Value();     
+    int numres = args[2]->ToInteger()->Value();
+    
+    Local<Array> tuples = Array::New(numres);
+        
+    std::vector<double> result = queryImgIDFast(db_id,pid,numres);
+    int found = result.size()/2;
+    
+    for (int i = 0;i < found; i++) {
+        Local<Object> row = Object::New();
+        tuples->Set(Integer::New(found-i-1), row);
+        row->Set(String::New("id"), Number::New(result[i*2]));        
+        double rsc = (-100.0*result[i*2+1]/38.70);        
+        if (rsc<0) rsc = 0;
+        if (rsc>100) rsc = 100;                
+        row->Set(String::New("cor"), Number::New(rsc));        
+    }
+    
+    return scope.Close(tuples);
+  }
+  
   static Handle<Value> queryImgFileSeek(const Arguments& args)
   {  
     HandleScope scope;
@@ -214,6 +242,32 @@ public:
     Local<Array> tuples = Array::New(numres);
         
     std::vector<double> result = queryImgFile(*fname, db_id, numres, args[3]->ToInteger()->Value());
+    int found = result.size()/2;
+    
+    for (int i = 0;i < found; i++) {
+        Local<Object> row = Object::New();
+        tuples->Set(Integer::New(found-i-1), row);
+        row->Set(String::New("id"), Number::New(result[i*2]));        
+        double rsc = (-100.0*result[i*2+1]/38.70);        
+        if (rsc<0) rsc = 0;
+        if (rsc>100) rsc = 100;                
+        row->Set(String::New("cor"), Number::New(rsc));        
+    }
+    
+    return scope.Close(tuples);
+  }
+  
+  static Handle<Value> queryImgFileFastSeek(const Arguments& args)
+  {  
+    HandleScope scope;
+  
+    v8::String::Utf8Value fname(args[0]);    
+    int db_id = args[1]->ToInteger()->Value();
+    int numres = args[2]->ToInteger()->Value();
+    
+    Local<Array> tuples = Array::New(numres);
+        
+    std::vector<double> result = queryImgFileFast(*fname, db_id, numres, args[3]->ToInteger()->Value());
     int found = result.size()/2;
     
     for (int i = 0;i < found; i++) {
