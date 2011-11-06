@@ -17,7 +17,7 @@ if ($Image !== false)
     $xmlRPCClient = erLhcoreClassModelGalleryImgSeekData::getImgSeekClientInstance();
     try {
         $similarImages = $xmlRPCClient->execute( array (
-            'op'   => 'queryimgid',
+            'op'   => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'query_img_function' ),
             'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),
             'id'   => $Image->pid,
             'nr'   => 24

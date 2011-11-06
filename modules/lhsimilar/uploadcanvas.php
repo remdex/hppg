@@ -11,7 +11,7 @@ if (($filetype = erLhcoreClassModelGalleryFiletype::isValidLocal($filePath)) !==
     
     try {
         $similarImagesResult = $xmlRPCClient->execute(array(
-            'op'   => 'queryimgfile',
+            'op'   => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'query_img_sketch_function'),
             'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),
             'nr'   => 25,
             'sk'   => 1,
