@@ -18,11 +18,12 @@ As service (kinda)
 
 Make these two requests:
 a. Creates db space
-http://127.0.0.1:31128/?op=createdb&dbid=1
+curl http://127.0.0.1:31128/?op=createdb&dbid=1
 
 b. Saves database
-http://127.0.0.1:31128/?op=savealldbs
+curl http://127.0.0.1:31128/?op=savealldbs
 
+c. Now you can use database in gallery
 
 API reference:
 
