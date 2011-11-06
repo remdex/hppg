@@ -6,8 +6,12 @@ class erLhcoreClassModelGalleryImgSeekData {
        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) == true)
        {
            try {           
-               $xmlRPCClient = self::getImgSeekClientInstance();
-               $xmlRPCClient->removeImg(erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),$pid);                     
+               $xmlRPCClient = self::getImgSeekClientInstance();                    
+               $xmlRPCClient->execute( array (
+                'op' => 'removeid',
+                'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),
+                'id'   => $pid
+               ));                     
            } catch (Exception $e) {
                
            }  
@@ -46,7 +50,7 @@ class erLhcoreClassModelGalleryImgSeekData {
    
    static function getImgSeekClientInstance() {
         if (self::$imgSeekClient == NULL) {
-            self::$imgSeekClient = new XmlRpcClient('http://'.erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'host' ).':'.erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'port' ).erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'path'));
+            self::$imgSeekClient = new erLhcoreClassNodeImgSeek('http://'.erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'host' ),erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'port' ));
         }
         return self::$imgSeekClient;
    }
@@ -70,8 +74,11 @@ class erLhcoreClassModelGalleryImgSeekData {
                     $url = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
                }
 
-               $xmlRPCClient = self::getImgSeekClientInstance();
-               $xmlRPCClient->addImg(erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),$image->pid,$url);               
+               $xmlRPCClient = self::getImgSeekClientInstance();              
+               $xmlRPCClient->execute(array('op' => 'addimage', 
+                                            'id' => $image->pid,
+                                            'fp' => $url,
+                                            'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' )));               
          }         
             
        } elseif ($image->approved == 0) {

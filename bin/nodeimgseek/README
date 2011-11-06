@@ -1,0 +1,55 @@
+imgseek library export as node.js module
+
+1. How to compile?
+node-waf configure build
+
+2. Where is settings?
+See settings.js
+
+3. How to run?
+
+For testing purposes:
+> node isk-daemon.js
+
+As service (kinda)
+> nohup node isk-daemon.js & > nohup.out
+
+4. How to setup database?
+
+Make these two requests:
+a. Creates db space
+http://127.0.0.1:31128/?op=createdb&dbid=1
+
+b. Saves database
+http://127.0.0.1:31128/?op=savealldbs
+
+
+API reference:
+
+1. Implemented methods at this state:
+
+1.1 loadalldbs
+Not callable, service initializes it at start
+
+1.2 createdb
+API:
+http://127.0.0.1:31128/?op=createdb&dbid=1
+Returns:
+true - success
+false - failed (perhaps db space exists)
+
+1.3 savealldbs
+API:
+http://127.0.0.1:31128/?op=savealldbs
+
+..... Need to finish describe these, currently all can be viewed at isk-daemon.js
+resetdb
+removedb
+getimgcount
+addimage
+isimageondb
+queryimgid
+removeid
+isvaliddb
+queryimgfile
+getdblist

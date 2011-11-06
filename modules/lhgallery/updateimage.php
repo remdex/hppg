@@ -25,7 +25,8 @@ if ($previousApproved != $ImageData->approved){
     
     // Reindex image colors if image is approved
     if ($ImageData->approved == 1) {
-        erLhcoreClassPalleteIndexImage::indexImage($ImageData);  // We do not use delay, because it's update      
+        erLhcoreClassPalleteIndexImage::indexImage($ImageData);  // We do not use delay, because it's update 
+        erLhcoreClassModelGalleryImgSeekData::indexImage($ImageData);      
     } else {
         erLhcoreClassPalleteIndexImage::removeFromIndex($ImageData->pid); 
         // Index in imgseek service

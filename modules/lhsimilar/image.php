@@ -15,27 +15,40 @@ $tpl = erLhcoreClassTemplate::getInstance( 'lhsimilar/similarimage.tpl.php');
 if ($Image !== false)
 {   
     $xmlRPCClient = erLhcoreClassModelGalleryImgSeekData::getImgSeekClientInstance();
-    try{
-        $similarImages = $xmlRPCClient->queryImgID(erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),$Image->pid,24);
+    try {
+        $similarImages = $xmlRPCClient->execute( array (
+            'op'   => 'queryimgid',
+            'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),
+            'id'   => $Image->pid,
+            'nr'   => 24
+        ));
+        
+        if ( !empty($similarImages->result) ) {
+            $similarID = array();
+            foreach ($similarImages->result as $imageSimilarData)
+            {
+                $similarID[$imageSimilarData->id] = null;
+            }
+            
+            $similarImagesObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin' => array('pid' => array_keys($similarID))));
+            
+            foreach ($similarID as $id => & $data)
+            {
+                if (isset($similarImagesObjects[$id])) {
+                    $data = $similarImagesObjects[$id];
+                }
+            }
+            
+            $tpl->set('items',array_filter($similarID));
+        } else {
+            $tpl->set('items',array());
+        }
+        
     } catch (Exception $e){
         $similarImages = array();
-    }
+        $tpl->set('items',array());
+    }    
     
-    if (!empty($similarImages)) {
-        $similarID = array();
-        foreach ($similarImages as $imageSimilarData)
-        {
-            $similarID[$imageSimilarData[0]] = null;
-        }
-        
-        $similarImagesObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin' => array('pid' => array_keys($similarID))));
-        
-        foreach ($similarID as $id => & $data)
-        {
-            $data = $similarImagesObjects[$id];
-        }
-        $tpl->set('items',array_filter($similarID));
-    }
     $tpl->set('image',$Image);
     $path = $Image->path;
     $path[] = array('title' => 'Similar images to');
