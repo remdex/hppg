@@ -8,6 +8,10 @@ $ViewList = array();
 $ViewList['image'] = array( 
     'params' => array('image_id'),    
 );
+   
+$ViewList['imagejson'] = array( 
+    'params' => array('image_id'),    
+);
     
 $ViewList['uploadsimilar'] = array( 
     'params' => array(),    

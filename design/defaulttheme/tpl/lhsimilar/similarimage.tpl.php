@@ -1,4 +1,3 @@
-
 <?php if ($image !== false) : ?>
     <div class="header-list">
                 <h1>Visualy similar images to - <?=htmlspecialchars($image->name_user)?></h1>
@@ -47,7 +46,6 @@
 </div>
 
 <?php else :?>
-
     <div class="header-list">
                 <h1>Search for visualy similar images</h1>
     </div>
@@ -108,48 +106,17 @@ var uploader = new qq.FileUploader({
 });   
 </script>
 
-<div id="similar-images-container" style="clear:both;padding-top:10px;">
+<div id="similar-images-container" <? if ($image !== false) : ?>class="ajax-loading-items"<?php endif;?> style="clear:both;padding-top:10px;">
     <div class="float-break img-list">
     <?php if ($image !== false) : ?>
-    <? 
-    $counter = 1;
-    foreach ($items as $key => $item) : 
-    ?>
-        <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
-            <div class="thumb-pic">
-                <a class="inf-img" rel="<?=$item->pid?>"></a>
-                <a href="<?=erLhcoreClassDesign::baseurl('similar/image')?>/<?=$item->pid?>">            
-                <?php include(erLhcoreClassDesign::designtpl('lhgallery/media_type_thumbnail.tpl.php')); ?>            
-                </a>           
-            </div>
-            <div class="thumb-attr">
-            
-            <div class="tit-item">
-                <h3><a title="<?=htmlspecialchars($item->name_user);?>" href="<?=erLhcoreClassDesign::baseurl('similar/image')?>/<?=$item->pid?>">
-                    <?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','preview version') : $title;?>          
-                    </a>
-                </h3>
-            </div>
-            
-            <span class="res-ico">
-            <?=$item->pwidth?>x<?=$item->pheight?>
-            </span>    
-            
-            <span class="hits-ico">
-            <?=$item->hits?>
-            </span>               
-            
-            </div>
-        </div>   
-    <?$counter++;endforeach; ?> 
-    
-    <script>
-    $('.thumb-attr a').each(function(index) {	
-    	$(this).attr('href',$(this).attr('rel'));
+     <script>
+    $(function() {
+        $.getJSON('<?=erLhcoreClassDesign::baseurl('similar/imagejson')?>/<?=$image->pid?>' , function(data){
+			$('#similar-images-container').removeClass('ajax-loading-items');
+            $('#similar-images-container .img-list').html(data.result);         
+		});
     });
-    hw.initInfoWindow('');
-    </script>
- 
+    </script>    
     <?php endif;?>
     </div>
 </div>
