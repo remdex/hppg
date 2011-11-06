@@ -311,7 +311,9 @@ return array (
         'enabled' => false,
         'delay_index' => false,
         'delay_index_portion' => 10,
-        'image_random_start' => 1000000
+        'image_random_start' => 1000000,
+        'query_img_function' => 'queryimgid',
+        'query_img_sketch_function' => 'queryimgfile'
     ),
     'redis' => array (
         'server' => array ( 
