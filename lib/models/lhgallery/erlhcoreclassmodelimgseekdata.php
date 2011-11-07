@@ -68,7 +68,7 @@ class erLhcoreClassModelGalleryImgSeekData {
            if ( ((erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' && file_exists($photoPath) && is_file($photoPath)) || erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'amazons3') && $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) { 
 
                if ( erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' ) {
-                    $url = erLhcoreClassSystem::instance()->SiteDir . $photoPath;
+                    $url = urlencode(erLhcoreClassSystem::instance()->SiteDir . $photoPath);
                } else { 
                     // FIXME
                     $url = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
