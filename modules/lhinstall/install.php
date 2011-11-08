@@ -833,7 +833,7 @@ switch ((int)$Params['user_parameters']['step_id']) {
 						('minimum_post_to_hot',  '20',  '0',  'How many post to became hot topic',  '0'),
 						('video_convert_command',  'ffmpeg -y -i {original_file} -qmax 15 -s 580x440 -ar 22050 -ab 32 -f flv {converted_file} &> /dev/null',  '0',  '',  '0'),
 						('flash_screenshot_command',  'bin/shell/xvfb-run.sh --server-args=\"-screen 0, 1024x2730x24\" bin/shell/screenshot.sh',  '0',  'Command witch is executed for making flash screenshot',  '0'),
-						('allowed_file_types', '*.jpg;*.gif;*.png;*.png;*.bmp;*.ogv;*.swf;*.mpeg;*.avi;*.mpg;*.wmv', 0, 'List of allowed file types to upload', 0),
+						('allowed_file_types', '''jpg'',''gif'',''png'',''png'',''bmp'',''ogv'',''swf'',''flv'',''mpeg'',''avi'',''mpg'',''wmv''', 0, 'List of allowed file types to upload', 0),
 						('normal_thumbnail_width_x', '400', 0, 'Normal size thumbnail width - x', 0),
 						('normal_thumbnail_width_y', '400', 0, 'Normal size thumbnail width - y', 0),
 						('loop_video', '0', 0, 'Should HTML5 video be looped? (1 - yes,0 - no))', 0),

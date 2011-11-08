@@ -67,18 +67,25 @@ class erLhcoreClassModelGalleryImgSeekData {
            
            if ( ((erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' && file_exists($photoPath) && is_file($photoPath)) || erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'amazons3') && $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) { 
 
+               $deleteFile = false;
                if ( erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' ) {
                     $url = urlencode(erLhcoreClassSystem::instance()->SiteDir . $photoPath);
                } else { 
                     // FIXME
-                    $url = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
+                    $urlRemote = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
+                    $url = 'var/tmpfiles/'.sha1('/albums/'.$image->filepath.'normal_'.$image->filename.time()).'.'.erLhcoreClassImageConverter::getExtension($image->filename);
+                    file_put_contents($url,file_get_contents($urlRemote));
+                    $deleteFile = true;
                }
 
                $xmlRPCClient = self::getImgSeekClientInstance();              
                $xmlRPCClient->execute(array('op' => 'addimage', 
                                             'id' => $image->pid,
                                             'fp' => $url,
-                                            'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' )));               
+                                            'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' )));  
+              if ($deleteFile == true)  { 
+                unlink($url);
+              }     
          }         
             
        } elseif ($image->approved == 0) {
