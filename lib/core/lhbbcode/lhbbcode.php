@@ -463,6 +463,44 @@ class erLhcoreClassBBCode
     	$ret = trim($ret);
     	return $ret;
    }
+   
+   // Makes plain text from BB code
+   public static function make_plain($ret){
+        $ret = ' ' . $ret;
+       
+        // BBCode to find...
+    	$in = array( 	 '/\[b\](.*?)\[\/b\]/ms',	
+    					 '/\[i\](.*?)\[\/i\]/ms',
+    					 '/\[u\](.*?)\[\/u\]/ms',
+    					 '/\[list\=(.*?)\](.*?)\[\/list\]/ms',
+    					 '/\[list\](.*?)\[\/list\]/ms',
+    					 '/\[\*\]\s?(.*?)\n/ms',
+    					 '/\[img\](.*?)\[\/img\]/ms',
+    					 '/\[url\="?(.*?)"?\](.*?)\[\/url\]/ms',
+    					 '/\[quote\]/ms',
+    					 '/\[\/quote\]/ms',
+    					 '/\n/ms',
+    	);
+    	
+    	// And replace them by...
+    	$out = array(	 '\1',
+    					 '\1',
+    					 '\1',
+    					 '\2',
+    					 '\1',
+    					 '\1',
+    					 '',
+    					 '\2 \1',
+    					 '',
+    					 ' ',
+    	);
+    	
+    	$ret = preg_replace($in, $out, $ret);
+    	   
+        $ret = trim($ret);
+        return $ret;
+   }
+
 }
 
 

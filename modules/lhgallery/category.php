@@ -48,6 +48,10 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $Result['path_base'] = $Category->url_path_base.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
     
+    if ($Category->description != '') {
+        $Result['description_prepend'] = erLhcoreClassBBCode::make_plain(htmlspecialchars($Category->description));
+    }
+    
     $cache->store($cacheKey,$Result);
 } 
 

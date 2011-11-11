@@ -2029,6 +2029,11 @@ $Result['path'] = $Image->path;
 $Result['canonical'] = 'http://'.$_SERVER['HTTP_HOST'].$Image->url_path;
 $Result['path_base'] = $Image->url_path_base.$urlAppend;
 
+if ($Image->caption != '') {
+    $Result['description_prepend'] = erLhcoreClassBBCode::make_plain(htmlspecialchars($Image->caption));
+}
+    
+    
 // Must be in the bottom, three options fo image hit.
 if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'delay_image_hit_enabled' ) == true) {
 	erLhcoreClassModelGalleryDelayImageHit::addHit($Image->pid);

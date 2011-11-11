@@ -25,7 +25,10 @@ foreach ($ReverseOrder as $pathItem) : ?>
 <link rel="shortcut icon" type="image/x-icon" href="<?=erLhcoreClassDesign::design('images/favicon.ico')?>" />
 <?php if (isset( $Result['canonical'])) : ?><link rel="canonical" href="<?=$Result['canonical']?>" /><?endif;?>
 <meta name="Keywords" content="" />
-<meta name="Description" content="<?=erConfigClassLhConfig::getInstance()->getOverrideValue( 'site', 'description' )?>" />
+
+
+<meta name="Description" content="<?=isset($Result['description_prepend']) ? $Result['description_prepend'].' ' : '' ?><?=erConfigClassLhConfig::getInstance()->getOverrideValue( 'site', 'description' )?>" />
+
 
 <meta http-equiv="Content-Language" content="<?=erLhcoreClassSystem::instance()->ContentLanguage?>"/>
 

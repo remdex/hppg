@@ -200,7 +200,9 @@ if (($Result = $cache->restore($cacheKey)) === false)
         $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
-    
+    if ($Album->description != '') {
+        $Result['description_prepend'] = erLhcoreClassBBCode::make_plain(htmlspecialchars($Album->description));
+    }
     
     $Result['tittle_prepend'] = $sortModesTitle[$mode];
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Last uploaded images to album').' - '.$Album->title;
