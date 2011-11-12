@@ -1,6 +1,6 @@
 <?php if ($image !== false) : ?>
     <div class="header-list">
-                <h1>Visualy similar images to - <?=htmlspecialchars($image->name_user)?></h1>
+                <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Visualy similar images to')?> - <?=htmlspecialchars($image->name_user)?></h1>
     </div>
           
     <div class="img float-break">
@@ -47,12 +47,12 @@
 
 <?php else :?>
     <div class="header-list">
-                <h1>Search for visualy similar images</h1>
+                <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Search for visualy similar images')?></h1>
     </div>
     
     <div id="ad-image-upload">
     	<noscript>
-    		<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('lhad/orderitemdetails/orderitemdetails_display_ad_magazine','Please enable JavaScript to upload image');?></p>
+    		<p><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Please enable JavaScript to upload image');?></p>
     	</noscript>
     </div>
     
@@ -92,14 +92,14 @@ var uploader = new qq.FileUploader({
     },
 	template: '<div class="qq-uploader">' + 
                 '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/publicupload','Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).')?></div>' +
+                '<div class="qq-upload-button"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).')?></div>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
     fileTemplate: '<li class="float-break" id="file_id_row_{file_id}"><span class="qq-upload-file"></span>' +
                 '<span class="qq-upload-spinner"></span>' +
                 '<span class="qq-upload-size"></span>' +
-                '<a class="qq-upload-cancel" href="#"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('lhad/uploadadorderitem_content','Cancel');?></a>' +
-                '<span class="qq-upload-failed-text"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('lhad/uploadadorderitem_content','Failed');?></span>' +
+                '<a class="qq-upload-cancel" href="#"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Cancel');?></a>' +
+                '<span class="qq-upload-failed-text"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Failed');?></span>' +
                 '</li>',
     multiple: false,
     debug: true

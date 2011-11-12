@@ -21,10 +21,21 @@ if (($Result = $cache->restore($cacheKeyImageView)) === false)
     {                       
         $tpl->set('image',$Image);
         $path = $Image->path;
-        $path[] = array('title' => 'Similar images to');
+        $imgPath = array_pop($path);
+        $imgPath['url'] = $Image->url_path;        
+        $path[] = $imgPath;
+        $path[] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Similar images to'));
+        $Result['path_base'] = erLhcoreClassDesign::baseurldirect('similar/image') . '/' . $Image->pid;
+        
+        if ($Image->caption != '') {
+            $Result['description_prepend'] = erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Similar images to').' - '.erLhcoreClassBBCode::make_plain(htmlspecialchars($Image->caption));
+        }
+
     } else {
-        $path = array(array('title' => 'Search for visualy similar images'));
+        $path = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Search for visualy similar images')));
         $tpl->set('image',false);
+        $Result['path_base'] = erLhcoreClassDesign::baseurldirect('similar/image');
+        $Result['description_prepend'] = erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Search for visualy similar images');
     }
     
     $Result['content'] = $tpl->fetch();

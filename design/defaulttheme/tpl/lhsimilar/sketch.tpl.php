@@ -1,5 +1,5 @@
 <div class="header-list">
-            <h1>Search by sketch</h1>
+            <h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/sketch','Search by sketch')?></h1>
 </div>
     
 <div id="PaintWebTarget"></div>
@@ -38,10 +38,7 @@
       pw.config.uploadCanvasURL      = '<?=erLhcoreClassDesign::baseurl('similar/uploadcanvas')?>';
       pw.config.configFile     = 'config-example.json';
       timeStart = (new Date()).getTime();
-      //setTimeout(function(){ 
-        pw.init(pwInit);
-      //},5000)
-      
+      pw.init(pwInit);      
 })();</script>
 
 <br />
