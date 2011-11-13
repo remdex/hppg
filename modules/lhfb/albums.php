@@ -27,13 +27,13 @@ if ($userFB) {
     $Result['content'] = $tpl->fetch();
     $Result['path'] = array(
     array('url' => erLhcoreClassDesign::baseurl('user/index'),
-    'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My account')),
-    array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Facebook albums')));
+    'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('fb/albums','My account')),
+    array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('fb/albums','Facebook albums')));
 } else {
     $tpl = erLhcoreClassTemplate::getInstance( 'lhfb/login.tpl.php' );
     $Result['content'] = $tpl->fetch();
     $Result['path'] = array(
     array('url' => erLhcoreClassDesign::baseurl('user/index'),
-    'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','My account')),
-    array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('user/edit','Facebook session has expired, please login')));
+    'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('fb/albums','My account')),
+    array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('fb/albums','Facebook session has expired, please login')));
 }

@@ -53,10 +53,6 @@
   <context>
     <name>gallery/addimages</name>
     <message>
-      <source>Add images to album</source>
-      <translation>&#x414;&#x43E;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
-    </message>
-    <message>
       <source>All files were uploaded. See album.</source>
       <translation>&#x412;&#x441;&#x435; &#x444;&#x430;&#x439;&#x43B;&#x44B; &#x431;&#x44B;&#x43B;&#x438; &#x437;&#x430;&#x433;&#x440;&#x443;&#x436;&#x435;&#x43D;&#x44B;. &#x421;&#x43C;. &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x430;.</translation>
     </message>
@@ -113,10 +109,6 @@
       <translation>SWFUpload &#x437;&#x430;&#x43D;&#x438;&#x43C;&#x430;&#x435;&#x442; &#x43C;&#x43D;&#x43E;&#x433;&#x43E; &#x432;&#x440;&#x435;&#x43C;&#x435;&#x43D;&#x438; &#x434;&#x43B;&#x44F; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x438; &#x438;&#x43B;&#x438; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x430; &#x43D;&#x435; &#x443;&#x434;&#x430;&#x43B;&#x430;&#x441;&#x44C;. &#x423;&#x431;&#x435;&#x434;&#x438;&#x442;&#x435;&#x441;&#x44C;, &#x447;&#x442;&#x43E; Flash-&#x43F;&#x43B;&#x430;&#x433;&#x438;&#x43D; &#x432;&#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x43D; &#x438; &#x447;&#x442;&#x43E; &#x440;&#x430;&#x431;&#x43E;&#x447;&#x430;&#x44F; &#x432;&#x435;&#x440;&#x441;&#x438;&#x44F; Adobe Flash Player &#x443;&#x441;&#x442;&#x430;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;.</translation>
     </message>
     <message>
-      <source>Move album images to another album</source>
-      <translation>&#x41F;&#x435;&#x440;&#x435;&#x43C;&#x435;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x434;&#x440;&#x443;&#x433;&#x43E;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
-    </message>
-    <message>
       <source>Attachment of local images</source>
       <translation>&#x41F;&#x440;&#x438;&#x43B;&#x43E;&#x436;&#x435;&#x43D;&#x438;&#x435; &#x43C;&#x435;&#x441;&#x442;&#x43D;&#x44B;&#x445; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439;</translation>
     </message>
@@ -128,16 +120,24 @@
       <source>Choose images for upload.</source>
       <translation>&#x412;&#x44B;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x434;&#x43B;&#x44F; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x438;.</translation>
     </message>
+    <message>
+      <source>Add images to album</source>
+      <translation>&#x414;&#x43E;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
+    </message>
+    <message>
+      <source>Move album images to another album</source>
+      <translation>&#x41F;&#x435;&#x440;&#x435;&#x43C;&#x435;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x434;&#x440;&#x443;&#x433;&#x43E;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
+    </message>
+    <message>
+      <source>Move image to another album</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x43C;&#x435;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x434;&#x440;&#x443;&#x433;&#x43E;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
+    </message>
   </context>
   <context>
     <name>gallery/admincategorys</name>
     <message>
       <source>Category</source>
       <translation>&#x41A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F;</translation>
-    </message>
-    <message>
-      <source>Create a category</source>
-      <translation>&#x421;&#x43E;&#x437;&#x434;&#x430;&#x43D;&#x438;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;</translation>
     </message>
     <message>
       <source>Title</source>
@@ -154,6 +154,10 @@
     <message>
       <source>Delete category</source>
       <translation>&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44E;</translation>
+    </message>
+    <message>
+      <source>Create a category</source>
+      <translation>&#x421;&#x43E;&#x437;&#x434;&#x430;&#x43D;&#x438;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;</translation>
     </message>
     <message>
       <source>Category albums</source>
@@ -175,6 +179,10 @@
       <source>Home</source>
       <translation>&#x413;&#x43B;&#x430;&#x432;&#x43D;&#x430;&#x44F;</translation>
     </message>
+    <message>
+      <source>Root category</source>
+      <translation type="unfinished">&#x41A;&#x43E;&#x440;&#x43D;&#x435;&#x432;&#x430;&#x44F; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F;</translation>
+    </message>
   </context>
   <context>
     <name>user/grouplist</name>
@@ -183,12 +191,24 @@
       <translation>&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</translation>
     </message>
     <message>
+      <source>Delete comment</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Edit comment</source>
+      <translation type="unfinished">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439;</translation>
+    </message>
+    <message>
       <source>Delete image</source>
       <translation>&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</translation>
     </message>
     <message>
       <source>Groups</source>
       <translation>&#x413;&#x440;&#x443;&#x43F;&#x43F;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">&#x418;&#x43C;&#x44F;</translation>
     </message>
     <message>
       <source>Edit group</source>
@@ -210,6 +230,10 @@
   <context>
     <name>gallery/album_list_admin</name>
     <message>
+      <source>Are you sure?</source>
+      <translation type="unfinished">&#x412;&#x44B; &#x443;&#x432;&#x435;&#x440;&#x435;&#x43D;&#x44B;?</translation>
+    </message>
+    <message>
       <source>Add images</source>
       <translation>&#x414;&#x43E;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
     </message>
@@ -218,19 +242,51 @@
       <translation>&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
     </message>
     <message>
+      <source>Move all album photos to another album</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x43C;&#x435;&#x441;&#x442;&#x438;&#x442;&#x44C; &#x432;&#x441;&#x435; &#x444;&#x43E;&#x442;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x438; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x430; &#x432; &#x434;&#x440;&#x443;&#x433;&#x43E;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
+    </message>
+    <message>
+      <source>Move photos by resolution</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x43D;&#x43E;&#x441; &#x444;&#x43E;&#x442;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x439; &#x432; &#x440;&#x435;&#x437;&#x43E;&#x43B;&#x44E;&#x446;&#x438;&#x438;</translation>
+    </message>
+    <message>
       <source>Delete album</source>
       <translation>&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
+    </message>
+    <message>
+      <source>Approve all images</source>
+      <translation type="unfinished">&#x423;&#x442;&#x432;&#x435;&#x440;&#x434;&#x438;&#x442;&#x44C; &#x432;&#x441;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Disapprove all images</source>
+      <translation type="unfinished">&#x41E;&#x442;&#x43A;&#x43B;&#x43E;&#x43D;&#x438;&#x442;&#x44C; &#x432;&#x441;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>View on site</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x441;&#x43C;&#x43E;&#x442;&#x440;&#x435;&#x442;&#x44C; &#x43D;&#x430; &#x441;&#x430;&#x439;&#x442;&#x435;</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumedit</name>
     <message>
-      <source>Album edit</source>
-      <translation>&#x410;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
+      <source>Edit topic</source>
+      <translation type="unfinished">&#x418;&#x437;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C; &#x442;&#x435;&#x43C;&#x443;</translation>
+    </message>
+    <message>
+      <source>Topic name</source>
+      <translation type="unfinished">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x442;&#x435;&#x43C;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Topic status</source>
+      <translation type="unfinished">&#x422;&#x435;&#x43C;&#x430; &#x441;&#x442;&#x430;&#x442;&#x443;&#x441;</translation>
     </message>
     <message>
       <source>Update</source>
       <translation>&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Album edit</source>
+      <translation>&#x410;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
     </message>
     <message>
       <source>Album name</source>
@@ -259,6 +315,58 @@
     <message>
       <source>All users can uploads images to this album</source>
       <translation>&#x412;&#x441;&#x435; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x438; &#x43C;&#x43E;&#x433;&#x443;&#x442; &#x434;&#x43E;&#x431;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x44F; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x44D;&#x442;&#x43E;&#x43C; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x435;</translation>
+    </message>
+    <message>
+      <source>Hidden</source>
+      <translation type="unfinished">&#x421;&#x43A;&#x440;&#x44B;&#x442;&#x44B;&#x439;</translation>
+    </message>
+    <message>
+      <source>Hide album from users</source>
+      <translation type="unfinished">&#x421;&#x43A;&#x440;&#x44B;&#x442;&#x44C; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x43E;&#x442; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x435;&#x439;</translation>
+    </message>
+    <message>
+      <source>Album thumbnail</source>
+      <translation type="unfinished">&#x410;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x43C;&#x438;&#x43D;&#x438;&#x430;&#x442;&#x44E;&#x440;&#x430;&#x43C;&#x438;</translation>
+    </message>
+    <message>
+      <source>Newest album image</source>
+      <translation type="unfinished">&#x41D;&#x43E;&#x432;&#x44B;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Revert to newest album image display mode</source>
+      <translation type="unfinished">&#x412;&#x435;&#x440;&#x43D;&#x443;&#x442;&#x44C; &#x43A; &#x43D;&#x43E;&#x432;&#x435;&#x439;&#x448;&#x438;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x440;&#x435;&#x436;&#x438;&#x43C; &#x43E;&#x442;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Remove</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Edit message</source>
+      <translation type="unfinished">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Message</source>
+      <translation type="unfinished">&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>File</source>
+      <translation type="unfinished">&#x424;&#x430;&#x439;&#x43B;</translation>
+    </message>
+    <message>
+      <source>New message</source>
+      <translation type="unfinished">&#x41D;&#x43E;&#x432;&#x43E;&#x435; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Publish</source>
+      <translation type="unfinished">&#x41F;&#x443;&#x431;&#x43B;&#x438;&#x43A;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
+    </message>
+    <message>
+      <source>New topic</source>
+      <translation type="unfinished">&#x41D;&#x43E;&#x432;&#x430;&#x44F; &#x442;&#x435;&#x43C;&#x430;</translation>
+    </message>
+    <message>
+      <source>Choose topic category</source>
+      <translation type="unfinished">&#x412;&#x44B;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x442;&#x435;&#x43C;&#x443; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;</translation>
     </message>
     <message>
       <source>Please enter album name!</source>
@@ -366,6 +474,10 @@
       <translation>&#x43D;&#x430;&#x437;&#x430;&#x434;</translation>
     </message>
     <message>
+      <source>Please enter message!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;!</translation>
+    </message>
+    <message>
       <source>Please enter category name!</source>
       <translation>&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;!</translation>
     </message>
@@ -404,6 +516,18 @@
   <context>
     <name>gallery/my_image_list</name>
     <message>
+      <source>Cross eye image</source>
+      <translation>&#x41A;&#x440;&#x435;&#x441;&#x442; &#x433;&#x43B;&#x430;&#x437; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Delete comment</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Edit comment</source>
+      <translation type="unfinished">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439;</translation>
+    </message>
+    <message>
       <source>Delete image</source>
       <translation>&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</translation>
     </message>
@@ -428,28 +552,60 @@
       <translation>&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
     </message>
     <message>
-      <source>Approved</source>
-      <translation>&#x423;&#x442;&#x432;&#x435;&#x440;&#x436;&#x434;&#x435;&#x43D;&#x43D;&#x43E;&#x439;</translation>
+      <source>Message author</source>
+      <translation type="unfinished">&#x410;&#x432;&#x442;&#x43E;&#x440; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x44F;</translation>
     </message>
     <message>
-      <source>Cross eye image</source>
-      <translation>&#x41A;&#x440;&#x435;&#x441;&#x442; &#x433;&#x43B;&#x430;&#x437; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+      <source>Message</source>
+      <translation type="unfinished">&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Rotate image clockwise</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x432;&#x43E;&#x440;&#x43E;&#x442; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x43F;&#x43E; &#x447;&#x430;&#x441;&#x43E;&#x432;&#x43E;&#x439; &#x441;&#x442;&#x440;&#x435;&#x43B;&#x43A;&#x435;</translation>
+    </message>
+    <message>
+      <source>Flip horizontaly</source>
+      <translation type="unfinished">&#x41E;&#x442;&#x440;&#x430;&#x437;&#x438;&#x442;&#x44C; &#x433;&#x43E;&#x440;&#x438;&#x437;&#x43E;&#x43D;&#x442;&#x430;&#x43B;&#x44C;&#x43D;&#x43E;</translation>
+    </message>
+    <message>
+      <source>Flip verticaly</source>
+      <translation type="unfinished">&#x41E;&#x442;&#x440;&#x430;&#x437;&#x438;&#x442;&#x44C; &#x432;&#x435;&#x440;&#x442;&#x438;&#x43A;&#x430;&#x43B;&#x44C;&#x43D;&#x43E;</translation>
+    </message>
+    <message>
+      <source>Upload new image</source>
+      <translation type="unfinished">&#x417;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C; &#x43D;&#x43E;&#x432;&#x43E;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Set as folder thumbnail</source>
+      <translation type="unfinished">&#x423;&#x441;&#x442;&#x430;&#x43D;&#x43E;&#x432;&#x438;&#x442;&#x44C; &#x432; &#x43A;&#x430;&#x447;&#x435;&#x441;&#x442;&#x432;&#x435; &#x43F;&#x430;&#x43F;&#x43A;&#x438; &#x43C;&#x438;&#x43D;&#x438;&#x430;&#x442;&#x44E;&#x440;&#x430;&#x43C;&#x438;</translation>
+    </message>
+    <message>
+      <source>Move image to another album</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x43C;&#x435;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x434;&#x440;&#x443;&#x433;&#x43E;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
     </message>
     <message>
       <source>Anaglyph</source>
       <translation>&#x410;&#x43D;&#x430;&#x433;&#x43B;&#x438;&#x444;</translation>
     </message>
+    <message>
+      <source>Approved</source>
+      <translation>&#x423;&#x442;&#x432;&#x435;&#x440;&#x436;&#x434;&#x435;&#x43D;&#x43D;&#x43E;&#x439;</translation>
+    </message>
+    <message>
+      <source>Select image</source>
+      <translation type="unfinished">&#x412;&#x44B;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>File</source>
+      <translation type="unfinished">&#x424;&#x430;&#x439;&#x43B;</translation>
+    </message>
+    <message>
+      <source>Upload</source>
+      <translation type="unfinished">&#x417;&#x430;&#x433;&#x440;&#x443;&#x436;&#x430;&#x442;&#x44C;</translation>
+    </message>
   </context>
   <context>
     <name>gallery/editcategory</name>
-    <message>
-      <source>Category edit</source>
-      <translation>&#x41A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
-    </message>
-    <message>
-      <source>Update</source>
-      <translation>&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
-    </message>
     <message>
       <source>back</source>
       <translation>&#x43D;&#x430;&#x437;&#x430;&#x434;</translation>
@@ -467,6 +623,14 @@
       <translation>&#x412;&#x43B;&#x430;&#x434;&#x435;&#x43B;&#x435;&#x446;</translation>
     </message>
     <message>
+      <source>Category edit</source>
+      <translation>&#x41A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
+    </message>
+    <message>
+      <source>Update</source>
+      <translation>&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
       <source>Hide subcategorys in frontpage</source>
       <translation>&#x421;&#x43A;&#x440;&#x44B;&#x442;&#x44C; subcategorys &#x412; &#x43F;&#x440;&#x43E;&#x433;&#x440;&#x430;&#x43C;&#x43C;&#x435; FrontPage</translation>
     </message>
@@ -474,12 +638,12 @@
   <context>
     <name>gallery/managealbum</name>
     <message>
-      <source>Category</source>
-      <translation>&#x41A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F;</translation>
-    </message>
-    <message>
       <source>No records.</source>
       <translation>&#x41D;&#x435;&#x442; &#x437;&#x430;&#x43F;&#x438;&#x441;&#x435;&#x439;.</translation>
+    </message>
+    <message>
+      <source>Category</source>
+      <translation>&#x41A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F;</translation>
     </message>
     <message>
       <source>Create an album</source>
@@ -493,12 +657,24 @@
   <context>
     <name>gallery/managealbumimages</name>
     <message>
+      <source>Move selected images to</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x43C;&#x435;&#x441;&#x442;&#x438;&#x442;&#x44C; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x43D;&#x43D;&#x44B;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Check all</source>
+      <translation type="unfinished">&#x41F;&#x440;&#x43E;&#x432;&#x435;&#x440;&#x44C;&#x442;&#x435; &#x432;&#x441;&#x435;</translation>
+    </message>
+    <message>
       <source>No records.</source>
       <translation>&#x41D;&#x435;&#x442; &#x437;&#x430;&#x43F;&#x438;&#x441;&#x435;&#x439;.</translation>
     </message>
     <message>
       <source>Home</source>
       <translation>&#x413;&#x43B;&#x430;&#x432;&#x43D;&#x430;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Root category</source>
+      <translation type="unfinished">&#x41A;&#x43E;&#x440;&#x43D;&#x435;&#x432;&#x430;&#x44F; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F;</translation>
     </message>
   </context>
   <context>
@@ -1062,6 +1238,14 @@
       <source>Watermark protection</source>
       <translation>&#x412;&#x43E;&#x434;&#x44F;&#x43D;&#x43E;&#x439; &#x437;&#x43D;&#x430;&#x43A; &#x437;&#x430;&#x449;&#x438;&#x442;&#x44B;</translation>
     </message>
+    <message>
+      <source>Banned rating IP list</source>
+      <translation type="unfinished">&#x417;&#x430;&#x43F;&#x440;&#x435;&#x449;&#x435;&#x43D;&#x43D;&#x44B;&#x435; IP-&#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;-&#x43B;&#x438;&#x441;&#x442;&#x435;</translation>
+    </message>
+    <message>
+      <source>Banned commenting IP list</source>
+      <translation type="unfinished">&#x417;&#x430;&#x431;&#x43B;&#x43E;&#x43A;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x43D;&#x44B;&#x435; IP &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x438;&#x440;&#x443;&#x44F; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</translation>
+    </message>
   </context>
   <context>
     <name>systemconfig/watermark</name>
@@ -1177,6 +1361,18 @@
       <translation>&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
     </message>
     <message>
+      <source>Message send</source>
+      <translation type="unfinished">&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x43A;&#x438; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Add google account</source>
+      <translation type="unfinished">&#x414;&#x43E;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44C; &#x443;&#x447;&#x435;&#x442;&#x43D;&#x443;&#x44E; &#x437;&#x430;&#x43F;&#x438;&#x441;&#x44C; Google</translation>
+    </message>
+    <message>
+      <source>Working</source>
+      <translation type="unfinished">&#x420;&#x430;&#x431;&#x43E;&#x447;&#x438;&#x439;</translation>
+    </message>
+    <message>
       <source>Wrong email address</source>
       <translation>&#x41D;&#x435;&#x43F;&#x440;&#x430;&#x432;&#x438;&#x43B;&#x44C;&#x43D;&#x44B;&#x439; &#x430;&#x434;&#x440;&#x435;&#x441; &#x44D;&#x43B;&#x435;&#x43A;&#x442;&#x440;&#x43E;&#x43D;&#x43D;&#x43E;&#x439; &#x43F;&#x43E;&#x447;&#x442;&#x44B;</translation>
     </message>
@@ -1224,8 +1420,28 @@
       <translation>&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
     </message>
     <message>
+      <source>User prifle</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44C; prifle</translation>
+    </message>
+    <message>
       <source>My account</source>
       <translation>&#x41C;&#x43E;&#x439; &#x441;&#x447;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>Facebook albums</source>
+      <translation type="unfinished">Facebook &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Facebook session has expired, please login</source>
+      <translation type="unfinished">Facebook &#x441;&#x435;&#x441;&#x441;&#x438;&#x438; &#x438;&#x441;&#x442;&#x435;&#x43A;&#x43B;&#x43E;, &#x43F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x412;&#x43E;&#x439;&#x442;&#x438;</translation>
+    </message>
+    <message>
+      <source>Account</source>
+      <translation type="unfinished">&#x421;&#x447;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>Albums</source>
+      <translation type="unfinished">&#x410;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
     </message>
     <message>
       <source>My albums</source>
@@ -1250,6 +1466,10 @@
     <message>
       <source>Users</source>
       <translation>&#x41F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x438;</translation>
+    </message>
+    <message>
+      <source>Authentifion with google</source>
+      <translation type="unfinished">Authentifion &#x441; Google</translation>
     </message>
   </context>
   <context>
@@ -1326,6 +1546,10 @@
       <translation>&#x42D;&#x43B;&#x435;&#x43A;&#x442;&#x440;&#x43E;&#x43D;&#x43D;&#x430;&#x44F; &#x43F;&#x43E;&#x447;&#x442;&#x430;</translation>
     </message>
     <message>
+      <source>User</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44C;</translation>
+    </message>
+    <message>
       <source>Assign</source>
       <translation>&#x41D;&#x430;&#x437;&#x43D;&#x430;&#x447;&#x438;&#x442;&#x44C;</translation>
     </message>
@@ -1351,6 +1575,22 @@
     <message>
       <source>Password remind</source>
       <translation>&#x417;&#x430;&#x431;&#x44B;&#x43B;&#x438; &#x43F;&#x430;&#x440;&#x43E;&#x43B;&#x44C;?</translation>
+    </message>
+    <message>
+      <source>Please login with your facebook account</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x412;&#x43E;&#x439;&#x442;&#x438; &#x441; &#x432;&#x430;&#x448;&#x435;&#x433;&#x43E; &#x441;&#x447;&#x435;&#x442;&#x430; facebook</translation>
+    </message>
+    <message>
+      <source>Report abuse</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x43E;&#x432;&#x430;&#x442;&#x44C;&#x441;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Please write whats wrong within a post</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x43D;&#x430;&#x43F;&#x438;&#x448;&#x438;&#x442;&#x435; &#x447;&#x442;&#x43E; &#x43D;&#x435; &#x442;&#x430;&#x43A; &#x432; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x438;</translation>
+    </message>
+    <message>
+      <source>Send</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x441;&#x43B;&#x430;&#x442;&#x44C;</translation>
     </message>
     <message>
       <source>Registration is complete</source>
@@ -1404,6 +1644,22 @@
       <translation>&#x421;&#x43E;&#x445;&#x440;&#x430;&#x43D;&#x438;&#x442;&#x44C;</translation>
     </message>
     <message>
+      <source>OR login with</source>
+      <translation type="unfinished">&#x418;&#x43B;&#x438; &#x412;&#x43E;&#x439;&#x442;&#x438; &#x441;</translation>
+    </message>
+    <message>
+      <source>Login with google account</source>
+      <translation type="unfinished">&#x412;&#x43E;&#x439;&#x442;&#x438; &#x441; &#x430;&#x43A;&#x43A;&#x430;&#x443;&#x43D;&#x442;&#x43E;&#x43C; Google</translation>
+    </message>
+    <message>
+      <source>Working</source>
+      <translation type="unfinished">&#x420;&#x430;&#x431;&#x43E;&#x447;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Working...</source>
+      <translation type="unfinished">&#x420;&#x430;&#x431;&#x43E;&#x447;&#x438;&#x435; ...</translation>
+    </message>
+    <message>
       <source>Registration</source>
       <translation>&#x420;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x44F;</translation>
     </message>
@@ -1416,6 +1672,10 @@
       <translation>&#x420;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x44F;</translation>
     </message>
     <message>
+      <source>Sutch username is already taken!</source>
+      <translation>Sutch &#x438;&#x43C;&#x44F; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F; &#x443;&#x436;&#x435; &#x437;&#x430;&#x43D;&#x44F;&#x442;&#x43E;!</translation>
+    </message>
+    <message>
       <source>Please enter album name!</source>
       <translation>&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x430;!</translation>
     </message>
@@ -1424,8 +1684,8 @@
       <translation>&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;!</translation>
     </message>
     <message>
-      <source>Sutch username is already taken!</source>
-      <translation>Sutch &#x438;&#x43C;&#x44F; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F; &#x443;&#x436;&#x435; &#x437;&#x430;&#x43D;&#x44F;&#x442;&#x43E;!</translation>
+      <source>User exists</source>
+      <translation>&#x41F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44C; &#x441;&#x443;&#x449;&#x435;&#x441;&#x442;&#x432;&#x443;&#x435;&#x442;</translation>
     </message>
     <message>
       <source>Wrong email address</source>
@@ -1434,10 +1694,6 @@
     <message>
       <source>Please enter username</source>
       <translation>&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x438;&#x43C;&#x44F; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</translation>
-    </message>
-    <message>
-      <source>User exists</source>
-      <translation>&#x41F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44C; &#x441;&#x443;&#x449;&#x435;&#x441;&#x442;&#x432;&#x443;&#x435;&#x442;</translation>
     </message>
     <message>
       <source>Passwords mismatch</source>
@@ -1490,6 +1746,38 @@
   <context>
     <name>user/userlist</name>
     <message>
+      <source>Report list</source>
+      <translation type="unfinished">&#x414;&#x43E;&#x43A;&#x43B;&#x430;&#x434; &#x441;&#x43F;&#x438;&#x441;&#x43E;&#x43A;</translation>
+    </message>
+    <message>
+      <source>Report</source>
+      <translation type="unfinished">&#x41E;&#x442;&#x447;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>Topic</source>
+      <translation type="unfinished">&#x422;&#x435;&#x43C;&#x430;</translation>
+    </message>
+    <message>
+      <source>Topic message</source>
+      <translation type="unfinished">&#x422;&#x435;&#x43C;&#x430; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Date</source>
+      <translation type="unfinished">&#x414;&#x430;&#x442;&#x430;</translation>
+    </message>
+    <message>
+      <source>Edit topic</source>
+      <translation type="unfinished">&#x418;&#x437;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C; &#x442;&#x435;&#x43C;&#x443;</translation>
+    </message>
+    <message>
+      <source>Delete topic</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x442;&#x435;&#x43C;&#x443;</translation>
+    </message>
+    <message>
+      <source>IP</source>
+      <translation type="unfinished">IP</translation>
+    </message>
+    <message>
       <source>Users</source>
       <translation>&#x41F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x438;</translation>
     </message>
@@ -1514,6 +1802,10 @@
       <translation>&#x41D;&#x43E;&#x432;&#x44B;&#x439; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44C;</translation>
     </message>
     <message>
+      <source>Replace image</source>
+      <translation type="unfinished">&#x417;&#x430;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
       <source>System configuration</source>
       <translation>&#x41A;&#x43E;&#x43D;&#x444;&#x438;&#x433;&#x443;&#x440;&#x430;&#x446;&#x438;&#x44F; &#x441;&#x438;&#x441;&#x442;&#x435;&#x43C;&#x44B;</translation>
     </message>
@@ -1524,18 +1816,6 @@
       <source>Home</source>
       <translation>&#x413;&#x43B;&#x430;&#x432;&#x43D;&#x430;&#x44F;</translation>
     </message>
-     <message>
-      <source>Search by keyword</source>
-      <translation>Поиск по ключевым словам</translation>
-    </message>
-    <message>
-      <source>Search by color</source>
-      <translation>Поиск по цвету</translation>
-    </message> 
-    <message>
-      <source>Search</source>
-      <translation>Поиск</translation>
-    </message>
     <message>
       <source>Configuration</source>
       <translation>&#x41A;&#x43E;&#x43D;&#x444;&#x438;&#x433;&#x443;&#x440;&#x430;&#x446;&#x438;&#x44F;</translation>
@@ -1543,6 +1823,10 @@
     <message>
       <source>Gallery categorys</source>
       <translation>&#x413;&#x430;&#x43B;&#x435;&#x440;&#x435;&#x44F; &#x41A;&#x410;&#x422;&#x415;&#x413;&#x41E;&#x420;&#x418;&#x418;</translation>
+    </message>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; &#x434;&#x43E;&#x431;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
     </message>
     <message>
       <source>Batch images add</source>
@@ -1565,12 +1849,32 @@
       <translation>&#x41C;&#x430;&#x433;&#x430;&#x437;&#x438;&#x43D;</translation>
     </message>
     <message>
+      <source>Forum</source>
+      <translation type="unfinished">&#x424;&#x43E;&#x440;&#x443;&#x43C;</translation>
+    </message>
+    <message>
       <source>Delete photo by ID</source>
       <translation>&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x444;&#x43E;&#x442;&#x43E; ID</translation>
     </message>
     <message>
       <source>Photo was deleted</source>
       <translation>&#x424;&#x43E;&#x442;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x44F; &#x431;&#x44B;&#x43B;&#x430; &#x443;&#x434;&#x430;&#x43B;&#x435;&#x43D;&#x430;</translation>
+    </message>
+    <message>
+      <source>Go to album</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x439;&#x442;&#x438; &#x43A; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x443;</translation>
+    </message>
+    <message>
+      <source>Go to forum topic</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x439;&#x442;&#x438; &#x43A; &#x440;&#x430;&#x437;&#x434;&#x435;&#x43B;&#x443; &#x442;&#x435;&#x43C;&#x443;</translation>
+    </message>
+    <message>
+      <source>Go to forum category</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x439;&#x442;&#x438; &#x43A; &#x440;&#x430;&#x437;&#x434;&#x435;&#x43B;&#x443; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;</translation>
+    </message>
+    <message>
+      <source>Go to image</source>
+      <translation type="unfinished">&#x41A; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</translation>
     </message>
     <message>
       <source>Root category</source>
@@ -1637,16 +1941,36 @@
       <translation>&#x412;&#x43E;&#x439;&#x442;&#x438;</translation>
     </message>
     <message>
-      <source>Last uploaded images</source>
-      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; &#x437;&#x430;&#x433;&#x440;&#x443;&#x436;&#x435;&#x43D;&#x43D;&#x44B;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+      <source>Enter keyword or phrase</source>
+      <translation>&#x412;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x43E;&#x435; &#x441;&#x43B;&#x43E;&#x432;&#x43E; &#x438;&#x43B;&#x438; &#x444;&#x440;&#x430;&#x437;&#x443;</translation>
     </message>
-      <message>
-      <source>Last uploads to albums</source>
-      <translation>Последние добавления в альбомы</translation>
-    </message> 
     <message>
-      <source>All time</source>
-      <translation>&#x417;&#x430; &#x432;&#x441;&#x435; &#x432;&#x440;&#x435;&#x43C;&#x44F;</translation>
+      <source>Search entire forum</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x441;&#x443;&#x449;&#x435;&#x441;&#x442;&#x432;&#x443;&#x44E;&#x449;&#x438;&#x435; &#x43D;&#x430; &#x444;&#x43E;&#x440;&#x443;&#x43C;&#x435;</translation>
+    </message>
+    <message>
+      <source>Search</source>
+      <translation>&#x41F;&#x43E;&#x438;&#x441;&#x43A;</translation>
+    </message>
+    <message>
+      <source>Last uploads</source>
+      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; &#x434;&#x43E;&#x431;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Last commented</source>
+      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x439; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Last hits</source>
+      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x435;&#x435; &#x43F;&#x440;&#x43E;&#x441;&#x43C;&#x43E;&#x442;&#x440;&#x43E;&#x432;</translation>
+    </message>
+    <message>
+      <source>Last rated</source>
+      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x435;&#x435; &#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;&#x443;</translation>
+    </message>
+    <message>
+      <source>Last 24 h.</source>
+      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; 24 &#x447;.</translation>
     </message>
     <message>
       <source>Most popular</source>
@@ -1657,28 +1981,40 @@
       <translation>&#x41B;&#x443;&#x447;&#x448;&#x438;&#x435; &#x43F;&#x43E; &#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;&#x443;</translation>
     </message>
     <message>
+      <source>Search entire gallery</source>
+      <translation>&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x432;&#x441;&#x435;&#x439; &#x433;&#x430;&#x43B;&#x435;&#x440;&#x435;&#x438;</translation>
+    </message>
+    <message>
+      <source>Last uploaded images</source>
+      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; &#x437;&#x430;&#x433;&#x440;&#x443;&#x436;&#x435;&#x43D;&#x43D;&#x44B;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>View all categorys</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x441;&#x43C;&#x43E;&#x442;&#x440;&#x435;&#x442;&#x44C; &#x412;&#x441;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;</translation>
+    </message>
+    <message>
+      <source>All time</source>
+      <translation>&#x417;&#x430; &#x432;&#x441;&#x435; &#x432;&#x440;&#x435;&#x43C;&#x44F;</translation>
+    </message>
+    <message>
       <source>Interactive</source>
       <translation>&#x418;&#x43D;&#x442;&#x435;&#x440;&#x430;&#x43A;&#x442;&#x438;&#x432;&#x43D;&#x430;&#x44F;</translation>
     </message>
     <message>
-      <source>Last uploads</source>
-      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; &#x434;&#x43E;&#x431;&#x430;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x44F;</translation>
+      <source>Search by keyword</source>
+      <translation>&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x43F;&#x43E; &#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x44B;&#x43C; &#x441;&#x43B;&#x43E;&#x432;&#x430;&#x43C;</translation>
     </message>
     <message>
-      <source>Last hits</source>
-      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x435;&#x435; &#x43F;&#x440;&#x43E;&#x441;&#x43C;&#x43E;&#x442;&#x440;&#x43E;&#x432;</translation>
+      <source>Search by color</source>
+      <translation>&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x43F;&#x43E; &#x446;&#x432;&#x435;&#x442;&#x443;</translation>
     </message>
     <message>
-      <source>Last commented</source>
-      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x439; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439;</translation>
+      <source>Search by similarity</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x43F;&#x43E; &#x441;&#x445;&#x43E;&#x434;&#x441;&#x442;&#x432;&#x443;</translation>
     </message>
     <message>
-      <source>Last rated</source>
-      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x435;&#x435; &#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;&#x443;</translation>
-    </message>
-    <message>
-      <source>Last 24 h.</source>
-      <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; 24 &#x447;.</translation>
+      <source>Search by sketch</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x43F;&#x43E; &#x44D;&#x441;&#x43A;&#x438;&#x437;</translation>
     </message>
     <message>
       <source>Last viewed images</source>
@@ -1709,12 +2045,16 @@
       <translation>&#x41C;&#x43E;&#x438; &#x437;&#x430;&#x43A;&#x430;&#x437;&#x44B; &#x43A;&#x440;&#x435;&#x434;&#x438;&#x442;&#x43E;&#x432;</translation>
     </message>
     <message>
+      <source>Import images from facebook</source>
+      <translation type="unfinished">&#x418;&#x43C;&#x43F;&#x43E;&#x440;&#x442; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439; &#x438;&#x437; facebook</translation>
+    </message>
+    <message>
       <source>Register</source>
       <translation>&#x420;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x44F;</translation>
     </message>
     <message>
       <source>My favorites</source>
-      <translation>Мое избранное</translation>
+      <translation>&#x41C;&#x43E;&#x435; &#x438;&#x437;&#x431;&#x440;&#x430;&#x43D;&#x43D;&#x43E;&#x435;</translation>
     </message>
     <message>
       <source>Basket</source>
@@ -1727,14 +2067,6 @@
     <message>
       <source>Upload zip</source>
       <translation>&#x417;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C; ZIP</translation>
-    </message>
-    <message>
-      <source>Search entire gallery</source>
-      <translation>&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x432;&#x441;&#x435;&#x439; &#x433;&#x430;&#x43B;&#x435;&#x440;&#x435;&#x438;</translation>
-    </message>
-    <message>
-      <source>Enter keyword or phrase</source>
-      <translation>&#x412;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x43E;&#x435; &#x441;&#x43B;&#x43E;&#x432;&#x43E; &#x438;&#x43B;&#x438; &#x444;&#x440;&#x430;&#x437;&#x443;</translation>
     </message>
     <message>
       <source>Search...</source>
@@ -1818,6 +2150,10 @@
       <translation>Hellow</translation>
     </message>
     <message>
+      <source>Hello</source>
+      <translation type="unfinished">&#x41F;&#x440;&#x438;&#x432;&#x435;&#x442;</translation>
+    </message>
+    <message>
       <source>Feedback data</source>
       <translation>&#x41E;&#x431;&#x440;&#x430;&#x442;&#x43D;&#x430;&#x44F; &#x441;&#x432;&#x44F;&#x437;&#x44C; &#x434;&#x430;&#x43D;&#x43D;&#x44B;&#x445;</translation>
     </message>
@@ -1854,6 +2190,38 @@
     <message>
       <source>No records</source>
       <translation>&#x41D;&#x435;&#x442; &#x437;&#x430;&#x43F;&#x438;&#x441;&#x435;&#x439;</translation>
+    </message>
+    <message>
+      <source>Search by color and keyword, just try to see how fun it is!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x43F;&#x43E; &#x446;&#x432;&#x435;&#x442;&#x443; &#x438; &#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x44B;&#x445; &#x441;&#x43B;&#x43E;&#x432;, &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x43E;&#x43F;&#x440;&#x43E;&#x431;&#x443;&#x439;&#x442;&#x435; &#x43F;&#x43E;&#x43D;&#x44F;&#x442;&#x44C;, &#x43A;&#x430;&#x43A; &#x44D;&#x442;&#x43E; &#x443;&#x434;&#x43E;&#x432;&#x43E;&#x43B;&#x44C;&#x441;&#x442;&#x432;&#x438;&#x435;!</translation>
+    </message>
+    <message>
+      <source>Enter keyword or phrase</source>
+      <translation type="unfinished">&#x412;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x43E;&#x435; &#x441;&#x43B;&#x43E;&#x432;&#x43E; &#x438;&#x43B;&#x438; &#x444;&#x440;&#x430;&#x437;&#x443;</translation>
+    </message>
+    <message>
+      <source>Search entire gallery</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x432;&#x441;&#x44E; &#x433;&#x430;&#x43B;&#x435;&#x440;&#x435;&#x44E;</translation>
+    </message>
+    <message>
+      <source>Search</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A;</translation>
+    </message>
+    <message>
+      <source>enter keyword and click color, or just click color</source>
+      <translation type="unfinished">&#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x43E;&#x435; &#x441;&#x43B;&#x43E;&#x432;&#x43E; &#x438; &#x43D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435; &#x446;&#x432;&#x435;&#x442;, &#x438;&#x43B;&#x438; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435; &#x43A;&#x43D;&#x43E;&#x43F;&#x43A;&#x443; &#x446;&#x432;&#x435;&#x442;&#x430;</translation>
+    </message>
+    <message>
+      <source>Include color</source>
+      <translation type="unfinished">&#x412;&#x43A;&#x43B;&#x44E;&#x447;&#x438;&#x442;&#x435; &#x446;&#x432;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>Exclude color</source>
+      <translation type="unfinished">&#x418;&#x441;&#x43A;&#x43B;&#x44E;&#x447;&#x438;&#x442;&#x44C; &#x446;&#x432;&#x435;&#x442;&#x430;</translation>
+    </message>
+    <message>
+      <source>Page</source>
+      <translation>&#x421;&#x442;&#x440;&#x430;&#x43D;&#x438;&#x446;&#x430;</translation>
     </message>
     <message>
       <source>Last uploaded last</source>
@@ -1904,10 +2272,6 @@
       <translation>&#x420;&#x435;&#x437;&#x43E;&#x43B;&#x44E;&#x446;&#x438;&#x44F;</translation>
     </message>
     <message>
-      <source>Page</source>
-      <translation>&#x421;&#x442;&#x440;&#x430;&#x43D;&#x438;&#x446;&#x430;</translation>
-    </message>
-    <message>
       <source>Last uploaded images to album</source>
       <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x435; &#x437;&#x430;&#x433;&#x440;&#x443;&#x436;&#x435;&#x43D;&#x43D;&#x44B;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x432; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
     </message>
@@ -1917,6 +2281,10 @@
     <message>
       <source>files</source>
       <translation>&#x444;&#x430;&#x439;&#x43B;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Album priority</source>
+      <translation type="unfinished">&#x410;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x43F;&#x440;&#x438;&#x43E;&#x440;&#x438;&#x442;&#x435;&#x442;</translation>
     </message>
   </context>
   <context>
@@ -1968,6 +2336,10 @@
       <translation>&#x41E;&#x436;&#x438;&#x434;&#x430;&#x43D;&#x438;&#x44F;</translation>
     </message>
     <message>
+      <source>Sutch file already exists</source>
+      <translation>Sutch &#x444;&#x430;&#x439;&#x43B; &#x443;&#x436;&#x435; &#x441;&#x443;&#x449;&#x435;&#x441;&#x442;&#x432;&#x443;&#x435;&#x442;</translation>
+    </message>
+    <message>
       <source>Title</source>
       <translation>&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</translation>
     </message>
@@ -1984,10 +2356,6 @@
       <translation>&#x41F;&#x43E;&#x434;&#x43F;&#x438;&#x441;&#x44C;</translation>
     </message>
     <message>
-      <source>Sutch file already exists</source>
-      <translation>Sutch &#x444;&#x430;&#x439;&#x43B; &#x443;&#x436;&#x435; &#x441;&#x443;&#x449;&#x435;&#x441;&#x442;&#x432;&#x443;&#x435;&#x442;</translation>
-    </message>
-    <message>
       <source>Enter new album name or choose public album</source>
       <translation>&#x412;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43D;&#x43E;&#x432;&#x43E;&#x435; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x430; &#x438;&#x43B;&#x438; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x442;&#x44C; &#x43E;&#x431;&#x449;&#x435;&#x441;&#x442;&#x432;&#x435;&#x43D;&#x43D;&#x43E;&#x433;&#x43E; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
     </message>
@@ -1998,22 +2366,6 @@
   </context>
   <context>
     <name>gallery/image</name>
-    <message>
-      <source>next image</source>
-      <translation>&#x441;&#x43B;&#x435;&#x434;&#x443;&#x44E;&#x449;&#x435;&#x435; &#x43A;&#x430;&#x440;&#x442;&#x438;&#x43D;&#x43A;&#x430;</translation>
-    </message>
-    <message>
-      <source>previous image</source>
-      <translation>&#x43F;&#x440;&#x435;&#x434;&#x44B;&#x434;&#x443;&#x449;&#x435;&#x435; &#x43A;&#x430;&#x440;&#x442;&#x438;&#x43D;&#x43A;&#x430;</translation>
-    </message>
-    <message>
-      <source>return to thumbnails</source>
-      <translation>&#x432;&#x43E;&#x437;&#x432;&#x440;&#x430;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x43A; &#x43C;&#x438;&#x43D;&#x438;&#x430;&#x442;&#x44E;&#x440;&#x430;&#x43C;</translation>
-    </message>
-    <message>
-      <source>Click to see fullsize</source>
-      <translation>&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x443;&#x432;&#x438;&#x434;&#x435;&#x442;&#x44C; &#x43F;&#x43E;&#x43B;&#x43D;&#x43E;&#x440;&#x430;&#x437;&#x43C;&#x435;&#x440;&#x43D;&#x44B;&#x439;</translation>
-    </message>
     <message>
       <source>Picture comments</source>
       <translation>&#x424;&#x43E;&#x442;&#x43E; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x438;</translation>
@@ -2045,6 +2397,50 @@
     <message>
       <source>Send</source>
       <translation>&#x41E;&#x442;&#x43F;&#x440;&#x430;&#x432;&#x438;&#x442;&#x44C;</translation>
+    </message>
+    <message>
+      <source>Image edit</source>
+      <translation type="unfinished">&#x420;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x438;&#x44F; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Rate this picture</source>
+      <translation>&#x41E;&#x446;&#x435;&#x43D;&#x438;&#x442;&#x44C; &#x44D;&#x442;&#x43E; &#x444;&#x43E;&#x442;&#x43E;</translation>
+    </message>
+    <message>
+      <source>star</source>
+      <translation>&#x437;&#x432;&#x435;&#x437;&#x434;&#x44B;</translation>
+    </message>
+    <message>
+      <source>stars</source>
+      <translation>&#x437;&#x432;&#x435;&#x437;&#x434;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Vote!</source>
+      <translation>&#x413;&#x43E;&#x43B;&#x43E;&#x441;&#x43E;&#x432;&#x430;&#x442;&#x44C;!</translation>
+    </message>
+    <message>
+      <source>Deduct vote!</source>
+      <translation type="unfinished">&#x41C;&#x438;&#x43D;&#x443;&#x441; &#x433;&#x43E;&#x43B;&#x43E;&#x441;&#x43E;&#x432;&#x430;&#x442;&#x44C;!</translation>
+    </message>
+    <message>
+      <source>next image</source>
+      <translation>&#x441;&#x43B;&#x435;&#x434;&#x443;&#x44E;&#x449;&#x435;&#x435; &#x43A;&#x430;&#x440;&#x442;&#x438;&#x43D;&#x43A;&#x430;</translation>
+    </message>
+    <message>
+      <source>previous image</source>
+      <translation>&#x43F;&#x440;&#x435;&#x434;&#x44B;&#x434;&#x443;&#x449;&#x435;&#x435; &#x43A;&#x430;&#x440;&#x442;&#x438;&#x43D;&#x43A;&#x430;</translation>
+    </message>
+    <message>
+      <source>return to thumbnails</source>
+      <translation>&#x432;&#x43E;&#x437;&#x432;&#x440;&#x430;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x43A; &#x43C;&#x438;&#x43D;&#x438;&#x430;&#x442;&#x44E;&#x440;&#x430;&#x43C;</translation>
+    </message>
+    <message>
+      <source>Click to see fullsize</source>
+      <translation>&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x443;&#x432;&#x438;&#x434;&#x435;&#x442;&#x44C; &#x43F;&#x43E;&#x43B;&#x43D;&#x43E;&#x440;&#x430;&#x437;&#x43C;&#x435;&#x440;&#x43D;&#x44B;&#x439;</translation>
+    </message>
+    <message>
+      <source>Supported BB Code style tags: [b] [i] [u] [quote] :) :D :( :o :p ;)</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x434;&#x434;&#x435;&#x440;&#x436;&#x438;&#x432;&#x430;&#x435;&#x43C;&#x44B;&#x435; BB &#x442;&#x435;&#x433;&#x438; &#x43A;&#x43E;&#x434;&#x435;&#x43A;&#x441;&#x430; &#x441;&#x442;&#x438;&#x43B;&#x44C;: [B] [&#x44F;] [&#x438;] [&#x446;&#x438;&#x442;&#x430;&#x442;&#x430;]:): D: (: O: P;)</translation>
     </message>
     <message>
       <source>Add to favorites</source>
@@ -2119,20 +2515,12 @@
       <translation>&#x433;&#x43E;&#x43B;&#x43E;&#x441;&#x43E;&#x432;</translation>
     </message>
     <message>
-      <source>Rate this picture</source>
-      <translation>&#x41E;&#x446;&#x435;&#x43D;&#x438;&#x442;&#x44C; &#x44D;&#x442;&#x43E; &#x444;&#x43E;&#x442;&#x43E;</translation>
+      <source>Search for similar colors images</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x43F;&#x43E;&#x445;&#x43E;&#x436;&#x438;&#x445; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439; &#x446;&#x432;&#x435;&#x442;&#x43E;&#x432;</translation>
     </message>
     <message>
-      <source>star</source>
-      <translation>&#x437;&#x432;&#x435;&#x437;&#x434;&#x44B;</translation>
-    </message>
-    <message>
-      <source>stars</source>
-      <translation>&#x437;&#x432;&#x435;&#x437;&#x434;&#x44B;</translation>
-    </message>
-    <message>
-      <source>Vote!</source>
-      <translation>&#x413;&#x43E;&#x43B;&#x43E;&#x441;&#x43E;&#x432;&#x430;&#x442;&#x44C;!</translation>
+      <source>Search for visualy similar images</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; visualy &#x43F;&#x43E;&#x445;&#x43E;&#x436;&#x438;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
     </message>
     <message>
       <source>Version</source>
@@ -2163,10 +2551,6 @@
       <translation>&#x414;&#x43E;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44C; &#x432; &#x43A;&#x43E;&#x440;&#x437;&#x438;&#x43D;&#x443;</translation>
     </message>
     <message>
-      <source>Guest_</source>
-      <translation>Guest_</translation>
-    </message>
-    <message>
       <source>Wrong captcha code!</source>
       <translation>&#x41D;&#x435;&#x43F;&#x440;&#x430;&#x432;&#x438;&#x43B;&#x44C;&#x43D;&#x44B;&#x439; &#x43A;&#x43E;&#x434; &#x43A;&#x43E;&#x434;!</translation>
     </message>
@@ -2177,6 +2561,14 @@
     <message>
       <source>Please enter comment!</source>
       <translation>&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439;!</translation>
+    </message>
+    <message>
+      <source>You are not allowed to leave a comments!</source>
+      <translation type="unfinished">&#x412;&#x44B; &#x43D;&#x435; &#x43C;&#x43E;&#x436;&#x435;&#x442;&#x435; &#x43E;&#x441;&#x442;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x438;!</translation>
+    </message>
+    <message>
+      <source>Guest_</source>
+      <translation>Guest_</translation>
     </message>
     <message>
       <source>Last uploaded images</source>
@@ -2201,6 +2593,10 @@
     <message>
       <source>Top rated images</source>
       <translation>&#x41B;&#x443;&#x447;&#x448;&#x438;&#x435; &#x43F;&#x43E; &#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;&#x443; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Search by color</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x43F;&#x43E; &#x446;&#x432;&#x435;&#x442;&#x443;</translation>
     </message>
     <message>
       <source>Most popular images</source>
@@ -2280,6 +2676,14 @@
     <message>
       <source>My favorite images</source>
       <translation>&#x41C;&#x43E;&#x438; &#x43B;&#x44E;&#x431;&#x438;&#x43C;&#x44B;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Remove</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Remove Open ID</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; Open ID</translation>
     </message>
   </context>
   <context>
@@ -2388,6 +2792,10 @@
       <translation>&#x41D;&#x43E;&#x432;&#x44B;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
     </message>
     <message>
+      <source>Update priority</source>
+      <translation type="unfinished">&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435; &#x43F;&#x440;&#x438;&#x43E;&#x440;&#x438;&#x442;&#x435;&#x442;</translation>
+    </message>
+    <message>
       <source>You do not have any album.</source>
       <translation>&#x412;&#x44B; &#x43D;&#x435; &#x434;&#x43E;&#x43B;&#x436;&#x43D;&#x44B; &#x43D;&#x438; &#x43E;&#x434;&#x438;&#x43D; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;.</translation>
     </message>
@@ -2399,9 +2807,17 @@
       <source>Account</source>
       <translation>&#x421;&#x447;&#x435;&#x442;</translation>
     </message>
+    <message>
+      <source>Albums</source>
+      <translation type="unfinished">&#x410;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
+    </message>
   </context>
   <context>
     <name>gallery/mylistalbum</name>
+    <message>
+      <source>My albums</source>
+      <translation>&#x41C;&#x43E;&#x438; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
+    </message>
     <message>
       <source>No records.</source>
       <translation>&#x41D;&#x435;&#x442; &#x437;&#x430;&#x43F;&#x438;&#x441;&#x435;&#x439;.</translation>
@@ -2411,16 +2827,12 @@
       <translation>&#x421;&#x447;&#x435;&#x442;</translation>
     </message>
     <message>
-      <source>My albums</source>
-      <translation>&#x41C;&#x43E;&#x438; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
+      <source>Albums</source>
+      <translation type="unfinished">&#x410;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
     </message>
   </context>
   <context>
     <name>gallery/search</name>
-    <message>
-      <source>Relevance</source>
-      <translation>&#x421;&#x43E;&#x43E;&#x442;&#x432;&#x435;&#x442;&#x441;&#x442;&#x432;&#x438;&#x435;</translation>
-    </message>
     <message>
       <source>Last uploaded</source>
       <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x44F;&#x44F; &#x434;&#x430;&#x442;&#x430;</translation>
@@ -2446,8 +2858,8 @@
       <translation>&#x41F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x438;&#x439; &#x43A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439;</translation>
     </message>
     <message>
-      <source>Any resolution</source>
-      <translation>&#x41B;&#x44E;&#x431;&#x430;&#x44F; &#x440;&#x435;&#x437;&#x43E;&#x43B;&#x44E;&#x446;&#x438;&#x44F;</translation>
+      <source>Filename</source>
+      <translation type="unfinished">&#x418;&#x43C;&#x44F; &#x444;&#x430;&#x439;&#x43B;&#x430;</translation>
     </message>
     <message>
       <source>Search results</source>
@@ -2456,6 +2868,30 @@
     <message>
       <source>Nothing found</source>
       <translation>&#x41D;&#x438;&#x447;&#x435;&#x433;&#x43E; &#x43D;&#x435; &#x43D;&#x430;&#x439;&#x434;&#x435;&#x43D;&#x43E;</translation>
+    </message>
+    <message>
+      <source>Any resolution</source>
+      <translation>&#x41B;&#x44E;&#x431;&#x430;&#x44F; &#x440;&#x435;&#x437;&#x43E;&#x43B;&#x44E;&#x446;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Relevance</source>
+      <translation>&#x421;&#x43E;&#x43E;&#x442;&#x432;&#x435;&#x442;&#x441;&#x442;&#x432;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Any keyword</source>
+      <translation type="unfinished">&#x41B;&#x44E;&#x431;&#x43E;&#x435; &#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x43E;&#x435; &#x441;&#x43B;&#x43E;&#x432;&#x43E;</translation>
+    </message>
+    <message>
+      <source>All keywords</source>
+      <translation type="unfinished">&#x412;&#x441;&#x435; &#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x432;&#x44B;&#x435; &#x441;&#x43B;&#x43E;&#x432;&#x430;</translation>
+    </message>
+    <message>
+      <source>search results</source>
+      <translation>&#x420;&#x435;&#x437;&#x443;&#x43B;&#x44C;&#x442;&#x430;&#x442;&#x44B; &#x43F;&#x43E;&#x438;&#x441;&#x43A;&#x430;</translation>
+    </message>
+    <message>
+      <source>Page</source>
+      <translation>&#x421;&#x442;&#x440;&#x430;&#x43D;&#x438;&#x446;&#x430;</translation>
     </message>
     <message>
       <source>Last uploaded first</source>
@@ -2510,16 +2946,8 @@
       <translation>&#x411;&#x43E;&#x43B;&#x44C;&#x448;&#x438;&#x43D;&#x441;&#x442;&#x432;&#x43E; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439; &#x430;&#x43A;&#x442;&#x443;&#x430;&#x43B;&#x44C;&#x43D;&#x43E;&#x441;&#x442;&#x44C; &#x43F;&#x43E;&#x441;&#x43B;&#x435;&#x434;&#x43D;&#x435;&#x433;&#x43E;</translation>
     </message>
     <message>
-      <source>search results</source>
-      <translation>&#x420;&#x435;&#x437;&#x443;&#x43B;&#x44C;&#x442;&#x430;&#x442;&#x44B; &#x43F;&#x43E;&#x438;&#x441;&#x43A;&#x430;</translation>
-    </message>
-    <message>
       <source>Resolution</source>
       <translation>&#x420;&#x435;&#x437;&#x43E;&#x43B;&#x44E;&#x446;&#x438;&#x44F;</translation>
-    </message>
-    <message>
-      <source>Page</source>
-      <translation>&#x421;&#x442;&#x440;&#x430;&#x43D;&#x438;&#x446;&#x430;</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
@@ -2559,10 +2987,6 @@
   <context>
     <name>gallery/publicupload</name>
     <message>
-      <source>Public images archive upload</source>
-      <translation>&#x41E;&#x431;&#x449;&#x435;&#x441;&#x442;&#x432;&#x435;&#x43D;&#x43D;&#x430;&#x44F; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C; &#x430;&#x440;&#x445;&#x438;&#x432;</translation>
-    </message>
-    <message>
       <source>All files were uploaded. See album.</source>
       <translation>&#x412;&#x441;&#x435; &#x444;&#x430;&#x439;&#x43B;&#x44B; &#x431;&#x44B;&#x43B;&#x438; &#x437;&#x430;&#x433;&#x440;&#x443;&#x436;&#x435;&#x43D;&#x44B;. &#x421;&#x43C;. &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x430;.</translation>
     </message>
@@ -2591,20 +3015,12 @@
       <translation>&#x41E;&#x431;&#x437;&#x43E;&#x440;</translation>
     </message>
     <message>
-      <source>Max file size </source>
-      <translation type="unfinished">&#x41C;&#x430;&#x43A;&#x441;&#x438;&#x43C;&#x430;&#x43B;&#x44C;&#x43D;&#x44B;&#x439; &#x440;&#x430;&#x437;&#x43C;&#x435;&#x440; &#x444;&#x430;&#x439;&#x43B;&#x430;</translation>
-    </message>
-    <message>
       <source>Images to upload</source>
       <translation>&#x418;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x434;&#x43B;&#x44F; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x438;</translation>
     </message>
     <message>
       <source>Choose images for upload.</source>
       <translation>&#x412;&#x44B;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x434;&#x43B;&#x44F; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x438;.</translation>
-    </message>
-    <message>
-      <source>Upload</source>
-      <translation>&#x417;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C;</translation>
     </message>
     <message>
       <source>Image upload is in progress. Please wait a moment...</source>
@@ -2615,19 +3031,43 @@
       <translation>&#x41F;&#x435;&#x440;&#x435;&#x434;&#x430;&#x447;&#x430; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x437;&#x430;&#x43D;&#x438;&#x43C;&#x430;&#x435;&#x442; &#x43C;&#x43D;&#x43E;&#x433;&#x43E; &#x432;&#x440;&#x435;&#x43C;&#x435;&#x43D;&#x438; &#x434;&#x43B;&#x44F; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x438; &#x438;&#x43B;&#x438; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x430; &#x43D;&#x435; &#x443;&#x434;&#x430;&#x43B;&#x430;&#x441;&#x44C;. &#x423;&#x431;&#x435;&#x434;&#x438;&#x442;&#x435;&#x441;&#x44C;, &#x447;&#x442;&#x43E; Flash-&#x43F;&#x43B;&#x430;&#x433;&#x438;&#x43D; &#x432;&#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x43D; &#x438; &#x447;&#x442;&#x43E; &#x440;&#x430;&#x431;&#x43E;&#x447;&#x430;&#x44F; &#x432;&#x435;&#x440;&#x441;&#x438;&#x44F; Adobe Flash Player &#x443;&#x441;&#x442;&#x430;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;.</translation>
     </message>
     <message>
+      <source>Attatch local images</source>
+      <translation>Attatch &#x43C;&#x435;&#x441;&#x442;&#x43D;&#x44B;&#x445; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Upload</source>
+      <translation>&#x417;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C;</translation>
+    </message>
+    <message>
+      <source>Click to choose images to upload, you can also drop files here.</source>
+      <translation type="unfinished">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x434;&#x43B;&#x44F; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x438;, &#x432;&#x44B; &#x43C;&#x43E;&#x436;&#x435;&#x442;&#x435; &#x442;&#x430;&#x43A;&#x436;&#x435; &#x43F;&#x435;&#x440;&#x435;&#x442;&#x430;&#x441;&#x43A;&#x438;&#x432;&#x430;&#x442;&#x44C; &#x444;&#x430;&#x439;&#x43B;&#x44B; &#x437;&#x434;&#x435;&#x441;&#x44C;.</translation>
+    </message>
+    <message>
+      <source>Click to choose images to upload, you can also Drag and Drop files here (Darg and drop only for FF, Chrome).</source>
+      <translation type="unfinished">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x434;&#x43B;&#x44F; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x438;, &#x432;&#x44B; &#x43C;&#x43E;&#x436;&#x435;&#x442;&#x435; &#x442;&#x430;&#x43A;&#x436;&#x435; &#x43F;&#x435;&#x440;&#x435;&#x442;&#x430;&#x441;&#x43A;&#x438;&#x432;&#x430;&#x442;&#x44C; &#x444;&#x430;&#x439;&#x43B;&#x44B; &#x437;&#x434;&#x435;&#x441;&#x44C; (&#x414;&#x430;&#x440;&#x433; &#x438; &#x43F;&#x430;&#x434;&#x435;&#x43D;&#x438;&#x435; &#x442;&#x43E;&#x43B;&#x44C;&#x43A;&#x43E; &#x434;&#x43B;&#x44F; FF, Chrome).</translation>
+    </message>
+    <message>
+      <source>Public images archive upload</source>
+      <translation>&#x41E;&#x431;&#x449;&#x435;&#x441;&#x442;&#x432;&#x435;&#x43D;&#x43D;&#x430;&#x44F; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C; &#x430;&#x440;&#x445;&#x438;&#x432;</translation>
+    </message>
+    <message>
+      <source>Click to choose zip to upload, you can also drop files here (Darg and drop only for FF, Chrome).</source>
+      <translation type="unfinished">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x442;&#x44C; &#x43F;&#x43E;&#x447;&#x442;&#x43E;&#x432;&#x44B;&#x439; &#x434;&#x43B;&#x44F; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x43A;&#x438;, &#x432;&#x44B; &#x43C;&#x43E;&#x436;&#x435;&#x442;&#x435; &#x442;&#x430;&#x43A;&#x436;&#x435; &#x43F;&#x435;&#x440;&#x435;&#x442;&#x430;&#x441;&#x43A;&#x438;&#x432;&#x430;&#x442;&#x44C; &#x444;&#x430;&#x439;&#x43B;&#x44B; &#x437;&#x434;&#x435;&#x441;&#x44C; (&#x414;&#x430;&#x440;&#x433; &#x438; &#x43F;&#x430;&#x434;&#x435;&#x43D;&#x438;&#x435; &#x442;&#x43E;&#x43B;&#x44C;&#x43A;&#x43E; &#x434;&#x43B;&#x44F; FF, Chrome).</translation>
+    </message>
+    <message>
       <source>Public images upload</source>
       <translation>&#x41E;&#x431;&#x449;&#x435;&#x441;&#x442;&#x432;&#x435;&#x43D;&#x43D;&#x430;&#x44F; &#x418;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x417;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C;</translation>
     </message>
     <message>
-      <source>Attatch local images</source>
-      <translation>Attatch &#x43C;&#x435;&#x441;&#x442;&#x43D;&#x44B;&#x445; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439;</translation>
+      <source>Max file size </source>
+      <translation type="unfinished">&#x41C;&#x430;&#x43A;&#x441;&#x438;&#x43C;&#x430;&#x43B;&#x44C;&#x43D;&#x44B;&#x439; &#x440;&#x430;&#x437;&#x43C;&#x435;&#x440; &#x444;&#x430;&#x439;&#x43B;&#x430;</translation>
     </message>
   </context>
   <context>
     <name>gallery/ratedrecent</name>
     <message>
       <source>Top rated images in 24 hours.</source>
-      <translation>&#x41B;&#x443;&#x447;&#x448;&#x438;&#x435; &#x43F;&#x43E; &#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;&#x443; картинки &#x432; 24 &#x447;&#x430;&#x441;&#x43E;&#x432;.</translation>
+      <translation>&#x41B;&#x443;&#x447;&#x448;&#x438;&#x435; &#x43F;&#x43E; &#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;&#x443; &#x43A;&#x430;&#x440;&#x442;&#x438;&#x43D;&#x43A;&#x438; &#x432; 24 &#x447;&#x430;&#x441;&#x43E;&#x432;.</translation>
     </message>
     <message>
       <source>Top rated images in 24 hours</source>
@@ -2671,12 +3111,12 @@
   <context>
     <name>gallery/subcategory_list</name>
     <message>
-      <source>albums</source>
-      <translation>&#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
-    </message>
-    <message>
       <source>images</source>
       <translation>&#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>albums</source>
+      <translation>&#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x44B;</translation>
     </message>
   </context>
   <context>
@@ -3223,6 +3663,18 @@
       <source>Thank you for your vote</source>
       <translation>&#x421;&#x43F;&#x430;&#x441;&#x438;&#x431;&#x43E; &#x437;&#x430; &#x432;&#x430;&#x448;&#x435; &#x43C;&#x43D;&#x435;&#x43D;&#x438;&#x435;</translation>
     </message>
+    <message>
+      <source>You are not allowed to vote!</source>
+      <translation type="unfinished">&#x412;&#x44B; &#x43D;&#x435; &#x43C;&#x43E;&#x436;&#x435;&#x442;&#x435; &#x433;&#x43E;&#x43B;&#x43E;&#x441;&#x43E;&#x432;&#x430;&#x442;&#x44C;!</translation>
+    </message>
+    <message>
+      <source>You have already voted!</source>
+      <translation type="unfinished">&#x412;&#x44B; &#x443;&#x436;&#x435; &#x433;&#x43E;&#x43B;&#x43E;&#x441;&#x43E;&#x432;&#x430;&#x43B;&#x438;!</translation>
+    </message>
+    <message>
+      <source>Vote deducted!</source>
+      <translation type="unfinished">&#x413;&#x43E;&#x43B;&#x43E;&#x441;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x432;&#x44B;&#x447;&#x438;&#x442;&#x430;&#x435;&#x442;&#x441;&#x44F;!</translation>
+    </message>
   </context>
   <context>
     <name>gallery/albumrss</name>
@@ -3253,8 +3705,16 @@
   <context>
     <name>gallery/category</name>
     <message>
+      <source>Root category</source>
+      <translation type="unfinished">&#x41A;&#x43E;&#x440;&#x43D;&#x435;&#x432;&#x430;&#x44F; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F;</translation>
+    </message>
+    <message>
       <source>Page</source>
       <translation>&#x421;&#x442;&#x440;&#x430;&#x43D;&#x438;&#x446;&#x430;</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">&#x424;&#x43E;&#x440;&#x443;&#x43C;</translation>
     </message>
   </context>
   <context>
@@ -3313,6 +3773,10 @@
     <message>
       <source>Search results</source>
       <translation>&#x420;&#x435;&#x437;&#x443;&#x43B;&#x44C;&#x442;&#x430;&#x442;&#x44B; &#x43F;&#x43E;&#x438;&#x441;&#x43A;&#x430;</translation>
+    </message>
+    <message>
+      <source>Search</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A;</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
@@ -3394,12 +3858,453 @@
   <context>
     <name>gallery/color</name>
     <message>
+      <source>Exclude color</source>
+      <translation type="unfinished">&#x418;&#x441;&#x43A;&#x43B;&#x44E;&#x447;&#x438;&#x442;&#x44C; &#x446;&#x432;&#x435;&#x442;&#x430;</translation>
+    </message>
+    <message>
+      <source>Maximum</source>
+      <translation type="unfinished">&#x41C;&#x430;&#x43A;&#x441;&#x438;&#x43C;&#x430;&#x43B;&#x44C;&#x43D;&#x44B;&#x439;</translation>
+    </message>
+    <message>
+      <source>filters</source>
+      <translation type="unfinished">&#x444;&#x438;&#x43B;&#x44C;&#x442;&#x440;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Include color</source>
+      <translation type="unfinished">&#x412;&#x43A;&#x43B;&#x44E;&#x447;&#x438;&#x442;&#x435; &#x446;&#x432;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>Remove color</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x446;&#x432;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>Excluded colors in search</source>
+      <translation type="unfinished">&#x418;&#x441;&#x43A;&#x43B;&#x44E;&#x447;&#x435;&#x43D;&#x43D;&#x44B;&#x435; &#x446;&#x432;&#x435;&#x442;&#x43E;&#x432; &#x432; &#x43F;&#x43E;&#x438;&#x441;&#x43A;&#x435;</translation>
+    </message>
+    <message>
+      <source>colors</source>
+      <translation type="unfinished">&#x446;&#x432;&#x435;&#x442;&#x43E;&#x432;</translation>
+    </message>
+    <message>
+      <source>More color</source>
+      <translation type="unfinished">&#x411;&#x43E;&#x43B;&#x44C;&#x448;&#x435; &#x446;&#x432;&#x435;&#x442;&#x430;</translation>
+    </message>
+    <message>
+      <source>Return to pallete</source>
+      <translation type="unfinished">&#x412;&#x435;&#x440;&#x43D;&#x443;&#x442;&#x44C;&#x441;&#x44F; &#x432; &#x43F;&#x430;&#x43B;&#x438;&#x442;&#x440;&#x435;</translation>
+    </message>
+    <message>
       <source>Images by color</source>
-      <translation>Изображения по цвету</translation>
-    </message>  
+      <translation>&#x418;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x43F;&#x43E; &#x446;&#x432;&#x435;&#x442;&#x443;</translation>
+    </message>
     <message>
       <source>Choose color</source>
-      <translation>Выберите цвет</translation>
-    </message> 
+      <translation>&#x412;&#x44B;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x446;&#x432;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>No records.</source>
+      <translation type="unfinished">&#x417;&#x430;&#x43F;&#x438;&#x441;&#x435;&#x439; &#x43D;&#x435;&#x442;.</translation>
+    </message>
+    <message>
+      <source>Page</source>
+      <translation type="unfinished">&#x421;&#x442;&#x440;&#x430;&#x43D;&#x438;&#x446;&#x430;</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/admincategorys</name>
+    <message>
+      <source>Category</source>
+      <translation type="unfinished">&#x41A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Title</source>
+      <translation type="unfinished">&#x41D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Owner</source>
+      <translation type="unfinished">&#x412;&#x43B;&#x430;&#x434;&#x435;&#x43B;&#x435;&#x446;</translation>
+    </message>
+    <message>
+      <source>Topics</source>
+      <translation type="unfinished">&#x422;&#x435;&#x43C;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Messages</source>
+      <translation type="unfinished">&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Edit category</source>
+      <translation type="unfinished">&#x418;&#x437;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44E;</translation>
+    </message>
+    <message>
+      <source>Delete category</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44E;</translation>
+    </message>
+    <message>
+      <source>Create a category</source>
+      <translation type="unfinished">&#x421;&#x43E;&#x437;&#x434;&#x430;&#x43D;&#x438;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;</translation>
+    </message>
+    <message>
+      <source>Home</source>
+      <translation type="unfinished">&#x414;&#x43E;&#x43C;&#x43E;&#x439;</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/editcategory</name>
+    <message>
+      <source>Category edit</source>
+      <translation type="unfinished">&#x41A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
+    </message>
+    <message>
+      <source>Update</source>
+      <translation type="unfinished">&#x41E;&#x431;&#x43D;&#x43E;&#x432;&#x43B;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Please enter category name!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;!</translation>
+    </message>
+  </context>
+  <context>
+    <name>lhad/orderitemdetails/orderitemdetails_display_ad_magazine</name>
+    <message>
+      <source>Please enable JavaScript to upload image</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x43A;&#x43B;&#x44E;&#x447;&#x438;&#x442;&#x435; JavaScript, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+  </context>
+  <context>
+    <name>lhad/uploadadorderitem_content</name>
+    <message>
+      <source>Cancel</source>
+      <translation type="unfinished">&#x41E;&#x442;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C;</translation>
+    </message>
+    <message>
+      <source>Failed</source>
+      <translation type="unfinished">&#x41E;&#x448;&#x438;&#x431;&#x43A;&#x430;</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/ratebanlist</name>
+    <message>
+      <source>Baned IP for rating</source>
+      <translation type="unfinished">Baned IP &#x434;&#x43B;&#x44F; &#x440;&#x435;&#x439;&#x442;&#x438;&#x43D;&#x433;&#x430;</translation>
+    </message>
+    <message>
+      <source>Are you sure?</source>
+      <translation type="unfinished">&#x412;&#x44B; &#x443;&#x432;&#x435;&#x440;&#x435;&#x43D;&#x44B;?</translation>
+    </message>
+    <message>
+      <source>Delete ip</source>
+      <translation type="unfinished">&#x423;&#x434;&#x430;&#x43B;&#x438;&#x442;&#x44C; &#x444;</translation>
+    </message>
+    <message>
+      <source>New IP BAN</source>
+      <translation type="unfinished">&#x41D;&#x43E;&#x432;&#x44B;&#x439; IP BAN</translation>
+    </message>
+    <message>
+      <source>IP</source>
+      <translation type="unfinished">IP</translation>
+    </message>
+    <message>
+      <source>Add</source>
+      <translation type="unfinished">&#x414;&#x43E;&#x431;&#x430;&#x432;&#x43B;&#x44F;&#x442;&#x44C;</translation>
+    </message>
+    <message>
+      <source>System configuration</source>
+      <translation type="unfinished">&#x41A;&#x43E;&#x43D;&#x444;&#x438;&#x433;&#x443;&#x440;&#x430;&#x446;&#x438;&#x44F; &#x441;&#x438;&#x441;&#x442;&#x435;&#x43C;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Comment ban IP</source>
+      <translation type="unfinished">&#x41A;&#x43E;&#x43C;&#x43C;&#x435;&#x43D;&#x442;&#x430;&#x440;&#x438;&#x439; &#x437;&#x430;&#x43F;&#x440;&#x435;&#x442; IP</translation>
+    </message>
+    <message>
+      <source>Rate ban IP</source>
+      <translation type="unfinished">IP &#x41E;&#x446;&#x435;&#x43D;&#x438;&#x442;&#x44C; &#x437;&#x430;&#x43F;&#x440;&#x435;&#x442;</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/movealbumphotos</name>
+    <message>
+      <source>Search album</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x430;</translation>
+    </message>
+    <message>
+      <source>Move photos</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x43D;&#x43E;&#x441; &#x444;&#x43E;&#x442;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>We moved</source>
+      <translation type="unfinished">&#x41C;&#x44B; &#x43F;&#x435;&#x440;&#x435;&#x435;&#x445;&#x430;&#x43B;&#x438;</translation>
+    </message>
+    <message>
+      <source>images</source>
+      <translation type="unfinished">&#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Move album photos</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x43C;&#x435;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x444;&#x43E;&#x442;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x439;</translation>
+    </message>
+  </context>
+  <context>
+    <name>fb/album</name>
+    <message>
+      <source>Check photo to import</source>
+      <translation type="unfinished">&#x41F;&#x440;&#x43E;&#x432;&#x435;&#x440;&#x44C;&#x442;&#x435; &#x444;&#x43E;&#x442;&#x43E;&#x433;&#x440;&#x430;&#x444;&#x438;&#x438; &#x434;&#x43B;&#x44F; &#x438;&#x43C;&#x43F;&#x43E;&#x440;&#x442;&#x430;</translation>
+    </message>
+    <message>
+      <source>Import selected images to</source>
+      <translation type="unfinished">&#x418;&#x43C;&#x43F;&#x43E;&#x440;&#x442; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x43D;&#x43D;&#x44B;&#x445; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>To what album you want to import images, start typing album name and click search</source>
+      <translation type="unfinished">&#x412; &#x43A;&#x430;&#x43A;&#x43E;&#x439; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x432;&#x44B; &#x445;&#x43E;&#x442;&#x438;&#x442;&#x435; &#x438;&#x43C;&#x43F;&#x43E;&#x440;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;, &#x43D;&#x430;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x442;&#x435;&#x43A;&#x441;&#x442; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x430; &#x438; &#x43D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435; &#x43F;&#x43E;&#x438;&#x441;&#x43A;</translation>
+    </message>
+    <message>
+      <source>Search for album</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;&#x430;</translation>
+    </message>
+    <message>
+      <source>Check all</source>
+      <translation type="unfinished">&#x41F;&#x440;&#x43E;&#x432;&#x435;&#x440;&#x44C;&#x442;&#x435; &#x432;&#x441;&#x435;</translation>
+    </message>
+    <message>
+      <source>Click to see target, new window will open</source>
+      <translation type="unfinished">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x443;&#x432;&#x438;&#x434;&#x435;&#x442;&#x44C; &#x446;&#x435;&#x43B;&#x44C;, &#x43E;&#x442;&#x43A;&#x440;&#x43E;&#x435;&#x442;&#x441;&#x44F; &#x43D;&#x43E;&#x432;&#x43E;&#x435; &#x43E;&#x43A;&#x43D;&#x43E;</translation>
+    </message>
+    <message>
+      <source>Import selected images</source>
+      <translation type="unfinished">&#x418;&#x43C;&#x43F;&#x43E;&#x440;&#x442; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x43D;&#x43D;&#x44B;&#x445; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Please choose atleast one image!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x44B;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x43F;&#x43E; &#x43A;&#x440;&#x430;&#x439;&#x43D;&#x435;&#x439; &#x43C;&#x435;&#x440;&#x435; &#x43E;&#x434;&#x43D;&#x43E; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;!</translation>
+    </message>
+    <message>
+      <source>images to import</source>
+      <translation type="unfinished">&#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x439; &#x434;&#x43B;&#x44F; &#x438;&#x43C;&#x43F;&#x43E;&#x440;&#x442;&#x430;</translation>
+    </message>
+    <message>
+      <source>All images were imported</source>
+      <translation type="unfinished">&#x412;&#x441;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x431;&#x44B;&#x43B;&#x438; &#x438;&#x43C;&#x43F;&#x43E;&#x440;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x43D;&#x44B;</translation>
+    </message>
+    <message>
+      <source>Please choose album</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x44B;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x430;&#x43B;&#x44C;&#x431;&#x43E;&#x43C;</translation>
+    </message>
+    <message>
+      <source>Preview version</source>
+      <translation type="unfinished">&#x41F;&#x440;&#x435;&#x434;&#x432;&#x430;&#x440;&#x438;&#x442;&#x435;&#x43B;&#x44C;&#x43D;&#x44B;&#x439; &#x43F;&#x440;&#x43E;&#x441;&#x43C;&#x43E;&#x442;&#x440; &#x432;&#x435;&#x440;&#x441;&#x438;&#x438;</translation>
+    </message>
+  </context>
+  <context>
+    <name>similar/similar</name>
+    <message>
+      <source>Visualy similar images to</source>
+      <translation type="unfinished">Visualy &#x43F;&#x43E;&#x445;&#x43E;&#x436;&#x438;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x43D;&#x430;</translation>
+    </message>
+    <message>
+      <source>Search for visualy similar images</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; visualy &#x43F;&#x43E;&#x445;&#x43E;&#x436;&#x438;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Please enable JavaScript to upload image</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x43A;&#x43B;&#x44E;&#x447;&#x438;&#x442;&#x435; JavaScript, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x437;&#x430;&#x433;&#x440;&#x443;&#x437;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;</translation>
+    </message>
+    <message>
+      <source>Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).</source>
+      <translation type="unfinished">&#x41D;&#x430;&#x436;&#x43C;&#x438;&#x442;&#x435;, &#x447;&#x442;&#x43E;&#x431;&#x44B; &#x432;&#x44B;&#x431;&#x440;&#x430;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x435;, &#x432;&#x44B; &#x43C;&#x43E;&#x436;&#x435;&#x442;&#x435; &#x43F;&#x440;&#x43E;&#x441;&#x442;&#x43E; &#x43F;&#x435;&#x440;&#x435;&#x442;&#x430;&#x449;&#x438;&#x442;&#x44C; &#x444;&#x430;&#x439;&#x43B; &#x437;&#x434;&#x435;&#x441;&#x44C; (&#x41F;&#x435;&#x440;&#x435;&#x442;&#x430;&#x449;&#x438;&#x442;&#x435; &#x442;&#x43E;&#x43B;&#x44C;&#x43A;&#x43E; &#x434;&#x43B;&#x44F; FF, Chrome).</translation>
+    </message>
+    <message>
+      <source>Cancel</source>
+      <translation type="unfinished">&#x41E;&#x442;&#x43C;&#x435;&#x43D;&#x438;&#x442;&#x44C;</translation>
+    </message>
+    <message>
+      <source>Failed</source>
+      <translation type="unfinished">&#x41E;&#x448;&#x438;&#x431;&#x43A;&#x430;</translation>
+    </message>
+  </context>
+  <context>
+    <name>similar/sketch</name>
+    <message>
+      <source>Search by sketch</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; &#x43F;&#x43E; &#x44D;&#x441;&#x43A;&#x438;&#x437;</translation>
+    </message>
+    <message>
+      <source>Sketch and find images by your sketch</source>
+      <translation type="unfinished">&#x42D;&#x441;&#x43A;&#x438;&#x437; &#x438; &#x43D;&#x430;&#x445;&#x43E;&#x434;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F; &#x43F;&#x43E; &#x412;&#x430;&#x448;&#x435;&#x43C;&#x443; &#x44D;&#x441;&#x43A;&#x438;&#x437;&#x443;</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/mapaccounts</name>
+    <message>
+      <source>Login with facebook</source>
+      <translation type="unfinished">&#x412;&#x43E;&#x439;&#x442;&#x438; &#x441; facebook</translation>
+    </message>
+    <message>
+      <source>Map to my account</source>
+      <translation type="unfinished">&#x41A;&#x430;&#x440;&#x442;&#x430; &#x43D;&#x430; &#x43C;&#x43E;&#x439; &#x441;&#x447;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>my account</source>
+      <translation type="unfinished">&#x43C;&#x43E;&#x439; &#x441;&#x447;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>Login</source>
+      <translation type="unfinished">&#x412;&#x43E;&#x439;&#x442;&#x438;</translation>
+    </message>
+    <message>
+      <source>map to my account</source>
+      <translation type="unfinished">&#x41A;&#x430;&#x440;&#x442;&#x430; &#x43D;&#x430; &#x43C;&#x43E;&#x439; &#x441;&#x447;&#x435;&#x442;</translation>
+    </message>
+    <message>
+      <source>Incorrect login or password</source>
+      <translation type="unfinished">&#x41D;&#x435;&#x43F;&#x440;&#x430;&#x432;&#x438;&#x43B;&#x44C;&#x43D;&#x430;&#x44F; &#x41B;&#x43E;&#x433;&#x438;&#x43D; &#x438; &#x43F;&#x430;&#x440;&#x43E;&#x43B;&#x44C;</translation>
+    </message>
+    <message>
+      <source>Username</source>
+      <translation type="unfinished">&#x418;&#x43C;&#x44F; &#x43F;&#x43E;&#x43B;&#x44C;&#x437;&#x43E;&#x432;&#x430;&#x442;&#x435;&#x43B;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Password</source>
+      <translation type="unfinished">&#x41F;&#x430;&#x440;&#x43E;&#x43B;&#x44C;</translation>
+    </message>
+    <message>
+      <source>OR</source>
+      <translation type="unfinished">&#x418;&#x41B;&#x418;</translation>
+    </message>
+    <message>
+      <source>create account</source>
+      <translation type="unfinished">&#x421;&#x43E;&#x437;&#x434;&#x430;&#x442;&#x44C; &#x443;&#x447;&#x435;&#x442;&#x43D;&#x443;&#x44E; &#x437;&#x430;&#x43F;&#x438;&#x441;&#x44C;</translation>
+    </message>
+    <message>
+      <source>Next</source>
+      <translation type="unfinished">&#x421;&#x43B;&#x435;&#x434;&#x443;&#x44E;&#x449;&#x438;&#x439;</translation>
+    </message>
+    <message>
+      <source>Open ID</source>
+      <translation type="unfinished">Open ID</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/category</name>
+    <message>
+      <source>Please enter topic name!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x442;&#x435;&#x43C;&#x44B;!</translation>
+    </message>
+    <message>
+      <source>Please enter message!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;!</translation>
+    </message>
+    <message>
+      <source>Please choose category!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x44B;&#x431;&#x435;&#x440;&#x438;&#x442;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44E;!</translation>
+    </message>
+    <message>
+      <source>Not parent category!</source>
+      <translation type="unfinished">&#x41D;&#x435; &#x43E;&#x434;&#x438;&#x43D; &#x443;&#x440;&#x43E;&#x432;&#x435;&#x43D;&#x44C;!</translation>
+    </message>
+    <message>
+      <source>Invalid category!</source>
+      <translation type="unfinished">&#x41D;&#x435;&#x434;&#x43E;&#x43F;&#x443;&#x441;&#x442;&#x438;&#x43C;&#x44B;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;!</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">&#x424;&#x43E;&#x440;&#x443;&#x43C;</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/createcategory</name>
+    <message>
+      <source>Please enter category name!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x438;!</translation>
+    </message>
+    <message>
+      <source>Home</source>
+      <translation type="unfinished">&#x414;&#x43E;&#x43C;&#x43E;&#x439;</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/editmessage</name>
+    <message>
+      <source>Please enter message!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;!</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">&#x424;&#x43E;&#x440;&#x443;&#x43C;</translation>
+    </message>
+    <message>
+      <source>Message edit</source>
+      <translation type="unfinished">&#x421;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/edittopic</name>
+    <message>
+      <source>Please enter topic name!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x43D;&#x430;&#x437;&#x432;&#x430;&#x43D;&#x438;&#x435; &#x442;&#x435;&#x43C;&#x44B;!</translation>
+    </message>
+    <message>
+      <source>Please enter topic status!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x442;&#x435;&#x43C;&#x443; &#x441;&#x442;&#x430;&#x442;&#x443;&#x441;!</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">&#x424;&#x43E;&#x440;&#x443;&#x43C;</translation>
+    </message>
+    <message>
+      <source>Topic edit</source>
+      <translation type="unfinished">&#x422;&#x435;&#x43C;&#x430; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/report</name>
+    <message>
+      <source>Please enter message!</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x436;&#x430;&#x43B;&#x443;&#x439;&#x441;&#x442;&#x430;, &#x432;&#x432;&#x435;&#x434;&#x438;&#x442;&#x435; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435;!</translation>
+    </message>
+    <message>
+      <source>Forum message report</source>
+      <translation type="unfinished">&#x424;&#x43E;&#x440;&#x443;&#x43C; &#x441;&#x43E;&#x43E;&#x431;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x434;&#x43E;&#x43A;&#x43B;&#x430;&#x434;&#x435;</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/searchrss</name>
+    <message>
+      <source>Search</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A;</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/albumeditadmin</name>
+    <message>
+      <source>Root category</source>
+      <translation type="unfinished">&#x41A;&#x43E;&#x440;&#x43D;&#x435;&#x432;&#x430;&#x44F; &#x43A;&#x430;&#x442;&#x435;&#x433;&#x43E;&#x440;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Add images</source>
+      <translation type="unfinished">&#x414;&#x43E;&#x431;&#x430;&#x432;&#x438;&#x442;&#x44C; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Album edit</source>
+      <translation type="unfinished">&#x410;&#x43B;&#x44C;&#x431;&#x43E;&#x43C; &#x440;&#x435;&#x434;&#x430;&#x43A;&#x442;&#x438;&#x440;&#x43E;&#x432;&#x430;&#x442;&#x44C;</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/movebyresolution</name>
+    <message>
+      <source>Move by resolution</source>
+      <translation type="unfinished">&#x41F;&#x435;&#x440;&#x435;&#x43C;&#x435;&#x449;&#x435;&#x43D;&#x438;&#x435; &#x432; &#x440;&#x435;&#x437;&#x43E;&#x43B;&#x44E;&#x446;&#x438;&#x438;</translation>
+    </message>
+  </context>
+  <context>
+    <name>similar/image</name>
+    <message>
+      <source>Similar images to</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x445;&#x43E;&#x436;&#x438;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
+    <message>
+      <source>Search for visualy similar images</source>
+      <translation type="unfinished">&#x41F;&#x43E;&#x438;&#x441;&#x43A; visualy &#x43F;&#x43E;&#x445;&#x43E;&#x436;&#x438;&#x435; &#x438;&#x437;&#x43E;&#x431;&#x440;&#x430;&#x436;&#x435;&#x43D;&#x438;&#x44F;</translation>
+    </message>
   </context>
 </TS>

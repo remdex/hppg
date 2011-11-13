@@ -6,7 +6,7 @@
     <?php 
     $counter = 1;
     foreach ($photos['data'] as $photo) : 
-    $namePhoto = isset($photo['name']) ? htmlspecialchars($photo['name']) : 'Preview version';
+    $namePhoto = isset($photo['name']) ? htmlspecialchars($photo['name']) : erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Preview version');
     ?>
         <div class="image-thumb<?=!(($counter) % 5) ? ' left-thumb' : ''?>">
             <div class="thumb-pic">
@@ -24,7 +24,7 @@
             </div>
             
             <span class="res-ico"><?=$photo['width']?>x<?=$photo['height']?></span>                
-            <span class="right"><input class="itemPhoto image_import" title="Check photo to import" type="checkbox" name="PhotoID[]" value="<?=$photo['id']?>" /></span>
+            <span class="right"><input class="itemPhoto image_import" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Check photo to import')?>" type="checkbox" name="PhotoID[]" value="<?=$photo['id']?>" /></span>
             </div>
         </div>
     <?php $counter++;endforeach;?>
@@ -32,21 +32,21 @@
     <div style="clear:both;padding-bottom:10px;">
     
         <div class="header-list">
-            <h2>Import selected images to</h2>
+            <h2><?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Import selected images to')?></h2>
         </div>
 
-          To what album you want to import images, start typing album name and click search <div><input type="text" value="" class="inputfield newAlbumName">&nbsp;<input type="button" value="Search for album" class="default-button">&nbsp;<input type="button" value="Check all" class="default-button" id="checkAllButton"> </div>
+          <?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','To what album you want to import images, start typing album name and click search')?> <div><input type="text" value="" class="inputfield newAlbumName">&nbsp;<input type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Search for album')?>" class="default-button">&nbsp;<input type="button" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Check all')?>" class="default-button" id="checkAllButton"> </div>
           <div id="album_select_directory0" style="padding-top:5px;padding-bottom:5px;">
           <ul>
           <?php 
           $user = erLhcoreClassUser::instance();
           $albums = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('filter' => array('owner_id' => $user->getUserID())));
           foreach ($albums as $album) : ?>
-            <li><input type="radio" name="AlbumDestinationDirectory0" value="<?=$album->aid?>" /><a href="<?=$album->url_path?>" target="_blank" title="Click to see target, new window will open"><?=htmlspecialchars($album->title)?></a></li>
+            <li><input type="radio" name="AlbumDestinationDirectory0" value="<?=$album->aid?>" /><a href="<?=$album->url_path?>" target="_blank" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Click to see target, new window will open')?>"><?=htmlspecialchars($album->title)?></a></li>
           <?php endforeach;?>
           </ul>
           </div>
-          <input type="button" name="moveSelectedPhotos" <?php if (empty($albums)) : ?>style="display:none"<?php endif;?> id="moveAction" value="Import selected images" class="default-button">  
+          <input type="button" name="moveSelectedPhotos" <?php if (empty($albums)) : ?>style="display:none"<?php endif;?> id="moveAction" value="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Import selected images')?>" class="default-button">  
 
           &nbsp;<span id="total_to_import"></span>
           
@@ -73,7 +73,7 @@
                 if ($('.image_import:checked').size() > 0) {
                 importPhoto();
                 } else {
-                    alert('Please choose atleast one image!');
+                    alert('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Please choose atleast one image!')?>');
                 }
             });
             
@@ -81,7 +81,7 @@
             {
                if ($('input[name=AlbumDestinationDirectory0]:checked').val() != undefined) { 
                    if ($('.image_import:checked').size() > 0) {
-                       $('#total_to_import').html($('.image_import:checked').size() + ' images to import...');
+                       $('#total_to_import').html($('.image_import:checked').size() + ' <?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','images to import')?>...');
                        $('#total_to_import').addClass('spinning-now');
                        
                        $.getJSON("<?=erLhcoreClassDesign::baseurl('fb/importfbphoto')?>/"+$('input[name=AlbumDestinationDirectory0]:checked').val()+"/"+$('.image_import:checked').eq(0).val(), {} , function(data){
@@ -90,10 +90,10 @@
                     	});
                    } else { 
                         $('#total_to_import').removeClass('spinning-now');
-                        $('#total_to_import').html('All images were imported...');
+                        $('#total_to_import').html('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','All images were imported')?>...');
                    }                	
                } else {
-                   alert('Please choose album');
+                   alert('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Please choose album')?>');
                }
             }
           </script>

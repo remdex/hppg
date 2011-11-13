@@ -5,57 +5,53 @@
     <name>article/editstatic</name>
     <message>
       <source>Article name</source>
-      <translation type="unfinished">Artikkel navn</translation>
+      <translation>Artikkel navn</translation>
     </message>
     <message>
       <source>Body</source>
-      <translation type="unfinished">Body</translation>
+      <translation>Body</translation>
     </message>
     <message>
       <source>Article edit</source>
-      <translation type="unfinished">Artikkel rediger</translation>
+      <translation>Artikkel rediger</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
     </message>
   </context>
   <context>
     <name>article/newstatic</name>
     <message>
       <source>New article</source>
-      <translation type="unfinished">Ny artikkel</translation>
+      <translation>Ny artikkel</translation>
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Lagre</translation>
+      <translation>Lagre</translation>
     </message>
   </context>
   <context>
     <name>article/staticlist</name>
     <message>
       <source>Static articles</source>
-      <translation type="unfinished">Statisk artikler</translation>
+      <translation>Statisk artikler</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Navn</translation>
+      <translation>Navn</translation>
     </message>
     <message>
       <source>Edit</source>
-      <translation type="unfinished">Rediger</translation>
+      <translation>Rediger</translation>
     </message>
     <message>
       <source>New article</source>
-      <translation type="unfinished">Ny artikkel</translation>
+      <translation>Ny artikkel</translation>
     </message>
   </context>
   <context>
     <name>gallery/addimages</name>
-    <message>
-      <source>Add images to album</source>
-      <translation type="unfinished">Legg bilder til album</translation>
-    </message>
     <message>
       <source>All files were uploaded. See album.</source>
       <translation type="unfinished">Alle filer som ble lastet opp. Se album.</translation>
@@ -113,10 +109,6 @@
       <translation type="unfinished">SWFUpload det tar lang tid &#xE5; laste eller lasten har sviktet. S&#xF8;rg for at Flash Plugin er aktivert, og at en fungerende versjon av Adobe Flash Player er installert.</translation>
     </message>
     <message>
-      <source>Move album images to another album</source>
-      <translation type="unfinished">Flytt album bilde til et annet album</translation>
-    </message>
-    <message>
       <source>Attachment of local images</source>
       <translation type="unfinished">Vedlegg av lokale bilder</translation>
     </message>
@@ -128,52 +120,68 @@
       <source>Choose images for upload.</source>
       <translation type="unfinished">Velg bilder for opplasting.</translation>
     </message>
+    <message>
+      <source>Add images to album</source>
+      <translation>Legg bilder til album</translation>
+    </message>
+    <message>
+      <source>Move album images to another album</source>
+      <translation>Flytt album bilde til et annet album</translation>
+    </message>
+    <message>
+      <source>Move image to another album</source>
+      <translation type="unfinished">Flytt bilde til et annet album</translation>
+    </message>
   </context>
   <context>
     <name>gallery/admincategorys</name>
     <message>
       <source>Category</source>
-      <translation type="unfinished">Kategori</translation>
-    </message>
-    <message>
-      <source>Create a category</source>
-      <translation type="unfinished">Opprett en kategori</translation>
+      <translation>Kategori</translation>
     </message>
     <message>
       <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
+      <translation>Tittel</translation>
     </message>
     <message>
       <source>Owner</source>
-      <translation type="unfinished">Eier</translation>
+      <translation>Eier</translation>
     </message>
     <message>
       <source>Edit category</source>
-      <translation type="unfinished">Rediger kategori</translation>
+      <translation>Rediger kategori</translation>
     </message>
     <message>
       <source>Delete category</source>
-      <translation type="unfinished">Slett kategori</translation>
+      <translation>Slett kategori</translation>
+    </message>
+    <message>
+      <source>Create a category</source>
+      <translation>Opprett en kategori</translation>
     </message>
     <message>
       <source>Category albums</source>
-      <translation type="unfinished">Kategori album</translation>
+      <translation>Kategori album</translation>
     </message>
     <message>
       <source>This category does not have an album.</source>
-      <translation type="unfinished">Denne kategorien har ikke et album.</translation>
+      <translation>Denne kategorien har ikke et album.</translation>
     </message>
     <message>
       <source>Create an album</source>
-      <translation type="unfinished">Lag et album</translation>
+      <translation>Lag et album</translation>
     </message>
     <message>
       <source>Batch album create</source>
-      <translation type="unfinished">Batch album lage</translation>
+      <translation>Batch album lage</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Hjem</translation>
+      <translation>Hjem</translation>
+    </message>
+    <message>
+      <source>Root category</source>
+      <translation type="unfinished">Root kategorien</translation>
     </message>
   </context>
   <context>
@@ -183,1136 +191,1348 @@
       <translation type="unfinished">Tittel</translation>
     </message>
     <message>
+      <source>Delete comment</source>
+      <translation type="unfinished">Slett kommentar</translation>
+    </message>
+    <message>
+      <source>Edit comment</source>
+      <translation type="unfinished">Rediger kommentar</translation>
+    </message>
+    <message>
       <source>Delete image</source>
-      <translation type="unfinished">Slett bilde</translation>
+      <translation>Slett bilde</translation>
     </message>
     <message>
       <source>Groups</source>
-      <translation type="unfinished">Grupper</translation>
+      <translation>Grupper</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">Navn</translation>
     </message>
     <message>
       <source>Edit group</source>
-      <translation type="unfinished">Rediger gruppe</translation>
+      <translation>Rediger gruppe</translation>
     </message>
     <message>
       <source>Delete group</source>
-      <translation type="unfinished">Slett gruppe</translation>
+      <translation>Slett gruppe</translation>
     </message>
     <message>
       <source>New group</source>
-      <translation type="unfinished">Ny gruppe</translation>
+      <translation>Ny gruppe</translation>
     </message>
     <message>
       <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
+      <translation>Systemkonfigurasjon</translation>
     </message>
   </context>
   <context>
     <name>gallery/album_list_admin</name>
     <message>
+      <source>Are you sure?</source>
+      <translation type="unfinished">Er du sikker?</translation>
+    </message>
+    <message>
       <source>Add images</source>
-      <translation type="unfinished">Legg til bilder</translation>
+      <translation>Legg til bilder</translation>
     </message>
     <message>
       <source>Edit album</source>
-      <translation type="unfinished">Rediger album</translation>
+      <translation>Rediger album</translation>
+    </message>
+    <message>
+      <source>Move all album photos to another album</source>
+      <translation type="unfinished">Flytt alle album bildene til et annet album</translation>
+    </message>
+    <message>
+      <source>Move photos by resolution</source>
+      <translation type="unfinished">Flytt bilder ved resolusjon</translation>
     </message>
     <message>
       <source>Delete album</source>
-      <translation type="unfinished">Slett album</translation>
+      <translation>Slett album</translation>
+    </message>
+    <message>
+      <source>Approve all images</source>
+      <translation type="unfinished">Godkjenne alle bildene</translation>
+    </message>
+    <message>
+      <source>Disapprove all images</source>
+      <translation type="unfinished">Avsl&#xE5; alle bildene</translation>
+    </message>
+    <message>
+      <source>View on site</source>
+      <translation type="unfinished">Se p&#xE5; stedet</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumedit</name>
     <message>
-      <source>Album edit</source>
-      <translation type="unfinished">Album rediger</translation>
+      <source>Edit topic</source>
+      <translation type="unfinished">Rediger emne</translation>
+    </message>
+    <message>
+      <source>Topic name</source>
+      <translation type="unfinished">Emnenavn</translation>
+    </message>
+    <message>
+      <source>Topic status</source>
+      <translation type="unfinished">Emne status</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
+    </message>
+    <message>
+      <source>Album edit</source>
+      <translation>Album rediger</translation>
     </message>
     <message>
       <source>Album name</source>
-      <translation type="unfinished">Albumnavn</translation>
+      <translation>Albumnavn</translation>
     </message>
     <message>
       <source>Album category</source>
-      <translation type="unfinished">Album kategori</translation>
+      <translation>Album kategori</translation>
     </message>
     <message>
       <source>Album owner</source>
-      <translation type="unfinished">Album eier</translation>
+      <translation>Album eier</translation>
     </message>
     <message>
       <source>Description</source>
-      <translation type="unfinished">Beskrivelse</translation>
+      <translation>Beskrivelse</translation>
     </message>
     <message>
       <source>Keywords</source>
-      <translation type="unfinished">N&#xF8;kkelord</translation>
+      <translation>N&#xF8;kkelord</translation>
     </message>
     <message>
       <source>Public</source>
-      <translation type="unfinished">Offentlig</translation>
+      <translation>Offentlig</translation>
     </message>
     <message>
       <source>All users can uploads images to this album</source>
-      <translation type="unfinished">Alle brukere kan opplastninger bilder til dette albumet</translation>
+      <translation>Alle brukere kan opplastninger bilder til dette albumet</translation>
+    </message>
+    <message>
+      <source>Hidden</source>
+      <translation type="unfinished">Skjulte</translation>
+    </message>
+    <message>
+      <source>Hide album from users</source>
+      <translation type="unfinished">Hide album fra brukere</translation>
+    </message>
+    <message>
+      <source>Album thumbnail</source>
+      <translation type="unfinished">Album thumbnail</translation>
+    </message>
+    <message>
+      <source>Newest album image</source>
+      <translation type="unfinished">Nyeste album bilde</translation>
+    </message>
+    <message>
+      <source>Revert to newest album image display mode</source>
+      <translation type="unfinished">G&#xE5; tilbake til nyeste album image visningsmodus</translation>
+    </message>
+    <message>
+      <source>Remove</source>
+      <translation type="unfinished">Fjern</translation>
+    </message>
+    <message>
+      <source>Edit message</source>
+      <translation type="unfinished">Rediger melding</translation>
+    </message>
+    <message>
+      <source>Message</source>
+      <translation type="unfinished">Message</translation>
+    </message>
+    <message>
+      <source>File</source>
+      <translation type="unfinished">File</translation>
+    </message>
+    <message>
+      <source>New message</source>
+      <translation type="unfinished">Ny melding</translation>
+    </message>
+    <message>
+      <source>Publish</source>
+      <translation type="unfinished">Publish</translation>
+    </message>
+    <message>
+      <source>New topic</source>
+      <translation type="unfinished">Nytt tema</translation>
+    </message>
+    <message>
+      <source>Choose topic category</source>
+      <translation type="unfinished">Velg emne kategorien</translation>
     </message>
     <message>
       <source>Please enter album name!</source>
-      <translation type="unfinished">Vennligst skriv inn album navn!</translation>
+      <translation>Vennligst skriv inn album navn!</translation>
     </message>
   </context>
   <context>
     <name>gallery/batchadd</name>
     <message>
       <source>I cannot write this directory</source>
-      <translation type="unfinished">Jeg kan ikke skrive denne katalogen</translation>
+      <translation>Jeg kan ikke skrive denne katalogen</translation>
     </message>
     <message>
       <source>No image were found!</source>
-      <translation type="unfinished">Ingen bilder ble funnet!</translation>
+      <translation>Ingen bilder ble funnet!</translation>
     </message>
     <message>
       <source>Import</source>
-      <translation type="unfinished">Import</translation>
+      <translation>Import</translation>
     </message>
     <message>
       <source>Import recursive this directory</source>
-      <translation type="unfinished">Import rekursiv denne katalogen</translation>
+      <translation>Import rekursiv denne katalogen</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation type="unfinished">S&#xF8;k</translation>
+      <translation>S&#xF8;k</translation>
     </message>
     <message>
       <source>Please enter album name and click search</source>
-      <translation type="unfinished">Vennligst skriv inn albumnavn og klikk s&#xF8;k</translation>
+      <translation>Vennligst skriv inn albumnavn og klikk s&#xF8;k</translation>
     </message>
     <message>
       <source>List images</source>
-      <translation type="unfinished">List opp bilder</translation>
+      <translation>List opp bilder</translation>
     </message>
     <message>
       <source>List images recursive</source>
-      <translation type="unfinished">List opp bilder rekursiv</translation>
+      <translation>List opp bilder rekursiv</translation>
     </message>
     <message>
       <source>Import images</source>
-      <translation type="unfinished">Importere bilder</translation>
+      <translation>Importere bilder</translation>
     </message>
     <message>
       <source>Click list images or list images recursive</source>
-      <translation type="unfinished">Klikk liste bilder eller listen bilder rekursive</translation>
+      <translation>Klikk liste bilder eller listen bilder rekursive</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">Legg til bilder</translation>
+      <translation>Legg til bilder</translation>
     </message>
     <message>
       <source>Please choose album first!</source>
-      <translation type="unfinished">Velg album f&#xF8;rst!</translation>
+      <translation>Velg album f&#xF8;rst!</translation>
     </message>
     <message>
       <source>Mass image upload</source>
-      <translation type="unfinished">Masse image upload</translation>
+      <translation>Masse image upload</translation>
     </message>
   </context>
   <context>
     <name>gallery/createalbumadmin</name>
     <message>
       <source>New album</source>
-      <translation type="unfinished">Nytt album</translation>
+      <translation>Nytt album</translation>
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Lagre</translation>
+      <translation>Lagre</translation>
     </message>
     <message>
       <source>New batch album create</source>
-      <translation type="unfinished">Ny batch album opprette</translation>
+      <translation>Ny batch album opprette</translation>
     </message>
     <message>
       <source>Paste album names separated by new line</source>
-      <translation type="unfinished">Lim album atskilt med ny linje</translation>
+      <translation>Lim album atskilt med ny linje</translation>
     </message>
     <message>
       <source>Public</source>
-      <translation type="unfinished">Offentlig</translation>
+      <translation>Offentlig</translation>
     </message>
     <message>
       <source>All users can uploads images to this album</source>
-      <translation type="unfinished">Alle brukere kan opplastninger bilder til dette albumet</translation>
+      <translation>Alle brukere kan opplastninger bilder til dette albumet</translation>
     </message>
     <message>
       <source>Please enter album name!</source>
-      <translation type="unfinished">Vennligst skriv inn album navn!</translation>
+      <translation>Vennligst skriv inn album navn!</translation>
     </message>
   </context>
   <context>
     <name>gallery/createcategory</name>
     <message>
       <source>New category</source>
-      <translation type="unfinished">Ny kategori</translation>
+      <translation>Ny kategori</translation>
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Lagre</translation>
+      <translation>Lagre</translation>
     </message>
     <message>
       <source>back</source>
-      <translation type="unfinished">tilbake</translation>
+      <translation>tilbake</translation>
+    </message>
+    <message>
+      <source>Please enter message!</source>
+      <translation type="unfinished">Vennligst skriv melding!</translation>
     </message>
     <message>
       <source>Please enter category name!</source>
-      <translation type="unfinished">Vennligst skriv inn kategori navn!</translation>
+      <translation>Vennligst skriv inn kategori navn!</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Hjem</translation>
+      <translation>Hjem</translation>
     </message>
   </context>
   <context>
     <name>gallery/duplicates</name>
     <message>
       <source>Similar images number</source>
-      <translation type="unfinished">Lignende bilder nummer</translation>
+      <translation>Lignende bilder nummer</translation>
     </message>
     <message>
       <source>Details</source>
-      <translation type="unfinished">Detaljer</translation>
+      <translation>Detaljer</translation>
     </message>
     <message>
       <source>More</source>
-      <translation type="unfinished">Mer</translation>
+      <translation>Mer</translation>
     </message>
     <message>
       <source>Delete duplicate session</source>
-      <translation type="unfinished">Slette like sesjon</translation>
+      <translation>Slette like sesjon</translation>
     </message>
     <message>
       <source>No duplicates pending...</source>
-      <translation type="unfinished">Ingen duplikater venter ...</translation>
+      <translation>Ingen duplikater venter ...</translation>
     </message>
     <message>
       <source>Duplicates</source>
-      <translation type="unfinished">Duplikater</translation>
+      <translation>Duplikater</translation>
     </message>
   </context>
   <context>
     <name>gallery/my_image_list</name>
     <message>
-      <source>Delete image</source>
-      <translation type="unfinished">Slett bilde</translation>
-    </message>
-    <message>
-      <source>View image</source>
-      <translation type="unfinished">Vis bilde</translation>
-    </message>
-    <message>
-      <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
-    </message>
-    <message>
-      <source>Keywords</source>
-      <translation type="unfinished">N&#xF8;kkelord</translation>
-    </message>
-    <message>
-      <source>Caption</source>
-      <translation type="unfinished">Bildetekst</translation>
-    </message>
-    <message>
-      <source>Update</source>
-      <translation type="unfinished">Update</translation>
-    </message>
-    <message>
-      <source>Approved</source>
-      <translation type="unfinished">Godkjent</translation>
-    </message>
-    <message>
       <source>Cross eye image</source>
       <translation type="unfinished">Cross &#xF8;yet bilde</translation>
     </message>
     <message>
+      <source>Delete comment</source>
+      <translation type="unfinished">Slett kommentar</translation>
+    </message>
+    <message>
+      <source>Edit comment</source>
+      <translation type="unfinished">Rediger kommentar</translation>
+    </message>
+    <message>
+      <source>Delete image</source>
+      <translation>Slett bilde</translation>
+    </message>
+    <message>
+      <source>View image</source>
+      <translation>Vis bilde</translation>
+    </message>
+    <message>
+      <source>Title</source>
+      <translation>Tittel</translation>
+    </message>
+    <message>
+      <source>Keywords</source>
+      <translation>N&#xF8;kkelord</translation>
+    </message>
+    <message>
+      <source>Caption</source>
+      <translation>Bildetekst</translation>
+    </message>
+    <message>
+      <source>Update</source>
+      <translation>Update</translation>
+    </message>
+    <message>
+      <source>Message author</source>
+      <translation type="unfinished">Melding forfatter</translation>
+    </message>
+    <message>
+      <source>Message</source>
+      <translation type="unfinished">Message</translation>
+    </message>
+    <message>
+      <source>Rotate image clockwise</source>
+      <translation type="unfinished">Rotere bildet med klokken</translation>
+    </message>
+    <message>
+      <source>Flip horizontaly</source>
+      <translation type="unfinished">Flip horisontaldelt</translation>
+    </message>
+    <message>
+      <source>Flip verticaly</source>
+      <translation type="unfinished">Flip vertikal</translation>
+    </message>
+    <message>
+      <source>Upload new image</source>
+      <translation type="unfinished">Last opp nytt image</translation>
+    </message>
+    <message>
+      <source>Set as folder thumbnail</source>
+      <translation type="unfinished">Angi som mappe thumbnail</translation>
+    </message>
+    <message>
+      <source>Move image to another album</source>
+      <translation type="unfinished">Flytt bilde til et annet album</translation>
+    </message>
+    <message>
       <source>Anaglyph</source>
-      <translation type="unfinished">Anaglyph</translation>
+      <translation>Anaglyph</translation>
+    </message>
+    <message>
+      <source>Approved</source>
+      <translation>Godkjent</translation>
+    </message>
+    <message>
+      <source>Select image</source>
+      <translation type="unfinished">Velg bilde</translation>
+    </message>
+    <message>
+      <source>File</source>
+      <translation type="unfinished">File</translation>
+    </message>
+    <message>
+      <source>Upload</source>
+      <translation type="unfinished">Last opp</translation>
     </message>
   </context>
   <context>
     <name>gallery/editcategory</name>
     <message>
-      <source>Category edit</source>
-      <translation type="unfinished">Kategori rediger</translation>
-    </message>
-    <message>
-      <source>Update</source>
-      <translation type="unfinished">Update</translation>
-    </message>
-    <message>
       <source>back</source>
-      <translation type="unfinished">tilbake</translation>
+      <translation>tilbake</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Navn</translation>
+      <translation>Navn</translation>
     </message>
     <message>
       <source>Description</source>
-      <translation type="unfinished">Beskrivelse</translation>
+      <translation>Beskrivelse</translation>
     </message>
     <message>
       <source>Owner</source>
-      <translation type="unfinished">Eier</translation>
+      <translation>Eier</translation>
+    </message>
+    <message>
+      <source>Category edit</source>
+      <translation>Kategori rediger</translation>
+    </message>
+    <message>
+      <source>Update</source>
+      <translation>Update</translation>
     </message>
     <message>
       <source>Hide subcategorys in frontpage</source>
-      <translation type="unfinished">Skjul subcategorys i frontpage</translation>
+      <translation>Skjul subcategorys i frontpage</translation>
     </message>
   </context>
   <context>
     <name>gallery/managealbum</name>
     <message>
-      <source>Category</source>
-      <translation type="unfinished">Kategori</translation>
+      <source>No records.</source>
+      <translation>Ingen poster.</translation>
     </message>
     <message>
-      <source>No records.</source>
-      <translation type="unfinished">Ingen poster.</translation>
+      <source>Category</source>
+      <translation>Kategori</translation>
     </message>
     <message>
       <source>Create an album</source>
-      <translation type="unfinished">Lag et album</translation>
+      <translation>Lag et album</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Hjem</translation>
+      <translation>Hjem</translation>
     </message>
   </context>
   <context>
     <name>gallery/managealbumimages</name>
     <message>
+      <source>Move selected images to</source>
+      <translation type="unfinished">Flytt valgte bilder til</translation>
+    </message>
+    <message>
+      <source>Check all</source>
+      <translation type="unfinished">Kontroller alle</translation>
+    </message>
+    <message>
       <source>No records.</source>
-      <translation type="unfinished">Ingen poster.</translation>
+      <translation>Ingen poster.</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Hjem</translation>
+      <translation>Hjem</translation>
+    </message>
+    <message>
+      <source>Root category</source>
+      <translation type="unfinished">Root kategorien</translation>
     </message>
   </context>
   <context>
     <name>permission/editrole</name>
     <message>
       <source>Role edit</source>
-      <translation type="unfinished">Rolle rediger</translation>
+      <translation>Rolle rediger</translation>
     </message>
     <message>
       <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
+      <translation>Tittel</translation>
     </message>
     <message>
       <source>Assigned functions</source>
-      <translation type="unfinished">Tilordnet funksjoner</translation>
+      <translation>Tilordnet funksjoner</translation>
     </message>
     <message>
       <source>Module</source>
-      <translation type="unfinished">Modul</translation>
+      <translation>Modul</translation>
     </message>
     <message>
       <source>Function</source>
-      <translation type="unfinished">Funksjon</translation>
+      <translation>Funksjon</translation>
     </message>
     <message>
       <source>Remove selected</source>
-      <translation type="unfinished">Fjern valgte</translation>
+      <translation>Fjern valgte</translation>
     </message>
     <message>
       <source>New policy</source>
-      <translation type="unfinished">Ny policy</translation>
+      <translation>Ny policy</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Avbryt</translation>
+      <translation>Avbryt</translation>
     </message>
     <message>
       <source>Role assigned groups</source>
-      <translation type="unfinished">Rolle tildelt grupper</translation>
+      <translation>Rolle tildelt grupper</translation>
     </message>
     <message>
       <source>Group assignement to role</source>
-      <translation type="unfinished">Gruppe assignement til rollen</translation>
+      <translation>Gruppe assignement til rollen</translation>
     </message>
     <message>
       <source>Assign group</source>
-      <translation type="unfinished">Tildel gruppe</translation>
+      <translation>Tildel gruppe</translation>
     </message>
     <message>
       <source>Please enter role name</source>
-      <translation type="unfinished">Vennligst skriv rolle navn</translation>
+      <translation>Vennligst skriv rolle navn</translation>
     </message>
     <message>
       <source>Please choose module</source>
-      <translation type="unfinished">Velg modul</translation>
+      <translation>Velg modul</translation>
     </message>
     <message>
       <source>Please choose module function</source>
-      <translation type="unfinished">Velg modul funksjon</translation>
+      <translation>Velg modul funksjon</translation>
     </message>
     <message>
       <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
+      <translation>Systemkonfigurasjon</translation>
     </message>
     <message>
       <source>List of roles</source>
-      <translation type="unfinished">Liste over roller</translation>
+      <translation>Liste over roller</translation>
     </message>
   </context>
   <context>
     <name>permission/groupassignrole</name>
     <message>
       <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
+      <translation>Tittel</translation>
     </message>
     <message>
       <source>Assign</source>
-      <translation type="unfinished">Tilordne</translation>
+      <translation>Tilordne</translation>
     </message>
   </context>
   <context>
     <name>permission/modulefunctions</name>
     <message>
       <source>All functions</source>
-      <translation type="unfinished">Alle funksjoner</translation>
+      <translation>Alle funksjoner</translation>
     </message>
   </context>
   <context>
     <name>permission/newpolicy</name>
     <message>
       <source>New policy</source>
-      <translation type="unfinished">Ny policy</translation>
+      <translation>Ny policy</translation>
     </message>
     <message>
       <source>Assigned functions</source>
-      <translation type="unfinished">Tilordnet funksjoner</translation>
+      <translation>Tilordnet funksjoner</translation>
     </message>
     <message>
       <source>Choose module</source>
-      <translation type="unfinished">Velg modulen</translation>
+      <translation>Velg modulen</translation>
     </message>
     <message>
       <source>All modules</source>
-      <translation type="unfinished">Alle modulene</translation>
+      <translation>Alle modulene</translation>
     </message>
     <message>
       <source>Choose module function</source>
-      <translation type="unfinished">Velg modul funksjon</translation>
+      <translation>Velg modul funksjon</translation>
     </message>
     <message>
       <source>All functions</source>
-      <translation type="unfinished">Alle funksjoner</translation>
+      <translation>Alle funksjoner</translation>
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Lagre</translation>
+      <translation>Lagre</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Avbryt</translation>
+      <translation>Avbryt</translation>
     </message>
   </context>
   <context>
     <name>permission/newrole</name>
     <message>
       <source>New role</source>
-      <translation type="unfinished">Nye rolle</translation>
+      <translation>Nye rolle</translation>
     </message>
     <message>
       <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
+      <translation>Tittel</translation>
     </message>
     <message>
       <source>Policy list</source>
-      <translation type="unfinished">Policy-listen</translation>
+      <translation>Policy-listen</translation>
     </message>
     <message>
       <source>Module</source>
-      <translation type="unfinished">Modul</translation>
+      <translation>Modul</translation>
     </message>
     <message>
       <source>Function</source>
-      <translation type="unfinished">Funksjon</translation>
+      <translation>Funksjon</translation>
     </message>
     <message>
       <source>New policy</source>
-      <translation type="unfinished">Ny policy</translation>
+      <translation>Ny policy</translation>
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Lagre</translation>
+      <translation>Lagre</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Avbryt</translation>
+      <translation>Avbryt</translation>
     </message>
     <message>
       <source>Please enter role name</source>
-      <translation type="unfinished">Vennligst skriv rolle navn</translation>
+      <translation>Vennligst skriv rolle navn</translation>
     </message>
     <message>
       <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
+      <translation>Systemkonfigurasjon</translation>
     </message>
     <message>
       <source>List of roles</source>
-      <translation type="unfinished">Liste over roller</translation>
+      <translation>Liste over roller</translation>
     </message>
   </context>
   <context>
     <name>permission/roleassigngroup</name>
     <message>
       <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
+      <translation>Tittel</translation>
     </message>
     <message>
       <source>Assign</source>
-      <translation type="unfinished">Tilordne</translation>
+      <translation>Tilordne</translation>
     </message>
   </context>
   <context>
     <name>permission/roles</name>
     <message>
       <source>List of roles</source>
-      <translation type="unfinished">Liste over roller</translation>
+      <translation>Liste over roller</translation>
     </message>
     <message>
       <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
+      <translation>Tittel</translation>
     </message>
     <message>
       <source>Edit role</source>
-      <translation type="unfinished">Rediger rolle</translation>
+      <translation>Rediger rolle</translation>
     </message>
     <message>
       <source>Delete role</source>
-      <translation type="unfinished">Slett rolle</translation>
+      <translation>Slett rolle</translation>
     </message>
     <message>
       <source>New role</source>
-      <translation type="unfinished">Nye rolle</translation>
+      <translation>Nye rolle</translation>
     </message>
     <message>
       <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
+      <translation>Systemkonfigurasjon</translation>
     </message>
   </context>
   <context>
     <name>shop/index</name>
     <message>
       <source>Shop configuration</source>
-      <translation type="unfinished">Shop konfigurasjon</translation>
+      <translation>Shop konfigurasjon</translation>
     </message>
     <message>
       <source>Images variations sizes</source>
-      <translation type="unfinished">Bilder variasjoner st&#xF8;rrelser</translation>
+      <translation>Bilder variasjoner st&#xF8;rrelser</translation>
     </message>
     <message>
       <source>List payment options</source>
-      <translation type="unfinished">Liste betalingsm&#xE5;ter</translation>
+      <translation>Liste betalingsm&#xE5;ter</translation>
     </message>
     <message>
       <source>Settings list</source>
-      <translation type="unfinished">Innstillinger-listen</translation>
+      <translation>Innstillinger-listen</translation>
     </message>
     <message>
       <source>Orders list</source>
-      <translation type="unfinished">Ordrer liste</translation>
+      <translation>Ordrer liste</translation>
     </message>
     <message>
       <source>Credits orders list</source>
-      <translation type="unfinished">Studiepoeng ordre liste</translation>
+      <translation>Studiepoeng ordre liste</translation>
     </message>
     <message>
       <source>Shop</source>
-      <translation type="unfinished">Shop</translation>
+      <translation>Shop</translation>
     </message>
   </context>
   <context>
     <name>shop/listpaymentoptions</name>
     <message>
       <source>Payment options</source>
-      <translation type="unfinished">Betalingsm&#xE5;ter</translation>
+      <translation>Betalingsm&#xE5;ter</translation>
     </message>
     <message>
       <source>Identifier</source>
-      <translation type="unfinished">Identifier</translation>
+      <translation>Identifier</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Navn</translation>
+      <translation>Navn</translation>
     </message>
     <message>
       <source>Active</source>
-      <translation type="unfinished">Aktiv</translation>
+      <translation>Aktiv</translation>
     </message>
     <message>
       <source>Author</source>
-      <translation type="unfinished">Forfatter</translation>
+      <translation>Forfatter</translation>
     </message>
     <message>
       <source>Edit</source>
-      <translation type="unfinished">Rediger</translation>
+      <translation>Rediger</translation>
     </message>
   </context>
   <context>
     <name>shop/orderedit</name>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Bestill visning</translation>
+      <translation>Bestill visning</translation>
     </message>
     <message>
       <source>Order time</source>
-      <translation type="unfinished">Bestill tid</translation>
+      <translation>Bestill tid</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Bestill pris</translation>
+      <translation>Bestill pris</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Bestill studiepoeng</translation>
+      <translation>Bestill studiepoeng</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Ordrestatus</translation>
+      <translation>Ordrestatus</translation>
     </message>
     <message>
       <source>Payed.</source>
-      <translation type="unfinished">Utbetales.</translation>
+      <translation>Utbetales.</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Bekreftet</translation>
+      <translation>Bekreftet</translation>
     </message>
     <message>
       <source>Ordered items</source>
-      <translation type="unfinished">Bestilte varer</translation>
+      <translation>Bestilte varer</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Bildenavn</translation>
+      <translation>Bildenavn</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Versjon</translation>
+      <translation>Versjon</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Bildest&#xF8;rrelse</translation>
+      <translation>Bildest&#xF8;rrelse</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Format</translation>
+      <translation>Format</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Pris</translation>
+      <translation>Pris</translation>
     </message>
     <message>
       <source>Download count</source>
-      <translation type="unfinished">Last ned teller</translation>
+      <translation>Last ned teller</translation>
     </message>
     <message>
       <source>Downloads left</source>
-      <translation type="unfinished">Nedlastinger venstre</translation>
+      <translation>Nedlastinger venstre</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Mynter</translation>
+      <translation>Mynter</translation>
     </message>
   </context>
   <context>
     <name>systemconfig/list</name>
     <message>
       <source>Delete order item</source>
-      <translation type="unfinished">Slett ordre element</translation>
+      <translation>Slett ordre element</translation>
     </message>
     <message>
       <source>Delete order</source>
-      <translation type="unfinished">Slett bestilling</translation>
+      <translation>Slett bestilling</translation>
     </message>
     <message>
       <source>Config list</source>
-      <translation type="unfinished">Config liste</translation>
+      <translation>Config liste</translation>
     </message>
     <message>
       <source>Identifier</source>
-      <translation type="unfinished">Identifier</translation>
+      <translation>Identifier</translation>
     </message>
     <message>
       <source>Explain</source>
-      <translation type="unfinished">Forklar</translation>
+      <translation>Forklar</translation>
     </message>
     <message>
       <source>Edit value</source>
-      <translation type="unfinished">Rediger verdi</translation>
+      <translation>Rediger verdi</translation>
     </message>
     <message>
       <source>System config options</source>
-      <translation type="unfinished">System config alternativer</translation>
+      <translation>System config alternativer</translation>
     </message>
     <message>
       <source>List</source>
-      <translation type="unfinished">Liste</translation>
+      <translation>Liste</translation>
     </message>
   </context>
   <context>
     <name>shop/orderslist</name>
     <message>
       <source>Orders credits list</source>
-      <translation type="unfinished">Ordrer studiepoeng liste</translation>
+      <translation>Ordrer studiepoeng liste</translation>
     </message>
     <message>
       <source>ID</source>
-      <translation type="unfinished">ID</translation>
+      <translation>ID</translation>
     </message>
     <message>
       <source>Date</source>
-      <translation type="unfinished">Dato</translation>
+      <translation>Dato</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
+      <translation>E-post</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Bestill pris</translation>
+      <translation>Bestill pris</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Bestill studiepoeng</translation>
+      <translation>Bestill studiepoeng</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Ordrestatus</translation>
+      <translation>Ordrestatus</translation>
     </message>
     <message>
       <source>Payed.</source>
-      <translation type="unfinished">Utbetales.</translation>
+      <translation>Utbetales.</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Bekreftet</translation>
+      <translation>Bekreftet</translation>
     </message>
     <message>
       <source>No orders...</source>
-      <translation type="unfinished">Ingen bestillinger ...</translation>
+      <translation>Ingen bestillinger ...</translation>
     </message>
     <message>
       <source>Orders list</source>
-      <translation type="unfinished">Ordrer liste</translation>
+      <translation>Ordrer liste</translation>
     </message>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Bestill visning</translation>
+      <translation>Bestill visning</translation>
     </message>
     <message>
       <source>User orders list</source>
-      <translation type="unfinished">Bruker ordre liste</translation>
+      <translation>Bruker ordre liste</translation>
     </message>
     <message>
       <source>User credits orders list</source>
-      <translation type="unfinished">Bruker studiepoeng ordre liste</translation>
+      <translation>Bruker studiepoeng ordre liste</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoptionedit</name>
     <message>
       <source>Payment option edit</source>
-      <translation type="unfinished">Betalingsm&#xE5;te rediger</translation>
+      <translation>Betalingsm&#xE5;te rediger</translation>
     </message>
     <message>
       <source>Identifier</source>
-      <translation type="unfinished">Identifier</translation>
+      <translation>Identifier</translation>
     </message>
     <message>
       <source>Active</source>
-      <translation type="unfinished">Aktiv</translation>
+      <translation>Aktiv</translation>
     </message>
     <message>
       <source>Payment settings</source>
-      <translation type="unfinished">Betalingsinnstillinger</translation>
+      <translation>Betalingsinnstillinger</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
     </message>
   </context>
   <context>
     <name>systemconfig/edit</name>
     <message>
       <source>Edit</source>
-      <translation type="unfinished">Rediger</translation>
+      <translation>Rediger</translation>
     </message>
     <message>
       <source>Data updated</source>
-      <translation type="unfinished">Data oppdatert</translation>
+      <translation>Data oppdatert</translation>
     </message>
     <message>
       <source>Identifier</source>
-      <translation type="unfinished">Identifier</translation>
+      <translation>Identifier</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
     </message>
     <message>
       <source>Values applies to</source>
-      <translation type="unfinished">Verdier gjelder</translation>
+      <translation>Verdier gjelder</translation>
     </message>
   </context>
   <context>
     <name>shop/settinglist</name>
     <message>
       <source>Shop config list</source>
-      <translation type="unfinished">Shop config liste</translation>
+      <translation>Shop config liste</translation>
     </message>
     <message>
       <source>Identifier</source>
-      <translation type="unfinished">Identifier</translation>
+      <translation>Identifier</translation>
     </message>
     <message>
       <source>Explain</source>
-      <translation type="unfinished">Forklar</translation>
+      <translation>Forklar</translation>
     </message>
     <message>
       <source>Value</source>
-      <translation type="unfinished">Value</translation>
+      <translation>Value</translation>
     </message>
     <message>
       <source>Edit value</source>
-      <translation type="unfinished">Rediger verdi</translation>
+      <translation>Rediger verdi</translation>
     </message>
   </context>
   <context>
     <name>statistic/choosesite</name>
     <message>
       <source>Choose site you want to show statistic</source>
-      <translation type="unfinished">Velg omr&#xE5;det du &#xF8;nsker &#xE5; vise statistikk</translation>
+      <translation>Velg omr&#xE5;det du &#xF8;nsker &#xE5; vise statistikk</translation>
     </message>
     <message>
       <source>Save</source>
-      <translation type="unfinished">Lagre</translation>
+      <translation>Lagre</translation>
     </message>
   </context>
   <context>
     <name>statistic/index</name>
     <message>
       <source>Google analytics statistic</source>
-      <translation type="unfinished">Google analytics statistikk</translation>
+      <translation>Google analytics statistikk</translation>
     </message>
     <message>
       <source>Grant access application to access google analytics API</source>
-      <translation type="unfinished">Gi tilgang programmet tilgang til Google Analytics API</translation>
+      <translation>Gi tilgang programmet tilgang til Google Analytics API</translation>
     </message>
     <message>
       <source>Site choose</source>
-      <translation type="unfinished">Site velger</translation>
+      <translation>Site velger</translation>
     </message>
     <message>
       <source>View statistic</source>
-      <translation type="unfinished">Vis statistikk</translation>
+      <translation>Vis statistikk</translation>
     </message>
     <message>
       <source>Statistic</source>
-      <translation type="unfinished">Statistikktype</translation>
+      <translation>Statistikktype</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Hjem</translation>
+      <translation>Hjem</translation>
     </message>
   </context>
   <context>
     <name>system/configuration</name>
     <message>
       <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
+      <translation>Systemkonfigurasjon</translation>
     </message>
     <message>
       <source>Users</source>
-      <translation type="unfinished">Brukere</translation>
+      <translation>Brukere</translation>
     </message>
     <message>
       <source>List of groups</source>
-      <translation type="unfinished">Liste over grupper</translation>
+      <translation>Liste over grupper</translation>
     </message>
     <message>
       <source>List of roles</source>
-      <translation type="unfinished">Liste over roller</translation>
+      <translation>Liste over roller</translation>
     </message>
     <message>
       <source>System configuration values</source>
-      <translation type="unfinished">System konfigurasjon verdier</translation>
+      <translation>System konfigurasjon verdier</translation>
     </message>
     <message>
       <source>Watermark protection</source>
-      <translation type="unfinished">Vannmerke beskyttelse</translation>
+      <translation>Vannmerke beskyttelse</translation>
+    </message>
+    <message>
+      <source>Banned rating IP list</source>
+      <translation type="unfinished">Banned karakter IP liste</translation>
+    </message>
+    <message>
+      <source>Banned commenting IP list</source>
+      <translation type="unfinished">Banned kommenterer IP liste</translation>
     </message>
   </context>
   <context>
     <name>systemconfig/watermark</name>
     <message>
       <source>Watermark configuration</source>
-      <translation type="unfinished">Vannmerke konfigurasjon</translation>
+      <translation>Vannmerke konfigurasjon</translation>
     </message>
     <message>
       <source>Settings updated</source>
-      <translation type="unfinished">Innstillinger oppdateres</translation>
+      <translation>Innstillinger oppdateres</translation>
     </message>
     <message>
       <source>Delete watermark</source>
-      <translation type="unfinished">Slett vannmerke</translation>
+      <translation>Slett vannmerke</translation>
     </message>
     <message>
       <source>Image, it is recommended PNG type image</source>
-      <translation type="unfinished">Image, anbefales det PNG type bilde</translation>
+      <translation>Image, anbefales det PNG type bilde</translation>
     </message>
     <message>
       <source>Settings</source>
-      <translation type="unfinished">Innstillinger</translation>
+      <translation>Innstillinger</translation>
     </message>
     <message>
       <source>Watermark disabled</source>
-      <translation type="unfinished">Vannmerke deaktivert</translation>
+      <translation>Vannmerke deaktivert</translation>
     </message>
     <message>
       <source>Watermark enabled for normal size thumbnails</source>
-      <translation type="unfinished">Vannmerke aktivert for normal st&#xF8;rrelse miniatyrbilder</translation>
+      <translation>Vannmerke aktivert for normal st&#xF8;rrelse miniatyrbilder</translation>
     </message>
     <message>
       <source>Watermark enabled for all images</source>
-      <translation type="unfinished">Vannmerke aktivert for alle bilder</translation>
+      <translation>Vannmerke aktivert for alle bilder</translation>
     </message>
     <message>
       <source>Watermark position</source>
-      <translation type="unfinished">Vannmerke posisjon</translation>
+      <translation>Vannmerke posisjon</translation>
     </message>
     <message>
       <source>Top left</source>
-      <translation type="unfinished">&#xD8;verst til venstre</translation>
+      <translation>&#xD8;verst til venstre</translation>
     </message>
     <message>
       <source>Top right</source>
-      <translation type="unfinished">&#xD8;verst til h&#xF8;yre</translation>
+      <translation>&#xD8;verst til h&#xF8;yre</translation>
     </message>
     <message>
       <source>Bottom left</source>
-      <translation type="unfinished">Nederst til venstre</translation>
+      <translation>Nederst til venstre</translation>
     </message>
     <message>
       <source>Bottom right</source>
-      <translation type="unfinished">Nederst til h&#xF8;yre</translation>
+      <translation>Nederst til h&#xF8;yre</translation>
     </message>
     <message>
       <source>Center</source>
-      <translation type="unfinished">Center</translation>
+      <translation>Center</translation>
     </message>
     <message>
       <source>Watermark padding from borders</source>
-      <translation type="unfinished">Vannmerke polstring fra grensen</translation>
+      <translation>Vannmerke polstring fra grensen</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
     </message>
     <message>
       <source>Watermark</source>
-      <translation type="unfinished">Vannmerke</translation>
+      <translation>Vannmerke</translation>
     </message>
   </context>
   <context>
     <name>user/account</name>
     <message>
       <source>Logged user</source>
-      <translation type="unfinished">Logget brukeren</translation>
+      <translation>Logget brukeren</translation>
     </message>
     <message>
       <source>Account updated</source>
-      <translation type="unfinished">Konto oppdatert</translation>
+      <translation>Konto oppdatert</translation>
     </message>
     <message>
       <source>Do not enter password unless you want to change it</source>
-      <translation type="unfinished">Ikke oppgi passord hvis du &#xF8;nsker &#xE5; endre det</translation>
+      <translation>Ikke oppgi passord hvis du &#xF8;nsker &#xE5; endre det</translation>
     </message>
     <message>
       <source>Login information</source>
-      <translation type="unfinished">Logg inn informasjon</translation>
+      <translation>Logg inn informasjon</translation>
     </message>
     <message>
       <source>Username</source>
-      <translation type="unfinished">Brukernavn</translation>
+      <translation>Brukernavn</translation>
     </message>
     <message>
       <source>Password</source>
-      <translation type="unfinished">Passord</translation>
+      <translation>Passord</translation>
     </message>
     <message>
       <source>Repeat password</source>
-      <translation type="unfinished">Gjenta passordet</translation>
+      <translation>Gjenta passordet</translation>
     </message>
     <message>
       <source>Contact information</source>
-      <translation type="unfinished">Kontaktinformasjon</translation>
+      <translation>Kontaktinformasjon</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
+      <translation>E-post</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
+    </message>
+    <message>
+      <source>Message send</source>
+      <translation type="unfinished">Message send</translation>
+    </message>
+    <message>
+      <source>Add google account</source>
+      <translation type="unfinished">Legg google konto</translation>
+    </message>
+    <message>
+      <source>Working</source>
+      <translation type="unfinished">Working</translation>
     </message>
     <message>
       <source>Wrong email address</source>
-      <translation type="unfinished">Feil e-postadresse</translation>
+      <translation>Feil e-postadresse</translation>
     </message>
     <message>
       <source>Passwords mismatch</source>
-      <translation type="unfinished">Passord mismatch</translation>
+      <translation>Passord mismatch</translation>
     </message>
   </context>
   <context>
     <name>user/edit</name>
     <message>
       <source>User edit</source>
-      <translation type="unfinished">Bruker rediger</translation>
+      <translation>Bruker rediger</translation>
     </message>
     <message>
       <source>Do not enter password unless you want to change it</source>
-      <translation type="unfinished">Ikke oppgi passord hvis du &#xF8;nsker &#xE5; endre det</translation>
+      <translation>Ikke oppgi passord hvis du &#xF8;nsker &#xE5; endre det</translation>
     </message>
     <message>
       <source>Login information</source>
-      <translation type="unfinished">Logg inn informasjon</translation>
+      <translation>Logg inn informasjon</translation>
     </message>
     <message>
       <source>Username</source>
-      <translation type="unfinished">Brukernavn</translation>
+      <translation>Brukernavn</translation>
     </message>
     <message>
       <source>Password</source>
-      <translation type="unfinished">Passord</translation>
+      <translation>Passord</translation>
     </message>
     <message>
       <source>Repeat password</source>
-      <translation type="unfinished">Gjenta passordet</translation>
+      <translation>Gjenta passordet</translation>
     </message>
     <message>
       <source>Contact information</source>
-      <translation type="unfinished">Kontaktinformasjon</translation>
+      <translation>Kontaktinformasjon</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
+      <translation>E-post</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
+    </message>
+    <message>
+      <source>User prifle</source>
+      <translation type="unfinished">Bruker prifle</translation>
     </message>
     <message>
       <source>My account</source>
-      <translation type="unfinished">Min konto</translation>
+      <translation>Min konto</translation>
+    </message>
+    <message>
+      <source>Facebook albums</source>
+      <translation type="unfinished">Facebook album</translation>
+    </message>
+    <message>
+      <source>Facebook session has expired, please login</source>
+      <translation type="unfinished">Facebook &#xF8;kten er utl&#xF8;pt, vennligst logg deg inn</translation>
+    </message>
+    <message>
+      <source>Account</source>
+      <translation type="unfinished">Konto</translation>
+    </message>
+    <message>
+      <source>Albums</source>
+      <translation type="unfinished">Album</translation>
     </message>
     <message>
       <source>My albums</source>
-      <translation type="unfinished">Mitt album</translation>
+      <translation>Mitt album</translation>
     </message>
     <message>
       <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
+      <translation>Systemkonfigurasjon</translation>
     </message>
     <message>
       <source>Account data</source>
-      <translation type="unfinished">Kontodata</translation>
+      <translation>Kontodata</translation>
     </message>
     <message>
       <source>Wrong email address</source>
-      <translation type="unfinished">Feil e-postadresse</translation>
+      <translation>Feil e-postadresse</translation>
     </message>
     <message>
       <source>Passwords mismatch</source>
-      <translation type="unfinished">Passord mismatch</translation>
+      <translation>Passord mismatch</translation>
     </message>
     <message>
       <source>Users</source>
-      <translation type="unfinished">Brukere</translation>
+      <translation>Brukere</translation>
+    </message>
+    <message>
+      <source>Authentifion with google</source>
+      <translation type="unfinished">Authentifion med google</translation>
     </message>
   </context>
   <context>
     <name>user/editgroup</name>
     <message>
       <source>Group edit</source>
-      <translation type="unfinished">Gruppe rediger</translation>
+      <translation>Gruppe rediger</translation>
     </message>
     <message>
       <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
+      <translation>Tittel</translation>
     </message>
     <message>
       <source>Update</source>
-      <translation type="unfinished">Update</translation>
+      <translation>Update</translation>
     </message>
     <message>
       <source>Assigned users</source>
-      <translation type="unfinished">Tilordnet brukere</translation>
+      <translation>Tilordnet brukere</translation>
     </message>
     <message>
       <source>Username</source>
-      <translation type="unfinished">Brukernavn</translation>
+      <translation>Brukernavn</translation>
     </message>
     <message>
       <source>Remove user from group</source>
-      <translation type="unfinished">Fjerne bruker fra gruppe</translation>
+      <translation>Fjerne bruker fra gruppe</translation>
     </message>
     <message>
       <source>Assign user</source>
-      <translation type="unfinished">Tilordne brukeren</translation>
+      <translation>Tilordne brukeren</translation>
     </message>
     <message>
       <source>User assignment</source>
-      <translation type="unfinished">Bruker oppdrag</translation>
+      <translation>Bruker oppdrag</translation>
     </message>
     <message>
       <source>Assigned roles</source>
-      <translation type="unfinished">Tildelt roller</translation>
+      <translation>Tildelt roller</translation>
     </message>
     <message>
       <source>Remove role from group</source>
-      <translation type="unfinished">Fjern rolle fra gruppe</translation>
+      <translation>Fjern rolle fra gruppe</translation>
     </message>
     <message>
       <source>Assign role</source>
-      <translation type="unfinished">Tilordne rolle</translation>
+      <translation>Tilordne rolle</translation>
     </message>
     <message>
       <source>Role assignment</source>
-      <translation type="unfinished">Rolletilordning</translation>
+      <translation>Rolletilordning</translation>
     </message>
     <message>
       <source>Please enter group name</source>
-      <translation type="unfinished">Vennligst skriv inn gruppenavn</translation>
+      <translation>Vennligst skriv inn gruppenavn</translation>
     </message>
     <message>
       <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
+      <translation>Systemkonfigurasjon</translation>
     </message>
     <message>
       <source>Groups</source>
-      <translation type="unfinished">Grupper</translation>
+      <translation>Grupper</translation>
     </message>
   </context>
   <context>
@@ -1326,477 +1546,601 @@
       <translation type="unfinished">E-post</translation>
     </message>
     <message>
+      <source>User</source>
+      <translation type="unfinished">Bruker</translation>
+    </message>
+    <message>
       <source>Assign</source>
-      <translation type="unfinished">Tilordne</translation>
+      <translation>Tilordne</translation>
     </message>
   </context>
   <context>
     <name>user/login</name>
     <message>
       <source>Please login</source>
-      <translation type="unfinished">Vennligst logg inn</translation>
+      <translation>Vennligst logg inn</translation>
     </message>
     <message>
       <source>Username</source>
-      <translation type="unfinished">Brukernavn</translation>
+      <translation>Brukernavn</translation>
     </message>
     <message>
       <source>Password</source>
-      <translation type="unfinished">Passord</translation>
+      <translation>Passord</translation>
     </message>
     <message>
       <source>Login</source>
-      <translation type="unfinished">Logg inn</translation>
+      <translation>Logg inn</translation>
     </message>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Passord minner</translation>
+      <translation>Passord minner</translation>
     </message>
     <message>
-      <source>Registration is complete</source>
-      <translation type="unfinished">Registrering er fullf&#xF8;rt</translation>
+      <source>Please login with your facebook account</source>
+      <translation type="unfinished">Vennligst logg inn med din Facebook-konto</translation>
     </message>
     <message>
-      <source>Checkout</source>
-      <translation type="unfinished">Checkout</translation>
+      <source>Report abuse</source>
+      <translation type="unfinished">Rapporter misbruk</translation>
     </message>
     <message>
-      <source>Incorrect username or password</source>
-      <translation type="unfinished">Feil brukernavn eller passord</translation>
-    </message>
-  </context>
-  <context>
-    <name>user/new</name>
-    <message>
-      <source>New user</source>
-      <translation type="unfinished">Ny bruker</translation>
-    </message>
-    <message>
-      <source>Login information</source>
-      <translation type="unfinished">Logg inn informasjon</translation>
-    </message>
-    <message>
-      <source>Username</source>
-      <translation type="unfinished">Brukernavn</translation>
-    </message>
-    <message>
-      <source>Password</source>
-      <translation type="unfinished">Passord</translation>
-    </message>
-    <message>
-      <source>Repeat password</source>
-      <translation type="unfinished">Gjenta passordet</translation>
-    </message>
-    <message>
-      <source>Contact information</source>
-      <translation type="unfinished">Kontaktinformasjon</translation>
-    </message>
-    <message>
-      <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
-    </message>
-    <message>
-      <source>Save</source>
-      <translation type="unfinished">Lagre</translation>
-    </message>
-    <message>
-      <source>Safe code</source>
-      <translation type="unfinished">Sikker kode</translation>
-    </message>
-    <message>
-      <source>Please enter album name!</source>
-      <translation type="unfinished">Vennligst skriv inn album navn!</translation>
-    </message>
-    <message>
-      <source>Please enter category name!</source>
-      <translation type="unfinished">Vennligst skriv inn kategori navn!</translation>
-    </message>
-    <message>
-      <source>Sutch username is already taken!</source>
-      <translation type="unfinished">Sutch brukernavnet er allerede tatt!</translation>
-    </message>
-    <message>
-      <source>Wrong email address</source>
-      <translation type="unfinished">Feil e-postadresse</translation>
-    </message>
-    <message>
-      <source>Please enter username</source>
-      <translation type="unfinished">Vennligst oppgi brukernavn</translation>
-    </message>
-    <message>
-      <source>User exists</source>
-      <translation type="unfinished">Brukeren finnes</translation>
-    </message>
-    <message>
-      <source>Passwords mismatch</source>
-      <translation type="unfinished">Passord mismatch</translation>
-    </message>
-    <message>
-      <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
-    </message>
-    <message>
-      <source>Users</source>
-      <translation type="unfinished">Brukere</translation>
-    </message>
-    <message>
-      <source>Please enter group name</source>
-      <translation type="unfinished">Vennligst skriv inn gruppenavn</translation>
-    </message>
-    <message>
-      <source>E-mail taken!</source>
-      <translation type="unfinished">E-mail tatt!</translation>
-    </message>
-  </context>
-  <context>
-    <name>user/newgroup</name>
-    <message>
-      <source>New group</source>
-      <translation type="unfinished">Ny gruppe</translation>
-    </message>
-    <message>
-      <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
-    </message>
-    <message>
-      <source>Save</source>
-      <translation type="unfinished">Lagre</translation>
-    </message>
-    <message>
-      <source>Save and assign user</source>
-      <translation type="unfinished">Lagre og tilordne brukeren</translation>
-    </message>
-    <message>
-      <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
-    </message>
-    <message>
-      <source>Groups</source>
-      <translation type="unfinished">Grupper</translation>
-    </message>
-  </context>
-  <context>
-    <name>user/userlist</name>
-    <message>
-      <source>Users</source>
-      <translation type="unfinished">Brukere</translation>
-    </message>
-    <message>
-      <source>Username</source>
-      <translation type="unfinished">Brukernavn</translation>
-    </message>
-    <message>
-      <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
-    </message>
-    <message>
-      <source>Edit user</source>
-      <translation type="unfinished">Rediger bruker</translation>
-    </message>
-    <message>
-      <source>Delete user</source>
-      <translation type="unfinished">Slett bruker</translation>
-    </message>
-    <message>
-      <source>New user</source>
-      <translation type="unfinished">Ny bruker</translation>
-    </message>
-    <message>
-      <source>System configuration</source>
-      <translation type="unfinished">Systemkonfigurasjon</translation>
-    </message>
-  </context>
-  <context>
-    <name>pagelayout/pagelayout</name>
-    <message>
-      <source>Home</source>
-      <translation type="unfinished">Hjem</translation>
-    </message>
-     <message>
-      <source>Search</source>
-      <translation>Søk</translation>
-    </message>
-    <message>
-      <source>Search by keyword</source>
-      <translation>Søk etter nøkkelord</translation>
-    </message>
-    <message>
-      <source>Search by color</source>
-      <translation>Søk etter farge</translation>
-    </message>
-    <message>
-      <source>Configuration</source>
-      <translation type="unfinished">Konfigurasjon</translation>
-    </message>
-    <message>
-      <source>Gallery categorys</source>
-      <translation type="unfinished">Gallery Kategorier</translation>
-    </message>
-    <message>
-      <source>Batch images add</source>
-      <translation type="unfinished">Batch bilder legg til</translation>
-    </message>
-    <message>
-      <source>Duplicates</source>
-      <translation type="unfinished">Duplikater</translation>
-    </message>
-    <message>
-      <source>Static articles</source>
-      <translation type="unfinished">Statisk artikler</translation>
-    </message>
-    <message>
-      <source>Statistic</source>
-      <translation type="unfinished">Statistikktype</translation>
-    </message>
-    <message>
-      <source>Shop</source>
-      <translation type="unfinished">Shop</translation>
-    </message>
-    <message>
-      <source>Delete photo by ID</source>
-      <translation type="unfinished">Slett bilde av ID</translation>
-    </message>
-    <message>
-      <source>Photo was deleted</source>
-      <translation type="unfinished">Bildet ble slettet</translation>
-    </message>
-    <message>
-      <source>Root category</source>
-      <translation type="unfinished">Root kategori</translation>
-    </message>
-    <message>
-      <source>Open</source>
-      <translation type="unfinished">Open</translation>
-    </message>
-    <message>
-      <source>Edit</source>
-      <translation type="unfinished">Rediger</translation>
-    </message>
-    <message>
-      <source>New album</source>
-      <translation type="unfinished">Nytt album</translation>
-    </message>
-    <message>
-      <source>New batch albums</source>
-      <translation type="unfinished">Ny batch album</translation>
-    </message>
-    <message>
-      <source>New category</source>
-      <translation type="unfinished">Ny kategori</translation>
-    </message>
-    <message>
-      <source>Delete album</source>
-      <translation type="unfinished">Slett album</translation>
-    </message>
-    <message>
-      <source>Delete category</source>
-      <translation type="unfinished">Slett kategori</translation>
-    </message>
-    <message>
-      <source>Add images</source>
-      <translation type="unfinished">Legg til bilder</translation>
-    </message>
-    <message>
-      <source>Move images</source>
-      <translation type="unfinished">Flytt bilder</translation>
-    </message>
-    <message>
-      <source>It\'s NOT fake!</source>
-      <translation type="unfinished">It \ &amp;#39;s IKKE fake!</translation>
-    </message>
-    <message>
-      <source>Rendered in</source>
-      <translation type="unfinished">Gjengitt i</translation>
-    </message>
-    <message>
-      <source>Logged user</source>
-      <translation type="unfinished">Logget brukeren</translation>
-    </message>
-    <message>
-      <source>Account</source>
-      <translation type="unfinished">Konto</translation>
-    </message>
-    <message>
-      <source>Logout</source>
-      <translation type="unfinished">Logg ut</translation>
-    </message>
-    <message>
-      <source>Login</source>
-      <translation type="unfinished">Logg inn</translation>
-    </message>
-    <message>
-      <source>Last uploaded images</source>
-      <translation type="unfinished">Sist opplastede bilder</translation>
-    </message>
-    <message>
-      <source>Last uploads to albums</source>
-      <translation>Siste opplastninger til album</translation>
-    </message> 
-    <message>
-      <source>All time</source>
-      <translation type="unfinished">All time</translation>
-    </message>
-    <message>
-      <source>Most popular</source>
-      <translation type="unfinished">Mest popul&#xE6;re</translation>
-    </message>
-    <message>
-      <source>Top rated</source>
-      <translation type="unfinished">H&#xF8;yt rangerte</translation>
-    </message>
-    <message>
-      <source>Interactive</source>
-      <translation type="unfinished">Interaktiv</translation>
-    </message>
-    <message>
-      <source>Last uploads</source>
-      <translation type="unfinished">Siste opplastninger</translation>
-    </message>
-    <message>
-      <source>Last hits</source>
-      <translation type="unfinished">Siste treff</translation>
-    </message>
-    <message>
-      <source>Last commented</source>
-      <translation type="unfinished">Sist kommenterte</translation>
-    </message>
-    <message>
-      <source>Last rated</source>
-      <translation type="unfinished">Siste vurdert</translation>
-    </message>
-    <message>
-      <source>Last 24 h.</source>
-      <translation type="unfinished">Siste 24 t.</translation>
-    </message>
-    <message>
-      <source>Last viewed images</source>
-      <translation type="unfinished">Sist viste bilder</translation>
-    </message>
-    <message>
-      <source>Last searches</source>
-      <translation type="unfinished">Siste s&#xF8;k</translation>
-    </message>
-    <message>
-      <source>My account</source>
-      <translation type="unfinished">Min konto</translation>
-    </message>
-    <message>
-      <source>Manage albums</source>
-      <translation type="unfinished">Behandle album</translation>
-    </message>
-    <message>
-      <source>Credits</source>
-      <translation type="unfinished">Mynter</translation>
-    </message>
-    <message>
-      <source>My orders</source>
-      <translation type="unfinished">Mine ordre</translation>
-    </message>
-    <message>
-      <source>My credits orders</source>
-      <translation type="unfinished">Min studiepoeng ordre</translation>
-    </message>
-    <message>
-      <source>Register</source>
-      <translation type="unfinished">Register</translation>
-    </message>
-    <message>
-      <source>My favorites</source>
-      <translation type="unfinished">Mine favoritter</translation>
-    </message>
-    <message>
-      <source>Basket</source>
-      <translation type="unfinished">Basket</translation>
-    </message>
-    <message>
-      <source>Upload</source>
-      <translation type="unfinished">Last opp</translation>
-    </message>
-    <message>
-      <source>Upload zip</source>
-      <translation type="unfinished">Last opp zip</translation>
-    </message>
-    <message>
-      <source>Search entire gallery</source>
-      <translation type="unfinished">S&#xF8;k p&#xE5; hele galleriet</translation>
-    </message>
-    <message>
-      <source>Enter keyword or phrase</source>
-      <translation type="unfinished">Skriv inn s&#xF8;keord eller setning</translation>
-    </message>
-    <message>
-      <source>Search...</source>
-      <translation type="unfinished">S&#xF8;k ...</translation>
-    </message>
-  </context>
-  <context>
-    <name>feedback/form</name>
-    <message>
-      <source>Feedback</source>
-      <translation type="unfinished">Tilbakemelding</translation>
-    </message>
-    <message>
-      <source>Feedback was send</source>
-      <translation type="unfinished">Tilbakemelding var send</translation>
-    </message>
-    <message>
-      <source>Name</source>
-      <translation type="unfinished">Navn</translation>
-    </message>
-    <message>
-      <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
-    </message>
-    <message>
-      <source>Text</source>
-      <translation type="unfinished">Tekst</translation>
-    </message>
-    <message>
-      <source>Captcha image</source>
-      <translation type="unfinished">Captcha image</translation>
-    </message>
-    <message>
-      <source>Captcha code</source>
-      <translation type="unfinished">Captcha-kode</translation>
-    </message>
-    <message>
-      <source>Required fields</source>
-      <translation type="unfinished">Obligatoriske felt</translation>
+      <source>Please write whats wrong within a post</source>
+      <translation type="unfinished">Vennligst skriv hva galt innenfor et innlegg</translation>
     </message>
     <message>
       <source>Send</source>
       <translation type="unfinished">Send</translation>
     </message>
     <message>
+      <source>Registration is complete</source>
+      <translation>Registrering er fullf&#xF8;rt</translation>
+    </message>
+    <message>
+      <source>Registration is complete please login.</source>
+      <translation type="unfinished">Registreringen er fullf&#xF8;rt kan du logge inn.</translation>
+    </message>
+    <message>
+      <source>Checkout</source>
+      <translation>Checkout</translation>
+    </message>
+    <message>
+      <source>Incorrect username or password</source>
+      <translation>Feil brukernavn eller passord</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/new</name>
+    <message>
+      <source>New user</source>
+      <translation>Ny bruker</translation>
+    </message>
+    <message>
+      <source>Login information</source>
+      <translation>Logg inn informasjon</translation>
+    </message>
+    <message>
+      <source>Username</source>
+      <translation>Brukernavn</translation>
+    </message>
+    <message>
+      <source>Password</source>
+      <translation>Passord</translation>
+    </message>
+    <message>
+      <source>Repeat password</source>
+      <translation>Gjenta passordet</translation>
+    </message>
+    <message>
+      <source>Contact information</source>
+      <translation>Kontaktinformasjon</translation>
+    </message>
+    <message>
+      <source>E-mail</source>
+      <translation>E-post</translation>
+    </message>
+    <message>
+      <source>Save</source>
+      <translation>Lagre</translation>
+    </message>
+    <message>
+      <source>OR login with</source>
+      <translation type="unfinished">Eller logg inn med</translation>
+    </message>
+    <message>
+      <source>Login with google account</source>
+      <translation type="unfinished">Logg inn med google konto</translation>
+    </message>
+    <message>
+      <source>Working</source>
+      <translation type="unfinished">Working</translation>
+    </message>
+    <message>
+      <source>Working...</source>
+      <translation type="unfinished">Arbeide ...</translation>
+    </message>
+    <message>
+      <source>Registration</source>
+      <translation type="unfinished">Registrering</translation>
+    </message>
+    <message>
+      <source>Safe code</source>
+      <translation>Sikker kode</translation>
+    </message>
+    <message>
+      <source>Register</source>
+      <translation type="unfinished">Registrer</translation>
+    </message>
+    <message>
+      <source>Sutch username is already taken!</source>
+      <translation>Sutch brukernavnet er allerede tatt!</translation>
+    </message>
+    <message>
+      <source>Please enter album name!</source>
+      <translation>Vennligst skriv inn album navn!</translation>
+    </message>
+    <message>
+      <source>Please enter category name!</source>
+      <translation>Vennligst skriv inn kategori navn!</translation>
+    </message>
+    <message>
+      <source>User exists</source>
+      <translation>Brukeren finnes</translation>
+    </message>
+    <message>
+      <source>Wrong email address</source>
+      <translation>Feil e-postadresse</translation>
+    </message>
+    <message>
+      <source>Please enter username</source>
+      <translation>Vennligst oppgi brukernavn</translation>
+    </message>
+    <message>
+      <source>Passwords mismatch</source>
+      <translation>Passord mismatch</translation>
+    </message>
+    <message>
+      <source>System configuration</source>
+      <translation>Systemkonfigurasjon</translation>
+    </message>
+    <message>
+      <source>Users</source>
+      <translation>Brukere</translation>
+    </message>
+    <message>
+      <source>Please enter group name</source>
+      <translation>Vennligst skriv inn gruppenavn</translation>
+    </message>
+    <message>
+      <source>E-mail taken!</source>
+      <translation>E-mail tatt!</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/newgroup</name>
+    <message>
+      <source>New group</source>
+      <translation>Ny gruppe</translation>
+    </message>
+    <message>
+      <source>Title</source>
+      <translation>Tittel</translation>
+    </message>
+    <message>
+      <source>Save</source>
+      <translation>Lagre</translation>
+    </message>
+    <message>
+      <source>Save and assign user</source>
+      <translation>Lagre og tilordne brukeren</translation>
+    </message>
+    <message>
+      <source>System configuration</source>
+      <translation>Systemkonfigurasjon</translation>
+    </message>
+    <message>
+      <source>Groups</source>
+      <translation>Grupper</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/userlist</name>
+    <message>
+      <source>Report list</source>
+      <translation type="unfinished">Rapport liste</translation>
+    </message>
+    <message>
+      <source>Report</source>
+      <translation type="unfinished">Rapport</translation>
+    </message>
+    <message>
+      <source>Topic</source>
+      <translation type="unfinished">Emne</translation>
+    </message>
+    <message>
+      <source>Topic message</source>
+      <translation type="unfinished">Emne melding</translation>
+    </message>
+    <message>
+      <source>Date</source>
+      <translation type="unfinished">Dato</translation>
+    </message>
+    <message>
+      <source>Edit topic</source>
+      <translation type="unfinished">Rediger emne</translation>
+    </message>
+    <message>
+      <source>Delete topic</source>
+      <translation type="unfinished">Slett emne</translation>
+    </message>
+    <message>
+      <source>IP</source>
+      <translation type="unfinished">IP</translation>
+    </message>
+    <message>
+      <source>Users</source>
+      <translation>Brukere</translation>
+    </message>
+    <message>
+      <source>Username</source>
+      <translation>Brukernavn</translation>
+    </message>
+    <message>
+      <source>E-mail</source>
+      <translation>E-post</translation>
+    </message>
+    <message>
+      <source>Edit user</source>
+      <translation>Rediger bruker</translation>
+    </message>
+    <message>
+      <source>Delete user</source>
+      <translation>Slett bruker</translation>
+    </message>
+    <message>
+      <source>New user</source>
+      <translation>Ny bruker</translation>
+    </message>
+    <message>
+      <source>Replace image</source>
+      <translation type="unfinished">Bytt bilde</translation>
+    </message>
+    <message>
+      <source>System configuration</source>
+      <translation>Systemkonfigurasjon</translation>
+    </message>
+  </context>
+  <context>
+    <name>pagelayout/pagelayout</name>
+    <message>
+      <source>Home</source>
+      <translation>Hjem</translation>
+    </message>
+    <message>
+      <source>Configuration</source>
+      <translation>Konfigurasjon</translation>
+    </message>
+    <message>
+      <source>Gallery categorys</source>
+      <translation>Gallery Kategorier</translation>
+    </message>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation>Siste opplastninger til album</translation>
+    </message>
+    <message>
+      <source>Batch images add</source>
+      <translation>Batch bilder legg til</translation>
+    </message>
+    <message>
+      <source>Duplicates</source>
+      <translation>Duplikater</translation>
+    </message>
+    <message>
+      <source>Static articles</source>
+      <translation>Statisk artikler</translation>
+    </message>
+    <message>
+      <source>Statistic</source>
+      <translation>Statistikktype</translation>
+    </message>
+    <message>
+      <source>Shop</source>
+      <translation>Shop</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">Forum</translation>
+    </message>
+    <message>
+      <source>Delete photo by ID</source>
+      <translation>Slett bilde av ID</translation>
+    </message>
+    <message>
+      <source>Photo was deleted</source>
+      <translation>Bildet ble slettet</translation>
+    </message>
+    <message>
+      <source>Go to album</source>
+      <translation type="unfinished">G&#xE5; til album</translation>
+    </message>
+    <message>
+      <source>Go to forum topic</source>
+      <translation type="unfinished">G&#xE5; til forum topic</translation>
+    </message>
+    <message>
+      <source>Go to forum category</source>
+      <translation type="unfinished">G&#xE5; til forum kategorien</translation>
+    </message>
+    <message>
+      <source>Go to image</source>
+      <translation type="unfinished">G&#xE5; til bilde</translation>
+    </message>
+    <message>
+      <source>Root category</source>
+      <translation>Root kategori</translation>
+    </message>
+    <message>
+      <source>Open</source>
+      <translation>Open</translation>
+    </message>
+    <message>
+      <source>Edit</source>
+      <translation>Rediger</translation>
+    </message>
+    <message>
+      <source>New album</source>
+      <translation>Nytt album</translation>
+    </message>
+    <message>
+      <source>New batch albums</source>
+      <translation>Ny batch album</translation>
+    </message>
+    <message>
+      <source>New category</source>
+      <translation>Ny kategori</translation>
+    </message>
+    <message>
+      <source>Delete album</source>
+      <translation>Slett album</translation>
+    </message>
+    <message>
+      <source>Delete category</source>
+      <translation>Slett kategori</translation>
+    </message>
+    <message>
+      <source>Add images</source>
+      <translation>Legg til bilder</translation>
+    </message>
+    <message>
+      <source>Move images</source>
+      <translation>Flytt bilder</translation>
+    </message>
+    <message>
+      <source>It\'s NOT fake!</source>
+      <translation>It \ &amp;#39;s IKKE fake!</translation>
+    </message>
+    <message>
+      <source>Rendered in</source>
+      <translation>Gjengitt i</translation>
+    </message>
+    <message>
+      <source>Logged user</source>
+      <translation>Logget brukeren</translation>
+    </message>
+    <message>
+      <source>Account</source>
+      <translation>Konto</translation>
+    </message>
+    <message>
+      <source>Logout</source>
+      <translation>Logg ut</translation>
+    </message>
+    <message>
+      <source>Login</source>
+      <translation>Logg inn</translation>
+    </message>
+    <message>
+      <source>Enter keyword or phrase</source>
+      <translation>Skriv inn s&#xF8;keord eller setning</translation>
+    </message>
+    <message>
+      <source>Search entire forum</source>
+      <translation type="unfinished">S&#xF8;k p&#xE5; hele forumet</translation>
+    </message>
+    <message>
+      <source>Search</source>
+      <translation>S&#xF8;k</translation>
+    </message>
+    <message>
+      <source>Last uploads</source>
+      <translation>Siste opplastninger</translation>
+    </message>
+    <message>
+      <source>Last commented</source>
+      <translation>Sist kommenterte</translation>
+    </message>
+    <message>
+      <source>Last hits</source>
+      <translation>Siste treff</translation>
+    </message>
+    <message>
+      <source>Last rated</source>
+      <translation>Siste vurdert</translation>
+    </message>
+    <message>
+      <source>Last 24 h.</source>
+      <translation>Siste 24 t.</translation>
+    </message>
+    <message>
+      <source>Most popular</source>
+      <translation>Mest popul&#xE6;re</translation>
+    </message>
+    <message>
+      <source>Top rated</source>
+      <translation>H&#xF8;yt rangerte</translation>
+    </message>
+    <message>
+      <source>Search entire gallery</source>
+      <translation>S&#xF8;k p&#xE5; hele galleriet</translation>
+    </message>
+    <message>
+      <source>Last uploaded images</source>
+      <translation>Sist opplastede bilder</translation>
+    </message>
+    <message>
+      <source>View all categorys</source>
+      <translation type="unfinished">Vis alle Kategorier</translation>
+    </message>
+    <message>
+      <source>All time</source>
+      <translation>All time</translation>
+    </message>
+    <message>
+      <source>Interactive</source>
+      <translation>Interaktiv</translation>
+    </message>
+    <message>
+      <source>Search by keyword</source>
+      <translation>S&#xF8;k etter n&#xF8;kkelord</translation>
+    </message>
+    <message>
+      <source>Search by color</source>
+      <translation>S&#xF8;k etter farge</translation>
+    </message>
+    <message>
+      <source>Search by similarity</source>
+      <translation type="unfinished">S&#xF8;k etter utseende</translation>
+    </message>
+    <message>
+      <source>Search by sketch</source>
+      <translation type="unfinished">S&#xF8;k etter skisse</translation>
+    </message>
+    <message>
+      <source>Last viewed images</source>
+      <translation>Sist viste bilder</translation>
+    </message>
+    <message>
+      <source>Last searches</source>
+      <translation>Siste s&#xF8;k</translation>
+    </message>
+    <message>
+      <source>My account</source>
+      <translation>Min konto</translation>
+    </message>
+    <message>
+      <source>Manage albums</source>
+      <translation>Behandle album</translation>
+    </message>
+    <message>
+      <source>Credits</source>
+      <translation>Mynter</translation>
+    </message>
+    <message>
+      <source>My orders</source>
+      <translation>Mine ordre</translation>
+    </message>
+    <message>
+      <source>My credits orders</source>
+      <translation>Min studiepoeng ordre</translation>
+    </message>
+    <message>
+      <source>Import images from facebook</source>
+      <translation type="unfinished">Importere bilder fra facebook</translation>
+    </message>
+    <message>
+      <source>Register</source>
+      <translation>Register</translation>
+    </message>
+    <message>
+      <source>My favorites</source>
+      <translation>Mine favoritter</translation>
+    </message>
+    <message>
+      <source>Basket</source>
+      <translation>Basket</translation>
+    </message>
+    <message>
+      <source>Upload</source>
+      <translation>Last opp</translation>
+    </message>
+    <message>
+      <source>Upload zip</source>
+      <translation>Last opp zip</translation>
+    </message>
+    <message>
+      <source>Search...</source>
+      <translation>S&#xF8;k ...</translation>
+    </message>
+  </context>
+  <context>
+    <name>feedback/form</name>
+    <message>
+      <source>Feedback</source>
+      <translation>Tilbakemelding</translation>
+    </message>
+    <message>
+      <source>Feedback was send</source>
+      <translation>Tilbakemelding var send</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation>Navn</translation>
+    </message>
+    <message>
+      <source>E-mail</source>
+      <translation>E-post</translation>
+    </message>
+    <message>
+      <source>Text</source>
+      <translation>Tekst</translation>
+    </message>
+    <message>
+      <source>Captcha image</source>
+      <translation>Captcha image</translation>
+    </message>
+    <message>
+      <source>Captcha code</source>
+      <translation>Captcha-kode</translation>
+    </message>
+    <message>
+      <source>Required fields</source>
+      <translation>Obligatoriske felt</translation>
+    </message>
+    <message>
+      <source>Send</source>
+      <translation>Send</translation>
+    </message>
+    <message>
       <source>Please enter name!</source>
-      <translation type="unfinished">Vennligst skriv inn navn!</translation>
+      <translation>Vennligst skriv inn navn!</translation>
     </message>
     <message>
       <source>Invalid e-mail address!</source>
-      <translation type="unfinished">Ugyldig e-postadresse!</translation>
+      <translation>Ugyldig e-postadresse!</translation>
     </message>
     <message>
       <source>Please enter text!</source>
-      <translation type="unfinished">Vennligst skriv inn tekst!</translation>
+      <translation>Vennligst skriv inn tekst!</translation>
     </message>
     <message>
       <source>Please enter captcha code!</source>
-      <translation type="unfinished">Vennligst skriv inn captcha-koden!</translation>
+      <translation>Vennligst skriv inn captcha-koden!</translation>
     </message>
   </context>
   <context>
     <name>feedback/formsend</name>
     <message>
       <source>Feedback</source>
-      <translation type="unfinished">Tilbakemelding</translation>
+      <translation>Tilbakemelding</translation>
     </message>
     <message>
       <source>Your feedback was succesfuly send</source>
-      <translation type="unfinished">Tilbakemeldingen var vellykket send</translation>
+      <translation>Tilbakemeldingen var vellykket send</translation>
     </message>
     <message>
       <source>Home page</source>
-      <translation type="unfinished">Hjemmeside</translation>
+      <translation>Hjemmeside</translation>
     </message>
   </context>
   <context>
@@ -1806,147 +2150,183 @@
       <translation type="unfinished">Hellow</translation>
     </message>
     <message>
+      <source>Hello</source>
+      <translation type="unfinished">Hallo</translation>
+    </message>
+    <message>
       <source>Feedback data</source>
-      <translation type="unfinished">Tilbakemelding data</translation>
+      <translation>Tilbakemelding data</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Navn</translation>
+      <translation>Navn</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
+      <translation>E-post</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation type="unfinished">Tekst</translation>
+      <translation>Tekst</translation>
     </message>
     <message>
       <source>Bye</source>
-      <translation type="unfinished">Bye</translation>
+      <translation>Bye</translation>
     </message>
   </context>
   <context>
     <name>gallery/image_list</name>
     <message>
       <source>preview version</source>
-      <translation type="unfinished">forh&#xE5;ndsvisning versjon</translation>
+      <translation>forh&#xE5;ndsvisning versjon</translation>
     </message>
     <message>
       <source>See full size</source>
-      <translation type="unfinished">Se full st&#xF8;rrelse</translation>
+      <translation>Se full st&#xF8;rrelse</translation>
     </message>
   </context>
   <context>
     <name>gallery/album</name>
     <message>
       <source>No records</source>
-      <translation type="unfinished">Ingen poster</translation>
+      <translation>Ingen poster</translation>
     </message>
     <message>
-      <source>Last uploaded last</source>
-      <translation type="unfinished">Sist lastet siste</translation>
+      <source>Search by color and keyword, just try to see how fun it is!</source>
+      <translation type="unfinished">S&#xF8;k etter farge og n&#xF8;kkelord, bare pr&#xF8;v &#xE5; se hvor morsomt det er!</translation>
     </message>
     <message>
-      <source>Most popular first</source>
-      <translation type="unfinished">Mest popul&#xE6;re f&#xF8;rste</translation>
+      <source>Enter keyword or phrase</source>
+      <translation type="unfinished">Skriv inn s&#xF8;keord eller setning</translation>
     </message>
     <message>
-      <source>Most popular last</source>
-      <translation type="unfinished">Mest popul&#xE6;re siste</translation>
+      <source>Search entire gallery</source>
+      <translation type="unfinished">S&#xF8;k i hele gallery</translation>
     </message>
     <message>
-      <source>Last hits first</source>
-      <translation type="unfinished">Siste treff f&#xF8;rste</translation>
+      <source>Search</source>
+      <translation type="unfinished">S&#xF8;k</translation>
     </message>
     <message>
-      <source>Last hits last</source>
-      <translation type="unfinished">Siste treff sist</translation>
+      <source>enter keyword and click color, or just click color</source>
+      <translation type="unfinished">inn s&#xF8;keordet og klikker fargen, eller bare klikk farge</translation>
     </message>
     <message>
-      <source>Last commented first</source>
-      <translation type="unfinished">Sist kommenterte f&#xF8;rste</translation>
+      <source>Include color</source>
+      <translation type="unfinished">Inkluder farge</translation>
     </message>
     <message>
-      <source>Last commented last</source>
-      <translation type="unfinished">Sist kommenterte siste</translation>
-    </message>
-    <message>
-      <source>Last rated first</source>
-      <translation type="unfinished">Siste vurdert f&#xF8;rste</translation>
-    </message>
-    <message>
-      <source>Last rated last</source>
-      <translation type="unfinished">Siste vurdert sist</translation>
-    </message>
-    <message>
-      <source>Top rated first</source>
-      <translation type="unfinished">H&#xF8;yt rangerte f&#xF8;rste</translation>
-    </message>
-    <message>
-      <source>Top rated last Last</source>
-      <translation type="unfinished">H&#xF8;yt rangerte siste Siste</translation>
-    </message>
-    <message>
-      <source>Resolution</source>
-      <translation type="unfinished">Oppl&#xF8;sning</translation>
+      <source>Exclude color</source>
+      <translation type="unfinished">Utelukk farger</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
+    </message>
+    <message>
+      <source>Last uploaded last</source>
+      <translation>Sist lastet siste</translation>
+    </message>
+    <message>
+      <source>Most popular first</source>
+      <translation>Mest popul&#xE6;re f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Most popular last</source>
+      <translation>Mest popul&#xE6;re siste</translation>
+    </message>
+    <message>
+      <source>Last hits first</source>
+      <translation>Siste treff f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Last hits last</source>
+      <translation>Siste treff sist</translation>
+    </message>
+    <message>
+      <source>Last commented first</source>
+      <translation>Sist kommenterte f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Last commented last</source>
+      <translation>Sist kommenterte siste</translation>
+    </message>
+    <message>
+      <source>Last rated first</source>
+      <translation>Siste vurdert f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Last rated last</source>
+      <translation>Siste vurdert sist</translation>
+    </message>
+    <message>
+      <source>Top rated first</source>
+      <translation>H&#xF8;yt rangerte f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Top rated last Last</source>
+      <translation>H&#xF8;yt rangerte siste Siste</translation>
+    </message>
+    <message>
+      <source>Resolution</source>
+      <translation>Oppl&#xF8;sning</translation>
     </message>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished">Sist opplastede bilder til album</translation>
+      <translation>Sist opplastede bilder til album</translation>
     </message>
   </context>
   <context>
     <name>gallery/album_list</name>
     <message>
       <source>files</source>
-      <translation type="unfinished">filer</translation>
+      <translation>filer</translation>
+    </message>
+    <message>
+      <source>Album priority</source>
+      <translation type="unfinished">Album prioritet</translation>
     </message>
   </context>
   <context>
     <name>gallery/anaglyph</name>
     <message>
       <source>Original</source>
-      <translation type="unfinished">Original</translation>
+      <translation>Original</translation>
     </message>
     <message>
       <source>Anaglyph</source>
-      <translation type="unfinished">Anaglyph</translation>
+      <translation>Anaglyph</translation>
     </message>
     <message>
       <source>Animating</source>
-      <translation type="unfinished">Animere</translation>
+      <translation>Animere</translation>
     </message>
   </context>
   <context>
     <name>gallery/createalbum</name>
     <message>
       <source>New album</source>
-      <translation type="unfinished">Nytt album</translation>
+      <translation>Nytt album</translation>
     </message>
     <message>
       <source>Album name</source>
-      <translation type="unfinished">Albumnavn</translation>
+      <translation>Albumnavn</translation>
     </message>
     <message>
       <source>Description</source>
-      <translation type="unfinished">Beskrivelse</translation>
+      <translation>Beskrivelse</translation>
     </message>
     <message>
       <source>Keywords</source>
-      <translation type="unfinished">N&#xF8;kkelord</translation>
+      <translation>N&#xF8;kkelord</translation>
     </message>
     <message>
       <source>Create</source>
-      <translation type="unfinished">Lag</translation>
+      <translation>Lag</translation>
     </message>
     <message>
       <source>Create and upload photos</source>
-      <translation type="unfinished">Opprette og laste opp bilder</translation>
+      <translation>Opprette og laste opp bilder</translation>
     </message>
   </context>
   <context>
@@ -1956,592 +2336,656 @@
       <translation type="unfinished">Venter</translation>
     </message>
     <message>
-      <source>Title</source>
-      <translation type="unfinished">Tittel</translation>
-    </message>
-    <message>
-      <source>Keywords</source>
-      <translation type="unfinished">N&#xF8;kkelord</translation>
-    </message>
-    <message>
-      <source>Cross eye image</source>
-      <translation type="unfinished">Cross &#xF8;yet bilde</translation>
-    </message>
-    <message>
-      <source>Caption</source>
-      <translation type="unfinished">Bildetekst</translation>
-    </message>
-    <message>
       <source>Sutch file already exists</source>
       <translation type="unfinished">Sutch fil finnes allerede</translation>
     </message>
     <message>
+      <source>Title</source>
+      <translation>Tittel</translation>
+    </message>
+    <message>
+      <source>Keywords</source>
+      <translation>N&#xF8;kkelord</translation>
+    </message>
+    <message>
+      <source>Cross eye image</source>
+      <translation>Cross &#xF8;yet bilde</translation>
+    </message>
+    <message>
+      <source>Caption</source>
+      <translation>Bildetekst</translation>
+    </message>
+    <message>
       <source>Enter new album name or choose public album</source>
-      <translation type="unfinished">Skriv inn nytt album navn eller velger offentlig album</translation>
+      <translation>Skriv inn nytt album navn eller velger offentlig album</translation>
     </message>
     <message>
       <source>description</source>
-      <translation type="unfinished">beskrivelse</translation>
+      <translation>beskrivelse</translation>
     </message>
   </context>
   <context>
     <name>gallery/image</name>
     <message>
-      <source>next image</source>
-      <translation type="unfinished">neste bilde</translation>
-    </message>
-    <message>
-      <source>previous image</source>
-      <translation type="unfinished">forrige bilde</translation>
-    </message>
-    <message>
-      <source>return to thumbnails</source>
-      <translation type="unfinished">tilbake til thumbnails</translation>
-    </message>
-    <message>
-      <source>Click to see fullsize</source>
-      <translation type="unfinished">Klikk for &#xE5; se full st&#xF8;rrelse</translation>
-    </message>
-    <message>
       <source>Picture comments</source>
-      <translation type="unfinished">Bilde kommentarer</translation>
+      <translation>Bilde kommentarer</translation>
     </message>
     <message>
       <source>No comments</source>
-      <translation type="unfinished">Ingen kommentarer</translation>
+      <translation>Ingen kommentarer</translation>
     </message>
     <message>
       <source>Comment stored</source>
-      <translation type="unfinished">Kommentar lagrede</translation>
+      <translation>Kommentar lagrede</translation>
     </message>
     <message>
       <source>Leave a reply</source>
-      <translation type="unfinished">Legg igjen et svar</translation>
+      <translation>Legg igjen et svar</translation>
     </message>
     <message>
       <source>Nick</source>
-      <translation type="unfinished">Nick</translation>
+      <translation>Nick</translation>
     </message>
     <message>
       <source>Max 25 characters</source>
-      <translation type="unfinished">Maks 25 tegn</translation>
+      <translation>Maks 25 tegn</translation>
     </message>
     <message>
       <source>Message</source>
-      <translation type="unfinished">Melding</translation>
+      <translation>Melding</translation>
     </message>
     <message>
       <source>Send</source>
-      <translation type="unfinished">Send</translation>
+      <translation>Send</translation>
     </message>
     <message>
-      <source>Add to favorites</source>
-      <translation type="unfinished">Legg til i favoritter</translation>
-    </message>
-    <message>
-      <source>Share this page HTML code</source>
-      <translation type="unfinished">Del denne siden HTML-kode</translation>
-    </message>
-    <message>
-      <source>Share PHPBB code</source>
-      <translation type="unfinished">Del PhpBB kode</translation>
-    </message>
-    <message>
-      <source>Anaglyph version</source>
-      <translation type="unfinished">Anaglyph versjon</translation>
-    </message>
-    <message>
-      <source>Enter tags separated by space</source>
-      <translation type="unfinished">Skriv inn tags adskilt med mellomrom</translation>
-    </message>
-    <message>
-      <source>Picture details</source>
-      <translation type="unfinished">Bilde detaljer</translation>
-    </message>
-    <message>
-      <source>Filename</source>
-      <translation type="unfinished">Filnavn</translation>
-    </message>
-    <message>
-      <source>File size</source>
-      <translation type="unfinished">Filst&#xF8;rrelse</translation>
-    </message>
-    <message>
-      <source>Image rating</source>
-      <translation type="unfinished">Image rating</translation>
-    </message>
-    <message>
-      <source>Date added</source>
-      <translation type="unfinished">Dato lagt</translation>
-    </message>
-    <message>
-      <source>Dimensions</source>
-      <translation type="unfinished">Dimensjoner</translation>
-    </message>
-    <message>
-      <source>Displayed</source>
-      <translation type="unfinished">Viste</translation>
-    </message>
-    <message>
-      <source>times</source>
-      <translation type="unfinished">ganger</translation>
-    </message>
-    <message>
-      <source>Album</source>
-      <translation type="unfinished">Album</translation>
-    </message>
-    <message>
-      <source>URL</source>
-      <translation type="unfinished">URL</translation>
-    </message>
-    <message>
-      <source>Owner</source>
-      <translation type="unfinished">Eier</translation>
-    </message>
-    <message>
-      <source>More user images</source>
-      <translation type="unfinished">Flere bruker bilder</translation>
-    </message>
-    <message>
-      <source>votes</source>
-      <translation type="unfinished">stemmer</translation>
+      <source>Image edit</source>
+      <translation type="unfinished">Bilde edit</translation>
     </message>
     <message>
       <source>Rate this picture</source>
-      <translation type="unfinished">Ranger dette bildet</translation>
+      <translation>Ranger dette bildet</translation>
     </message>
     <message>
       <source>star</source>
-      <translation type="unfinished">star</translation>
+      <translation>star</translation>
     </message>
     <message>
       <source>stars</source>
-      <translation type="unfinished">stjerner</translation>
+      <translation>stjerner</translation>
     </message>
     <message>
       <source>Vote!</source>
-      <translation type="unfinished">Stem!</translation>
+      <translation>Stem!</translation>
+    </message>
+    <message>
+      <source>Deduct vote!</source>
+      <translation type="unfinished">Trekke stemme!</translation>
+    </message>
+    <message>
+      <source>next image</source>
+      <translation>neste bilde</translation>
+    </message>
+    <message>
+      <source>previous image</source>
+      <translation>forrige bilde</translation>
+    </message>
+    <message>
+      <source>return to thumbnails</source>
+      <translation>tilbake til thumbnails</translation>
+    </message>
+    <message>
+      <source>Click to see fullsize</source>
+      <translation>Klikk for &#xE5; se full st&#xF8;rrelse</translation>
+    </message>
+    <message>
+      <source>Supported BB Code style tags: [b] [i] [u] [quote] :) :D :( :o :p ;)</source>
+      <translation type="unfinished">St&#xF8;ttet BB Kode style tags: [b] [i] [u] [quote]:): D: (: o: p;)</translation>
+    </message>
+    <message>
+      <source>Add to favorites</source>
+      <translation>Legg til i favoritter</translation>
+    </message>
+    <message>
+      <source>Share this page HTML code</source>
+      <translation>Del denne siden HTML-kode</translation>
+    </message>
+    <message>
+      <source>Share PHPBB code</source>
+      <translation>Del PhpBB kode</translation>
+    </message>
+    <message>
+      <source>Anaglyph version</source>
+      <translation>Anaglyph versjon</translation>
+    </message>
+    <message>
+      <source>Enter tags separated by space</source>
+      <translation>Skriv inn tags adskilt med mellomrom</translation>
+    </message>
+    <message>
+      <source>Picture details</source>
+      <translation>Bilde detaljer</translation>
+    </message>
+    <message>
+      <source>Filename</source>
+      <translation>Filnavn</translation>
+    </message>
+    <message>
+      <source>File size</source>
+      <translation>Filst&#xF8;rrelse</translation>
+    </message>
+    <message>
+      <source>Image rating</source>
+      <translation>Image rating</translation>
+    </message>
+    <message>
+      <source>Date added</source>
+      <translation>Dato lagt</translation>
+    </message>
+    <message>
+      <source>Dimensions</source>
+      <translation>Dimensjoner</translation>
+    </message>
+    <message>
+      <source>Displayed</source>
+      <translation>Viste</translation>
+    </message>
+    <message>
+      <source>times</source>
+      <translation>ganger</translation>
+    </message>
+    <message>
+      <source>Album</source>
+      <translation>Album</translation>
+    </message>
+    <message>
+      <source>URL</source>
+      <translation>URL</translation>
+    </message>
+    <message>
+      <source>Owner</source>
+      <translation>Eier</translation>
+    </message>
+    <message>
+      <source>More user images</source>
+      <translation>Flere bruker bilder</translation>
+    </message>
+    <message>
+      <source>votes</source>
+      <translation>stemmer</translation>
+    </message>
+    <message>
+      <source>Search for similar colors images</source>
+      <translation type="unfinished">S&#xF8;k etter lignende farger bilder</translation>
+    </message>
+    <message>
+      <source>Search for visualy similar images</source>
+      <translation type="unfinished">S&#xF8;k etter visualy lignende bilder</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Versjon</translation>
+      <translation>Versjon</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Bildest&#xF8;rrelse</translation>
+      <translation>Bildest&#xF8;rrelse</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Format</translation>
+      <translation>Format</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Pris</translation>
+      <translation>Pris</translation>
     </message>
     <message>
       <source>credits</source>
-      <translation type="unfinished">studiepoeng</translation>
+      <translation>studiepoeng</translation>
     </message>
     <message>
       <source>Remove from basket</source>
-      <translation type="unfinished">Fjern fra handlekurven</translation>
+      <translation>Fjern fra handlekurven</translation>
     </message>
     <message>
       <source>Add to basket</source>
-      <translation type="unfinished">Legg til i handlekurven</translation>
-    </message>
-    <message>
-      <source>Guest_</source>
-      <translation type="unfinished">Guest_</translation>
+      <translation>Legg til i handlekurven</translation>
     </message>
     <message>
       <source>Wrong captcha code!</source>
-      <translation type="unfinished">Feil captcha-koden!</translation>
+      <translation>Feil captcha-koden!</translation>
     </message>
     <message>
       <source>Please enter nick!</source>
-      <translation type="unfinished">Vennligst skriv inn nick!</translation>
+      <translation>Vennligst skriv inn nick!</translation>
     </message>
     <message>
       <source>Please enter comment!</source>
-      <translation type="unfinished">Vennligst skriv inn kommentar!</translation>
+      <translation>Vennligst skriv inn kommentar!</translation>
+    </message>
+    <message>
+      <source>You are not allowed to leave a comments!</source>
+      <translation type="unfinished">Du har ikke lov til &#xE5; legge igjen en kommentar!</translation>
+    </message>
+    <message>
+      <source>Guest_</source>
+      <translation>Guest_</translation>
     </message>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished">Sist opplastede bilder</translation>
+      <translation>Sist opplastede bilder</translation>
     </message>
     <message>
       <source>Last additions</source>
-      <translation type="unfinished">Siste filer</translation>
+      <translation>Siste filer</translation>
     </message>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished">Sist viste bilder</translation>
+      <translation>Sist viste bilder</translation>
     </message>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished">Sist kommenterte bilder</translation>
+      <translation>Sist kommenterte bilder</translation>
     </message>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished">Siste vurdert bilder</translation>
+      <translation>Siste vurdert bilder</translation>
     </message>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">H&#xF8;yt rangerte bilder</translation>
+      <translation>H&#xF8;yt rangerte bilder</translation>
+    </message>
+    <message>
+      <source>Search by color</source>
+      <translation type="unfinished">S&#xF8;k etter farge</translation>
     </message>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Mest popul&#xE6;re bilder</translation>
+      <translation>Mest popul&#xE6;re bilder</translation>
     </message>
     <message>
       <source>Search rss by keyword</source>
-      <translation type="unfinished">S&#xF8;k rss etter n&#xF8;kkelord</translation>
+      <translation>S&#xF8;k rss etter n&#xF8;kkelord</translation>
     </message>
     <message>
       <source>Last uploaded first</source>
-      <translation type="unfinished">Sist lastet opp f&#xF8;rste</translation>
+      <translation>Sist lastet opp f&#xF8;rste</translation>
     </message>
     <message>
       <source>Last uploaded last</source>
-      <translation type="unfinished">Sist lastet siste</translation>
+      <translation>Sist lastet siste</translation>
     </message>
     <message>
       <source>Most popular first</source>
-      <translation type="unfinished">Mest popul&#xE6;re f&#xF8;rste</translation>
+      <translation>Mest popul&#xE6;re f&#xF8;rste</translation>
     </message>
     <message>
       <source>Most popular last</source>
-      <translation type="unfinished">Mest popul&#xE6;re siste</translation>
+      <translation>Mest popul&#xE6;re siste</translation>
     </message>
     <message>
       <source>Last hits first</source>
-      <translation type="unfinished">Siste treff f&#xF8;rste</translation>
+      <translation>Siste treff f&#xF8;rste</translation>
     </message>
     <message>
       <source>Last hits last</source>
-      <translation type="unfinished">Siste treff sist</translation>
+      <translation>Siste treff sist</translation>
     </message>
     <message>
       <source>Last commented first</source>
-      <translation type="unfinished">Sist kommenterte f&#xF8;rste</translation>
+      <translation>Sist kommenterte f&#xF8;rste</translation>
     </message>
     <message>
       <source>Last commented last</source>
-      <translation type="unfinished">Sist kommenterte siste</translation>
+      <translation>Sist kommenterte siste</translation>
     </message>
     <message>
       <source>Top rated first</source>
-      <translation type="unfinished">H&#xF8;yt rangerte f&#xF8;rste</translation>
+      <translation>H&#xF8;yt rangerte f&#xF8;rste</translation>
     </message>
     <message>
       <source>Top rated last Last</source>
-      <translation type="unfinished">H&#xF8;yt rangerte siste Siste</translation>
+      <translation>H&#xF8;yt rangerte siste Siste</translation>
     </message>
     <message>
       <source>Last rated first</source>
-      <translation type="unfinished">Siste vurdert f&#xF8;rste</translation>
+      <translation>Siste vurdert f&#xF8;rste</translation>
     </message>
     <message>
       <source>Last rated last</source>
-      <translation type="unfinished">Siste vurdert sist</translation>
+      <translation>Siste vurdert sist</translation>
     </message>
     <message>
       <source>Most relevance images last</source>
-      <translation type="unfinished">De fleste relevans bilder sist</translation>
+      <translation>De fleste relevans bilder sist</translation>
     </message>
     <message>
       <source>search results</source>
-      <translation type="unfinished">s&#xF8;keresultater</translation>
+      <translation>s&#xF8;keresultater</translation>
     </message>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished">Sist opplastede bilder til album</translation>
+      <translation>Sist opplastede bilder til album</translation>
     </message>
   </context>
   <context>
     <name>gallery/myfavorites</name>
     <message>
       <source>Remove from favorites</source>
-      <translation type="unfinished">Fjern fra favoritter</translation>
+      <translation>Fjern fra favoritter</translation>
     </message>
     <message>
       <source>My favorite images</source>
-      <translation type="unfinished">Min favoritt bilder</translation>
+      <translation>Min favoritt bilder</translation>
+    </message>
+    <message>
+      <source>Remove</source>
+      <translation type="unfinished">Fjern</translation>
+    </message>
+    <message>
+      <source>Remove Open ID</source>
+      <translation type="unfinished">Fjern &#xC5;pen ID</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastcommented</name>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished">Sist kommenterte bilder</translation>
+      <translation>Sist kommenterte bilder</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Ingen poster.</translation>
+      <translation>Ingen poster.</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Oppl&#xF8;sning</translation>
+      <translation>Oppl&#xF8;sning</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
     </message>
   </context>
   <context>
     <name>gallery/lasthits</name>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished">Sist viste bilder</translation>
+      <translation>Sist viste bilder</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Ingen poster.</translation>
+      <translation>Ingen poster.</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Oppl&#xF8;sning</translation>
+      <translation>Oppl&#xF8;sning</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastrated</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished">Siste vurdert bilder</translation>
+      <translation>Siste vurdert bilder</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Ingen poster.</translation>
+      <translation>Ingen poster.</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Oppl&#xF8;sning</translation>
+      <translation>Oppl&#xF8;sning</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastuploads</name>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished">Sist opplastede bilder</translation>
+      <translation>Sist opplastede bilder</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Ingen poster.</translation>
+      <translation>Ingen poster.</translation>
+    </message>
+    <message>
+      <source>Resolution</source>
+      <translation type="unfinished">Oppl&#xF8;sning</translation>
+    </message>
+    <message>
+      <source>Page</source>
+      <translation type="unfinished">Side</translation>
     </message>
   </context>
   <context>
     <name>gallery/my_albums_list</name>
     <message>
       <source>Edit album</source>
-      <translation type="unfinished">Rediger album</translation>
+      <translation>Rediger album</translation>
     </message>
     <message>
       <source>Are you sure?</source>
-      <translation type="unfinished">Er du sikker?</translation>
+      <translation>Er du sikker?</translation>
     </message>
     <message>
       <source>Delete album</source>
-      <translation type="unfinished">Slett album</translation>
+      <translation>Slett album</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">Legg til bilder</translation>
+      <translation>Legg til bilder</translation>
     </message>
   </context>
   <context>
     <name>gallery/myalbums</name>
     <message>
       <source>My albums</source>
-      <translation type="unfinished">Mitt album</translation>
+      <translation>Mitt album</translation>
     </message>
     <message>
       <source>New album</source>
-      <translation type="unfinished">Nytt album</translation>
+      <translation>Nytt album</translation>
+    </message>
+    <message>
+      <source>Update priority</source>
+      <translation type="unfinished">Oppdatering prioritet</translation>
     </message>
     <message>
       <source>You do not have any album.</source>
-      <translation type="unfinished">Du har ingen album.</translation>
+      <translation>Du har ingen album.</translation>
     </message>
     <message>
       <source>Create a new album.</source>
-      <translation type="unfinished">Opprett et nytt album.</translation>
+      <translation>Opprett et nytt album.</translation>
     </message>
     <message>
       <source>Account</source>
-      <translation type="unfinished">Konto</translation>
+      <translation>Konto</translation>
+    </message>
+    <message>
+      <source>Albums</source>
+      <translation type="unfinished">Album</translation>
     </message>
   </context>
   <context>
     <name>gallery/mylistalbum</name>
     <message>
+      <source>My albums</source>
+      <translation type="unfinished">Mitt album</translation>
+    </message>
+    <message>
       <source>No records.</source>
-      <translation type="unfinished">Ingen poster.</translation>
+      <translation>Ingen poster.</translation>
     </message>
     <message>
       <source>Account</source>
-      <translation type="unfinished">Konto</translation>
+      <translation>Konto</translation>
     </message>
     <message>
-      <source>My albums</source>
-      <translation type="unfinished">Mitt album</translation>
+      <source>Albums</source>
+      <translation type="unfinished">Album</translation>
     </message>
   </context>
   <context>
     <name>gallery/search</name>
     <message>
-      <source>Relevance</source>
-      <translation type="unfinished">Relevans</translation>
-    </message>
-    <message>
       <source>Last uploaded</source>
-      <translation type="unfinished">Sist lastet opp</translation>
+      <translation>Sist lastet opp</translation>
     </message>
     <message>
       <source>Most popular</source>
-      <translation type="unfinished">Mest popul&#xE6;re</translation>
+      <translation>Mest popul&#xE6;re</translation>
     </message>
     <message>
       <source>Last hits</source>
-      <translation type="unfinished">Siste treff</translation>
+      <translation>Siste treff</translation>
     </message>
     <message>
       <source>Top rated</source>
-      <translation type="unfinished">H&#xF8;yt rangerte</translation>
+      <translation>H&#xF8;yt rangerte</translation>
     </message>
     <message>
       <source>Last rated</source>
-      <translation type="unfinished">Siste vurdert</translation>
+      <translation>Siste vurdert</translation>
     </message>
     <message>
       <source>Last commented</source>
-      <translation type="unfinished">Sist kommenterte</translation>
+      <translation>Sist kommenterte</translation>
     </message>
     <message>
-      <source>Any resolution</source>
-      <translation type="unfinished">Eventuelle vedtak</translation>
+      <source>Filename</source>
+      <translation type="unfinished">Filename</translation>
     </message>
     <message>
       <source>Search results</source>
-      <translation type="unfinished">S&#xF8;keresultater</translation>
+      <translation>S&#xF8;keresultater</translation>
     </message>
     <message>
       <source>Nothing found</source>
-      <translation type="unfinished">Ingenting funnet</translation>
+      <translation>Ingenting funnet</translation>
     </message>
     <message>
-      <source>Last uploaded first</source>
-      <translation type="unfinished">Sist lastet opp f&#xF8;rste</translation>
+      <source>Any resolution</source>
+      <translation>Eventuelle vedtak</translation>
     </message>
     <message>
-      <source>Last uploaded last</source>
-      <translation type="unfinished">Sist lastet siste</translation>
+      <source>Relevance</source>
+      <translation>Relevans</translation>
     </message>
     <message>
-      <source>Most popular first</source>
-      <translation type="unfinished">Mest popul&#xE6;re f&#xF8;rste</translation>
+      <source>Any keyword</source>
+      <translation type="unfinished">Eventuelle n&#xF8;kkelord</translation>
     </message>
     <message>
-      <source>Most popular last</source>
-      <translation type="unfinished">Mest popul&#xE6;re siste</translation>
-    </message>
-    <message>
-      <source>Last hits first</source>
-      <translation type="unfinished">Siste treff f&#xF8;rste</translation>
-    </message>
-    <message>
-      <source>Last hits last</source>
-      <translation type="unfinished">Siste treff sist</translation>
-    </message>
-    <message>
-      <source>Last commented first</source>
-      <translation type="unfinished">Sist kommenterte f&#xF8;rste</translation>
-    </message>
-    <message>
-      <source>Last commented last</source>
-      <translation type="unfinished">Sist kommenterte siste</translation>
-    </message>
-    <message>
-      <source>Last rated first</source>
-      <translation type="unfinished">Siste vurdert f&#xF8;rste</translation>
-    </message>
-    <message>
-      <source>Last rated last</source>
-      <translation type="unfinished">Siste vurdert sist</translation>
-    </message>
-    <message>
-      <source>Top rated first</source>
-      <translation type="unfinished">H&#xF8;yt rangerte f&#xF8;rste</translation>
-    </message>
-    <message>
-      <source>Top rated last</source>
-      <translation type="unfinished">H&#xF8;yt rangerte siste</translation>
-    </message>
-    <message>
-      <source>Most relevance images last</source>
-      <translation type="unfinished">De fleste relevans bilder sist</translation>
+      <source>All keywords</source>
+      <translation type="unfinished">Alle n&#xF8;kkelord</translation>
     </message>
     <message>
       <source>search results</source>
-      <translation type="unfinished">s&#xF8;keresultater</translation>
-    </message>
-    <message>
-      <source>Resolution</source>
-      <translation type="unfinished">Oppl&#xF8;sning</translation>
+      <translation>s&#xF8;keresultater</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
+    </message>
+    <message>
+      <source>Last uploaded first</source>
+      <translation>Sist lastet opp f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Last uploaded last</source>
+      <translation>Sist lastet siste</translation>
+    </message>
+    <message>
+      <source>Most popular first</source>
+      <translation>Mest popul&#xE6;re f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Most popular last</source>
+      <translation>Mest popul&#xE6;re siste</translation>
+    </message>
+    <message>
+      <source>Last hits first</source>
+      <translation>Siste treff f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Last hits last</source>
+      <translation>Siste treff sist</translation>
+    </message>
+    <message>
+      <source>Last commented first</source>
+      <translation>Sist kommenterte f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Last commented last</source>
+      <translation>Sist kommenterte siste</translation>
+    </message>
+    <message>
+      <source>Last rated first</source>
+      <translation>Siste vurdert f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Last rated last</source>
+      <translation>Siste vurdert sist</translation>
+    </message>
+    <message>
+      <source>Top rated first</source>
+      <translation>H&#xF8;yt rangerte f&#xF8;rste</translation>
+    </message>
+    <message>
+      <source>Top rated last</source>
+      <translation>H&#xF8;yt rangerte siste</translation>
+    </message>
+    <message>
+      <source>Most relevance images last</source>
+      <translation>De fleste relevans bilder sist</translation>
+    </message>
+    <message>
+      <source>Resolution</source>
+      <translation>Oppl&#xF8;sning</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
-      <translation type="unfinished">S&#xF8;k RSS etter n&#xF8;kkelord</translation>
+      <translation>S&#xF8;k RSS etter n&#xF8;kkelord</translation>
     </message>
   </context>
   <context>
     <name>gallery/popular</name>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Mest popul&#xE6;re bilder</translation>
+      <translation>Mest popul&#xE6;re bilder</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Ingen poster.</translation>
+      <translation>Ingen poster.</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Oppl&#xF8;sning</translation>
+      <translation>Oppl&#xF8;sning</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecect</name>
     <message>
       <source>Most popular images in 24 hours.</source>
-      <translation type="unfinished">Mest popul&#xE6;re bilder i 24 timer.</translation>
+      <translation>Mest popul&#xE6;re bilder i 24 timer.</translation>
     </message>
     <message>
       <source>There are no images.</source>
-      <translation type="unfinished">Det er ingen bilder.</translation>
+      <translation>Det er ingen bilder.</translation>
     </message>
   </context>
   <context>
     <name>gallery/publicupload</name>
-    <message>
-      <source>Public images archive upload</source>
-      <translation type="unfinished">Offentlige bilder arkiv opplasting</translation>
-    </message>
     <message>
       <source>All files were uploaded. See album.</source>
       <translation type="unfinished">Alle filer som ble lastet opp. Se album.</translation>
@@ -2571,20 +3015,12 @@
       <translation type="unfinished">Bla</translation>
     </message>
     <message>
-      <source>Max file size </source>
-      <translation type="unfinished">Maks filst&#xF8;rrelse</translation>
-    </message>
-    <message>
       <source>Images to upload</source>
       <translation type="unfinished">Bilder &#xE5; laste opp</translation>
     </message>
     <message>
       <source>Choose images for upload.</source>
       <translation type="unfinished">Velg bilder for opplasting.</translation>
-    </message>
-    <message>
-      <source>Upload</source>
-      <translation type="unfinished">Last opp</translation>
     </message>
     <message>
       <source>Image upload is in progress. Please wait a moment...</source>
@@ -2595,686 +3031,868 @@
       <translation type="unfinished">Bildeopplasting det tar lang tid &#xE5; laste eller lasten har sviktet. S&#xF8;rg for at Flash Plugin er aktivert, og at en fungerende versjon av Adobe Flash Player er installert.</translation>
     </message>
     <message>
-      <source>Public images upload</source>
-      <translation type="unfinished">Offentlige bilder opplasting</translation>
-    </message>
-    <message>
       <source>Attatch local images</source>
       <translation type="unfinished">Attatch lokale bilder</translation>
+    </message>
+    <message>
+      <source>Upload</source>
+      <translation>Last opp</translation>
+    </message>
+    <message>
+      <source>Click to choose images to upload, you can also drop files here.</source>
+      <translation type="unfinished">Klikk for &#xE5; velge bilder for &#xE5; laste opp, kan du ogs&#xE5; slippe filer her.</translation>
+    </message>
+    <message>
+      <source>Click to choose images to upload, you can also Drag and Drop files here (Darg and drop only for FF, Chrome).</source>
+      <translation type="unfinished">Klikk for &#xE5; velge bilder for &#xE5; laste opp, kan du ogs&#xE5; dra og slippe filer her (Darg og slipper bare for FF, Chrome).</translation>
+    </message>
+    <message>
+      <source>Public images archive upload</source>
+      <translation>Offentlige bilder arkiv opplasting</translation>
+    </message>
+    <message>
+      <source>Click to choose zip to upload, you can also drop files here (Darg and drop only for FF, Chrome).</source>
+      <translation type="unfinished">Klikk for &#xE5; velge zip &#xE5; laste opp, kan du ogs&#xE5; slippe filer her (Darg og slipper bare for FF, Chrome).</translation>
+    </message>
+    <message>
+      <source>Public images upload</source>
+      <translation>Offentlige bilder opplasting</translation>
+    </message>
+    <message>
+      <source>Max file size </source>
+      <translation type="unfinished">Maks filst&#xF8;rrelse</translation>
     </message>
   </context>
   <context>
     <name>gallery/ratedrecent</name>
     <message>
       <source>Top rated images in 24 hours.</source>
-      <translation type="unfinished">H&#xF8;yt rangerte bilder i 24 timer.</translation>
+      <translation>H&#xF8;yt rangerte bilder i 24 timer.</translation>
     </message>
     <message>
       <source>Top rated images in 24 hours</source>
-      <translation type="unfinished">H&#xF8;yt rangerte bilder i 24 timer</translation>
+      <translation>H&#xF8;yt rangerte bilder i 24 timer</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
     </message>
   </context>
   <context>
     <name>gallery/sharehtml</name>
     <message>
       <source>Link to image</source>
-      <translation type="unfinished">Link til bilde</translation>
+      <translation>Link til bilde</translation>
     </message>
     <message>
       <source>Link to image with thumbnail</source>
-      <translation type="unfinished">Link til bilde med miniatyrbilder</translation>
+      <translation>Link til bilde med miniatyrbilder</translation>
     </message>
     <message>
       <source>Link to image with medium size thumbnail</source>
-      <translation type="unfinished">Link til bildet med middels st&#xF8;rrelse thumbnail</translation>
+      <translation>Link til bildet med middels st&#xF8;rrelse thumbnail</translation>
     </message>
   </context>
   <context>
     <name>gallery/sharephpbb</name>
     <message>
       <source>Link to image</source>
-      <translation type="unfinished">Link til bilde</translation>
+      <translation>Link til bilde</translation>
     </message>
     <message>
       <source>Link to image with thumbnail</source>
-      <translation type="unfinished">Link til bilde med miniatyrbilder</translation>
+      <translation>Link til bilde med miniatyrbilder</translation>
     </message>
     <message>
       <source>Link to image with medium size thumbnail</source>
-      <translation type="unfinished">Link til bildet med middels st&#xF8;rrelse thumbnail</translation>
+      <translation>Link til bildet med middels st&#xF8;rrelse thumbnail</translation>
     </message>
   </context>
   <context>
     <name>gallery/subcategory_list</name>
     <message>
-      <source>albums</source>
-      <translation type="unfinished">album</translation>
+      <source>images</source>
+      <translation>bilder</translation>
     </message>
     <message>
-      <source>images</source>
-      <translation type="unfinished">bilder</translation>
+      <source>albums</source>
+      <translation>album</translation>
     </message>
   </context>
   <context>
     <name>gallery/subcategory_list_full</name>
     <message>
       <source>albums</source>
-      <translation type="unfinished">album</translation>
+      <translation>album</translation>
     </message>
     <message>
       <source>images</source>
-      <translation type="unfinished">bilder</translation>
+      <translation>bilder</translation>
     </message>
   </context>
   <context>
     <name>gallery/toprated</name>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">H&#xF8;yt rangerte bilder</translation>
+      <translation>H&#xF8;yt rangerte bilder</translation>
     </message>
     <message>
       <source>No records</source>
-      <translation type="unfinished">Ingen poster</translation>
+      <translation>Ingen poster</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Oppl&#xF8;sning</translation>
+      <translation>Oppl&#xF8;sning</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
     </message>
   </context>
   <context>
     <name>kernel/nopermission</name>
     <message>
       <source>You do not have permission to access module</source>
-      <translation type="unfinished">Du har ikke tilgang til modulen</translation>
+      <translation>Du har ikke tilgang til modulen</translation>
     </message>
     <message>
       <source>and use</source>
-      <translation type="unfinished">og bruk</translation>
+      <translation>og bruk</translation>
     </message>
     <message>
       <source>function</source>
-      <translation type="unfinished">funksjon</translation>
+      <translation>funksjon</translation>
     </message>
     <message>
       <source>You do not have permission to access current object</source>
-      <translation type="unfinished">Du har ikke tilgang til dagens objekt</translation>
+      <translation>Du har ikke tilgang til dagens objekt</translation>
     </message>
   </context>
   <context>
     <name>core/paginator</name>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
     </message>
     <message>
       <source>of</source>
-      <translation type="unfinished">av</translation>
+      <translation>av</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation type="unfinished">Fant</translation>
+      <translation>Fant</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation type="unfinished">Forrige</translation>
+      <translation>Forrige</translation>
     </message>
     <message>
       <source>Go to page</source>
-      <translation type="unfinished">G&#xE5; til side</translation>
+      <translation>G&#xE5; til side</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">Neste</translation>
+      <translation>Neste</translation>
     </message>
   </context>
   <context>
     <name>statistic/view</name>
     <message>
       <source>hours</source>
-      <translation type="unfinished">timer</translation>
+      <translation>timer</translation>
     </message>
     <message>
       <source>Total pageviews</source>
-      <translation type="unfinished">Totalt sidevisninger</translation>
+      <translation>Totalt sidevisninger</translation>
     </message>
     <message>
       <source>Total visits</source>
-      <translation type="unfinished">Totalt antall bes&#xF8;k</translation>
+      <translation>Totalt antall bes&#xF8;k</translation>
     </message>
     <message>
       <source>Time spent</source>
-      <translation type="unfinished">Tid brukt</translation>
+      <translation>Tid brukt</translation>
     </message>
     <message>
       <source>Last 31 days statistic, data resource - google analytics API</source>
-      <translation type="unfinished">Siste 31 dager statistikk, data ressurs - google analytics API</translation>
+      <translation>Siste 31 dager statistikk, data ressurs - google analytics API</translation>
     </message>
     <message>
       <source>Legend</source>
-      <translation type="unfinished">Legend</translation>
+      <translation>Legend</translation>
     </message>
     <message>
       <source>Pageviews</source>
-      <translation type="unfinished">Sidevisninger</translation>
+      <translation>Sidevisninger</translation>
     </message>
     <message>
       <source>Visits</source>
-      <translation type="unfinished">Bes&#xF8;k</translation>
+      <translation>Bes&#xF8;k</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpassword</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Passord minner</translation>
+      <translation>Passord minner</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
+      <translation>E-post</translation>
     </message>
     <message>
       <source>Restore password</source>
-      <translation type="unfinished">Gjenopprett passord</translation>
+      <translation>Gjenopprett passord</translation>
     </message>
     <message>
       <source>Order confirmed</source>
-      <translation type="unfinished">Bestill bekreftet</translation>
+      <translation>Bestill bekreftet</translation>
     </message>
     <message>
       <source>Credits order confirmed</source>
-      <translation type="unfinished">Credits For bekreftet</translation>
+      <translation>Credits For bekreftet</translation>
     </message>
     <message>
       <source>Wrong e-mail address!</source>
-      <translation type="unfinished">Feil e-postadresse!</translation>
+      <translation>Feil e-postadresse!</translation>
     </message>
     <message>
       <source>Click this link and to You will be send new password</source>
-      <translation type="unfinished">Klikk p&#xE5; linken og du vil bli sende nytt passord</translation>
+      <translation>Klikk p&#xE5; linken og du vil bli sende nytt passord</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpasswordsent</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Passord minner</translation>
+      <translation>Passord minner</translation>
     </message>
     <message>
       <source>E-mail send. Click link in email and to You will be send out new password.</source>
-      <translation type="unfinished">E-post send. Klikk p&#xE5; lenken i e-post og til deg vil sende ut nytt passord.</translation>
+      <translation>E-post send. Klikk p&#xE5; lenken i e-post og til deg vil sende ut nytt passord.</translation>
     </message>
   </context>
   <context>
     <name>user/index</name>
     <message>
       <source>User home</source>
-      <translation type="unfinished">Bruker hjem</translation>
+      <translation>Bruker hjem</translation>
     </message>
     <message>
       <source>Welcome. Here you can:</source>
-      <translation type="unfinished">Velkommen. Her kan du:</translation>
+      <translation>Velkommen. Her kan du:</translation>
     </message>
     <message>
       <source>Edit personal settings</source>
-      <translation type="unfinished">Redigere personlige innstillinger</translation>
+      <translation>Redigere personlige innstillinger</translation>
     </message>
     <message>
       <source>Manage personal albums</source>
-      <translation type="unfinished">Behandle personlige album</translation>
+      <translation>Behandle personlige album</translation>
     </message>
     <message>
       <source>My account</source>
-      <translation type="unfinished">Min konto</translation>
+      <translation>Min konto</translation>
     </message>
   </context>
   <context>
     <name>user/remindpassword</name>
     <message>
       <source>New password</source>
-      <translation type="unfinished">Nytt passord</translation>
+      <translation>Nytt passord</translation>
     </message>
     <message>
       <source>Hash not found or was used already</source>
-      <translation type="unfinished">Hasj ikke funnet eller ble brukt allerede</translation>
+      <translation>Hasj ikke funnet eller ble brukt allerede</translation>
     </message>
     <message>
       <source>Password remind - new password</source>
-      <translation type="unfinished">Passord minner - nytt passord</translation>
+      <translation>Passord minner - nytt passord</translation>
     </message>
     <message>
       <source>New password:</source>
-      <translation type="unfinished">Nytt passord:</translation>
+      <translation>Nytt passord:</translation>
     </message>
     <message>
       <source>New password has beend send to your email.</source>
-      <translation type="unfinished">Nytt passord har send beend til din epost.</translation>
+      <translation>Nytt passord har send beend til din epost.</translation>
     </message>
   </context>
   <context>
     <name>shop/basket</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Basket</translation>
+      <translation>Basket</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Bildenavn</translation>
+      <translation>Bildenavn</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Versjon</translation>
+      <translation>Versjon</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Bildest&#xF8;rrelse</translation>
+      <translation>Bildest&#xF8;rrelse</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Format</translation>
+      <translation>Format</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Pris</translation>
+      <translation>Pris</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Mynter</translation>
+      <translation>Mynter</translation>
     </message>
     <message>
       <source>Remove from basket</source>
-      <translation type="unfinished">Fjern fra handlekurven</translation>
+      <translation>Fjern fra handlekurven</translation>
     </message>
     <message>
       <source>Choose payment option</source>
-      <translation type="unfinished">Velg betalingsm&#xE5;te</translation>
+      <translation>Velg betalingsm&#xE5;te</translation>
     </message>
     <message>
       <source>In order to checkout atlest one item have to be selected.</source>
-      <translation type="unfinished">For &#xE5; kassen atlest ett element m&#xE5; v&#xE6;re valgt.</translation>
+      <translation>For &#xE5; kassen atlest ett element m&#xE5; v&#xE6;re valgt.</translation>
     </message>
     <message>
       <source>In order to checkout you have to</source>
-      <translation type="unfinished">For &#xE5; kassen m&#xE5; du</translation>
+      <translation>For &#xE5; kassen m&#xE5; du</translation>
     </message>
     <message>
       <source>sign in</source>
-      <translation type="unfinished">Logg p&#xE5;</translation>
+      <translation>Logg p&#xE5;</translation>
     </message>
     <message>
       <source>or</source>
-      <translation type="unfinished">eller</translation>
+      <translation>eller</translation>
     </message>
     <message>
       <source>login</source>
-      <translation type="unfinished">Logg inn</translation>
+      <translation>Logg inn</translation>
     </message>
     <message>
       <source>if you have already created an account</source>
-      <translation type="unfinished">Hvis du allerede har opprettet en konto</translation>
+      <translation>Hvis du allerede har opprettet en konto</translation>
     </message>
   </context>
   <context>
     <name>shop/buycredits</name>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Kj&#xF8;p kreditter</translation>
+      <translation>Kj&#xF8;p kreditter</translation>
     </message>
     <message>
       <source>How many credits do want to buy?</source>
-      <translation type="unfinished">Hvor mange studiepoeng &#xF8;nsker &#xE5; kj&#xF8;pe?</translation>
+      <translation>Hvor mange studiepoeng &#xF8;nsker &#xE5; kj&#xF8;pe?</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Velg betalingsm&#xE5;te</translation>
+      <translation>Velg betalingsm&#xE5;te</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/accept</name>
     <message>
       <source>Order succesfull</source>
-      <translation type="unfinished">Bestill vellykkede</translation>
+      <translation>Bestill vellykkede</translation>
     </message>
     <message>
       <source>Payment was succesfull</source>
-      <translation type="unfinished">Betaling var vellykkede</translation>
+      <translation>Betaling var vellykkede</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/process</name>
     <message>
       <source>Checkout</source>
-      <translation type="unfinished">Checkout</translation>
+      <translation>Checkout</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Bekreft betaling</translation>
+      <translation>Bekreft betaling</translation>
     </message>
     <message>
       <source>Not enouth credits to checkout</source>
-      <translation type="unfinished">Ikke enouth kreditter til kassen</translation>
+      <translation>Ikke enouth kreditter til kassen</translation>
     </message>
   </context>
   <context>
     <name>shop/cancel</name>
     <message>
       <source>Payment canceled</source>
-      <translation type="unfinished">Betaling kansellert</translation>
+      <translation>Betaling kansellert</translation>
     </message>
     <message>
       <source>Paypal payment was canceled.</source>
-      <translation type="unfinished">Paypal betalingen ble kansellert.</translation>
+      <translation>Paypal betalingen ble kansellert.</translation>
     </message>
   </context>
   <context>
     <name>shop/error</name>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Feil</translation>
+      <translation>Feil</translation>
     </message>
     <message>
       <source>Execution was terminated unexpectedly.</source>
-      <translation type="unfinished">Henrettelsen ble avsluttet uventet.</translation>
+      <translation>Henrettelsen ble avsluttet uventet.</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/process</name>
     <message>
       <source>Checkout using Paypal</source>
-      <translation type="unfinished">Checkout med Paypal</translation>
+      <translation>Checkout med Paypal</translation>
     </message>
     <message>
       <source>Buyer\'s Email</source>
-      <translation type="unfinished">Kj&#xF8;pers \ &amp;#39;s Email</translation>
+      <translation>Kj&#xF8;pers \ &amp;#39;s Email</translation>
     </message>
     <message>
       <source>Amount</source>
-      <translation type="unfinished">Bel&#xF8;p</translation>
+      <translation>Bel&#xF8;p</translation>
     </message>
     <message>
       <source>Currency</source>
-      <translation type="unfinished">Valuta</translation>
+      <translation>Valuta</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Mynter</translation>
+      <translation>Mynter</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/review</name>
     <message>
       <source>Order payment confirmation</source>
-      <translation type="unfinished">Bestill betaling bekreftelse</translation>
+      <translation>Bestill betaling bekreftelse</translation>
     </message>
     <message>
       <source>Order amount</source>
-      <translation type="unfinished">Bestill bel&#xF8;p</translation>
+      <translation>Bestill bel&#xF8;p</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Bekreft betaling</translation>
+      <translation>Bekreft betaling</translation>
     </message>
     <message>
       <source>Thank you for your payment!</source>
-      <translation type="unfinished">Takk for din betaling!</translation>
+      <translation>Takk for din betaling!</translation>
     </message>
     <message>
       <source>credits</source>
-      <translation type="unfinished">studiepoeng</translation>
+      <translation>studiepoeng</translation>
     </message>
   </context>
   <context>
     <name>shop/mycredits</name>
     <message>
       <source>My credits balanse</source>
-      <translation type="unfinished">Min studiepoeng Balanse</translation>
+      <translation>Min studiepoeng Balanse</translation>
     </message>
     <message>
       <source>You have</source>
-      <translation type="unfinished">Du har</translation>
+      <translation>Du har</translation>
     </message>
     <message>
       <source>in your account</source>
-      <translation type="unfinished">i kontoen din</translation>
+      <translation>i kontoen din</translation>
     </message>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Kj&#xF8;p kreditter</translation>
+      <translation>Kj&#xF8;p kreditter</translation>
     </message>
     <message>
       <source>My credits</source>
-      <translation type="unfinished">Min studiepoeng</translation>
+      <translation>Min studiepoeng</translation>
     </message>
   </context>
   <context>
     <name>shop/myorders</name>
     <message>
       <source>My credits orders</source>
-      <translation type="unfinished">Min studiepoeng ordre</translation>
+      <translation>Min studiepoeng ordre</translation>
     </message>
     <message>
       <source>Date</source>
-      <translation type="unfinished">Dato</translation>
+      <translation>Dato</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Bestill pris</translation>
+      <translation>Bestill pris</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Bestill studiepoeng</translation>
+      <translation>Bestill studiepoeng</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Ordrestatus</translation>
+      <translation>Ordrestatus</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Utbetales</translation>
+      <translation>Utbetales</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Bekreftet</translation>
+      <translation>Bekreftet</translation>
     </message>
     <message>
       <source>My orders</source>
-      <translation type="unfinished">Mine ordre</translation>
+      <translation>Mine ordre</translation>
     </message>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Bestill visning</translation>
+      <translation>Bestill visning</translation>
     </message>
   </context>
   <context>
     <name>shop/orderview</name>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Bestill visning</translation>
+      <translation>Bestill visning</translation>
     </message>
     <message>
       <source>Order time</source>
-      <translation type="unfinished">Bestill tid</translation>
+      <translation>Bestill tid</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Bestill pris</translation>
+      <translation>Bestill pris</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Bestill studiepoeng</translation>
+      <translation>Bestill studiepoeng</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Ordrestatus</translation>
+      <translation>Ordrestatus</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Utbetales</translation>
+      <translation>Utbetales</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Bekreftet</translation>
+      <translation>Bekreftet</translation>
     </message>
     <message>
       <source>Ordered items</source>
-      <translation type="unfinished">Bestilte varer</translation>
+      <translation>Bestilte varer</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Bildenavn</translation>
+      <translation>Bildenavn</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Versjon</translation>
+      <translation>Versjon</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Bildest&#xF8;rrelse</translation>
+      <translation>Bildest&#xF8;rrelse</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Format</translation>
+      <translation>Format</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Pris</translation>
+      <translation>Pris</translation>
     </message>
     <message>
       <source>Download count</source>
-      <translation type="unfinished">Last ned teller</translation>
+      <translation>Last ned teller</translation>
     </message>
     <message>
       <source>Downloads left</source>
-      <translation type="unfinished">Nedlastinger venstre</translation>
+      <translation>Nedlastinger venstre</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Mynter</translation>
+      <translation>Mynter</translation>
     </message>
     <message>
       <source>Download image</source>
-      <translation type="unfinished">Last ned bilde</translation>
+      <translation>Last ned bilde</translation>
     </message>
     <message>
       <source>downloads left</source>
-      <translation type="unfinished">Nedlastinger venstre</translation>
+      <translation>Nedlastinger venstre</translation>
     </message>
     <message>
       <source>No downloads available</source>
-      <translation type="unfinished">Ingen nedlasting tilgjengelig</translation>
+      <translation>Ingen nedlasting tilgjengelig</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoption</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Betalingsm&#xE5;te</translation>
+      <translation>Betalingsm&#xE5;te</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-post</translation>
+      <translation>E-post</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Velg betalingsm&#xE5;te</translation>
+      <translation>Velg betalingsm&#xE5;te</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoptioncredit</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Betalingsm&#xE5;te</translation>
+      <translation>Betalingsm&#xE5;te</translation>
     </message>
     <message>
       <source>Continue</source>
-      <translation type="unfinished">Fortsett</translation>
+      <translation>Fortsett</translation>
     </message>
   </context>
   <context>
     <name>gallery/addvote</name>
     <message>
       <source>Thank you for your vote</source>
-      <translation type="unfinished">Takk for din stemme</translation>
+      <translation>Takk for din stemme</translation>
+    </message>
+    <message>
+      <source>You are not allowed to vote!</source>
+      <translation type="unfinished">Du har ikke lov til &#xE5; stemme!</translation>
+    </message>
+    <message>
+      <source>You have already voted!</source>
+      <translation type="unfinished">Du har allerede stemt!</translation>
+    </message>
+    <message>
+      <source>Vote deducted!</source>
+      <translation type="unfinished">Stem trukket!</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumrss</name>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished">Sist opplastede bilder til album</translation>
+      <translation>Sist opplastede bilder til album</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vis bilde</translation>
+      <translation>Vis bilde</translation>
     </message>
   </context>
   <context>
     <name>gallery/lasthitsrss</name>
     <message>
       <source>watched</source>
-      <translation type="unfinished">sett</translation>
+      <translation>sett</translation>
     </message>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished">Sist viste bilder</translation>
+      <translation>Sist viste bilder</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vis bilde</translation>
+      <translation>Vis bilde</translation>
     </message>
   </context>
   <context>
     <name>gallery/category</name>
     <message>
+      <source>Root category</source>
+      <translation type="unfinished">Root kategorien</translation>
+    </message>
+    <message>
       <source>Page</source>
-      <translation type="unfinished">Side</translation>
+      <translation>Side</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">Forum</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastcommentedrss</name>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished">Sist kommenterte bilder</translation>
+      <translation>Sist kommenterte bilder</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vis bilde</translation>
+      <translation>Vis bilde</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastratedrss</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished">Siste vurdert bilder</translation>
+      <translation>Siste vurdert bilder</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vis bilde</translation>
+      <translation>Vis bilde</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastuploadsrss</name>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished">Sist opplastede bilder</translation>
+      <translation>Sist opplastede bilder</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vis bilde</translation>
+      <translation>Vis bilde</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecent</name>
     <message>
       <source>Most popular images in 24 hours</source>
-      <translation type="unfinished">Mest popul&#xE6;re bilder i 24 timer</translation>
+      <translation>Mest popul&#xE6;re bilder i 24 timer</translation>
+    </message>
+    <message>
+      <source>Page</source>
+      <translation>Side</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/popularrss</name>
+    <message>
+      <source>Most popular images</source>
+      <translation>Mest popul&#xE6;re bilder</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/searchrss</name>
+    <message>
+      <source>Search results</source>
+      <translation>S&#xF8;keresultater</translation>
+    </message>
+    <message>
+      <source>Search</source>
+      <translation type="unfinished">S&#xF8;k</translation>
+    </message>
+    <message>
+      <source>Search RSS by keyword</source>
+      <translation>S&#xF8;k RSS etter n&#xF8;kkelord</translation>
+    </message>
+    <message>
+      <source>View image</source>
+      <translation>Vis bilde</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/tagphoto</name>
+    <message>
+      <source>Thank you a lot :)</source>
+      <translation>Tusen hjertelig takk:)</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/topratedrss</name>
+    <message>
+      <source>Top rated images</source>
+      <translation>H&#xF8;yt rangerte bilder</translation>
+    </message>
+    <message>
+      <source>View image</source>
+      <translation>Vis bilde</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/updateimage</name>
+    <message>
+      <source>Image updated</source>
+      <translation>Image oppdatert</translation>
+    </message>
+  </context>
+  <context>
+    <name>shop/imagevariation</name>
+    <message>
+      <source>Basket</source>
+      <translation>Basket</translation>
+    </message>
+    <message>
+      <source>Payment option</source>
+      <translation>Betalingsm&#xE5;te</translation>
+    </message>
+  </context>
+  <context>
+    <name>shop/imagevariationform</name>
+    <message>
+      <source>Credits amount must be greater than 0!</source>
+      <translation>Studiepoeng bel&#xF8;pet m&#xE5; v&#xE6;re st&#xF8;rre enn 0!</translation>
+    </message>
+  </context>
+  <context>
+    <name>shop/settingedit</name>
+    <message>
+      <source>Edit</source>
+      <translation>Rediger</translation>
+    </message>
+  </context>
+  <context>
+    <name>system/index</name>
+    <message>
+      <source>System administration panel</source>
+      <translation>System administrasjonspanel</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/color</name>
+    <message>
+      <source>Exclude color</source>
+      <translation type="unfinished">Utelukk farger</translation>
+    </message>
+    <message>
+      <source>Maximum</source>
+      <translation type="unfinished">Maksimal</translation>
+    </message>
+    <message>
+      <source>filters</source>
+      <translation type="unfinished">filtre</translation>
+    </message>
+    <message>
+      <source>Include color</source>
+      <translation type="unfinished">Inkluder farge</translation>
+    </message>
+    <message>
+      <source>Remove color</source>
+      <translation type="unfinished">Fjern farge</translation>
+    </message>
+    <message>
+      <source>Excluded colors in search</source>
+      <translation type="unfinished">Ekskludert farger i s&#xF8;k</translation>
+    </message>
+    <message>
+      <source>colors</source>
+      <translation type="unfinished">farger</translation>
+    </message>
+    <message>
+      <source>More color</source>
+      <translation type="unfinished">Mer farge</translation>
+    </message>
+    <message>
+      <source>Return to pallete</source>
+      <translation type="unfinished">Tilbake til pallete</translation>
+    </message>
+    <message>
+      <source>Images by color</source>
+      <translation>Bilder etter farge</translation>
+    </message>
+    <message>
+      <source>Choose color</source>
+      <translation>Velg farge</translation>
+    </message>
+    <message>
+      <source>No records.</source>
+      <translation type="unfinished">Ingen poster.</translation>
     </message>
     <message>
       <source>Page</source>
@@ -3282,93 +3900,411 @@
     </message>
   </context>
   <context>
-    <name>gallery/popularrss</name>
+    <name>forum/admincategorys</name>
     <message>
-      <source>Most popular images</source>
-      <translation type="unfinished">Mest popul&#xE6;re bilder</translation>
+      <source>Category</source>
+      <translation type="unfinished">Kategori</translation>
+    </message>
+    <message>
+      <source>Title</source>
+      <translation type="unfinished">Tittel</translation>
+    </message>
+    <message>
+      <source>Owner</source>
+      <translation type="unfinished">Eier</translation>
+    </message>
+    <message>
+      <source>Topics</source>
+      <translation type="unfinished">Topics</translation>
+    </message>
+    <message>
+      <source>Messages</source>
+      <translation type="unfinished">Meldinger</translation>
+    </message>
+    <message>
+      <source>Edit category</source>
+      <translation type="unfinished">Edit kategorien</translation>
+    </message>
+    <message>
+      <source>Delete category</source>
+      <translation type="unfinished">Slett kategori</translation>
+    </message>
+    <message>
+      <source>Create a category</source>
+      <translation type="unfinished">Opprett en kategori</translation>
+    </message>
+    <message>
+      <source>Home</source>
+      <translation type="unfinished">Hjem</translation>
     </message>
   </context>
   <context>
-    <name>gallery/searchrss</name>
+    <name>forum/editcategory</name>
     <message>
-      <source>Search results</source>
-      <translation type="unfinished">S&#xF8;keresultater</translation>
+      <source>Category edit</source>
+      <translation type="unfinished">Kategori edit</translation>
     </message>
     <message>
-      <source>Search RSS by keyword</source>
-      <translation type="unfinished">S&#xF8;k RSS etter n&#xF8;kkelord</translation>
+      <source>Update</source>
+      <translation type="unfinished">Update</translation>
     </message>
     <message>
-      <source>View image</source>
-      <translation type="unfinished">Vis bilde</translation>
-    </message>
-  </context>
-  <context>
-    <name>gallery/tagphoto</name>
-    <message>
-      <source>Thank you a lot :)</source>
-      <translation type="unfinished">Tusen hjertelig takk:)</translation>
+      <source>Please enter category name!</source>
+      <translation type="unfinished">Vennligst fyll kategorinavn!</translation>
     </message>
   </context>
   <context>
-    <name>gallery/topratedrss</name>
+    <name>lhad/orderitemdetails/orderitemdetails_display_ad_magazine</name>
     <message>
-      <source>Top rated images</source>
-      <translation type="unfinished">H&#xF8;yt rangerte bilder</translation>
-    </message>
-    <message>
-      <source>View image</source>
-      <translation type="unfinished">Vis bilde</translation>
+      <source>Please enable JavaScript to upload image</source>
+      <translation type="unfinished">Vennligst aktiver JavaScript for &#xE5; laste opp bilde</translation>
     </message>
   </context>
   <context>
-    <name>gallery/updateimage</name>
+    <name>lhad/uploadadorderitem_content</name>
     <message>
-      <source>Image updated</source>
-      <translation type="unfinished">Image oppdatert</translation>
+      <source>Cancel</source>
+      <translation type="unfinished">Avbryt</translation>
+    </message>
+    <message>
+      <source>Failed</source>
+      <translation type="unfinished">Feilet</translation>
     </message>
   </context>
   <context>
-    <name>shop/imagevariation</name>
+    <name>gallery/ratebanlist</name>
     <message>
-      <source>Basket</source>
-      <translation type="unfinished">Basket</translation>
+      <source>Baned IP for rating</source>
+      <translation type="unfinished">Baned IP for rating</translation>
     </message>
     <message>
-      <source>Payment option</source>
-      <translation type="unfinished">Betalingsm&#xE5;te</translation>
+      <source>Are you sure?</source>
+      <translation type="unfinished">Er du sikker?</translation>
+    </message>
+    <message>
+      <source>Delete ip</source>
+      <translation type="unfinished">Slett ip</translation>
+    </message>
+    <message>
+      <source>New IP BAN</source>
+      <translation type="unfinished">Nye IP BAN</translation>
+    </message>
+    <message>
+      <source>IP</source>
+      <translation type="unfinished">IP</translation>
+    </message>
+    <message>
+      <source>Add</source>
+      <translation type="unfinished">Legg til</translation>
+    </message>
+    <message>
+      <source>System configuration</source>
+      <translation type="unfinished">Systemkonfigurasjon</translation>
+    </message>
+    <message>
+      <source>Comment ban IP</source>
+      <translation type="unfinished">Kommentar forbud IP</translation>
+    </message>
+    <message>
+      <source>Rate ban IP</source>
+      <translation type="unfinished">Pris forbud IP</translation>
     </message>
   </context>
   <context>
-    <name>shop/imagevariationform</name>
+    <name>gallery/movealbumphotos</name>
     <message>
-      <source>Credits amount must be greater than 0!</source>
-      <translation type="unfinished">Studiepoeng bel&#xF8;pet m&#xE5; v&#xE6;re st&#xF8;rre enn 0!</translation>
+      <source>Search album</source>
+      <translation type="unfinished">S&#xF8;k i album</translation>
+    </message>
+    <message>
+      <source>Move photos</source>
+      <translation type="unfinished">Flytt bilder</translation>
+    </message>
+    <message>
+      <source>We moved</source>
+      <translation type="unfinished">Vi flyttet</translation>
+    </message>
+    <message>
+      <source>images</source>
+      <translation type="unfinished">bilder</translation>
+    </message>
+    <message>
+      <source>Move album photos</source>
+      <translation type="unfinished">Flytt album bilde</translation>
     </message>
   </context>
   <context>
-    <name>shop/settingedit</name>
+    <name>fb/album</name>
     <message>
-      <source>Edit</source>
-      <translation type="unfinished">Rediger</translation>
+      <source>Check photo to import</source>
+      <translation type="unfinished">Sjekk bilde &#xE5; importere</translation>
+    </message>
+    <message>
+      <source>Import selected images to</source>
+      <translation type="unfinished">Importer valgte bilder til</translation>
+    </message>
+    <message>
+      <source>To what album you want to import images, start typing album name and click search</source>
+      <translation type="unfinished">Til hva albumet du vil importere bilder, start &#xE5; skrive albumnavn og klikk s&#xF8;k</translation>
+    </message>
+    <message>
+      <source>Search for album</source>
+      <translation type="unfinished">S&#xF8;k etter album</translation>
+    </message>
+    <message>
+      <source>Check all</source>
+      <translation type="unfinished">Kontroller alle</translation>
+    </message>
+    <message>
+      <source>Click to see target, new window will open</source>
+      <translation type="unfinished">Klikk for &#xE5; se m&#xE5;l, vil nytt vindu &#xE5;pnes</translation>
+    </message>
+    <message>
+      <source>Import selected images</source>
+      <translation type="unfinished">Importer valgte bilder</translation>
+    </message>
+    <message>
+      <source>Please choose atleast one image!</source>
+      <translation type="unfinished">Velg atleast ett bilde!</translation>
+    </message>
+    <message>
+      <source>images to import</source>
+      <translation type="unfinished">bilder til import</translation>
+    </message>
+    <message>
+      <source>All images were imported</source>
+      <translation type="unfinished">Alle bilder ble importert</translation>
+    </message>
+    <message>
+      <source>Please choose album</source>
+      <translation type="unfinished">Velg album</translation>
+    </message>
+    <message>
+      <source>Preview version</source>
+      <translation type="unfinished">Preview-versjonen</translation>
     </message>
   </context>
   <context>
-    <name>system/index</name>
+    <name>gallery/lastsearches</name>
     <message>
-      <source>System administration panel</source>
-      <translation type="unfinished">System administrasjonspanel</translation>
+      <source>Last searches</source>
+      <translation type="unfinished">Siste s&#xF8;k</translation>
+    </message>
+    <message>
+      <source>No records</source>
+      <translation type="unfinished">Ingen poster</translation>
     </message>
   </context>
   <context>
-    <name>gallery/color</name>
+    <name>similar/similar</name>
     <message>
-      <source>Images by color</source>
-      <translation>Bilder etter farge</translation>
-    </message>  
+      <source>Visualy similar images to</source>
+      <translation type="unfinished">Visualy lignende bilder til</translation>
+    </message>
     <message>
-      <source>Choose color</source>
-      <translation>Velg farge</translation>
-    </message> 
+      <source>Search for visualy similar images</source>
+      <translation type="unfinished">S&#xF8;k etter visualy lignende bilder</translation>
+    </message>
+    <message>
+      <source>Please enable JavaScript to upload image</source>
+      <translation type="unfinished">Vennligst aktiver JavaScript for &#xE5; laste opp bilde</translation>
+    </message>
+    <message>
+      <source>Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).</source>
+      <translation type="unfinished">Klikk for &#xE5; velge bilde, kan du ogs&#xE5; dra og slippe filer her (Dra og slipp bare for FF, Chrome).</translation>
+    </message>
+    <message>
+      <source>Cancel</source>
+      <translation type="unfinished">Avbryt</translation>
+    </message>
+    <message>
+      <source>Failed</source>
+      <translation type="unfinished">Feilet</translation>
+    </message>
+  </context>
+  <context>
+    <name>similar/sketch</name>
+    <message>
+      <source>Search by sketch</source>
+      <translation type="unfinished">S&#xF8;k etter skisse</translation>
+    </message>
+    <message>
+      <source>Sketch and find images by your sketch</source>
+      <translation type="unfinished">Sketch og finne bilder ved skisse din</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/mapaccounts</name>
+    <message>
+      <source>Login with facebook</source>
+      <translation type="unfinished">Logg inn med Facebook</translation>
+    </message>
+    <message>
+      <source>Map to my account</source>
+      <translation type="unfinished">Kart til min konto</translation>
+    </message>
+    <message>
+      <source>my account</source>
+      <translation type="unfinished">kontoen min</translation>
+    </message>
+    <message>
+      <source>Login</source>
+      <translation type="unfinished">Innlogging</translation>
+    </message>
+    <message>
+      <source>map to my account</source>
+      <translation type="unfinished">map til min konto</translation>
+    </message>
+    <message>
+      <source>Incorrect login or password</source>
+      <translation type="unfinished">Feil brukernavn eller passord</translation>
+    </message>
+    <message>
+      <source>Username</source>
+      <translation type="unfinished">Brukernavn</translation>
+    </message>
+    <message>
+      <source>Password</source>
+      <translation type="unfinished">Passord</translation>
+    </message>
+    <message>
+      <source>OR</source>
+      <translation type="unfinished">OR</translation>
+    </message>
+    <message>
+      <source>create account</source>
+      <translation type="unfinished">opprette konto</translation>
+    </message>
+    <message>
+      <source>Next</source>
+      <translation type="unfinished">Neste</translation>
+    </message>
+    <message>
+      <source>Open ID</source>
+      <translation type="unfinished">&#xC5;pen ID</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/category</name>
+    <message>
+      <source>Please enter topic name!</source>
+      <translation type="unfinished">Vennligst fyll emnenavn!</translation>
+    </message>
+    <message>
+      <source>Please enter message!</source>
+      <translation type="unfinished">Vennligst skriv melding!</translation>
+    </message>
+    <message>
+      <source>Please choose category!</source>
+      <translation type="unfinished">Vennligst velg kategori!</translation>
+    </message>
+    <message>
+      <source>Not parent category!</source>
+      <translation type="unfinished">Ikke overordnede kategorien!</translation>
+    </message>
+    <message>
+      <source>Invalid category!</source>
+      <translation type="unfinished">Ugyldig kategorien!</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">Forum</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/createcategory</name>
+    <message>
+      <source>Please enter category name!</source>
+      <translation type="unfinished">Vennligst fyll kategorinavn!</translation>
+    </message>
+    <message>
+      <source>Home</source>
+      <translation type="unfinished">Hjem</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/editmessage</name>
+    <message>
+      <source>Please enter message!</source>
+      <translation type="unfinished">Vennligst skriv melding!</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">Forum</translation>
+    </message>
+    <message>
+      <source>Message edit</source>
+      <translation type="unfinished">Melding edit</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/edittopic</name>
+    <message>
+      <source>Please enter topic name!</source>
+      <translation type="unfinished">Vennligst fyll emnenavn!</translation>
+    </message>
+    <message>
+      <source>Please enter topic status!</source>
+      <translation type="unfinished">Vennligst fyll topic status!</translation>
+    </message>
+    <message>
+      <source>Forum</source>
+      <translation type="unfinished">Forum</translation>
+    </message>
+    <message>
+      <source>Topic edit</source>
+      <translation type="unfinished">Emne edit</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/report</name>
+    <message>
+      <source>Please enter message!</source>
+      <translation type="unfinished">Vennligst skriv melding!</translation>
+    </message>
+    <message>
+      <source>Forum message report</source>
+      <translation type="unfinished">Forum melding rapport</translation>
+    </message>
+  </context>
+  <context>
+    <name>forum/searchrss</name>
+    <message>
+      <source>Search</source>
+      <translation type="unfinished">S&#xF8;k</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/albumeditadmin</name>
+    <message>
+      <source>Root category</source>
+      <translation type="unfinished">Root kategorien</translation>
+    </message>
+    <message>
+      <source>Add images</source>
+      <translation type="unfinished">Legg til bilder</translation>
+    </message>
+    <message>
+      <source>Album edit</source>
+      <translation type="unfinished">Album edit</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/movebyresolution</name>
+    <message>
+      <source>Move by resolution</source>
+      <translation type="unfinished">Flytt ved resolusjon</translation>
+    </message>
+  </context>
+  <context>
+    <name>similar/image</name>
+    <message>
+      <source>Similar images to</source>
+      <translation type="unfinished">Lignende bilder til</translation>
+    </message>
+    <message>
+      <source>Search for visualy similar images</source>
+      <translation type="unfinished">S&#xF8;k etter visualy lignende bilder</translation>
+    </message>
   </context>
 </TS>

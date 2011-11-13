@@ -1,5 +1,5 @@
 <div class="header-list">
-<h1>My facebook albums</h1>
+<h1><?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','My facebook albums')?></h1>
 </div>
 
 <?php foreach ($albums['data'] as $album) : ?>

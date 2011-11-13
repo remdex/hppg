@@ -59,8 +59,8 @@
             <?php endif;?>
             
 		    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) === true) : ?>               
-            <li><a href="<?=erLhcoreClassDesign::baseurl('similar/image')?>">Search by similarity</a></li>
-            <li><a href="<?=erLhcoreClassDesign::baseurl('similar/sketch')?>">Search by sketch</a></li>
+            <li><a href="<?=erLhcoreClassDesign::baseurl('similar/image')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by similarity')?></a></li>
+            <li><a href="<?=erLhcoreClassDesign::baseurl('similar/sketch')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by sketch')?></a></li>
             <?php endif;?>
             
 		</ul>
