@@ -11,4 +11,6 @@
    <a class="norvegian" title="Norwegian" href="<?=erLhcoreClassDesign::baseurldirect('/nor')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
    <a class="denmark" title="Denmark" href="<?=erLhcoreClassDesign::baseurldirect('/den')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
    <a class="japan" title="Japan" href="<?=erLhcoreClassDesign::baseurldirect('/jap')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="croatia " title="Croatia" href="<?=erLhcoreClassDesign::baseurldirect('/hrv')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="czech" title="Czech" href="<?=erLhcoreClassDesign::baseurldirect('/ces')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
 </div>
