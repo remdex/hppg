@@ -76,6 +76,8 @@ return array (
         11 => 'jap',
         12 => 'site_admin',
         13 => 'm',
+        14 => 'ces',
+        15 => 'hrv',
       ),
     ),
     'site_access_options' => 
@@ -194,6 +196,26 @@ return array (
       array (
         'locale' => 'ja_JA',
         'content_language' => 'ja',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'ces' => 
+      array (
+        'locale' => 'cs_CS',
+        'content_language' => 'cs',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'hrv' => 
+      array (
+        'locale' => 'hr_HR',
+        'content_language' => 'hr',
         'theme' => 
         array (
           0 => 'frontend',
