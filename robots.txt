@@ -1,12 +1,45 @@
 User-agent: *
 Disallow: */m/*
-Disallow: */captcha/image*
+
+Disallow: */(resolution)/*
+Disallow: */(sort)/*
+
 Disallow: */gallery/sharephpbb*
 Disallow: */gallery/sharehtml*
 Disallow: */gallery/anaglyph*
 Disallow: */gallery/ajaximages*
 Disallow: */similar/imagejson*
-Disallow: */(resolution)/*
+
+Disallow: */galleri/sharephpbb*
+Disallow: */galleri/sharehtml*
+Disallow: */galleri/anaglyph*
+Disallow: */galleri/ajaximages*
+
+Disallow: */galerija/sharephpbb*
+Disallow: */galerija/sharehtml*
+Disallow: */galerija/anaglyph*
+Disallow: */galerija/ajaximages*
+
+Disallow: */galereya/sharephpbb*
+Disallow: */galereya/sharehtml*
+Disallow: */galereya/anaglyph*
+Disallow: */galereya/ajaximages*
+
+Disallow: */galeria/sharephpbb*
+Disallow: */galeria/sharehtml*
+Disallow: */galeria/anaglyph*
+Disallow: */galeria/ajaximages*
+
+Disallow: */galerie/sharephpbb*
+Disallow: */galerie/sharehtml*
+Disallow: */galerie/anaglyph*
+Disallow: */galerie/ajaximages*
+
+Disallow: */galleri/sharephpbb*
+Disallow: */galleri/sharehtml*
+Disallow: */galleri/anaglyph*
+Disallow: */galleri/ajaximages*
+
 
 User-agent: ia_archiver
 Disallow: /
