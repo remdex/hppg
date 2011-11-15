@@ -18,26 +18,32 @@ Disallow: */galerija/sharephpbb*
 Disallow: */galerija/sharehtml*
 Disallow: */galerija/anaglyph*
 Disallow: */galerija/ajaximages*
+Disallow: */galerija/stereoskopska-slika*
 
 Disallow: */galereya/sharephpbb*
 Disallow: */galereya/sharehtml*
 Disallow: */galereya/anaglyph*
+Disallow: */galereya/anaglif*
 Disallow: */galereya/ajaximages*
 
 Disallow: */galeria/sharephpbb*
 Disallow: */galeria/sharehtml*
 Disallow: */galeria/anaglyph*
 Disallow: */galeria/ajaximages*
+Disallow: */galeria/anaglifo*
 
 Disallow: */galerie/sharephpbb*
 Disallow: */galerie/sharehtml*
 Disallow: */galerie/anaglyph*
 Disallow: */galerie/ajaximages*
+Disallow: */galerie/anaglyphe*
 
 Disallow: */galleri/sharephpbb*
+Disallow: */galleri/share-phpbb*
 Disallow: */galleri/sharehtml*
 Disallow: */galleri/anaglyph*
 Disallow: */galleri/ajaximages*
+Disallow: */galleri/aksjer-html*
 
 Disallow: */podobny/imagejson*
 Disallow: */slican/imagejson*
