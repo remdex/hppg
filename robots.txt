@@ -1,8 +1,7 @@
-User-agent: *
-Disallow: */m/*
+User-agent: Googlebot
+Disallow: /m/*
 
 Disallow: */(resolution)/*
-Disallow: */(sort)/*
 
 Disallow: */gallery/sharephpbb*
 Disallow: */gallery/sharehtml*
@@ -40,6 +39,9 @@ Disallow: */galleri/sharehtml*
 Disallow: */galleri/anaglyph*
 Disallow: */galleri/ajaximages*
 
+Disallow: */podobny/imagejson*
+Disallow: */slican/imagejson*
+Disallow: */similar/image/
 
 User-agent: ia_archiver
 Disallow: /
