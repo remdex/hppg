@@ -79,6 +79,33 @@ return array (
         14 => 'ces',
         15 => 'hrv',
       ),
+    ),    
+    'sitemap_settings' => array (
+    
+        'siteaccess_sitemaps' => array (
+            0 => 'eng',
+            1 => 'lit',
+            2 => 'ger',
+            3 => 'esp',
+            4 => 'fre',
+            5 => 'por',
+            6 => 'rus',
+            7 => 'ita',
+            8 => 'ind',
+            9 => 'den',
+            10 => 'nor',
+            11 => 'jap',
+            12 => 'ces',
+            13 => 'hrv',
+          ),
+          
+          'categorys_per_page' => 500,
+          'album_per_page' => 500,
+          'image_per_page' => 1000,
+          
+          'album_priority' => '0.8',
+          'category_priority' => '0.7',
+          'image_priority' => '0.9'
     ),
     'site_access_options' => 
     array (
