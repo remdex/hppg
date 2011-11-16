@@ -78,6 +78,14 @@ return array (
         13 => 'm',
         14 => 'ces',
         15 => 'hrv',
+        16 => 'pol',
+        17 => 'tur',
+        18 => 'ukr',
+        19 => 'bel',
+        20 => 'sve',
+        21 => 'rum',
+        22 => 'fin',
+        23 => 'ice',
       ),
     ),    
     'sitemap_settings' => array (
@@ -97,6 +105,14 @@ return array (
             11 => 'jap',
             12 => 'ces',
             13 => 'hrv',
+            14 => 'pol',
+            15 => 'tur',
+            16 => 'ukr',
+            17 => 'bel',
+            18 => 'sve',
+            19 => 'rum',
+            20 => 'fin',
+            21 => 'ice',
           ),
           
           'categorys_per_page' => 500,
@@ -243,6 +259,86 @@ return array (
       array (
         'locale' => 'hr_HR',
         'content_language' => 'hr',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'ice' => 
+      array (
+        'locale' => 'is_IS',
+        'content_language' => 'is',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'rum' => 
+      array (
+        'locale' => 'ro_RO',
+        'content_language' => 'ro',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'fin' => 
+      array (
+        'locale' => 'fi_FI',
+        'content_language' => 'fi',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'sve' => 
+      array (
+        'locale' => 'sv_SV',
+        'content_language' => 'sv',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'ukr' => 
+      array (
+        'locale' => 'uk_UK',
+        'content_language' => 'uk',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),     
+      'bel' => 
+      array (
+        'locale' => 'be_BE',
+        'content_language' => 'be',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'tur' => 
+      array (
+        'locale' => 'tr_TR',
+        'content_language' => 'tr',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'pol' => 
+      array (
+        'locale' => 'pl_PL',
+        'content_language' => 'pl',
         'theme' => 
         array (
           0 => 'frontend',
