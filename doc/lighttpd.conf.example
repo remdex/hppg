@@ -5,9 +5,9 @@ url.rewrite-once = (
 # Mobile version nice url get's support
 # Same method all siteaccess can get nice url support
 
-"^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind|ces|hrv)/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/$1/gallery/category/$3$5",
-"^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind|ces|hrv)/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/$1/gallery/album/$3$5",
-"^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind|ces|hrv)/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/$1/gallery/image/$3$5",
+"^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind|ces|hrv|pol|tur|ukr|bel|sve|rum|fin|ice)/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/$1/gallery/category/$3$5",
+"^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind|ces|hrv|pol|tur|ukr|bel|sve|rum|fin|ice)/(.*)-([0-9]*)(a\.html)(.*?)$" =>  "/index.php?/$1/gallery/album/$3$5",
+"^/(m|lit|ger|fre|esp|por|ita|rus|jap|den|nor|ind|ces|hrv|pol|tur|ukr|bel|sve|rum|fin|ice)/(.*)-([0-9]*)(p\.html)(.*?)$" =>  "/index.php?/$1/gallery/image/$3$5",
 
 # Gallery
 "^/(.*)-([0-9]*)(c\.html)(.*?)$" =>  "/index.php?/gallery/category/$2$4",

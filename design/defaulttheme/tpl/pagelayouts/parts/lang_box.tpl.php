@@ -13,4 +13,12 @@
    <a class="japan" title="Japan" href="<?=erLhcoreClassDesign::baseurldirect('/jap')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
    <a class="croatia " title="Croatia" href="<?=erLhcoreClassDesign::baseurldirect('/hrv')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
    <a class="czech" title="Czech" href="<?=erLhcoreClassDesign::baseurldirect('/ces')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="polish" title="Polish" href="<?=erLhcoreClassDesign::baseurldirect('/pol')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="turkish" title="Turkish" href="<?=erLhcoreClassDesign::baseurldirect('/tur')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="ukrainian" title="Ukrainian" href="<?=erLhcoreClassDesign::baseurldirect('/ukr')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="belarusian" title="Belarusian" href="<?=erLhcoreClassDesign::baseurldirect('/bel')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="swedish" title="Swedish" href="<?=erLhcoreClassDesign::baseurldirect('/sve')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="romanian" title="Romanian" href="<?=erLhcoreClassDesign::baseurldirect('/rum')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="finnish" title="Finnish" href="<?=erLhcoreClassDesign::baseurldirect('/fin')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
+   <a class="icelandic" title="Icelandic" href="<?=erLhcoreClassDesign::baseurldirect('/ice')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>"></a>
 </div>

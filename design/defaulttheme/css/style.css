@@ -527,7 +527,7 @@ div#path a,
 div.top-menu,
 .ln-box a
 {
-background:url(../images/newdesign/spritev3.png) no-repeat top left;
+background:url(../images/newdesign/spritev4.png) no-repeat top left;
 }
 
 div.top-menu{ background-repeat:repeat-x;background-position:top left;height:40px;width:770px;float:right;}
@@ -563,7 +563,14 @@ float:right;clear:right;width:770px;
 .ln-box a.japan{width:16px;display:block; height:13px; background-position:-140px -519px; }
 .ln-box a.croatia{width:16px;display:block; height:13px; background-position:-42px -536px; }
 .ln-box a.czech{width:16px;display:block; height:13px; background-position:-62px -536px; }
-
+.ln-box a.polish{width:16px;display:block; height:13px; background-position:-82px -536px; }
+.ln-box a.turkish{width:16px;display:block; height:13px; background-position:-102px -536px; }
+.ln-box a.ukrainian{width:16px;display:block; height:13px; background-position:-120px -536px; }
+.ln-box a.belarusian{width:16px;display:block; height:13px; background-position:-39px -553px; }
+.ln-box a.swedish{width:16px;display:block; height:13px; background-position:-59px -553px; }
+.ln-box a.romanian{width:16px;display:block; height:13px; background-position:-176px -536px; }
+.ln-box a.finnish{width:16px;display:block; height:13px; background-position:-2px -553px; }
+.ln-box a.icelandic{width:16px;display:block; height:13px; background-position:-20px -552px; }
 
 .rss-page{background-position:-31px -40px;float:right;display:block;height:32px;width:32px;margin-top:5px;margin-right:8px;}
 

@@ -13,6 +13,8 @@ Disallow: */galleri/sharephpbb*
 Disallow: */galleri/sharehtml*
 Disallow: */galleri/anaglyph*
 Disallow: */galleri/ajaximages*
+Disallow: */galleri/share-phpbb*
+Disallow: */galleri/aksjer-html*
 
 Disallow: */galerija/sharephpbb*
 Disallow: */galerija/sharehtml*
@@ -38,16 +40,28 @@ Disallow: */galerie/anaglyph*
 Disallow: */galerie/ajaximages*
 Disallow: */galerie/anaglyphe*
 
-Disallow: */galleri/sharephpbb*
-Disallow: */galleri/share-phpbb*
-Disallow: */galleri/sharehtml*
-Disallow: */galleri/anaglyph*
-Disallow: */galleri/ajaximages*
-Disallow: */galleri/aksjer-html*
+Disallow: */galleria/sharephpbb*
+Disallow: */galleria/sharehtml*
+Disallow: */galleria/anaglyph*
+Disallow: */galleria/ajaximages*
+Disallow: */galleria/anaglyphe*
+
+Disallow: */galeri/sharephpbb*
+Disallow: */galeri/sharehtml*
+Disallow: */galeri/anaglif*
+Disallow: */galeri/ajaximages*
 
 Disallow: */podobny/imagejson*
 Disallow: */slican/imagejson*
 Disallow: */similar/image/
+Disallow: */analagichny/malyunak/
+Disallow: */benzer/goeruentue/
+Disallow: */analogichnij/zobrazhennya/
+Disallow: */liknande/bild/
+Disallow: */samankaltainen/kuva/
+Disallow: */svipud/image/
+Disallow: */asemanator/imagine/
+
 
 User-agent: ia_archiver
 Disallow: /
