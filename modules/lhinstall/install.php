@@ -1014,6 +1014,20 @@ switch ((int)$Params['user_parameters']['step_id']) {
                   PRIMARY KEY (`identifier`)
                 ) DEFAULT CHARSET=utf8;");
                 
+                $db->query("CREATE TABLE IF NOT EXISTS `lh_users_profile` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `user_id` int(11) NOT NULL,
+                  `name` varchar(150) NOT NULL,
+                  `surname` varchar(150) NOT NULL,
+                  `intro` text NOT NULL,
+                  `photo` varchar(100) NOT NULL,
+                  `variations` text NOT NULL,
+                  `filepath` varchar(200) NOT NULL,
+                  `website` varchar(200) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `user_id` (`user_id`)
+                ) DEFAULT CHARSET=utf8;");
+                
                 
                 $db->query("INSERT INTO `lh_gallery_last_index` (`identifier`, `value`) VALUES
                 ('image_index', 0),

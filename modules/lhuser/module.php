@@ -34,6 +34,12 @@ $ViewList['account'] = array(
     'script' => 'account.php',
     'params' => array(),
     'functions' => array( 'selfedit' )
+    ); 
+       
+$ViewList['profilesettings'] = array( 
+    'script' => 'profilesettings.php',
+    'params' => array(),
+    'functions' => array( 'selfedit' )
     );  
       
 $ViewList['index'] = array( 
@@ -127,6 +133,11 @@ $ViewList['forgotpassword'] = array(
 $ViewList['remindpassword'] = array( 
     'script' => 'remindpassword.php',
     'params' => array('hash'),
+    );
+     
+$ViewList['profile'] = array( 
+    'script' => 'profile.php',
+    'params' => array('user_id'),
     ); 
     
 $ViewList['completefblogin'] = array( 

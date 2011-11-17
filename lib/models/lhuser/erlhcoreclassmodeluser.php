@@ -32,6 +32,19 @@ class erLhcoreClassModelUser {
    	 return $user;
    }
    
+   public function __get($param)
+   {
+       switch ($param) {
+       	case 'profile':
+       		   $this->profile = erLhcoreClassModelUserProfile::instanceProfile($this->id);
+       		   return $this->profile;
+       		break;
+       
+       	default:
+       		break;
+       }
+   }
+   
    public static function getUserCount($params = array())
    {
        $session = erLhcoreClassUser::getSession('slave');

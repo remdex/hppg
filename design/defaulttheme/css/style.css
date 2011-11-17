@@ -22,7 +22,8 @@ li{margin:0;padding:0;}
 p{padding-bottom:10px;;margin:0;}
 .btext{font-weight:bold;}
 .cursor{cursor:pointer; }
-
+.pr20{padding-right:20px;}
+.pb10{padding-bottom:10px;}
 /*div#container{min-width:990px;}*/
 
 .no-left-column #leftmenucont,

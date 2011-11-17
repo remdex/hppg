@@ -104,7 +104,25 @@ class erLhcoreClassImageConverter {
             	$filterWatermarkAll[] = $waterMarkFilter;
             }    
 
-                       
+            $this->converter->createTransformation(
+                'photow_60',
+                array( 
+                    new ezcImageFilter( 
+                        'croppedThumbnail',
+                        array( 
+                            'width'     => 60, 
+                            'height'    => 60,                            
+                            'direction' => ezcImageGeometryFilters::SCALE_DOWN,
+                        )
+                    ),
+                ),
+                array( 
+                    'image/jpeg',
+                    'image/png',
+                ),
+                new ezcImageSaveOptions(array('quality' => (int)95))
+            );
+                      
             $this->converter->createTransformation( 'jpeg', $filterWatermarkAll,
                 array( 
                     'image/jpeg',

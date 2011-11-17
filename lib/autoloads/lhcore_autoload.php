@@ -37,7 +37,8 @@ return array_merge(array (
         // Core models
         'erLhcoreClassModelUser' 			=> 'lib/models/lhuser/erlhcoreclassmodeluser.php',
         'erLhcoreClassModelUserFB' 			=> 'lib/models/lhuser/erlhcoreclassmodeluserfb.php',
-        
+        'erLhcoreClassModelUserProfile' 	=> 'lib/models/lhuser/erlhcoreclassmodeluserprofile.php',
+         
         'erLhcoreClassModelGroup' 			=> 'lib/models/lhuser/erlhcoreclassmodelgroup.php',
         'erLhcoreClassModelGroupUser' 		=> 'lib/models/lhuser/erlhcoreclassmodelgroupuser.php',
         'erLhcoreClassModelGroupRole' 		=> 'lib/models/lhpermission/erlhcoreclassmodelgrouprole.php',
