@@ -1385,6 +1385,42 @@
       <translation>De trabajo</translation>
     </message>
     <message>
+      <source>Profile page settings</source>
+      <translation type="unfinished">Configuraci&#xF3;n de la p&#xE1;gina de perfil</translation>
+    </message>
+    <message>
+      <source>Profile settings updated</source>
+      <translation type="unfinished">Configuraci&#xF3;n del perfil actualizado</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">Nombre</translation>
+    </message>
+    <message>
+      <source>Surname</source>
+      <translation type="unfinished">Apellido</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Sitio web</translation>
+    </message>
+    <message>
+      <source>Information about you</source>
+      <translation type="unfinished">Informaci&#xF3;n sobre usted</translation>
+    </message>
+    <message>
+      <source>Profile photo</source>
+      <translation type="unfinished">Foto de perfil</translation>
+    </message>
+    <message>
+      <source>See how your profile looks to users</source>
+      <translation type="unfinished">Vea c&#xF3;mo se ve el perfil de los usuarios</translation>
+    </message>
+    <message>
+      <source>View profile</source>
+      <translation type="unfinished">Ver perfil</translation>
+    </message>
+    <message>
       <source>Wrong email address</source>
       <translation>direcci&#xF3;n de correo electr&#xF3;nico incorrecta</translation>
     </message>
@@ -1482,6 +1518,10 @@
     <message>
       <source>Authentifion with google</source>
       <translation>Authentifion con google</translation>
+    </message>
+    <message>
+      <source>Profile settings</source>
+      <translation type="unfinished">Configuraci&#xF3;n del perfil</translation>
     </message>
   </context>
   <context>
@@ -2041,6 +2081,10 @@
       <translation>Mi cuenta</translation>
     </message>
     <message>
+      <source>Profile page</source>
+      <translation type="unfinished">La p&#xE1;gina de perfil</translation>
+    </message>
+    <message>
       <source>Manage albums</source>
       <translation>Administrar &#xE1;lbumes</translation>
     </message>
@@ -2546,8 +2590,8 @@
       <translation>Propietario</translation>
     </message>
     <message>
-      <source>More user images</source>
-      <translation>M&#xE1;s im&#xE1;genes del usuario</translation>
+      <source>About user</source>
+      <translation type="unfinished">Acerca del usuario</translation>
     </message>
     <message>
       <source>votes</source>
@@ -2560,6 +2604,10 @@
     <message>
       <source>Search for visualy similar images</source>
       <translation>B&#xFA;squeda de im&#xE1;genes visualmente similares</translation>
+    </message>
+    <message>
+      <source>More user images</source>
+      <translation>M&#xE1;s im&#xE1;genes del usuario</translation>
     </message>
     <message>
       <source>Version</source>
@@ -2743,6 +2791,10 @@
       <source>Page</source>
       <translation>Page</translation>
     </message>
+    <message>
+      <source>Last commented gallery images.</source>
+      <translation type="unfinished">&#xDA;ltimo comentario galer&#xED;a de im&#xE1;genes.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lasthits</name>
@@ -2761,6 +2813,10 @@
     <message>
       <source>Page</source>
       <translation>Page</translation>
+    </message>
+    <message>
+      <source>Last viewed gallery images.</source>
+      <translation type="unfinished">&#xDA;ltimo visto im&#xE1;genes de la galer&#xED;a.</translation>
     </message>
   </context>
   <context>
@@ -2781,6 +2837,10 @@
       <source>Page</source>
       <translation>Page</translation>
     </message>
+    <message>
+      <source>Recently rated images.</source>
+      <translation type="unfinished">Recientemente clasificados im&#xE1;genes.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lastuploads</name>
@@ -2799,6 +2859,10 @@
     <message>
       <source>Page</source>
       <translation>P&#xE1;gina</translation>
+    </message>
+    <message>
+      <source>Latest additions to gallery.</source>
+      <translation type="unfinished">&#xDA;ltimas incorporaciones a la galer&#xED;a.</translation>
     </message>
   </context>
   <context>
@@ -3011,6 +3075,10 @@
       <source>Page</source>
       <translation>Page</translation>
     </message>
+    <message>
+      <source>All time most popular images.</source>
+      <translation type="unfinished">Todo el tiempo m&#xE1;s popular de las im&#xE1;genes.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/popularrecect</name>
@@ -3116,6 +3184,10 @@
       <source>Page</source>
       <translation>Page</translation>
     </message>
+    <message>
+      <source>Top rated images in last 24 hours.</source>
+      <translation type="unfinished">Lo &#xFA;ltimo clasificado en las &#xFA;ltimas 24 horas.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/sharehtml</name>
@@ -3186,6 +3258,10 @@
     <message>
       <source>Page</source>
       <translation>Page</translation>
+    </message>
+    <message>
+      <source>All time top rated images.</source>
+      <translation type="unfinished">Todos los Tiempos Top valorados im&#xE1;genes.</translation>
     </message>
   </context>
   <context>
@@ -3772,6 +3848,10 @@
       <source>Page</source>
       <translation>Page</translation>
     </message>
+    <message>
+      <source>Most popular images in last 24 hours.</source>
+      <translation type="unfinished">Las im&#xE1;genes m&#xE1;s populares en las &#xFA;ltimas 24 horas.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/popularrss</name>
@@ -4344,6 +4424,44 @@
     <message>
       <source>Search for visualy similar images</source>
       <translation>B&#xFA;squeda de im&#xE1;genes visualmente similares</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/profile</name>
+    <message>
+      <source>User profile</source>
+      <translation type="unfinished">Perfil de usuario</translation>
+    </message>
+    <message>
+      <source>Name and surname</source>
+      <translation type="unfinished">Nombre y apellidos</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Sitio web</translation>
+    </message>
+    <message>
+      <source>Introduction</source>
+      <translation type="unfinished">Introducci&#xF3;n</translation>
+    </message>
+    <message>
+      <source>Last updated albums</source>
+      <translation type="unfinished">&#xDA;ltimos &#xE1;lbumes modificados</translation>
+    </message>
+    <message>
+      <source>Last uploaded images</source>
+      <translation type="unfinished">&#xDA;ltimas im&#xE1;genes subido</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/lastuploadstoalbums</name>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation type="unfinished">&#xDA;ltimas fotos a los &#xE1;lbumes</translation>
+    </message>
+    <message>
+      <source>Recently updated albums</source>
+      <translation type="unfinished">&#xC1;lbumes actualizado recientemente</translation>
     </message>
   </context>
 </TS>

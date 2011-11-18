@@ -1051,8 +1051,8 @@
       <translation>Proprietar</translation>
     </message>
     <message>
-      <source>More user images</source>
-      <translation>Mai multe fotografii sau ghidul</translation>
+      <source>About user</source>
+      <translation type="unfinished">Despre ghidul de</translation>
     </message>
     <message>
       <source>votes</source>
@@ -1065,6 +1065,10 @@
     <message>
       <source>Search for visualy similar images</source>
       <translation>C&#x103;utare pentru imagini visualy similare</translation>
+    </message>
+    <message>
+      <source>More user images</source>
+      <translation>Mai multe fotografii sau ghidul</translation>
     </message>
     <message>
       <source>Version</source>
@@ -2106,6 +2110,42 @@
       <translation>De lucru</translation>
     </message>
     <message>
+      <source>Profile page settings</source>
+      <translation type="unfinished">Pagina profil a set&#x103;rilor</translation>
+    </message>
+    <message>
+      <source>Profile settings updated</source>
+      <translation type="unfinished">Set&#x103;rile profilului se actualizeaza</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">Nume</translation>
+    </message>
+    <message>
+      <source>Surname</source>
+      <translation type="unfinished">Nume de familie</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Website</translation>
+    </message>
+    <message>
+      <source>Information about you</source>
+      <translation type="unfinished">Informatii despre tine</translation>
+    </message>
+    <message>
+      <source>Profile photo</source>
+      <translation type="unfinished">Profil de fotografie</translation>
+    </message>
+    <message>
+      <source>See how your profile looks to users</source>
+      <translation type="unfinished">Vezi cum arat&#x103; profilul utilizatorilor</translation>
+    </message>
+    <message>
+      <source>View profile</source>
+      <translation type="unfinished">Vizualizare profil</translation>
+    </message>
+    <message>
       <source>Wrong email address</source>
       <translation>Gre&#x15F;it adres&#x103; e-mail</translation>
     </message>
@@ -2203,6 +2243,10 @@
     <message>
       <source>Authentifion with google</source>
       <translation>Authentifion cu Google</translation>
+    </message>
+    <message>
+      <source>Profile settings</source>
+      <translation type="unfinished">Set&#x103;rile de profil</translation>
     </message>
   </context>
   <context>
@@ -2687,6 +2731,10 @@
       <translation>Contul meu</translation>
     </message>
     <message>
+      <source>Profile page</source>
+      <translation type="unfinished">Pagina profil</translation>
+    </message>
+    <message>
       <source>Manage albums</source>
       <translation>Administreaza albume</translation>
     </message>
@@ -3013,6 +3061,10 @@
       <source>Page</source>
       <translation>Pagin&#x103;</translation>
     </message>
+    <message>
+      <source>Last commented gallery images.</source>
+      <translation type="unfinished">Ultimele comentate imagini galerie.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lasthits</name>
@@ -3032,6 +3084,10 @@
       <source>Page</source>
       <translation>Pagin&#x103;</translation>
     </message>
+    <message>
+      <source>Last viewed gallery images.</source>
+      <translation type="unfinished">Ultimele imagini vizualizate galerie.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lastrated</name>
@@ -3050,6 +3106,10 @@
     <message>
       <source>Page</source>
       <translation>Pagin&#x103;</translation>
+    </message>
+    <message>
+      <source>Recently rated images.</source>
+      <translation type="unfinished">Recent evaluat imagini.</translation>
     </message>
   </context>
   <context>
@@ -3081,1082 +3141,1140 @@
       <source>Page</source>
       <translation>Pagin&#x103;</translation>
     </message>
+    <message>
+      <source>Latest additions to gallery.</source>
+      <translation type="unfinished">Ultimele ad&#x103;ug&#x103;ri la galerie.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/my_albums_list</name>
     <message>
       <source>Edit album</source>
-      <translation type="unfinished">Editare album</translation>
+      <translation>Editare album</translation>
     </message>
     <message>
       <source>Are you sure?</source>
-      <translation type="unfinished">Sunte&#x163;i sigur?</translation>
+      <translation>Sunte&#x163;i sigur?</translation>
     </message>
     <message>
       <source>Delete album</source>
-      <translation type="unfinished">&#x15E;tergere album</translation>
+      <translation>&#x15E;tergere album</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">Adauga imagini</translation>
+      <translation>Adauga imagini</translation>
     </message>
   </context>
   <context>
     <name>gallery/myalbums</name>
     <message>
       <source>My albums</source>
-      <translation type="unfinished">Mele albume</translation>
+      <translation>Mele albume</translation>
     </message>
     <message>
       <source>New album</source>
-      <translation type="unfinished">Nou album</translation>
+      <translation>Nou album</translation>
     </message>
     <message>
       <source>Update priority</source>
-      <translation type="unfinished">Actualizare prioritate</translation>
+      <translation>Actualizare prioritate</translation>
     </message>
     <message>
       <source>You do not have any album.</source>
-      <translation type="unfinished">Nu ave&#x163;i nici un album.</translation>
+      <translation>Nu ave&#x163;i nici un album.</translation>
     </message>
     <message>
       <source>Create a new album.</source>
-      <translation type="unfinished">Crea&#x163;i un album nou.</translation>
+      <translation>Crea&#x163;i un album nou.</translation>
     </message>
     <message>
       <source>Account</source>
-      <translation type="unfinished">Cont</translation>
+      <translation>Cont</translation>
     </message>
     <message>
       <source>Albums</source>
-      <translation type="unfinished">Albume</translation>
+      <translation>Albume</translation>
     </message>
   </context>
   <context>
     <name>gallery/mylistalbum</name>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Nici o inregistrare.</translation>
+      <translation>Nici o inregistrare.</translation>
     </message>
     <message>
       <source>Account</source>
-      <translation type="unfinished">Cont</translation>
+      <translation>Cont</translation>
     </message>
     <message>
       <source>Albums</source>
-      <translation type="unfinished">Albume</translation>
+      <translation>Albume</translation>
     </message>
   </context>
   <context>
     <name>gallery/popular</name>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Cele mai populare imagini</translation>
+      <translation>Cele mai populare imagini</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Nici o inregistrare.</translation>
+      <translation>Nici o inregistrare.</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Rezolu&#x163;ie</translation>
+      <translation>Rezolu&#x163;ie</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Pagin&#x103;</translation>
+      <translation>Pagin&#x103;</translation>
+    </message>
+    <message>
+      <source>All time most popular images.</source>
+      <translation type="unfinished">Tot timpul cele mai populare imagini.</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecect</name>
     <message>
       <source>Most popular images in 24 hours.</source>
-      <translation type="unfinished">Cele mai populare imagini &#xEE;n 24 de ore.</translation>
+      <translation>Cele mai populare imagini &#xEE;n 24 de ore.</translation>
     </message>
     <message>
       <source>There are no images.</source>
-      <translation type="unfinished">Nu sunt imagini.</translation>
+      <translation>Nu sunt imagini.</translation>
     </message>
   </context>
   <context>
     <name>gallery/ratedrecent</name>
     <message>
       <source>Top rated images in 24 hours.</source>
-      <translation type="unfinished">Cele mai bine cotate imagini &#xEE;n 24 de ore.</translation>
+      <translation>Cele mai bine cotate imagini &#xEE;n 24 de ore.</translation>
     </message>
     <message>
       <source>Top rated images in 24 hours</source>
-      <translation type="unfinished">Top imagini evaluat &#xEE;n 24 de ore</translation>
+      <translation>Top imagini evaluat &#xEE;n 24 de ore</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Pagin&#x103;</translation>
+      <translation>Pagin&#x103;</translation>
+    </message>
+    <message>
+      <source>Top rated images in last 24 hours.</source>
+      <translation type="unfinished">Top imagini evaluat &#xEE;n ultimele 24 de ore.</translation>
     </message>
   </context>
   <context>
     <name>gallery/sharehtml</name>
     <message>
       <source>Link to image</source>
-      <translation type="unfinished">Leg&#x103;tur&#x103; &#xEE;ntr-imagine</translation>
+      <translation>Leg&#x103;tur&#x103; &#xEE;ntr-imagine</translation>
     </message>
     <message>
       <source>Link to image with thumbnail</source>
-      <translation type="unfinished">Leg&#x103;tur&#x103; &#xEE;ntr-imagini cu miniatur&#x103;</translation>
+      <translation>Leg&#x103;tur&#x103; &#xEE;ntr-imagini cu miniatur&#x103;</translation>
     </message>
     <message>
       <source>Link to image with medium size thumbnail</source>
-      <translation type="unfinished">Leg&#x103;tur&#x103; &#xEE;ntr-imagini cu miniaturi de dimensiuni medii</translation>
+      <translation>Leg&#x103;tur&#x103; &#xEE;ntr-imagini cu miniaturi de dimensiuni medii</translation>
     </message>
   </context>
   <context>
     <name>gallery/sharephpbb</name>
     <message>
       <source>Link to image</source>
-      <translation type="unfinished">Leg&#x103;tur&#x103; &#xEE;ntr-imagine</translation>
+      <translation>Leg&#x103;tur&#x103; &#xEE;ntr-imagine</translation>
     </message>
     <message>
       <source>Link to image with thumbnail</source>
-      <translation type="unfinished">Leg&#x103;tur&#x103; &#xEE;ntr-imagini cu miniatur&#x103;</translation>
+      <translation>Leg&#x103;tur&#x103; &#xEE;ntr-imagini cu miniatur&#x103;</translation>
     </message>
     <message>
       <source>Link to image with medium size thumbnail</source>
-      <translation type="unfinished">Leg&#x103;tur&#x103; &#xEE;ntr-imagini cu miniaturi de dimensiuni medii</translation>
+      <translation>Leg&#x103;tur&#x103; &#xEE;ntr-imagini cu miniaturi de dimensiuni medii</translation>
     </message>
   </context>
   <context>
     <name>gallery/subcategory_list_full</name>
     <message>
       <source>albums</source>
-      <translation type="unfinished">albume</translation>
+      <translation>albume</translation>
     </message>
     <message>
       <source>images</source>
-      <translation type="unfinished">imagini</translation>
+      <translation>imagini</translation>
     </message>
   </context>
   <context>
     <name>gallery/toprated</name>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">Top imagini evaluat</translation>
+      <translation>Top imagini evaluat</translation>
     </message>
     <message>
       <source>No records</source>
-      <translation type="unfinished">Nici o inregistrare</translation>
+      <translation>Nici o inregistrare</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Rezolu&#x163;ie</translation>
+      <translation>Rezolu&#x163;ie</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Pagin&#x103;</translation>
+      <translation>Pagin&#x103;</translation>
+    </message>
+    <message>
+      <source>All time top rated images.</source>
+      <translation type="unfinished">Toate top timp evaluat imagini.</translation>
     </message>
   </context>
   <context>
     <name>kernel/nopermission</name>
     <message>
       <source>You do not have permission to access module</source>
-      <translation type="unfinished">Nu ave&#x163;i permisiunea de a accesa modulul de</translation>
+      <translation>Nu ave&#x163;i permisiunea de a accesa modulul de</translation>
     </message>
     <message>
       <source>and use</source>
-      <translation type="unfinished">&#x15F;i de a folosi</translation>
+      <translation>&#x15F;i de a folosi</translation>
     </message>
     <message>
       <source>function</source>
-      <translation type="unfinished">func&#x163;ie</translation>
+      <translation>func&#x163;ie</translation>
     </message>
     <message>
       <source>You do not have permission to access current object</source>
-      <translation type="unfinished">Nu ave&#x163;i permisiunea de a accesa obiectul curent</translation>
+      <translation>Nu ave&#x163;i permisiunea de a accesa obiectul curent</translation>
     </message>
   </context>
   <context>
     <name>core/paginator</name>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Pagin&#x103;</translation>
+      <translation>Pagin&#x103;</translation>
     </message>
     <message>
       <source>of</source>
-      <translation type="unfinished">de</translation>
+      <translation>de</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation type="unfinished">S-au g&#x103;sit</translation>
+      <translation>S-au g&#x103;sit</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation type="unfinished">Precedent</translation>
+      <translation>Precedent</translation>
     </message>
     <message>
       <source>Go to page</source>
-      <translation type="unfinished">Du-te la pagina</translation>
+      <translation>Du-te la pagina</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">Urm&#x103;tor</translation>
+      <translation>Urm&#x103;tor</translation>
     </message>
   </context>
   <context>
     <name>similar/similar</name>
     <message>
       <source>Visualy similar images to</source>
-      <translation type="unfinished">Imagini similare cu Visualy</translation>
+      <translation>Imagini similare cu Visualy</translation>
     </message>
     <message>
       <source>Search for visualy similar images</source>
-      <translation type="unfinished">C&#x103;utare pentru imagini visualy similare</translation>
+      <translation>C&#x103;utare pentru imagini visualy similare</translation>
     </message>
     <message>
       <source>Please enable JavaScript to upload image</source>
-      <translation type="unfinished">V&#x103; rug&#x103;m s&#x103; activa&#x163;i JavaScript pentru a &#xEE;nc&#x103;rca imagini</translation>
+      <translation>V&#x103; rug&#x103;m s&#x103; activa&#x163;i JavaScript pentru a &#xEE;nc&#x103;rca imagini</translation>
     </message>
     <message>
       <source>Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).</source>
-      <translation type="unfinished">Face&#x163;i clic pe imagine pentru a alege, pute&#x163;i, de asemenea, Drag and Drop fisierul aici (Drag and drop numai pentru FF, Chrome).</translation>
+      <translation>Face&#x163;i clic pe imagine pentru a alege, pute&#x163;i, de asemenea, Drag and Drop fisierul aici (Drag and drop numai pentru FF, Chrome).</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Anula</translation>
+      <translation>Anula</translation>
     </message>
     <message>
       <source>Failed</source>
-      <translation type="unfinished">A e&#x15F;uat</translation>
+      <translation>A e&#x15F;uat</translation>
     </message>
   </context>
   <context>
     <name>similar/sketch</name>
     <message>
       <source>Search by sketch</source>
-      <translation type="unfinished">C&#x103;utare dup&#x103; schi&#x163;&#x103;</translation>
+      <translation>C&#x103;utare dup&#x103; schi&#x163;&#x103;</translation>
     </message>
     <message>
       <source>Sketch and find images by your sketch</source>
-      <translation type="unfinished">Schi&#x163;&#x103; &#x15F;i pentru a g&#x103;si imaginile de schi&#x163;a dumneavoastr&#x103;</translation>
+      <translation>Schi&#x163;&#x103; &#x15F;i pentru a g&#x103;si imaginile de schi&#x163;a dumneavoastr&#x103;</translation>
     </message>
   </context>
   <context>
     <name>statistic/view</name>
     <message>
       <source>hours</source>
-      <translation type="unfinished">or&#x103;</translation>
+      <translation>or&#x103;</translation>
     </message>
     <message>
       <source>Total pageviews</source>
-      <translation type="unfinished">Med total</translation>
+      <translation>Med total</translation>
     </message>
     <message>
       <source>Total visits</source>
-      <translation type="unfinished">Total vizite</translation>
+      <translation>Total vizite</translation>
     </message>
     <message>
       <source>Time spent</source>
-      <translation type="unfinished">Timpul petrecut</translation>
+      <translation>Timpul petrecut</translation>
     </message>
     <message>
       <source>Last 31 days statistic, data resource - google analytics API</source>
-      <translation type="unfinished">Ultimele 31 zile statistice, date de resurse - Google Analytics API</translation>
+      <translation>Ultimele 31 zile statistice, date de resurse - Google Analytics API</translation>
     </message>
     <message>
       <source>Legend</source>
-      <translation type="unfinished">Legend&#x103;</translation>
+      <translation>Legend&#x103;</translation>
     </message>
     <message>
       <source>Pageviews</source>
-      <translation type="unfinished">Vizualiz&#x103;ri</translation>
+      <translation>Vizualiz&#x103;ri</translation>
     </message>
     <message>
       <source>Visits</source>
-      <translation type="unfinished">Vizite</translation>
+      <translation>Vizite</translation>
     </message>
   </context>
   <context>
     <name>user/mapaccounts</name>
     <message>
       <source>Login with facebook</source>
-      <translation type="unfinished">Conectare cu Facebook</translation>
+      <translation>Conectare cu Facebook</translation>
     </message>
     <message>
       <source>Map to my account</source>
-      <translation type="unfinished">Harta la contul meu</translation>
+      <translation>Harta la contul meu</translation>
     </message>
     <message>
       <source>my account</source>
-      <translation type="unfinished">Contul meu</translation>
+      <translation>Contul meu</translation>
     </message>
     <message>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Login</translation>
     </message>
     <message>
       <source>map to my account</source>
-      <translation type="unfinished">hart&#x103; la contul meu</translation>
+      <translation>hart&#x103; la contul meu</translation>
     </message>
     <message>
       <source>Incorrect login or password</source>
-      <translation type="unfinished">Conectare sau parol&#x103; incorect&#x103;</translation>
+      <translation>Conectare sau parol&#x103; incorect&#x103;</translation>
     </message>
     <message>
       <source>Username</source>
-      <translation type="unfinished">Nume de utilizator</translation>
+      <translation>Nume de utilizator</translation>
     </message>
     <message>
       <source>Password</source>
-      <translation type="unfinished">Parol&#x103;</translation>
+      <translation>Parol&#x103;</translation>
     </message>
     <message>
       <source>OR</source>
-      <translation type="unfinished">SAU</translation>
+      <translation>SAU</translation>
     </message>
     <message>
       <source>create account</source>
-      <translation type="unfinished">creeaza cont</translation>
+      <translation>creeaza cont</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">Urm&#x103;tor</translation>
+      <translation>Urm&#x103;tor</translation>
     </message>
     <message>
       <source>Open ID</source>
-      <translation type="unfinished">ID-ul deschis</translation>
+      <translation>ID-ul deschis</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpassword</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Parola reaminti</translation>
+      <translation>Parola reaminti</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-mail</translation>
+      <translation>E-mail</translation>
     </message>
     <message>
       <source>Restore password</source>
-      <translation type="unfinished">A restaura parola</translation>
+      <translation>A restaura parola</translation>
     </message>
     <message>
       <source>Order confirmed</source>
-      <translation type="unfinished">Comenzii confirmate</translation>
+      <translation>Comenzii confirmate</translation>
     </message>
     <message>
       <source>Credits order confirmed</source>
-      <translation type="unfinished">Credite pentru confirmat</translation>
+      <translation>Credite pentru confirmat</translation>
     </message>
     <message>
       <source>Wrong e-mail address!</source>
-      <translation type="unfinished">Gre&#x15F;it&#x103; de e-mail!</translation>
+      <translation>Gre&#x15F;it&#x103; de e-mail!</translation>
     </message>
     <message>
       <source>Click this link and to You will be send new password</source>
-      <translation type="unfinished">Face&#x163;i clic pe aceast&#x103; leg&#x103;tur&#x103; &#xEE;ntr-&#x15F;i s&#x103; v&#x103; vor fi trimise parol&#x103; nou&#x103;</translation>
+      <translation>Face&#x163;i clic pe aceast&#x103; leg&#x103;tur&#x103; &#xEE;ntr-&#x15F;i s&#x103; v&#x103; vor fi trimise parol&#x103; nou&#x103;</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpasswordsent</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Parola reaminti</translation>
+      <translation>Parola reaminti</translation>
     </message>
     <message>
       <source>E-mail send. Click link in email and to You will be send out new password.</source>
-      <translation type="unfinished">E-mail trimite. Face&#x163;i clic pe link-ul din e-mail &#x15F;i s&#x103; Ve&#x163;i trimite noua parola.</translation>
+      <translation>E-mail trimite. Face&#x163;i clic pe link-ul din e-mail &#x15F;i s&#x103; Ve&#x163;i trimite noua parola.</translation>
     </message>
   </context>
   <context>
     <name>user/index</name>
     <message>
       <source>User home</source>
-      <translation type="unfinished">Ghid de acas&#x103;</translation>
+      <translation>Ghid de acas&#x103;</translation>
     </message>
     <message>
       <source>Welcome. Here you can:</source>
-      <translation type="unfinished">Bine ai venit. Aici ave&#x163;i posibilitatea s&#x103;:</translation>
+      <translation>Bine ai venit. Aici ave&#x163;i posibilitatea s&#x103;:</translation>
     </message>
     <message>
       <source>Edit personal settings</source>
-      <translation type="unfinished">Edita&#x163;i set&#x103;ri personale</translation>
+      <translation>Edita&#x163;i set&#x103;ri personale</translation>
     </message>
     <message>
       <source>Manage personal albums</source>
-      <translation type="unfinished">Administreaza albume personale</translation>
+      <translation>Administreaza albume personale</translation>
     </message>
     <message>
       <source>My account</source>
-      <translation type="unfinished">Contul meu</translation>
+      <translation>Contul meu</translation>
     </message>
   </context>
   <context>
     <name>user/remindpassword</name>
     <message>
       <source>New password</source>
-      <translation type="unfinished">Parol&#x103; nou&#x103;</translation>
+      <translation>Parol&#x103; nou&#x103;</translation>
     </message>
     <message>
       <source>Hash not found or was used already</source>
-      <translation type="unfinished">Hash nu a fost g&#x103;sit sau a fost deja utilizat</translation>
+      <translation>Hash nu a fost g&#x103;sit sau a fost deja utilizat</translation>
     </message>
     <message>
       <source>Password remind - new password</source>
-      <translation type="unfinished">Parola reamintesc - o parol&#x103; nou&#x103;</translation>
+      <translation>Parola reamintesc - o parol&#x103; nou&#x103;</translation>
     </message>
     <message>
       <source>New password:</source>
-      <translation type="unfinished">Parol&#x103; nou&#x103;:</translation>
+      <translation>Parol&#x103; nou&#x103;:</translation>
     </message>
     <message>
       <source>New password has beend send to your email.</source>
-      <translation type="unfinished">Nou&#x103; parol&#x103; a trimite beend la adresa dvs. de email.</translation>
+      <translation>Nou&#x103; parol&#x103; a trimite beend la adresa dvs. de email.</translation>
     </message>
   </context>
   <context>
     <name>shop/basket</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Co&#x15F;</translation>
+      <translation>Co&#x15F;</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Imagine nume</translation>
+      <translation>Imagine nume</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Versiune</translation>
+      <translation>Versiune</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Dimensiune imagine</translation>
+      <translation>Dimensiune imagine</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Format</translation>
+      <translation>Format</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Pre&#x163;</translation>
+      <translation>Pre&#x163;</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Credite</translation>
+      <translation>Credite</translation>
     </message>
     <message>
       <source>Remove from basket</source>
-      <translation type="unfinished">Elimina&#x163;i din co&#x15F;</translation>
+      <translation>Elimina&#x163;i din co&#x15F;</translation>
     </message>
     <message>
       <source>Choose payment option</source>
-      <translation type="unfinished">Alege&#x163;i op&#x163;iunea de plat&#x103;</translation>
+      <translation>Alege&#x163;i op&#x163;iunea de plat&#x103;</translation>
     </message>
     <message>
       <source>In order to checkout atlest one item have to be selected.</source>
-      <translation type="unfinished">&#xCE;n scopul de a Checkout atlest un articol trebuie s&#x103; fie selectate.</translation>
+      <translation>&#xCE;n scopul de a Checkout atlest un articol trebuie s&#x103; fie selectate.</translation>
     </message>
     <message>
       <source>In order to checkout you have to</source>
-      <translation type="unfinished">&#xCE;n scopul de a checkout trebuie s&#x103;</translation>
+      <translation>&#xCE;n scopul de a checkout trebuie s&#x103;</translation>
     </message>
     <message>
       <source>sign in</source>
-      <translation type="unfinished">sign &#xEE;n</translation>
+      <translation>sign &#xEE;n</translation>
     </message>
     <message>
       <source>or</source>
-      <translation type="unfinished">sau</translation>
+      <translation>sau</translation>
     </message>
     <message>
       <source>login</source>
-      <translation type="unfinished">login</translation>
+      <translation>login</translation>
     </message>
     <message>
       <source>if you have already created an account</source>
-      <translation type="unfinished">dac&#x103; a&#x163;i creat deja un cont</translation>
+      <translation>dac&#x103; a&#x163;i creat deja un cont</translation>
     </message>
   </context>
   <context>
     <name>shop/buycredits</name>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Cumpara credite</translation>
+      <translation>Cumpara credite</translation>
     </message>
     <message>
       <source>How many credits do want to buy?</source>
-      <translation type="unfinished">C&#xE2;t de multe credite nu doresc s&#x103; cumpere?</translation>
+      <translation>C&#xE2;t de multe credite nu doresc s&#x103; cumpere?</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Alege&#x163;i metoda de plat&#x103;</translation>
+      <translation>Alege&#x163;i metoda de plat&#x103;</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/accept</name>
     <message>
       <source>Order succesfull</source>
-      <translation type="unfinished">Ordonan&#x163;a de succes</translation>
+      <translation>Ordonan&#x163;a de succes</translation>
     </message>
     <message>
       <source>Payment was succesfull</source>
-      <translation type="unfinished">De plat&#x103; a fost de succes</translation>
+      <translation>De plat&#x103; a fost de succes</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/process</name>
     <message>
       <source>Checkout</source>
-      <translation type="unfinished">Cas&#x103;</translation>
+      <translation>Cas&#x103;</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Confirmare plat&#x103;</translation>
+      <translation>Confirmare plat&#x103;</translation>
     </message>
     <message>
       <source>Not enouth credits to checkout</source>
-      <translation type="unfinished">Nu enouth creditele acordate Checkout</translation>
+      <translation>Nu enouth creditele acordate Checkout</translation>
     </message>
   </context>
   <context>
     <name>shop/cancel</name>
     <message>
       <source>Payment canceled</source>
-      <translation type="unfinished">De plat&#x103; anulate</translation>
+      <translation>De plat&#x103; anulate</translation>
     </message>
     <message>
       <source>Paypal payment was canceled.</source>
-      <translation type="unfinished">PayPal de plat&#x103; a fost anulat.</translation>
+      <translation>PayPal de plat&#x103; a fost anulat.</translation>
     </message>
   </context>
   <context>
     <name>shop/error</name>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Eroare</translation>
+      <translation>Eroare</translation>
     </message>
     <message>
       <source>Execution was terminated unexpectedly.</source>
-      <translation type="unfinished">Executarea a fost reziliat &#xEE;n mod nea&#x15F;teptat.</translation>
+      <translation>Executarea a fost reziliat &#xEE;n mod nea&#x15F;teptat.</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/process</name>
     <message>
       <source>Checkout using Paypal</source>
-      <translation type="unfinished">Plateste folosind Paypal</translation>
+      <translation>Plateste folosind Paypal</translation>
     </message>
     <message>
       <source>Buyer\'s Email</source>
-      <translation type="unfinished">Cumparator \ de e-mail</translation>
+      <translation>Cumparator \ de e-mail</translation>
     </message>
     <message>
       <source>Amount</source>
-      <translation type="unfinished">Sum&#x103;</translation>
+      <translation>Sum&#x103;</translation>
     </message>
     <message>
       <source>Currency</source>
-      <translation type="unfinished">Valut&#x103;</translation>
+      <translation>Valut&#x103;</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Credite</translation>
+      <translation>Credite</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/review</name>
     <message>
       <source>Order payment confirmation</source>
-      <translation type="unfinished">Ordin de plat&#x103; de confirmare</translation>
+      <translation>Ordin de plat&#x103; de confirmare</translation>
     </message>
     <message>
       <source>Order amount</source>
-      <translation type="unfinished">Valoarea comenzii</translation>
+      <translation>Valoarea comenzii</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Confirmare plat&#x103;</translation>
+      <translation>Confirmare plat&#x103;</translation>
     </message>
     <message>
       <source>Thank you for your payment!</source>
-      <translation type="unfinished">V&#x103; mul&#x163;umim pentru dvs. de plat&#x103;!</translation>
+      <translation>V&#x103; mul&#x163;umim pentru dvs. de plat&#x103;!</translation>
     </message>
     <message>
       <source>credits</source>
-      <translation type="unfinished">credite</translation>
+      <translation>credite</translation>
     </message>
   </context>
   <context>
     <name>shop/mycredits</name>
     <message>
       <source>My credits balanse</source>
-      <translation type="unfinished">Mele de credite balanse</translation>
+      <translation>Mele de credite balanse</translation>
     </message>
     <message>
       <source>You have</source>
-      <translation type="unfinished">Ave&#x163;i</translation>
+      <translation>Ave&#x163;i</translation>
     </message>
     <message>
       <source>in your account</source>
-      <translation type="unfinished">&#xEE;n contul dvs.</translation>
+      <translation>&#xEE;n contul dvs.</translation>
     </message>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Cumpara credite</translation>
+      <translation>Cumpara credite</translation>
     </message>
     <message>
       <source>My credits</source>
-      <translation type="unfinished">Mele de credite</translation>
+      <translation>Mele de credite</translation>
     </message>
   </context>
   <context>
     <name>shop/myorders</name>
     <message>
       <source>My credits orders</source>
-      <translation type="unfinished">Mele de credite Comenzi</translation>
+      <translation>Mele de credite Comenzi</translation>
     </message>
     <message>
       <source>Date</source>
-      <translation type="unfinished">Data</translation>
+      <translation>Data</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Comanda pre&#x163;</translation>
+      <translation>Comanda pre&#x163;</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Ordonan&#x163;a de credite</translation>
+      <translation>Ordonan&#x163;a de credite</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Starea comenzii</translation>
+      <translation>Starea comenzii</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Pl&#x103;tit&#x103;</translation>
+      <translation>Pl&#x103;tit&#x103;</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Confirmat</translation>
+      <translation>Confirmat</translation>
     </message>
     <message>
       <source>My orders</source>
-      <translation type="unfinished">Comenzile mele</translation>
+      <translation>Comenzile mele</translation>
     </message>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Comanda vedere</translation>
+      <translation>Comanda vedere</translation>
     </message>
   </context>
   <context>
     <name>shop/orderview</name>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Comanda vedere</translation>
+      <translation>Comanda vedere</translation>
     </message>
     <message>
       <source>Order time</source>
-      <translation type="unfinished">Ordonan&#x163;a de timp</translation>
+      <translation>Ordonan&#x163;a de timp</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Comanda pre&#x163;</translation>
+      <translation>Comanda pre&#x163;</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Ordonan&#x163;a de credite</translation>
+      <translation>Ordonan&#x163;a de credite</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Starea comenzii</translation>
+      <translation>Starea comenzii</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Pl&#x103;tit&#x103;</translation>
+      <translation>Pl&#x103;tit&#x103;</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Confirmat</translation>
+      <translation>Confirmat</translation>
     </message>
     <message>
       <source>Ordered items</source>
-      <translation type="unfinished">Articole ordonate</translation>
+      <translation>Articole ordonate</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Imagine nume</translation>
+      <translation>Imagine nume</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Versiune</translation>
+      <translation>Versiune</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Dimensiune imagine</translation>
+      <translation>Dimensiune imagine</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Format</translation>
+      <translation>Format</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Pre&#x163;</translation>
+      <translation>Pre&#x163;</translation>
     </message>
     <message>
       <source>Download count</source>
-      <translation type="unfinished">Desc&#x103;rca&#x163;i conta</translation>
+      <translation>Desc&#x103;rca&#x163;i conta</translation>
     </message>
     <message>
       <source>Downloads left</source>
-      <translation type="unfinished">Desc&#x103;rc&#x103;ri st&#xE2;nga</translation>
+      <translation>Desc&#x103;rc&#x103;ri st&#xE2;nga</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Credite</translation>
+      <translation>Credite</translation>
     </message>
     <message>
       <source>Download image</source>
-      <translation type="unfinished">Desc&#x103;rca&#x163;i imagini</translation>
+      <translation>Desc&#x103;rca&#x163;i imagini</translation>
     </message>
     <message>
       <source>downloads left</source>
-      <translation type="unfinished">desc&#x103;rc&#x103;ri st&#xE2;nga</translation>
+      <translation>desc&#x103;rc&#x103;ri st&#xE2;nga</translation>
     </message>
     <message>
       <source>No downloads available</source>
-      <translation type="unfinished">Nr desc&#x103;rc&#x103;ri disponibile</translation>
+      <translation>Nr desc&#x103;rc&#x103;ri disponibile</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoption</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Op&#x163;iune de plat&#x103;</translation>
+      <translation>Op&#x163;iune de plat&#x103;</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-mail</translation>
+      <translation>E-mail</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Alege&#x163;i metoda de plat&#x103;</translation>
+      <translation>Alege&#x163;i metoda de plat&#x103;</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoptioncredit</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Op&#x163;iune de plat&#x103;</translation>
+      <translation>Op&#x163;iune de plat&#x103;</translation>
     </message>
     <message>
       <source>Continue</source>
-      <translation type="unfinished">Continua</translation>
+      <translation>Continua</translation>
     </message>
   </context>
   <context>
     <name>gallery/category</name>
     <message>
       <source>Root category</source>
-      <translation type="unfinished">Root categorie</translation>
+      <translation>Root categorie</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Pagin&#x103;</translation>
+      <translation>Pagin&#x103;</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
   </context>
   <context>
     <name>forum/category</name>
     <message>
       <source>Please enter topic name!</source>
-      <translation type="unfinished">Va rugam introduceti numele subiect!</translation>
+      <translation>Va rugam introduceti numele subiect!</translation>
     </message>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Va rugam introduceti mesajul!</translation>
+      <translation>Va rugam introduceti mesajul!</translation>
     </message>
     <message>
       <source>Please choose category!</source>
-      <translation type="unfinished">V&#x103; rug&#x103;m s&#x103; alege&#x163;i categorie!</translation>
+      <translation>V&#x103; rug&#x103;m s&#x103; alege&#x163;i categorie!</translation>
     </message>
     <message>
       <source>Not parent category!</source>
-      <translation type="unfinished">Nu-mam&#x103; categorie!</translation>
+      <translation>Nu-mam&#x103; categorie!</translation>
     </message>
     <message>
       <source>Invalid category!</source>
-      <translation type="unfinished">Nevalid categorie!</translation>
+      <translation>Nevalid categorie!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
   </context>
   <context>
     <name>forum/createcategory</name>
     <message>
       <source>Please enter category name!</source>
-      <translation type="unfinished">Va rugam introduceti numele categorie!</translation>
+      <translation>Va rugam introduceti numele categorie!</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Acas&#x103;</translation>
+      <translation>Acas&#x103;</translation>
     </message>
   </context>
   <context>
     <name>forum/editmessage</name>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Va rugam introduceti mesajul!</translation>
+      <translation>Va rugam introduceti mesajul!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
     <message>
       <source>Message edit</source>
-      <translation type="unfinished">Edita&#x163;i mesajul</translation>
+      <translation>Edita&#x163;i mesajul</translation>
     </message>
   </context>
   <context>
     <name>forum/edittopic</name>
     <message>
       <source>Please enter topic name!</source>
-      <translation type="unfinished">Va rugam introduceti numele subiect!</translation>
+      <translation>Va rugam introduceti numele subiect!</translation>
     </message>
     <message>
       <source>Please enter topic status!</source>
-      <translation type="unfinished">Te rug&#x103;m s&#x103; introduci statutul de subiect!</translation>
+      <translation>Te rug&#x103;m s&#x103; introduci statutul de subiect!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
     <message>
       <source>Topic edit</source>
-      <translation type="unfinished">Subiect edita</translation>
+      <translation>Subiect edita</translation>
     </message>
   </context>
   <context>
     <name>forum/report</name>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Va rugam introduceti mesajul!</translation>
+      <translation>Va rugam introduceti mesajul!</translation>
     </message>
     <message>
       <source>Forum message report</source>
-      <translation type="unfinished">Forum pentru mesaj raport</translation>
+      <translation>Forum pentru mesaj raport</translation>
     </message>
   </context>
   <context>
     <name>gallery/searchrss</name>
     <message>
       <source>Search results</source>
-      <translation type="unfinished">Rezultate c&#x103;utare</translation>
+      <translation>Rezultate c&#x103;utare</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation type="unfinished">C&#x103;utare</translation>
+      <translation>C&#x103;utare</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
-      <translation type="unfinished">C&#x103;utare dup&#x103; cuv&#xE2;nt cheie RSS</translation>
+      <translation>C&#x103;utare dup&#x103; cuv&#xE2;nt cheie RSS</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vizualizare imagine</translation>
+      <translation>Vizualizare imagine</translation>
     </message>
   </context>
   <context>
     <name>forum/searchrss</name>
     <message>
       <source>Search</source>
-      <translation type="unfinished">C&#x103;utare</translation>
+      <translation>C&#x103;utare</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumeditadmin</name>
     <message>
       <source>Root category</source>
-      <translation type="unfinished">Root categorie</translation>
+      <translation>Root categorie</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">Adauga imagini</translation>
+      <translation>Adauga imagini</translation>
     </message>
     <message>
       <source>Album edit</source>
-      <translation type="unfinished">Album edita</translation>
+      <translation>Album edita</translation>
     </message>
   </context>
   <context>
     <name>gallery/addvote</name>
     <message>
       <source>Thank you for your vote</source>
-      <translation type="unfinished">V&#x103; mul&#x163;umim pentru votul dvs.</translation>
+      <translation>V&#x103; mul&#x163;umim pentru votul dvs.</translation>
     </message>
     <message>
       <source>You are not allowed to vote!</source>
-      <translation type="unfinished">Nu este permis s&#x103; voteze!</translation>
+      <translation>Nu este permis s&#x103; voteze!</translation>
     </message>
     <message>
       <source>You have already voted!</source>
-      <translation type="unfinished">Ai votat deja!</translation>
+      <translation>Ai votat deja!</translation>
     </message>
     <message>
       <source>Vote deducted!</source>
-      <translation type="unfinished">Vot deduse!</translation>
+      <translation>Vot deduse!</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumrss</name>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished">Ultimele imagini &#xEE;nc&#x103;rcate &#xEE;n album</translation>
+      <translation>Ultimele imagini &#xEE;nc&#x103;rcate &#xEE;n album</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vizualizare imagine</translation>
+      <translation>Vizualizare imagine</translation>
     </message>
   </context>
   <context>
     <name>gallery/lasthitsrss</name>
     <message>
       <source>watched</source>
-      <translation type="unfinished">vizionat</translation>
+      <translation>vizionat</translation>
     </message>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished">Ultimele imagini vizualizate</translation>
+      <translation>Ultimele imagini vizualizate</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vizualizare imagine</translation>
+      <translation>Vizualizare imagine</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastcommentedrss</name>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished">Ultimele comentate imagini</translation>
+      <translation>Ultimele comentate imagini</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vizualizare imagine</translation>
+      <translation>Vizualizare imagine</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastratedrss</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished">Ultimele imagini evaluat</translation>
+      <translation>Ultimele imagini evaluat</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vizualizare imagine</translation>
+      <translation>Vizualizare imagine</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastuploadsrss</name>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished">Ultimele imagini &#xEE;nc&#x103;rcate</translation>
+      <translation>Ultimele imagini &#xEE;nc&#x103;rcate</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vizualizare imagine</translation>
+      <translation>Vizualizare imagine</translation>
     </message>
   </context>
   <context>
     <name>gallery/movebyresolution</name>
     <message>
       <source>Move by resolution</source>
-      <translation type="unfinished">Mutare de rezolu&#x163;ie</translation>
+      <translation>Mutare de rezolu&#x163;ie</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecent</name>
     <message>
       <source>Most popular images in 24 hours</source>
-      <translation type="unfinished">Cele mai populare imagini &#xEE;n 24 de ore</translation>
+      <translation>Cele mai populare imagini &#xEE;n 24 de ore</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Pagin&#x103;</translation>
+      <translation>Pagin&#x103;</translation>
+    </message>
+    <message>
+      <source>Most popular images in last 24 hours.</source>
+      <translation type="unfinished">Cele mai populare imagini &#xEE;n ultimele 24 de ore.</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrss</name>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Cele mai populare imagini</translation>
+      <translation>Cele mai populare imagini</translation>
     </message>
   </context>
   <context>
     <name>gallery/tagphoto</name>
     <message>
       <source>Thank you a lot :)</source>
-      <translation type="unfinished">Multumesc mult:)</translation>
+      <translation>Multumesc mult:)</translation>
     </message>
   </context>
   <context>
     <name>gallery/topratedrss</name>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">Top imagini evaluat</translation>
+      <translation>Top imagini evaluat</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Vizualizare imagine</translation>
+      <translation>Vizualizare imagine</translation>
     </message>
   </context>
   <context>
     <name>gallery/updateimage</name>
     <message>
       <source>Image updated</source>
-      <translation type="unfinished">Imagini actualizate</translation>
+      <translation>Imagini actualizate</translation>
     </message>
   </context>
   <context>
     <name>shop/imagevariation</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Co&#x15F;</translation>
+      <translation>Co&#x15F;</translation>
     </message>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Op&#x163;iune de plat&#x103;</translation>
+      <translation>Op&#x163;iune de plat&#x103;</translation>
     </message>
   </context>
   <context>
     <name>shop/imagevariationform</name>
     <message>
       <source>Credits amount must be greater than 0!</source>
-      <translation type="unfinished">Suma creditelor trebuie s&#x103; fie mai mare dec&#xE2;t 0!</translation>
+      <translation>Suma creditelor trebuie s&#x103; fie mai mare dec&#xE2;t 0!</translation>
     </message>
   </context>
   <context>
     <name>shop/settingedit</name>
     <message>
       <source>Edit</source>
-      <translation type="unfinished">Edita</translation>
+      <translation>Edita</translation>
     </message>
   </context>
   <context>
     <name>similar/image</name>
     <message>
       <source>Similar images to</source>
-      <translation type="unfinished">Imagini similare cu</translation>
+      <translation>Imagini similare cu</translation>
     </message>
     <message>
       <source>Search for visualy similar images</source>
-      <translation type="unfinished">C&#x103;utare pentru imagini visualy similare</translation>
+      <translation>C&#x103;utare pentru imagini visualy similare</translation>
     </message>
   </context>
   <context>
     <name>system/index</name>
     <message>
       <source>System administration panel</source>
-      <translation type="unfinished">Sistem de administrare panou</translation>
+      <translation>Sistem de administrare panou</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/profile</name>
+    <message>
+      <source>User profile</source>
+      <translation type="unfinished">Ghid de profil</translation>
+    </message>
+    <message>
+      <source>Name and surname</source>
+      <translation type="unfinished">Numele &#x15F;i prenumele</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Website</translation>
+    </message>
+    <message>
+      <source>Introduction</source>
+      <translation type="unfinished">Introducere</translation>
+    </message>
+    <message>
+      <source>Last updated albums</source>
+      <translation type="unfinished">Ultima actualizare albume</translation>
+    </message>
+    <message>
+      <source>Last uploaded images</source>
+      <translation type="unfinished">Ultimele imagini &#xEE;nc&#x103;rcate</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/lastuploadstoalbums</name>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation type="unfinished">&#xCE;nc&#x103;rc&#x103;ri recente la albume</translation>
+    </message>
+    <message>
+      <source>Recently updated albums</source>
+      <translation type="unfinished">Albumele actualizat recent</translation>
     </message>
   </context>
 </TS>

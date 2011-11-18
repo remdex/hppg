@@ -64,7 +64,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
       
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastcommentedrss');
-
+    $Result['description_prepend'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastcommented','Last commented gallery images.');
     
 
     $cache->store($cacheKey,$Result);

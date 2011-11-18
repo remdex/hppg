@@ -1051,8 +1051,8 @@
       <translation>Eigandi</translation>
     </message>
     <message>
-      <source>More user images</source>
-      <translation>Fleiri notanda myndir</translation>
+      <source>About user</source>
+      <translation type="unfinished">Um notanda</translation>
     </message>
     <message>
       <source>votes</source>
@@ -1065,6 +1065,10 @@
     <message>
       <source>Search for visualy similar images</source>
       <translation>Leita eftir visualy a&#xF0; svipu&#xF0;um myndum</translation>
+    </message>
+    <message>
+      <source>More user images</source>
+      <translation>Fleiri notanda myndir</translation>
     </message>
     <message>
       <source>Version</source>
@@ -2106,6 +2110,42 @@
       <translation>Vinna</translation>
     </message>
     <message>
+      <source>Profile page settings</source>
+      <translation type="unfinished">Pr&#xF3;f&#xED;l stillingar</translation>
+    </message>
+    <message>
+      <source>Profile settings updated</source>
+      <translation type="unfinished">Sni&#xF0;stillingum Uppf&#xE6;rt</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">Nafn</translation>
+    </message>
+    <message>
+      <source>Surname</source>
+      <translation type="unfinished">Eftirnafn</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Website</translation>
+    </message>
+    <message>
+      <source>Information about you</source>
+      <translation type="unfinished">Uppl&#xFD;singar um &#xFE;ig</translation>
+    </message>
+    <message>
+      <source>Profile photo</source>
+      <translation type="unfinished">Profile photo</translation>
+    </message>
+    <message>
+      <source>See how your profile looks to users</source>
+      <translation type="unfinished">Sj&#xE1; hvernig pr&#xF3;f&#xED;l &#xFE;&#xED;num l&#xED;tur &#xFA;t fyrir a&#xF0; notendur</translation>
+    </message>
+    <message>
+      <source>View profile</source>
+      <translation type="unfinished">Sko&#xF0;a pr&#xF3;f&#xED;l</translation>
+    </message>
+    <message>
       <source>Wrong email address</source>
       <translation>Rangt netfang</translation>
     </message>
@@ -2203,6 +2243,10 @@
     <message>
       <source>Authentifion with google</source>
       <translation>Authentifion me&#xF0; Google</translation>
+    </message>
+    <message>
+      <source>Profile settings</source>
+      <translation type="unfinished">Sni&#xF0;stillingum</translation>
     </message>
   </context>
   <context>
@@ -2687,6 +2731,10 @@
       <translation>Minn a&#xF0;gangur</translation>
     </message>
     <message>
+      <source>Profile page</source>
+      <translation type="unfinished">Pr&#xF3;f&#xED;l</translation>
+    </message>
+    <message>
       <source>Manage albums</source>
       <translation>Stj&#xF3;rna alb&#xFA;m</translation>
     </message>
@@ -2743,54 +2791,54 @@
     </message>
     <message>
       <source>To what album you want to import images, start typing album name and click search</source>
-      <translation type="unfinished">A&#xF0; hva&#xF0;a pl&#xF6;tu sem &#xFE;&#xFA; vilt flytja inn myndir, byrja a&#xF0; skrifa Album name og smelltu &#xE1; leita</translation>
+      <translation>A&#xF0; hva&#xF0;a pl&#xF6;tu sem &#xFE;&#xFA; vilt flytja inn myndir, byrja a&#xF0; skrifa Album name og smelltu &#xE1; leita</translation>
     </message>
     <message>
       <source>Search for album</source>
-      <translation type="unfinished">Leita alb&#xFA;m</translation>
+      <translation>Leita alb&#xFA;m</translation>
     </message>
     <message>
       <source>Check all</source>
-      <translation type="unfinished">Merktu vi&#xF0; allt</translation>
+      <translation>Merktu vi&#xF0; allt</translation>
     </message>
     <message>
       <source>Click to see target, new window will open</source>
-      <translation type="unfinished">Smelltu til a&#xF0; sj&#xE1; mi&#xF0;a n&#xFD;jum glugga opnast</translation>
+      <translation>Smelltu til a&#xF0; sj&#xE1; mi&#xF0;a n&#xFD;jum glugga opnast</translation>
     </message>
     <message>
       <source>Import selected images</source>
-      <translation type="unfinished">Flytja inn valdar myndir</translation>
+      <translation>Flytja inn valdar myndir</translation>
     </message>
     <message>
       <source>Please choose atleast one image!</source>
-      <translation type="unfinished">Vinsamlegast veldu atleast eina mynd!</translation>
+      <translation>Vinsamlegast veldu atleast eina mynd!</translation>
     </message>
     <message>
       <source>images to import</source>
-      <translation type="unfinished">myndir til a&#xF0; flytja</translation>
+      <translation>myndir til a&#xF0; flytja</translation>
     </message>
     <message>
       <source>All images were imported</source>
-      <translation type="unfinished">Allar myndir voru flutt</translation>
+      <translation>Allar myndir voru flutt</translation>
     </message>
     <message>
       <source>Please choose album</source>
-      <translation type="unfinished">Veldu alb&#xFA;m</translation>
+      <translation>Veldu alb&#xFA;m</translation>
     </message>
     <message>
       <source>Preview version</source>
-      <translation type="unfinished">Fors&#xFD;ning &#xFA;tg&#xE1;fa</translation>
+      <translation>Fors&#xFD;ning &#xFA;tg&#xE1;fa</translation>
     </message>
   </context>
   <context>
     <name>feedback/form</name>
     <message>
       <source>Feedback</source>
-      <translation type="unfinished">Feedback</translation>
+      <translation>Feedback</translation>
     </message>
     <message>
       <source>Feedback was send</source>
-      <translation type="unfinished">Feedback var sent</translation>
+      <translation>Feedback var sent</translation>
     </message>
     <message>
       <source>Name</source>
@@ -2802,19 +2850,19 @@
     </message>
     <message>
       <source>Text</source>
-      <translation type="unfinished">Texti</translation>
+      <translation>Texti</translation>
     </message>
     <message>
       <source>Captcha image</source>
-      <translation type="unfinished">CAPTCHA mynd</translation>
+      <translation>CAPTCHA mynd</translation>
     </message>
     <message>
       <source>Captcha code</source>
-      <translation type="unfinished">Kapteinn k&#xF3;&#xF0;a</translation>
+      <translation>Kapteinn k&#xF3;&#xF0;a</translation>
     </message>
     <message>
       <source>Required fields</source>
-      <translation type="unfinished">Nau&#xF0;synlegir reitir</translation>
+      <translation>Nau&#xF0;synlegir reitir</translation>
     </message>
     <message>
       <source>Send</source>
@@ -2822,45 +2870,45 @@
     </message>
     <message>
       <source>Please enter name!</source>
-      <translation type="unfinished">Vinsamlega sl&#xE1;&#xF0;u inn nafn!</translation>
+      <translation>Vinsamlega sl&#xE1;&#xF0;u inn nafn!</translation>
     </message>
     <message>
       <source>Invalid e-mail address!</source>
-      <translation type="unfinished">&#xD3;gilt netfang!</translation>
+      <translation>&#xD3;gilt netfang!</translation>
     </message>
     <message>
       <source>Please enter text!</source>
-      <translation type="unfinished">Vinsamlega sl&#xE1;&#xF0;u inn textann!</translation>
+      <translation>Vinsamlega sl&#xE1;&#xF0;u inn textann!</translation>
     </message>
     <message>
       <source>Please enter captcha code!</source>
-      <translation type="unfinished">Vinsamlega sl&#xE1;&#xF0;u inn Kapteinn merkjam&#xE1;l!</translation>
+      <translation>Vinsamlega sl&#xE1;&#xF0;u inn Kapteinn merkjam&#xE1;l!</translation>
     </message>
   </context>
   <context>
     <name>feedback/formsend</name>
     <message>
       <source>Feedback</source>
-      <translation type="unfinished">Feedback</translation>
+      <translation>Feedback</translation>
     </message>
     <message>
       <source>Your feedback was succesfuly send</source>
-      <translation type="unfinished">Athugasemdir t&#xF3;kst senda</translation>
+      <translation>Athugasemdir t&#xF3;kst senda</translation>
     </message>
     <message>
       <source>Home page</source>
-      <translation type="unfinished">Heim</translation>
+      <translation>Heim</translation>
     </message>
   </context>
   <context>
     <name>feedback/mail</name>
     <message>
       <source>Hello</source>
-      <translation type="unfinished">Hall&#xF3;</translation>
+      <translation>Hall&#xF3;</translation>
     </message>
     <message>
       <source>Feedback data</source>
-      <translation type="unfinished">&#xC1;lit &#xE1; g&#xF6;gnum</translation>
+      <translation>&#xC1;lit &#xE1; g&#xF6;gnum</translation>
     </message>
     <message>
       <source>Name</source>
@@ -2872,18 +2920,18 @@
     </message>
     <message>
       <source>Text</source>
-      <translation type="unfinished">Texti</translation>
+      <translation>Texti</translation>
     </message>
     <message>
       <source>Bye</source>
-      <translation type="unfinished">Bless</translation>
+      <translation>Bless</translation>
     </message>
   </context>
   <context>
     <name>gallery/anaglyph</name>
     <message>
       <source>Original</source>
-      <translation type="unfinished">Original</translation>
+      <translation>Original</translation>
     </message>
     <message>
       <source>Anaglyph</source>
@@ -2891,58 +2939,58 @@
     </message>
     <message>
       <source>Animating</source>
-      <translation type="unfinished">Hreyfingar</translation>
+      <translation>Hreyfingar</translation>
     </message>
   </context>
   <context>
     <name>gallery/color</name>
     <message>
       <source>Exclude color</source>
-      <translation type="unfinished">&#xDA;tiloka lit</translation>
+      <translation>&#xDA;tiloka lit</translation>
     </message>
     <message>
       <source>Maximum</source>
-      <translation type="unfinished">H&#xE1;marks</translation>
+      <translation>H&#xE1;marks</translation>
     </message>
     <message>
       <source>filters</source>
-      <translation type="unfinished">filters</translation>
+      <translation>filters</translation>
     </message>
     <message>
       <source>Include color</source>
-      <translation type="unfinished">Hafa lit</translation>
+      <translation>Hafa lit</translation>
     </message>
     <message>
       <source>Remove color</source>
-      <translation type="unfinished">Fjarl&#xE6;gja lit</translation>
+      <translation>Fjarl&#xE6;gja lit</translation>
     </message>
     <message>
       <source>Excluded colors in search</source>
-      <translation type="unfinished">&#xDA;tiloka&#xF0; litir &#xED; leit</translation>
+      <translation>&#xDA;tiloka&#xF0; litir &#xED; leit</translation>
     </message>
     <message>
       <source>colors</source>
-      <translation type="unfinished">litir</translation>
+      <translation>litir</translation>
     </message>
     <message>
       <source>More color</source>
-      <translation type="unfinished">Meira lit</translation>
+      <translation>Meira lit</translation>
     </message>
     <message>
       <source>Return to pallete</source>
-      <translation type="unfinished">Til baka &#xE1; pallete</translation>
+      <translation>Til baka &#xE1; pallete</translation>
     </message>
     <message>
       <source>Images by color</source>
-      <translation type="unfinished">Myndir eftir lit</translation>
+      <translation>Myndir eftir lit</translation>
     </message>
     <message>
       <source>Choose color</source>
-      <translation type="unfinished">Veldu lit</translation>
+      <translation>Veldu lit</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Engar f&#xE6;rslur.</translation>
+      <translation>Engar f&#xE6;rslur.</translation>
     </message>
     <message>
       <source>Page</source>
@@ -2953,11 +3001,11 @@
     <name>gallery/createalbum</name>
     <message>
       <source>New album</source>
-      <translation type="unfinished">N&#xFD;tt alb&#xFA;m</translation>
+      <translation>N&#xFD;tt alb&#xFA;m</translation>
     </message>
     <message>
       <source>Album name</source>
-      <translation type="unfinished">Nafn alb&#xFA;ms</translation>
+      <translation>Nafn alb&#xFA;ms</translation>
     </message>
     <message>
       <source>Description</source>
@@ -2969,22 +3017,22 @@
     </message>
     <message>
       <source>Create</source>
-      <translation type="unfinished">B&#xFA;a til</translation>
+      <translation>B&#xFA;a til</translation>
     </message>
     <message>
       <source>Create and upload photos</source>
-      <translation type="unfinished">B&#xFA;a til og senda inn myndir</translation>
+      <translation>B&#xFA;a til og senda inn myndir</translation>
     </message>
   </context>
   <context>
     <name>gallery/myfavorites</name>
     <message>
       <source>Remove from favorites</source>
-      <translation type="unfinished">Fjarl&#xE6;gja &#xFA;r upp&#xE1;halds</translation>
+      <translation>Fjarl&#xE6;gja &#xFA;r upp&#xE1;halds</translation>
     </message>
     <message>
       <source>My favorite images</source>
-      <translation type="unfinished">Upp&#xE1;halds myndir m&#xED;nar</translation>
+      <translation>Upp&#xE1;halds myndir m&#xED;nar</translation>
     </message>
     <message>
       <source>Remove</source>
@@ -2992,18 +3040,18 @@
     </message>
     <message>
       <source>Remove Open ID</source>
-      <translation type="unfinished">Fjarl&#xE6;gja Open ID</translation>
+      <translation>Fjarl&#xE6;gja Open ID</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastcommented</name>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished">S&#xED;&#xF0;asta athugasemd myndir</translation>
+      <translation>S&#xED;&#xF0;asta athugasemd myndir</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Engar f&#xE6;rslur.</translation>
+      <translation>Engar f&#xE6;rslur.</translation>
     </message>
     <message>
       <source>Resolution</source>
@@ -3012,17 +3060,21 @@
     <message>
       <source>Page</source>
       <translation>Page</translation>
+    </message>
+    <message>
+      <source>Last commented gallery images.</source>
+      <translation type="unfinished">S&#xED;&#xF0;asta athugasemd gallery images.</translation>
     </message>
   </context>
   <context>
     <name>gallery/lasthits</name>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished">S&#xED;&#xF0;ast sko&#xF0;a&#xF0; myndir</translation>
+      <translation>S&#xED;&#xF0;ast sko&#xF0;a&#xF0; myndir</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Engar f&#xE6;rslur.</translation>
+      <translation>Engar f&#xE6;rslur.</translation>
     </message>
     <message>
       <source>Resolution</source>
@@ -3031,17 +3083,21 @@
     <message>
       <source>Page</source>
       <translation>Page</translation>
+    </message>
+    <message>
+      <source>Last viewed gallery images.</source>
+      <translation type="unfinished">S&#xED;&#xF0;ast sko&#xF0;a&#xF0; gallery images.</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastrated</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished">S&#xED;&#xF0;asta einkunn myndir</translation>
+      <translation>S&#xED;&#xF0;asta einkunn myndir</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Engar f&#xE6;rslur.</translation>
+      <translation>Engar f&#xE6;rslur.</translation>
     </message>
     <message>
       <source>Resolution</source>
@@ -3050,28 +3106,32 @@
     <message>
       <source>Page</source>
       <translation>Page</translation>
+    </message>
+    <message>
+      <source>Recently rated images.</source>
+      <translation type="unfinished">N&#xFD;lega gaf myndum.</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastsearches</name>
     <message>
       <source>Last searches</source>
-      <translation type="unfinished">S&#xED;&#xF0;asta leit</translation>
+      <translation>S&#xED;&#xF0;asta leit</translation>
     </message>
     <message>
       <source>No records</source>
-      <translation type="unfinished">Engar f&#xE6;rslur</translation>
+      <translation>Engar f&#xE6;rslur</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastuploads</name>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished">S&#xED;&#xF0;ast hla&#xF0;i&#xF0; myndum</translation>
+      <translation>S&#xED;&#xF0;ast hla&#xF0;i&#xF0; myndum</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Engar f&#xE6;rslur.</translation>
+      <translation>Engar f&#xE6;rslur.</translation>
     </message>
     <message>
       <source>Resolution</source>
@@ -3081,1082 +3141,1140 @@
       <source>Page</source>
       <translation>Page</translation>
     </message>
+    <message>
+      <source>Latest additions to gallery.</source>
+      <translation type="unfinished">N&#xFD;justu vi&#xF0;b&#xE6;tur &#xED; galler&#xED;.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/my_albums_list</name>
     <message>
       <source>Edit album</source>
-      <translation type="unfinished">Breyta alb&#xFA;mi</translation>
+      <translation>Breyta alb&#xFA;mi</translation>
     </message>
     <message>
       <source>Are you sure?</source>
-      <translation type="unfinished">Ertu viss?</translation>
+      <translation>Ertu viss?</translation>
     </message>
     <message>
       <source>Delete album</source>
-      <translation type="unfinished">Ey&#xF0;a alb&#xFA;mi</translation>
+      <translation>Ey&#xF0;a alb&#xFA;mi</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">B&#xE6;ta vi&#xF0; myndum</translation>
+      <translation>B&#xE6;ta vi&#xF0; myndum</translation>
     </message>
   </context>
   <context>
     <name>gallery/myalbums</name>
     <message>
       <source>My albums</source>
-      <translation type="unfinished">My Albums</translation>
+      <translation>My Albums</translation>
     </message>
     <message>
       <source>New album</source>
-      <translation type="unfinished">N&#xFD;tt alb&#xFA;m</translation>
+      <translation>N&#xFD;tt alb&#xFA;m</translation>
     </message>
     <message>
       <source>Update priority</source>
-      <translation type="unfinished">Uppf&#xE6;ra forgang</translation>
+      <translation>Uppf&#xE6;ra forgang</translation>
     </message>
     <message>
       <source>You do not have any album.</source>
-      <translation type="unfinished">&#xDE;&#xFA; ert ekki me&#xF0; neina pl&#xF6;tu.</translation>
+      <translation>&#xDE;&#xFA; ert ekki me&#xF0; neina pl&#xF6;tu.</translation>
     </message>
     <message>
       <source>Create a new album.</source>
-      <translation type="unfinished">B&#xFA;a til n&#xFD;tt alb&#xFA;m.</translation>
+      <translation>B&#xFA;a til n&#xFD;tt alb&#xFA;m.</translation>
     </message>
     <message>
       <source>Account</source>
-      <translation type="unfinished">Reikningur</translation>
+      <translation>Reikningur</translation>
     </message>
     <message>
       <source>Albums</source>
-      <translation type="unfinished">Albums</translation>
+      <translation>Albums</translation>
     </message>
   </context>
   <context>
     <name>gallery/mylistalbum</name>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Engar f&#xE6;rslur.</translation>
+      <translation>Engar f&#xE6;rslur.</translation>
     </message>
     <message>
       <source>Account</source>
-      <translation type="unfinished">Reikningur</translation>
+      <translation>Reikningur</translation>
     </message>
     <message>
       <source>Albums</source>
-      <translation type="unfinished">Albums</translation>
+      <translation>Albums</translation>
     </message>
   </context>
   <context>
     <name>gallery/popular</name>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Vins&#xE6;last myndir</translation>
+      <translation>Vins&#xE6;last myndir</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">Engar f&#xE6;rslur.</translation>
+      <translation>Engar f&#xE6;rslur.</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Upplausn</translation>
+      <translation>Upplausn</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>Page</translation>
+    </message>
+    <message>
+      <source>All time most popular images.</source>
+      <translation type="unfinished">Allra t&#xED;ma vins&#xE6;lustu myndum.</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecect</name>
     <message>
       <source>Most popular images in 24 hours.</source>
-      <translation type="unfinished">Vins&#xE6;last myndir &#xED; 24 klst.</translation>
+      <translation>Vins&#xE6;last myndir &#xED; 24 klst.</translation>
     </message>
     <message>
       <source>There are no images.</source>
-      <translation type="unfinished">&#xDE;a&#xF0; eru engar myndir.</translation>
+      <translation>&#xDE;a&#xF0; eru engar myndir.</translation>
     </message>
   </context>
   <context>
     <name>gallery/ratedrecent</name>
     <message>
       <source>Top rated images in 24 hours.</source>
-      <translation type="unfinished">H&#xE6;stu einkunnir myndir &#xED; 24 klst.</translation>
+      <translation>H&#xE6;stu einkunnir myndir &#xED; 24 klst.</translation>
     </message>
     <message>
       <source>Top rated images in 24 hours</source>
-      <translation type="unfinished">H&#xE6;stu einkunnir myndir &#xED; 24 klst</translation>
+      <translation>H&#xE6;stu einkunnir myndir &#xED; 24 klst</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>Page</translation>
+    </message>
+    <message>
+      <source>Top rated images in last 24 hours.</source>
+      <translation type="unfinished">H&#xE6;stu einkunnir myndir &#xED; s&#xED;&#xF0;ustu 24 klst.</translation>
     </message>
   </context>
   <context>
     <name>gallery/sharehtml</name>
     <message>
       <source>Link to image</source>
-      <translation type="unfinished">Tengill &#xE1; mynd</translation>
+      <translation>Tengill &#xE1; mynd</translation>
     </message>
     <message>
       <source>Link to image with thumbnail</source>
-      <translation type="unfinished">Link &#xE1; mynd me&#xF0; thumbnail</translation>
+      <translation>Link &#xE1; mynd me&#xF0; thumbnail</translation>
     </message>
     <message>
       <source>Link to image with medium size thumbnail</source>
-      <translation type="unfinished">Tengill &#xE1; mynd me&#xF0; mi&#xF0;lungs st&#xE6;r&#xF0; thumbnail</translation>
+      <translation>Tengill &#xE1; mynd me&#xF0; mi&#xF0;lungs st&#xE6;r&#xF0; thumbnail</translation>
     </message>
   </context>
   <context>
     <name>gallery/sharephpbb</name>
     <message>
       <source>Link to image</source>
-      <translation type="unfinished">Tengill &#xE1; mynd</translation>
+      <translation>Tengill &#xE1; mynd</translation>
     </message>
     <message>
       <source>Link to image with thumbnail</source>
-      <translation type="unfinished">Link &#xE1; mynd me&#xF0; thumbnail</translation>
+      <translation>Link &#xE1; mynd me&#xF0; thumbnail</translation>
     </message>
     <message>
       <source>Link to image with medium size thumbnail</source>
-      <translation type="unfinished">Tengill &#xE1; mynd me&#xF0; mi&#xF0;lungs st&#xE6;r&#xF0; thumbnail</translation>
+      <translation>Tengill &#xE1; mynd me&#xF0; mi&#xF0;lungs st&#xE6;r&#xF0; thumbnail</translation>
     </message>
   </context>
   <context>
     <name>gallery/subcategory_list_full</name>
     <message>
       <source>albums</source>
-      <translation type="unfinished">alb&#xFA;m</translation>
+      <translation>alb&#xFA;m</translation>
     </message>
     <message>
       <source>images</source>
-      <translation type="unfinished">myndir</translation>
+      <translation>myndir</translation>
     </message>
   </context>
   <context>
     <name>gallery/toprated</name>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">H&#xE6;stu einkunnir myndir</translation>
+      <translation>H&#xE6;stu einkunnir myndir</translation>
     </message>
     <message>
       <source>No records</source>
-      <translation type="unfinished">Engar f&#xE6;rslur</translation>
+      <translation>Engar f&#xE6;rslur</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">Upplausn</translation>
+      <translation>Upplausn</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>Page</translation>
+    </message>
+    <message>
+      <source>All time top rated images.</source>
+      <translation type="unfinished">Allra t&#xED;ma toppur hlutfall myndir.</translation>
     </message>
   </context>
   <context>
     <name>kernel/nopermission</name>
     <message>
       <source>You do not have permission to access module</source>
-      <translation type="unfinished">&#xDE;&#xFA; hefur ekki leyfi til a&#xF0; opna m&#xE1;t</translation>
+      <translation>&#xDE;&#xFA; hefur ekki leyfi til a&#xF0; opna m&#xE1;t</translation>
     </message>
     <message>
       <source>and use</source>
-      <translation type="unfinished">og nota</translation>
+      <translation>og nota</translation>
     </message>
     <message>
       <source>function</source>
-      <translation type="unfinished">virka</translation>
+      <translation>virka</translation>
     </message>
     <message>
       <source>You do not have permission to access current object</source>
-      <translation type="unfinished">&#xDE;&#xFA; hefur ekki leyfi til a&#xF0; f&#xE1; a&#xF0;gang n&#xFA;verandi m&#xF3;tm&#xE6;la</translation>
+      <translation>&#xDE;&#xFA; hefur ekki leyfi til a&#xF0; f&#xE1; a&#xF0;gang n&#xFA;verandi m&#xF3;tm&#xE6;la</translation>
     </message>
   </context>
   <context>
     <name>core/paginator</name>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>Page</translation>
     </message>
     <message>
       <source>of</source>
-      <translation type="unfinished">&#xE1;</translation>
+      <translation>&#xE1;</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation type="unfinished">Fann</translation>
+      <translation>Fann</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation type="unfinished">Fyrri</translation>
+      <translation>Fyrri</translation>
     </message>
     <message>
       <source>Go to page</source>
-      <translation type="unfinished">Fara &#xE1; s&#xED;&#xF0;u</translation>
+      <translation>Fara &#xE1; s&#xED;&#xF0;u</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">N&#xE6;sta</translation>
+      <translation>N&#xE6;sta</translation>
     </message>
   </context>
   <context>
     <name>similar/similar</name>
     <message>
       <source>Visualy similar images to</source>
-      <translation type="unfinished">Visualy svipu&#xF0;um myndum til</translation>
+      <translation>Visualy svipu&#xF0;um myndum til</translation>
     </message>
     <message>
       <source>Search for visualy similar images</source>
-      <translation type="unfinished">Leita eftir visualy a&#xF0; svipu&#xF0;um myndum</translation>
+      <translation>Leita eftir visualy a&#xF0; svipu&#xF0;um myndum</translation>
     </message>
     <message>
       <source>Please enable JavaScript to upload image</source>
-      <translation type="unfinished">Vinsamlega virkja&#xF0;u JavaScript til a&#xF0; senda inn mynd</translation>
+      <translation>Vinsamlega virkja&#xF0;u JavaScript til a&#xF0; senda inn mynd</translation>
     </message>
     <message>
       <source>Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).</source>
-      <translation type="unfinished">Smelltu til a&#xF0; velja mynd, &#xFE;&#xFA; getur einnig draga og sleppa skr&#xE1; h&#xE9;r (Draga og sleppa a&#xF0;eins fyrir FF, Kr&#xF3;m).</translation>
+      <translation>Smelltu til a&#xF0; velja mynd, &#xFE;&#xFA; getur einnig draga og sleppa skr&#xE1; h&#xE9;r (Draga og sleppa a&#xF0;eins fyrir FF, Kr&#xF3;m).</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">H&#xE6;tta vi&#xF0;</translation>
+      <translation>H&#xE6;tta vi&#xF0;</translation>
     </message>
     <message>
       <source>Failed</source>
-      <translation type="unfinished">Mist&#xF3;kst</translation>
+      <translation>Mist&#xF3;kst</translation>
     </message>
   </context>
   <context>
     <name>similar/sketch</name>
     <message>
       <source>Search by sketch</source>
-      <translation type="unfinished">Leita eftir skissu</translation>
+      <translation>Leita eftir skissu</translation>
     </message>
     <message>
       <source>Sketch and find images by your sketch</source>
-      <translation type="unfinished">Skissa og finna myndir af skissu &#xFE;itt</translation>
+      <translation>Skissa og finna myndir af skissu &#xFE;itt</translation>
     </message>
   </context>
   <context>
     <name>statistic/view</name>
     <message>
       <source>hours</source>
-      <translation type="unfinished">klukkustundir</translation>
+      <translation>klukkustundir</translation>
     </message>
     <message>
       <source>Total pageviews</source>
-      <translation type="unfinished">Samtals flettingar</translation>
+      <translation>Samtals flettingar</translation>
     </message>
     <message>
       <source>Total visits</source>
-      <translation type="unfinished">Samtals heims&#xF3;knir</translation>
+      <translation>Samtals heims&#xF3;knir</translation>
     </message>
     <message>
       <source>Time spent</source>
-      <translation type="unfinished">T&#xED;ma</translation>
+      <translation>T&#xED;ma</translation>
     </message>
     <message>
       <source>Last 31 days statistic, data resource - google analytics API</source>
-      <translation type="unfinished">Last 31 dagar t&#xF6;lfr&#xE6;&#xF0;i, uppl&#xFD;singar um vefs&#xED;&#xF0;una - Google Analytics API</translation>
+      <translation>Last 31 dagar t&#xF6;lfr&#xE6;&#xF0;i, uppl&#xFD;singar um vefs&#xED;&#xF0;una - Google Analytics API</translation>
     </message>
     <message>
       <source>Legend</source>
-      <translation type="unfinished">Legend</translation>
+      <translation>Legend</translation>
     </message>
     <message>
       <source>Pageviews</source>
-      <translation type="unfinished">Pageviews</translation>
+      <translation>Pageviews</translation>
     </message>
     <message>
       <source>Visits</source>
-      <translation type="unfinished">Heims&#xF3;knir</translation>
+      <translation>Heims&#xF3;knir</translation>
     </message>
   </context>
   <context>
     <name>user/mapaccounts</name>
     <message>
       <source>Login with facebook</source>
-      <translation type="unfinished">Innskr&#xE1;ning me&#xF0; Facebook</translation>
+      <translation>Innskr&#xE1;ning me&#xF0; Facebook</translation>
     </message>
     <message>
       <source>Map to my account</source>
-      <translation type="unfinished">Kort &#xE1; reikninginn minn</translation>
+      <translation>Kort &#xE1; reikninginn minn</translation>
     </message>
     <message>
       <source>my account</source>
-      <translation type="unfinished">reikninginn minn</translation>
+      <translation>reikninginn minn</translation>
     </message>
     <message>
       <source>Login</source>
-      <translation type="unfinished">Innskr&#xE1;ning</translation>
+      <translation>Innskr&#xE1;ning</translation>
     </message>
     <message>
       <source>map to my account</source>
-      <translation type="unfinished">kortinu &#xE1; reikninginn minn</translation>
+      <translation>kortinu &#xE1; reikninginn minn</translation>
     </message>
     <message>
       <source>Incorrect login or password</source>
-      <translation type="unfinished">Rangt notandanafni e&#xF0;a a&#xF0;gangsor&#xF0;i</translation>
+      <translation>Rangt notandanafni e&#xF0;a a&#xF0;gangsor&#xF0;i</translation>
     </message>
     <message>
       <source>Username</source>
-      <translation type="unfinished">Notandanafn</translation>
+      <translation>Notandanafn</translation>
     </message>
     <message>
       <source>Password</source>
-      <translation type="unfinished">Lykilor&#xF0;</translation>
+      <translation>Lykilor&#xF0;</translation>
     </message>
     <message>
       <source>OR</source>
-      <translation type="unfinished">OR</translation>
+      <translation>OR</translation>
     </message>
     <message>
       <source>create account</source>
-      <translation type="unfinished">B&#xFA;a til a&#xF0;gang</translation>
+      <translation>B&#xFA;a til a&#xF0;gang</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">N&#xE6;sta</translation>
+      <translation>N&#xE6;sta</translation>
     </message>
     <message>
       <source>Open ID</source>
-      <translation type="unfinished">Opna ID</translation>
+      <translation>Opna ID</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpassword</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Lykilor&#xF0; minna</translation>
+      <translation>Lykilor&#xF0; minna</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-mail</translation>
+      <translation>E-mail</translation>
     </message>
     <message>
       <source>Restore password</source>
-      <translation type="unfinished">Endurheimta lykilor&#xF0;</translation>
+      <translation>Endurheimta lykilor&#xF0;</translation>
     </message>
     <message>
       <source>Order confirmed</source>
-      <translation type="unfinished">Order sta&#xF0;fest</translation>
+      <translation>Order sta&#xF0;fest</translation>
     </message>
     <message>
       <source>Credits order confirmed</source>
-      <translation type="unfinished">Einingar til sta&#xF0;fest</translation>
+      <translation>Einingar til sta&#xF0;fest</translation>
     </message>
     <message>
       <source>Wrong e-mail address!</source>
-      <translation type="unfinished">Rangt netfang!</translation>
+      <translation>Rangt netfang!</translation>
     </message>
     <message>
       <source>Click this link and to You will be send new password</source>
-      <translation type="unfinished">Smelltu &#xE1; &#xFE;ennan tengil og &#xFE;&#xFA; ver&#xF0;ur a&#xF0; senda n&#xFD;tt lykilor&#xF0;</translation>
+      <translation>Smelltu &#xE1; &#xFE;ennan tengil og &#xFE;&#xFA; ver&#xF0;ur a&#xF0; senda n&#xFD;tt lykilor&#xF0;</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpasswordsent</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Lykilor&#xF0; minna</translation>
+      <translation>Lykilor&#xF0; minna</translation>
     </message>
     <message>
       <source>E-mail send. Click link in email and to You will be send out new password.</source>
-      <translation type="unfinished">E-mail senda. Smelltu &#xE1; tengilinn &#xED; t&#xF6;lvup&#xF3;sti og &#xFE;&#xFA; ver&#xF0;ur a&#xF0; senda &#xFA;t n&#xFD;tt lykilor&#xF0;.</translation>
+      <translation>E-mail senda. Smelltu &#xE1; tengilinn &#xED; t&#xF6;lvup&#xF3;sti og &#xFE;&#xFA; ver&#xF0;ur a&#xF0; senda &#xFA;t n&#xFD;tt lykilor&#xF0;.</translation>
     </message>
   </context>
   <context>
     <name>user/index</name>
     <message>
       <source>User home</source>
-      <translation type="unfinished">Notandi heim</translation>
+      <translation>Notandi heim</translation>
     </message>
     <message>
       <source>Welcome. Here you can:</source>
-      <translation type="unfinished">Velkomin. H&#xE9;r getur &#xFE;&#xFA;:</translation>
+      <translation>Velkomin. H&#xE9;r getur &#xFE;&#xFA;:</translation>
     </message>
     <message>
       <source>Edit personal settings</source>
-      <translation type="unfinished">Breyta pers&#xF3;nulegar stillingar</translation>
+      <translation>Breyta pers&#xF3;nulegar stillingar</translation>
     </message>
     <message>
       <source>Manage personal albums</source>
-      <translation type="unfinished">Stj&#xF3;rna pers&#xF3;nulega alb&#xFA;m</translation>
+      <translation>Stj&#xF3;rna pers&#xF3;nulega alb&#xFA;m</translation>
     </message>
     <message>
       <source>My account</source>
-      <translation type="unfinished">Minn a&#xF0;gangur</translation>
+      <translation>Minn a&#xF0;gangur</translation>
     </message>
   </context>
   <context>
     <name>user/remindpassword</name>
     <message>
       <source>New password</source>
-      <translation type="unfinished">N&#xFD;tt lykilor&#xF0;</translation>
+      <translation>N&#xFD;tt lykilor&#xF0;</translation>
     </message>
     <message>
       <source>Hash not found or was used already</source>
-      <translation type="unfinished">Hash fannst ekki e&#xF0;a var nota&#xF0; &#xFE;egar</translation>
+      <translation>Hash fannst ekki e&#xF0;a var nota&#xF0; &#xFE;egar</translation>
     </message>
     <message>
       <source>Password remind - new password</source>
-      <translation type="unfinished">Lykilor&#xF0; minna - n&#xFD;tt lykilor&#xF0;</translation>
+      <translation>Lykilor&#xF0; minna - n&#xFD;tt lykilor&#xF0;</translation>
     </message>
     <message>
       <source>New password:</source>
-      <translation type="unfinished">N&#xFD;tt lykilor&#xF0;:</translation>
+      <translation>N&#xFD;tt lykilor&#xF0;:</translation>
     </message>
     <message>
       <source>New password has beend send to your email.</source>
-      <translation type="unfinished">N&#xFD;tt lykilor&#xF0; hefur beend senda t&#xF6;lvup&#xF3;stinn &#xFE;inn.</translation>
+      <translation>N&#xFD;tt lykilor&#xF0; hefur beend senda t&#xF6;lvup&#xF3;stinn &#xFE;inn.</translation>
     </message>
   </context>
   <context>
     <name>shop/basket</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Karfa</translation>
+      <translation>Karfa</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Heiti myndar</translation>
+      <translation>Heiti myndar</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">&#xDA;tg&#xE1;fa</translation>
+      <translation>&#xDA;tg&#xE1;fa</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">St&#xE6;r&#xF0; myndar</translation>
+      <translation>St&#xE6;r&#xF0; myndar</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Sni&#xF0;</translation>
+      <translation>Sni&#xF0;</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Ver&#xF0;</translation>
+      <translation>Ver&#xF0;</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Credits</translation>
+      <translation>Credits</translation>
     </message>
     <message>
       <source>Remove from basket</source>
-      <translation type="unfinished">Fjarl&#xE6;gja &#xFA;r k&#xF6;rfu</translation>
+      <translation>Fjarl&#xE6;gja &#xFA;r k&#xF6;rfu</translation>
     </message>
     <message>
       <source>Choose payment option</source>
-      <translation type="unfinished">Veldu grei&#xF0;slum&#xE1;ta</translation>
+      <translation>Veldu grei&#xF0;slum&#xE1;ta</translation>
     </message>
     <message>
       <source>In order to checkout atlest one item have to be selected.</source>
-      <translation type="unfinished">&#xCD; &#xFE;v&#xED; skyni a&#xF0; st&#xF6;&#xF0;va atlest eitt atri&#xF0;i ver&#xF0;a a&#xF0; vera vali&#xF0;.</translation>
+      <translation>&#xCD; &#xFE;v&#xED; skyni a&#xF0; st&#xF6;&#xF0;va atlest eitt atri&#xF0;i ver&#xF0;a a&#xF0; vera vali&#xF0;.</translation>
     </message>
     <message>
       <source>In order to checkout you have to</source>
-      <translation type="unfinished">Til &#xFE;ess a&#xF0; st&#xF6;&#xF0;va &#xFE;arftu a&#xF0;</translation>
+      <translation>Til &#xFE;ess a&#xF0; st&#xF6;&#xF0;va &#xFE;arftu a&#xF0;</translation>
     </message>
     <message>
       <source>sign in</source>
-      <translation type="unfinished">Skr&#xE1; &#xED;</translation>
+      <translation>Skr&#xE1; &#xED;</translation>
     </message>
     <message>
       <source>or</source>
-      <translation type="unfinished">e&#xF0;a</translation>
+      <translation>e&#xF0;a</translation>
     </message>
     <message>
       <source>login</source>
-      <translation type="unfinished">innskr&#xE1;ning</translation>
+      <translation>innskr&#xE1;ning</translation>
     </message>
     <message>
       <source>if you have already created an account</source>
-      <translation type="unfinished">Ef &#xFE;&#xFA; hefur &#xFE;egar stofna&#xF0; reikning</translation>
+      <translation>Ef &#xFE;&#xFA; hefur &#xFE;egar stofna&#xF0; reikning</translation>
     </message>
   </context>
   <context>
     <name>shop/buycredits</name>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Kaupa inneign</translation>
+      <translation>Kaupa inneign</translation>
     </message>
     <message>
       <source>How many credits do want to buy?</source>
-      <translation type="unfinished">Hversu margar einingar vilt a&#xF0; kaupa?</translation>
+      <translation>Hversu margar einingar vilt a&#xF0; kaupa?</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Veldu grei&#xF0;slum&#xE1;ta</translation>
+      <translation>Veldu grei&#xF0;slum&#xE1;ta</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/accept</name>
     <message>
       <source>Order succesfull</source>
-      <translation type="unfinished">Order succesfull</translation>
+      <translation>Order succesfull</translation>
     </message>
     <message>
       <source>Payment was succesfull</source>
-      <translation type="unfinished">Grei&#xF0;sla var succesfull</translation>
+      <translation>Grei&#xF0;sla var succesfull</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/process</name>
     <message>
       <source>Checkout</source>
-      <translation type="unfinished">Grei&#xF0;a</translation>
+      <translation>Grei&#xF0;a</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Sta&#xF0;festa grei&#xF0;slu</translation>
+      <translation>Sta&#xF0;festa grei&#xF0;slu</translation>
     </message>
     <message>
       <source>Not enouth credits to checkout</source>
-      <translation type="unfinished">Ekki enouth ein me&#xF0; kaup</translation>
+      <translation>Ekki enouth ein me&#xF0; kaup</translation>
     </message>
   </context>
   <context>
     <name>shop/cancel</name>
     <message>
       <source>Payment canceled</source>
-      <translation type="unfinished">H&#xE6;tt vi&#xF0; grei&#xF0;slu</translation>
+      <translation>H&#xE6;tt vi&#xF0; grei&#xF0;slu</translation>
     </message>
     <message>
       <source>Paypal payment was canceled.</source>
-      <translation type="unfinished">Paypal grei&#xF0;slu var loka&#xF0;.</translation>
+      <translation>Paypal grei&#xF0;slu var loka&#xF0;.</translation>
     </message>
   </context>
   <context>
     <name>shop/error</name>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Villa</translation>
+      <translation>Villa</translation>
     </message>
     <message>
       <source>Execution was terminated unexpectedly.</source>
-      <translation type="unfinished">Framkv&#xE6;md var sliti&#xF0; &#xF3;v&#xE6;nt.</translation>
+      <translation>Framkv&#xE6;md var sliti&#xF0; &#xF3;v&#xE6;nt.</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/process</name>
     <message>
       <source>Checkout using Paypal</source>
-      <translation type="unfinished">Grei&#xF0;a me&#xF0; Paypal</translation>
+      <translation>Grei&#xF0;a me&#xF0; Paypal</translation>
     </message>
     <message>
       <source>Buyer\'s Email</source>
-      <translation type="unfinished">Kaupandi \ &amp;#39;s Email</translation>
+      <translation>Kaupandi \ &amp;#39;s Email</translation>
     </message>
     <message>
       <source>Amount</source>
-      <translation type="unfinished">Upph&#xE6;&#xF0;</translation>
+      <translation>Upph&#xE6;&#xF0;</translation>
     </message>
     <message>
       <source>Currency</source>
-      <translation type="unfinished">Gjaldmi&#xF0;ill</translation>
+      <translation>Gjaldmi&#xF0;ill</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Credits</translation>
+      <translation>Credits</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/review</name>
     <message>
       <source>Order payment confirmation</source>
-      <translation type="unfinished">Order grei&#xF0;slu sta&#xF0;festingu</translation>
+      <translation>Order grei&#xF0;slu sta&#xF0;festingu</translation>
     </message>
     <message>
       <source>Order amount</source>
-      <translation type="unfinished">Order upph&#xE6;&#xF0;</translation>
+      <translation>Order upph&#xE6;&#xF0;</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Sta&#xF0;festa grei&#xF0;slu</translation>
+      <translation>Sta&#xF0;festa grei&#xF0;slu</translation>
     </message>
     <message>
       <source>Thank you for your payment!</source>
-      <translation type="unfinished">&#xDE;akka &#xFE;&#xE9;r fyrir grei&#xF0;slu!</translation>
+      <translation>&#xDE;akka &#xFE;&#xE9;r fyrir grei&#xF0;slu!</translation>
     </message>
     <message>
       <source>credits</source>
-      <translation type="unfinished">ein</translation>
+      <translation>ein</translation>
     </message>
   </context>
   <context>
     <name>shop/mycredits</name>
     <message>
       <source>My credits balanse</source>
-      <translation type="unfinished">Ein balanse My</translation>
+      <translation>Ein balanse My</translation>
     </message>
     <message>
       <source>You have</source>
-      <translation type="unfinished">&#xDE;&#xFA; hefur</translation>
+      <translation>&#xDE;&#xFA; hefur</translation>
     </message>
     <message>
       <source>in your account</source>
-      <translation type="unfinished">&#xE1; reikningnum &#xFE;&#xED;num</translation>
+      <translation>&#xE1; reikningnum &#xFE;&#xED;num</translation>
     </message>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Kaupa inneign</translation>
+      <translation>Kaupa inneign</translation>
     </message>
     <message>
       <source>My credits</source>
-      <translation type="unfinished">Ein My</translation>
+      <translation>Ein My</translation>
     </message>
   </context>
   <context>
     <name>shop/myorders</name>
     <message>
       <source>My credits orders</source>
-      <translation type="unfinished">Ein pantanir minn</translation>
+      <translation>Ein pantanir minn</translation>
     </message>
     <message>
       <source>Date</source>
-      <translation type="unfinished">Dagsetning</translation>
+      <translation>Dagsetning</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Order ver&#xF0;</translation>
+      <translation>Order ver&#xF0;</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Order ein</translation>
+      <translation>Order ein</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">P&#xF6;ntunar sta&#xF0;a</translation>
+      <translation>P&#xF6;ntunar sta&#xF0;a</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Borga&#xF0;</translation>
+      <translation>Borga&#xF0;</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Sta&#xF0;fest</translation>
+      <translation>Sta&#xF0;fest</translation>
     </message>
     <message>
       <source>My orders</source>
-      <translation type="unfinished">Pantanir minn</translation>
+      <translation>Pantanir minn</translation>
     </message>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Order sko&#xF0;a</translation>
+      <translation>Order sko&#xF0;a</translation>
     </message>
   </context>
   <context>
     <name>shop/orderview</name>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Order sko&#xF0;a</translation>
+      <translation>Order sko&#xF0;a</translation>
     </message>
     <message>
       <source>Order time</source>
-      <translation type="unfinished">Panta t&#xED;ma</translation>
+      <translation>Panta t&#xED;ma</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Order ver&#xF0;</translation>
+      <translation>Order ver&#xF0;</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Order ein</translation>
+      <translation>Order ein</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">P&#xF6;ntunar sta&#xF0;a</translation>
+      <translation>P&#xF6;ntunar sta&#xF0;a</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Borga&#xF0;</translation>
+      <translation>Borga&#xF0;</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Sta&#xF0;fest</translation>
+      <translation>Sta&#xF0;fest</translation>
     </message>
     <message>
       <source>Ordered items</source>
-      <translation type="unfinished">Panta&#xF0;i hluti</translation>
+      <translation>Panta&#xF0;i hluti</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Heiti myndar</translation>
+      <translation>Heiti myndar</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">&#xDA;tg&#xE1;fa</translation>
+      <translation>&#xDA;tg&#xE1;fa</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">St&#xE6;r&#xF0; myndar</translation>
+      <translation>St&#xE6;r&#xF0; myndar</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Sni&#xF0;</translation>
+      <translation>Sni&#xF0;</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Ver&#xF0;</translation>
+      <translation>Ver&#xF0;</translation>
     </message>
     <message>
       <source>Download count</source>
-      <translation type="unfinished">S&#xE6;kja telja</translation>
+      <translation>S&#xE6;kja telja</translation>
     </message>
     <message>
       <source>Downloads left</source>
-      <translation type="unfinished">Ni&#xF0;urhal vinstri</translation>
+      <translation>Ni&#xF0;urhal vinstri</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Credits</translation>
+      <translation>Credits</translation>
     </message>
     <message>
       <source>Download image</source>
-      <translation type="unfinished">S&#xE6;kja mynd</translation>
+      <translation>S&#xE6;kja mynd</translation>
     </message>
     <message>
       <source>downloads left</source>
-      <translation type="unfinished">ni&#xF0;urhal vinstri</translation>
+      <translation>ni&#xF0;urhal vinstri</translation>
     </message>
     <message>
       <source>No downloads available</source>
-      <translation type="unfinished">Pr&#xF3;f&#xED;ll bo&#xF0;i</translation>
+      <translation>Pr&#xF3;f&#xED;ll bo&#xF0;i</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoption</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Grei&#xF0;slua&#xF0;fer&#xF0;</translation>
+      <translation>Grei&#xF0;slua&#xF0;fer&#xF0;</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-mail</translation>
+      <translation>E-mail</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Veldu grei&#xF0;slum&#xE1;ta</translation>
+      <translation>Veldu grei&#xF0;slum&#xE1;ta</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoptioncredit</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Grei&#xF0;slua&#xF0;fer&#xF0;</translation>
+      <translation>Grei&#xF0;slua&#xF0;fer&#xF0;</translation>
     </message>
     <message>
       <source>Continue</source>
-      <translation type="unfinished">&#xC1;fram</translation>
+      <translation>&#xC1;fram</translation>
     </message>
   </context>
   <context>
     <name>gallery/category</name>
     <message>
       <source>Root category</source>
-      <translation type="unfinished">Root flokki</translation>
+      <translation>Root flokki</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>Page</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
   </context>
   <context>
     <name>forum/category</name>
     <message>
       <source>Please enter topic name!</source>
-      <translation type="unfinished">Vinsamlega sl&#xE1;&#xF0;u inn topic nafn!</translation>
+      <translation>Vinsamlega sl&#xE1;&#xF0;u inn topic nafn!</translation>
     </message>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Vinsamlegast sl&#xE1;&#xF0;u inn skilabo&#xF0;!</translation>
+      <translation>Vinsamlegast sl&#xE1;&#xF0;u inn skilabo&#xF0;!</translation>
     </message>
     <message>
       <source>Please choose category!</source>
-      <translation type="unfinished">Vinsamlegast veldu flokk!</translation>
+      <translation>Vinsamlegast veldu flokk!</translation>
     </message>
     <message>
       <source>Not parent category!</source>
-      <translation type="unfinished">Ekki foreldri flokki!</translation>
+      <translation>Ekki foreldri flokki!</translation>
     </message>
     <message>
       <source>Invalid category!</source>
-      <translation type="unfinished">&#xD3;gild flokk!</translation>
+      <translation>&#xD3;gild flokk!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
   </context>
   <context>
     <name>forum/createcategory</name>
     <message>
       <source>Please enter category name!</source>
-      <translation type="unfinished">Vinsamlega sl&#xE1;&#xF0;u inn flokkur nafn!</translation>
+      <translation>Vinsamlega sl&#xE1;&#xF0;u inn flokkur nafn!</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Heim</translation>
+      <translation>Heim</translation>
     </message>
   </context>
   <context>
     <name>forum/editmessage</name>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Vinsamlegast sl&#xE1;&#xF0;u inn skilabo&#xF0;!</translation>
+      <translation>Vinsamlegast sl&#xE1;&#xF0;u inn skilabo&#xF0;!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
     <message>
       <source>Message edit</source>
-      <translation type="unfinished">Message breyta</translation>
+      <translation>Message breyta</translation>
     </message>
   </context>
   <context>
     <name>forum/edittopic</name>
     <message>
       <source>Please enter topic name!</source>
-      <translation type="unfinished">Vinsamlega sl&#xE1;&#xF0;u inn topic nafn!</translation>
+      <translation>Vinsamlega sl&#xE1;&#xF0;u inn topic nafn!</translation>
     </message>
     <message>
       <source>Please enter topic status!</source>
-      <translation type="unfinished">Vinsamlega sl&#xE1;&#xF0;u inn topic st&#xF6;&#xF0;u!</translation>
+      <translation>Vinsamlega sl&#xE1;&#xF0;u inn topic st&#xF6;&#xF0;u!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
     <message>
       <source>Topic edit</source>
-      <translation type="unfinished">Topic breyta</translation>
+      <translation>Topic breyta</translation>
     </message>
   </context>
   <context>
     <name>forum/report</name>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Vinsamlegast sl&#xE1;&#xF0;u inn skilabo&#xF0;!</translation>
+      <translation>Vinsamlegast sl&#xE1;&#xF0;u inn skilabo&#xF0;!</translation>
     </message>
     <message>
       <source>Forum message report</source>
-      <translation type="unfinished">Forum skilabo&#xF0; sk&#xFD;rsla</translation>
+      <translation>Forum skilabo&#xF0; sk&#xFD;rsla</translation>
     </message>
   </context>
   <context>
     <name>gallery/searchrss</name>
     <message>
       <source>Search results</source>
-      <translation type="unfinished">Leitarni&#xF0;urst&#xF6;&#xF0;ur</translation>
+      <translation>Leitarni&#xF0;urst&#xF6;&#xF0;ur</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation type="unfinished">Leita</translation>
+      <translation>Leita</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
-      <translation type="unfinished">Leita RSS eftir leitaror&#xF0;i</translation>
+      <translation>Leita RSS eftir leitaror&#xF0;i</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Sko&#xF0;a mynd</translation>
+      <translation>Sko&#xF0;a mynd</translation>
     </message>
   </context>
   <context>
     <name>forum/searchrss</name>
     <message>
       <source>Search</source>
-      <translation type="unfinished">Leita</translation>
+      <translation>Leita</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumeditadmin</name>
     <message>
       <source>Root category</source>
-      <translation type="unfinished">Root flokki</translation>
+      <translation>Root flokki</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">B&#xE6;ta vi&#xF0; myndum</translation>
+      <translation>B&#xE6;ta vi&#xF0; myndum</translation>
     </message>
     <message>
       <source>Album edit</source>
-      <translation type="unfinished">Album breyta</translation>
+      <translation>Album breyta</translation>
     </message>
   </context>
   <context>
     <name>gallery/addvote</name>
     <message>
       <source>Thank you for your vote</source>
-      <translation type="unfinished">&#xDE;akka &#xFE;&#xE9;r fyrir &#xFE;&#xE1;tt&#xF6;kuna</translation>
+      <translation>&#xDE;akka &#xFE;&#xE9;r fyrir &#xFE;&#xE1;tt&#xF6;kuna</translation>
     </message>
     <message>
       <source>You are not allowed to vote!</source>
-      <translation type="unfinished">&#xDE;&#xFA; ert ekki leyft a&#xF0; kj&#xF3;sa!</translation>
+      <translation>&#xDE;&#xFA; ert ekki leyft a&#xF0; kj&#xF3;sa!</translation>
     </message>
     <message>
       <source>You have already voted!</source>
-      <translation type="unfinished">&#xDE;&#xFA; hefur &#xFE;egar greitt atkv&#xE6;&#xF0;i!</translation>
+      <translation>&#xDE;&#xFA; hefur &#xFE;egar greitt atkv&#xE6;&#xF0;i!</translation>
     </message>
     <message>
       <source>Vote deducted!</source>
-      <translation type="unfinished">Vote dregin!</translation>
+      <translation>Vote dregin!</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumrss</name>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished">S&#xED;&#xF0;ast hla&#xF0;i&#xF0; myndir &#xED; alb&#xFA;m</translation>
+      <translation>S&#xED;&#xF0;ast hla&#xF0;i&#xF0; myndir &#xED; alb&#xFA;m</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Sko&#xF0;a mynd</translation>
+      <translation>Sko&#xF0;a mynd</translation>
     </message>
   </context>
   <context>
     <name>gallery/lasthitsrss</name>
     <message>
       <source>watched</source>
-      <translation type="unfinished">horf&#xF0;i</translation>
+      <translation>horf&#xF0;i</translation>
     </message>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished">S&#xED;&#xF0;ast sko&#xF0;a&#xF0; myndir</translation>
+      <translation>S&#xED;&#xF0;ast sko&#xF0;a&#xF0; myndir</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Sko&#xF0;a mynd</translation>
+      <translation>Sko&#xF0;a mynd</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastcommentedrss</name>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished">S&#xED;&#xF0;asta athugasemd myndir</translation>
+      <translation>S&#xED;&#xF0;asta athugasemd myndir</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Sko&#xF0;a mynd</translation>
+      <translation>Sko&#xF0;a mynd</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastratedrss</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished">S&#xED;&#xF0;asta einkunn myndir</translation>
+      <translation>S&#xED;&#xF0;asta einkunn myndir</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Sko&#xF0;a mynd</translation>
+      <translation>Sko&#xF0;a mynd</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastuploadsrss</name>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished">S&#xED;&#xF0;ast hla&#xF0;i&#xF0; myndum</translation>
+      <translation>S&#xED;&#xF0;ast hla&#xF0;i&#xF0; myndum</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Sko&#xF0;a mynd</translation>
+      <translation>Sko&#xF0;a mynd</translation>
     </message>
   </context>
   <context>
     <name>gallery/movebyresolution</name>
     <message>
       <source>Move by resolution</source>
-      <translation type="unfinished">F&#xE6;ra me&#xF0; &#xE1;lyktun</translation>
+      <translation>F&#xE6;ra me&#xF0; &#xE1;lyktun</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecent</name>
     <message>
       <source>Most popular images in 24 hours</source>
-      <translation type="unfinished">Vins&#xE6;last myndir &#xED; 24 klst</translation>
+      <translation>Vins&#xE6;last myndir &#xED; 24 klst</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>Page</translation>
+    </message>
+    <message>
+      <source>Most popular images in last 24 hours.</source>
+      <translation type="unfinished">Vins&#xE6;last myndir &#xED; s&#xED;&#xF0;ustu 24 klst.</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrss</name>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Vins&#xE6;last myndir</translation>
+      <translation>Vins&#xE6;last myndir</translation>
     </message>
   </context>
   <context>
     <name>gallery/tagphoto</name>
     <message>
       <source>Thank you a lot :)</source>
-      <translation type="unfinished">&#xDE;akka &#xFE;&#xE9;r miki&#xF0;:)</translation>
+      <translation>&#xDE;akka &#xFE;&#xE9;r miki&#xF0;:)</translation>
     </message>
   </context>
   <context>
     <name>gallery/topratedrss</name>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">H&#xE6;stu einkunnir myndir</translation>
+      <translation>H&#xE6;stu einkunnir myndir</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Sko&#xF0;a mynd</translation>
+      <translation>Sko&#xF0;a mynd</translation>
     </message>
   </context>
   <context>
     <name>gallery/updateimage</name>
     <message>
       <source>Image updated</source>
-      <translation type="unfinished">Image Uppf&#xE6;rt</translation>
+      <translation>Image Uppf&#xE6;rt</translation>
     </message>
   </context>
   <context>
     <name>shop/imagevariation</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Karfa</translation>
+      <translation>Karfa</translation>
     </message>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Grei&#xF0;slua&#xF0;fer&#xF0;</translation>
+      <translation>Grei&#xF0;slua&#xF0;fer&#xF0;</translation>
     </message>
   </context>
   <context>
     <name>shop/imagevariationform</name>
     <message>
       <source>Credits amount must be greater than 0!</source>
-      <translation type="unfinished">Einingar upph&#xE6;&#xF0; ver&#xF0;ur a&#xF0; vera h&#xE6;rri en 0!</translation>
+      <translation>Einingar upph&#xE6;&#xF0; ver&#xF0;ur a&#xF0; vera h&#xE6;rri en 0!</translation>
     </message>
   </context>
   <context>
     <name>shop/settingedit</name>
     <message>
       <source>Edit</source>
-      <translation type="unfinished">Breyta</translation>
+      <translation>Breyta</translation>
     </message>
   </context>
   <context>
     <name>similar/image</name>
     <message>
       <source>Similar images to</source>
-      <translation type="unfinished">L&#xED;kur myndir</translation>
+      <translation>L&#xED;kur myndir</translation>
     </message>
     <message>
       <source>Search for visualy similar images</source>
-      <translation type="unfinished">Leita eftir visualy a&#xF0; svipu&#xF0;um myndum</translation>
+      <translation>Leita eftir visualy a&#xF0; svipu&#xF0;um myndum</translation>
     </message>
   </context>
   <context>
     <name>system/index</name>
     <message>
       <source>System administration panel</source>
-      <translation type="unfinished">System stj&#xF3;rn pallbor&#xF0;</translation>
+      <translation>System stj&#xF3;rn pallbor&#xF0;</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/profile</name>
+    <message>
+      <source>User profile</source>
+      <translation type="unfinished">User Profile</translation>
+    </message>
+    <message>
+      <source>Name and surname</source>
+      <translation type="unfinished">Nafn og eftirnafn</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Website</translation>
+    </message>
+    <message>
+      <source>Introduction</source>
+      <translation type="unfinished">Inngangur</translation>
+    </message>
+    <message>
+      <source>Last updated albums</source>
+      <translation type="unfinished">S&#xED;&#xF0;ast uppf&#xE6;rt alb&#xFA;m</translation>
+    </message>
+    <message>
+      <source>Last uploaded images</source>
+      <translation type="unfinished">S&#xED;&#xF0;ast hla&#xF0;i&#xF0; myndum</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/lastuploadstoalbums</name>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation type="unfinished">S&#xED;&#xF0;ustu uppf&#xE6;rslur &#xE1; myndaalb&#xFA;m</translation>
+    </message>
+    <message>
+      <source>Recently updated albums</source>
+      <translation type="unfinished">N&#xFD;lega uppf&#xE6;r&#xF0; alb&#xFA;m</translation>
     </message>
   </context>
 </TS>

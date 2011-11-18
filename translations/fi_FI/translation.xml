@@ -1051,8 +1051,8 @@
       <translation>Omistaja</translation>
     </message>
     <message>
-      <source>More user images</source>
-      <translation>Lis&#xE4;&#xE4; k&#xE4;ytt&#xE4;j&#xE4;n kuvia</translation>
+      <source>About user</source>
+      <translation type="unfinished">Tietoja k&#xE4;ytt&#xE4;j&#xE4;n</translation>
     </message>
     <message>
       <source>votes</source>
@@ -1065,6 +1065,10 @@
     <message>
       <source>Search for visualy similar images</source>
       <translation>Etsi visualy samankaltaisia &#x200B;&#x200B;kuvia</translation>
+    </message>
+    <message>
+      <source>More user images</source>
+      <translation>Lis&#xE4;&#xE4; k&#xE4;ytt&#xE4;j&#xE4;n kuvia</translation>
     </message>
     <message>
       <source>Version</source>
@@ -2106,6 +2110,42 @@
       <translation>Ty&#xF6;</translation>
     </message>
     <message>
+      <source>Profile page settings</source>
+      <translation type="unfinished">Profile sivun asetukset</translation>
+    </message>
+    <message>
+      <source>Profile settings updated</source>
+      <translation type="unfinished">Profiilin asetukset p&#xE4;ivitetty</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">Nimi</translation>
+    </message>
+    <message>
+      <source>Surname</source>
+      <translation type="unfinished">Sukunimi</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Verkkosivusto</translation>
+    </message>
+    <message>
+      <source>Information about you</source>
+      <translation type="unfinished">Tietoja k&#xE4;ytt&#xE4;j&#xE4;st&#xE4;</translation>
+    </message>
+    <message>
+      <source>Profile photo</source>
+      <translation type="unfinished">Profile photo</translation>
+    </message>
+    <message>
+      <source>See how your profile looks to users</source>
+      <translation type="unfinished">Katso, miten profiilisi n&#xE4;ytt&#xE4;&#xE4; k&#xE4;ytt&#xE4;jille</translation>
+    </message>
+    <message>
+      <source>View profile</source>
+      <translation type="unfinished">Katso profiilia</translation>
+    </message>
+    <message>
       <source>Wrong email address</source>
       <translation>V&#xE4;&#xE4;r&#xE4; s&#xE4;hk&#xF6;postiosoite</translation>
     </message>
@@ -2203,6 +2243,10 @@
     <message>
       <source>Authentifion with google</source>
       <translation>Authentifion Google</translation>
+    </message>
+    <message>
+      <source>Profile settings</source>
+      <translation type="unfinished">Profiilin asetukset</translation>
     </message>
   </context>
   <context>
@@ -2687,6 +2731,10 @@
       <translation>Oma tilini</translation>
     </message>
     <message>
+      <source>Profile page</source>
+      <translation type="unfinished">Profiilisivu</translation>
+    </message>
+    <message>
       <source>Manage albums</source>
       <translation>Hallita albumeita</translation>
     </message>
@@ -3013,6 +3061,10 @@
       <source>Page</source>
       <translation>Sivu</translation>
     </message>
+    <message>
+      <source>Last commented gallery images.</source>
+      <translation type="unfinished">Viimeksi kommentoitu gallery images.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lasthits</name>
@@ -3032,6 +3084,10 @@
       <source>Page</source>
       <translation>Sivu</translation>
     </message>
+    <message>
+      <source>Last viewed gallery images.</source>
+      <translation type="unfinished">Viimeksi katsotut gallery images.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lastrated</name>
@@ -3050,6 +3106,10 @@
     <message>
       <source>Page</source>
       <translation>Sivu</translation>
+    </message>
+    <message>
+      <source>Recently rated images.</source>
+      <translation type="unfinished">Viimeksi arvioidut kuvat.</translation>
     </message>
   </context>
   <context>
@@ -3080,6 +3140,10 @@
     <message>
       <source>Page</source>
       <translation>Sivu</translation>
+    </message>
+    <message>
+      <source>Latest additions to gallery.</source>
+      <translation type="unfinished">Viimeisimm&#xE4;t lis&#xE4;ykset galleriaan.</translation>
     </message>
   </context>
   <context>
@@ -3165,6 +3229,10 @@
       <source>Page</source>
       <translation>Sivu</translation>
     </message>
+    <message>
+      <source>All time most popular images.</source>
+      <translation type="unfinished">Kaikkien aikojen suosituin kuvia.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/popularrecect</name>
@@ -3190,6 +3258,10 @@
     <message>
       <source>Page</source>
       <translation>Sivu</translation>
+    </message>
+    <message>
+      <source>Top rated images in last 24 hours.</source>
+      <translation type="unfinished">Suosituimmat kuvat viimeisen 24 tunnin aikana.</translation>
     </message>
   </context>
   <context>
@@ -3251,912 +3323,958 @@
       <source>Page</source>
       <translation>Sivu</translation>
     </message>
+    <message>
+      <source>All time top rated images.</source>
+      <translation type="unfinished">Kaikkien aikojen parhaiksi &#xE4;&#xE4;nestetyt kuvat.</translation>
+    </message>
   </context>
   <context>
     <name>kernel/nopermission</name>
     <message>
       <source>You do not have permission to access module</source>
-      <translation type="unfinished">Sinulla ei ole oikeuksia p&#xE4;&#xE4;st&#xE4; moduuli</translation>
+      <translation>Sinulla ei ole oikeuksia p&#xE4;&#xE4;st&#xE4; moduuli</translation>
     </message>
     <message>
       <source>and use</source>
-      <translation type="unfinished">ja k&#xE4;ytt&#xF6;</translation>
+      <translation>ja k&#xE4;ytt&#xF6;</translation>
     </message>
     <message>
       <source>function</source>
-      <translation type="unfinished">toiminto</translation>
+      <translation>toiminto</translation>
     </message>
     <message>
       <source>You do not have permission to access current object</source>
-      <translation type="unfinished">Sinulla ei ole oikeuksia p&#xE4;&#xE4;st&#xE4; nykyisen objektin</translation>
+      <translation>Sinulla ei ole oikeuksia p&#xE4;&#xE4;st&#xE4; nykyisen objektin</translation>
     </message>
   </context>
   <context>
     <name>core/paginator</name>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Sivu</translation>
+      <translation>Sivu</translation>
     </message>
     <message>
       <source>of</source>
-      <translation type="unfinished">ja</translation>
+      <translation>ja</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation type="unfinished">L&#xF6;ytyi</translation>
+      <translation>L&#xF6;ytyi</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation type="unfinished">Edellinen</translation>
+      <translation>Edellinen</translation>
     </message>
     <message>
       <source>Go to page</source>
-      <translation type="unfinished">Siirry sivulle</translation>
+      <translation>Siirry sivulle</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">Seuraava</translation>
+      <translation>Seuraava</translation>
     </message>
   </context>
   <context>
     <name>similar/similar</name>
     <message>
       <source>Visualy similar images to</source>
-      <translation type="unfinished">Visualy samankaltaisia &#x200B;&#x200B;kuvia</translation>
+      <translation>Visualy samankaltaisia &#x200B;&#x200B;kuvia</translation>
     </message>
     <message>
       <source>Search for visualy similar images</source>
-      <translation type="unfinished">Etsi visualy samankaltaisia &#x200B;&#x200B;kuvia</translation>
+      <translation>Etsi visualy samankaltaisia &#x200B;&#x200B;kuvia</translation>
     </message>
     <message>
       <source>Please enable JavaScript to upload image</source>
-      <translation type="unfinished">Ota JavaScript ladata kuvan</translation>
+      <translation>Ota JavaScript ladata kuvan</translation>
     </message>
     <message>
       <source>Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).</source>
-      <translation type="unfinished">Klikkaa valita kuvan, voit my&#xF6;s vet&#xE4;&#xE4; ja pudottaa tiedosto t&#xE4;&#xE4;ll&#xE4; (Ved&#xE4; ja pudota vain FF, Chrome).</translation>
+      <translation>Klikkaa valita kuvan, voit my&#xF6;s vet&#xE4;&#xE4; ja pudottaa tiedosto t&#xE4;&#xE4;ll&#xE4; (Ved&#xE4; ja pudota vain FF, Chrome).</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Peruuta</translation>
+      <translation>Peruuta</translation>
     </message>
     <message>
       <source>Failed</source>
-      <translation type="unfinished">Ep&#xE4;onnistui</translation>
+      <translation>Ep&#xE4;onnistui</translation>
     </message>
   </context>
   <context>
     <name>similar/sketch</name>
     <message>
       <source>Search by sketch</source>
-      <translation type="unfinished">Etsi sketch</translation>
+      <translation>Etsi sketch</translation>
     </message>
     <message>
       <source>Sketch and find images by your sketch</source>
-      <translation type="unfinished">Piirr&#xE4; ja l&#xF6;yt&#xE4;&#xE4; kuvia teid&#xE4;n luonnos</translation>
+      <translation>Piirr&#xE4; ja l&#xF6;yt&#xE4;&#xE4; kuvia teid&#xE4;n luonnos</translation>
     </message>
   </context>
   <context>
     <name>statistic/view</name>
     <message>
       <source>hours</source>
-      <translation type="unfinished">tuntia</translation>
+      <translation>tuntia</translation>
     </message>
     <message>
       <source>Total pageviews</source>
-      <translation type="unfinished">Yhteens&#xE4; n&#xE4;ytt&#xF6;kertaa</translation>
+      <translation>Yhteens&#xE4; n&#xE4;ytt&#xF6;kertaa</translation>
     </message>
     <message>
       <source>Total visits</source>
-      <translation type="unfinished">Yhteens&#xE4; vierailuja</translation>
+      <translation>Yhteens&#xE4; vierailuja</translation>
     </message>
     <message>
       <source>Time spent</source>
-      <translation type="unfinished">K&#xE4;ytetty aika</translation>
+      <translation>K&#xE4;ytetty aika</translation>
     </message>
     <message>
       <source>Last 31 days statistic, data resource - google analytics API</source>
-      <translation type="unfinished">31 viime p&#xE4;iv&#xE4;n tilastot, tiedot voimavara - Google Analytics API</translation>
+      <translation>31 viime p&#xE4;iv&#xE4;n tilastot, tiedot voimavara - Google Analytics API</translation>
     </message>
     <message>
       <source>Legend</source>
-      <translation type="unfinished">Legenda</translation>
+      <translation>Legenda</translation>
     </message>
     <message>
       <source>Pageviews</source>
-      <translation type="unfinished">N&#xE4;ytt&#xF6;kerrat</translation>
+      <translation>N&#xE4;ytt&#xF6;kerrat</translation>
     </message>
     <message>
       <source>Visits</source>
-      <translation type="unfinished">Vierailut</translation>
+      <translation>Vierailut</translation>
     </message>
   </context>
   <context>
     <name>user/mapaccounts</name>
     <message>
       <source>Login with facebook</source>
-      <translation type="unfinished">Kirjaudu Facebookin</translation>
+      <translation>Kirjaudu Facebookin</translation>
     </message>
     <message>
       <source>Map to my account</source>
-      <translation type="unfinished">Kartta tililleni</translation>
+      <translation>Kartta tililleni</translation>
     </message>
     <message>
       <source>my account</source>
-      <translation type="unfinished">Oma tilini</translation>
+      <translation>Oma tilini</translation>
     </message>
     <message>
       <source>Login</source>
-      <translation type="unfinished">Kirjautuminen</translation>
+      <translation>Kirjautuminen</translation>
     </message>
     <message>
       <source>map to my account</source>
-      <translation type="unfinished">kartta tililleni</translation>
+      <translation>kartta tililleni</translation>
     </message>
     <message>
       <source>Incorrect login or password</source>
-      <translation type="unfinished">V&#xE4;&#xE4;r&#xE4; k&#xE4;ytt&#xE4;j&#xE4;tunnus tai salasana</translation>
+      <translation>V&#xE4;&#xE4;r&#xE4; k&#xE4;ytt&#xE4;j&#xE4;tunnus tai salasana</translation>
     </message>
     <message>
       <source>Username</source>
-      <translation type="unfinished">K&#xE4;ytt&#xE4;j&#xE4;tunnus</translation>
+      <translation>K&#xE4;ytt&#xE4;j&#xE4;tunnus</translation>
     </message>
     <message>
       <source>Password</source>
-      <translation type="unfinished">Salasana</translation>
+      <translation>Salasana</translation>
     </message>
     <message>
       <source>OR</source>
-      <translation type="unfinished">TAI</translation>
+      <translation>TAI</translation>
     </message>
     <message>
       <source>create account</source>
-      <translation type="unfinished">luo tunnus</translation>
+      <translation>luo tunnus</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">Seuraava</translation>
+      <translation>Seuraava</translation>
     </message>
     <message>
       <source>Open ID</source>
-      <translation type="unfinished">Open ID</translation>
+      <translation>Open ID</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpassword</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Salasana muistuttaa</translation>
+      <translation>Salasana muistuttaa</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">S&#xE4;hk&#xF6;posti</translation>
+      <translation>S&#xE4;hk&#xF6;posti</translation>
     </message>
     <message>
       <source>Restore password</source>
-      <translation type="unfinished">Palauta salasana</translation>
+      <translation>Palauta salasana</translation>
     </message>
     <message>
       <source>Order confirmed</source>
-      <translation type="unfinished">Tilaa vahvistettu</translation>
+      <translation>Tilaa vahvistettu</translation>
     </message>
     <message>
       <source>Credits order confirmed</source>
-      <translation type="unfinished">Laajuus jotta vahvistetaan</translation>
+      <translation>Laajuus jotta vahvistetaan</translation>
     </message>
     <message>
       <source>Wrong e-mail address!</source>
-      <translation type="unfinished">V&#xE4;&#xE4;r&#xE4; s&#xE4;hk&#xF6;postiosoite!</translation>
+      <translation>V&#xE4;&#xE4;r&#xE4; s&#xE4;hk&#xF6;postiosoite!</translation>
     </message>
     <message>
       <source>Click this link and to You will be send new password</source>
-      <translation type="unfinished">Klikkaa linkki&#xE4; ja Sinut L&#xE4;het&#xE4; uusi salasana</translation>
+      <translation>Klikkaa linkki&#xE4; ja Sinut L&#xE4;het&#xE4; uusi salasana</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpasswordsent</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Salasana muistuttaa</translation>
+      <translation>Salasana muistuttaa</translation>
     </message>
     <message>
       <source>E-mail send. Click link in email and to You will be send out new password.</source>
-      <translation type="unfinished">S&#xE4;hk&#xF6;posti L&#xE4;het&#xE4;. Klikkaa linkki s&#xE4;hk&#xF6;postiin ja Sinut l&#xE4;hett&#xE4;&#xE4; uuden salasanan.</translation>
+      <translation>S&#xE4;hk&#xF6;posti L&#xE4;het&#xE4;. Klikkaa linkki s&#xE4;hk&#xF6;postiin ja Sinut l&#xE4;hett&#xE4;&#xE4; uuden salasanan.</translation>
     </message>
   </context>
   <context>
     <name>user/index</name>
     <message>
       <source>User home</source>
-      <translation type="unfinished">K&#xE4;ytt&#xE4;j&#xE4; kotiin</translation>
+      <translation>K&#xE4;ytt&#xE4;j&#xE4; kotiin</translation>
     </message>
     <message>
       <source>Welcome. Here you can:</source>
-      <translation type="unfinished">Tervetuloa. T&#xE4;&#xE4;ll&#xE4; voit:</translation>
+      <translation>Tervetuloa. T&#xE4;&#xE4;ll&#xE4; voit:</translation>
     </message>
     <message>
       <source>Edit personal settings</source>
-      <translation type="unfinished">Muokkaa omia asetuksia</translation>
+      <translation>Muokkaa omia asetuksia</translation>
     </message>
     <message>
       <source>Manage personal albums</source>
-      <translation type="unfinished">Hallita henkil&#xF6;kohtaisia &#x200B;&#x200B;albumissa</translation>
+      <translation>Hallita henkil&#xF6;kohtaisia &#x200B;&#x200B;albumissa</translation>
     </message>
     <message>
       <source>My account</source>
-      <translation type="unfinished">Oma tilini</translation>
+      <translation>Oma tilini</translation>
     </message>
   </context>
   <context>
     <name>user/remindpassword</name>
     <message>
       <source>New password</source>
-      <translation type="unfinished">Uusi salasana</translation>
+      <translation>Uusi salasana</translation>
     </message>
     <message>
       <source>Hash not found or was used already</source>
-      <translation type="unfinished">Hash ei l&#xF6;ytynyt tai on k&#xE4;ytetty jo</translation>
+      <translation>Hash ei l&#xF6;ytynyt tai on k&#xE4;ytetty jo</translation>
     </message>
     <message>
       <source>Password remind - new password</source>
-      <translation type="unfinished">Salasana muistuttaa - uusi salasana</translation>
+      <translation>Salasana muistuttaa - uusi salasana</translation>
     </message>
     <message>
       <source>New password:</source>
-      <translation type="unfinished">Uusi salasana:</translation>
+      <translation>Uusi salasana:</translation>
     </message>
     <message>
       <source>New password has beend send to your email.</source>
-      <translation type="unfinished">Uusi salasana on beend l&#xE4;hett&#xE4;&#xE4; s&#xE4;hk&#xF6;postiisi.</translation>
+      <translation>Uusi salasana on beend l&#xE4;hett&#xE4;&#xE4; s&#xE4;hk&#xF6;postiisi.</translation>
     </message>
   </context>
   <context>
     <name>shop/basket</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Kori</translation>
+      <translation>Kori</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Kuvan nimi</translation>
+      <translation>Kuvan nimi</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Versio</translation>
+      <translation>Versio</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Kuvakoko</translation>
+      <translation>Kuvakoko</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Formaatti</translation>
+      <translation>Formaatti</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Hinta</translation>
+      <translation>Hinta</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Laajuus</translation>
+      <translation>Laajuus</translation>
     </message>
     <message>
       <source>Remove from basket</source>
-      <translation type="unfinished">Poista kori</translation>
+      <translation>Poista kori</translation>
     </message>
     <message>
       <source>Choose payment option</source>
-      <translation type="unfinished">Valitse maksuvaihtoehto</translation>
+      <translation>Valitse maksuvaihtoehto</translation>
     </message>
     <message>
       <source>In order to checkout atlest one item have to be selected.</source>
-      <translation type="unfinished">Jotta kassalle atlest yksi kohde tulee valita.</translation>
+      <translation>Jotta kassalle atlest yksi kohde tulee valita.</translation>
     </message>
     <message>
       <source>In order to checkout you have to</source>
-      <translation type="unfinished">Jotta kassalle joudut</translation>
+      <translation>Jotta kassalle joudut</translation>
     </message>
     <message>
       <source>sign in</source>
-      <translation type="unfinished">Kirjaudu sis&#xE4;&#xE4;n</translation>
+      <translation>Kirjaudu sis&#xE4;&#xE4;n</translation>
     </message>
     <message>
       <source>or</source>
-      <translation type="unfinished">tai</translation>
+      <translation>tai</translation>
     </message>
     <message>
       <source>login</source>
-      <translation type="unfinished">Kirjautuminen</translation>
+      <translation>Kirjautuminen</translation>
     </message>
     <message>
       <source>if you have already created an account</source>
-      <translation type="unfinished">Jos olet jo luonut tilin</translation>
+      <translation>Jos olet jo luonut tilin</translation>
     </message>
   </context>
   <context>
     <name>shop/buycredits</name>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Osta krediittej&#xE4;</translation>
+      <translation>Osta krediittej&#xE4;</translation>
     </message>
     <message>
       <source>How many credits do want to buy?</source>
-      <translation type="unfinished">Kuinka monta opintopistett&#xE4; eiv&#xE4;t halua ostaa?</translation>
+      <translation>Kuinka monta opintopistett&#xE4; eiv&#xE4;t halua ostaa?</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Valitse maksutapa</translation>
+      <translation>Valitse maksutapa</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/accept</name>
     <message>
       <source>Order succesfull</source>
-      <translation type="unfinished">Tilaa menestyksek&#xE4;s</translation>
+      <translation>Tilaa menestyksek&#xE4;s</translation>
     </message>
     <message>
       <source>Payment was succesfull</source>
-      <translation type="unfinished">Maksu oli menestyksek&#xE4;s</translation>
+      <translation>Maksu oli menestyksek&#xE4;s</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/process</name>
     <message>
       <source>Checkout</source>
-      <translation type="unfinished">Kassalle</translation>
+      <translation>Kassalle</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Vahvista maksu</translation>
+      <translation>Vahvista maksu</translation>
     </message>
     <message>
       <source>Not enouth credits to checkout</source>
-      <translation type="unfinished">Ei enouth luottojen kassalle</translation>
+      <translation>Ei enouth luottojen kassalle</translation>
     </message>
   </context>
   <context>
     <name>shop/cancel</name>
     <message>
       <source>Payment canceled</source>
-      <translation type="unfinished">Maksu peruttu</translation>
+      <translation>Maksu peruttu</translation>
     </message>
     <message>
       <source>Paypal payment was canceled.</source>
-      <translation type="unfinished">Paypal maksu peruttiin.</translation>
+      <translation>Paypal maksu peruttiin.</translation>
     </message>
   </context>
   <context>
     <name>shop/error</name>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Virhe</translation>
+      <translation>Virhe</translation>
     </message>
     <message>
       <source>Execution was terminated unexpectedly.</source>
-      <translation type="unfinished">Suoritus oli &#xE4;kisti.</translation>
+      <translation>Suoritus oli &#xE4;kisti.</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/process</name>
     <message>
       <source>Checkout using Paypal</source>
-      <translation type="unfinished">Kassalle PayPal</translation>
+      <translation>Kassalle PayPal</translation>
     </message>
     <message>
       <source>Buyer\'s Email</source>
-      <translation type="unfinished">Ostajan \ &amp;#39;s S&#xE4;hk&#xF6;posti</translation>
+      <translation>Ostajan \ &amp;#39;s S&#xE4;hk&#xF6;posti</translation>
     </message>
     <message>
       <source>Amount</source>
-      <translation type="unfinished">M&#xE4;&#xE4;r&#xE4;</translation>
+      <translation>M&#xE4;&#xE4;r&#xE4;</translation>
     </message>
     <message>
       <source>Currency</source>
-      <translation type="unfinished">Valuutta</translation>
+      <translation>Valuutta</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Laajuus</translation>
+      <translation>Laajuus</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/review</name>
     <message>
       <source>Order payment confirmation</source>
-      <translation type="unfinished">Tilaa vahvistuksen maksusta</translation>
+      <translation>Tilaa vahvistuksen maksusta</translation>
     </message>
     <message>
       <source>Order amount</source>
-      <translation type="unfinished">Tilaa m&#xE4;&#xE4;r&#xE4;</translation>
+      <translation>Tilaa m&#xE4;&#xE4;r&#xE4;</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Vahvista maksu</translation>
+      <translation>Vahvista maksu</translation>
     </message>
     <message>
       <source>Thank you for your payment!</source>
-      <translation type="unfinished">Kiitos maksu!</translation>
+      <translation>Kiitos maksu!</translation>
     </message>
     <message>
       <source>credits</source>
-      <translation type="unfinished">ov</translation>
+      <translation>ov</translation>
     </message>
   </context>
   <context>
     <name>shop/mycredits</name>
     <message>
       <source>My credits balanse</source>
-      <translation type="unfinished">Omat ov balanse</translation>
+      <translation>Omat ov balanse</translation>
     </message>
     <message>
       <source>You have</source>
-      <translation type="unfinished">Olet</translation>
+      <translation>Olet</translation>
     </message>
     <message>
       <source>in your account</source>
-      <translation type="unfinished">tilill&#xE4;si</translation>
+      <translation>tilill&#xE4;si</translation>
     </message>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Osta krediittej&#xE4;</translation>
+      <translation>Osta krediittej&#xE4;</translation>
     </message>
     <message>
       <source>My credits</source>
-      <translation type="unfinished">Omat ov</translation>
+      <translation>Omat ov</translation>
     </message>
   </context>
   <context>
     <name>shop/myorders</name>
     <message>
       <source>My credits orders</source>
-      <translation type="unfinished">Omat ov tilaukset</translation>
+      <translation>Omat ov tilaukset</translation>
     </message>
     <message>
       <source>Date</source>
-      <translation type="unfinished">P&#xE4;iv&#xE4;m&#xE4;&#xE4;r&#xE4;</translation>
+      <translation>P&#xE4;iv&#xE4;m&#xE4;&#xE4;r&#xE4;</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Hinta</translation>
+      <translation>Hinta</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Tilaa ov</translation>
+      <translation>Tilaa ov</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Tilaa status</translation>
+      <translation>Tilaa status</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Maksanut</translation>
+      <translation>Maksanut</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Vahvistettu</translation>
+      <translation>Vahvistettu</translation>
     </message>
     <message>
       <source>My orders</source>
-      <translation type="unfinished">Tilaukseni</translation>
+      <translation>Tilaukseni</translation>
     </message>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Tilaa N&#xE4;yt&#xE4;</translation>
+      <translation>Tilaa N&#xE4;yt&#xE4;</translation>
     </message>
   </context>
   <context>
     <name>shop/orderview</name>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Tilaa N&#xE4;yt&#xE4;</translation>
+      <translation>Tilaa N&#xE4;yt&#xE4;</translation>
     </message>
     <message>
       <source>Order time</source>
-      <translation type="unfinished">Tilaa aika</translation>
+      <translation>Tilaa aika</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Hinta</translation>
+      <translation>Hinta</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Tilaa ov</translation>
+      <translation>Tilaa ov</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Tilaa status</translation>
+      <translation>Tilaa status</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Maksanut</translation>
+      <translation>Maksanut</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Vahvistettu</translation>
+      <translation>Vahvistettu</translation>
     </message>
     <message>
       <source>Ordered items</source>
-      <translation type="unfinished">Tilatut</translation>
+      <translation>Tilatut</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Kuvan nimi</translation>
+      <translation>Kuvan nimi</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Versio</translation>
+      <translation>Versio</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Kuvakoko</translation>
+      <translation>Kuvakoko</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Formaatti</translation>
+      <translation>Formaatti</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Hinta</translation>
+      <translation>Hinta</translation>
     </message>
     <message>
       <source>Download count</source>
-      <translation type="unfinished">Lataa count</translation>
+      <translation>Lataa count</translation>
     </message>
     <message>
       <source>Downloads left</source>
-      <translation type="unfinished">Latauksia vasen</translation>
+      <translation>Latauksia vasen</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">Laajuus</translation>
+      <translation>Laajuus</translation>
     </message>
     <message>
       <source>Download image</source>
-      <translation type="unfinished">Lataa kuva</translation>
+      <translation>Lataa kuva</translation>
     </message>
     <message>
       <source>downloads left</source>
-      <translation type="unfinished">lataukset vasen</translation>
+      <translation>lataukset vasen</translation>
     </message>
     <message>
       <source>No downloads available</source>
-      <translation type="unfinished">Ei lataukset k&#xE4;ytett&#xE4;viss&#xE4;</translation>
+      <translation>Ei lataukset k&#xE4;ytett&#xE4;viss&#xE4;</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoption</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Maksuvaihtoehto</translation>
+      <translation>Maksuvaihtoehto</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">S&#xE4;hk&#xF6;posti</translation>
+      <translation>S&#xE4;hk&#xF6;posti</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Valitse maksutapa</translation>
+      <translation>Valitse maksutapa</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoptioncredit</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Maksuvaihtoehto</translation>
+      <translation>Maksuvaihtoehto</translation>
     </message>
     <message>
       <source>Continue</source>
-      <translation type="unfinished">Jatka</translation>
+      <translation>Jatka</translation>
     </message>
   </context>
   <context>
     <name>gallery/category</name>
     <message>
       <source>Root category</source>
-      <translation type="unfinished">Root kategoria</translation>
+      <translation>Root kategoria</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Sivu</translation>
+      <translation>Sivu</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
   </context>
   <context>
     <name>forum/category</name>
     <message>
       <source>Please enter topic name!</source>
-      <translation type="unfinished">Anna aiheen nimi!</translation>
+      <translation>Anna aiheen nimi!</translation>
     </message>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Kirjoita viesti!</translation>
+      <translation>Kirjoita viesti!</translation>
     </message>
     <message>
       <source>Please choose category!</source>
-      <translation type="unfinished">Ole hyv&#xE4; ja valitse tuoteryhm&#xE4;!</translation>
+      <translation>Ole hyv&#xE4; ja valitse tuoteryhm&#xE4;!</translation>
     </message>
     <message>
       <source>Not parent category!</source>
-      <translation type="unfinished">Ei vanhemman luokka!</translation>
+      <translation>Ei vanhemman luokka!</translation>
     </message>
     <message>
       <source>Invalid category!</source>
-      <translation type="unfinished">Virheellinen luokan!</translation>
+      <translation>Virheellinen luokan!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
   </context>
   <context>
     <name>forum/createcategory</name>
     <message>
       <source>Please enter category name!</source>
-      <translation type="unfinished">Anna luokan nimi!</translation>
+      <translation>Anna luokan nimi!</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Etusivu</translation>
+      <translation>Etusivu</translation>
     </message>
   </context>
   <context>
     <name>forum/editmessage</name>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Kirjoita viesti!</translation>
+      <translation>Kirjoita viesti!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
     <message>
       <source>Message edit</source>
-      <translation type="unfinished">Viesti Muokkaa</translation>
+      <translation>Viesti Muokkaa</translation>
     </message>
   </context>
   <context>
     <name>forum/edittopic</name>
     <message>
       <source>Please enter topic name!</source>
-      <translation type="unfinished">Anna aiheen nimi!</translation>
+      <translation>Anna aiheen nimi!</translation>
     </message>
     <message>
       <source>Please enter topic status!</source>
-      <translation type="unfinished">Sy&#xF6;t&#xE4; viesti status!</translation>
+      <translation>Sy&#xF6;t&#xE4; viesti status!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
     <message>
       <source>Topic edit</source>
-      <translation type="unfinished">Aihe Muokkaa</translation>
+      <translation>Aihe Muokkaa</translation>
     </message>
   </context>
   <context>
     <name>forum/report</name>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Kirjoita viesti!</translation>
+      <translation>Kirjoita viesti!</translation>
     </message>
     <message>
       <source>Forum message report</source>
-      <translation type="unfinished">Foorumin viesti raportti</translation>
+      <translation>Foorumin viesti raportti</translation>
     </message>
   </context>
   <context>
     <name>gallery/searchrss</name>
     <message>
       <source>Search results</source>
-      <translation type="unfinished">Hakutulokset</translation>
+      <translation>Hakutulokset</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation type="unfinished">Haku</translation>
+      <translation>Haku</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
-      <translation type="unfinished">Haku RSS hakusanalla</translation>
+      <translation>Haku RSS hakusanalla</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">N&#xE4;yt&#xE4; kuva</translation>
+      <translation>N&#xE4;yt&#xE4; kuva</translation>
     </message>
   </context>
   <context>
     <name>forum/searchrss</name>
     <message>
       <source>Search</source>
-      <translation type="unfinished">Haku</translation>
+      <translation>Haku</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumeditadmin</name>
     <message>
       <source>Root category</source>
-      <translation type="unfinished">Root kategoria</translation>
+      <translation>Root kategoria</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">Lis&#xE4;&#xE4; kuvia</translation>
+      <translation>Lis&#xE4;&#xE4; kuvia</translation>
     </message>
     <message>
       <source>Album edit</source>
-      <translation type="unfinished">Albumin Muokkaa</translation>
+      <translation>Albumin Muokkaa</translation>
     </message>
   </context>
   <context>
     <name>gallery/addvote</name>
     <message>
       <source>Thank you for your vote</source>
-      <translation type="unfinished">Kiitos &#xE4;&#xE4;nest&#xE4;&#xE4;</translation>
+      <translation>Kiitos &#xE4;&#xE4;nest&#xE4;&#xE4;</translation>
     </message>
     <message>
       <source>You are not allowed to vote!</source>
-      <translation type="unfinished">Et saa &#xE4;&#xE4;nest&#xE4;&#xE4;!</translation>
+      <translation>Et saa &#xE4;&#xE4;nest&#xE4;&#xE4;!</translation>
     </message>
     <message>
       <source>You have already voted!</source>
-      <translation type="unfinished">Olet jo &#xE4;&#xE4;nest&#xE4;nyt!</translation>
+      <translation>Olet jo &#xE4;&#xE4;nest&#xE4;nyt!</translation>
     </message>
     <message>
       <source>Vote deducted!</source>
-      <translation type="unfinished">&#xC4;&#xE4;nest&#xE4; v&#xE4;hennet&#xE4;&#xE4;n!</translation>
+      <translation>&#xC4;&#xE4;nest&#xE4; v&#xE4;hennet&#xE4;&#xE4;n!</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumrss</name>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished">Viimeksi l&#xE4;hetettyj&#xE4; kuvia albumiin</translation>
+      <translation>Viimeksi l&#xE4;hetettyj&#xE4; kuvia albumiin</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">N&#xE4;yt&#xE4; kuva</translation>
+      <translation>N&#xE4;yt&#xE4; kuva</translation>
     </message>
   </context>
   <context>
     <name>gallery/lasthitsrss</name>
     <message>
       <source>watched</source>
-      <translation type="unfinished">katseli</translation>
+      <translation>katseli</translation>
     </message>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished">Viimeksi katsotut kuvat</translation>
+      <translation>Viimeksi katsotut kuvat</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">N&#xE4;yt&#xE4; kuva</translation>
+      <translation>N&#xE4;yt&#xE4; kuva</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastcommentedrss</name>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished">Viimeksi kommentoitu kuvat</translation>
+      <translation>Viimeksi kommentoitu kuvat</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">N&#xE4;yt&#xE4; kuva</translation>
+      <translation>N&#xE4;yt&#xE4; kuva</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastratedrss</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished">Viimeksi arvioidut kuvat</translation>
+      <translation>Viimeksi arvioidut kuvat</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">N&#xE4;yt&#xE4; kuva</translation>
+      <translation>N&#xE4;yt&#xE4; kuva</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastuploadsrss</name>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished">Viimeksi l&#xE4;hetettyj&#xE4; kuvia</translation>
+      <translation>Viimeksi l&#xE4;hetettyj&#xE4; kuvia</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">N&#xE4;yt&#xE4; kuva</translation>
+      <translation>N&#xE4;yt&#xE4; kuva</translation>
     </message>
   </context>
   <context>
     <name>gallery/movebyresolution</name>
     <message>
       <source>Move by resolution</source>
-      <translation type="unfinished">Siirr&#xE4; resoluutiolla</translation>
+      <translation>Siirr&#xE4; resoluutiolla</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecent</name>
     <message>
       <source>Most popular images in 24 hours</source>
-      <translation type="unfinished">Suosituimmat kuvat 24 tuntia</translation>
+      <translation>Suosituimmat kuvat 24 tuntia</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Sivu</translation>
+      <translation>Sivu</translation>
+    </message>
+    <message>
+      <source>Most popular images in last 24 hours.</source>
+      <translation type="unfinished">Suosituimmat kuvat Last 24 Hours.</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrss</name>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Suosituimmat kuvat</translation>
+      <translation>Suosituimmat kuvat</translation>
     </message>
   </context>
   <context>
     <name>gallery/tagphoto</name>
     <message>
       <source>Thank you a lot :)</source>
-      <translation type="unfinished">Kiitos paljon:)</translation>
+      <translation>Kiitos paljon:)</translation>
     </message>
   </context>
   <context>
     <name>gallery/topratedrss</name>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">Suosituimmat kuvat</translation>
+      <translation>Suosituimmat kuvat</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">N&#xE4;yt&#xE4; kuva</translation>
+      <translation>N&#xE4;yt&#xE4; kuva</translation>
     </message>
   </context>
   <context>
     <name>gallery/updateimage</name>
     <message>
       <source>Image updated</source>
-      <translation type="unfinished">Image p&#xE4;ivitetty</translation>
+      <translation>Image p&#xE4;ivitetty</translation>
     </message>
   </context>
   <context>
     <name>shop/imagevariation</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Kori</translation>
+      <translation>Kori</translation>
     </message>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Maksuvaihtoehto</translation>
+      <translation>Maksuvaihtoehto</translation>
     </message>
   </context>
   <context>
     <name>shop/imagevariationform</name>
     <message>
       <source>Credits amount must be greater than 0!</source>
-      <translation type="unfinished">Laajuus m&#xE4;&#xE4;r&#xE4; on suurempi kuin 0!</translation>
+      <translation>Laajuus m&#xE4;&#xE4;r&#xE4; on suurempi kuin 0!</translation>
     </message>
   </context>
   <context>
     <name>shop/settingedit</name>
     <message>
       <source>Edit</source>
-      <translation type="unfinished">Muokkaa</translation>
+      <translation>Muokkaa</translation>
     </message>
   </context>
   <context>
     <name>similar/image</name>
     <message>
       <source>Similar images to</source>
-      <translation type="unfinished">Samanlaisia &#x200B;&#x200B;kuvia</translation>
+      <translation>Samanlaisia &#x200B;&#x200B;kuvia</translation>
     </message>
     <message>
       <source>Search for visualy similar images</source>
-      <translation type="unfinished">Etsi visualy samankaltaisia &#x200B;&#x200B;kuvia</translation>
+      <translation>Etsi visualy samankaltaisia &#x200B;&#x200B;kuvia</translation>
     </message>
   </context>
   <context>
     <name>system/index</name>
     <message>
       <source>System administration panel</source>
-      <translation type="unfinished">System Administration paneeli</translation>
+      <translation>System Administration paneeli</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/profile</name>
+    <message>
+      <source>User profile</source>
+      <translation type="unfinished">K&#xE4;ytt&#xE4;j&#xE4;profiili</translation>
+    </message>
+    <message>
+      <source>Name and surname</source>
+      <translation type="unfinished">Etu-ja sukunimi</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Verkkosivusto</translation>
+    </message>
+    <message>
+      <source>Introduction</source>
+      <translation type="unfinished">Johdanto</translation>
+    </message>
+    <message>
+      <source>Last updated albums</source>
+      <translation type="unfinished">Viimeksi p&#xE4;ivitetyt albumit</translation>
+    </message>
+    <message>
+      <source>Last uploaded images</source>
+      <translation type="unfinished">Viimeksi l&#xE4;hetettyj&#xE4; kuvia</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/lastuploadstoalbums</name>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation type="unfinished">Uusimmat kuvat albumeihin</translation>
+    </message>
+    <message>
+      <source>Recently updated albums</source>
+      <translation type="unfinished">Viimeksi p&#xE4;ivitetyt albumit</translation>
     </message>
   </context>
 </TS>

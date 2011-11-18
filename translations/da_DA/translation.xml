@@ -1373,6 +1373,42 @@
       <translation>Arbejde</translation>
     </message>
     <message>
+      <source>Profile page settings</source>
+      <translation type="unfinished">Profil sideindstillingerne</translation>
+    </message>
+    <message>
+      <source>Profile settings updated</source>
+      <translation type="unfinished">Profilindstillinger opdateret</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">Navn</translation>
+    </message>
+    <message>
+      <source>Surname</source>
+      <translation type="unfinished">Efternavn</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Hjemmeside</translation>
+    </message>
+    <message>
+      <source>Information about you</source>
+      <translation type="unfinished">Oplysninger om dig</translation>
+    </message>
+    <message>
+      <source>Profile photo</source>
+      <translation type="unfinished">Profilfoto</translation>
+    </message>
+    <message>
+      <source>See how your profile looks to users</source>
+      <translation type="unfinished">Se hvordan din profil ser ud til brugerne</translation>
+    </message>
+    <message>
+      <source>View profile</source>
+      <translation type="unfinished">Vis profil</translation>
+    </message>
+    <message>
       <source>Wrong email address</source>
       <translation>Forkert e-mail-adresse</translation>
     </message>
@@ -1470,6 +1506,10 @@
     <message>
       <source>Authentifion with google</source>
       <translation>Authentifion med Google</translation>
+    </message>
+    <message>
+      <source>Profile settings</source>
+      <translation type="unfinished">Profilindstillinger</translation>
     </message>
   </context>
   <context>
@@ -2010,11 +2050,11 @@
     </message>
     <message>
       <source>Search by similarity</source>
-      <translation type="unfinished">S&#xF8;g efter lighed</translation>
+      <translation>S&#xF8;g efter lighed</translation>
     </message>
     <message>
       <source>Search by sketch</source>
-      <translation type="unfinished">S&#xF8;g efter sketch</translation>
+      <translation>S&#xF8;g efter sketch</translation>
     </message>
     <message>
       <source>Last viewed images</source>
@@ -2027,6 +2067,10 @@
     <message>
       <source>My account</source>
       <translation>Min konto</translation>
+    </message>
+    <message>
+      <source>Profile page</source>
+      <translation type="unfinished">Profil side</translation>
     </message>
     <message>
       <source>Manage albums</source>
@@ -2507,8 +2551,8 @@
       <translation>Ejer</translation>
     </message>
     <message>
-      <source>More user images</source>
-      <translation>Mere brugervenlig billeder</translation>
+      <source>About user</source>
+      <translation type="unfinished">Om brugeren</translation>
     </message>
     <message>
       <source>votes</source>
@@ -2521,6 +2565,10 @@
     <message>
       <source>Search for visualy similar images</source>
       <translation>S&#xF8;g efter visualy lignende billeder</translation>
+    </message>
+    <message>
+      <source>More user images</source>
+      <translation>Mere brugervenlig billeder</translation>
     </message>
     <message>
       <source>Version</source>
@@ -2704,6 +2752,10 @@
       <source>Page</source>
       <translation>Side</translation>
     </message>
+    <message>
+      <source>Last commented gallery images.</source>
+      <translation type="unfinished">Sidste kommenterede galleribilleder.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lasthits</name>
@@ -2722,6 +2774,10 @@
     <message>
       <source>Page</source>
       <translation>Side</translation>
+    </message>
+    <message>
+      <source>Last viewed gallery images.</source>
+      <translation type="unfinished">Sidst viste galleribilleder.</translation>
     </message>
   </context>
   <context>
@@ -2742,6 +2798,10 @@
       <source>Page</source>
       <translation>Side</translation>
     </message>
+    <message>
+      <source>Recently rated images.</source>
+      <translation type="unfinished">De nyeste billeder.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lastuploads</name>
@@ -2760,6 +2820,10 @@
     <message>
       <source>Page</source>
       <translation>Side</translation>
+    </message>
+    <message>
+      <source>Latest additions to gallery.</source>
+      <translation type="unfinished">Nyeste tilf&#xF8;jelser til galleriet.</translation>
     </message>
   </context>
   <context>
@@ -2972,6 +3036,10 @@
       <source>Page</source>
       <translation>Side</translation>
     </message>
+    <message>
+      <source>All time most popular images.</source>
+      <translation type="unfinished">Al tid mest popul&#xE6;re billeder.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/popularrecect</name>
@@ -3077,6 +3145,10 @@
       <source>Page</source>
       <translation>Side</translation>
     </message>
+    <message>
+      <source>Top rated images in last 24 hours.</source>
+      <translation type="unfinished">Topkarakter billeder i de sidste 24 timer.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/sharehtml</name>
@@ -3147,6 +3219,10 @@
     <message>
       <source>Page</source>
       <translation>Side</translation>
+    </message>
+    <message>
+      <source>All time top rated images.</source>
+      <translation type="unfinished">All time top bed&#xF8;mte billeder.</translation>
     </message>
   </context>
   <context>
@@ -3760,6 +3836,10 @@
       <source>Page</source>
       <translation>Side</translation>
     </message>
+    <message>
+      <source>Most popular images in last 24 hours.</source>
+      <translation type="unfinished">Mest popul&#xE6;re billeder i de sidste 24 timer.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/popularrss</name>
@@ -4305,6 +4385,44 @@
     <message>
       <source>Search for visualy similar images</source>
       <translation>S&#xF8;g efter visualy lignende billeder</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/profile</name>
+    <message>
+      <source>User profile</source>
+      <translation type="unfinished">Bruger profil</translation>
+    </message>
+    <message>
+      <source>Name and surname</source>
+      <translation type="unfinished">Navn og efternavn</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Hjemmeside</translation>
+    </message>
+    <message>
+      <source>Introduction</source>
+      <translation type="unfinished">Indledning</translation>
+    </message>
+    <message>
+      <source>Last updated albums</source>
+      <translation type="unfinished">Sidst opdaterede albums</translation>
+    </message>
+    <message>
+      <source>Last uploaded images</source>
+      <translation type="unfinished">Sidste uploadede billeder</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/lastuploadstoalbums</name>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation type="unfinished">Nyeste uploads til album</translation>
+    </message>
+    <message>
+      <source>Recently updated albums</source>
+      <translation type="unfinished">For nylig opdaterede albums</translation>
     </message>
   </context>
 </TS>

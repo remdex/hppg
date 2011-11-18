@@ -30,5 +30,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
     
     $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/popularrecent').($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
+    $Result['description_prepend'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Most popular images in last 24 hours.');
+    
     $cache->store($cacheKey,$Result);
 }

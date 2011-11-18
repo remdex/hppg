@@ -63,7 +63,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','Top rated images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/topratedrss');
-
+    $Result['description_prepend'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/toprated','All time top rated images.');
+    
     $cache->store($cacheKey,$Result,0);
 
 }

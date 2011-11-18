@@ -1051,8 +1051,8 @@
       <translation>Majitel</translation>
     </message>
     <message>
-      <source>More user images</source>
-      <translation>V&#xED;ce u&#x17E;ivatelsk&#xFD;ch obr&#xE1;zk&#x16F;</translation>
+      <source>About user</source>
+      <translation type="unfinished">O u&#x17E;ivatelsk&#xFD;ch</translation>
     </message>
     <message>
       <source>votes</source>
@@ -1065,6 +1065,10 @@
     <message>
       <source>Search for visualy similar images</source>
       <translation>Hledat vizu&#xE1;ln&#x11B; podobn&#xE9; obr&#xE1;zky</translation>
+    </message>
+    <message>
+      <source>More user images</source>
+      <translation>V&#xED;ce u&#x17E;ivatelsk&#xFD;ch obr&#xE1;zk&#x16F;</translation>
     </message>
     <message>
       <source>Version</source>
@@ -2106,6 +2110,42 @@
       <translation>Pr&#xE1;ce</translation>
     </message>
     <message>
+      <source>Profile page settings</source>
+      <translation type="unfinished">Nastaven&#xED; profilu</translation>
+    </message>
+    <message>
+      <source>Profile settings updated</source>
+      <translation type="unfinished">Nastaven&#xED; profilu aktualizov&#xE1;no</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation type="unfinished">Jm&#xE9;no</translation>
+    </message>
+    <message>
+      <source>Surname</source>
+      <translation type="unfinished">P&#x159;&#xED;jmen&#xED;</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Webov&#xE9; str&#xE1;nky</translation>
+    </message>
+    <message>
+      <source>Information about you</source>
+      <translation type="unfinished">Informace o V&#xE1;s</translation>
+    </message>
+    <message>
+      <source>Profile photo</source>
+      <translation type="unfinished">Profilov&#xE9; foto</translation>
+    </message>
+    <message>
+      <source>See how your profile looks to users</source>
+      <translation type="unfinished">Pod&#xED;vejte se, jak vypad&#xE1; v&#xE1;&#x161; profil na u&#x17E;ivatele</translation>
+    </message>
+    <message>
+      <source>View profile</source>
+      <translation type="unfinished">Zobrazit profil</translation>
+    </message>
+    <message>
       <source>Wrong email address</source>
       <translation>Chybn&#xE1; e-mailovou adresu</translation>
     </message>
@@ -2203,6 +2243,10 @@
     <message>
       <source>Authentifion with google</source>
       <translation>Authentifion s pomoc&#xED; Google</translation>
+    </message>
+    <message>
+      <source>Profile settings</source>
+      <translation type="unfinished">Nastaven&#xED; profilu</translation>
     </message>
   </context>
   <context>
@@ -2687,6 +2731,10 @@
       <translation>M&#x16F;j &#xFA;&#x10D;et</translation>
     </message>
     <message>
+      <source>Profile page</source>
+      <translation type="unfinished">Profil str&#xE1;nky</translation>
+    </message>
+    <message>
       <source>Manage albums</source>
       <translation>Spr&#xE1;va alba</translation>
     </message>
@@ -3013,6 +3061,10 @@
       <source>Page</source>
       <translation>Strana</translation>
     </message>
+    <message>
+      <source>Last commented gallery images.</source>
+      <translation type="unfinished">Posledn&#xED; komentovan&#xE9; galerii obr&#xE1;zk&#x16F;.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lasthits</name>
@@ -3032,6 +3084,10 @@
       <source>Page</source>
       <translation>Strana</translation>
     </message>
+    <message>
+      <source>Last viewed gallery images.</source>
+      <translation type="unfinished">Naposledy zobrazen&#xE9; obr&#xE1;zky z galerie.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/lastrated</name>
@@ -3050,6 +3106,10 @@
     <message>
       <source>Page</source>
       <translation>Strana</translation>
+    </message>
+    <message>
+      <source>Recently rated images.</source>
+      <translation type="unfinished">Ned&#xE1;vno hodnocen&#xE9; sn&#xED;mky.</translation>
     </message>
   </context>
   <context>
@@ -3081,1082 +3141,1140 @@
       <source>Page</source>
       <translation>Strana</translation>
     </message>
+    <message>
+      <source>Latest additions to gallery.</source>
+      <translation type="unfinished">Nejnov&#x11B;j&#x161;&#xED; p&#x159;&#xED;r&#x16F;stky do galerie.</translation>
+    </message>
   </context>
   <context>
     <name>gallery/my_albums_list</name>
     <message>
       <source>Edit album</source>
-      <translation type="unfinished">Upravit album</translation>
+      <translation>Upravit album</translation>
     </message>
     <message>
       <source>Are you sure?</source>
-      <translation type="unfinished">Jste si jisti?</translation>
+      <translation>Jste si jisti?</translation>
     </message>
     <message>
       <source>Delete album</source>
-      <translation type="unfinished">Smazat album</translation>
+      <translation>Smazat album</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">P&#x159;id&#xE1;n&#xED; obr&#xE1;zk&#x16F;</translation>
+      <translation>P&#x159;id&#xE1;n&#xED; obr&#xE1;zk&#x16F;</translation>
     </message>
   </context>
   <context>
     <name>gallery/myalbums</name>
     <message>
       <source>My albums</source>
-      <translation type="unfinished">Moje alba</translation>
+      <translation>Moje alba</translation>
     </message>
     <message>
       <source>New album</source>
-      <translation type="unfinished">Nov&#xE9; album</translation>
+      <translation>Nov&#xE9; album</translation>
     </message>
     <message>
       <source>Update priority</source>
-      <translation type="unfinished">Aktualizovat priority</translation>
+      <translation>Aktualizovat priority</translation>
     </message>
     <message>
       <source>You do not have any album.</source>
-      <translation type="unfinished">Nem&#xE1;te &#x17E;&#xE1;dn&#xE9; album.</translation>
+      <translation>Nem&#xE1;te &#x17E;&#xE1;dn&#xE9; album.</translation>
     </message>
     <message>
       <source>Create a new album.</source>
-      <translation type="unfinished">Vytvo&#x159;it nov&#xE9; album.</translation>
+      <translation>Vytvo&#x159;it nov&#xE9; album.</translation>
     </message>
     <message>
       <source>Account</source>
-      <translation type="unfinished">&#xDA;&#x10D;et</translation>
+      <translation>&#xDA;&#x10D;et</translation>
     </message>
     <message>
       <source>Albums</source>
-      <translation type="unfinished">Alba</translation>
+      <translation>Alba</translation>
     </message>
   </context>
   <context>
     <name>gallery/mylistalbum</name>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">&#x17D;&#xE1;dn&#xE9; z&#xE1;znamy.</translation>
+      <translation>&#x17D;&#xE1;dn&#xE9; z&#xE1;znamy.</translation>
     </message>
     <message>
       <source>Account</source>
-      <translation type="unfinished">&#xDA;&#x10D;et</translation>
+      <translation>&#xDA;&#x10D;et</translation>
     </message>
     <message>
       <source>Albums</source>
-      <translation type="unfinished">Alba</translation>
+      <translation>Alba</translation>
     </message>
   </context>
   <context>
     <name>gallery/popular</name>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zky</translation>
+      <translation>Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zky</translation>
     </message>
     <message>
       <source>No records.</source>
-      <translation type="unfinished">&#x17D;&#xE1;dn&#xE9; z&#xE1;znamy.</translation>
+      <translation>&#x17D;&#xE1;dn&#xE9; z&#xE1;znamy.</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">&#x158;e&#x161;en&#xED;</translation>
+      <translation>&#x158;e&#x161;en&#xED;</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Strana</translation>
+      <translation>Strana</translation>
+    </message>
+    <message>
+      <source>All time most popular images.</source>
+      <translation type="unfinished">V&#x161;echny &#x10D;asov&#xE9; nejobl&#xED;ben&#x11B;j&#x161;&#xED; obrazy.</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecect</name>
     <message>
       <source>Most popular images in 24 hours.</source>
-      <translation type="unfinished">Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zk&#x16F; v 24 hodin.</translation>
+      <translation>Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zk&#x16F; v 24 hodin.</translation>
     </message>
     <message>
       <source>There are no images.</source>
-      <translation type="unfinished">Nejsou &#x17E;&#xE1;dn&#xE9; obr&#xE1;zky.</translation>
+      <translation>Nejsou &#x17E;&#xE1;dn&#xE9; obr&#xE1;zky.</translation>
     </message>
   </context>
   <context>
     <name>gallery/ratedrecent</name>
     <message>
       <source>Top rated images in 24 hours.</source>
-      <translation type="unfinished">Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky v 24 hodin.</translation>
+      <translation>Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky v 24 hodin.</translation>
     </message>
     <message>
       <source>Top rated images in 24 hours</source>
-      <translation type="unfinished">Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky za 24 hodin</translation>
+      <translation>Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky za 24 hodin</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Strana</translation>
+      <translation>Strana</translation>
+    </message>
+    <message>
+      <source>Top rated images in last 24 hours.</source>
+      <translation type="unfinished">Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky za posledn&#xED;ch 24 hodin.</translation>
     </message>
   </context>
   <context>
     <name>gallery/sharehtml</name>
     <message>
       <source>Link to image</source>
-      <translation type="unfinished">Odkaz na obr&#xE1;zek</translation>
+      <translation>Odkaz na obr&#xE1;zek</translation>
     </message>
     <message>
       <source>Link to image with thumbnail</source>
-      <translation type="unfinished">Odkaz na obr&#xE1;zek s n&#xE1;hledy</translation>
+      <translation>Odkaz na obr&#xE1;zek s n&#xE1;hledy</translation>
     </message>
     <message>
       <source>Link to image with medium size thumbnail</source>
-      <translation type="unfinished">Odkaz na obr&#xE1;zek st&#x159;edn&#x11B; velk&#xE9; n&#xE1;hledy</translation>
+      <translation>Odkaz na obr&#xE1;zek st&#x159;edn&#x11B; velk&#xE9; n&#xE1;hledy</translation>
     </message>
   </context>
   <context>
     <name>gallery/sharephpbb</name>
     <message>
       <source>Link to image</source>
-      <translation type="unfinished">Odkaz na obr&#xE1;zek</translation>
+      <translation>Odkaz na obr&#xE1;zek</translation>
     </message>
     <message>
       <source>Link to image with thumbnail</source>
-      <translation type="unfinished">Odkaz na obr&#xE1;zek s n&#xE1;hledy</translation>
+      <translation>Odkaz na obr&#xE1;zek s n&#xE1;hledy</translation>
     </message>
     <message>
       <source>Link to image with medium size thumbnail</source>
-      <translation type="unfinished">Odkaz na obr&#xE1;zek st&#x159;edn&#x11B; velk&#xE9; n&#xE1;hledy</translation>
+      <translation>Odkaz na obr&#xE1;zek st&#x159;edn&#x11B; velk&#xE9; n&#xE1;hledy</translation>
     </message>
   </context>
   <context>
     <name>gallery/subcategory_list_full</name>
     <message>
       <source>albums</source>
-      <translation type="unfinished">alba</translation>
+      <translation>alba</translation>
     </message>
     <message>
       <source>images</source>
-      <translation type="unfinished">obr&#xE1;zky</translation>
+      <translation>obr&#xE1;zky</translation>
     </message>
   </context>
   <context>
     <name>gallery/toprated</name>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky</translation>
+      <translation>Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky</translation>
     </message>
     <message>
       <source>No records</source>
-      <translation type="unfinished">&#x17D;&#xE1;dn&#xE9; z&#xE1;znamy</translation>
+      <translation>&#x17D;&#xE1;dn&#xE9; z&#xE1;znamy</translation>
     </message>
     <message>
       <source>Resolution</source>
-      <translation type="unfinished">&#x158;e&#x161;en&#xED;</translation>
+      <translation>&#x158;e&#x161;en&#xED;</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Strana</translation>
+      <translation>Strana</translation>
+    </message>
+    <message>
+      <source>All time top rated images.</source>
+      <translation type="unfinished">V&#x161;ech dob nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky.</translation>
     </message>
   </context>
   <context>
     <name>kernel/nopermission</name>
     <message>
       <source>You do not have permission to access module</source>
-      <translation type="unfinished">Nem&#xE1;te opr&#xE1;vn&#x11B;n&#xED; pro p&#x159;&#xED;stup k modulu</translation>
+      <translation>Nem&#xE1;te opr&#xE1;vn&#x11B;n&#xED; pro p&#x159;&#xED;stup k modulu</translation>
     </message>
     <message>
       <source>and use</source>
-      <translation type="unfinished">a pou&#x17E;it&#xED;</translation>
+      <translation>a pou&#x17E;it&#xED;</translation>
     </message>
     <message>
       <source>function</source>
-      <translation type="unfinished">funkce</translation>
+      <translation>funkce</translation>
     </message>
     <message>
       <source>You do not have permission to access current object</source>
-      <translation type="unfinished">Nem&#xE1;te opr&#xE1;vn&#x11B;n&#xED; pro p&#x159;&#xED;stup k aktu&#xE1;ln&#xED; objekt</translation>
+      <translation>Nem&#xE1;te opr&#xE1;vn&#x11B;n&#xED; pro p&#x159;&#xED;stup k aktu&#xE1;ln&#xED; objekt</translation>
     </message>
   </context>
   <context>
     <name>core/paginator</name>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Strana</translation>
+      <translation>Strana</translation>
     </message>
     <message>
       <source>of</source>
-      <translation type="unfinished">z</translation>
+      <translation>z</translation>
     </message>
     <message>
       <source>Found</source>
-      <translation type="unfinished">Nalezen&#xE9;</translation>
+      <translation>Nalezen&#xE9;</translation>
     </message>
     <message>
       <source>Previous</source>
-      <translation type="unfinished">P&#x159;edchoz&#xED;</translation>
+      <translation>P&#x159;edchoz&#xED;</translation>
     </message>
     <message>
       <source>Go to page</source>
-      <translation type="unfinished">P&#x159;ej&#xED;t na str&#xE1;nku</translation>
+      <translation>P&#x159;ej&#xED;t na str&#xE1;nku</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">Dal&#x161;&#xED;</translation>
+      <translation>Dal&#x161;&#xED;</translation>
     </message>
   </context>
   <context>
     <name>similar/similar</name>
     <message>
       <source>Visualy similar images to</source>
-      <translation type="unfinished">Vizu&#xE1;ln&#x11B; podobn&#xE9; obr&#xE1;zky</translation>
+      <translation>Vizu&#xE1;ln&#x11B; podobn&#xE9; obr&#xE1;zky</translation>
     </message>
     <message>
       <source>Search for visualy similar images</source>
-      <translation type="unfinished">Hledat vizu&#xE1;ln&#x11B; podobn&#xE9; obr&#xE1;zky</translation>
+      <translation>Hledat vizu&#xE1;ln&#x11B; podobn&#xE9; obr&#xE1;zky</translation>
     </message>
     <message>
       <source>Please enable JavaScript to upload image</source>
-      <translation type="unfinished">Zapn&#x11B;te si pros&#xED;m JavaScript nahr&#xE1;n&#xED; obr&#xE1;zku</translation>
+      <translation>Zapn&#x11B;te si pros&#xED;m JavaScript nahr&#xE1;n&#xED; obr&#xE1;zku</translation>
     </message>
     <message>
       <source>Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).</source>
-      <translation type="unfinished">Klikn&#x11B;te si vybrat obr&#xE1;zek, m&#x16F;&#x17E;ete tak&#xE9; p&#x159;et&#xE1;hnout soubor zde (drag and drop pouze pro FF, Chrome).</translation>
+      <translation>Klikn&#x11B;te si vybrat obr&#xE1;zek, m&#x16F;&#x17E;ete tak&#xE9; p&#x159;et&#xE1;hnout soubor zde (drag and drop pouze pro FF, Chrome).</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Zru&#x161;it</translation>
+      <translation>Zru&#x161;it</translation>
     </message>
     <message>
       <source>Failed</source>
-      <translation type="unfinished">Ne&#xFA;sp&#x11B;&#x161;n&#xFD;</translation>
+      <translation>Ne&#xFA;sp&#x11B;&#x161;n&#xFD;</translation>
     </message>
   </context>
   <context>
     <name>similar/sketch</name>
     <message>
       <source>Search by sketch</source>
-      <translation type="unfinished">Vyhled&#xE1;v&#xE1;n&#xED; podle n&#xE1;&#x10D;rtu</translation>
+      <translation>Vyhled&#xE1;v&#xE1;n&#xED; podle n&#xE1;&#x10D;rtu</translation>
     </message>
     <message>
       <source>Sketch and find images by your sketch</source>
-      <translation type="unfinished">Skica a naj&#xED;t sn&#xED;mky v&#xE1;&#x161; n&#xE1;&#x10D;rt</translation>
+      <translation>Skica a naj&#xED;t sn&#xED;mky v&#xE1;&#x161; n&#xE1;&#x10D;rt</translation>
     </message>
   </context>
   <context>
     <name>statistic/view</name>
     <message>
       <source>hours</source>
-      <translation type="unfinished">hodin</translation>
+      <translation>hodin</translation>
     </message>
     <message>
       <source>Total pageviews</source>
-      <translation type="unfinished">Celkov&#xFD; po&#x10D;et zobrazen&#xED; str&#xE1;nek</translation>
+      <translation>Celkov&#xFD; po&#x10D;et zobrazen&#xED; str&#xE1;nek</translation>
     </message>
     <message>
       <source>Total visits</source>
-      <translation type="unfinished">Celkem n&#xE1;v&#x161;t&#x11B;v</translation>
+      <translation>Celkem n&#xE1;v&#x161;t&#x11B;v</translation>
     </message>
     <message>
       <source>Time spent</source>
-      <translation type="unfinished">&#x10C;as str&#xE1;ven&#xFD;</translation>
+      <translation>&#x10C;as str&#xE1;ven&#xFD;</translation>
     </message>
     <message>
       <source>Last 31 days statistic, data resource - google analytics API</source>
-      <translation type="unfinished">Posledn&#xED;ch 31 dn&#xED; statistika, zdroj dat - Google Analytics API</translation>
+      <translation>Posledn&#xED;ch 31 dn&#xED; statistika, zdroj dat - Google Analytics API</translation>
     </message>
     <message>
       <source>Legend</source>
-      <translation type="unfinished">Legenda</translation>
+      <translation>Legenda</translation>
     </message>
     <message>
       <source>Pageviews</source>
-      <translation type="unfinished">Zobrazen&#xED; str&#xE1;nek</translation>
+      <translation>Zobrazen&#xED; str&#xE1;nek</translation>
     </message>
     <message>
       <source>Visits</source>
-      <translation type="unfinished">N&#xE1;v&#x161;t&#x11B;vy</translation>
+      <translation>N&#xE1;v&#x161;t&#x11B;vy</translation>
     </message>
   </context>
   <context>
     <name>user/mapaccounts</name>
     <message>
       <source>Login with facebook</source>
-      <translation type="unfinished">P&#x159;ihl&#xE1;sit se p&#x159;es Facebook</translation>
+      <translation>P&#x159;ihl&#xE1;sit se p&#x159;es Facebook</translation>
     </message>
     <message>
       <source>Map to my account</source>
-      <translation type="unfinished">Mapa na m&#x16F;j &#xFA;&#x10D;et</translation>
+      <translation>Mapa na m&#x16F;j &#xFA;&#x10D;et</translation>
     </message>
     <message>
       <source>my account</source>
-      <translation type="unfinished">M&#x16F;j &#xFA;&#x10D;et</translation>
+      <translation>M&#x16F;j &#xFA;&#x10D;et</translation>
     </message>
     <message>
       <source>Login</source>
-      <translation type="unfinished">P&#x159;ihl&#xE1;&#x161;en&#xED;</translation>
+      <translation>P&#x159;ihl&#xE1;&#x161;en&#xED;</translation>
     </message>
     <message>
       <source>map to my account</source>
-      <translation type="unfinished">map na m&#x16F;j &#xFA;&#x10D;et</translation>
+      <translation>map na m&#x16F;j &#xFA;&#x10D;et</translation>
     </message>
     <message>
       <source>Incorrect login or password</source>
-      <translation type="unfinished">Nespr&#xE1;vn&#xE9; jm&#xE9;no nebo heslo</translation>
+      <translation>Nespr&#xE1;vn&#xE9; jm&#xE9;no nebo heslo</translation>
     </message>
     <message>
       <source>Username</source>
-      <translation type="unfinished">U&#x17E;ivatelsk&#xE9; jm&#xE9;no</translation>
+      <translation>U&#x17E;ivatelsk&#xE9; jm&#xE9;no</translation>
     </message>
     <message>
       <source>Password</source>
-      <translation type="unfinished">Heslo</translation>
+      <translation>Heslo</translation>
     </message>
     <message>
       <source>OR</source>
-      <translation type="unfinished">OR</translation>
+      <translation>OR</translation>
     </message>
     <message>
       <source>create account</source>
-      <translation type="unfinished">Vytvo&#x159;it &#xFA;&#x10D;et</translation>
+      <translation>Vytvo&#x159;it &#xFA;&#x10D;et</translation>
     </message>
     <message>
       <source>Next</source>
-      <translation type="unfinished">Dal&#x161;&#xED;</translation>
+      <translation>Dal&#x161;&#xED;</translation>
     </message>
     <message>
       <source>Open ID</source>
-      <translation type="unfinished">Otev&#x159;en&#xE9; ID</translation>
+      <translation>Otev&#x159;en&#xE9; ID</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpassword</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Heslo p&#x159;ipom&#xED;nat</translation>
+      <translation>Heslo p&#x159;ipom&#xED;nat</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-mail</translation>
+      <translation>E-mail</translation>
     </message>
     <message>
       <source>Restore password</source>
-      <translation type="unfinished">Obnovit heslo</translation>
+      <translation>Obnovit heslo</translation>
     </message>
     <message>
       <source>Order confirmed</source>
-      <translation type="unfinished">Potvrzen&#xE9; objedn&#xE1;vky</translation>
+      <translation>Potvrzen&#xE9; objedn&#xE1;vky</translation>
     </message>
     <message>
       <source>Credits order confirmed</source>
-      <translation type="unfinished">&#xDA;v&#x11B;ry, aby potvrdily</translation>
+      <translation>&#xDA;v&#x11B;ry, aby potvrdily</translation>
     </message>
     <message>
       <source>Wrong e-mail address!</source>
-      <translation type="unfinished">Nespr&#xE1;vn&#xE1; e-mailovou adresu!</translation>
+      <translation>Nespr&#xE1;vn&#xE1; e-mailovou adresu!</translation>
     </message>
     <message>
       <source>Click this link and to You will be send new password</source>
-      <translation type="unfinished">Kliknut&#xED;m na tento odkaz a budete odes&#xED;lat nov&#xE9; heslo</translation>
+      <translation>Kliknut&#xED;m na tento odkaz a budete odes&#xED;lat nov&#xE9; heslo</translation>
     </message>
   </context>
   <context>
     <name>user/forgotpasswordsent</name>
     <message>
       <source>Password remind</source>
-      <translation type="unfinished">Heslo p&#x159;ipom&#xED;nat</translation>
+      <translation>Heslo p&#x159;ipom&#xED;nat</translation>
     </message>
     <message>
       <source>E-mail send. Click link in email and to You will be send out new password.</source>
-      <translation type="unfinished">E-mail odeslat. Klikn&#x11B;te na odkaz v e-mailu V&#xE1;m bude odes&#xED;lat nov&#xE9; heslo.</translation>
+      <translation>E-mail odeslat. Klikn&#x11B;te na odkaz v e-mailu V&#xE1;m bude odes&#xED;lat nov&#xE9; heslo.</translation>
     </message>
   </context>
   <context>
     <name>user/index</name>
     <message>
       <source>User home</source>
-      <translation type="unfinished">U&#x17E;ivatel doma</translation>
+      <translation>U&#x17E;ivatel doma</translation>
     </message>
     <message>
       <source>Welcome. Here you can:</source>
-      <translation type="unfinished">V&#xED;tejte u n&#xE1;s. Zde si m&#x16F;&#x17E;ete:</translation>
+      <translation>V&#xED;tejte u n&#xE1;s. Zde si m&#x16F;&#x17E;ete:</translation>
     </message>
     <message>
       <source>Edit personal settings</source>
-      <translation type="unfinished">Upravit osobn&#xED; nastaven&#xED;</translation>
+      <translation>Upravit osobn&#xED; nastaven&#xED;</translation>
     </message>
     <message>
       <source>Manage personal albums</source>
-      <translation type="unfinished">Spr&#xE1;va osobn&#xED;ch alb</translation>
+      <translation>Spr&#xE1;va osobn&#xED;ch alb</translation>
     </message>
     <message>
       <source>My account</source>
-      <translation type="unfinished">M&#x16F;j &#xFA;&#x10D;et</translation>
+      <translation>M&#x16F;j &#xFA;&#x10D;et</translation>
     </message>
   </context>
   <context>
     <name>user/remindpassword</name>
     <message>
       <source>New password</source>
-      <translation type="unfinished">Nov&#xE9; heslo</translation>
+      <translation>Nov&#xE9; heslo</translation>
     </message>
     <message>
       <source>Hash not found or was used already</source>
-      <translation type="unfinished">Hash nebyl nalezen nebo byla vyu&#x17E;&#xED;v&#xE1;na ji&#x17E;</translation>
+      <translation>Hash nebyl nalezen nebo byla vyu&#x17E;&#xED;v&#xE1;na ji&#x17E;</translation>
     </message>
     <message>
       <source>Password remind - new password</source>
-      <translation type="unfinished">Heslo p&#x159;ipomenout - nov&#xE9; heslo</translation>
+      <translation>Heslo p&#x159;ipomenout - nov&#xE9; heslo</translation>
     </message>
     <message>
       <source>New password:</source>
-      <translation type="unfinished">Nov&#xE9; heslo:</translation>
+      <translation>Nov&#xE9; heslo:</translation>
     </message>
     <message>
       <source>New password has beend send to your email.</source>
-      <translation type="unfinished">Nov&#xE9; heslo beend zaslat na V&#xE1;&#x161; email.</translation>
+      <translation>Nov&#xE9; heslo beend zaslat na V&#xE1;&#x161; email.</translation>
     </message>
   </context>
   <context>
     <name>shop/basket</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Ko&#x161;&#xED;k</translation>
+      <translation>Ko&#x161;&#xED;k</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Jm&#xE9;no obr&#xE1;zku</translation>
+      <translation>Jm&#xE9;no obr&#xE1;zku</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Verze</translation>
+      <translation>Verze</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Velikost obr&#xE1;zku</translation>
+      <translation>Velikost obr&#xE1;zku</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Form&#xE1;t</translation>
+      <translation>Form&#xE1;t</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Cena</translation>
+      <translation>Cena</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">&#xDA;v&#x11B;ry</translation>
+      <translation>&#xDA;v&#x11B;ry</translation>
     </message>
     <message>
       <source>Remove from basket</source>
-      <translation type="unfinished">Odstranit z ko&#x161;e</translation>
+      <translation>Odstranit z ko&#x161;e</translation>
     </message>
     <message>
       <source>Choose payment option</source>
-      <translation type="unfinished">Vyberte si zp&#x16F;sob platby</translation>
+      <translation>Vyberte si zp&#x16F;sob platby</translation>
     </message>
     <message>
       <source>In order to checkout atlest one item have to be selected.</source>
-      <translation type="unfinished">Za &#xFA;&#x10D;elem vyzkou&#x161;en&#xED; atlest jednu polo&#x17E;ku mus&#xED; b&#xFD;t vybr&#xE1;ny.</translation>
+      <translation>Za &#xFA;&#x10D;elem vyzkou&#x161;en&#xED; atlest jednu polo&#x17E;ku mus&#xED; b&#xFD;t vybr&#xE1;ny.</translation>
     </message>
     <message>
       <source>In order to checkout you have to</source>
-      <translation type="unfinished">Tak, aby do pokladny mus&#xED;te</translation>
+      <translation>Tak, aby do pokladny mus&#xED;te</translation>
     </message>
     <message>
       <source>sign in</source>
-      <translation type="unfinished">P&#x159;ihl&#xE1;sit se</translation>
+      <translation>P&#x159;ihl&#xE1;sit se</translation>
     </message>
     <message>
       <source>or</source>
-      <translation type="unfinished">nebo</translation>
+      <translation>nebo</translation>
     </message>
     <message>
       <source>login</source>
-      <translation type="unfinished">p&#x159;ihl&#xE1;&#x161;en&#xED;</translation>
+      <translation>p&#x159;ihl&#xE1;&#x161;en&#xED;</translation>
     </message>
     <message>
       <source>if you have already created an account</source>
-      <translation type="unfinished">Pokud jste si ji&#x17E; vytvo&#x159;ili &#xFA;&#x10D;et</translation>
+      <translation>Pokud jste si ji&#x17E; vytvo&#x159;ili &#xFA;&#x10D;et</translation>
     </message>
   </context>
   <context>
     <name>shop/buycredits</name>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Koupit kredity</translation>
+      <translation>Koupit kredity</translation>
     </message>
     <message>
       <source>How many credits do want to buy?</source>
-      <translation type="unfinished">Kolik kredit&#x16F; si chcete koupit?</translation>
+      <translation>Kolik kredit&#x16F; si chcete koupit?</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Vyberte si zp&#x16F;sob platby</translation>
+      <translation>Vyberte si zp&#x16F;sob platby</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/accept</name>
     <message>
       <source>Order succesfull</source>
-      <translation type="unfinished">Aby &#xFA;sp&#x11B;&#x161;n&#xFD;</translation>
+      <translation>Aby &#xFA;sp&#x11B;&#x161;n&#xFD;</translation>
     </message>
     <message>
       <source>Payment was succesfull</source>
-      <translation type="unfinished">Platba byla &#xFA;sp&#x11B;&#x161;n&#xE1;</translation>
+      <translation>Platba byla &#xFA;sp&#x11B;&#x161;n&#xE1;</translation>
     </message>
   </context>
   <context>
     <name>credits_handler/process</name>
     <message>
       <source>Checkout</source>
-      <translation type="unfinished">Pokladna</translation>
+      <translation>Pokladna</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Potvrdit platbu</translation>
+      <translation>Potvrdit platbu</translation>
     </message>
     <message>
       <source>Not enouth credits to checkout</source>
-      <translation type="unfinished">Nen&#xED; enouth &#xFA;v&#x11B;ry k pokladn&#x11B;</translation>
+      <translation>Nen&#xED; enouth &#xFA;v&#x11B;ry k pokladn&#x11B;</translation>
     </message>
   </context>
   <context>
     <name>shop/cancel</name>
     <message>
       <source>Payment canceled</source>
-      <translation type="unfinished">Platba zru&#x161;ena</translation>
+      <translation>Platba zru&#x161;ena</translation>
     </message>
     <message>
       <source>Paypal payment was canceled.</source>
-      <translation type="unfinished">PayPal byl zru&#x161;en.</translation>
+      <translation>PayPal byl zru&#x161;en.</translation>
     </message>
   </context>
   <context>
     <name>shop/error</name>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Chyba</translation>
+      <translation>Chyba</translation>
     </message>
     <message>
       <source>Execution was terminated unexpectedly.</source>
-      <translation type="unfinished">Poprava byla ne&#x10D;ekan&#x11B; ukon&#x10D;ena.</translation>
+      <translation>Poprava byla ne&#x10D;ekan&#x11B; ukon&#x10D;ena.</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/process</name>
     <message>
       <source>Checkout using Paypal</source>
-      <translation type="unfinished">Pokladna p&#x159;es PayPal</translation>
+      <translation>Pokladna p&#x159;es PayPal</translation>
     </message>
     <message>
       <source>Buyer\'s Email</source>
-      <translation type="unfinished">Kupuj&#xED;c&#xED; \ &amp;#39;s e-mail</translation>
+      <translation>Kupuj&#xED;c&#xED; \ &amp;#39;s e-mail</translation>
     </message>
     <message>
       <source>Amount</source>
-      <translation type="unfinished">Mno&#x17E;stv&#xED;</translation>
+      <translation>Mno&#x17E;stv&#xED;</translation>
     </message>
     <message>
       <source>Currency</source>
-      <translation type="unfinished">M&#x11B;na</translation>
+      <translation>M&#x11B;na</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">&#xDA;v&#x11B;ry</translation>
+      <translation>&#xDA;v&#x11B;ry</translation>
     </message>
   </context>
   <context>
     <name>paypal_handler/review</name>
     <message>
       <source>Order payment confirmation</source>
-      <translation type="unfinished">Aby potvrzen&#xED; o zaplacen&#xED;</translation>
+      <translation>Aby potvrzen&#xED; o zaplacen&#xED;</translation>
     </message>
     <message>
       <source>Order amount</source>
-      <translation type="unfinished">&#x10C;&#xE1;stka objedn&#xE1;vky</translation>
+      <translation>&#x10C;&#xE1;stka objedn&#xE1;vky</translation>
     </message>
     <message>
       <source>Confirm payment</source>
-      <translation type="unfinished">Potvrdit platbu</translation>
+      <translation>Potvrdit platbu</translation>
     </message>
     <message>
       <source>Thank you for your payment!</source>
-      <translation type="unfinished">D&#x11B;kujeme za Va&#x161;i platbu!</translation>
+      <translation>D&#x11B;kujeme za Va&#x161;i platbu!</translation>
     </message>
     <message>
       <source>credits</source>
-      <translation type="unfinished">&#xFA;v&#x11B;ry</translation>
+      <translation>&#xFA;v&#x11B;ry</translation>
     </message>
   </context>
   <context>
     <name>shop/mycredits</name>
     <message>
       <source>My credits balanse</source>
-      <translation type="unfinished">My &#xFA;v&#x11B;ry balanse</translation>
+      <translation>My &#xFA;v&#x11B;ry balanse</translation>
     </message>
     <message>
       <source>You have</source>
-      <translation type="unfinished">Jste</translation>
+      <translation>Jste</translation>
     </message>
     <message>
       <source>in your account</source>
-      <translation type="unfinished">ve Va&#x161;em &#xFA;&#x10D;tu</translation>
+      <translation>ve Va&#x161;em &#xFA;&#x10D;tu</translation>
     </message>
     <message>
       <source>Buy credits</source>
-      <translation type="unfinished">Koupit kredity</translation>
+      <translation>Koupit kredity</translation>
     </message>
     <message>
       <source>My credits</source>
-      <translation type="unfinished">My &#xFA;v&#x11B;ry</translation>
+      <translation>My &#xFA;v&#x11B;ry</translation>
     </message>
   </context>
   <context>
     <name>shop/myorders</name>
     <message>
       <source>My credits orders</source>
-      <translation type="unfinished">M&#xE9; objedn&#xE1;vky kredity</translation>
+      <translation>M&#xE9; objedn&#xE1;vky kredity</translation>
     </message>
     <message>
       <source>Date</source>
-      <translation type="unfinished">Datum</translation>
+      <translation>Datum</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Cena objedn&#xE1;vky</translation>
+      <translation>Cena objedn&#xE1;vky</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Objednat &#xFA;v&#x11B;ry</translation>
+      <translation>Objednat &#xFA;v&#x11B;ry</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Stav objedn&#xE1;vky</translation>
+      <translation>Stav objedn&#xE1;vky</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Plat&#xED;</translation>
+      <translation>Plat&#xED;</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Potvrzeno</translation>
+      <translation>Potvrzeno</translation>
     </message>
     <message>
       <source>My orders</source>
-      <translation type="unfinished">Moje objedn&#xE1;vky</translation>
+      <translation>Moje objedn&#xE1;vky</translation>
     </message>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Aby pohled</translation>
+      <translation>Aby pohled</translation>
     </message>
   </context>
   <context>
     <name>shop/orderview</name>
     <message>
       <source>Order view</source>
-      <translation type="unfinished">Aby pohled</translation>
+      <translation>Aby pohled</translation>
     </message>
     <message>
       <source>Order time</source>
-      <translation type="unfinished">Aby &#x10D;as</translation>
+      <translation>Aby &#x10D;as</translation>
     </message>
     <message>
       <source>Order price</source>
-      <translation type="unfinished">Cena objedn&#xE1;vky</translation>
+      <translation>Cena objedn&#xE1;vky</translation>
     </message>
     <message>
       <source>Order credits</source>
-      <translation type="unfinished">Objednat &#xFA;v&#x11B;ry</translation>
+      <translation>Objednat &#xFA;v&#x11B;ry</translation>
     </message>
     <message>
       <source>Order status</source>
-      <translation type="unfinished">Stav objedn&#xE1;vky</translation>
+      <translation>Stav objedn&#xE1;vky</translation>
     </message>
     <message>
       <source>Payed</source>
-      <translation type="unfinished">Plat&#xED;</translation>
+      <translation>Plat&#xED;</translation>
     </message>
     <message>
       <source>Confirmed</source>
-      <translation type="unfinished">Potvrzeno</translation>
+      <translation>Potvrzeno</translation>
     </message>
     <message>
       <source>Ordered items</source>
-      <translation type="unfinished">Objednan&#xE9; zbo&#x17E;&#xED;</translation>
+      <translation>Objednan&#xE9; zbo&#x17E;&#xED;</translation>
     </message>
     <message>
       <source>Image name</source>
-      <translation type="unfinished">Jm&#xE9;no obr&#xE1;zku</translation>
+      <translation>Jm&#xE9;no obr&#xE1;zku</translation>
     </message>
     <message>
       <source>Version</source>
-      <translation type="unfinished">Verze</translation>
+      <translation>Verze</translation>
     </message>
     <message>
       <source>Image size</source>
-      <translation type="unfinished">Velikost obr&#xE1;zku</translation>
+      <translation>Velikost obr&#xE1;zku</translation>
     </message>
     <message>
       <source>Format</source>
-      <translation type="unfinished">Form&#xE1;t</translation>
+      <translation>Form&#xE1;t</translation>
     </message>
     <message>
       <source>Price</source>
-      <translation type="unfinished">Cena</translation>
+      <translation>Cena</translation>
     </message>
     <message>
       <source>Download count</source>
-      <translation type="unfinished">St&#xE1;hnout po&#x10D;et</translation>
+      <translation>St&#xE1;hnout po&#x10D;et</translation>
     </message>
     <message>
       <source>Downloads left</source>
-      <translation type="unfinished">Soubory ke sta&#x17E;en&#xED; vlevo</translation>
+      <translation>Soubory ke sta&#x17E;en&#xED; vlevo</translation>
     </message>
     <message>
       <source>Credits</source>
-      <translation type="unfinished">&#xDA;v&#x11B;ry</translation>
+      <translation>&#xDA;v&#x11B;ry</translation>
     </message>
     <message>
       <source>Download image</source>
-      <translation type="unfinished">St&#xE1;hnout obr&#xE1;zek</translation>
+      <translation>St&#xE1;hnout obr&#xE1;zek</translation>
     </message>
     <message>
       <source>downloads left</source>
-      <translation type="unfinished">Soubory ke sta&#x17E;en&#xED; vlevo</translation>
+      <translation>Soubory ke sta&#x17E;en&#xED; vlevo</translation>
     </message>
     <message>
       <source>No downloads available</source>
-      <translation type="unfinished">&#x17D;&#xE1;dn&#xE9; Soubory ke sta&#x17E;en&#xED; k dispozici</translation>
+      <translation>&#x17D;&#xE1;dn&#xE9; Soubory ke sta&#x17E;en&#xED; k dispozici</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoption</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Mo&#x17E;nost platby</translation>
+      <translation>Mo&#x17E;nost platby</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation type="unfinished">E-mail</translation>
+      <translation>E-mail</translation>
     </message>
     <message>
       <source>Choose payment method</source>
-      <translation type="unfinished">Vyberte si zp&#x16F;sob platby</translation>
+      <translation>Vyberte si zp&#x16F;sob platby</translation>
     </message>
   </context>
   <context>
     <name>shop/paymentoptioncredit</name>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Mo&#x17E;nost platby</translation>
+      <translation>Mo&#x17E;nost platby</translation>
     </message>
     <message>
       <source>Continue</source>
-      <translation type="unfinished">Pokra&#x10D;ovat</translation>
+      <translation>Pokra&#x10D;ovat</translation>
     </message>
   </context>
   <context>
     <name>gallery/category</name>
     <message>
       <source>Root category</source>
-      <translation type="unfinished">Ko&#x159;en kategorie</translation>
+      <translation>Ko&#x159;en kategorie</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Strana</translation>
+      <translation>Strana</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
   </context>
   <context>
     <name>forum/category</name>
     <message>
       <source>Please enter topic name!</source>
-      <translation type="unfinished">Zadejte pros&#xED;m n&#xE1;zev t&#xE9;matu!</translation>
+      <translation>Zadejte pros&#xED;m n&#xE1;zev t&#xE9;matu!</translation>
     </message>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Zadejte pros&#xED;m zpr&#xE1;vu!</translation>
+      <translation>Zadejte pros&#xED;m zpr&#xE1;vu!</translation>
     </message>
     <message>
       <source>Please choose category!</source>
-      <translation type="unfinished">Pros&#xED;m, vyberte kategorii!</translation>
+      <translation>Pros&#xED;m, vyberte kategorii!</translation>
     </message>
     <message>
       <source>Not parent category!</source>
-      <translation type="unfinished">Ne nad&#x159;&#xED;zen&#xE1; kategorie!</translation>
+      <translation>Ne nad&#x159;&#xED;zen&#xE1; kategorie!</translation>
     </message>
     <message>
       <source>Invalid category!</source>
-      <translation type="unfinished">Neplatn&#xE1; kategorie!</translation>
+      <translation>Neplatn&#xE1; kategorie!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
   </context>
   <context>
     <name>forum/createcategory</name>
     <message>
       <source>Please enter category name!</source>
-      <translation type="unfinished">Zadejte pros&#xED;m n&#xE1;zev kategorie!</translation>
+      <translation>Zadejte pros&#xED;m n&#xE1;zev kategorie!</translation>
     </message>
     <message>
       <source>Home</source>
-      <translation type="unfinished">Dom&#xE1;c&#xED;</translation>
+      <translation>Dom&#xE1;c&#xED;</translation>
     </message>
   </context>
   <context>
     <name>forum/editmessage</name>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Zadejte pros&#xED;m zpr&#xE1;vu!</translation>
+      <translation>Zadejte pros&#xED;m zpr&#xE1;vu!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
     <message>
       <source>Message edit</source>
-      <translation type="unfinished">Zpr&#xE1;va editovat</translation>
+      <translation>Zpr&#xE1;va editovat</translation>
     </message>
   </context>
   <context>
     <name>forum/edittopic</name>
     <message>
       <source>Please enter topic name!</source>
-      <translation type="unfinished">Zadejte pros&#xED;m n&#xE1;zev t&#xE9;matu!</translation>
+      <translation>Zadejte pros&#xED;m n&#xE1;zev t&#xE9;matu!</translation>
     </message>
     <message>
       <source>Please enter topic status!</source>
-      <translation type="unfinished">Zadejte pros&#xED;m t&#xE9;ma stavu!</translation>
+      <translation>Zadejte pros&#xED;m t&#xE9;ma stavu!</translation>
     </message>
     <message>
       <source>Forum</source>
-      <translation type="unfinished">Forum</translation>
+      <translation>Forum</translation>
     </message>
     <message>
       <source>Topic edit</source>
-      <translation type="unfinished">T&#xE9;ma editovat</translation>
+      <translation>T&#xE9;ma editovat</translation>
     </message>
   </context>
   <context>
     <name>forum/report</name>
     <message>
       <source>Please enter message!</source>
-      <translation type="unfinished">Zadejte pros&#xED;m zpr&#xE1;vu!</translation>
+      <translation>Zadejte pros&#xED;m zpr&#xE1;vu!</translation>
     </message>
     <message>
       <source>Forum message report</source>
-      <translation type="unfinished">Forum zpr&#xE1;va zpr&#xE1;va</translation>
+      <translation>Forum zpr&#xE1;va zpr&#xE1;va</translation>
     </message>
   </context>
   <context>
     <name>gallery/searchrss</name>
     <message>
       <source>Search results</source>
-      <translation type="unfinished">V&#xFD;sledky hled&#xE1;n&#xED;</translation>
+      <translation>V&#xFD;sledky hled&#xE1;n&#xED;</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation type="unfinished">Hled&#xE1;n&#xED;</translation>
+      <translation>Hled&#xE1;n&#xED;</translation>
     </message>
     <message>
       <source>Search RSS by keyword</source>
-      <translation type="unfinished">RSS podle kl&#xED;&#x10D;ov&#xE9;ho slova</translation>
+      <translation>RSS podle kl&#xED;&#x10D;ov&#xE9;ho slova</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Zobrazit obr&#xE1;zek</translation>
+      <translation>Zobrazit obr&#xE1;zek</translation>
     </message>
   </context>
   <context>
     <name>forum/searchrss</name>
     <message>
       <source>Search</source>
-      <translation type="unfinished">Hled&#xE1;n&#xED;</translation>
+      <translation>Hled&#xE1;n&#xED;</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumeditadmin</name>
     <message>
       <source>Root category</source>
-      <translation type="unfinished">Ko&#x159;en kategorie</translation>
+      <translation>Ko&#x159;en kategorie</translation>
     </message>
     <message>
       <source>Add images</source>
-      <translation type="unfinished">P&#x159;id&#xE1;n&#xED; obr&#xE1;zk&#x16F;</translation>
+      <translation>P&#x159;id&#xE1;n&#xED; obr&#xE1;zk&#x16F;</translation>
     </message>
     <message>
       <source>Album edit</source>
-      <translation type="unfinished">Album editovat</translation>
+      <translation>Album editovat</translation>
     </message>
   </context>
   <context>
     <name>gallery/addvote</name>
     <message>
       <source>Thank you for your vote</source>
-      <translation type="unfinished">D&#x11B;kujeme za v&#xE1;&#x161; hlas</translation>
+      <translation>D&#x11B;kujeme za v&#xE1;&#x161; hlas</translation>
     </message>
     <message>
       <source>You are not allowed to vote!</source>
-      <translation type="unfinished">Nen&#xED; dovoleno volit!</translation>
+      <translation>Nen&#xED; dovoleno volit!</translation>
     </message>
     <message>
       <source>You have already voted!</source>
-      <translation type="unfinished">Ji&#x17E; jste hlasovali!</translation>
+      <translation>Ji&#x17E; jste hlasovali!</translation>
     </message>
     <message>
       <source>Vote deducted!</source>
-      <translation type="unfinished">Hlasovat ode&#x10D;&#xED;st!</translation>
+      <translation>Hlasovat ode&#x10D;&#xED;st!</translation>
     </message>
   </context>
   <context>
     <name>gallery/albumrss</name>
     <message>
       <source>Last uploaded images to album</source>
-      <translation type="unfinished">Posledn&#xED; nahran&#xE9; obr&#xE1;zky na album</translation>
+      <translation>Posledn&#xED; nahran&#xE9; obr&#xE1;zky na album</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Zobrazit obr&#xE1;zek</translation>
+      <translation>Zobrazit obr&#xE1;zek</translation>
     </message>
   </context>
   <context>
     <name>gallery/lasthitsrss</name>
     <message>
       <source>watched</source>
-      <translation type="unfinished">sledoval</translation>
+      <translation>sledoval</translation>
     </message>
     <message>
       <source>Last viewed images</source>
-      <translation type="unfinished">Naposledy zobrazen&#xE9; obr&#xE1;zky</translation>
+      <translation>Naposledy zobrazen&#xE9; obr&#xE1;zky</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Zobrazit obr&#xE1;zek</translation>
+      <translation>Zobrazit obr&#xE1;zek</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastcommentedrss</name>
     <message>
       <source>Last commented images</source>
-      <translation type="unfinished">Posledn&#xED; komentovan&#xE9; obr&#xE1;zky</translation>
+      <translation>Posledn&#xED; komentovan&#xE9; obr&#xE1;zky</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Zobrazit obr&#xE1;zek</translation>
+      <translation>Zobrazit obr&#xE1;zek</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastratedrss</name>
     <message>
       <source>Last rated images</source>
-      <translation type="unfinished">Naposledy ohodnocen&#xE9; obr&#xE1;zky</translation>
+      <translation>Naposledy ohodnocen&#xE9; obr&#xE1;zky</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Zobrazit obr&#xE1;zek</translation>
+      <translation>Zobrazit obr&#xE1;zek</translation>
     </message>
   </context>
   <context>
     <name>gallery/lastuploadsrss</name>
     <message>
       <source>Last uploaded images</source>
-      <translation type="unfinished">Posledn&#xED; nahran&#xE9; obr&#xE1;zky</translation>
+      <translation>Posledn&#xED; nahran&#xE9; obr&#xE1;zky</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Zobrazit obr&#xE1;zek</translation>
+      <translation>Zobrazit obr&#xE1;zek</translation>
     </message>
   </context>
   <context>
     <name>gallery/movebyresolution</name>
     <message>
       <source>Move by resolution</source>
-      <translation type="unfinished">P&#x159;esun usnesen&#xED;m</translation>
+      <translation>P&#x159;esun usnesen&#xED;m</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrecent</name>
     <message>
       <source>Most popular images in 24 hours</source>
-      <translation type="unfinished">Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zk&#x16F; v 24 hodin</translation>
+      <translation>Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zk&#x16F; v 24 hodin</translation>
     </message>
     <message>
       <source>Page</source>
-      <translation type="unfinished">Strana</translation>
+      <translation>Strana</translation>
+    </message>
+    <message>
+      <source>Most popular images in last 24 hours.</source>
+      <translation type="unfinished">Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zk&#x16F; za posledn&#xED;ch 24 hodin.</translation>
     </message>
   </context>
   <context>
     <name>gallery/popularrss</name>
     <message>
       <source>Most popular images</source>
-      <translation type="unfinished">Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zky</translation>
+      <translation>Nejpopul&#xE1;rn&#x11B;j&#x161;&#xED; obr&#xE1;zky</translation>
     </message>
   </context>
   <context>
     <name>gallery/tagphoto</name>
     <message>
       <source>Thank you a lot :)</source>
-      <translation type="unfinished">D&#x11B;kujeme, &#x17E;e jste hodn&#x11B;:)</translation>
+      <translation>D&#x11B;kujeme, &#x17E;e jste hodn&#x11B;:)</translation>
     </message>
   </context>
   <context>
     <name>gallery/topratedrss</name>
     <message>
       <source>Top rated images</source>
-      <translation type="unfinished">Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky</translation>
+      <translation>Nejl&#xE9;pe hodnocen&#xE9; sn&#xED;mky</translation>
     </message>
     <message>
       <source>View image</source>
-      <translation type="unfinished">Zobrazit obr&#xE1;zek</translation>
+      <translation>Zobrazit obr&#xE1;zek</translation>
     </message>
   </context>
   <context>
     <name>gallery/updateimage</name>
     <message>
       <source>Image updated</source>
-      <translation type="unfinished">Obr&#xE1;zek aktualizov&#xE1;no</translation>
+      <translation>Obr&#xE1;zek aktualizov&#xE1;no</translation>
     </message>
   </context>
   <context>
     <name>shop/imagevariation</name>
     <message>
       <source>Basket</source>
-      <translation type="unfinished">Ko&#x161;&#xED;k</translation>
+      <translation>Ko&#x161;&#xED;k</translation>
     </message>
     <message>
       <source>Payment option</source>
-      <translation type="unfinished">Mo&#x17E;nost platby</translation>
+      <translation>Mo&#x17E;nost platby</translation>
     </message>
   </context>
   <context>
     <name>shop/imagevariationform</name>
     <message>
       <source>Credits amount must be greater than 0!</source>
-      <translation type="unfinished">Kredity &#x10D;&#xE1;stka mus&#xED; b&#xFD;t v&#x11B;t&#x161;&#xED; ne&#x17E; 0!</translation>
+      <translation>Kredity &#x10D;&#xE1;stka mus&#xED; b&#xFD;t v&#x11B;t&#x161;&#xED; ne&#x17E; 0!</translation>
     </message>
   </context>
   <context>
     <name>shop/settingedit</name>
     <message>
       <source>Edit</source>
-      <translation type="unfinished">Upravit</translation>
+      <translation>Upravit</translation>
     </message>
   </context>
   <context>
     <name>similar/image</name>
     <message>
       <source>Similar images to</source>
-      <translation type="unfinished">Podobn&#xE9; sn&#xED;mky</translation>
+      <translation>Podobn&#xE9; sn&#xED;mky</translation>
     </message>
     <message>
       <source>Search for visualy similar images</source>
-      <translation type="unfinished">Hledat vizu&#xE1;ln&#x11B; podobn&#xE9; obr&#xE1;zky</translation>
+      <translation>Hledat vizu&#xE1;ln&#x11B; podobn&#xE9; obr&#xE1;zky</translation>
     </message>
   </context>
   <context>
     <name>system/index</name>
     <message>
       <source>System administration panel</source>
-      <translation type="unfinished">Spr&#xE1;va syst&#xE9;mu panel</translation>
+      <translation>Spr&#xE1;va syst&#xE9;mu panel</translation>
+    </message>
+  </context>
+  <context>
+    <name>user/profile</name>
+    <message>
+      <source>User profile</source>
+      <translation type="unfinished">U&#x17E;ivatelsk&#xFD; profil</translation>
+    </message>
+    <message>
+      <source>Name and surname</source>
+      <translation type="unfinished">Jm&#xE9;no a p&#x159;&#xED;jmen&#xED;</translation>
+    </message>
+    <message>
+      <source>Website</source>
+      <translation type="unfinished">Webov&#xE9; str&#xE1;nky</translation>
+    </message>
+    <message>
+      <source>Introduction</source>
+      <translation type="unfinished">&#xDA;vod</translation>
+    </message>
+    <message>
+      <source>Last updated albums</source>
+      <translation type="unfinished">Naposledy aktualizovan&#xE1; alba</translation>
+    </message>
+    <message>
+      <source>Last uploaded images</source>
+      <translation type="unfinished">Posledn&#xED; nahran&#xE9; obr&#xE1;zky</translation>
+    </message>
+  </context>
+  <context>
+    <name>gallery/lastuploadstoalbums</name>
+    <message>
+      <source>Last uploads to albums</source>
+      <translation type="unfinished">Nejnov&#x11B;j&#x161;&#xED; obr&#xE1;zky do alb</translation>
+    </message>
+    <message>
+      <source>Recently updated albums</source>
+      <translation type="unfinished">Ned&#xE1;vno aktualizovan&#xE9; alba</translation>
     </message>
   </context>
 </TS>

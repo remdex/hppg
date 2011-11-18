@@ -67,6 +67,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Last uploaded images');
     $Result['rss']['url'] = erLhcoreClassDesign::baseurl('gallery/lastuploadsrss').$appendResolutionMode;
+    $Result['description_prepend'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploads','Latest additions to gallery.');
 
     $cache->store($cacheKey,$Result);
 } 
