@@ -7,6 +7,6 @@
     <li><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Dimensions')?>:</strong> <?=$image->pwidth?>x<?=$image->pheight?>
     <li><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Displayed')?>:</strong> <?=$image->hits?> <?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','times')?>
     <li><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Album')?>:</strong> <a href="<?=$image->album_path?>"><?=$image->album_title?></a>    
-    <li><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Owner')?>:</strong> <a href="<?=erLhcoreClassDesign::baseurl('gallery/ownercategorys')?>/<?=$image->owner_id?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','More user images')?></a>
+    <li><strong><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Owner')?>:</strong> <a href="<?=erLhcoreClassDesign::baseurl('user/profile')?>/<?=$image->owner_id?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','More user images')?></a>
 </ul>
 </div>
