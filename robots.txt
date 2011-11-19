@@ -13,6 +13,12 @@ Disallow: */galleri/sharephpbb*
 Disallow: */galleri/sharehtml*
 Disallow: */galleri/anaglyph*
 Disallow: */galleri/ajaximages*
+
+Disallow: */galerii/sharephpbb*
+Disallow: */galerii/sharehtml*
+Disallow: */galerii/anaglyph*
+Disallow: */galerii/ajaximages*
+
 Disallow: */galleri/share-phpbb*
 Disallow: */galleri/aksjer-html*
 
@@ -27,6 +33,12 @@ Disallow: */galereya/sharehtml*
 Disallow: */galereya/anaglyph*
 Disallow: */galereya/anaglif*
 Disallow: */galereya/ajaximages*
+
+Disallow: */stoha/sharephpbb*
+Disallow: */stoha/sharehtml*
+Disallow: */stoha/anaglyph*
+Disallow: */stoha/anaglif*
+Disallow: */stoha/ajaximages*
 
 Disallow: */galeria/sharephpbb*
 Disallow: */galeria/sharehtml*
@@ -52,6 +64,7 @@ Disallow: */galeri/anaglif*
 Disallow: */galeri/ajaximages*
 
 Disallow: */podobny/imagejson*
+Disallow: */podobny/obraz/
 Disallow: */slican/imagejson*
 Disallow: */similar/image/
 Disallow: */analagichny/malyunak/
@@ -61,6 +74,15 @@ Disallow: */liknande/bild/
 Disallow: */samankaltainen/kuva/
 Disallow: */svipud/image/
 Disallow: */asemanator/imagine/
+Disallow: */mirip/gambar/
+Disallow: */mirip/imagejson/
+Disallow: */parhomoies/image/
+Disallow: */parhomoies/imagejson/
+Disallow: */galerija/slika/
+Disallow: */i-ngjashem/imazh/
+Disallow: */lidzigi/attelu/
+Disallow: */hasonlo/kep/
+Disallow: */sarnane/image/
 
 
 User-agent: ia_archiver

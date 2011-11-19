@@ -528,7 +528,7 @@ div#path a,
 div.top-menu,
 .ln-box a
 {
-background:url(../images/newdesign/spritev4.png) no-repeat top left;
+background:url(../images/newdesign/spritev5.png) no-repeat top left;
 }
 
 div.top-menu{ background-repeat:repeat-x;background-position:top left;height:40px;width:770px;float:right;}
@@ -547,8 +547,8 @@ float:right;clear:right;width:770px;
 .search-box input.default-button{width:36px;height:22px;background-position:0px -40px;border:0;overflow:hidden;border-right:5px solid #FFFFFF;float:right;margin-top:2px;}
 .search-box input.keywordField{width:200px;padding:4px;border:0;color:#b4b4b4;float:right;font-size:14px;padding-top:2px;}
 
-.ln-box{float:right;padding-top:14px;padding-right:10px;}
-.ln-box a{margin-left:5px;float:left;text-decoration:none;}
+.ln-box{float:left;padding-top:7px;padding-right:10px;width:500px;}
+.ln-box a{margin-left:5px;float:left;text-decoration:none;margin-bottom:2px;}
 .ln-box a:hover{text-decoration:none;}
 .ln-box a.english{width:16px;display:block; height:13px; background-position:-82px -519px; }
 .ln-box a.france{width:16px;display:block; height:13px; background-position:-62px -519px; }
@@ -572,6 +572,20 @@ float:right;clear:right;width:770px;
 .ln-box a.romanian{width:16px;display:block; height:13px; background-position:-176px -536px; }
 .ln-box a.finnish{width:16px;display:block; height:13px; background-position:-2px -553px; }
 .ln-box a.icelandic{width:16px;display:block; height:13px; background-position:-20px -552px; }
+.ln-box a.estonian{width:16px;display:block; height:13px; background-position:-116px -552px; }
+.ln-box a.hungary{width:16px;display:block; height:13px; background-position:-154px -552px; }
+.ln-box a.south-korean{width:16px;display:block; height:13px; background-position:-153px -566px; }
+.ln-box a.north-korean{width:16px;display:block; height:13px; background-position:-173px -566px; }
+.ln-box a.latvian{width:16px;display:block; height:13px; background-position:-134px -566px; }
+.ln-box a.slovak{width:16px;display:block; height:13px; background-position:-58px -566px; }
+.ln-box a.albanian{width:16px;display:block; height:13px; background-position:-78px -552px; }
+.ln-box a.serbian{width:16px;display:block; height:13px; background-position:-115px -566px; }
+.ln-box a.slovenian{width:16px;display:block; height:13px; background-position:-77px -566px; }
+.ln-box a.saudiarabia{width:16px;display:block; height:13px; background-position:-96px -566px; }
+.ln-box a.greek{width:16px;display:block; height:13px; background-position:-135px -552px; }
+.ln-box a.indonesia{width:16px;display:block; height:13px; background-position:-173px -552px; }
+.ln-box a.china{width:16px;display:block; height:13px; background-position:-97px -552px; }
+
 
 .rss-page{background-position:-31px -40px;float:right;display:block;height:32px;width:32px;margin-top:5px;margin-right:8px;}
 
