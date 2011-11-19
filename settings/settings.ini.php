@@ -86,6 +86,18 @@ return array (
         21 => 'rum',
         22 => 'fin',
         23 => 'ice',
+        24 => 'chi',
+        25 => 'idn',
+        26 => 'gre',
+        27 => 'ara',
+        28 => 'slv',
+        29 => 'srb',
+        30 => 'alb',
+        31 => 'slo',
+        32 => 'lav',
+        33 => 'kor',
+        34 => 'hun',
+        35 => 'est',
       ),
     ),    
     'sitemap_settings' => array (
@@ -113,6 +125,18 @@ return array (
             19 => 'rum',
             20 => 'fin',
             21 => 'ice',
+            22 => 'chi',
+            23 => 'idn',
+            24 => 'gre',
+            25 => 'ara',
+            26 => 'slv',
+            27 => 'srb',
+            28 => 'alb',
+            29 => 'slo',
+            30 => 'lav',
+            31 => 'kor',
+            32 => 'hun',
+            33 => 'est',
           ),
           
           'categorys_per_page' => 500,
@@ -339,6 +363,126 @@ return array (
       array (
         'locale' => 'pl_PL',
         'content_language' => 'pl',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'chi' => 
+      array (
+        'locale' => 'zh_CN',
+        'content_language' => 'zh',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ),
+      'idn' => 
+      array (
+        'locale' => 'id_ID',
+        'content_language' => 'in',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'gre' => 
+      array (
+        'locale' => 'el_EL',
+        'content_language' => 'el',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'ara' => 
+      array (
+        'locale' => 'ar_AR',
+        'content_language' => 'ar',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'slv' => 
+      array (
+        'locale' => 'sl_SL',
+        'content_language' => 'sl',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'srb' => 
+      array (
+        'locale' => 'sr_SR',
+        'content_language' => 'sr',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'alb' => 
+      array (
+        'locale' => 'sq_SQ',
+        'content_language' => 'sq',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'slo' => 
+      array (
+        'locale' => 'sk_SK',
+        'content_language' => 'sk',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'lav' => 
+      array (
+        'locale' => 'lv_LV',
+        'content_language' => 'lv',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'kor' => 
+      array (
+        'locale' => 'ko_KO',
+        'content_language' => 'ko',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'hun' => 
+      array (
+        'locale' => 'hu_HU',
+        'content_language' => 'hu',
+        'theme' => 
+        array (
+          0 => 'frontend',
+          1 => 'defaulttheme',
+        ),
+      ), 
+      'est' => 
+      array (
+        'locale' => 'et_ET',
+        'content_language' => 'et',
         'theme' => 
         array (
           0 => 'frontend',
