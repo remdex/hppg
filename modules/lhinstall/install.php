@@ -709,13 +709,14 @@ switch ((int)$Params['user_parameters']['step_id']) {
 				) DEFAULT CHARSET=utf8;");
                                 
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_gallery_myfavorites_session` (
-				  `id` int(11) NOT NULL AUTO_INCREMENT,
-				  `user_id` int(11) NOT NULL,
-				  `session_hash_crc32` bigint(20) NOT NULL,
-				  `session_hash` varchar(40) NOT NULL,
-				  `mtime` int(11) NOT NULL,
-				  PRIMARY KEY (`id`)
-				) DEFAULT CHARSET=utf8;"); 
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `user_id` int(11) NOT NULL,
+                  `session_hash` varchar(40) NOT NULL,
+                  `mtime` int(11) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `user_id` (`user_id`),
+                  KEY `session_hash` (`session_hash`)
+                ) DEFAULT CHARSET=utf8;"); 
                                
                 $db->query("CREATE TABLE IF NOT EXISTS `lh_delay_image_hit` (
 				  `pid` int(11) NOT NULL,

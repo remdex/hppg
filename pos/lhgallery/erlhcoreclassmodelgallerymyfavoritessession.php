@@ -19,17 +19,10 @@ $def->properties['session_hash']->columnName   = 'session_hash';
 $def->properties['session_hash']->propertyName = 'session_hash';
 $def->properties['session_hash']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_STRING; 
 
-$def->properties['session_hash_crc32'] = new ezcPersistentObjectProperty();
-$def->properties['session_hash_crc32']->columnName   = 'session_hash_crc32';
-$def->properties['session_hash_crc32']->propertyName = 'session_hash_crc32';
-$def->properties['session_hash_crc32']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
-
 $def->properties['mtime'] = new ezcPersistentObjectProperty();
 $def->properties['mtime']->columnName   = 'mtime';
 $def->properties['mtime']->propertyName = 'mtime';
 $def->properties['mtime']->propertyType = ezcPersistentObjectProperty::PHP_TYPE_INT;
- 
-
  
 return $def; 
 

@@ -11,6 +11,10 @@ if (isset($_POST['Login']))
             $Error = erTranslationClassLhTranslation::getInstance()->getTranslation('user/login','Incorrect username or password');
             $tpl->set('error',$Error);   
     } else {
+        
+        // Reinit favourite session
+        erLhcoreClassModelGalleryMyfavoritesSession::getInstance();
+        
         // Redirect to front    
         erLhcoreClassModule::redirect();
         exit;
