@@ -15,6 +15,7 @@ return array (
       'templatecache' => false,
       'templatecompile' => false,
       'modulecompile' => false,
+      'classcompile' => false,
       'file_storage_backend' => 'filesystem',         
       'extensions' => array (           
       ), 
