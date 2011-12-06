@@ -24,7 +24,7 @@ if (($Result = $cache->restore($cacheKeyImageView)) === false)
         $imgPath = array_pop($path);
         $imgPath['url'] = $Image->url_path;        
         $path[] = $imgPath;
-        $path[] = array('url' => erLhcoreClassDesign::baseurl('similar/image') . '/' . $Image->pid, 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Similar images to'));
+        $path[] = array('url' => erLhcoreClassDesign::baseurl('similar/image') . '/' . $Image->pid, 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Similar images to').' - '.$Image->name_user);
         $Result['path_base'] = erLhcoreClassDesign::baseurldirect('similar/image') . '/' . $Image->pid;
         
         if ($Image->caption != '') {
