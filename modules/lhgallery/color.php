@@ -135,7 +135,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
     
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Images by color')));    
+    $Result['path'] = array(array('url' => erLhcoreClassDesign::baseurldirect('gallery/color'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Images by color')));    
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
         $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 

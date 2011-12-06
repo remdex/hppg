@@ -2025,9 +2025,14 @@ $tpl->set('image',$Image);
 $tpl->set('comment_new',$CommentData);
 
 $Result['content'] = $tpl->fetch();
-$Result['path'] = $Image->path;
-$Result['canonical'] = 'http://'.$_SERVER['HTTP_HOST'].$Image->url_path;
 $Result['path_base'] = $Image->url_path_base.$urlAppend;
+$Result['path'] = $Image->path;
+
+$lastElement = array_pop($Result['path']);
+$lastElement['url'] = $Image->url_path;
+$Result['path'][] = $lastElement;
+$Result['canonical'] = 'http://'.$_SERVER['HTTP_HOST'].$Image->url_path;
+
 
 if ($Image->caption != '') {
     $Result['description_prepend'] = erLhcoreClassBBCode::make_plain(htmlspecialchars($Image->caption));

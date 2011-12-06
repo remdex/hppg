@@ -24,7 +24,7 @@ if (($Result = $cache->restore($cacheKeyImageView)) === false)
         $imgPath = array_pop($path);
         $imgPath['url'] = $Image->url_path;        
         $path[] = $imgPath;
-        $path[] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Similar images to'));
+        $path[] = array('url' => erLhcoreClassDesign::baseurl('similar/image') . '/' . $Image->pid, 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Similar images to'));
         $Result['path_base'] = erLhcoreClassDesign::baseurldirect('similar/image') . '/' . $Image->pid;
         
         if ($Image->caption != '') {
@@ -32,7 +32,7 @@ if (($Result = $cache->restore($cacheKeyImageView)) === false)
         }
 
     } else {
-        $path = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Search for visualy similar images')));
+        $path = array(array('url' => erLhcoreClassDesign::baseurl('similar/image'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Search for visualy similar images')));
         $tpl->set('image',false);
         $Result['path_base'] = erLhcoreClassDesign::baseurldirect('similar/image');
         $Result['description_prepend'] = erTranslationClassLhTranslation::getInstance()->getTranslation('similar/image','Search for visualy similar images');

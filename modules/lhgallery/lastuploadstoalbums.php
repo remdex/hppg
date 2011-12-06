@@ -21,7 +21,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lastuploadstoalbums','Last uploads to albums'),'url' => erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbums')));
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/category','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/lastuploadstoalbums').'/(page)/'.$Params['user_parameters_unordered']['page'],'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/category','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     $cache->store($cacheKey,$Result);

@@ -22,10 +22,10 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/ratedrecent'));
         
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/ratedrecent','Top rated images in 24 hours')));    
+    $Result['path'] = array(array('url' => erLhcoreClassDesign::baseurl('gallery/ratedrecent'), 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/ratedrecent','Top rated images in 24 hours')));    
   
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/ratedrecent','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/ratedrecent').'/(page)/'.$Params['user_parameters_unordered']['page'],'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/ratedrecent','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/ratedrecent').($pages->current_page > 1 ? '/(page)/'.$pages->current_page : ''); 

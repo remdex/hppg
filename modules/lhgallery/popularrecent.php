@@ -23,10 +23,10 @@ if (($Result = $cache->restore($cacheKey)) === false)
     $tpl->set('urlSortBase',erLhcoreClassDesign::baseurl('gallery/popularrecent'));
         
     $Result['content'] = $tpl->fetch();
-    $Result['path'] = array(array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Most popular images in 24 hours')));    
+    $Result['path'] = array(array('url' => erLhcoreClassDesign::baseurl('gallery/popularrecent'),'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Most popular images in 24 hours')));    
   
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/popularrecent').'/(page)/'.$Params['user_parameters_unordered']['page'],'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/popularrecent','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/popularrecent').($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');

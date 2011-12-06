@@ -49,7 +49,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
       
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/lasthits').'/(page)/'.$Params['user_parameters_unordered']['page'], 'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     $Result['rss']['title'] = erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/lasthits','Last viewed images');
