@@ -46,19 +46,19 @@
 		</ul>									
 </div>
 
-<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) === true) : ?>
+<?php if (erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled' ) === true || erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'search_enabled' ) === true) : ?>
 <div class="left-infobox">
 		<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search')?></h3>
 		<ul>
-		    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?> 
+		    <?php if (erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled' ) === true) : ?> 
 		    <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by keyword');?></a>  
 		    <?php endif;?>
 		    
-		    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) === true) : ?>               
+		    <?php if (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'search_enabled' ) === true) : ?>               
             <li><a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by color');?></a> 
             <?php endif;?>
             
-		    <?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) === true) : ?>               
+		    <?php if (erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'enabled' ) === true) : ?>               
             <li><a href="<?=erLhcoreClassDesign::baseurl('similar/image')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by similarity')?></a></li>
             <li><a href="<?=erLhcoreClassDesign::baseurl('similar/sketch')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Search by sketch')?></a></li>
             <?php endif;?>

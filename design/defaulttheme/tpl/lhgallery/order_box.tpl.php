@@ -22,7 +22,7 @@ $sortArrayAppend = array(
     'relevanceasc'      => '/(sort)/relevanceasc',
 );
 
-$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
+$resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' );
 $resolutionAppend = '';
 if (isset($currentResolution) && key_exists($currentResolution,$resolutions)) {    
     $resolutionAppend = '/(resolution)/'.$resolutions[$currentResolution]['width'].'x'.$resolutions[$currentResolution]['height'];

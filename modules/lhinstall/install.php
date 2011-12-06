@@ -4,7 +4,7 @@ try {
 	
 $cfgSite = erConfigClassLhConfig::getInstance();
 
-if ($cfgSite->conf->getSetting( 'site', 'installed' ) == true)
+if ($cfgSite->getSetting( 'site', 'installed' ) == true)
 {
     $Params['module']['functions'] = array('install');
     include_once('modules/lhkernel/nopermission.php'); 
@@ -114,13 +114,13 @@ switch ((int)$Params['user_parameters']['step_id']) {
 	       if (count($Errors) == 0){
 	           
 	           $cfgSite = erConfigClassLhConfig::getInstance();
-	           $cfgSite->conf->setSetting( 'db', 'host', $form->DatabaseHost);
-	           $cfgSite->conf->setSetting( 'db', 'user', $form->DatabaseUsername);
-	           $cfgSite->conf->setSetting( 'db', 'password', $form->DatabasePassword);
-	           $cfgSite->conf->setSetting( 'db', 'database', $form->DatabaseDatabaseName);
-	           $cfgSite->conf->setSetting( 'db', 'port', $form->DatabasePort);
+	           $cfgSite->setSetting( 'db', 'host', $form->DatabaseHost);
+	           $cfgSite->setSetting( 'db', 'user', $form->DatabaseUsername);
+	           $cfgSite->setSetting( 'db', 'password', $form->DatabasePassword);
+	           $cfgSite->setSetting( 'db', 'database', $form->DatabaseDatabaseName);
+	           $cfgSite->setSetting( 'db', 'port', $form->DatabasePort);
 	           
-	           $cfgSite->conf->setSetting( 'site', 'secrethash', substr(md5(time() . ":" . mt_rand()),0,10));
+	           $cfgSite->setSetting( 'site', 'secrethash', substr(md5(time() . ":" . mt_rand()),0,10));
 	           
 	           $cfgSite->save();
 	                 
@@ -1168,10 +1168,10 @@ switch ((int)$Params['user_parameters']['step_id']) {
                 erLhcoreClassGallery::getSession()->save($CategoryData); 
                  
                 $cfgSite = erConfigClassLhConfig::getInstance();
-	            $cfgSite->conf->setSetting( 'gallery_settings', 'default_gallery_category', $CategoryData->cid);	     
-	            $cfgSite->conf->setSetting( 'site', 'installed', true);	     
-	            $cfgSite->conf->setSetting( 'user_settings', 'default_user_group', $GroupDataRegistered->id);	     
-	            $cfgSite->conf->setSetting( 'user_settings', 'anonymous_user_id', $UserDataAnonymous->id);	     
+	            $cfgSite->setSetting( 'gallery_settings', 'default_gallery_category', $CategoryData->cid);	     
+	            $cfgSite->setSetting( 'site', 'installed', true);	     
+	            $cfgSite->setSetting( 'user_settings', 'default_user_group', $GroupDataRegistered->id);	     
+	            $cfgSite->setSetting( 'user_settings', 'anonymous_user_id', $UserDataAnonymous->id);	     
 	            $cfgSite->save();
 	           
     	        $tpl->setFile('lhinstall/install4.tpl.php');

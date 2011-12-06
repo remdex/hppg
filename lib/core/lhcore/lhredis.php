@@ -7,7 +7,7 @@ class erLhcoreClassLhRedis
     public function __construct()
     {
         try {
-            $params = erConfigClassLhConfig::getInstance()->conf->getSetting( 'redis', 'server' );
+            $params = erConfigClassLhConfig::getInstance()->getSetting( 'redis', 'server' );
             $this->redis = new Redis();
 	        $this->redis->connect($params['host'], $params['port'], 2.5);	
 	        $this->redis->setOption(Redis::OPT_SERIALIZER, Redis::SERIALIZER_PHP); 

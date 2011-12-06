@@ -10,8 +10,8 @@ $form = new ezcInputForm( INPUT_GET, $definition );
 $searchParams = array('SearchLimit' => 25,'keyword' => '');
 $userParams ='';
 
-$reset_keywords = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'reset_keywords' );
-$ban_keywords = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'ban_keywords' );
+$reset_keywords = erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'reset_keywords' );
+$ban_keywords = erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'ban_keywords' );
 
 if ( $form->hasValidData( 'SearchText' ) && trim($form->SearchText) != '')
 {
@@ -63,7 +63,7 @@ $sortModes = array(
     'relevanceasc'      => '@relevance ASC, @id ASC',
 );
 
-$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
+$resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' );
     
 $mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
@@ -86,9 +86,9 @@ $appendColorMode = '';
 $pallete_id = (array)$Params['user_parameters_unordered']['color'];
 $pallete_items_number = count($pallete_id);
 if ($pallete_items_number > 0) {  
-    if ($pallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
-        $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
-        $pallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+    if ($pallete_items_number > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
+        $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
+        $pallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
     }
     sort($pallete_id);
     $appendColorMode = '/(color)/'.implode('/',$pallete_id);
@@ -98,9 +98,9 @@ if ($pallete_items_number > 0) {
 $npallete_id = (array)$Params['user_parameters_unordered']['ncolor'];
 $npallete_items_number = count($npallete_id);
 if ($npallete_items_number > 0) {  
-    if ($npallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
-        $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
-        $npallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+    if ($npallete_items_number > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
+        $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
+        $npallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
     }
     sort($npallete_id);
     $appendColorMode .= '/(ncolor)/'.implode('/',$npallete_id);
@@ -131,8 +131,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
     
     if ($searchParams['keyword'] != '')
     {         
-        $tpl->set('max_filters',$pallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')); 
-        $tpl->set('nmax_filters',$npallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')); 
+        $tpl->set('max_filters',$pallete_items_number == erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')); 
+        $tpl->set('nmax_filters',$npallete_items_number == erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')); 
            
         $tpl->set('pallete_id',$pallete_id);
         $tpl->set('npallete_id',$npallete_id);

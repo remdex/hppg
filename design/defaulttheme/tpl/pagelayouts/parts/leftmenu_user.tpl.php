@@ -13,7 +13,7 @@
 	<li><a href="<?=erLhcoreClassDesign::baseurl('shop/mycreditsorders')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','My credits orders');?></a>
 	<?php endif;?>
 	
-	<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'enabled' ) == true) : ?>
+	<?php if (erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'enabled' ) == true) : ?>
     <li><a href="<?=erLhcoreClassDesign::baseurl('fb/albums')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Import images from facebook');?></a>
     <?php endif;?>
 

@@ -1,7 +1,7 @@
 <?php
 
 $totalAlbums = erLhcoreClassModelGalleryAlbum::getAlbumCount(array('filter' => array('hidden' => 0)));
-$totalParts = ceil($totalAlbums/erConfigClassLhConfig::getInstance()->conf->getSetting('sitemap_settings','album_per_page'));
+$totalParts = ceil($totalAlbums/erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','album_per_page'));
 
 header('Content-type: text/xml');
 echo '<?xml version="1.0" encoding="UTF-8"?>  

@@ -5,7 +5,7 @@ class erLhcoreClassPalleteIndexImage {
     // Used only in cronjob
     public static function indexUnindexedImages($limit = 32)
     {        
-        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) == false) return ;
+        if (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'search_enabled' ) == false) return ;
                 
         if (($lastIndex = self::getLastIndex('image_index')) == 0)
         {
@@ -77,26 +77,26 @@ class erLhcoreClassPalleteIndexImage {
          
         // Do not index not approved images, or in live mode if delay image update is enabled
         if ($image->approved == 0 || 
-            erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'search_enabled' ) == false || 
-            ($checkDelayIndex == true && erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'delay_index' ) == true) ) return ;
+            erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'search_enabled' ) == false || 
+            ($checkDelayIndex == true && erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'delay_index' ) == true) ) return ;
           
         /**
          * Minimum number of times pallete color must be matched to get record.
          * */ 
-        $matchTreshold = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'minimum_color_match' );  
-        $color_indexer_external = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'color_indexer_external' );  
+        $matchTreshold = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'minimum_color_match' );  
+        $color_indexer_external = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'color_indexer_external' );  
         
-        $inside_width = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_width' );
-        $inside_height = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_height' );   
-        $roi_form = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'roi_form' );
+        $inside_width = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'inside_width' );
+        $inside_height = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'inside_height' );   
+        $roi_form = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'roi_form' );
         
         $deletePhotoPath = false;
-        if (erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem') {
+        if (erConfigClassLhConfig::getInstance()->getSetting('site','file_storage_backend') == 'filesystem') {
             $photoPath = 'albums/'.$image->filepath.'thumb_'.$image->filename;
         } else {
             $deletePhotoPath = true;            
-            $content = file_get_contents(erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'thumb_'.$image->filename);
-            erLhcoreClassLog::write(erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'thumb_'.$image->filename);
+            $content = file_get_contents(erConfigClassLhConfig::getInstance()->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'thumb_'.$image->filename);
+            erLhcoreClassLog::write(erConfigClassLhConfig::getInstance()->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'thumb_'.$image->filename);
             $photoPath = 'var/tmpupload/thumbfile_'.$image->filename;
             file_put_contents($photoPath,$content);
         }        
@@ -261,11 +261,11 @@ class erLhcoreClassPalleteIndexImage {
 
     public static function indexColorsExternal($img_path)
     {
-        $binary_indexer = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'color_indexer_path' );
-        $matchTreshold = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'minimum_color_match' );             
-        $inside_width = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_width' );
-        $inside_height = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_height' );   
-        $roi_form = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'roi_form' );
+        $binary_indexer = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'color_indexer_path' );
+        $matchTreshold = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'minimum_color_match' );             
+        $inside_width = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'inside_width' );
+        $inside_height = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'inside_height' );   
+        $roi_form = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'roi_form' );
 //        exit;
         $command = $binary_indexer . ' ' .escapeshellarg( $img_path ). ' ' . escapeshellarg('doc/color_palletes/color_pallete.txt') . ' ' . $matchTreshold . ' ' . $inside_height . ' ' . $inside_width . ' ' . $roi_form;
              

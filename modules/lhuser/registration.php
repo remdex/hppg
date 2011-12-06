@@ -65,12 +65,12 @@ if (isset($_POST['Update_account']))
         erLhcoreClassUser::getSession()->save($UserData); 
         
         $GroupUser = new erLhcoreClassModelGroupUser();        
-        $GroupUser->group_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'default_user_group' ); //User group
+        $GroupUser->group_id = erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'default_user_group' ); //User group
         $GroupUser->user_id = $UserData->id;        
         erLhcoreClassUser::getSession()->save($GroupUser);
                
         try {
-            $defaultUserCategoryParent = erLhcoreClassModelGalleryCategory::fetch(erConfigClassLhConfig::getInstance()->conf->getSetting( 'gallery_settings', 'default_gallery_category' ));
+            $defaultUserCategoryParent = erLhcoreClassModelGalleryCategory::fetch(erConfigClassLhConfig::getInstance()->getSetting( 'gallery_settings', 'default_gallery_category' ));
             $userCategory = new erLhcoreClassModelGalleryCategory();
             $userCategory->owner_id =  $UserData->id;
             $userCategory->parent =  $defaultUserCategoryParent->cid;

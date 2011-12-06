@@ -100,8 +100,8 @@ $instance = erLhcoreClassSystem::instance();
 $instance->SiteAccess = $siteAccessName; 
 $instance->SiteDir = './';
 $cfgSite = erConfigClassLhConfig::getInstance();    
-$defaultSiteAccess = $cfgSite->conf->getSetting( 'site', 'default_site_access' );
-$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$siteAccessName);                      
+$defaultSiteAccess = $cfgSite->getSetting( 'site', 'default_site_access' );
+$optionsSiteAccess = $cfgSite->getSetting('site_access_options',$siteAccessName);                      
 $instance->Language = $optionsSiteAccess['locale'];                         
 $instance->ThemeSite = $optionsSiteAccess['theme'];                         
 $instance->WWWDirLang = '/'.$siteAccessName;   
@@ -162,12 +162,12 @@ foreach ($objects as $object)
                        
                 if ($targetOption->value == 'small' || $targetOption->value == 'both') {
                     erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoPath.$object->filename, $photoPath.'/thumb_'.$object->filename );                 
-                    chmod($photoPath.'/thumb_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                    chmod($photoPath.'/thumb_'.$object->filename,$cfgSite->getSetting( 'site', 'StorageFilePermissions' ));
                 }  
                             
                 if ($targetOption->value == 'normal' || $targetOption->value == 'both') {
                     erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoPath.$object->filename, $photoPath.'/normal_'.$object->filename );                
-                    chmod($photoPath.'/normal_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                    chmod($photoPath.'/normal_'.$object->filename,$cfgSite->getSetting( 'site', 'StorageFilePermissions' ));
                 }
             } else {
                 $status->addEntry( 'ACTION', "Skipping multipedia type PID #{$object->pid}." );

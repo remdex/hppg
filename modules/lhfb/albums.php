@@ -1,8 +1,8 @@
 <?php
 
 $facebook = new Facebook(array(
-  'appId'  => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'app_id' ),
-  'secret' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'secret' ) ,
+  'appId'  => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'app_id' ),
+  'secret' => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'secret' ) ,
 ));
 
 $userFB = $facebook->getUser();
@@ -11,8 +11,8 @@ if ($userFB) {
     $tpl = erLhcoreClassTemplate::getInstance( 'lhfb/albums.tpl.php' );
     
     $facebook = new Facebook(array(
-      'appId'  => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'app_id' ),
-      'secret' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'secret' ) ,
+      'appId'  => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'app_id' ),
+      'secret' => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'secret' ) ,
     ));
     
     $user_profile = $facebook->api('/me');

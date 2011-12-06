@@ -58,9 +58,9 @@ class erLhcoreClassModelGalleryUploadArchive {
    		$this->status = 1;
    		erLhcoreClassGallery::getSession()->update($this);
    		
-   		$wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
-   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
-   		$publicCategoryID = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'public_category_id' );
+   		$wwwUser = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_user' );
+   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_group' );
+   		$publicCategoryID = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'public_category_id' );
    		   		
    		$session = erLhcoreClassGallery::getSession();
    		
@@ -68,7 +68,7 @@ class erLhcoreClassModelGalleryUploadArchive {
    		{
    			$album = new erLhcoreClassModelGalleryAlbum();
    			
-   			if ($this->user_id == 0 || $this->user_id == erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings','anonymous_user_id')) {
+   			if ($this->user_id == 0 || $this->user_id == erConfigClassLhConfig::getInstance()->getSetting( 'user_settings','anonymous_user_id')) {
    				$album->category = $publicCategoryID;
    			} else {
    				$album->category = erLhcoreClassModelGalleryCategory::fetchCategoryColumn(array('filter' => array('owner_id' => $this->user_id)),'cid');
@@ -113,7 +113,7 @@ class erLhcoreClassModelGalleryUploadArchive {
 			if ($entry->isFile())
 			{
 				if (!file_exists("var/tmpfiles/".$this->id))
-				mkdir("var/tmpfiles/".$this->id,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
+				mkdir("var/tmpfiles/".$this->id,$config->getSetting( 'site', 'StorageDirPermissions' ));
 				    					
 				$pathExtracted = "var/tmpfiles/{$this->id}/" . $entry->getPath();	
 				try {							

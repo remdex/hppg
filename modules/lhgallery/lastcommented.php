@@ -2,7 +2,7 @@
 
 $cache = CSCacheAPC::getMem(); 
 
-$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' ); 
+$resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' ); 
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
 
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
@@ -16,7 +16,7 @@ $filterArray['approved'] = 1;
 
 $cacheKey = md5('version_'.$cache->getCacheVersion('last_commented').'lastcommented_view_url'.$resolution.'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
     
-if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
+if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {
     $ExpireTime = 3600;
     $currentKeyEtag = md5($cacheKey.'user_id_'.erLhcoreClassUser::instance()->getUserID());

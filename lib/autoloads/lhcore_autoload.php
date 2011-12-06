@@ -135,7 +135,8 @@ return array_merge(array (
          'erLhcoreClassModelForumReport'         => 'lib/models/lhforum/erlhcoreclassmodelreport.php',
          
          
-         'Facebook'                              => 'lib/core/lhexternal/facebook/facebook.php'
+         'Facebook'                              => 'lib/core/lhexternal/facebook/facebook.php',
+         
                 
          
 ),

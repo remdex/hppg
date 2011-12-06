@@ -12,8 +12,8 @@ if (isset($result['success']) && $result['success'] == 'true' && ($filetype = er
     $xmlRPCClient = erLhcoreClassModelGalleryImgSeekData::getImgSeekClientInstance();
     
     $similarImagesResult = $xmlRPCClient->execute(array(
-        'op'   => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'query_img_sketch_function'),
-        'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),
+        'op'   => erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'query_img_sketch_function'),
+        'dbid' => erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'database_id' ),
         'nr'   => 25,
         'sk'   => 0,
         'fp'   => erLhcoreClassSystem::instance()->SiteDir . $result['filepath']

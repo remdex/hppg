@@ -7,7 +7,7 @@ class erLhcoreClassLhMemcache extends Memcache
     public function __construct()
     {     
          $this->memcache = new Memcache();          
-         $hosts = erConfigClassLhConfig::getInstance()->conf->getSetting( 'memecache', 'servers' );
+         $hosts = erConfigClassLhConfig::getInstance()->getSetting( 'memecache', 'servers' );
          foreach ($hosts as $server) {
                 $this->memcache->addServer($server['host'],$server['port'],$server['weight']);
          }

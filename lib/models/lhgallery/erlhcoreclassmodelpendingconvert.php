@@ -35,8 +35,8 @@ class erLhcoreClassModelGalleryPendingConvert {
 
             $config = erConfigClassLhConfig::getInstance();
 
-            $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
-   		    $wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+            $wwwUser = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_user' );
+   		    $wwwUserGroup = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_group' );
    		            
             // Prepare to run ImageMagick command
             $descriptors = array( 
@@ -82,7 +82,7 @@ class erLhcoreClassModelGalleryPendingConvert {
         	   
          	    chown($dir.'/thumb_'.str_replace('.swf','.jpg',$this->image->filename),$wwwUser);
         	    chgrp($dir.'/thumb_'.str_replace('.swf','.jpg',$this->image->filename),$wwwUserGroup);
-        	    chmod($dir.'/thumb_'.str_replace('.swf','.jpg',$this->image->filename),$config->conf->getSetting( 'site', 'StorageFilePermissions' )); 
+        	    chmod($dir.'/thumb_'.str_replace('.swf','.jpg',$this->image->filename),$config->getSetting( 'site', 'StorageFilePermissions' )); 
                 
         	    $this->image->has_preview = 1;
         	    
@@ -104,8 +104,8 @@ class erLhcoreClassModelGalleryPendingConvert {
                       
            $config = erConfigClassLhConfig::getInstance();
 
-           $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
-   		   $wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+           $wwwUser = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_user' );
+   		   $wwwUserGroup = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_group' );
    		            
             // Prepare to run ImageMagick command
            $descriptors = array( 
@@ -170,8 +170,8 @@ class erLhcoreClassModelGalleryPendingConvert {
                         erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', 'albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg',  'albums/'.$this->image->filepath.'normal_'.implode('.',$parts).'.jpg' ); 
                         erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', 'albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg',  'albums/'.$this->image->filepath.'thumb_'.implode('.',$parts).'.jpg' ); 
                        	
-                        chmod('albums/'.$this->image->filepath.'normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-                        chmod('albums/'.$this->image->filepath.'thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                        chmod('albums/'.$this->image->filepath.'normal_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
+                        chmod('albums/'.$this->image->filepath.'thumb_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
                         
                         unlink('albums/'.$this->image->filepath.'original_'.implode('.',$parts).'.jpg');    // Delete original screenshot  
                     }

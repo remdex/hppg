@@ -44,7 +44,7 @@ class erLhcoreClassUser{
        $this->session->destroy();
        
        $cfgSite = erConfigClassLhConfig::getInstance();
-	   $secretHash = $cfgSite->conf->getSetting( 'site', 'secrethash' );
+	   $secretHash = $cfgSite->getSetting( 'site', 'secrethash' );
     
        $this->credentials = new ezcAuthenticationIdCredentials( $user_id );       
        $this->authentication = new ezcAuthentication( $this->credentials );  
@@ -65,7 +65,7 @@ class erLhcoreClassUser{
        {       
            $data = $this->filter->fetchData();         
            // Anonymous user does not have access to login
-           if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' ) != $data['id'][0])
+           if (erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'anonymous_user_id' ) != $data['id'][0])
            {                 
                 $_SESSION['user_id'] = $data['id'][0];
                 $this->userid = $data['id'][0];                        
@@ -83,7 +83,7 @@ class erLhcoreClassUser{
        $this->session->destroy();
        
        $cfgSite = erConfigClassLhConfig::getInstance();
-	   $secretHash = $cfgSite->conf->getSetting( 'site', 'secrethash' );
+	   $secretHash = $cfgSite->getSetting( 'site', 'secrethash' );
     
        $this->credentials = new ezcAuthenticationPasswordCredentials( $username, sha1($password.$secretHash.sha1($password)) );
        $database = new ezcAuthenticationDatabaseInfo( ezcDbInstance::get(), 'lh_users', array( 'username', 'password' ) );
@@ -105,7 +105,7 @@ class erLhcoreClassUser{
        {       
            // Anonymous user does not have access to login
            $data = $this->filter->fetchData();
-           if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' ) != $data['id'][0])
+           if (erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'anonymous_user_id' ) != $data['id'][0])
            {
                 $_SESSION['user_id'] = $data['id'][0];
                 $this->userid = $data['id'][0];                        
@@ -291,7 +291,7 @@ class erLhcoreClassUser{
            if (($AccessTimestamp = $cacheObj->restore('cachetimestamp_accessfile_version_'.$cacheObj->getCacheVersion('site_version'))) === false)
            {          
                $cfg = erConfigClassLhCacheConfig::getInstance();  
-               $AccessTimestamp = $cfg->conf->getSetting( 'cachetimestamps', 'accessfile' );
+               $AccessTimestamp = $cfg->getSetting( 'cachetimestamps', 'accessfile' );
                $cacheObj->store('cachetimestamp_accessfile_version_'.$cacheObj->getCacheVersion('site_version'),$AccessTimestamp);
            }
            
@@ -314,7 +314,7 @@ class erLhcoreClassUser{
        
        $cfg = erConfigClassLhCacheConfig::getInstance();
               
-       $AccessTimestamp = $cfg->conf->getSetting( 'cachetimestamps', 'accessfile' );
+       $AccessTimestamp = $cfg->getSetting( 'cachetimestamps', 'accessfile' );
        $CheckExpire = false;
            
        if ( ( $data = $cache->restore( $id ) ) === false || $AccessTimestamp < time() )       
@@ -328,7 +328,7 @@ class erLhcoreClassUser{
             if ($AccessTimestamp < time() )
             {
                 $AccessTimestamp = time() + 60*60*24*1;                
-                $cfg->conf->setSetting( 'cachetimestamps', 'accessfile', $AccessTimestamp );
+                $cfg->setSetting( 'cachetimestamps', 'accessfile', $AccessTimestamp );
                 $cfg->save();
                 $data['access_timestamp'] = $AccessTimestamp;
                 $this->AccessTimestamp = $AccessTimestamp;
@@ -371,7 +371,7 @@ class erLhcoreClassUser{
        if ($this->userid !== null) {
             $UserIDGenerate = $this->userid;
        } else {
-            $UserIDGenerate = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' );
+            $UserIDGenerate = erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'anonymous_user_id' );
        }
        
        $accessArray = erLhcoreClassRole::accessArrayByUserID( $UserIDGenerate );

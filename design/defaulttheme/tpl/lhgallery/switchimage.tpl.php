@@ -56,7 +56,7 @@ parent.$.colorbox.close();
 
 <?php include(erLhcoreClassDesign::designtpl('lhgallery/image_window_colors_data.tpl.php'));?>
 
-<?php if ((erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'extract_exif_data' ) == true) && $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) : ?>
+<?php if ((erConfigClassLhConfig::getInstance()->getSetting( 'site', 'extract_exif_data' ) == true) && $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) : ?>
 <?php include(erLhcoreClassDesign::designtpl('lhgallery/image_window_exif_data.tpl.php'));?>
 <?php endif;?>
 </div>

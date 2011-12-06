@@ -38,8 +38,8 @@ class CSCacheAPC {
     
     function __construct() {  
               
-        $cacheEngineClassName = erConfigClassLhConfig::getInstance()->conf->getSetting( 'cacheEngine', 'className' );        
-        $this->cacheGlobalKey = erConfigClassLhConfig::getInstance()->conf->getSetting( 'cacheEngine', 'cache_global_key' );
+        $cacheEngineClassName = erConfigClassLhConfig::getInstance()->getSetting( 'cacheEngine', 'className' );        
+        $this->cacheGlobalKey = erConfigClassLhConfig::getInstance()->getSetting( 'cacheEngine', 'cache_global_key' );
                     
         if ($cacheEngineClassName !== false)
         {
@@ -294,15 +294,56 @@ class erLhcoreClassSystem{
             }
         }
 
+        if ( erConfigClassLhConfig::getInstance()->getSetting( 'site', 'classcompile' ) == true ) {
+            $instance->compileClass();
+        }
     
         $instance->SiteDir = $siteDir;
         $instance->WWWDir = $wwwDir;
         $instance->WWWDirLang = '';
-        $instance->IndexFile = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'force_virtual_host' )== false ? $index : '';
+        $instance->IndexFile = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'force_virtual_host' )== false ? $index : '';
         $instance->RequestURI = $requestURI;        
         
     }
 
+    function compileClass()
+    {
+        $groups = include('lib/autoloads/lhcompile_group.php');
+        
+        $cache = CSCacheAPC::getMem();
+        $versionSite = $cache->getCacheVersion('site_version');
+        foreach ($groups as $group => $classes) {
+            
+            if ( ($cacheClasses = $cache->restore('ClassCompileCache_'.$group.'_version_'.$versionSite) ) !== false)
+            {     
+            	include($cacheClasses);
+            	return ;
+            }
+            
+            $contentFiles = '';
+            $ret = array();
+            foreach ($classes as $class => $path) {
+                 $refl  = new ReflectionClass($class);
+                 $file  = $refl->getFileName();
+                 if ($file != '')
+                 { 
+                    $lines = file($file);                                
+                    $start = $refl->getStartLine() - 1;
+                    $end   = $refl->getEndLine();                        
+                    $ret = array_merge($ret, array_slice($lines, $start, ($end - $start)));    
+                 }
+            }
+            
+            file_put_contents('cache/compiledclasses/'.$group.'_class.php','<?php '.implode('',$ret));     
+            $cache->store('ClassCompileCache_'.$group.'_version_'.$versionSite, 'cache/compiledclasses/'.$group.'_class.php');
+        }
+        
+        
+            
+//        print_r($groups);
+//        echo "Compiling class";
+    }
+    
     function wwwDir()
     {
         return $this->WWWDir;

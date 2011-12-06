@@ -151,8 +151,8 @@ $instance = erLhcoreClassSystem::instance();
 $instance->SiteAccess = $siteAccessName; 
 $instance->SiteDir = './';
 $cfgSite = erConfigClassLhConfig::getInstance();    
-$defaultSiteAccess = $cfgSite->conf->getSetting( 'site', 'default_site_access' );
-$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$siteAccessName);                      
+$defaultSiteAccess = $cfgSite->getSetting( 'site', 'default_site_access' );
+$optionsSiteAccess = $cfgSite->getSetting('site_access_options',$siteAccessName);                      
 $instance->Language = $optionsSiteAccess['locale'];                         
 $instance->ThemeSite = $optionsSiteAccess['theme'];                         
 $instance->WWWDirLang = '/'.$siteAccessName;   
@@ -194,7 +194,7 @@ $status = new ezcConsoleProgressMonitor( $output, erLhcoreClassModelGalleryImage
 /* Conversion settings */
 $conversionSettings = array();
        
-if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'imagemagic_enabled' ) == true)
+if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'imagemagic_enabled' ) == true)
 {
    $conversionSettings[] = new ezcImageHandlerSettings( 'imagemagick', 'erLhcoreClassGalleryImagemagickHandler' );
 }
@@ -252,11 +252,11 @@ foreach ($objects as $object)
             if ($object->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE) 
             {                                  
                 $converter->transform( 'originalscale', $photoPath.$object->filename, $photoPath.$object->filename );
-                chmod($photoPath.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                chmod($photoPath.$object->filename,$cfgSite->getSetting( 'site', 'StorageFilePermissions' ));
                                 
                 if ($watermarkOption->value == 'both') {
                     erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoPath.$object->filename, $photoPath.'/normal_'.$object->filename );
-                    chmod($photoPath.'/normal_'.$object->filename,$cfgSite->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                    chmod($photoPath.'/normal_'.$object->filename,$cfgSite->getSetting( 'site', 'StorageFilePermissions' ));
                 }
                 
                 // Update image data

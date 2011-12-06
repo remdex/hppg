@@ -1,5 +1,5 @@
 <?php
-    $resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
+    $resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' );
     
     $resolutionAppend = '';
     

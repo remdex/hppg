@@ -182,7 +182,7 @@ class erLhcoreClassModelGallerySphinxSearch {
    // Used only in cronjob
    public static function indexUnindexedImages($limit = 32)
    {           
-        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) == true)
+        if (erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled' ) == true)
         {            
             if (($lastIndex = erLhcoreClassPalleteIndexImage::getLastIndex('sphinx_index')) == 0)
             {
@@ -255,8 +255,8 @@ class erLhcoreClassModelGallerySphinxSearch {
          * 
          * http://en.wikipedia.org/wiki/Tag_cloud
          * */
-       $widthThumbnail = 120 * (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_width' ) / 100 );
-       $heightThumbnail = 130 * (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_height' ) / 100 );
+       $widthThumbnail = 120 * (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'inside_width' ) / 100 );
+       $heightThumbnail = 130 * (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'inside_height' ) / 100 );
            
        $max = ($widthThumbnail * $heightThumbnail) / 2; // A little better distribution of color
        $min = 25;
@@ -288,7 +288,7 @@ class erLhcoreClassModelGallerySphinxSearch {
     * */
    public static function indexImage($image,$checkDelay = false) {
 
-       if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) == true && $image->approved == 1 && ($checkDelay == false || ($checkDelay == true && erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'delay_index' ) == false))) {
+       if (erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled' ) == true && $image->approved == 1 && ($checkDelay == false || ($checkDelay == true && erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'delay_index' ) == false))) {
 
            $imageIndex = new erLhcoreClassModelGallerySphinxSearch();
 
@@ -348,8 +348,8 @@ class erLhcoreClassModelGallerySphinxSearch {
               * 
               * http://en.wikipedia.org/wiki/Tag_cloud
               * */  
-           $widthThumbnail = 120 * (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_width' ) / 100 );
-           $heightThumbnail = 130 * (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'inside_height' ) / 100 );
+           $widthThumbnail = 120 * (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'inside_width' ) / 100 );
+           $heightThumbnail = 130 * (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'inside_height' ) / 100 );
              
            $max = ($widthThumbnail * $heightThumbnail) / 2; // A little better distribution of color
            $min = 25;

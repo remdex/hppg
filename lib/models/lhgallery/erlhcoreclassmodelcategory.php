@@ -340,7 +340,7 @@ class erLhcoreClassModelGalleryCategory {
        	    break;
        		
        	case 'path_url':            
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)  {
+            if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'nice_url_enabled' ) == true)  {
                 $this->path_url = erLhcoreClassDesign::baseurl($this->nice_path_base,false);                     
             } else {
                 $this->path_url = erLhcoreClassDesign::baseurl('gallery/category').'/'.$this->cid;
@@ -359,7 +359,7 @@ class erLhcoreClassModelGalleryCategory {
        	break;
        	       	
        	case 'url_path_base':
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true) { 
+            if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'nice_url_enabled' ) == true) { 
                     $this->url_path_base = erLhcoreClassDesign::baseurldirect($this->nice_path_base);                     
             } else {
                     $this->url_path_base = erLhcoreClassDesign::baseurldirect('gallery/category').'/'.$this->cid;

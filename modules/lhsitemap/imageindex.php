@@ -1,7 +1,7 @@
 <?php
 
 $totalImages = erLhcoreClassModelGalleryImage::getImageCount(array('filter' => array('approved' => 1)));
-$totalParts = ceil($totalImages/erConfigClassLhConfig::getInstance()->conf->getSetting('sitemap_settings','image_per_page'));
+$totalParts = ceil($totalImages/erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','image_per_page'));
 
 header('Content-type: text/xml');
 echo '<?xml version="1.0" encoding="UTF-8"?>  

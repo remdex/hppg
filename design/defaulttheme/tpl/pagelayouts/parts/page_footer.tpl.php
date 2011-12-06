@@ -1,5 +1,5 @@
 <div id="footer">
-	<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'redirect_mobile' ) != false) : ?>
+	<?php if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'redirect_mobile' ) != false) : ?>
 	&nbsp;<a href="<?=erLhcoreClassDesign::baseurldirect('/m')?>">Browse mobile version</a>
 	<?php endif;?>
 	
@@ -29,7 +29,7 @@
 </div>
 
 <?php 
-if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' ) == true) {
+if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'debug_output' ) == true) {
 	$debug = ezcDebug::getInstance(); 
 	echo $debug->generateOutput(); 
 }

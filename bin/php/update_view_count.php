@@ -59,8 +59,8 @@ $instance = erLhcoreClassSystem::instance();
 $instance->SiteAccess = $siteAccessName; 
 $instance->SiteDir = './';
 $cfgSite = erConfigClassLhConfig::getInstance();    
-$defaultSiteAccess = $cfgSite->conf->getSetting( 'site', 'default_site_access' );
-$optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$siteAccessName);                      
+$defaultSiteAccess = $cfgSite->getSetting( 'site', 'default_site_access' );
+$optionsSiteAccess = $cfgSite->getSetting('site_access_options',$siteAccessName);                      
 $instance->Language = $optionsSiteAccess['locale'];                         
 $instance->ThemeSite = $optionsSiteAccess['theme'];                         
 $instance->WWWDirLang = '/'.$siteAccessName;   
@@ -68,7 +68,7 @@ $instance->WWWDirLang = '/'.$siteAccessName;
 
 // Main part of code taken from eZ Publish CMS
 
-$logHitSettings = $cfgSite->conf->getSetting( 'site', 'delay_image_hit_log_settings' );
+$logHitSettings = $cfgSite->getSetting( 'site', 'delay_image_hit_log_settings' );
 
 
 $logFilePath = $logHitSettings['log_path'];

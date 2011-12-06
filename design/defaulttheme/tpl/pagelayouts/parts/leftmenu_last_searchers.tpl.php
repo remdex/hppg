@@ -1,4 +1,4 @@
-<?php if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) === true) : ?>
+<?php if (erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled' ) === true) : ?>
 <div class="left-infobox search-infobox">				
 	<h3><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastsearches')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last searches')?> &raquo;</a></h3>
 	<ul>

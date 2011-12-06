@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>markItUp! preview template</title>
-<link rel="stylesheet" href="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'cdn', 'css' )?><?=erLhcoreClassDesign::designCSS('js/markitup/templates/preview.css');?>" /> 
+<link rel="stylesheet" href="<?=erConfigClassLhConfig::getInstance()->getSetting( 'cdn', 'css' )?><?=erLhcoreClassDesign::designCSS('js/markitup/templates/preview.css');?>" /> 
 </head>
 <body>
 <?php echo $content;?>

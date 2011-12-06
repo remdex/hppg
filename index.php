@@ -24,13 +24,14 @@ function __autoload( $className )
 
 ezcBase::addClassRepository( './','./lib/autoloads'); 
 
+erLhcoreClassSystem::init();
+
 // your code here
 ezcBaseInit::setCallback(
  'ezcInitDatabaseInstance',
  'erLhcoreClassLazyDatabaseConfiguration'
 );
-  
-erLhcoreClassSystem::init();
+
 $Result = erLhcoreClassModule::moduleInit();
 
 $tpl = erLhcoreClassTemplate::getInstance('pagelayouts/main.php');
@@ -43,8 +44,8 @@ if (isset($Result['pagelayout']))
 echo $tpl->fetch(); 
    
 
-
-/*include_once 'xhprof_lib/utils/xhprof_lib.php';
+/*
+include_once 'xhprof_lib/utils/xhprof_lib.php';
 include_once 'xhprof_lib/utils/xhprof_runs.php';
 
 $profiler_namespace = 'myapp';  // namespace for your application

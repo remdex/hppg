@@ -3,7 +3,7 @@
 $cache = CSCacheAPC::getMem(); 
 
 
-$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' ); 
+$resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' ); 
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
 
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';

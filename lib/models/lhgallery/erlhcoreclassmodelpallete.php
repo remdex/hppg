@@ -310,7 +310,7 @@ class erLhcoreClassModelGalleryPallete {
       // We limit result set if more than one color filter used at the same time, due to performance
       if ($colors_count > 1)
       {
-          $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'max_matches');
+          $maxMatches = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'max_matches');
           if ($result > $maxMatches) {
               $result = $maxMatches;
           }
@@ -357,7 +357,7 @@ class erLhcoreClassModelGalleryPallete {
         } elseif ($count_palletes_ids > 1) { //If more than one color filter is used
             
             // we cannot limit in this case either, because sorting is done instantly on calculated row
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'memory_table') == false) {
+            if (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'memory_table') == false) {
               
                 $orderParts = array();
                 $orderParts[] = 'LOG(lh_gallery_pallete_images.count)';
@@ -435,7 +435,7 @@ class erLhcoreClassModelGalleryPallete {
                    $selectFields[] = 'LOG(color_'.$i.'.count)';                   
                 }
            
-                $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'max_matches');
+                $maxMatches = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'max_matches');
                            
                 // We create memory table and insert to it instantly
                 $sql = "CREATE TEMPORARY TABLE color_search (
@@ -556,7 +556,7 @@ class erLhcoreClassModelGalleryPallete {
              * 
              * In second case we use memory table.
              * */
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'memory_table') == false) {
+            if (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'memory_table') == false) {
               
                 $orderParts = array();
                 $orderParts[] = 'LOG(lh_gallery_pallete_images.count)';
@@ -677,7 +677,7 @@ class erLhcoreClassModelGalleryPallete {
                    $selectFields[] = 'LOG(color_'.$i.'.count)';                   
                 }
                 
-                $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'max_matches');
+                $maxMatches = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'max_matches');
                 
                 // SELECT @ @global.tmp_table_size , @ @global.max_heap_table_size ;                                 
                 // We create memory table and insert to it instantly
@@ -758,7 +758,7 @@ class erLhcoreClassModelGalleryPallete {
        $params = array_merge($paramsDefault,$paramsSearch);
                  
        $conditions = array();
-       $useMemoryTable = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'memory_table');
+       $useMemoryTable = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'memory_table');
        $count_palletes_ids = count($params['pallete_id']); 
        
         // Standard query if one color
@@ -811,7 +811,7 @@ class erLhcoreClassModelGalleryPallete {
                    $selectFields[] = 'LOG(color_'.$i.'.count)';                   
                 }
                 
-                $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'max_matches');
+                $maxMatches = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'max_matches');
                                                 
                 // We create memory table and insert to it instantly
                 $sql = "CREATE TEMPORARY TABLE color_search (

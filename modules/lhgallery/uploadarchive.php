@@ -21,13 +21,13 @@ if (isset($result['success']) && $result['success'] == 'true')
            if ($currentUser->isLogged())
                 $user_id = $currentUser->getUserID();	
            else 
-               $user_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' );
+               $user_id = erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'anonymous_user_id' );
             
            $fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(40);	       	       
            rename($result['filepath'],'var/archives/'.$fileNamePhysic.'.zip');	
            
     	   $config = erConfigClassLhConfig::getInstance();
-    	   chmod('var/archives/'.$fileNamePhysic.'.zip',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    	   chmod('var/archives/'.$fileNamePhysic.'.zip',$config->getSetting( 'site', 'StorageFilePermissions' ));
                	  
            $archive->filename = $fileNamePhysic.'.zip';	 	       
            $archive->album_name = ($uploader->getParam('title') != '') ? $uploader->getParam('title') : '';

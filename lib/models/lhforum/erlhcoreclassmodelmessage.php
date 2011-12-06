@@ -90,7 +90,7 @@ class erLhcoreClassModelForumMessage {
        	break;
        	    
        	case 'url_path_base':
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true) { 
+            if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'nice_url_enabled' ) == true) { 
                     $this->url_path_base = erLhcoreClassDesign::baseurldirect($this->nice_path_base);
             } else {
                     $this->url_path_base = erLhcoreClassDesign::baseurldirect('forum/message').'/'.$this->id;
@@ -114,7 +114,7 @@ class erLhcoreClassModelForumMessage {
        		break;        		  	
            	
        	case 'url_path':         
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+            if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'nice_url_enabled' ) == true)    
             {                         
                     $this->url_path = erLhcoreClassDesign::baseurl($this->nice_path_base,false);            
                     return $this->url_path;

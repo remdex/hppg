@@ -22,8 +22,8 @@ if (($Result = $cache->restore($cacheKeyImageView)) === false)
         
         try {        
             $similarImages = $xmlRPCClient->execute( array (
-                'op'   => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'query_img_function' ),
-                'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),
+                'op'   => erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'query_img_function' ),
+                'dbid' => erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'database_id' ),
                 'id'   => $Image->pid,
                 'nr'   => 24
             ));

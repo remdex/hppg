@@ -88,7 +88,7 @@ class erLhcoreClassModelUserProfile {
        	        } else {
        	                try {
        	                    erLhcoreClassImageConverter::getInstance()->converter->transform( 'photow_60', $this->filepath . '/' . $this->photo, $this->filepath . '/' . 'photow_60_'.$this->photo );
-       	                    chmod($this->filepath . '/' . 'photow_60_' . $this->photo, erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'StorageFilePermissions' ));
+       	                    chmod($this->filepath . '/' . 'photow_60_' . $this->photo, erConfigClassLhConfig::getInstance()->getSetting( 'site', 'StorageFilePermissions' ));
        	                    $this->addVariantion('photow_60');
        	                    $this->photow_60 = $instance->wwwDir() . '/' . $this->filepath . '/' . 'photow_60_'.$this->photo;
        	                } catch (Exception $e) {
@@ -109,7 +109,7 @@ class erLhcoreClassModelUserProfile {
        	        } else {
        	                try {
        	                    erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $this->filepath . '/' . $this->photo, $this->filepath . '/' . 'photo_normal_'.$this->photo );
-       	                    chmod($this->filepath . '/' . 'photo_normal_' . $this->photo, erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'StorageFilePermissions' ));
+       	                    chmod($this->filepath . '/' . 'photo_normal_' . $this->photo, erConfigClassLhConfig::getInstance()->getSetting( 'site', 'StorageFilePermissions' ));
        	                    $this->addVariantion('photo_normal');
        	                    $this->photo_normal = $instance->wwwDir() . '/' . $this->filepath . '/' . 'photo_normal_'.$this->photo;
        	                } catch (Exception $e) {

@@ -44,7 +44,7 @@ class erLhcoreClassSWFConverter {
         
        	rename($params['file_upload_path'],$photoDir.'/'.$fileNamePhysic);
                
-        chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
        
         $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
         $image->total_filesize = $image->filesize;
@@ -71,14 +71,14 @@ class erLhcoreClassSWFConverter {
         
         $config = erConfigClassLhConfig::getInstance();
 
-        $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
-   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+        $wwwUser = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_user' );
+   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_group' );
         
 		rename($pathExtracted,$photoDir.'/'.$fileNamePhysic);
 		
     	chown($photoDir.'/'.$fileNamePhysic,$wwwUser);
     	chgrp($photoDir.'/'.$fileNamePhysic,$wwwUserGroup);
-    	chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    	chmod($photoDir.'/'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
     	
     	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
     	$image->total_filesize = $image->filesize;

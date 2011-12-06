@@ -38,8 +38,8 @@ class erLhcoreClassTemplate {
     function erLhcoreClassTemplate($file = null) {
         
         $cfg = erConfigClassLhConfig::getInstance();               
-        $this->cacheEnabled = $cfg->conf->getSetting( 'site', 'templatecache' );
-        $this->templatecompile = $cfg->conf->getSetting( 'site', 'templatecompile' );
+        $this->cacheEnabled = $cfg->getSetting( 'site', 'templatecache' );
+        $this->templatecompile = $cfg->getSetting( 'site', 'templatecompile' );
         
         if (!is_null($file))
         $this->file = $file;   
@@ -53,9 +53,10 @@ class erLhcoreClassTemplate {
             if (($this->cacheTemplates = $this->cacheWriter->restore('templateCache')) == false)
             {        	
             	$this->cacheWriter->store('templateCache',array());
-            	$this->cacheTemplates = array();
-            	$cacheObj->store('templateCacheArray_version_'.$cacheObj->getCacheVersion('site_version'),array());
+            	$this->cacheTemplates = array();            	
             } 
+            
+            $cacheObj->store('templateCacheArray_version_'.$cacheObj->getCacheVersion('site_version'),array());
         }   
     }
 
@@ -217,10 +218,10 @@ class erLhcoreClassTemplate {
 			
 			// Compile config settings, direct output
 			$Matches = array();
-			preg_match_all('/<\?=erConfigClassLhConfig::getInstance\(\)->conf->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)(.*?)\?\>/i',$contentFile,$Matches); 
+			preg_match_all('/<\?=erConfigClassLhConfig::getInstance\(\)->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)(.*?)\?\>/i',$contentFile,$Matches); 
 			foreach ($Matches[1] as $key => $UrlAddress)
 			{				    
-			    $valueConfig = erConfigClassLhConfig::getInstance()->conf->getSetting($Matches[2][$key],$Matches[5][$key]);
+			    $valueConfig = erConfigClassLhConfig::getInstance()->getSetting($Matches[2][$key],$Matches[5][$key]);
 			    $valueReplace = '';
 			    
 			    if (is_bool($valueConfig)){
@@ -238,10 +239,10 @@ class erLhcoreClassTemplate {
 						
 			// Compile config settings
 			$Matches = array();
-			preg_match_all('/erConfigClassLhConfig::getInstance\(\)->conf->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)/i',$contentFile,$Matches); 
+			preg_match_all('/erConfigClassLhConfig::getInstance\(\)->getSetting\((\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?),(\s?)\'([a-zA-Z0-9-\.-\/\_]+)\'(\s?)\)/i',$contentFile,$Matches); 
 			foreach ($Matches[1] as $key => $UrlAddress)
 			{				    
-			    $valueConfig = erConfigClassLhConfig::getInstance()->conf->getSetting($Matches[2][$key],$Matches[5][$key]);
+			    $valueConfig = erConfigClassLhConfig::getInstance()->getSetting($Matches[2][$key],$Matches[5][$key]);
 			    $valueReplace = '';
 			    
 			    if (is_bool($valueConfig)){

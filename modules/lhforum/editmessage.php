@@ -36,7 +36,7 @@ if (isset($_POST['UpdateMessage']))
 	        }
 	        
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'photoforum', $_FILES['LocalFile']['tmp_name'], $photoDir.'/'.$fileNamePhysic );
-            chmod($photoDir.'/'.$fileNamePhysic,erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            chmod($photoDir.'/'.$fileNamePhysic,erConfigClassLhConfig::getInstance()->getSetting( 'site', 'StorageFilePermissions' ));
             $instance = erLhcoreClassSystem::instance();                    
             $message->content .= "\n[img]" . $instance->wwwDir() . '/' . $photoDir . '/' . $fileNamePhysic.'[/img]';
             

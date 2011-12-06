@@ -11,7 +11,7 @@
 
 <div id="main-header-bg" class="float-break">
     <div id="logo">
-        <a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><img src="<?=erLhcoreClassDesign::design('images/newdesign/logo.jpg')?>" title="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" alt="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" title="<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?>" /></a>
+        <a href="<?=erLhcoreClassDesign::baseurl('/')?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Home')?>"><img src="<?=erLhcoreClassDesign::design('images/newdesign/logo.jpg')?>" title="<?=erConfigClassLhConfig::getInstance()->getSetting( 'site', 'title' )?>" alt="<?=erConfigClassLhConfig::getInstance()->getSetting( 'site', 'title' )?>" title="<?=erConfigClassLhConfig::getInstance()->getSetting( 'site', 'title' )?>" /></a>
     </div>
     <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/search_box.tpl.php'));?>
 </div>

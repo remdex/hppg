@@ -6,7 +6,7 @@ $Image = erLhcoreClassGallery::getSession()->load( 'erLhcoreClassModelGalleryIma
 $mode = isset($Params['user_parameters_unordered']['mode']) ? $Params['user_parameters_unordered']['mode'] : 'album';
 $direction = (isset($Params['user_parameters_unordered']['direction']) && $Params['user_parameters_unordered']['direction'] == 'left') ? $Params['user_parameters_unordered']['direction'] : 'right';
 
-$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );    
+$resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' );    
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';    
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
 
@@ -577,9 +577,9 @@ if ($mode == 'album')
     
     $pallete_items_number = count($pallete_id);
     if ($pallete_items_number > 0) {  
-        if ($pallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
-            $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
-            $pallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+        if ($pallete_items_number > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
+            $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
+            $pallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
         }
         $filterColor = $pallete_id;
         $appendColorMode = '/(color)/'.implode('/',$pallete_id);
@@ -587,9 +587,9 @@ if ($mode == 'album')
     
     $npallete_items_number = count($npallete_id);
     if ($npallete_items_number > 0) {  
-        if ($npallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
-            $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
-            $npallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+        if ($npallete_items_number > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
+            $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
+            $npallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
         }
         $nfilterColor = $npallete_id;
         $appendColorMode .= '/(ncolor)/'.implode('/',$npallete_id);
@@ -1295,22 +1295,22 @@ if ($mode == 'album')
         $ncolorFilter = (array)$Params['user_parameters_unordered']['ncolor'];
         
         // Protection against to mutch color filters
-        if (count($colorFilter) > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
-            $colorFilter = array_slice($colorFilter,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
+        if (count($colorFilter) > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
+            $colorFilter = array_slice($colorFilter,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));    
         }
         
-        if (count($ncolorFilter) > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
-            $ncolorFilter = array_slice($ncolorFilter,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));    
+        if (count($ncolorFilter) > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
+            $ncolorFilter = array_slice($ncolorFilter,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));    
         }
         
-        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'database_handler') == true) {                    	
+        if (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'database_handler') == true) {                    	
             $imagesAjax = erLhcoreClassModelGalleryPallete::getAjaxImages($Image->pid,$colorFilter,$direction);    	    	
         	$cache->store($cacheKeyImage,$imagesAjax,0);
         } else {
             
             $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => (array)$Params['user_parameters_unordered']['color'],'ncolor_filter' => (array)$Params['user_parameters_unordered']['ncolor'],'relevance' => true, 'SearchLimit' => 1,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)));
                                    
-            $standardSearch = count($colorFilter) == 1 || empty($colorFilter) || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search') == false;
+            $standardSearch = count($colorFilter) == 1 || empty($colorFilter) || erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'extended_search') == false;
                         
             if ($direction == 'left') {
                   

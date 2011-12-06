@@ -26,7 +26,7 @@ class erLhcoreClassForum {
    }
    
    public static function addToSphinx($msg_id) {
-       if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled' ) == true)
+       if (erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled' ) == true)
        {
            $db = ezcDbInstance::get();
            $stmt = $db->prepare('REPLACE INTO `lh_forum_message_delta` (`id`) VALUES (:id)');
@@ -48,7 +48,7 @@ class erLhcoreClassForum {
       $cl = erLhcoreClassGallery::getSphinxInstance();
       $cl->ResetFilters();
       $cl->SetSelect('');
-      $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' );    
+      $maxMatches = erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'max_matches' );    
                   
       $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxMatches);
                     
@@ -103,7 +103,7 @@ class erLhcoreClassForum {
       
       $cl->SetSortMode(SPH_SORT_EXTENDED, isset($params['sort']) ? $params['sort'] : '@id DESC');
 
-      $startAppend = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
+      $startAppend = erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
       
       $cl->setGroupBy('topic_id', SPH_GROUPBY_ATTR);
       
@@ -115,7 +115,7 @@ class erLhcoreClassForum {
       // Make some weightning
       $cl->SetFieldWeights($weights);
          
-      $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index_forum' ) );
+      $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend : '', erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'index_forum' ) );
      
       
       if ($result['total_found'] == 0 || !isset($result['matches'])){

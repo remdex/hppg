@@ -6,7 +6,7 @@ foreach ($ReverseOrder as $pathItem) : ?>
  <?=$pathItem['title']?>&laquo;
 <? endforeach;?>
 <? endif; ?>
-<?=erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' )?></title>
+<?=erConfigClassLhConfig::getInstance()->getSetting( 'site', 'title' )?></title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="<?=erLhcoreClassDesign::designCSS('css/style.css;js/markitup/skins/simple/style.css;js/markitup/sets/bbcode/style.css');?>" /> 
 <link rel="icon" type="image/png" href="<?=erLhcoreClassDesign::design('images/favicon.ico')?>" />

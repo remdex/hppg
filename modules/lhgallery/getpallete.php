@@ -21,7 +21,7 @@ $modes = array(
 'color'
 );
 
-$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
+$resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' );
 $resolutionAppend = '';
 if (isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions)) {    
     $resolutionAppend = '/(resolution)/'.$resolutions[$Params['user_parameters_unordered']['resolution']]['width'].'x'.$resolutions[$Params['user_parameters_unordered']['resolution']]['height'];

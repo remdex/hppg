@@ -11,7 +11,7 @@ if (isset($_POST['UpdateConfig']))
 		case erLhcoreClassModelSystemConfig::SITE_ACCESS_PARAM_ON:
 			
 				$data = array();
-				foreach (erConfigClassLhConfig::getInstance()->conf->getSetting('site','available_site_access') as $siteaccess)
+				foreach (erConfigClassLhConfig::getInstance()->getSetting('site','available_site_access') as $siteaccess)
 				{
 					$data[$siteaccess] = $_POST['Value'.$siteaccess];
 				}					

@@ -3,13 +3,13 @@
 class erLhcoreClassModelGalleryImgSeekData {
     
    public static function removeImage($pid) {
-       if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) == true)
+       if (erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'enabled' ) == true)
        {
            try {           
                $xmlRPCClient = self::getImgSeekClientInstance();                    
                $xmlRPCClient->execute( array (
                 'op' => 'removeid',
-                'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' ),
+                'dbid' => erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'database_id' ),
                 'id'   => $pid
                ));                     
            } catch (Exception $e) {
@@ -21,7 +21,7 @@ class erLhcoreClassModelGalleryImgSeekData {
    // Used only in cronjob
    public static function indexUnindexedImages($limit = 32)
    {           
-        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) == true)
+        if (erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'enabled' ) == true)
         {            
             if (($lastIndex = erLhcoreClassPalleteIndexImage::getLastIndex('imgseek_index')) == 0)
             {
@@ -50,7 +50,7 @@ class erLhcoreClassModelGalleryImgSeekData {
    
    static function getImgSeekClientInstance() {
         if (self::$imgSeekClient == NULL) {
-            self::$imgSeekClient = new erLhcoreClassNodeImgSeek('http://'.erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'host' ),erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'port' ));
+            self::$imgSeekClient = new erLhcoreClassNodeImgSeek('http://'.erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'host' ),erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'port' ));
         }
         return self::$imgSeekClient;
    }
@@ -61,18 +61,18 @@ class erLhcoreClassModelGalleryImgSeekData {
     * */
    public static function indexImage($image,$checkDelay = false) {
 
-       if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'enabled' ) == true && $image->approved == 1 && ($checkDelay == false || ($checkDelay == true && erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'delay_index' ) == false))) {
+       if (erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'enabled' ) == true && $image->approved == 1 && ($checkDelay == false || ($checkDelay == true && erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'delay_index' ) == false))) {
 
            $photoPath = 'albums/'.$image->filepath.'normal_'. $image->filename;
            
-           if ( ((erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' && file_exists($photoPath) && is_file($photoPath)) || erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'amazons3') && $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) { 
+           if ( ((erConfigClassLhConfig::getInstance()->getSetting('site','file_storage_backend') == 'filesystem' && file_exists($photoPath) && is_file($photoPath)) || erConfigClassLhConfig::getInstance()->getSetting('site','file_storage_backend') == 'amazons3') && $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) { 
 
                $deleteFile = false;
-               if ( erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' ) {
+               if ( erConfigClassLhConfig::getInstance()->getSetting('site','file_storage_backend') == 'filesystem' ) {
                     $url = urlencode(erLhcoreClassSystem::instance()->SiteDir . $photoPath);
                } else { 
                     // FIXME
-                    $urlRemote = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
+                    $urlRemote = erConfigClassLhConfig::getInstance()->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
                     $url = 'var/tmpfiles/'.sha1('/albums/'.$image->filepath.'normal_'.$image->filename.time()).'.'.erLhcoreClassImageConverter::getExtension($image->filename);
                     file_put_contents($url,file_get_contents($urlRemote));
                     $deleteFile = true;
@@ -82,7 +82,7 @@ class erLhcoreClassModelGalleryImgSeekData {
                $xmlRPCClient->execute(array('op' => 'addimage', 
                                             'id' => $image->pid,
                                             'fp' => $url,
-                                            'dbid' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'database_id' )));  
+                                            'dbid' => erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'database_id' )));  
               if ($deleteFile == true)  { 
                 unlink($url);
               }     

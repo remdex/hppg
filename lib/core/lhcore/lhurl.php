@@ -14,33 +14,34 @@ class erLhcoreClassURL extends ezcUrl {
     {
         if ( is_null( self::$instance ) )
         {            
-            $sys = erLhcoreClassSystem::instance()->WWWDir;
+            
+            $sysConfiguration = erLhcoreClassSystem::instance();
             
             $urlCfgDefault = ezcUrlConfiguration::getInstance();
-            $urlCfgDefault->basedir = $sys;
-            $urlCfgDefault->script  = erLhcoreClassSystem::instance()->IndexFile;
+            $urlCfgDefault->basedir = $sysConfiguration->WWWDir;
+            $urlCfgDefault->script  = $sysConfiguration->IndexFile;
             $urlCfgDefault->unorderedDelimiters = array( '(', ')' );            
             $urlCfgDefault->addOrderedParameter( 'siteaccess' ); 
             $urlCfgDefault->addOrderedParameter( 'module' ); 
             $urlCfgDefault->addOrderedParameter( 'function' );
                        
-            $urlInstance = new erLhcoreClassURL(erLhcoreClassSystem::instance()->RequestURI, $urlCfgDefault);
+            $urlInstance = new erLhcoreClassURL($sysConfiguration->RequestURI, $urlCfgDefault);
                 
             $siteaccess = $urlInstance->getParam( 'siteaccess' );
             $cfgSite = erConfigClassLhConfig::getInstance(); 
                                                           
-            $availableSiteaccess = $cfgSite->conf->getSetting( 'site', 'available_site_access' );
-            $defaultSiteAccess = $cfgSite->conf->getSetting( 'site', 'default_site_access' );
+            $availableSiteaccess = $cfgSite->getSetting( 'site', 'available_site_access' );
+            $defaultSiteAccess = $cfgSite->getSetting( 'site', 'default_site_access' );
                        
             if ($defaultSiteAccess != $siteaccess && in_array($siteaccess,$availableSiteaccess))
             {     
-                $optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$siteaccess);                      
-                erLhcoreClassSystem::instance()->Language = $optionsSiteAccess['locale'];                         
-                erLhcoreClassSystem::instance()->ThemeSite = $optionsSiteAccess['theme'];
-                erLhcoreClassSystem::instance()->ContentLanguage = $optionsSiteAccess['content_language'];
+                $optionsSiteAccess = $cfgSite->getSetting('site_access_options',$siteaccess);                      
+                $sysConfiguration->Language = $optionsSiteAccess['locale'];                         
+                $sysConfiguration->ThemeSite = $optionsSiteAccess['theme'];
+                $sysConfiguration->ContentLanguage = $optionsSiteAccess['content_language'];
                                          
-                erLhcoreClassSystem::instance()->WWWDirLang = '/'.$siteaccess; 
-                erLhcoreClassSystem::instance()->SiteAccess = $siteaccess; 
+                $sysConfiguration->WWWDirLang = '/'.$siteaccess; 
+                $sysConfiguration->SiteAccess = $siteaccess; 
                 
                 if ($optionsSiteAccess['locale'] != 'en_EN')
                 {
@@ -51,13 +52,13 @@ class erLhcoreClassURL extends ezcUrl {
                 
             } else {
                 
-                $optionsSiteAccess = $cfgSite->conf->getSetting('site_access_options',$defaultSiteAccess);
+                $optionsSiteAccess = $cfgSite->getSetting('site_access_options',$defaultSiteAccess);
                 
                 // Falling back
-                erLhcoreClassSystem::instance()->SiteAccess = $defaultSiteAccess; 
-                erLhcoreClassSystem::instance()->Language = $optionsSiteAccess['locale'];                
-                erLhcoreClassSystem::instance()->ThemeSite = $optionsSiteAccess['theme'];    
-                erLhcoreClassSystem::instance()->ContentLanguage = $optionsSiteAccess['content_language'];
+                $sysConfiguration->SiteAccess = $defaultSiteAccess; 
+                $sysConfiguration->Language = $optionsSiteAccess['locale'];                
+                $sysConfiguration->ThemeSite = $optionsSiteAccess['theme'];    
+                $sysConfiguration->ContentLanguage = $optionsSiteAccess['content_language'];
                 
                 // To reset possition counter
                 $urlCfgDefault->removeOrderedParameter('siteaccess');

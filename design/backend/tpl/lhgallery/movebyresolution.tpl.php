@@ -12,7 +12,7 @@
     <tr>
         <td valign="top">        
         <select name="ResolutionSource">
-        <?php foreach (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' ) as $resolution) : ?>
+        <?php foreach (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' ) as $resolution) : ?>
             <option value="<?=$resolution['width']?>x<?=$resolution['height']?>"><?=$resolution['width']?>x<?=$resolution['height']?></option>
         <?php endforeach;?>
         </select>        

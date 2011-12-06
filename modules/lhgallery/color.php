@@ -8,7 +8,7 @@ sort($pallete_id);
 sort($npallete_id);
 
 $searchParams = array();
-$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
+$resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' );
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
 if ($resolution != ''){
@@ -30,21 +30,21 @@ if (($Result = $cache->restore($cacheKey)) === false)
     if ( $pallete_items_number > 0 || $npallete_items_number > 0 ) {    
         try {                
                   
-            if ($pallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
-                $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
-                $pallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+            if ($pallete_items_number > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
+                $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
+                $pallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
             } 
                 
-            if ($npallete_items_number > erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters')) {
-                $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));
-                $npallete_items_number = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters');
+            if ($npallete_items_number > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
+                $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
+                $npallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
             }
             
             sort($pallete_id);
             sort($npallete_id);
             
-            $tpl->set('max_filters',$pallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));  
-            $tpl->set('nmax_filters',$npallete_items_number == erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'maximum_filters'));  
+            $tpl->set('max_filters',$pallete_items_number == erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));  
+            $tpl->set('nmax_filters',$npallete_items_number == erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));  
               
             $tpl->set('show_pallete',false);    
             $pages = new lhPaginator();
@@ -52,7 +52,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
              
             
             $list = array();
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'database_handler') == true) {
+            if (erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'database_handler') == true) {
                 $pages->items_total = erLhcoreClassModelGalleryPallete::getListCountPalleteImages(array('pallete_id' => $pallete_id));
                 if ($pages->items_total > 0){
                     $list = erLhcoreClassModelGalleryPallete::getImages(array('pallete_id' => $pallete_id,'sort' => 'lh_gallery_pallete_images.count DESC, lh_gallery_pallete_images.pid DESC','offset' => $pages->low, 'limit' => $pages->items_per_page));
@@ -66,7 +66,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
                 $searchParams['SearchLimit'] = 20;
                 $searchParams['SearchOffset'] = $pages->low;
                       
-                $standardSearch = count($pallete_id) == 1 || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search') == false;
+                $standardSearch = count($pallete_id) == 1 || erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'extended_search') == false;
                 
                 if ($standardSearch == true || empty($pallete_id) ) {
                     $searchParams['sort'] = '@relevance DESC, @id DESC';
@@ -113,7 +113,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
             $tpl->set('yes_color',$yesColor);
             $tpl->set('no_color',$noColor);
                        
-            $tpl->set('database_handler',erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'database_handler'));
+            $tpl->set('database_handler',erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'database_handler'));
             
             if (!empty($pallete_id))
             $tpl->set('palletes',erLhcoreClassModelGalleryPallete::getList(array('filterin' => array('id' => $pallete_id))));

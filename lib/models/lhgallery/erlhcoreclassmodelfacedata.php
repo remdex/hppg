@@ -161,7 +161,7 @@ class erLhcoreClassModelGalleryFaceData {
    // Used only in cronjob
    public static function indexUnindexedImages($limit = 32)
    {           
-        if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'enabled' ) == true)
+        if (erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'enabled' ) == true)
         {            
             if (($lastIndex = erLhcoreClassPalleteIndexImage::getLastIndex('face_index')) == 0)
             {
@@ -191,7 +191,7 @@ class erLhcoreClassModelGalleryFaceData {
    
    static function getFaceRestClientInstance() {
         if (self::$faceRestClient == NULL) {
-            self::$faceRestClient = new FaceRestClient(erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'api_key' ), erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'api_secret' ));
+            self::$faceRestClient = new FaceRestClient(erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'api_key' ), erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'api_secret' ));
         }
         return self::$faceRestClient;
    }
@@ -202,23 +202,23 @@ class erLhcoreClassModelGalleryFaceData {
     * */
    public static function indexImage($image,$checkDelay = false) {
 
-       if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'enabled' ) == true && $image->approved == 1 && ($checkDelay == false || ($checkDelay == true && erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'delay_index' ) == false))) {
+       if (erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'enabled' ) == true && $image->approved == 1 && ($checkDelay == false || ($checkDelay == true && erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'delay_index' ) == false))) {
 
-           if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'use_full_size') === true) {
+           if (erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'use_full_size') === true) {
                $photoPath = 'albums/'.$image->filepath. $image->filename;    
            } else {
                $photoPath = 'albums/'.$image->filepath.'normal_'. $image->filename;
            }
 
-           if ( ((erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' && file_exists($photoPath) && is_file($photoPath)) || erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'amazons3')&& $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) { 
+           if ( ((erConfigClassLhConfig::getInstance()->getSetting('site','file_storage_backend') == 'filesystem' && file_exists($photoPath) && is_file($photoPath)) || erConfigClassLhConfig::getInstance()->getSetting('site','file_storage_backend') == 'amazons3')&& $image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE ) { 
 
-               if ( erConfigClassLhConfig::getInstance()->conf->getSetting('site','file_storage_backend') == 'filesystem' ) {
-                    $url = 'http://' . erConfigClassLhConfig::getInstance()->conf->getSetting( 'site','site_domain') . '/' . $photoPath;
+               if ( erConfigClassLhConfig::getInstance()->getSetting('site','file_storage_backend') == 'filesystem' ) {
+                    $url = 'http://' . erConfigClassLhConfig::getInstance()->getSetting( 'site','site_domain') . '/' . $photoPath;
                } else {
-                   if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'use_full_size') === true) {
-                       $url = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.$image->filename;
+                   if (erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'use_full_size') === true) {
+                       $url = erConfigClassLhConfig::getInstance()->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.$image->filename;
                    } else {
-                       $url = erConfigClassLhConfig::getInstance()->conf->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
+                       $url = erConfigClassLhConfig::getInstance()->getSetting('amazons3','endpoint') . '/albums/'.$image->filepath.'normal_'.$image->filename;
                    }
                }
            
@@ -285,7 +285,7 @@ class erLhcoreClassModelGalleryFaceData {
                    $stmt->execute();
                }
                // Avoid to many requests at the same time
-               usleep(erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'request_delay' ));
+               usleep(erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'request_delay' ));
          }         
             
        } elseif ($image->approved == 0) {

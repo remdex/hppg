@@ -50,11 +50,11 @@ class erLhcoreClassHTMLVConverter {
         
         $config = erConfigClassLhConfig::getInstance();
         
-        if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+        if ($config->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
         {
            	rename($params['file_upload_path'],$photoDir.'/'.$fileNamePhysic);
             
-            chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            chmod($photoDir.'/'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
            
             $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
             $image->total_filesize = $image->filesize;
@@ -82,15 +82,15 @@ class erLhcoreClassHTMLVConverter {
                 erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/normal_'.implode('.',$parts).'.jpg' ); 
                 erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/thumb_'.implode('.',$parts).'.jpg' ); 
                	       
-                chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-                chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
+                chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
                 
                 unlink($photoDir.'/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot
             }
             
             $image->filename = $fileNamePhysic;
             
-        } elseif ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
+        } elseif ($config->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') {
             
             $fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().$fileNamePhysic;
             rename($params['file_upload_path'],'var/tmpupload/'.$fileNamePhysic);
@@ -106,7 +106,7 @@ class erLhcoreClassHTMLVConverter {
             
             $image->media_type = erLhcoreClassModelGalleryImage::mediaTypeHTMLV;
             
-            S3::setAuth($config->conf->getSetting( 'amazons3', 'aws_access_key' ), $config->conf->getSetting( 'amazons3', 'aws_secret_key')); 
+            S3::setAuth($config->getSetting( 'amazons3', 'aws_access_key' ), $config->getSetting( 'amazons3', 'aws_secret_key')); 
             
             if ($tag->Streams['picturable']) {
                 $image->has_preview = 1;
@@ -123,14 +123,14 @@ class erLhcoreClassHTMLVConverter {
                 erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', 'var/tmpupload/original_'.implode('.',$parts).'.jpg','var/tmpupload/normal_'.implode('.',$parts).'.jpg' ); 
                 erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', 'var/tmpupload/original_'.implode('.',$parts).'.jpg', 'var/tmpupload/thumb_'.implode('.',$parts).'.jpg' ); 
 
-                S3::putObject(S3::inputFile('var/tmpupload/thumb_'.implode('.',$parts).'.jpg', false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_'.implode('.',$parts).'.jpg', S3::ACL_PUBLIC_READ);
-                S3::putObject(S3::inputFile('var/tmpupload/normal_'.implode('.',$parts).'.jpg', false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_'.implode('.',$parts).'.jpg', S3::ACL_PUBLIC_READ);
+                S3::putObject(S3::inputFile('var/tmpupload/thumb_'.implode('.',$parts).'.jpg', false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_'.implode('.',$parts).'.jpg', S3::ACL_PUBLIC_READ);
+                S3::putObject(S3::inputFile('var/tmpupload/normal_'.implode('.',$parts).'.jpg', false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_'.implode('.',$parts).'.jpg', S3::ACL_PUBLIC_READ);
                 
                 unlink('var/tmpupload/normal_'.implode('.',$parts).'.jpg');    // Delete original screenshot
                 unlink('var/tmpupload/thumb_'.implode('.',$parts).'.jpg');    // Delete original screenshot
             }
          
-            S3::putObject(S3::inputFile('var/tmpupload/'.$fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
+            S3::putObject(S3::inputFile('var/tmpupload/'.$fileNamePhysic, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
                 
             unlink('var/tmpupload/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot
             unlink('var/tmpupload/'.$fileNamePhysic);    // Delete original screenshot
@@ -148,15 +148,15 @@ class erLhcoreClassHTMLVConverter {
         
         $config = erConfigClassLhConfig::getInstance();
 
-        if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+        if ($config->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
         {
-            $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
-       		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+            $wwwUser = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_user' );
+       		$wwwUserGroup = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_group' );
        		 
     		rename($pathExtracted,$photoDir.'/'.$fileNamePhysic);
         	chown($photoDir.'/'.$fileNamePhysic,$wwwUser);
         	chgrp($photoDir.'/'.$fileNamePhysic,$wwwUserGroup);
-        	chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        	chmod($photoDir.'/'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
         	 
         	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
         	$image->total_filesize = $image->filesize;
@@ -186,15 +186,15 @@ class erLhcoreClassHTMLVConverter {
     
                 chown($photoDir.'/normal_'.implode('.',$parts).'.jpg',$wwwUser);
                 chgrp($photoDir.'/normal_'.implode('.',$parts).'.jpg',$wwwUserGroup);       
-                chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
                 
                 chown($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$wwwUser);
                 chgrp($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$wwwUserGroup);     	
-                chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+                chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
                           
                 unlink($photoDir.'/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot
             }        
-        } elseif ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') { 
+        } elseif ($config->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') { 
         
             
         }
@@ -233,8 +233,8 @@ class erLhcoreClassHTMLVConverter {
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/normal_'.implode('.',$parts).'.jpg' ); 
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/thumb_'.implode('.',$parts).'.jpg' ); 
            	       
-            chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-            chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
+            chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
             
             unlink($photoDir.'/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot
         }        

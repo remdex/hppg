@@ -13,9 +13,9 @@ if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE && $Par
     
     $config = erConfigClassLhConfig::getInstance();
         
-    chmod($photoPath.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-    chmod($photoPath.'/normal_'.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-    chmod($photoPath.'/thumb_'.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.'/normal_'.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.'/thumb_'.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
 
     $imageAnalyze = new ezcImageAnalyzer( $photoPath.$image->filename ); 	       
     $image->pwidth = $imageAnalyze->data->width;
@@ -33,9 +33,9 @@ if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE && $Par
     
     $config = erConfigClassLhConfig::getInstance();
         
-    chmod($photoPath.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-    chmod($photoPath.'/normal_'.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-    chmod($photoPath.'/thumb_'.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.'/normal_'.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.'/thumb_'.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
 
     $imageAnalyze = new ezcImageAnalyzer( $photoPath.$image->filename ); 	       
     $image->pwidth = $imageAnalyze->data->width;
@@ -53,9 +53,9 @@ if ($image->media_type == erLhcoreClassModelGalleryImage::mediaTypeIMAGE && $Par
     
     $config = erConfigClassLhConfig::getInstance();
         
-    chmod($photoPath.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-    chmod($photoPath.'/normal_'.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-    chmod($photoPath.'/thumb_'.$image->filename,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.'/normal_'.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
+    chmod($photoPath.'/thumb_'.$image->filename,$config->getSetting( 'site', 'StorageFilePermissions' ));
 
     $imageAnalyze = new ezcImageAnalyzer( $photoPath.$image->filename ); 	       
     $image->pwidth = $imageAnalyze->data->width;

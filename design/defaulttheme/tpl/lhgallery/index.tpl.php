@@ -28,7 +28,7 @@
     <?endforeach;?>
     </div>
         
-    <?php if ( erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'database_handler') === false) : ?>
+    <?php if ( erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'database_handler') === false) : ?>
         <div id="pallete-exclude" class="pallete-main float-break pallete-sub right">
         <h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Exclude color')?></h3>
         <?php 

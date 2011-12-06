@@ -173,7 +173,7 @@ class erLhcoreClassModelGalleryAlbum {
        	break;       
        		
         case 'url_path':        
-                if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+                if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'nice_url_enabled' ) == true)    
                 { 
                      $this->url_path = erLhcoreClassDesign::baseurl($this->nice_path_base,false);                     
                 } else {
@@ -184,7 +184,7 @@ class erLhcoreClassModelGalleryAlbum {
             break;	
 
         case 'url_path_base':
-            if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'nice_url_enabled' ) == true)    
+            if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'nice_url_enabled' ) == true)    
             { 
                     $this->url_path_base = erLhcoreClassDesign::baseurldirect($this->nice_path_base);                     
             } else {

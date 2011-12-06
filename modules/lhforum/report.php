@@ -21,7 +21,7 @@ if (isset($_POST['message_user'])) {
     
     if (count($Errors) == 0)
     {
-        $adminEmail = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'site_admin_email' );
+        $adminEmail = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'site_admin_email' );
                
         $phpMailer = new PHPMailer();
         $phpMailer->AddAddress($adminEmail);

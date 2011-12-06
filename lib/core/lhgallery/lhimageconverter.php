@@ -10,7 +10,7 @@ class erLhcoreClassImageConverter {
    {
        $conversionSettings = array();
        
-       if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'imagemagic_enabled' ) == true)
+       if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'imagemagic_enabled' ) == true)
        {
            $conversionSettings[] = new ezcImageHandlerSettings( 'imagemagick', 'erLhcoreClassGalleryImagemagickHandler' );
        }
@@ -286,13 +286,13 @@ class erLhcoreClassImageConverter {
         
         $config = erConfigClassLhConfig::getInstance();
         
-        if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+        if ($config->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
         {
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $params['file_upload_path'], $photoDir.'/normal_'.$fileNamePhysic ); 
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $params['file_upload_path'], $photoDir.'/thumb_'.$fileNamePhysic ); 
             
-            chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-            chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            chmod($photoDir.'/normal_'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
+            chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
             
             $dataWatermark = erLhcoreClassModelSystemConfig::fetch('watermark_data')->data;	       
             // If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
@@ -302,7 +302,7 @@ class erLhcoreClassImageConverter {
                 rename($params['file_upload_path'],$photoDir.'/'.$fileNamePhysic);
             }
            
-            chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+            chmod($photoDir.'/'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
            
             $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
             $image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
@@ -317,7 +317,7 @@ class erLhcoreClassImageConverter {
                 unlink($params['file_upload_path']);
             }
             
-        } elseif ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') { 
+        } elseif ($config->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') { 
             $fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().$fileNamePhysic;  
 
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $params['file_upload_path'], 'var/tmpupload/normal_'.$fileNamePhysic );                         
@@ -339,10 +339,10 @@ class erLhcoreClassImageConverter {
             $image->pwidth = $imageAnalyze->data->width;
             $image->pheight = $imageAnalyze->data->height;
                        
-            S3::setAuth($config->conf->getSetting( 'amazons3', 'aws_access_key' ), $config->conf->getSetting( 'amazons3', 'aws_secret_key'));            
-            S3::putObject(S3::inputFile('var/tmpupload/thumb_' . $fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_'.$fileNamePhysic, S3::ACL_PUBLIC_READ);
-            S3::putObject(S3::inputFile('var/tmpupload/normal_' . $fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_'.$fileNamePhysic, S3::ACL_PUBLIC_READ);
-            S3::putObject(S3::inputFile('var/tmpupload/' . $fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/'.$fileNamePhysic, S3::ACL_PUBLIC_READ);
+            S3::setAuth($config->getSetting( 'amazons3', 'aws_access_key' ), $config->getSetting( 'amazons3', 'aws_secret_key'));            
+            S3::putObject(S3::inputFile('var/tmpupload/thumb_' . $fileNamePhysic, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_'.$fileNamePhysic, S3::ACL_PUBLIC_READ);
+            S3::putObject(S3::inputFile('var/tmpupload/normal_' . $fileNamePhysic, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_'.$fileNamePhysic, S3::ACL_PUBLIC_READ);
+            S3::putObject(S3::inputFile('var/tmpupload/' . $fileNamePhysic, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/'.$fileNamePhysic, S3::ACL_PUBLIC_READ);
             
             $image->filename = $fileNamePhysic;
             
@@ -367,10 +367,10 @@ class erLhcoreClassImageConverter {
         
         $config = erConfigClassLhConfig::getInstance();
         
-        if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+        if ($config->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
         {
-            $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
-       		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+            $wwwUser = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_user' );
+       		$wwwUserGroup = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_group' );
        		    
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $pathExtracted, $photoDir.'/normal_'.$fileNamePhysic );
         	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$pathExtracted, $photoDir.'/thumb_'.$fileNamePhysic );
@@ -391,9 +391,9 @@ class erLhcoreClassImageConverter {
         	chgrp($photoDir.'/normal_'.$fileNamePhysic,$wwwUserGroup);
         	chgrp($photoDir.'/thumb_'.$fileNamePhysic,$wwwUserGroup);
         					    					    	
-        	chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-        	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-        	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        	chmod($photoDir.'/'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
+        	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
+        	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
         	
         	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
         	$image->total_filesize = filesize($photoDir.'/'.$fileNamePhysic)+filesize($photoDir.'/thumb_'.$fileNamePhysic)+filesize($photoDir.'/normal_'.$fileNamePhysic);
@@ -403,7 +403,7 @@ class erLhcoreClassImageConverter {
         	$image->pwidth = $imageAnalyze->data->width;
         	$image->pheight = $imageAnalyze->data->height;
         	$image->hits = 0;
-        } elseif ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') { 
+        } elseif ($config->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') { 
 
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $pathExtracted, 'var/tmpupload/normal_'.$fileNamePhysic );
         	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$pathExtracted, 'var/tmpupload/thumb_'.$fileNamePhysic );
@@ -423,10 +423,10 @@ class erLhcoreClassImageConverter {
         	$image->pheight = $imageAnalyze->data->height;
         	$image->hits = 0;
 
-        	S3::setAuth($config->conf->getSetting( 'amazons3', 'aws_access_key' ), $config->conf->getSetting( 'amazons3', 'aws_secret_key'));            
-            S3::putObject(S3::inputFile('var/tmpupload/thumb_' . $fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
-            S3::putObject(S3::inputFile('var/tmpupload/normal_' . $fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
-            S3::putObject(S3::inputFile($pathExtracted, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
+        	S3::setAuth($config->getSetting( 'amazons3', 'aws_access_key' ), $config->getSetting( 'amazons3', 'aws_secret_key'));            
+            S3::putObject(S3::inputFile('var/tmpupload/thumb_' . $fileNamePhysic, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
+            S3::putObject(S3::inputFile('var/tmpupload/normal_' . $fileNamePhysic, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
+            S3::putObject(S3::inputFile($pathExtracted, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
 
         	unlink($pathExtracted);
             unlink('var/tmpupload/normal_'.$fileNamePhysic);
@@ -443,7 +443,7 @@ class erLhcoreClassImageConverter {
 
         $config = erConfigClassLhConfig::getInstance();
 
-        if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+        if ($config->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
         {
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $imagePath, $photoDir.'/normal_'.$fileNamePhysic );
         	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$imagePath, $photoDir.'/thumb_'.$fileNamePhysic );
@@ -452,11 +452,11 @@ class erLhcoreClassImageConverter {
     		// If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
     		if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
     				erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $imagePath, $imagePath ); 
-    				chmod($imagePath,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    				chmod($imagePath,$config->getSetting( 'site', 'StorageFilePermissions' ));
     		}
     		
-        	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-        	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
+        	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
         	
         	$image->filesize = filesize($imagePath);
             $image->total_filesize = $image->filesize;
@@ -467,7 +467,7 @@ class erLhcoreClassImageConverter {
     
         	$image->hits = 0;
         	 	
-        } elseif ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') { 
+        } elseif ($config->getSetting( 'site', 'file_storage_backend' ) == 'amazons3') { 
 
             erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $imagePath, $photoDir.'/normal_'.$fileNamePhysic );
         	erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb',$imagePath, $photoDir.'/thumb_'.$fileNamePhysic );
@@ -476,11 +476,11 @@ class erLhcoreClassImageConverter {
     		// If watermark have to be applied we use conversion othwrwise just upload original to avoid any quality loose.
     		if ($dataWatermark['watermark_disabled'] == false && $dataWatermark['watermark_enabled_all'] == true) {	       	
     				erLhcoreClassImageConverter::getInstance()->converter->transform( 'jpeg', $imagePath, $imagePath ); 
-    				chmod($imagePath,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    				chmod($imagePath,$config->getSetting( 'site', 'StorageFilePermissions' ));
     		}
     		
-        	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-        	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        	chmod($photoDir.'/normal_'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
+        	chmod($photoDir.'/thumb_'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
         	
         	$image->filesize = filesize($imagePath);
             $image->total_filesize = $image->filesize;
@@ -491,10 +491,10 @@ class erLhcoreClassImageConverter {
             
         	$image->hits = 0;
     
-        	S3::setAuth($config->conf->getSetting( 'amazons3', 'aws_access_key' ), $config->conf->getSetting( 'amazons3', 'aws_secret_key'));            
-            S3::putObject(S3::inputFile($photoDir.'/thumb_'.$fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
-            S3::putObject(S3::inputFile($photoDir.'/normal_'.$fileNamePhysic, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
-            S3::putObject(S3::inputFile($imagePath, false), $config->conf->getSetting( 'amazons3', 'bucket' ), $photoDir . '/' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
+        	S3::setAuth($config->getSetting( 'amazons3', 'aws_access_key' ), $config->getSetting( 'amazons3', 'aws_secret_key'));            
+            S3::putObject(S3::inputFile($photoDir.'/thumb_'.$fileNamePhysic, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/thumb_' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
+            S3::putObject(S3::inputFile($photoDir.'/normal_'.$fileNamePhysic, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/normal_' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
+            S3::putObject(S3::inputFile($imagePath, false), $config->getSetting( 'amazons3', 'bucket' ), $photoDir . '/' . $fileNamePhysic, S3::ACL_PUBLIC_READ);
         	
             // Delete created variations, because they are in cloud now
             unlink($photoDir.'/normal_'.$fileNamePhysic);
@@ -564,14 +564,14 @@ class erLhcoreClassImageConverter {
         $pathCurrent = '';
         
         $config = erConfigClassLhConfig::getInstance();
-        $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
-   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+        $wwwUser = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_user' );
+   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_group' );
    		   		
         foreach ($partsPath as $key => $path)
         {
             $pathCurrent .= $path . '/';
             if ( !is_dir($pathCurrent) ) {
-                mkdir($pathCurrent,$config->conf->getSetting( 'site', 'StorageDirPermissions' ));
+                mkdir($pathCurrent,$config->getSetting( 'site', 'StorageDirPermissions' ));
                 if ($chown == true){
                     chown($pathCurrent,$wwwUser);
 				    chgrp($pathCurrent,$wwwUserGroup);

@@ -6,16 +6,16 @@ erLhcoreClassModelGalleryPopular24::deleteExpired();
 erLhcoreClassModelGalleryRated24::deleteExpired();
 
 // Index to color attributes
-erLhcoreClassPalleteIndexImage::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'delay_index_portion' ));
+erLhcoreClassPalleteIndexImage::indexUnindexedImages(erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'delay_index_portion' ));
 
 // Index face data
-erLhcoreClassModelGalleryFaceData::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'delay_index_portion' ));
+erLhcoreClassModelGalleryFaceData::indexUnindexedImages(erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'delay_index_portion' ));
 
 // Index to sphinx search
-erLhcoreClassModelGallerySphinxSearch::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'delay_index_portion' ));
+erLhcoreClassModelGallerySphinxSearch::indexUnindexedImages(erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'delay_index_portion' ));
 
 // Index to imgseek service
-erLhcoreClassModelGalleryImgSeekData::indexUnindexedImages(erConfigClassLhConfig::getInstance()->conf->getSetting( 'imgseek', 'delay_index_portion' ));
+erLhcoreClassModelGalleryImgSeekData::indexUnindexedImages(erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'delay_index_portion' ));
 
 // Delete legacy search
 erLhcoreClassModelGallerySearchHistory::deleteLegacySearch();

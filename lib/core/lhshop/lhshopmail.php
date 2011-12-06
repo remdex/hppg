@@ -11,12 +11,12 @@ class erLhcoreClassShopMail {
 		
 		$host = $_SERVER['HTTP_HOST'];	
 			
-		$adminEmail = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'site_admin_email' );	
+		$adminEmail = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'site_admin_email' );	
 			
 		$mail = new PHPMailer();
 		$mail->CharSet = "UTF-8";
 		$mail->From = $adminEmail;
-		$mail->FromName = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' );
+		$mail->FromName = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'title' );
 		$mail->Subject = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Order confirmed');
 
 		$tpl = new erLhcoreClassTemplate();	
@@ -35,12 +35,12 @@ class erLhcoreClassShopMail {
 		
 		$host = $_SERVER['HTTP_HOST'];	
 			
-		$adminEmail = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'site_admin_email' );	
+		$adminEmail = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'site_admin_email' );	
 			
 		$mail = new PHPMailer();
 		$mail->CharSet = "UTF-8";
 		$mail->From = $adminEmail;
-		$mail->FromName = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'title' );
+		$mail->FromName = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'title' );
 		$mail->Subject = erTranslationClassLhTranslation::getInstance()->getTranslation('user/forgotpassword','Credits order confirmed');
 
 		$tpl = new erLhcoreClassTemplate();	

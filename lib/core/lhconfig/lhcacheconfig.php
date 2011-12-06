@@ -7,20 +7,30 @@ class erConfigClassLhCacheConfig
     
     private $expireOptions = array('translationfile','accessfile');
     private $sessionExpireOptions = array('access_array','lhCacheUserDepartaments');
-    private $sitedir = '';
+
     
     public function __construct()
+    {      
+        $this->conf = include('cache/cacheconfig/settings.ini.php');        
+    }
+    
+    public function getSetting($section, $key)
     {
-        $sys = erLhcoreClassSystem::instance()->SiteDir;
-        $this->sitedir = $sys;
-        
-        $ini = new ezcConfigurationArrayReader($this->sitedir . '/cache/cacheconfig/settings.ini.php' );
-        if ( $ini->configExists() )
-        {
-            $this->conf = $ini->load();
+        if (isset($this->conf['settings'][$section][$key])) {
+            return $this->conf['settings'][$section][$key];
         } else {
-           
-        }
+            throw new Exception('Setting with section {'.$section.'} value {'.$key.'}');
+        }        
+    }
+    
+    public function hasSetting($section, $key)
+    {
+        return isset($this->conf['settings'][$section][$key]);
+    }
+    
+    public function setSetting($section, $key, $value)
+    {
+        $this->conf['settings'][$section][$key] = $value;
     }
     
     public static function getInstance()  
@@ -33,17 +43,15 @@ class erConfigClassLhCacheConfig
     }
     
     public function save()
-    {              
-        $writer = new ezcConfigurationArrayWriter($this->sitedir . 'cache/cacheconfig/settings.ini.php');        
-        $writer->setConfig( $this->conf );
-        $writer->save();
+    {   
+        file_put_contents('cache/cacheconfig/settings.ini.php',"<?php\n return ".var_export($this->conf,true).";\n?>");
     }
     
     public function expireCache()
     {
         foreach ($this->expireOptions as $option)
         {
-            $this->conf->setSetting( 'cachetimestamps', $option, 0);
+            $this->setSetting( 'cachetimestamps', $option, 0);
         }  
         
         foreach ($this->sessionExpireOptions as $option)

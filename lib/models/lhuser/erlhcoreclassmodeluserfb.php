@@ -78,7 +78,7 @@ class erLhcoreClassModelUserFB {
    public function setPassword($password)
    {
        $cfgSite = erConfigClassLhConfig::getInstance();
-	   $secretHash = $cfgSite->conf->getSetting( 'site', 'secrethash' );
+	   $secretHash = $cfgSite->getSetting( 'site', 'secrethash' );
        $this->password = sha1($password.$secretHash.sha1($password));
    } 
    

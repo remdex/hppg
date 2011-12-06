@@ -7,7 +7,7 @@ class erLhcoreClassDesign
     public static function design($path)
     {
     	
-    	$debugOutput = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' );
+    	$debugOutput = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'debug_output' );
     	
     	if ($debugOutput == true) {
     		$logString = '';
@@ -40,7 +40,7 @@ class erLhcoreClassDesign
     
     public static function designtpl($path)   
     {
-    	$debugOutput = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' );
+    	$debugOutput = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'debug_output' );
     	
     	if ($debugOutput == true) {
     		$logString = '';    	
@@ -74,10 +74,10 @@ class erLhcoreClassDesign
     {             
         $instance = erLhcoreClassSystem::instance();
         if ($useCDN == false ) {
-        	return erConfigClassLhConfig::getInstance()->conf->getSetting( 'cdn', 'full_img_cdn' ) . $instance->wwwDir() . '/albums/' . $path; 
+        	return erConfigClassLhConfig::getInstance()->getSetting( 'cdn', 'full_img_cdn' ) . $instance->wwwDir() . '/albums/' . $path; 
         } else {
     		$cfg = erConfigClassLhConfig::getInstance();
-    		$cdnServers = $cfg->conf->getSetting( 'cdn', 'images' );        		 
+    		$cdnServers = $cfg->getSetting( 'cdn', 'images' );        		 
     		return $cdnServers[$id % count($cdnServers)] . $instance->wwwDir() . '/albums/' . $path; 
         }
     }
@@ -184,7 +184,7 @@ class erLhcoreClassDesign
     
     public static function designCSS($files)
     {
-        $debugOutput = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' );
+        $debugOutput = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'debug_output' );
     	$items = explode(';',$files);
         
     	if ($debugOutput == true) {
@@ -251,7 +251,7 @@ class erLhcoreClassDesign
     
     public static function designJS($files)
     {
-        $debugOutput = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'debug_output' );
+        $debugOutput = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'debug_output' );
     	$items = explode(';',$files);
         
     	if ($debugOutput == true) {

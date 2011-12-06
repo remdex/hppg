@@ -4,7 +4,7 @@
 $cache = CSCacheAPC::getMem(); 
 $cacheKey = md5('version_'.$cache->getCacheVersion('category_'.(int)$Params['user_parameters']['category_id']).'category_view_url'.(int)$Params['user_parameters']['category_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess);
     
-if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
+if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {
     $ExpireTime = 3600;
     $currentKeyEtag = md5($cacheKey.'user_id_'.erLhcoreClassUser::instance()->getUserID());

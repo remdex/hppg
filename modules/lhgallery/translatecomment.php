@@ -13,7 +13,7 @@ if ($apiKey != '') {
         $sourceTarget = '&source='.$comment->lang;
     }
     
-    $destinationSiteaccess = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site_access_options', $Params['user_parameters']['siteaccess'] );
+    $destinationSiteaccess = erConfigClassLhConfig::getInstance()->getSetting( 'site_access_options', $Params['user_parameters']['siteaccess'] );
     $request = "https://www.googleapis.com/language/translate/v2?key={$apiKey}&target={$destinationSiteaccess['content_language']}$sourceTarget&q=".urlencode($comment->msg_body);
         
     $response = file_get_contents($request);

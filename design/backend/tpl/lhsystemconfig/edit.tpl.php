@@ -27,8 +27,8 @@
 <?php if ( $systemconfig->type == erLhcoreClassModelSystemConfig::SITE_ACCESS_PARAM_ON ) : ?>
 
 
-<?php foreach (erConfigClassLhConfig::getInstance()->conf->getSetting('site','available_site_access') as $siteaccess) : 
-$siteaccessOptions = erConfigClassLhConfig::getInstance()->conf->getSetting('site_access_options',$siteaccess);	
+<?php foreach (erConfigClassLhConfig::getInstance()->getSetting('site','available_site_access') as $siteaccess) : 
+$siteaccessOptions = erConfigClassLhConfig::getInstance()->getSetting('site_access_options',$siteaccess);	
 ?>
 <div class="in-blk">
 <label><?=erTranslationClassLhTranslation::getInstance()->getTranslation('systemconfig/edit','Values applies to');?> - <?=htmlspecialchars($siteaccess);?></label>

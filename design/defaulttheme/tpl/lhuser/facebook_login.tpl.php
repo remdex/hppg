@@ -17,8 +17,8 @@
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
-  'appId'  => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'app_id' ),
-  'secret' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'secret' ) ,
+  'appId'  => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'app_id' ),
+  'secret' => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'secret' ) ,
 ));
 
 /*// Get User ID

@@ -28,7 +28,7 @@ $appendCacheModes = array(
 'lastratedasc' => array('key' => 'last_rated_'.(int)$Params['user_parameters']['album_id'],'defvalue' =>1,'ttl' => 0),
 );
     
-$resolutions = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'resolutions' );
+$resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' );
        
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
@@ -56,7 +56,7 @@ if (key_exists($mode,$appendCacheModes))
 
 $cacheKey = md5('version_'.$cache->getCacheVersion('album_'.(int)$Params['user_parameters']['album_id']).$mode.$resolution.'album_view_url'.(int)$Params['user_parameters']['album_id'].'_page_'.$Params['user_parameters_unordered']['page'].'_siteaccess_'.erLhcoreClassSystem::instance()->SiteAccess.$appendCacheKey);
   
-if (erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'etag_caching_enabled' ) === true)
+if (erConfigClassLhConfig::getInstance()->getSetting( 'site', 'etag_caching_enabled' ) === true)
 {
     $currentKeyEtag = md5($cacheKey.'user_id_'.erLhcoreClassUser::instance()->getUserID());;
     header('Cache-Control: must-revalidate'); // must-revalidate

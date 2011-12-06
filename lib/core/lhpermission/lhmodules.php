@@ -23,7 +23,7 @@ class erLhcoreClassModules{
         
         
         $cfg = erConfigClassLhConfig::getInstance(); 
-        $extensions = $cfg->conf->getSetting('site','extensions');
+        $extensions = $cfg->getSetting('site','extensions');
                     
          // Is it extension module        
         foreach ($extensions as $extension)
@@ -54,7 +54,7 @@ class erLhcoreClassModules{
        
        
        $cfg = erConfigClassLhConfig::getInstance(); 
-       $extensions = $cfg->conf->getSetting('site','extensions');
+       $extensions = $cfg->getSetting('site','extensions');
         
        foreach ($extensions as $extension)
        {   

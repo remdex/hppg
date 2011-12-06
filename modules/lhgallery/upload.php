@@ -20,7 +20,7 @@ if ( ($albumto = erLhcoreClassModelGalleryAlbum::canUpload($uploader->getParam('
         if ($currentUser->isLogged())
             $user_id = $currentUser->getUserID();	
         else 
-            $user_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' );	
+            $user_id = erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'anonymous_user_id' );	
 
 	   $image = new erLhcoreClassModelGalleryImage();
 	   $image->aid = $albumto->aid;	
@@ -35,7 +35,7 @@ if ( ($albumto = erLhcoreClassModelGalleryAlbum::canUpload($uploader->getParam('
 	   	   erLhcoreClassImageConverter::mkdirRecursive($photoDir);
 	   	   $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($result['filename_user']);
 
-	   	   if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+	   	   if ($config->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
            {    	       
     	       if (file_exists($photoDir.'/'.$fileNamePhysic)) {
     	       		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;

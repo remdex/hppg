@@ -1,7 +1,7 @@
 <?php
 
 $totalCategory = erLhcoreClassModelGalleryCategory::fetchCategoryColumn();
-$totalParts = ceil($totalCategory/erConfigClassLhConfig::getInstance()->conf->getSetting('sitemap_settings','categorys_per_page'));
+$totalParts = ceil($totalCategory/erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','categorys_per_page'));
  
 header('Content-type: text/xml');
 echo '<?xml version="1.0" encoding="UTF-8"?>  

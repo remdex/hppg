@@ -48,7 +48,7 @@ class erLhcoreClassFLVConverter {
         
        	move_uploaded_file($_FILES[$params['post_file_name']]["tmp_name"],$photoDir.'/'.$fileNamePhysic);
         
-        chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
        
         $image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
         $image->total_filesize = $image->filesize;
@@ -76,8 +76,8 @@ class erLhcoreClassFLVConverter {
         erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/normal_'.implode('.',$parts).'.jpg' ); 
         erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/thumb_'.implode('.',$parts).'.jpg' ); 
        	       
-        chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-        chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
         
         unlink($photoDir.'/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot               
         
@@ -94,13 +94,13 @@ class erLhcoreClassFLVConverter {
         
         $config = erConfigClassLhConfig::getInstance();
 
-        $wwwUser = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_user' );
-   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->conf->getSetting( 'site', 'default_www_group' );
+        $wwwUser = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_user' );
+   		$wwwUserGroup = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'default_www_group' );
    		 
 		rename($pathExtracted,$photoDir.'/'.$fileNamePhysic);
     	chown($photoDir.'/'.$fileNamePhysic,$wwwUser);
     	chgrp($photoDir.'/'.$fileNamePhysic,$wwwUserGroup);
-    	chmod($photoDir.'/'.$fileNamePhysic,$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+    	chmod($photoDir.'/'.$fileNamePhysic,$config->getSetting( 'site', 'StorageFilePermissions' ));
     	 
     	$image->filesize = filesize($photoDir.'/'.$fileNamePhysic);
     	$image->total_filesize = $image->filesize;
@@ -128,11 +128,11 @@ class erLhcoreClassFLVConverter {
 
         chown($photoDir.'/normal_'.implode('.',$parts).'.jpg',$wwwUser);
         chgrp($photoDir.'/normal_'.implode('.',$parts).'.jpg',$wwwUserGroup);       
-        chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
         
         chown($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$wwwUser);
         chgrp($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$wwwUserGroup);     	
-        chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
                   
         unlink($photoDir.'/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot
     	
@@ -173,8 +173,8 @@ class erLhcoreClassFLVConverter {
         erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumbbig', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/normal_'.implode('.',$parts).'.jpg' ); 
         erLhcoreClassImageConverter::getInstance()->converter->transform( 'thumb', $photoDir.'/original_'.implode('.',$parts).'.jpg', $photoDir.'/thumb_'.implode('.',$parts).'.jpg' ); 
        	       
-        chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
-        chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->conf->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/normal_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
+        chmod($photoDir.'/thumb_'.implode('.',$parts).'.jpg',$config->getSetting( 'site', 'StorageFilePermissions' ));
         
         unlink($photoDir.'/original_'.implode('.',$parts).'.jpg');    // Delete original screenshot        
     }

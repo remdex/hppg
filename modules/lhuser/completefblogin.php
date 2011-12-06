@@ -1,7 +1,7 @@
 <?php
 $facebook = new Facebook(array(
-  'appId'  => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'app_id' ),
-  'secret' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'secret' ) ,
+  'appId'  => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'app_id' ),
+  'secret' => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'secret' ) ,
 ));
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhuser/completefblogin.tpl.php');    
@@ -77,7 +77,7 @@ if ($userFB) {
             }    
             
             $GroupUser = new erLhcoreClassModelGroupUser();        
-            $GroupUser->group_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'default_user_group' ); //User group
+            $GroupUser->group_id = erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'default_user_group' ); //User group
             $GroupUser->user_id = $UserData->id;        
             erLhcoreClassUser::getSession()->save($GroupUser);
             
@@ -85,7 +85,7 @@ if ($userFB) {
             $CacheManager->expireCache();
                 
             try {
-                $defaultUserCategoryParent = erLhcoreClassModelGalleryCategory::fetch(erConfigClassLhConfig::getInstance()->conf->getSetting( 'gallery_settings', 'default_gallery_category' ));
+                $defaultUserCategoryParent = erLhcoreClassModelGalleryCategory::fetch(erConfigClassLhConfig::getInstance()->getSetting( 'gallery_settings', 'default_gallery_category' ));
                 $userCategory = new erLhcoreClassModelGalleryCategory();
                 $userCategory->owner_id =  $UserData->id;
                 $userCategory->parent =  $defaultUserCategoryParent->cid;

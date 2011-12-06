@@ -188,11 +188,11 @@ class erLhcoreClassGallery{
             
             $cfg = erConfigClassLhConfig::getInstance();
             
-            $maxReturn = $cfg->conf->getSetting( 'sphinx', 'max_matches' );
-            $wildCardEnabled = $cfg->conf->getSetting( 'sphinx', 'enabled_wildcard');
-            $sphinxIndex = $cfg->conf->getSetting( 'sphinx', 'index' );  
-            $extendedSearch = $cfg->conf->getSetting( 'color_search', 'extended_search');
-            $faceSearch = $cfg->conf->getSetting( 'face_search', 'enabled');
+            $maxReturn = $cfg->getSetting( 'sphinx', 'max_matches' );
+            $wildCardEnabled = $cfg->getSetting( 'sphinx', 'enabled_wildcard');
+            $sphinxIndex = $cfg->getSetting( 'sphinx', 'index' );  
+            $extendedSearch = $cfg->getSetting( 'color_search', 'extended_search');
+            $faceSearch = $cfg->getSetting( 'face_search', 'enabled');
             $resultItems = array();
             
             foreach ($queryesBatch as $params) {
@@ -294,7 +294,7 @@ class erLhcoreClassGallery{
                       if (isset($params['color_search_mode'])) {
                                                     
                         $cl->SetMatchMode( SPH_MATCH_EXTENDED2);
-                        if (count($params['color_filter']) == 1 || erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search') == false) { // If one color we use internal wordcount algorithm                
+                        if (count($params['color_filter']) == 1 || erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'extended_search') == false) { // If one color we use internal wordcount algorithm                
                             if (!empty($params['color_filter'])){             
                                 $cl->SetRankingMode(SPH_RANK_WORDCOUNT);
                             } else {
@@ -420,7 +420,7 @@ class erLhcoreClassGallery{
    static function getSphinxInstance() {
         if (self::$sphinxClient == NULL) {
             self::$sphinxClient = new SphinxClient();
-            self::$sphinxClient->SetServer( erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'host' ), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'port' ) );
+            self::$sphinxClient->SetServer( erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'host' ), erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'port' ) );
             self::$sphinxClient->SetMatchMode( SPH_MATCH_ANY  );
         }
         return self::$sphinxClient;
@@ -439,9 +439,9 @@ class erLhcoreClassGallery{
       $cl = self::getSphinxInstance();
       $cl->ResetFilters();
       $cl->SetSelect('');
-      $maxMatches = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'max_matches' );    
-      $extendedColorSearch = erConfigClassLhConfig::getInstance()->conf->getSetting( 'color_search', 'extended_search');                
-      $faceSearch = erConfigClassLhConfig::getInstance()->conf->getSetting( 'face_search', 'enabled');
+      $maxMatches = erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'max_matches' );    
+      $extendedColorSearch = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'extended_search');                
+      $faceSearch = erConfigClassLhConfig::getInstance()->getSetting( 'face_search', 'enabled');
             
       $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxMatches);
                     
@@ -510,7 +510,7 @@ class erLhcoreClassGallery{
       
       $cl->SetSortMode(SPH_SORT_EXTENDED, isset($params['sort']) ? $params['sort'] : '@id DESC');
 
-      $startAppend = erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
+      $startAppend = erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled_wildcard') == true ? '*' : '';
       
       $weights = array (
         'colors' => 9,
@@ -586,7 +586,7 @@ class erLhcoreClassGallery{
           }
       }   
 
-      $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->conf->getSetting( 'sphinx', 'index' ) );
+      $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'index' ) );
       
       if ($result['total_found'] == 0 || !isset($result['matches'])){
       

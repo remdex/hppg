@@ -5,8 +5,8 @@ $photo_id = $Params['user_parameters']['image_id'];
 $currentUser = erLhcoreClassUser::instance();
 
 $facebook = new Facebook(array(
-  'appId'  => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'app_id' ),
-  'secret' => erConfigClassLhConfig::getInstance()->conf->getSetting( 'facebook', 'secret' ) ,
+  'appId'  => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'app_id' ),
+  'secret' => erConfigClassLhConfig::getInstance()->getSetting( 'facebook', 'secret' ) ,
 ));
 
 $photoDetails = $facebook->api($photo_id);
@@ -26,7 +26,7 @@ $imageContent = downloadImage($photoDetails['source']);
 if ($currentUser->isLogged())
     $user_id = $currentUser->getUserID();	
 else 
-    $user_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' );	
+    $user_id = erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'anonymous_user_id' );	
 
 $db = ezcDbInstance::get();
 $db->beginTransaction();
@@ -36,7 +36,7 @@ $session = erLhcoreClassGallery::getSession();
 if ($currentUser->isLogged())
     $user_id = $currentUser->getUserID();	
 else 
-    $user_id = erConfigClassLhConfig::getInstance()->conf->getSetting( 'user_settings', 'anonymous_user_id' );	
+    $user_id = erConfigClassLhConfig::getInstance()->getSetting( 'user_settings', 'anonymous_user_id' );	
     
 $result['filepath'] = 'var/tmpfiles/fbphoto_'.basename($photoDetails['source']);  
 file_put_contents($result['filepath'],$imageContent);
@@ -57,7 +57,7 @@ if (($filetype = erLhcoreClassModelGalleryFiletype::isValidLocal($result['filepa
     	   erLhcoreClassImageConverter::mkdirRecursive($photoDir);
     	   $fileNamePhysic = erLhcoreClassImageConverter::sanitizeFileName($result['filename_user']);
     
-    	   if ($config->conf->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
+    	   if ($config->getSetting( 'site', 'file_storage_backend' ) == 'filesystem')
            {    	       
                if (file_exists($photoDir.'/'.$fileNamePhysic)) {
                		$fileNamePhysic = erLhcoreClassModelForgotPassword::randomPassword(5).time().'-'.$fileNamePhysic;
