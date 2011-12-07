@@ -9,10 +9,10 @@ return array (
             'erLhcoreClassURL'        => 'lib/core/lhcore/lhurl.php',
             //'erConfigClassLhConfig'   => 'lib/core/lhconfig/lhconfig.php',
             
-            'erLhcoreClassLazyDatabaseConfiguration'    => 'lib/core/lhcore/lhdb.php',
+            //'erLhcoreClassLazyDatabaseConfiguration'    => 'lib/core/lhcore/lhdb.php',
             //'erLhcoreClassSystem'                       => 'lib/core/lhcore/lhsys.php',
             //'ezcBase'                                   => 'ezcomponents/Base/src/init.php',
-            'ezcBaseFeatures'                           => 'ezcomponents/Base/src/features.php',
+            //'ezcBaseFeatures'                           => 'ezcomponents/Base/src/features.php',
             //'ezcBaseConfigurationInitializer'           => 'ezcomponents/Base/src/interfaces/configuration_initializer.php',
             //'ezcConfigurationArrayReader'               => 'ezcomponents/Configuration/src/array/array_reader.php',
             //'ezcConfigurationFileReader'                => 'ezcomponents/Configuration/src/file_reader.php',
