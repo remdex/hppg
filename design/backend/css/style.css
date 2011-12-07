@@ -16,15 +16,17 @@ h3{font-size:12px;}
 div.top-menu ul li{}
 div.top-menu ul li a{color:#000000}
 
-div#path a
-{
-background:url(../images/newdesign/sprite.png) no-repeat top left;
-}
-
-div#path{font-weight:bold;padding-top:5px;padding-left:12px;}
-div#path a{padding-right:10px;background-position:100% -103px;
+ol#breadcrumb{font-weight:bold;padding-top:5px;padding-left:12px;}
+ol#breadcrumb a{padding-right:10px;background-position:100% -103px;
 padding-right:10px;
+background:url(../images/newdesign/sprite.png) no-repeat top left;
 margin-right:7px;}
+
+ol#breadcrumb li {display: inline;}
+
+ol#breadcrumb li:last-child a{
+    background:none;
+}
 
 
 a,a:visited{color:#4D8F35;text-decoration:none;}
@@ -1527,7 +1529,7 @@ input.default-button,
 .da,
 .ar,
 .choose-sort,
-div#path a,
+ol#breadcrumb a,
 .files-ico,
 .albthumb-img,
 .navigator a.next,
@@ -1773,17 +1775,22 @@ div.cont-sub{padding:17px;}
 .subcategory .files-ico{clear:right;width:30px;padding-left:22px;margin-top:5px;}
 .subcategory .album-ico{width:23px;padding-left:22px;}
 
-div#path{padding-top:5px;padding-left:12px;padding-bottom:5px;font-size:11px;
-background-color:#FFFFFF;margin-top:10px;
-box-shadow:0px 0px 2px #a8a8a8;
--webkit-box-shadow:0px 0px 2px #a8a8a8;
--moz-box-shadow: 0px 0px 2px #a8a8a8;
+ol#breadcrumb{padding-top:5px;padding-left:12px;padding-bottom:5px;font-size:11px;
+background-color:#FFFFFF;
+border-bottom:1px solid #dedede;
+margin:0;
 }
 
-div#path a{
+ol#breadcrumb a{
 background-position:100% -103px;
 padding-right:10px;
 margin-right:7px;
+}
+
+ol#breadcrumb li {display: inline;}
+
+ol#breadcrumb li:last-child a{
+    background:none;
 }
 
 /* SORT BOX STYLES */
