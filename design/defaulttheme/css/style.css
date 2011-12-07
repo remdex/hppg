@@ -514,7 +514,7 @@ input.default-button,
 .da,
 .ar,
 .choose-sort,
-ol#path a,
+ol#breadcrumb a,
 .files-ico,
 .albthumb-img,
 .navigator a.next,
@@ -591,12 +591,17 @@ float:right;clear:right;width:770px;
 
 
 div#bodcont{
-padding: 22px 217px 0 210px;
-background-color:#FFFFFF;
-margin-top:10px;
+padding: 10px 217px 0 210px;
+
+
+}
+
+.body-g{
 box-shadow:0px 0px 2px #a8a8a8;
 -webkit-box-shadow:0px 0px 2px #a8a8a8;
 -moz-box-shadow: 0px 0px 2px #a8a8a8;
+background-color:#FFFFFF;
+margin-top:10px;
 }
 
 .left-infobox{
@@ -607,7 +612,7 @@ padding-bottom:20px;
 .left-infobox h3{
 color:#565656;
 font-weight:bold;
-border-bottom:1px solid #b0b0b0;
+border-bottom:1px solid #dedede;
 margin-bottom:3px;
 margin-left:0;
 padding-left:0;
@@ -616,7 +621,7 @@ font-size:11px;
 
 }
 .left-infobox ul{
-padding-top:3px;
+padding-top:0px;
 }
 .left-infobox ul li{
 padding-left:2px;
@@ -667,7 +672,7 @@ height: 200px;
 }
 /**/
 
-.header-list{border-bottom:1px solid #b0b0b0;padding-bottom:5px;margin-bottom:10px;}
+.header-list{border-bottom:1px solid #dedede;padding-bottom:5px;margin-bottom:10px;}
 .header-list h1{margin:0;padding:0;font-size:11px;text-transform:uppercase;}
 
 
@@ -813,27 +818,26 @@ div.cont-sub{padding:17px;}
 .subcategory .files-ico{clear:right;width:30px;padding-left:22px;margin-top:5px;}
 .subcategory .album-ico{width:23px;padding-left:22px;}
 
-ol#path{padding-top:5px;padding-left:12px;padding-bottom:5px;font-size:11px;
-background-color:#FFFFFF;margin-top:10px;
-box-shadow:0px 0px 2px #a8a8a8;
--webkit-box-shadow:0px 0px 2px #a8a8a8;
--moz-box-shadow: 0px 0px 2px #a8a8a8;
+ol#breadcrumb{padding-top:5px;padding-left:12px;padding-bottom:5px;font-size:11px;
+background-color:#FFFFFF;
+border-bottom:1px solid #dedede;
+margin:0;
 }
 
-ol#path a{
+ol#breadcrumb a{
 background-position:100% -103px;
 padding-right:10px;
 margin-right:7px;
 }
 
-ol#path li {display: inline;}
+ol#breadcrumb li {display: inline;}
 
-ol#path li:last-child a{
+ol#breadcrumb li:last-child a{
     background:none;
 }
 
 /* SORT BOX STYLES */
-.order-nav{margin-left:7px;font-size:11px;border:1px solid #e5e5e5;width:110px;line-height:17px;margin-top:-12px;float:right;position:relative;z-index:9;}
+.order-nav{margin-left:7px;font-size:11px;border:1px solid #e5e5e5;width:110px;line-height:17px;margin-top:-7px;float:right;position:relative;z-index:9;}
 #resolution-nav{margin-left:7px;}
 #resolution-nav .choose-sort span{background:none;padding-left:7px;}
 

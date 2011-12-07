@@ -26,11 +26,11 @@
     
 </div>
 
+<div class="body-g">
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/path.tpl.php'));?>
 
 	<div id="bodcont" class="float-break">
-		
-				
+	
         <div id="leftmenucont">              
             <?php if (erLhcoreClassUser::instance()->isLogged()) : ?>
             <div class="left-infobox">
@@ -57,7 +57,7 @@
 		</div>
 						
 	</div>
-	
+</div>
 <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_footer.tpl.php'));?>
 
 </div>
