@@ -197,7 +197,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
     }
     
     if ($Params['user_parameters_unordered']['page'] > 1) {        
-        $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
+        $Result['path'][] = array('url' => $Album->url_path.'/(page)/'.$Params['user_parameters_unordered']['page'],'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 
     }
     
     if ($Album->description != '') {
