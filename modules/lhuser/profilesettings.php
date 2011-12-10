@@ -10,13 +10,13 @@ if (isset($_POST['Update_account']))
 {    
    $definition = array(
         'Name' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::OPTIONAL, 'string'
+            ezcInputFormDefinitionElement::OPTIONAL, 'unsafe_raw'
         ),
         'Surname' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::OPTIONAL, 'string'
+            ezcInputFormDefinitionElement::OPTIONAL, 'unsafe_raw'
         ),
         'Intro' => new ezcInputFormDefinitionElement(
-            ezcInputFormDefinitionElement::OPTIONAL, 'string'
+            ezcInputFormDefinitionElement::OPTIONAL, 'unsafe_raw'
         ),
         'Website' => new ezcInputFormDefinitionElement(
             ezcInputFormDefinitionElement::OPTIONAL, 'string'
