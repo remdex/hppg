@@ -1,6 +1,4 @@
 <script language="javascript">
-$(document).ready(function()	{
-    mySettings.previewParserPath = '<?=erLhcoreClassDesign::baseurl('bbcode/preview')?>';
-    $('<?=$bbcodeElementID?>').markItUp(mySettings);
-});
+var _lactq = _lactq || [];
+_lactq.push({'f':'hw_init_markit_up','a':['<?=erLhcoreClassDesign::baseurl('bbcode/preview')?>','<?=$bbcodeElementID?>']});
 </script>

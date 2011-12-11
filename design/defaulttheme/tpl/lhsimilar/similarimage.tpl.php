@@ -63,59 +63,30 @@
 
 
 <script type="text/javascript">
-var uploader = new qq.FileUploader({
-    element: document.getElementById('ad-image-upload'),
-    listElement: document.getElementById('listElement-ad-image'),
-    action: '<?=erLhcoreClassDesign::baseurl('similar/uploadsimilar')?>',
-    allowedExtensions:[<?=erLhcoreClassModelSystemConfig::fetch('allowed_file_types')->current_value;?>],
-    autoStart : true,
-    sizeLimit : <?=(int)(erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value*1024)?>,
-    maxFiles : <?=(int)(erLhcoreClassModelSystemConfig::fetch('file_upload_limit')->current_value)?>,   
-    onComplete: function(id, fileName, responseJSON) {
-        if (responseJSON.success == 'true') {   
-            var strintID = String(id);       
-            $('#file_id_row_'+strintID.replace('qq-upload-handler-iframe','')).fadeOut();
-            $('#similar-images-container').removeClass('ajax-loading-items');
-            $('#similar-images-container .img-list').html(responseJSON.result);
-        }
-    },
-    onStart : function(){ 
-        $('.qq-upload-spinner').addClass('active-spinner');
-        $('#similar-images-container').addClass('ajax-loading-items');
-        $('#similar-images-container .img-list').html('');
-        return true;
-    },
-    onSubmit : function(){ 
-        $('#similar-images-container').addClass('ajax-loading-items');
-        $('#similar-images-container .img-list').html('');
-        return true;
-    },
-	template: '<div class="qq-uploader">' + 
-                '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).')?></div>' +
-                '<ul class="qq-upload-list"></ul>' + 
-             '</div>',
-    fileTemplate: '<li class="float-break" id="file_id_row_{file_id}"><span class="qq-upload-file"></span>' +
-                '<span class="qq-upload-spinner"></span>' +
-                '<span class="qq-upload-size"></span>' +
-                '<a class="qq-upload-cancel" href="#"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Cancel');?></a>' +
-                '<span class="qq-upload-failed-text"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Failed');?></span>' +
-                '</li>',
-    multiple: false,
-    debug: true
-});   
+   
+var template_uploader = '<div class="qq-uploader">' + 
+                        '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
+                        '<div class="qq-upload-button"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Click to choose image, you can also Drag and Drop file here (Drag and drop only for FF, Chrome).')?></div>' +
+                        '<ul class="qq-upload-list"></ul>' + 
+                     '</div>';
+                     
+var file_template = '<li class="float-break" id="file_id_row_{file_id}"><span class="qq-upload-file"></span>' +
+                        '<span class="qq-upload-spinner"></span>' +
+                        '<span class="qq-upload-size"></span>' +
+                        '<a class="qq-upload-cancel" href="#"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Cancel');?></a>' +
+                        '<span class="qq-upload-failed-text"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('similar/similar','Failed');?></span>' +
+                        '</li>';        				
+   
+var _lactq = _lactq || [];
+_lactq.push({'f':'hw_init_similar_image','a':[[<?=erLhcoreClassModelSystemConfig::fetch('allowed_file_types')->current_value;?>],<?=(int)(erLhcoreClassModelSystemConfig::fetch('max_photo_size')->current_value*1024)?>,<?=(int)(erLhcoreClassModelSystemConfig::fetch('file_upload_limit')->current_value)?>,template_uploader,file_template,'<?=erLhcoreClassDesign::baseurl('similar/uploadsimilar')?>']});
+
 </script>
 
 <div id="similar-images-container" <? if ($image !== false) : ?>class="ajax-loading-items"<?php endif;?> style="clear:both;padding-top:10px;">
     <div class="float-break img-list">
     <?php if ($image !== false) : ?>
-     <script>
-    $(function() {
-        $.getJSON('<?=erLhcoreClassDesign::baseurl('similar/imagejson')?>/<?=$image->pid?>' , function(data){
-			$('#similar-images-container').removeClass('ajax-loading-items');
-            $('#similar-images-container .img-list').html(data.result);         
-		});
-    });
+     <script> 
+     _lactq.push({'f':'hw_init_similar_image_get','a':[<?=$image->pid?>]});
     </script>    
     <?php endif;?>
     </div>

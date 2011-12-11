@@ -25,7 +25,6 @@ foreach ($ReverseOrder as $pathItem) : ?>
 <meta name="Keywords" content="" />
 <meta name="Description" content="<?=isset($Result['description_prepend']) ? $Result['description_prepend'].' ' : '' ?><?=erConfigClassLhConfig::getInstance()->getOverrideValue( 'site', 'description' )?>" />
 <meta http-equiv="Content-Language" content="<?=erLhcoreClassSystem::instance()->ContentLanguage?>"/>
-<?php include(erLhcoreClassDesign::designtpl('pagelayouts/parts/page_head_js.tpl.php'));?> 
 <?if (isset($Result['rss'])) : ?>
 <link rel="alternate" type="application/rss+xml" title="<?=$Result['rss']['title']?>" href="<?=$Result['rss']['url'];?>" />
 <? else :?>

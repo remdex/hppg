@@ -45,6 +45,7 @@ endforeach; ?>
 
 <?php if (!isset($skipAlbumListJS)) : ?>
 <script>
-hw.initInfoWindowAlbum();
+var _lactq = _lactq || [];
+_lactq.push({'f':'hw_init_info_window_album','a':[]});
 </script>
 <?php endif;?>

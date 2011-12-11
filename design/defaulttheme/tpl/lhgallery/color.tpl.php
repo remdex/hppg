@@ -55,17 +55,18 @@ if (isset($currentResolution) && key_exists($currentResolution,$resolutions)) {
 
 
 <script>
+var _lactq = _lactq || [];
+
 <?php if ($max_filters == false) : ?>
-hw.initSortBox('#color-filter-nav');
-hw.initPalleteFilter('<?=$yes_color.$no_color.$appendResolutionMode?>','color','');
+_lactq.push({'f':'hw_init_sort_box','a':['#color-filter-nav']});
+_lactq.push({'f':'init_pallete_filter','a':['<?=$yes_color.$no_color.$appendResolutionMode?>','color','']});
 <?php endif;?>
 
 <?php if ($database_handler == false) : ?>
-hw.initSortBox('#ncolor-filter-nav');
-hw.initSortBox('#resolution-nav');
-hw.initNPalleteFilter('<?=$yes_color.$no_color.$appendResolutionMode?>','color','');
+_lactq.push({'f':'hw_init_sort_box','a':['#ncolor-filter-nav']});
+_lactq.push({'f':'hw_init_sort_box','a':['#resolution-nav']});
+_lactq.push({'f':'init_npallete_filter','a':['<?=$yes_color.$no_color.$appendResolutionMode?>','color','']});
 <?php endif;?>
-
 </script>
 
 

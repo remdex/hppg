@@ -80,8 +80,9 @@ $matchModeAppend = $matchMode == 'all' ? '/(match)/all' : '';
 <?php endif;?>
 
 
-<script>
-hw.initSortBox('#sort-nav');
-hw.initSortBox('#resolution-nav');
-hw.initSortBox('#matchmode-nav');
+<script> 
+var _lactq = _lactq || [];
+_lactq.push({'f':'hw_init_sort_box','a':['#sort-nav']});
+_lactq.push({'f':'hw_init_sort_box','a':['#resolution-nav']});
+_lactq.push({'f':'hw_init_sort_box','a':['#matchmode-nav']});
 </script>

@@ -135,27 +135,8 @@ if (!empty($items)) : ?>
 <?php endif;?>
 </div>
 
-<script> 
-  $('.thumb-attr a').each(function(index) {	
-    	$(this).attr('href',$(this).attr('rel'));
-  });
-  hw.initInfoWindow(''); 
-  $('#KeywordColorSearch').change(function(){ 
-      var keyword = $(this).val();
-      if ($(this).val() == '') {
-            $('#pallete-include a').each(function(index) {
-                	$(this).attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(color)/"+$(this).attr('rel'));
-            });
-            $('#pallete-exclude a').each(function(index) {
-                	$(this).attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/color')?>/(ncolor)/"+$(this).attr('rel'));
-            });
-      } else { 
-            $('#pallete-include a').each(function(index) {
-                	$(this).attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/"+escape(keyword)+"/(color)/"+$(this).attr('rel'));
-            }); 
-            $('#pallete-exclude a').each(function(index) {
-                	$(this).attr('href',"<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/"+escape(keyword)+"/(ncolor)/"+$(this).attr('rel'));
-            });
-      }
-  });   
+<script>   
+var _lactq = _lactq || [];
+_lactq.push({'f':'hw_init_info_window','a':['']});
+_lactq.push({'f':'hw_init_color_choose','a':[]});
 </script>

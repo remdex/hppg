@@ -22,5 +22,6 @@
 </div>
 
 <script>
-hw.initSortBox('#resolution-nav');
+var _lactq = _lactq || [];
+_lactq.push({'f':'hw_init_sort_box','a':['#resolution-nav']});
 </script>

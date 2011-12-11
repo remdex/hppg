@@ -19,7 +19,7 @@ if ($item === false) continue;
         <div class="thumb-attr">
         
         <div class="tit-item">
-            <h3><a title="<?=htmlspecialchars($item->name_user);?>" rel="<?=$item->url_path.$appendImageMode?>" href="<?=erLhcoreClassDesign::imagePath($item->filepath.$item->filename)?>">
+            <h3><a title="<?=htmlspecialchars($item->name_user);?>" href="<?=$item->url_path.$appendImageMode?>">
                 <?=($title = $item->name_user) == '' ? erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image_list','preview version') : $title;?>          
                 </a>
             </h3>
@@ -39,9 +39,7 @@ if ($item === false) continue;
 
  </div>
 
-<script type="text/javascript"> 
-  $('.thumb-attr a').each(function(index) {	
-    	$(this).attr('href',$(this).attr('rel'));
-  });
-  hw.initInfoWindow('<?=base64_encode($appendImageMode)?>');
+<script>
+var _lactq = _lactq || [];
+_lactq.push({'f':'hw_init_info_window','a':['<?=base64_encode($appendImageMode)?>']});
 </script>

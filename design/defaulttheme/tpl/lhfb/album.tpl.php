@@ -50,52 +50,9 @@
 
           &nbsp;<span id="total_to_import"></span>
           
-          <script>
-            $('#checkAllButton').click(function() { 
-               $( '.itemPhoto' ).each( function() {         
-            		$( this ).attr( 'checked', $( this ).is( ':checked' ) ? '' : 'checked' );
-            	})    
-            });
-            
-            $('.newAlbumName').change(function(){	    
-            	$.getJSON("<?=erLhcoreClassDesign::baseurl('gallery/albumnamesuggest')?>/0/"+escape($(this).val()), {} , function(data){	
-                               $('#album_select_directory0').html(data.result);                       
-                               if (data.error == 'false'){
-                                    $('#album_select_directory0 input').eq(0).attr("checked","checked");
-                                    $('#moveAction').show();
-                               } else {
-                                   $('#moveAction').hide();
-                               }                       
-                	});	
-            });
-            
-            $('#moveAction').click(function() { 
-                if ($('.image_import:checked').size() > 0) {
-                importPhoto();
-                } else {
-                    alert('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Please choose atleast one image!')?>');
-                }
-            });
-            
-            function importPhoto()
-            {
-               if ($('input[name=AlbumDestinationDirectory0]:checked').val() != undefined) { 
-                   if ($('.image_import:checked').size() > 0) {
-                       $('#total_to_import').html($('.image_import:checked').size() + ' <?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','images to import')?>...');
-                       $('#total_to_import').addClass('spinning-now');
-                       
-                       $.getJSON("<?=erLhcoreClassDesign::baseurl('fb/importfbphoto')?>/"+$('input[name=AlbumDestinationDirectory0]:checked').val()+"/"+$('.image_import:checked').eq(0).val(), {} , function(data){
-                              $('.image_import:checked').eq(0).removeClass('image_import');	
-                    		  importPhoto();
-                    	});
-                   } else { 
-                        $('#total_to_import').removeClass('spinning-now');
-                        $('#total_to_import').html('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','All images were imported')?>...');
-                   }                	
-               } else {
-                   alert('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('fb/album','Please choose album')?>');
-               }
-            }
+          <script>          
+         var _lactq = _lactq || [];
+        _lactq.push({'f':'hw_init_fb_album_import','a':[]});
           </script>
      </div>
      

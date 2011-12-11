@@ -28,7 +28,8 @@
         </div>
                 
         <script>
-        hw.initCommentTranslations();
+        var _lactq = _lactq || [];
+        _lactq.push({'f':'hw_init_comment_translations','a':[]});
         </script>
         
         <?else:?>

@@ -1,12 +1,10 @@
 <script type="text/javascript">
-hw.setAppendURL('<?=$urlAppend?>');
-hw.initAjaxNavigation();
-$('.ad-fv').click(function(){
-    hw.addToFavorites(<?=$image->pid?>);
-   return false;
-});
+ var _lactq = _lactq || [];
+_lactq.push({'f':'hw_set_append_url','a':['<?=$urlAppend?>']});
+_lactq.push({'f':'init_ajax_navigation','a':[]});
+_lactq.push({'f':'init_add_fav','a':['<?=$image->pid?>']});
 <?php if ($image->anaglyph == 1) : ?>
-$('.ad-anaglyph').colorbox({width:'<?=$image->pwidth+50?>px',height:'<?=$image->pheight+130?>px'});
+_lactq.push({'f':'init_anaglyph_action','a':[{width:'<?=$image->pwidth+50?>px',height:'<?=$image->pheight+130?>px'}]});
 <?php endif;?>
-hw.initInfoWindow('<?=base64_encode($urlAppend)?>');   
+_lactq.push({'f':'hw_init_info_window','a':['<?=base64_encode($urlAppend)?>']});
 </script>

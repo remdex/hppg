@@ -16,18 +16,17 @@
 </ul>
 </div>
 
-
-
-
 <script>
+var _lactq = _lactq || [];
+
 <?php if ($max_filters == false) : ?>
-hw.initSortBox('#color-filter-nav');
-hw.initPalleteFilter('<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend : ''?>');
+_lactq.push({'f':'hw_init_sort_box','a':['#color-filter-nav']});
+_lactq.push({'f':'init_pallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend : ''?>']});
 <?php endif;?>
 
 <?php if ($nmax_filters == false) : ?>
-hw.initSortBox('#ncolor-filter-nav');
-hw.initNPalleteFilter('<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend : ''?>');
+_lactq.push({'f':'hw_init_sort_box','a':['#ncolor-filter-nav']});
+_lactq.push({'f':'init_npallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend : ''?>']});
 <?php endif;?>
 </script>
 

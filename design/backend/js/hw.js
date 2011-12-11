@@ -714,3 +714,21 @@ jQuery.cookie = function(name, value, options) {
         return cookieValue;
     }
 };
+
+var functionMap = {
+    'hw_init_markit_up': function(a,b) {    
+        mySettings.previewParserPath = a;
+        $(b).markItUp(mySettings);    
+    }
+};
+
+var _lactq = _lactq || [];
+
+$(document).ready(function() { 
+     
+    $.each(_lactq, function(index, value) {
+        functionMap[value.f].apply(hw,value.a);       
+    });   
+           
+		
+});

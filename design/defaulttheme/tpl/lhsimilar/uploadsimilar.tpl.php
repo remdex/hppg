@@ -30,8 +30,5 @@ foreach ($items as $key => $item) :
     </div>   
 <?$counter++;endforeach; ?>  
 <script>
-$('.thumb-attr a').each(function(index) {	
-	$(this).attr('href',$(this).attr('rel'));
-});
 hw.initInfoWindow('');
 </script>

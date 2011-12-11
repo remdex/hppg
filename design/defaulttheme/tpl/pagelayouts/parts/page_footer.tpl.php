@@ -8,7 +8,7 @@
 	<?php
 	$cache = CSCacheAPC::getMem();
 	$cacheVersion = $cache->getCacheVersion('article_cache_version');
-	if (($Result = $cache->restore(md5($cacheVersion.'_footer_article'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
+	if (($ResultCache = $cache->restore(md5($cacheVersion.'_footer_article'.erLhcoreClassSystem::instance()->SiteAccess))) === false)
     {
     	$value = (int)erLhcoreClassModelSystemConfig::fetch('footer_article_id')->current_value;
     	if ($value > 0)
@@ -22,7 +22,7 @@
     		}
     	}
     } else {
-    	echo $Result;
+    	echo $ResultCache;
     }
 	?>	
 	</div>

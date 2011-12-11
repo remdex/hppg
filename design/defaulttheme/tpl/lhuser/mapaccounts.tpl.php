@@ -57,12 +57,6 @@
 </form>
 
 <script>
-$('input[name=CreateAccount]').change(function(){    
-    if ($(this).val() == 3){
-        $('.map-login').fadeIn();
-        $('input[name=Username]').focus();
-    } else {
-        $('.map-login').fadeOut();
-    }
-});
+ var _lactq = _lactq || [];
+_lactq.push({'f':'hw_init_map_account','a':[]});
 </script>

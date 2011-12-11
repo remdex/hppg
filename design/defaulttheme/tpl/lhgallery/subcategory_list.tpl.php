@@ -20,12 +20,3 @@ foreach ($subcategorys as $subcategory) : ?>
 </div>
 <?php $counter++;endforeach;?>    
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $(".subcategory").mouseenter(function() {    
-    $(this).addClass('act-subcat'); 
-  }).mouseleave(function() {
-    $(this).removeClass('act-subcat');
-  });
-});
-</script>
