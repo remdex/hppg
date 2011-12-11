@@ -1,4 +1,10 @@
 <div class="header-list">
+       <div class="right">
+               <a href="<?=erLhcoreClassDesign::baseurl('gallery/addimages')?>/<?=$album->aid?>" ><img src="<?=erLhcoreClassDesign::design('images/icons/add.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Add images');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Add images');?>" /></a>    
+               <a href="<?=erLhcoreClassDesign::baseurl('gallery/albumedit')?>/<?=$album->aid?>" ><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Edit album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Edit album');?>" /></a>
+               <a href="<?=erLhcoreClassDesign::baseurl('gallery/deletealbum')?>/<?=$album->aid?>" onclick="return hw.confirm('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Are you sure?')?>')"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Delete album');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/my_albums_list','Delete album');?>" /></a>
+       </div>
+       
 <h1><?=htmlspecialchars($album->title)?></h1>
 </div>
 
