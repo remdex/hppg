@@ -13,7 +13,7 @@ $ImageData->caption = isset($_POST['caption']) ? $_POST['caption'] : '';
 $ImageData->anaglyph =  (isset($_POST['anaglyph']) && $_POST['anaglyph'] == 'checked') ? 1 : 0;
 
 $previousApproved = $ImageData->approved;
-$ImageData->approved =  $canChangeApprovement == true ? ((isset($_POST['approved']) && $_POST['approved'] == 'checked') ? 1 : 0) : $ImageData->approved;
+$ImageData->approved =  $canChangeApprovement == true ? ((isset($_POST['approved']) && ($_POST['approved'] == 'checked' || $_POST['approved'] == 'true') ) ? 1 : 0) : $ImageData->approved;
 
 erLhcoreClassGallery::getSession()->update($ImageData); 
 $ImageData->clearCache();

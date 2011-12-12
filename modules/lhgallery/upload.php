@@ -65,7 +65,7 @@ if ( ($albumto = erLhcoreClassModelGalleryAlbum::canUpload($uploader->getParam('
 
 	       $image->approved = $canChangeApprovement == true ? 1 : 0;
 	       	       	       
-	       $image->anaglyph =  ($uploader->getParam('anaglyph') == 'checked') ? 1 : 0;
+	       $image->anaglyph =  ($uploader->getParam('anaglyph') == 'checked' || $uploader->getParam('anaglyph') == 'true') ? 1 : 0;
 	      
 	       $session->update($image);
 	       $image->clearCache();
