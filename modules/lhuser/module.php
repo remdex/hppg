@@ -79,6 +79,12 @@ $ViewList['edit'] = array(
     'functions' => array( 'edituser' ),
     ); 
        
+$ViewList['loginas'] = array( 
+    'script' => 'loginas.php',
+    'params' => array('user_id'),
+    'functions' => array( 'edituser' ),
+    ); 
+       
 $ViewList['delete'] = array( 
     'script' => 'delete.php',
     'params' => array('user_id'),

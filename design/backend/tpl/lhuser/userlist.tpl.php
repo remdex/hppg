@@ -5,6 +5,7 @@
     <th>ID</th>
     <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','Username');?></th>
     <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','E-mail');?></th>
+    <th><?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','Login');?></th>
     <th width="1%">&nbsp;</th>
     <th width="1%">&nbsp;</th>
 </tr>
@@ -13,6 +14,7 @@
         <td><?=$user->id?></td>
         <td><?=$user->username?></td>
         <td><?=$user->email?></td>
+        <td><a href="<?=erLhcoreClassDesign::baseurl('user/loginas')?>/<?=$user->id?>">Login as</a></td>
         <td><a href="<?=erLhcoreClassDesign::baseurl('user/edit')?>/<?=$user->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/page_edit.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','Edit user');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','Edit user');?>" /></a></td>
         <td><a onclick="return confirm('<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/album_list_admin','Are you sure?');?>')" href="<?=erLhcoreClassDesign::baseurl('user/delete')?>/<?=$user->id?>"><img src="<?=erLhcoreClassDesign::design('images/icons/delete.png');?>" alt="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','Delete user');?>" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('user/userlist','Delete user');?>" /></a></td>
     </tr>
