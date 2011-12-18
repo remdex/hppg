@@ -13,6 +13,9 @@ $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
 $modeMatch = $Params['user_parameters_unordered']['match'] == 'all' ? 'all' : '';
 $appendMatchMode = $modeMatch == 'all' ? '/(match)/all' : '';
 
+$albumMatch = is_numeric($Params['user_parameters_unordered']['album']) ? (int)$Params['user_parameters_unordered']['album'] : '';
+$appendAlbumMode = $albumMatch != '' ? '/(album)/'.$albumMatch : '';
+
 $filterArray = array();   
 $appendMysqlIndex = array(); 
 if ($resolution != ''){
@@ -20,6 +23,10 @@ if ($resolution != ''){
     $filterArray['pheight'] = $resolutions[$resolution]['height'];
     $appendMysqlIndex[] = 'res';
 }    
+
+if ( is_numeric($albumMatch) ) {
+    $filterArray['album_id'] = $albumMatch;
+}
 
 $filterArray['approved'] = 1;
 $keywordDecoded = '';  
@@ -902,7 +909,7 @@ if ($mode == 'album')
        
     $tpl->set('imagesAjax',$imagesAjax); 
     $urlAppend = $modeSort != 'relevance' ? '/(mode)/search/(keyword)/'.urlencode($keywordDecoded).'/(sort)/'.$modeSort : '/(mode)/search/(keyword)/'.urlencode($keywordDecoded);
-    $urlAppend .= $appendColorMode.$appendResolutionMode.$appendMatchMode;
+    $urlAppend .= $appendColorMode.$appendResolutionMode.$appendMatchMode.$appendAlbumMode;
      
     $tpl->set('urlAppend',$urlAppend);  
     

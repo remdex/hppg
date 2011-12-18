@@ -32,13 +32,18 @@ if (isset($Params['user_parameters_unordered']['match']) && $Params['user_parame
     $matchAppend = '/(match)/all';
 }
 
+$albumAppend = '';
+if (isset($Params['user_parameters_unordered']['album']) && is_numeric($Params['user_parameters_unordered']['album'])) {    
+    $albumAppend = '/(album)/'.$Params['user_parameters_unordered']['album'];
+}
+
 $mode = in_array($Params['user_parameters_unordered']['mode'],$modes) ? $Params['user_parameters_unordered']['mode'] : 'color';
 $keywordDecoded =  trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
 $tpl->set('keyword',$keywordDecoded);
 $tpl->set('mode',$mode);
 $tpl->set('resolution',$resolutionAppend);
 $tpl->set('match',$matchAppend);
-
+$tpl->set('album',$albumAppend);
 
 echo json_encode(array('result' => $tpl->fetch()));
 

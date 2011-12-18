@@ -21,6 +21,7 @@ source anifofsrc
 	sql_attr_uint   = votes
 	sql_attr_uint   = pwidth
 	sql_attr_uint   = pheight
+	sql_attr_uint   = album_id
 }
 
 source anifofdeltasrc : anifofsrc

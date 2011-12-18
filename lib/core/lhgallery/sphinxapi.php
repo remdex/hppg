@@ -818,6 +818,19 @@ class SphinxClient
 			$this->_filters[] = array ( "type"=>SPH_FILTER_VALUES, "attr"=>$attribute, "exclude"=>$exclude, "values"=>$values );
 		}
 	}
+	
+	function ResetFilterByAttribute( $attribute ) {
+	   $filters = $this->_filters;
+	   
+	   $this->_filters = array();	   
+	   foreach ($filters as $filter)
+	   {
+	       if ( $filter['attr'] != $attribute ) {
+	           $this->_filters[] = $filter;
+	       } 
+	   }
+
+	}
 
 	/// set range filter
 	/// only match records if $attribute value is beetwen $min and $max (inclusive)

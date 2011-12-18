@@ -68,6 +68,8 @@ $resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolu
 $mode = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
 $resolution = isset($Params['user_parameters_unordered']['resolution']) && key_exists($Params['user_parameters_unordered']['resolution'],$resolutions) ? $Params['user_parameters_unordered']['resolution'] : '';
 $matchMode = $Params['user_parameters_unordered']['match'] == 'all' ? 'all' : '';
+$albumFilter = is_numeric($Params['user_parameters_unordered']['album']) ? (int)$Params['user_parameters_unordered']['album'] : '';
+
 
 $appendResolutionMode = $resolution != '' ? '/(resolution)/'.$resolution : '';
 if ($resolution != ''){
@@ -80,6 +82,14 @@ if ($matchMode != ''){
     $searchParams['MatchMode'] = 'all';
     $appendMatchMode = '/(match)/all';
 }
+
+$appendAlbumFilter = '';
+if ( $albumFilter != '' ) {
+    $searchParams['Filter']['album_id'] = $albumFilter;
+    $appendAlbumFilter = '/(album)/'.$albumFilter;
+}
+
+
 
 // Search also includes desirable color
 $appendColorMode = '';
@@ -114,9 +124,13 @@ $appendImageModeSorting = $mode != 'relevance' ? '/(sort)/'.$mode : '';
 $searchParams['sort'] = $modeSQL;
 $userParams .= $appendImageModeSorting;
 $userParamsWithoutResolution = $userParams.$appendColorMode;
-$userParams .= $appendColorMode.$appendResolutionMode.$appendMatchMode;
+$userParamsWithoutAlbum = $userParams.$appendColorMode.$appendResolutionMode.$appendMatchMode;
+$userParams .= $appendColorMode.$appendResolutionMode.$appendMatchMode.$appendAlbumFilter;
 
-$appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendColorMode.$appendResolutionMode.$appendMatchMode;
+
+
+
+$appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendColorMode.$appendResolutionMode.$appendMatchMode.$appendAlbumFilter;
 /* SORTING */
 
 $searchParams['SearchLimit'] = 20;
@@ -169,16 +183,35 @@ if (($Result = $cache->restore($cacheKey)) === false)
         $pages = new lhPaginator();
                   
         $searchParams['SearchOffset'] = $pages->low;
+        
+        if ( erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enable_facet' ) ) {
+            $searchParams['group_by_album'] = true;
+        }
+        
         $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
         
-        if ($pages->low == 0 && $searchResult['total_found'] > 0) {
+        if ( erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enable_facet' ) ) {
+            if ( $searchResult['total_found'] > 0 ) {
+                $Result['show_facet'] = true;        
+                $Result['facet_list'] = $searchResult['facet_list'];
+                $Result['facet_data'] = $searchResult['facet_data'];
+            }
+        }
+        
+        if ($pages->low == 0 && $searchResult['total_found'] > 0) { 
             erLhcoreClassModelGalleryLastSearch::addSearch(strip_tags($searchParams['keyword']),$searchResult['total_found']); 
         }
         
         $pages->items_total = $searchResult['total_found'];
         $pages->serverURL = erLhcoreClassDesign::baseurl('gallery/search').$userParams;
         $pages->paginate();        
-        $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/search').$userParams.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');        
+        $Result['path_base'] = erLhcoreClassDesign::baseurldirect('gallery/search').$userParams.($pages->current_page > 1 ? '/(page)/'.$pages->current_page : '');
+        $Result['facet_url'] = erLhcoreClassDesign::baseurl('gallery/search').$userParamsWithoutAlbum;
+        
+        if (is_numeric($albumFilter)){        
+            $Result['face_album_id'] = $albumFilter;
+        }
+    
         $sortModesTitle = array(    
             'new' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded first'),
             'newasc' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Last uploaded last'),    
@@ -203,6 +236,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
                 'appendImageMode'   => $appendImageMode,
                 'mode'              => $mode,
                 'matchMode'         => $matchMode,
+                'albumFilter'       => $albumFilter,
                 'currentResolution' => $resolution
         ) );
         
@@ -216,6 +250,13 @@ if (($Result = $cache->restore($cacheKey)) === false)
             $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/search').$userParams,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Resolution').' - '.$resolution);  
             $Result['title_path'][] = array('title' => $resolution); 
         }
+        
+        if (is_numeric($albumFilter)) {
+            $albumFilterObj = erLhcoreClassModelGalleryAlbum::fetch($albumFilter);
+            $Result['path'][] = array('url' => erLhcoreClassDesign::baseurl('gallery/search').$userParamsWithoutAlbum.'/(album)/'.$albumFilter,'title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','In album').' - '.$albumFilterObj->title); 
+            $Result['title_path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/searchrss','In album').' - '.$albumFilterObj->title); 
+        }
+        
         
         if ($Params['user_parameters_unordered']['page'] > 1) {        
             $Result['path'][] = array('title' => erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/search','Page').' - '.(int)$Params['user_parameters_unordered']['page']); 

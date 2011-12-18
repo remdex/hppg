@@ -6,6 +6,7 @@ VIEW `lh_gallery_sphinx_search_view` AS select
 `lh_gallery_albums`.`title` AS `album_title`,
 `lh_gallery_albums`.`description` AS `album_description`,
 `lh_gallery_albums`.`keyword` AS `album_keyword`,
+`lh_gallery_albums`.`aid` AS `album_id`,
 `lh_gallery_categorys`.`name` AS `category_name`,
 `lh_gallery_categorys`.`description` AS `category_description`,
 `lh_gallery_sphinx_search`.`title` AS `title`,

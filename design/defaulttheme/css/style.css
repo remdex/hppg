@@ -522,6 +522,7 @@ ol#breadcrumb a,
 .res-ico,
 .hits-ico,
 .left-infobox ul li a:hover,
+.left-infobox ul li a.selected,
 .search-box input.default-button,
 .rss-page,
 .ret-thumb,
@@ -638,11 +639,54 @@ padding-top:7px;
 }
 
 
-.left-infobox ul li a:hover{
-background-position:-63px -42px;
-text-decoration:none;
-border-bottom:1px solid #b0b0b0;
+.left-infobox ul li a:hover,
+.left-infobox ul li a.selected
+{
+    background-position:-63px -42px;
+    text-decoration:none;
+    border-bottom:1px solid #b0b0b0;
 }
+
+a.reset-filter{
+font-weight:bold;
+font-style:italic;
+line-height:20px;
+text-align:center;
+display:block;
+}
+
+.facet-albums {
+    max-height:300px;
+    overflow-y:auto;
+}
+
+.facet-albums::-webkit-scrollbar{
+    width:0.7em;
+    height:0.8em;
+    background-color:#fff;
+}
+
+.facet-albums::-webkit-scrollbar:hover{
+    background-color:#eee;
+}
+.facet-albums::-webkit-resizer{
+    -webkit-border-radius:4px;
+    background-color:#666;
+}
+
+.facet-albums::-webkit-scrollbar-thumb{
+    min-height:0.8em;
+    min-width:0.7em;
+    background-color: #ddd;
+}
+.facet-albums::-webkit-scrollbar-thumb:hover{
+    background-color: #bbb;
+}
+.facet-albums::-webkit-scrollbar-thumb:active{
+    background-color:#888;
+}
+
+
 
 .left-infobox ul.last-hits-infobox li a{
 padding:0;

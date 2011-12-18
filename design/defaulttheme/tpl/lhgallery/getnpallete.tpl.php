@@ -18,9 +18,9 @@ if ( count($moreColors) > 0 ) {
 ?>
 <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>);">
 <?php if ($mode == 'color') : ?>
-    <a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?><?=$no_color.$yesColor.$resolution.$match?>"></a>
+    <a href="<?=erLhcoreClassDesign::baseurl('gallery/color')?><?=$no_color.$yesColor.$resolution.$match.$album?>"></a>
 <?php elseif ($mode == 'search') : ?>
-    <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($keyword)?><?=$no_color.$yesColor.$resolution.$match?>"></a>    
+    <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?>/(keyword)/<?=urlencode($keyword)?><?=$no_color.$yesColor.$resolution.$match.$album?>"></a>    
 <?php endif;?>
 </div>
 <?endforeach;?>

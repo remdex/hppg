@@ -38,6 +38,10 @@
             </div>
             <?php endif;?>
 
+            <?php if (isset($Result['show_facet'])) : ?>
+            <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_facet.tpl.php'));?> 
+            <?php endif;?>
+                       
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_categories.tpl.php'));?>            
 	  		                                
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_last_searchers.tpl.php'));?>

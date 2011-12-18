@@ -178,10 +178,12 @@ class erLhcoreClassGallery{
    public static function searchSphinxMulti($queryesBatch,$cacheEnabled = true,$asSingle = false)
    {
       if ($cacheEnabled == true) {
-        $cache = CSCacheAPC::getMem();        
-        $cacheKey = md5('SphinxSearchMulti_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$queryesBatch));
+        $cache = CSCacheAPC::getMem();  
+        $sphinxCacheVersion = $cache->getCacheVersion('sphinx_cache_version');      
+        $cacheKey = md5('SphinxSearchMulti_VersionCache'.$sphinxCacheVersion.erLhcoreClassGallery::multi_implode(',',$queryesBatch));
       }
-      
+          
+              
       if ($cacheEnabled == false || ($resultReturn = $cache->restore($cacheKey)) === false)
       {
             $cl = self::getSphinxInstance();
@@ -194,13 +196,17 @@ class erLhcoreClassGallery{
             $extendedSearch = $cfg->getSetting( 'color_search', 'extended_search');
             $faceSearch = $cfg->getSetting( 'face_search', 'enabled');
             $resultItems = array();
+            $hasGroupFilter = false;
+            $fetchedGroupFromCache = false;
             
             foreach ($queryesBatch as $params) {
+                  $executeSearch = true;
                   
                   $cl->ResetFilters();
                   $cl->SetSelect('');
+                  $cl->ResetGroupBy('');
                                                 
-                  $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxReturn);
+                  $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0, isset($params['SearchLimit']) ? (int)$params['SearchLimit'] : 20,$maxReturn);
                     
                   $filter = isset($params['Filter']) ? $params['Filter'] : array();  
                    
@@ -340,10 +346,53 @@ class erLhcoreClassGallery{
                   // Make some weightning
                   $cl->SetFieldWeights($weights);
                   
-                  if ($asSingle == false){
-                      $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), $sphinxIndex );
-                  } else {
-                      $resultItems[] = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), $sphinxIndex );
+                  if (isset($params['group_by_album']) && $params['group_by_album'] == true) { 
+                      
+                      if (!isset($sphinxCacheVersion)){
+                          $cache = CSCacheAPC::getMem();
+                          $sphinxCacheVersion = $cache->getCacheVersion('sphinx_cache_version');
+                      }      
+                      
+                      $paramsCache = $params;
+                      if ( isset($paramsCache['Filter']['album_id']) ) {
+                            unset($paramsCache['Filter']['album_id']);
+                      }
+                       
+                      if ( isset($paramsCache['sort']) ) {
+                          unset($paramsCache['sort']);
+                      }
+                        
+                      if ( isset($paramsCache['SearchOffset']) ) {
+                          unset($paramsCache['SearchOffset']);
+                      }
+                      
+                      if ( isset($paramsCache['SearchLimit']) ) {
+                          unset($paramsCache['SearchLimit']);
+                      }
+              
+                      $paramsCache = array_filter($paramsCache);
+                      ksort($paramsCache);                
+                                            
+                      $cacheKeyGroup =  md5('SphinxSearch_VersionCacheFacet'.$sphinxCacheVersion.erLhcoreClassGallery::multi_implode(',',$paramsCache));
+                      $hasGroupFilter = true;
+                      
+                      if ( ($cacheGroupResult = $cache->restore($cacheKeyGroup)) !== false ) { 
+                          $fetchedGroupFromCache = true;
+                      } else {
+                          $cl->SetGroupBy( 'album_id', SPH_GROUPBY_ATTR, '@count desc' );
+                          $cl->ResetFilterByAttribute('album_id');
+                          $cl->SetLimits(0,(int)50,$maxReturn);                          
+                      }
+                  } elseif ( isset($params['group_by_album']) ) { 
+                      $executeSearch = false; // Means filter is set, but not need to execute, because facet search is disabled
+                  }     
+                  
+                  if ( $fetchedGroupFromCache == false && $executeSearch == true) {
+                      if ($asSingle == false){
+                          $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), $sphinxIndex );
+                      } else {
+                          $resultItems[] = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), $sphinxIndex );
+                      }
                   }
             }
             
@@ -352,8 +401,37 @@ class erLhcoreClassGallery{
             }
            
             $resultReturn = array();
+           
+            $idMatchGroup = array();
+            $idMatchGroupData = array();
+                
+            if ($hasGroupFilter == true)
+            { 
+       
+                if ( $fetchedGroupFromCache == true ) {
+                    $idMatchGroup = $cacheGroupResult['id_match_group'];
+                    $idMatchGroupData = $cacheGroupResult['id_match_group_data'];
+                } else {
+                    $resultGroup = array_pop($resultItems); // Last return is always group if it's enabled                
+                    foreach ($resultGroup['matches'] as $item) 
+                    { 
+                        $idMatchGroup[$item['attrs']['album_id']] = null;
+                        $idMatchGroupData[$item['attrs']['album_id']] = $item['attrs']['@count'];
+                    }
+                  
+                    $listObjects = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 50,'filterin'=> array('aid' => array_keys($idMatchGroup))));
+                  
+                    foreach ($listObjects as $object)
+                    {     
+                      $idMatchGroup[$object->aid] = $object;
+                    }
+                    
+                    $cache->store($cacheKeyGroup,array('id_match_group' => $idMatchGroup,'id_match_group_data' => $idMatchGroupData),12000);                                
+                }
+            }
             
             
+                        
             // Get ID's witch we need to fetch first
             $imagesIDToFetch = array();
             foreach ($resultItems as $result)
@@ -372,6 +450,7 @@ class erLhcoreClassGallery{
                 {
                     $resultReturn[$keyQuery] = array('total_found' => 0,'list' => array());
                 }
+                $resultReturn[] = array('facet_list' => $idMatchGroup, 'facet_data' => $idMatchGroupData);
                 return $resultReturn;
             }
       
@@ -407,9 +486,11 @@ class erLhcoreClassGallery{
             	      $result['total_found'] = $maxReturn;
             	  }            
             	   
-                  $resultReturn[$keyQuery] = array('total_found' => $result['total_found'],'list' => $idMatch);
+                  $resultReturn[$keyQuery] = array('total_found' => $result['total_found'],'list' => $idMatch );
             }  
-                        
+            
+            $resultReturn[] = array('facet_list' => $idMatchGroup, 'facet_data' => $idMatchGroupData);
+            
             if ($cacheEnabled == true)
             $cache->store($cacheKey,$resultReturn,12000); 
       }
@@ -429,8 +510,9 @@ class erLhcoreClassGallery{
    public static function searchSphinx($params = array('SearchLimit' => 20),$cacheEnabled = true)  
    {
       if ($cacheEnabled == true ) {
-        $cache = CSCacheAPC::getMem();        
-        $cacheKey =  md5('SphinxSearch_VersionCache'.$cache->getCacheVersion('sphinx_cache_version').erLhcoreClassGallery::multi_implode(',',$params));
+        $cache = CSCacheAPC::getMem();
+        $sphinxCacheVersion = $cache->getCacheVersion('sphinx_cache_version');
+        $cacheKey =  md5('SphinxSearch_VersionCache'.$sphinxCacheVersion.erLhcoreClassGallery::multi_implode(',',$params));
       }
       
       if ($cacheEnabled == false || ($resultReturn = $cache->restore($cacheKey)) === false)
@@ -537,17 +619,21 @@ class erLhcoreClassGallery{
           $colorSearchText = '';
           $selectPart = array();
           
-          foreach ($params['color_filter'] as $color_id)
-          {
-              $colorSearchText .= ' pld'.$color_id;
-              $selectPart[] = "ln(pld{$color_id}+1)"; // +1 to avoid infinity
+          if (isset($params['color_filter'])){
+              foreach ($params['color_filter'] as $color_id)
+              {
+                  $colorSearchText .= ' pld'.$color_id;
+                  $selectPart[] = "ln(pld{$color_id}+1)"; // +1 to avoid infinity
+              }
           }
           
-          // Must not be present
-          foreach ($params['ncolor_filter'] as $color_id)
-          {
-              $colorSearchText .= ' -pld'.$color_id;
-          }      
+          if (isset($params['ncolor_filter'])){
+              // Must not be present
+              foreach ($params['ncolor_filter'] as $color_id)
+              {
+                  $colorSearchText .= ' -pld'.$color_id;
+              }      
+          }
          
           // Works best for search by color, like we are repeating color multiple times, 
           // that way we get almoust the same result as using database
@@ -586,15 +672,88 @@ class erLhcoreClassGallery{
           }
       }   
 
-      $result = $cl->Query( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'index' ) );
       
+      $result = $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'index' ) );
+      
+      $idMatchGroup = array();
+      $idMatchGroupData = array();
+      $fetchedGroupFromCache = false;
+      
+      if (isset($params['group_by_album'])) { 
+          
+              if (!isset($sphinxCacheVersion)){
+                  $cache = CSCacheAPC::getMem();
+                  $sphinxCacheVersion = $cache->getCacheVersion('sphinx_cache_version');
+              }      
+              
+              $paramsCache = $params;
+              if ( isset($paramsCache['Filter']['album_id']) ) {
+                    unset($paramsCache['Filter']['album_id']);
+              }
+               
+              if ( isset($paramsCache['sort']) ) {
+                  unset($paramsCache['sort']);
+              }
+                
+              if ( isset($paramsCache['SearchOffset']) ) {
+                  unset($paramsCache['SearchOffset']);
+              } 
+               
+              if ( isset($paramsCache['SearchLimit']) ) {
+                  unset($paramsCache['SearchLimit']);
+              }
+                
+              $paramsCache = array_filter($paramsCache);
+              ksort($paramsCache);
+                            
+              $cacheKeyGroup =  md5('SphinxSearch_VersionCacheFacet'.$sphinxCacheVersion.erLhcoreClassGallery::multi_implode(',',$paramsCache));
+                
+              if ( ($cacheGroupResult = $cache->restore($cacheKeyGroup)) !== false ) { 
+                    $fetchedGroupFromCache = true;
+              } else {
+                    $cl->SetGroupBy( 'album_id', SPH_GROUPBY_ATTR, '@count desc' );
+                    $cl->ResetFilterByAttribute('album_id');
+                    $cl->SetLimits(0,(int)50,$maxMatches);              
+                    $cl->AddQuery( (isset($params['keyword']) && trim($params['keyword']) != '') ? trim($params['keyword']).$startAppend.$colorSearchText : trim($colorSearchText), erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'index' ) );
+              }
+      }
+      
+      $resultArray = $cl->RunQueries();
+      $result = array_shift($resultArray);
+           
       if ($result['total_found'] == 0 || !isset($result['matches'])){
-      
           if (isset($params['relevance'])) { 
               return 1;  
           } else {
-            return array('total_found' => 0,'list' => null);
+            return array('total_found' => 0,'list' => null, 'facet_list' => $idMatchGroup, 'facet_data' => $idMatchGroupData);
           }      
+      }
+      
+      if ( isset($params['group_by_album']) ) {  
+                  
+            if ( $fetchedGroupFromCache == true ) {
+                $idMatchGroup = $cacheGroupResult['id_match_group'];
+                $idMatchGroupData = $cacheGroupResult['id_match_group_data'];
+            } else {
+                $resultGroup = array_shift($resultArray);
+                $idMatchGroup = array();
+                $idMatchGroupData = array();
+              
+                foreach ($resultGroup['matches'] as $item) 
+                { 
+                    $idMatchGroup[$item['attrs']['album_id']] = null;
+                    $idMatchGroupData[$item['attrs']['album_id']] = $item['attrs']['@count'];
+                }
+              
+                $listObjects = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 50,'filterin'=> array('aid' => array_keys($idMatchGroup))));
+              
+                foreach ($listObjects as $object)
+                {     
+                    $idMatchGroup[$object->aid] = $object;
+                }
+                
+                $cache->store($cacheKeyGroup,array('id_match_group' => $idMatchGroup,'id_match_group_data' => $idMatchGroupData),12000);                                
+            }
       }
       
       $idMatch = array();
@@ -625,7 +784,7 @@ class erLhcoreClassGallery{
       }
             
 	  if (count($idMatch) == 0)
-          	return array('total_found' => 0,'list' => null);   
+          	return array('total_found' => 0,'list' => null, 'facet_list' => $idMatchGroup, 'facet_data' => $idMatchGroupData);   
         
       $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => array_keys($idMatch))));
       
@@ -638,7 +797,7 @@ class erLhcoreClassGallery{
           $result['total_found'] = $maxMatches;
       }
       
-      $resultReturn = array('total_found' => $result['total_found'],'list' => $idMatch);
+      $resultReturn = array('total_found' => $result['total_found'],'list' => $idMatch, 'facet_list' => $idMatchGroup, 'facet_data' => $idMatchGroupData);
       
       if ($cacheEnabled == true) {
             $cache->store($cacheKey,$resultReturn,12000);

@@ -21,12 +21,12 @@ var _lactq = _lactq || [];
 
 <?php if ($max_filters == false) : ?>
 _lactq.push({'f':'hw_init_sort_box','a':['#color-filter-nav']});
-_lactq.push({'f':'init_pallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend : ''?>']});
+_lactq.push({'f':'init_pallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend . $albumFilterAppend : ''?>']});
 <?php endif;?>
 
 <?php if ($nmax_filters == false) : ?>
 _lactq.push({'f':'hw_init_sort_box','a':['#ncolor-filter-nav']});
-_lactq.push({'f':'init_npallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend : ''?>']});
+_lactq.push({'f':'init_npallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend . $albumFilterAppend : ''?>']});
 <?php endif;?>
 </script>
 
@@ -59,8 +59,8 @@ sort($moreColors);
 
 ?>
     <div class="csc" style="background-color:rgb(<?=$palleteCurrent->red?>,<?=$palleteCurrent->green?>,<?=$palleteCurrent->blue?>)">
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Remove color')?>" href="<?=$modePallete == 'color' ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search') .'/(keyword)/'.urlencode($keyword) ?><?=count($arrayItems) > 0 ? '/(color)/'.implode($arrayItems,'/') : ''?><?echo $no_color,$resolutionAppend,$matchModeAppend?>"></a>
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','More color');?>" class="more-color" href="<?=$modePallete == 'color' ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search') .'/(keyword)/'.urlencode($keyword) ?>/(color)/<?=implode($moreColors,'/')?><?echo $no_color,$resolutionAppend,$matchModeAppend?>"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','Remove color')?>" href="<?=$modePallete == 'color' ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search') .'/(keyword)/'.urlencode($keyword) ?><?=count($arrayItems) > 0 ? '/(color)/'.implode($arrayItems,'/') : ''?><?echo $no_color,$resolutionAppend,$matchModeAppend,$albumFilterAppend?>"></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/color','More color');?>" class="more-color" href="<?=$modePallete == 'color' ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search') .'/(keyword)/'.urlencode($keyword) ?>/(color)/<?=implode($moreColors,'/')?><?echo $no_color,$resolutionAppend,$matchModeAppend,$albumFilterAppend?>"></a>
     </div>
 <?php endforeach;?>
 <?php if (count($pallete_id) > 0) : ?>
