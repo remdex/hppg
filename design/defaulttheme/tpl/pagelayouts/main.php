@@ -31,17 +31,17 @@
 
 	<div id="bodcont" class="float-break">
 	
-        <div id="leftmenucont">              
+        <div id="leftmenucont">     
+            <?php if (isset($Result['show_facet'])) : ?>
+            <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_facet.tpl.php'));?> 
+            <?php endif;?>
+            
             <?php if (erLhcoreClassUser::instance()->isLogged()) : ?>
             <div class="left-infobox">
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_user.tpl.php'));?>	
             </div>
             <?php endif;?>
-
-            <?php if (isset($Result['show_facet'])) : ?>
-            <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_facet.tpl.php'));?> 
-            <?php endif;?>
-                       
+    
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_categories.tpl.php'));?>            
 	  		                                
             <?php include_once(erLhcoreClassDesign::designtpl('pagelayouts/parts/leftmenu_last_searchers.tpl.php'));?>
