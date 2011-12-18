@@ -570,7 +570,8 @@ return array (
       'delay_index' => false, 
       'delay_index_portion' => 500,
       'reset_keywords' => array(),
-      'ban_keywords' => ''     
+      'ban_keywords' => '',     
+      'enable_facet' => false   
     ),
     'cacheEngine' => array(
         'cache_global_key'  => 'global_site_cache_key',
