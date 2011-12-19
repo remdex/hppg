@@ -1,8 +1,8 @@
 <div class="image-full">
-    <div class="image-full-content">
+    <div class="image-full-content"  itemscope itemtype="schema.org/ImageObject">
     
         <div class="header-list">
-            <h1><?=htmlspecialchars($image->name_user)?></h1>
+            <h1 itemprop="name"><?=htmlspecialchars($image->name_user)?></h1>
         </div>
         
         <div class="navigator-image float-break">
