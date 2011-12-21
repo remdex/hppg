@@ -6,6 +6,9 @@ $facebook = new Facebook(array(
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhuser/completefblogin.tpl.php');    
 $userFB = $facebook->getUser();
+
+
+
 if ($userFB) {
   try {
     // Proceed knowing you have a logged in user who's authenticated.
