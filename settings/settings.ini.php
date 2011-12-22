@@ -146,7 +146,11 @@ return array (
           
           'album_priority' => '0.8',
           'category_priority' => '0.7',
-          'image_priority' => '0.9'
+          'image_priority' => '0.9',
+          
+          'image_frequency'     => 'daily',
+          'album_frequency'     => 'weekly',
+          'category_frequency'  => 'weekly'
     ),
     'site_access_options' => 
     array (
