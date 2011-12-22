@@ -16,7 +16,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
       foreach ($categorys as $category) {
         echo '<url><loc>';
         echo 'http://'.$_SERVER['HTTP_HOST']. $category->path_url;
-        echo '</loc><changefreq>weekly</changefreq>
+        echo '</loc><changefreq>'.erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','category_frequency').'</changefreq>
         <priority>'.erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','category_priority').'</priority>
         </url>';
       }

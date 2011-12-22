@@ -19,7 +19,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
       foreach ($albums as $album) {
         echo '<url><loc>';
         echo 'http://'.$_SERVER['HTTP_HOST']. $album->url_path;
-        echo '</loc><changefreq>weekly</changefreq>
+        echo '</loc><changefreq>'.erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','album_frequency').'</changefreq>
         <priority>'.erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','album_priority').'</priority>
         </url>';
       }

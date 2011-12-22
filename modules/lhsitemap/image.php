@@ -19,7 +19,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
       foreach ($images as $image) {
         echo '<url><loc>';
         echo 'http://'.$_SERVER['HTTP_HOST']. $image->url_path;
-        echo '</loc><changefreq>daily</changefreq>
+        echo '</loc><changefreq>'.erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','image_frequency').'</changefreq>
         <priority>'.erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','image_priority').'</priority>
         </url>';
       }
