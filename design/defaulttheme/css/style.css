@@ -1173,6 +1173,10 @@ padding:5px;}
 div.dominant-colors div{margin-bottom:5px;height:20px;width:50px;}
 div.dominant-colors div a{display:block;height:20px;}
 
+div.dom-colors-info{margin-left:0;margin-bottom:5px;}
+div.dom-colors-info div{width:12px;height:12px;float:left;margin-right:4px;margin-bottom:0px;}
+div.dom-colors-info div a{height:11px;}
+
 div.nfloat{float:none;clear:both;}
 div.nfloat div{height:auto;width:auto;float:none;}
 div.nfloat div a{height:auto;width:auto;float:none;}
