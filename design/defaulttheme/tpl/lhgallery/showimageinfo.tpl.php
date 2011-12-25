@@ -34,13 +34,13 @@
         $lastID = $pallete->id;
         ?>
         <div style="background-color:rgb(<?=$pallete->red?>,<?=$pallete->green?>,<?=$pallete->blue?>)">
-        <a href="<?=erLhcoreClassDesign::baseurl('gallery/search')?><?=(strpos($sort,'/(color)/') !== false ? str_replace('/(color)/','/(color)/'.$pallete->id.'/',$sort) : $sort.'/(color)/'.$pallete->id)?>"></a>
+        <a href="<?=empty($sort) ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search')?><?=(strpos($sort,'/(color)/') !== false ? str_replace('/(color)/','/(color)/'.$pallete->id.'/',$sort) : $sort.'/(color)/'.$pallete->id)?>"></a>
         </div>
         <?php endforeach;sort($topThreeColors);?>
         
     </div>
     <?php endif;?>
-    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search for similar colors images')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/search')?><?=(strpos($sort,'/(color)/') !== false ? str_replace('/(color)/','/(color)/'.implode('/',$topThreeColors).'/',$sort) : $sort.'/(color)/'.implode('/',$topThreeColors))?>"><img src="<?=erLhcoreClassDesign::design('images/icons/color_wheel.png')?>" alt="" /></a>
+    <a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search for similar colors images')?>" href="<?=empty($sort) ? erLhcoreClassDesign::baseurl('gallery/color') : erLhcoreClassDesign::baseurl('gallery/search')?><?=(strpos($sort,'/(color)/') !== false ? str_replace('/(color)/','/(color)/'.implode('/',$topThreeColors).'/',$sort) : $sort.'/(color)/'.implode('/',$topThreeColors))?>"><img src="<?=erLhcoreClassDesign::design('images/icons/color_wheel.png')?>" alt="" /></a>
     <?php if (erConfigClassLhConfig::getInstance()->getSetting( 'imgseek', 'enabled' ) === true) : ?>
     &nbsp;<a title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/image','Search for visualy similar images')?>" href="<?=erLhcoreClassDesign::baseurl('similar/image')?>/<?=$image->pid?>"><img src="<?=erLhcoreClassDesign::design('images/icons/eye.png')?>" alt="" /></a>
     <?php endif;?>
