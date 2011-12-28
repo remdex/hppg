@@ -31,5 +31,10 @@ $parts = explode('/',$exifData['EXIF']['FNumber']);?>
 $parts = explode('/',$exifData['EXIF']['FocalLength']);?> 
     <li><strong>FocalLength:</strong> <?=number_format($parts[0]/10,2,'.',',');?> mm</li>
 <?php endif;?>
+<?php if (isset($exifData['IFD0']['DateTime'])) : ?>
+    <li><strong>Taken:</strong> <?=$exifData['IFD0']['DateTime'];?></li>
+<?php elseif (isset($exifData['EXIF']['DateTimeOriginal'])) : ?>
+    <li><strong>Taken:</strong> <?=$exifData['EXIF']['DateTimeOriginal'];?></li>
+<?php endif;?>
 </ul>
 </div>
