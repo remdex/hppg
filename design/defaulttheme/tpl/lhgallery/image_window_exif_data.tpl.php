@@ -2,6 +2,9 @@
 <? try {
 $imageData = new ezcImageAnalyzer( $image->file_path_filesystem); 
 $exifData = $imageData->data->exif;
+
+print_r($exifData);
+
 } catch (Exception $e) {
     $exifData = array();
 }
@@ -31,9 +34,9 @@ $parts = explode('/',$exifData['EXIF']['FNumber']);?>
 $parts = explode('/',$exifData['EXIF']['FocalLength']);?> 
     <li><strong>FocalLength:</strong> <?=number_format($parts[0]/10,2,'.',',');?> mm</li>
 <?php endif;?>
-<?php if (isset($exifData['IFD0']['DateTime'])) : ?>
+<?php if (isset($exifData['IFD0']['DateTime']) && $exifData['IFD0']['DateTime'] != '0000:00:00 00:00:00') : ?>
     <li><strong>Taken:</strong> <?=$exifData['IFD0']['DateTime'];?></li>
-<?php elseif (isset($exifData['EXIF']['DateTimeOriginal'])) : ?>
+<?php elseif (isset($exifData['EXIF']['DateTimeOriginal']) && $exifData['EXIF']['DateTimeOriginal'] != '0000:00:00 00:00:00' ) : ?>
     <li><strong>Taken:</strong> <?=$exifData['EXIF']['DateTimeOriginal'];?></li>
 <?php endif;?>
 </ul>
