@@ -3,8 +3,6 @@
 $imageData = new ezcImageAnalyzer( $image->file_path_filesystem); 
 $exifData = $imageData->data->exif;
 
-print_r($exifData);
-
 } catch (Exception $e) {
     $exifData = array();
 }
