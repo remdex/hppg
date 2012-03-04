@@ -829,7 +829,6 @@ class SphinxClient
 	           $this->_filters[] = $filter;
 	       } 
 	   }
-
 	}
 
 	/// set range filter

@@ -2,7 +2,6 @@
 <? try {
 $imageData = new ezcImageAnalyzer( $image->file_path_filesystem); 
 $exifData = $imageData->data->exif;
-
 } catch (Exception $e) {
     $exifData = array();
 }

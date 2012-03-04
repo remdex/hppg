@@ -40,7 +40,13 @@ $ViewList['lastuploadstoalbumsadmin'] = array(
     'script' => 'lastuploadstoalbumsadmin.php',
     'functions' => array( 'administrate' ),
     'params' => array(),
-    );
+);
+        
+$ViewList['unconfirmedimages'] = array( 
+    'script' => 'unconfirmedimages.php',
+    'functions' => array( 'administrate' ),
+    'params' => array(),
+);
     
 $ViewList['catjson'] = array( 
     'script' => 'catjson.php',
