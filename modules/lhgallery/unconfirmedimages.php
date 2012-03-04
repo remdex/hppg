@@ -30,6 +30,16 @@ if (isset($_POST['approveSelected']) && isset($_POST['PhotoID']) && count($_POST
 }
 
 
+if (isset($_POST['removeSelected']) && isset($_POST['PhotoID']) && count($_POST['PhotoID']) > 0){
+    foreach ($_POST['PhotoID'] as $photoID) {
+        $image = erLhcoreClassModelGalleryImage::fetch($photoID);   
+        $image->removeThis();
+    }
+    
+    $tpl->set('remove_count', count($_POST['PhotoID']));
+}
+
+
 if (isset($_POST['moveSelectedPhotos']) && isset($_POST['PhotoID']) && count($_POST['PhotoID']) > 0 && is_numeric($_POST['AlbumDestinationDirectory0'])){
     foreach ($_POST['PhotoID'] as $photoID) {        
         $image = erLhcoreClassModelGalleryImage::fetch($photoID);

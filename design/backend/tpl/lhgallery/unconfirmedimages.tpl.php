@@ -11,11 +11,17 @@
   <?php include_once(erLhcoreClassDesign::designtpl('lhgallery/my_image_list.tpl.php'));?> 
        
   
-  <fieldset><legend>Change selected images approve satus</legend> 
+  <fieldset><legend>Manipulate selected images</legend> 
   <?php if (isset($approved_count)) : ?>
   <div class="ok"><?=$approved_count?> images were approved.</div>
   <?php endif;?>
+  
+  <?php if (isset($remove_count)) : ?>
+  <div class="ok"><?=$remove_count?> images were removed.</div>
+  <?php endif;?>
+  
   <input type="submit" class="default-button" value="Approve selected" name="approveSelected" />  
+  <input type="submit" class="default-button" value="Remove selected" name="removeSelected" />  
   </fieldset>
  
   
