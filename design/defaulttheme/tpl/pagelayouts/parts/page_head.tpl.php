@@ -7,14 +7,14 @@ if (isset($Result['title_path'])) :
 $ReverseOrder = $Result['title_path'];
 krsort($ReverseOrder);
 foreach ($ReverseOrder as $pathItem) : ?>
- <?=$pathItem['title'].' &laquo;'?>
+ <?=$pathItem['title'].' &laquo; '?>
 <? endforeach;?>
 <? elseif (isset($Result['path'])) : ?>
 <? 
 $ReverseOrder = $Result['path'];
 krsort($ReverseOrder);
 foreach ($ReverseOrder as $pathItem) : ?>
-<?=$pathItem['title'].' &laquo;'?> 
+<?=$pathItem['title'].' &laquo; '?> 
 <? endforeach;?>
 <? endif; ?>
 <?=erConfigClassLhConfig::getInstance()->getOverrideValue( 'site', 'title' )?></title>
