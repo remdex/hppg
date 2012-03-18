@@ -33,6 +33,8 @@ $keywordDecoded = '';
     
 $tpl->set('direction',$direction);
 
+$ignore_fields = array('filesize','total_filesize','ctime','owner_id','pic_rating','votes','caption','keywords','pic_raw_ip','approved','mtime','comtime','anaglyph','rtime');
+
 if ($mode == 'album')
 {
     // Index hint for mysql
@@ -103,16 +105,16 @@ if ($mode == 'album')
     if ($modeSort == 'new') {
         
         if ($direction == 'left') {
-            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true, 'use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));
+            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('ignore_fields' => $ignore_fields, 'smart_select' => true, 'use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'sort' => 'pid ASC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));
             $imagesAjax = array_reverse($imagesAjax);
-        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));        
+        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('ignore_fields' => $ignore_fields, 'smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid),'limit' => 6,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));        
            
     } elseif ($modeSort == 'newasc') {  
         
         if ($direction == 'left') {      
-            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 6,'sort' => 'pid DESC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));
+            $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('ignore_fields' => $ignore_fields, 'smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 6,'sort' => 'pid DESC','filter' => array('aid' => $Image->aid)+(array)$filterArray,'filterlt' => array('pid' => $Image->pid)));
             $imagesAjax = array_reverse($imagesAjax);
-        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'sort' => 'pid ASC','cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 6,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));        
+        } else $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('ignore_fields' => $ignore_fields, 'smart_select' => true,'use_index' => $useIndexHint[$modeIndex],'sort' => 'pid ASC','cache_key' => 'album_image_'.CSCacheAPC::getMem()->getCacheVersion('album_'.$Image->aid).$modeSort,'limit' => 6,'filter' => array('aid' => $Image->aid)+(array)$filterArray,'filtergt' => array('pid' => $Image->pid)));        
         
     } elseif ($modeSort == 'popular') {
 
@@ -123,7 +125,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {               
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -163,7 +165,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {        
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
            
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -203,7 +205,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {        
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -247,7 +249,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {        
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -286,7 +288,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {        
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -326,7 +328,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {               
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -366,7 +368,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {        
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -406,7 +408,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {               
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -446,7 +448,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {               
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -485,7 +487,7 @@ if ($mode == 'album')
         if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
         {                         
             $session = erLhcoreClassGallery::getSession();
-            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+            $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
             
             $q2 = $q->subSelect();
             $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -614,10 +616,10 @@ if ($mode == 'album')
            
         if ($direction == 'left') {
                 
-            $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
+            $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
                        
             if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
-                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
+                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
                             
                 if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {
                     $totalPhotos['list'] = (array)$totalPhotos['list'] + (array)$totalPhotosHigher['list'];
@@ -639,10 +641,10 @@ if ($mode == 'album')
     	   
     	} else {
         	
-        	$totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'));
+        	$totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'));
             
             if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
-                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'));
+                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'));
                                      
                 if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
                     $totalPhotos['list'] = (array)$totalPhotos['list'] + (array)$totalPhotosHigher['list'];
@@ -659,11 +661,11 @@ if ($mode == 'album')
     	
     } elseif ($modeSort == 'relevanceasc') {
                     
-        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'relevance' => true, 'SearchLimit' => 1,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)));
+        $relevanceCurrentImage = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'relevance' => true, 'SearchLimit' => 1,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC','Filter' => array('@id' => $Image->pid)));
            
         if ($direction == 'left') {
                 
-            $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'));
+            $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'));
             
             if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
                 $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance DESC, @id DESC'));
@@ -688,10 +690,10 @@ if ($mode == 'album')
     	   
     	} else {
         	
-        	$totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
+        	$totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
             
             if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
-                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
+                $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@relevance ASC, @id ASC'));
                                      
                 if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
                     $totalPhotos['list'] = (array)$totalPhotos['list'] + (array)$totalPhotosHigher['list'];
@@ -709,13 +711,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'new') {
                        
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'SearchLimit' => 6,'keyword' =>  $keywordDecoded,'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid)));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'SearchLimit' => 6,'keyword' =>  $keywordDecoded,'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid)));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos =  erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'SearchLimit' => 6,'keyword' =>  $keywordDecoded,'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)));
+    	   $totalPhotos =  erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'SearchLimit' => 6,'keyword' =>  $keywordDecoded,'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -724,13 +726,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'newasc') {
                 
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@id DESC','Filter' => $filterArray,'filterlt' => array('pid' => $Image->pid-1)));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos =  erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid)));
+    	   $totalPhotos =  erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => '@id ASC','Filter' => $filterArray,'filtergt' => array('pid' => $Image->pid)));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -739,13 +741,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'popular') {
         
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'hits,(hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'hits ASC, @id ASC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'hits,(hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'hits ASC, @id ASC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos =  erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'hits,(hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'hits DESC, @id DESC'));
+    	   $totalPhotos =  erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'hits,(hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'hits DESC, @id DESC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -755,13 +757,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'popularasc') {
                 
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'hits,(hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'hits DESC, @id DESC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'hits,(hits < '.$Image->hits.' OR (hits = '.$Image->hits.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'hits DESC, @id DESC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'hits,(hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'hits ASC, @id ASC'));        
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'hits,(hits > '.$Image->hits.' OR (hits = '.$Image->hits.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'hits ASC, @id ASC'));        
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -770,13 +772,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lasthits') {
         
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'mtime,(mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'mtime ASC, @id ASC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'mtime,(mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'mtime ASC, @id ASC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'mtime,(mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'mtime DESC, @id DESC'));        
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'mtime,(mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'mtime DESC, @id DESC'));        
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -785,13 +787,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lasthitsasc') {
         
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'mtime,(mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'mtime DESC, @id DESC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'mtime,(mtime < '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'mtime DESC, @id DESC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'mtime,(mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'mtime ASC, @id ASC'));        
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'mtime,(mtime > '.$Image->mtime.' OR (mtime = '.$Image->mtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'mtime ASC, @id ASC'));        
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -800,13 +802,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastcommented') {
         
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'comtime,(comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'comtime ASC, @id ASC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'comtime,(comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'comtime ASC, @id ASC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'comtime,(comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'comtime DESC, @id DESC'));        
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'comtime,(comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'comtime DESC, @id DESC'));        
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -815,13 +817,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastcommentedasc') {
         
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'comtime,(comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'comtime DESC, @id DESC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'comtime,(comtime < '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'comtime DESC, @id DESC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'comtime,(comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'comtime ASC, @id ASC'));        
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'comtime,(comtime > '.$Image->comtime.' OR (comtime = '.$Image->comtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'comtime ASC, @id ASC'));        
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -830,13 +832,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastrated') {
         
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'rtime,(rtime > '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'rtime ASC, @id ASC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'rtime,(rtime > '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'rtime ASC, @id ASC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'rtime,(rtime < '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'rtime DESC, @id DESC'));        
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'rtime,(rtime < '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'rtime DESC, @id DESC'));        
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -845,13 +847,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'lastratedasc') {
         
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'rtime,(rtime < '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'rtime DESC, @id DESC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'rtime,(rtime < '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND @id < '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'rtime DESC, @id DESC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'rtime,(rtime > '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'rtime ASC, @id ASC'));        
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'rtime,(rtime > '.$Image->rtime.' OR (rtime = '.$Image->rtime.' AND @id > '.$Image->pid.')) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'rtime ASC, @id ASC'));        
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -860,13 +862,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'toprated') {
                 
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'pic_rating,votes,(pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND @id > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'pic_rating ASC, votes ASC, @id ASC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'pic_rating,votes,(pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND @id > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'pic_rating ASC, votes ASC, @id ASC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'pic_rating,votes,(pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND @id < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'pic_rating DESC, votes DESC, @id DESC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'pic_rating,votes,(pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND @id < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'pic_rating DESC, votes DESC, @id DESC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -875,13 +877,13 @@ if ($mode == 'album')
     } elseif ($modeSort == 'topratedasc') {
         
         if ($direction == 'left'){
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'pic_rating,votes,(pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND @id < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'pic_rating DESC, votes DESC, @id DESC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'pic_rating,votes,(pic_rating < '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes < '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND @id < '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'pic_rating DESC, votes DESC, @id DESC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];
     	       $imagesAjax = array_reverse($imagesAjax);    
     	   endif;
     	} else {
-    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'pic_rating,votes,(pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND @id > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'pic_rating ASC, votes ASC, @id ASC'));
+    	   $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'MatchMode' => $modeMatch, 'ncolor_filter' => $nfilterColor, 'color_filter' => $filterColor,'custom_filter' => array('filter_name' => 'myfilter','filter' => 'pic_rating,votes,(pic_rating > '.$Image->pic_rating.' OR (pic_rating = '.$Image->pic_rating.' AND votes > '.$Image->votes.') OR (pic_rating = '.$Image->pic_rating.' AND votes = '.$Image->votes.' AND @id > '.$Image->pid.' )  ) AS myfilter'),'Filter' => $filterArray,'SearchLimit' => 6,'keyword' => $keywordDecoded,'sort' => 'pic_rating ASC, votes ASC, @id ASC'));
     	   if ($totalPhotos['total_found'] > 0):
     	       $imagesAjax = $totalPhotos['list'];	      
     	   endif;
@@ -916,10 +918,10 @@ if ($mode == 'album')
 } elseif ($mode == 'lastuploads') {
       
 	if ($direction == 'left'){
-	   $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'filter' => $filterArray,'limit' => 6,'sort' => 'pid ASC','filtergt' => array('pid' => $Image->pid)));
+	   $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('ignore_fields' => $ignore_fields, 'smart_select' => true,'cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'filter' => $filterArray,'limit' => 6,'sort' => 'pid ASC','filtergt' => array('pid' => $Image->pid)));
 	   rsort($imagesAjax);   
 	} else {
-	   $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('smart_select' => true,'cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'filter' => $filterArray,'limit' => 6,'sort' => 'pid DESC','filterlt' => array('pid' => $Image->pid))); 
+	   $imagesAjax = erLhcoreClassModelGalleryImage::getImages(array('ignore_fields' => $ignore_fields, 'smart_select' => true,'cache_key' => 'version_'.CSCacheAPC::getMem()->getCacheVersion('last_uploads'),'filter' => $filterArray,'limit' => 6,'sort' => 'pid DESC','filterlt' => array('pid' => $Image->pid))); 
 	} 
 	
 	$hasMoreImages = 'false';
@@ -958,7 +960,7 @@ if ($mode == 'album')
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
     {          	
     	$session = erLhcoreClassGallery::getSession();
-    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields );
     	
         $q2 = $q->subSelect();
         $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -1028,7 +1030,7 @@ if ($mode == 'album')
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
     {      	
     	$session = erLhcoreClassGallery::getSession();
-    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields ); 
     	  
     	$q2 = $q->subSelect();
         $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -1224,7 +1226,7 @@ if ($mode == 'album')
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
     {      	
     	$session = erLhcoreClassGallery::getSession();
-    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields ); 
     	
     	$q2 = $q->subSelect();
         $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -1322,17 +1324,17 @@ if ($mode == 'album')
             if ($direction == 'left') {
                   
                 if ($standardSearch == true) {
-                    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'ncolor_filter' => $ncolorFilter,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance ASC, @id ASC'));
+                    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'color_search_mode' => true,'color_filter' => $colorFilter,'ncolor_filter' => $ncolorFilter,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance ASC, @id ASC'));
                 } else {
-                    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'ncolor_filter' => $ncolorFilter,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray,'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match ASC, @id ASC'));
+                    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'color_search_mode' => true,'color_filter' => $colorFilter,'ncolor_filter' => $ncolorFilter,'filtergt' => array('pid' => $Image->pid),'Filter' => (array)$filterArray,'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match ASC, @id ASC'));
                 }            
                               
                 if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
                     
                     if ($standardSearch == true) {
-                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'ncolor_filter' => $ncolorFilter,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => '@relevance ASC, @id ASC'));
+                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'color_search_mode' => true,'color_filter' => $colorFilter,'ncolor_filter' => $ncolorFilter,'filtergt' => array('@weight' => $relevanceCurrentImage),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => '@relevance ASC, @id ASC'));
                     } else {
-                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'color_filter' => $colorFilter,'ncolor_filter' => $ncolorFilter,'filterfloatgt' => array('custom_match' => $relevanceCurrentImage),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => 'custom_match ASC, @id ASC'));
+                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'color_search_mode' => true,'color_filter' => $colorFilter,'ncolor_filter' => $ncolorFilter,'filterfloatgt' => array('custom_match' => $relevanceCurrentImage),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => 'custom_match ASC, @id ASC'));
                     }                
                     
                     if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                                               
@@ -1351,17 +1353,17 @@ if ($mode == 'album')
         	} else {        	    
         	    
             	if ($standardSearch == true) {
-            	    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'ncolor_filter' => $ncolorFilter,'color_filter' => $colorFilter,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance DESC, @id DESC'));
+            	    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'color_search_mode' => true,'ncolor_filter' => $ncolorFilter,'color_filter' => $colorFilter,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray+array('@weight' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => '@relevance DESC, @id DESC'));
             	} else {             
-            	    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'ncolor_filter' => $ncolorFilter,'color_filter' => $colorFilter,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray,'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match DESC, @id DESC'));            	    
+            	    $totalPhotos = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'color_search_mode' => true,'ncolor_filter' => $ncolorFilter,'color_filter' => $colorFilter,'filterlt' => array('pid' => $Image->pid-1),'Filter' => (array)$filterArray,'FilterFloat' => array('custom_match' => $relevanceCurrentImage),'SearchLimit' => 6,'sort' => 'custom_match DESC, @id DESC'));            	    
             	}
             	
                 if ($totalPhotos['total_found'] < 6) { // We have check is there any better matches images on left
                     
                     if ($standardSearch == true) {
-                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'ncolor_filter' => $ncolorFilter,'color_filter' => $colorFilter,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => '@relevance DESC, @id DESC'));
+                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'color_search_mode' => true,'ncolor_filter' => $ncolorFilter,'color_filter' => $colorFilter,'filterlt' => array('@weight' => $relevanceCurrentImage-1),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => '@relevance DESC, @id DESC'));
                     } else {
-                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('color_search_mode' => true,'ncolor_filter' => $ncolorFilter,'color_filter' => $colorFilter,'filterfloatlt' => array('custom_match' => $relevanceCurrentImage-1),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => 'custom_match DESC, @id DESC'));
+                        $totalPhotosHigher = erLhcoreClassGallery::searchSphinx(array('ignore_fields' => $ignore_fields, 'color_search_mode' => true,'ncolor_filter' => $ncolorFilter,'color_filter' => $colorFilter,'filterfloatlt' => array('custom_match' => $relevanceCurrentImage-1),'Filter' => (array)$filterArray,'SearchLimit' => 6,'sort' => 'custom_match DESC, @id DESC'));
                     } 
                                 
                     if ($totalPhotosHigher['total_found'] > 0 && $totalPhotos['total_found'] > 0) {                           
@@ -1435,7 +1437,7 @@ if ($mode == 'album')
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
     {      	
     	$session = erLhcoreClassGallery::getSession();
-    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields ); 
     	
     	$q2 = $q->subSelect();
         $q2->select( 'pid' )->from( 'lh_gallery_images' );
@@ -1502,7 +1504,7 @@ if ($mode == 'album')
     if (($imagesAjax = $cache->restore($cacheKeyImage)) === false)
     {      	
     	$session = erLhcoreClassGallery::getSession();
-    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
+    	$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', $ignore_fields ); 
     	
     	$q2 = $q->subSelect();
         $q2->select( 'pid' )->from( 'lh_gallery_images' );
