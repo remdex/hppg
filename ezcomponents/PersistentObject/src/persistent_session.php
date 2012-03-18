@@ -318,9 +318,9 @@ class ezcPersistentSession implements ezcPersistentSessionFoundation
      *
      * @return ezcQuerySelect
      */
-    public function createFindQuery( $class )
+    public function createFindQuery( $class, $ignoreColumns = array() )
     {
-        return $this->loadHandler->createFindQuery( $class );
+        return $this->loadHandler->createFindQuery( $class, $ignoreColumns );
     }
 
     /**
@@ -703,7 +703,7 @@ class ezcPersistentSession implements ezcPersistentSessionFoundation
     }
 
     /**
-     * Returns all the columns defined in the persistent object.
+     * Returns all the columns defined in the persistent object. Also skips ignore columns and reducing bandwidth between PHP and MySQL
      *
      * If $prefixTableName is set to false, raw column names will be used,
      * without prefixed table name.
@@ -712,17 +712,22 @@ class ezcPersistentSession implements ezcPersistentSessionFoundation
      * @param bool $prefixTableName
      * @return array(int=>string)
      */
-    public function getColumnsFromDefinition( ezcPersistentObjectDefinition $def, $prefixTableName = true )
-    {
+    public function getColumnsFromDefinition( ezcPersistentObjectDefinition $def, $prefixTableName = true, $ignoreColumns = array() )
+    {              
+        $hasIgnoreColumns = !empty($ignoreColumns);
+        
         $columns = array();
         $columns[] = ( $prefixTableName 
             ? $this->database->quoteIdentifier( $def->table ) . '.' . $this->database->quoteIdentifier( $def->idProperty->columnName )
             : $this->database->quoteIdentifier( $def->idProperty->columnName ) );
         foreach ( $def->properties as $property )
         {
-            $columns[] = ( $prefixTableName
-                ? $this->database->quoteIdentifier( $def->table ) . '.' . $this->database->quoteIdentifier( $property->columnName )
-                : $this->database->quoteIdentifier( $property->columnName ) );
+            if ( $hasIgnoreColumns === false || !in_array( $property->columnName, $ignoreColumns ) ) 
+            {
+                $columns[] = ( $prefixTableName
+                    ? $this->database->quoteIdentifier( $def->table ) . '.' . $this->database->quoteIdentifier( $property->columnName )
+                    : $this->database->quoteIdentifier( $property->columnName ) );
+            }
         }
         return $columns;
     }

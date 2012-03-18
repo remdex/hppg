@@ -450,19 +450,20 @@ class ezcPersistentLoadHandler extends ezcPersistentSessionHandler
      *         if there is no such persistent class.
      *
      * @param string $class
+     * @param array ignoreColumns - these columns are not fetching within object load
      *
      * @return ezcPersistentFindQuery
      */
-    public function createFindQuery( $class )
-    {
+    public function createFindQuery( $class, $ignoreColumns = array() )
+    {   
         $def = $this->definitionManager->fetchDefinition( $class );
 
         // Init query
         $q = $this->database->createSelectQuery();
         $q->setAliases( $this->session->generateAliasMap( $def ) );
-
+               
         $q->select(
-            $this->session->getColumnsFromDefinition( $def )
+            $this->session->getColumnsFromDefinition( $def, true, $ignoreColumns )
         )->from(
             $this->database->quoteIdentifier( $def->table )
         );

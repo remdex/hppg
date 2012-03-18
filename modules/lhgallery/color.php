@@ -75,9 +75,11 @@ if (($Result = $cache->restore($cacheKey)) === false)
                 }
                 
                 $searchParams['color_search_mode'] = true;
+                $searchParams['ignore_fields'] = array('filesize','total_filesize','ctime','owner_id','pic_rating','votes','caption','keywords','pic_raw_ip','approved','mtime','comtime','anaglyph','rtime');
                 
                 $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
                 $list = $searchResult['list'];
+                                
                 $pages->items_total =  $searchResult['total_found'];
             }
             

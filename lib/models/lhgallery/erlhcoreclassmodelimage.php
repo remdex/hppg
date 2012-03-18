@@ -373,9 +373,9 @@ class erLhcoreClassModelGalleryImage {
               
           }       
        }
-       
+            
        $session = erLhcoreClassGallery::getSession('slave');
-       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' );  
+       $q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage', isset($params['ignore_fields']) ? $params['ignore_fields'] : array() );  
        
        $conditions = array(); 
        if (!isset($paramsSearch['smart_select'])) {
@@ -499,7 +499,7 @@ class erLhcoreClassModelGalleryImage {
           
           $q2->limit($params['limit'],$params['offset']);
           $q2->orderBy(isset($params['sort']) ? $params['sort'] : 'pid DESC');
-                    
+          
           $q->innerJoin( $q->alias( $q2, 'items' ), 'lh_gallery_images.pid', 'items.pid' );          
        }
        

@@ -444,7 +444,7 @@ class erLhcoreClassGallery{
             // We fetch only unique images
             $imagesIDToFetch = array_unique($imagesIDToFetch);
             if (count($imagesIDToFetch) > 0){            
-                $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => $imagesIDToFetch)));
+                $listObjects = erLhcoreClassModelGalleryImage::getImages(array('ignore_fields' => (isset($params['ignore_fields']) ? $params['ignore_fields'] : array()),'filterin'=> array('pid' => $imagesIDToFetch)));
             } else {
                 foreach ($resultItems as $keyQuery => $result)
                 {
@@ -786,7 +786,7 @@ class erLhcoreClassGallery{
 	  if (count($idMatch) == 0)
           	return array('total_found' => 0,'list' => null, 'facet_list' => $idMatchGroup, 'facet_data' => $idMatchGroupData);   
         
-      $listObjects = erLhcoreClassModelGalleryImage::getImages(array('filterin'=> array('pid' => array_keys($idMatch))));
+      $listObjects = erLhcoreClassModelGalleryImage::getImages(array('ignore_fields' => (isset($params['ignore_fields']) ? $params['ignore_fields'] : array()), 'filterin'=> array('pid' => array_keys($idMatch))));
       
       foreach ($listObjects as $object)
       {     

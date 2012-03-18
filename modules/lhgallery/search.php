@@ -188,6 +188,8 @@ if (($Result = $cache->restore($cacheKey)) === false)
             $searchParams['group_by_album'] = true;
         }
         
+        $searchParams['ignore_fields'] = array('filesize','total_filesize','ctime','owner_id','pic_rating','votes','caption','keywords','pic_raw_ip','approved','mtime','comtime','anaglyph','rtime');
+        
         $searchResult = erLhcoreClassGallery::searchSphinx($searchParams,false);
         
         if ( erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enable_facet' ) ) {
