@@ -16,7 +16,7 @@ server {
    server_name    www.example.com example.com;
    root           /home/www/domains/example_lt;
 
-   location ~* (^(?!(?:(?!(php)).)*/(albums|bin|var|lib|cache|design|doc|settings|pos|modules)/).*?(php)) {		     
+   location ~* (^(?!(?:(?!(php)).)*/(albums|bin|var|lib|cache|design|doc|settings|pos|modules)/).*?(\.php)$) {		     
  	  include        /etc/nginx/fastcgi_params;
       fastcgi_pass   127.0.0.1:9000;
       fastcgi_index  index.php;
