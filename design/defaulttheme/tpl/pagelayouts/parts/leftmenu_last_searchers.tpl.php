@@ -1,6 +1,6 @@
 <?php if (erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'enabled' ) === true) : ?>
 <div class="left-infobox search-infobox">				
-	<h3><a href="<?=erLhcoreClassDesign::baseurl('gallery/lastsearches')?>"><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last searches')?> &raquo;</a></h3>
+	<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last searches')?></h3>
 	<ul>
 <?php 
 $cache = CSCacheAPC::getMem();

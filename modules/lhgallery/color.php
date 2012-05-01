@@ -1,7 +1,7 @@
 <?php
 
-$pallete_id = (array)$Params['user_parameters_unordered']['color'];
-$npallete_id = (array)$Params['user_parameters_unordered']['ncolor'];
+$pallete_id = filter_var((array)$Params['user_parameters_unordered']['color'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
+$npallete_id = filter_var((array)$Params['user_parameters_unordered']['ncolor'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
 
 $cache = CSCacheAPC::getMem(); 
 sort($pallete_id);
@@ -39,7 +39,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
                 $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
                 $npallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
             }
-            
+                       
             sort($pallete_id);
             sort($npallete_id);
             

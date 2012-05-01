@@ -21,12 +21,12 @@ var _lactq = _lactq || [];
 
 <?php if ($max_filters == false) : ?>
 _lactq.push({'f':'hw_init_sort_box','a':['#color-filter-nav']});
-_lactq.push({'f':'init_pallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend . $albumFilterAppend : ''?>']});
+_lactq.push({'f':'init_pallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>',"<?=isset($keyword) ? htmlspecialchars($keyword) . $resolutionAppend . $matchModeAppend . $albumFilterAppend : ''?>"]});
 <?php endif;?>
 
 <?php if ($nmax_filters == false) : ?>
 _lactq.push({'f':'hw_init_sort_box','a':['#ncolor-filter-nav']});
-_lactq.push({'f':'init_npallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>','<?=isset($keyword) ? $keyword . $resolutionAppend . $matchModeAppend . $albumFilterAppend : ''?>']});
+_lactq.push({'f':'init_npallete_filter','a':['<?=$yes_color.$no_color?>','<?=isset($modePallete) ? $modePallete : 'color'?>',"<?=isset($keyword) ? htmlspecialchars($keyword) . $resolutionAppend . $matchModeAppend . $albumFilterAppend : ''?>"]});
 <?php endif;?>
 </script>
 

@@ -282,7 +282,13 @@ class erLhcoreClassModule{
         self::$cacheInstance = CSCacheAPC::getMem();
         self::$cacheVersionSite = self::$cacheInstance->getCacheVersion('site_version');
 
-        if (self::$currentModuleName == '' || (self::$currentModule = self::getModule(self::$currentModuleName)) === false) {        	
+        if (self::$currentModuleName == '' || (self::$currentModule = self::getModule(self::$currentModuleName)) === false) { 
+            
+            if (self::$currentModule === false) {
+                self::redirect();
+                exit;
+            }        
+                   	
             $params = $cfg->getOverrideValue('site','default_url');
             self::$currentView = $params['view'];
             self::$currentModuleName = $params['module'];

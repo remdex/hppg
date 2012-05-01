@@ -6,6 +6,9 @@ $cache = CSCacheAPC::getMem();
 // Display mode - album, lastupload
 $mode = isset($Params['user_parameters_unordered']['mode']) ? $Params['user_parameters_unordered']['mode'] : 'album';
 
+$Params['user_parameters_unordered']['color'] = filter_var((array)$Params['user_parameters_unordered']['color'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
+$Params['user_parameters_unordered']['ncolor'] = filter_var((array)$Params['user_parameters_unordered']['ncolor'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
+
 
 // Filters
 $resolutions = erConfigClassLhConfig::getInstance()->getSetting( 'site', 'resolutions' );
@@ -188,7 +191,7 @@ if ($mode == 'album') {
        
     $modeSort = isset($Params['user_parameters_unordered']['sort']) && key_exists($Params['user_parameters_unordered']['sort'],$sortModes) ? $Params['user_parameters_unordered']['sort'] : 'relevance';
     $modeSQL = $sortModes[$modeSort];
-    $keywordDecoded = trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));    
+    $keywordDecoded = trim(strip_tags(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword']))));    
     
     
     switch ($modeSort) {

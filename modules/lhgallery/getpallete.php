@@ -2,10 +2,10 @@
 
 $tpl = erLhcoreClassTemplate::getInstance( 'lhgallery/getpallete.tpl.php');
 
-$pallete_id = (array)$Params['user_parameters_unordered']['color'];
+$pallete_id = filter_var((array)$Params['user_parameters_unordered']['color'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
 sort($pallete_id);
 
-$npallete_id = (array)$Params['user_parameters_unordered']['ncolor'];
+$npallete_id = filter_var((array)$Params['user_parameters_unordered']['ncolor'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
 sort($npallete_id);
 
 if (count($npallete_id) > 0){
@@ -34,11 +34,11 @@ if (isset($Params['user_parameters_unordered']['match']) && $Params['user_parame
 
 $albumAppend = '';
 if (isset($Params['user_parameters_unordered']['album']) && is_numeric($Params['user_parameters_unordered']['album'])) {    
-    $albumAppend = '/(album)/'.$Params['user_parameters_unordered']['album'];
+    $albumAppend = '/(album)/'.(int)$Params['user_parameters_unordered']['album'];
 }
 
 $mode = in_array($Params['user_parameters_unordered']['mode'],$modes) ? $Params['user_parameters_unordered']['mode'] : 'color';
-$keywordDecoded =  trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
+$keywordDecoded =  trim(strip_tags(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword']))));
 $tpl->set('keyword',$keywordDecoded);
 $tpl->set('mode',$mode);
 $tpl->set('resolution',$resolutionAppend);

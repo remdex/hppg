@@ -15,7 +15,7 @@ $ban_keywords = erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'ban
 
 if ( $form->hasValidData( 'SearchText' ) && trim($form->SearchText) != '')
 {
-    $searchParams['keyword'] = trim(str_replace('+',' ',$form->SearchText));
+    $searchParams['keyword'] = trim(strip_tags(str_replace('+',' ',$form->SearchText)));
     
     if ( !empty($reset_keywords) ) {
         $searchParams['keyword'] = trim(str_replace($reset_keywords,'',$searchParams['keyword']));
@@ -29,7 +29,7 @@ if ( $form->hasValidData( 'SearchText' ) && trim($form->SearchText) != '')
 } elseif ($Params['user_parameters_unordered']['keyword'] != '') {
 
    // We have to reencode because ngnix or php-fpm somewhere wrongly parses it. 
-   $keywordDecoded =  trim(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword'])));
+   $keywordDecoded =  trim(strip_tags(str_replace('+',' ',urldecode($Params['user_parameters_unordered']['keyword']))));
    
    if ( !empty($reset_keywords) ) {
         $keywordDecoded = trim(str_replace($reset_keywords,'',$keywordDecoded));
@@ -93,9 +93,11 @@ if ( $albumFilter != '' ) {
 
 // Search also includes desirable color
 $appendColorMode = '';
-$pallete_id = (array)$Params['user_parameters_unordered']['color'];
+$pallete_id = filter_var((array)$Params['user_parameters_unordered']['color'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
 $pallete_items_number = count($pallete_id);
 if ($pallete_items_number > 0) {  
+            
+    $pallete_id = filter_var($pallete_id,FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);        
     if ($pallete_items_number > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
         $pallete_id = array_slice($pallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
         $pallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
@@ -105,19 +107,19 @@ if ($pallete_items_number > 0) {
     $searchParams['color_filter'] = $pallete_id;
 }
 
-$npallete_id = (array)$Params['user_parameters_unordered']['ncolor'];
+$npallete_id = filter_var((array)$Params['user_parameters_unordered']['ncolor'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
 $npallete_items_number = count($npallete_id);
 if ($npallete_items_number > 0) {  
+       
     if ($npallete_items_number > erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters')) {
         $npallete_id = array_slice($npallete_id,0,erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters'));
         $npallete_items_number = erConfigClassLhConfig::getInstance()->getSetting( 'color_search', 'maximum_filters');
     }
+    
     sort($npallete_id);
     $appendColorMode .= '/(ncolor)/'.implode('/',$npallete_id);
     $searchParams['ncolor_filter'] = $npallete_id;
 }
-
-
 
 $modeSQL = $sortModes[$mode];         
 $appendImageModeSorting = $mode != 'relevance' ? '/(sort)/'.$mode : '';    
@@ -126,9 +128,6 @@ $userParams .= $appendImageModeSorting;
 $userParamsWithoutResolution = $userParams.$appendColorMode;
 $userParamsWithoutAlbum = $userParams.$appendColorMode.$appendResolutionMode.$appendMatchMode;
 $userParams .= $appendColorMode.$appendResolutionMode.$appendMatchMode.$appendAlbumFilter;
-
-
-
 
 $appendImageMode = '/(mode)/search/(keyword)/'.urlencode($searchParams['keyword']).$appendImageModeSorting.$appendColorMode.$appendResolutionMode.$appendMatchMode.$appendAlbumFilter;
 /* SORTING */
@@ -201,7 +200,7 @@ if (($Result = $cache->restore($cacheKey)) === false)
         }
         
         if ($pages->low == 0 && $searchResult['total_found'] > 0) { 
-            erLhcoreClassModelGalleryLastSearch::addSearch(strip_tags($searchParams['keyword']),$searchResult['total_found']); 
+            erLhcoreClassModelGalleryLastSearch::addSearch($searchParams['keyword'],$searchResult['total_found']); 
         }
         
         $pages->items_total = $searchResult['total_found'];

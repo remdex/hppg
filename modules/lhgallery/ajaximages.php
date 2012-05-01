@@ -16,6 +16,9 @@ $appendMatchMode = $modeMatch == 'all' ? '/(match)/all' : '';
 $albumMatch = is_numeric($Params['user_parameters_unordered']['album']) ? (int)$Params['user_parameters_unordered']['album'] : '';
 $appendAlbumMode = $albumMatch != '' ? '/(album)/'.$albumMatch : '';
 
+$Params['user_parameters_unordered']['color'] = filter_var((array)$Params['user_parameters_unordered']['color'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
+$Params['user_parameters_unordered']['ncolor'] = filter_var((array)$Params['user_parameters_unordered']['ncolor'],FILTER_VALIDATE_INT,FILTER_REQUIRE_ARRAY);
+
 $filterArray = array();   
 $appendMysqlIndex = array(); 
 if ($resolution != ''){
