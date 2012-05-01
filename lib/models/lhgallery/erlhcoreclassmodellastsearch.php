@@ -20,9 +20,11 @@ class erLhcoreClassModelGalleryLastSearch {
    }
    
    public static function addSearch($keyword,$search_count)
-   {
-       
+   {       
        if (strpos($keyword,'%25') === false){
+           
+           erLhcoreClassModelGallerySearchHistory::addSearch($keyword,$search_count);
+                      
            $db = ezcDbInstance::get('slave');
            $stmt = $db->prepare('SELECT count(id) FROM `lh_gallery_lastsearch` WHERE keyword = :keyword');  
            $stmt->bindValue( ':keyword',$keyword);
