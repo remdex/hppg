@@ -30,3 +30,10 @@ foreach ($ReverseOrder as $pathItem) : ?>
 <? else :?>
 <link rel="alternate" type="application/rss+xml" title="<?=erTranslationClassLhTranslation::getInstance()->getTranslation('pagelayout/pagelayout','Last uploaded images')?>" href="<?=erLhcoreClassDesign::baseurl('gallery/lastuploadsrss')?>" />
 <?endif;?>
+
+<?php $configInstance = erConfigClassLhConfig::getInstance();
+$defaultSiteAccess = $configInstance->getSetting( 'site', 'default_site_access');
+$currentSiteaccess = erLhcoreClassSystem::instance()->SiteAccess;
+foreach ($configInstance->getSetting( 'sitemap_settings', 'siteaccess_sitemaps' ) as $language) : ?>
+<?php if ($language != $currentSiteaccess) : $siteAccessOptions = $configInstance->getSetting('site_access_options',$language); ?><link rel="alternate" hreflang="<?=$siteAccessOptions['content_language']?>" href="http://<?=$_SERVER['HTTP_HOST']. ($defaultSiteAccess != $language ? erLhcoreClassDesign::baseurldirect($language) : '')?><?=isset($Result['path_base']) ? $Result['path_base'] : ''?>" /><?php endif;?>
+<?php endforeach;?>
