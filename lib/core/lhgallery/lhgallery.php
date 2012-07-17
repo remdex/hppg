@@ -211,7 +211,7 @@ class erLhcoreClassGallery{
                   $filter = isset($params['Filter']) ? $params['Filter'] : array();  
                   
                   if (isset($params['keyword'])) {
-                    $params['keyword'] = str_replace('.',' ',$cl->EscapeString($params['keyword']));
+                    $params['keyword'] = str_replace(array('.',':'),' ',$cl->EscapeString($params['keyword']));
                   }
                   
                   foreach ($filter as $field => $value)  
@@ -534,7 +534,7 @@ class erLhcoreClassGallery{
       $filter = isset($params['Filter']) ? $params['Filter'] : array();  
       
       if (isset($params['keyword'])) { 
-        $params['keyword'] = str_replace('.',' ',$cl->EscapeString($params['keyword']));
+        $params['keyword'] = str_replace(array('.',':'),' ',$cl->EscapeString($params['keyword']));
       }
       
       foreach ($filter as $field => $value)  
