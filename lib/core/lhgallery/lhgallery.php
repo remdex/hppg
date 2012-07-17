@@ -209,7 +209,11 @@ class erLhcoreClassGallery{
                   $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0, isset($params['SearchLimit']) ? (int)$params['SearchLimit'] : 20,$maxReturn);
                     
                   $filter = isset($params['Filter']) ? $params['Filter'] : array();  
-                   
+                  
+                  if (isset($params['keyword'])) {
+                    $params['keyword'] = str_replace('.',' ',$cl->EscapeString($params['keyword']));
+                  }
+                  
                   foreach ($filter as $field => $value)  
                   {                     
                       if ( is_numeric( $value ) and $value > 0 )
@@ -528,7 +532,11 @@ class erLhcoreClassGallery{
       $cl->SetLimits(isset($params['SearchOffset']) ? (int)$params['SearchOffset'] : 0,(int)$params['SearchLimit'],$maxMatches);
                     
       $filter = isset($params['Filter']) ? $params['Filter'] : array();  
-       
+      
+      if (isset($params['keyword'])) { 
+        $params['keyword'] = str_replace('.',' ',$cl->EscapeString($params['keyword']));
+      }
+      
       foreach ($filter as $field => $value)  
       {                     
           if ( is_numeric( $value ) and $value > 0 )
