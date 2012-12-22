@@ -430,13 +430,13 @@ class erLhcoreClassModelGalleryImage {
            $q2 = $q->subSelect();
            $q2->select( 'pid' )->from( 'lh_gallery_images' );
                                
-           if (isset($params['filter_shard']) && $params['filter_shard']['filter'] !== false) {
+           /*if (isset($params['filter_shard']) && $params['filter_shard']['filter'] !== false) {
                 $params = $params + $params['filter_shard']['filter']; 
                                 
                 if (isset($params['filter_shard']['filter']['shard_deduct_limit'])) {
                     $params['offset'] -=  $params['filter_shard']['filter']['shard_deduct_limit']; 
                 }                
-           }
+           }*/
 
            if (isset($params['filter']) && count($params['filter']) > 0)
            {                     
@@ -505,14 +505,14 @@ class erLhcoreClassModelGalleryImage {
        
       $objects = $session->find( $q );
             
-      if (isset($params['filter_shard'])) {
+      /*if (isset($params['filter_shard'])) {
           
           if ($params['filter_shard']['append_shard'] !== false){
               $currentImage = current($objects);
               $params['filter_shard']['append_shard']['pid'] = $currentImage->pid;
               erLhcoreClassGallery::addShardFilter($params['filter_shard']['append_shard']);
           }
-      }
+      }*/
          
       if (!isset($params['disable_sql_cache']))
       {
