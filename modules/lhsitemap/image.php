@@ -3,15 +3,14 @@
 $part = (int)$Params['user_parameters']['part_id'];
 $offset = (int)$part * erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','image_per_page');
 
-$session = erLhcoreClassGallery::getSession();
-$q = $session->createFindQuery( 'erLhcoreClassModelGalleryImage' ); 
-$q->orderBy('pid ASC' ); 
-$q->where( 
-       $q->expr->eq( 'approved', $q->bindValue( 1 ) )
-);
-$q->limit(erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','image_per_page'),$offset);
-
-$images = $session->find( $q );  
+$images = erLhcoreClassModelGalleryImage::getImages(array(
+'limit' => erConfigClassLhConfig::getInstance()->getSetting('sitemap_settings','image_per_page'),
+'ignore_fields' => array('filesize','total_filesize','ctime','owner_id','pic_rating','votes','caption','keywords','pic_raw_ip','approved','mtime','comtime','anaglyph','rtime'),
+'offset' => $offset,
+'smart_select' => true,
+'disable_sql_cache' => true,
+'sort' => 'pid ASC',
+'filter' => array('approved' => 1)));
 
 header('Content-type: text/xml');
 echo '<?xml version="1.0" encoding="UTF-8"?>  
