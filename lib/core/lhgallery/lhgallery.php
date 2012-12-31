@@ -825,5 +825,4 @@ class erLhcoreClassGallery{
 
 }
 
-
 ?>
