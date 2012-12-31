@@ -1,4 +1,4 @@
-<div style="width:400px;height:300px;">
+<div style="width:480px;height:340px;">
     <div>
     	<h3><?=erTranslationClassLhTranslation::getInstance()->getTranslation('gallery/sharephpbb','Link to image')?></h3>
     	<textarea onclick="$(this).select()" class="default-textarea" style="width:95%;font-size:11px;height:75px;"><?php echo htmlspecialchars('[url=http://'.$_SERVER['HTTP_HOST'].$Image->url_path.']'.$Image->name_user.'[/url]');?></textarea>	
