@@ -506,7 +506,7 @@ class erLhcoreClassGallery{
         if (self::$sphinxClient == NULL) {
             self::$sphinxClient = new SphinxClient();
             self::$sphinxClient->SetServer( erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'host' ), erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'port' ) );
-            self::$sphinxClient->SetMatchMode( SPH_MATCH_ANY  );
+            self::$sphinxClient->SetMatchMode( erConfigClassLhConfig::getInstance()->getSetting( 'sphinx', 'match_mode' ) );
         }
         return self::$sphinxClient;
    }
