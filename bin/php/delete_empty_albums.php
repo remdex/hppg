@@ -45,6 +45,14 @@ $actionOption = $input->registerOption(
     )
 );
 
+$minimumImagesOption = $input->registerOption(
+    new ezcConsoleOption(
+        'm',
+        'minimum',
+        ezcConsoleInput::TYPE_STRING 
+    )
+);
+
 try
 {
     $input->process();
@@ -64,6 +72,12 @@ if ( $categoryOption->value === false )
 {
     echo "Please provide what category to remove -c or --category\n";
     exit;
+} 
+
+$minimumImage = 0;
+if ( $minimumImagesOption->value !== false && is_numeric($minimumImagesOption->value) )
+{
+    $minimumImage = (int)$minimumImagesOption->value;
 } 
 
 try
@@ -86,8 +100,9 @@ $instance->ThemeSite = $optionsSiteAccess['theme'];
 $instance->WWWDirLang = '/'.$siteAccessName;   
 
 $db = ezcDbInstance::get();        		
-$stmt = $db->prepare("SELECT lh_gallery_albums.aid,count(lh_gallery_images.pid) as images_count FROM lh_gallery_albums LEFT JOIN lh_gallery_images ON lh_gallery_images.aid = lh_gallery_albums.aid WHERE lh_gallery_albums.category = :category_id GROUP BY  lh_gallery_albums.aid HAVING images_count = 0");	
+$stmt = $db->prepare("SELECT lh_gallery_albums.aid,count(lh_gallery_images.pid) as images_count FROM lh_gallery_albums LEFT JOIN lh_gallery_images ON lh_gallery_images.aid = lh_gallery_albums.aid WHERE lh_gallery_albums.category = :category_id GROUP BY  lh_gallery_albums.aid HAVING images_count = :minimum");	
 $stmt->bindValue('category_id',$categoryOption->value);
+$stmt->bindValue('minimum',$minimumImage);
 $stmt->execute();
 $albums = $stmt->fetchAll();
 
