@@ -416,19 +416,24 @@ class erLhcoreClassGallery{
                     $idMatchGroup = $cacheGroupResult['id_match_group'];
                     $idMatchGroupData = $cacheGroupResult['id_match_group_data'];
                 } else {
-                    $resultGroup = array_pop($resultItems); // Last return is always group if it's enabled                
-                    foreach ($resultGroup['matches'] as $item) 
-                    { 
-                        $idMatchGroup[$item['attrs']['album_id']] = null;
-                        $idMatchGroupData[$item['attrs']['album_id']] = $item['attrs']['@count'];
+                    $resultGroup = array_pop($resultItems); // Last return is always group if it's enabled  
+                       
+                    if ( isset($resultGroup['matches']) && is_array($resultGroup['matches']) )
+                    {
+                        foreach ($resultGroup['matches'] as $item) 
+                        { 
+                            $idMatchGroup[$item['attrs']['album_id']] = null;
+                            $idMatchGroupData[$item['attrs']['album_id']] = $item['attrs']['@count'];
+                        }
+                      
+                        $listObjects = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 50,'filterin'=> array('aid' => array_keys($idMatchGroup))));
+                      
+                        foreach ($listObjects as $object)
+                        {     
+                          $idMatchGroup[$object->aid] = $object;
+                        }
                     }
-                  
-                    $listObjects = erLhcoreClassModelGalleryAlbum::getAlbumsByCategory(array('limit' => 50,'filterin'=> array('aid' => array_keys($idMatchGroup))));
-                  
-                    foreach ($listObjects as $object)
-                    {     
-                      $idMatchGroup[$object->aid] = $object;
-                    }
+                    
                     
                     $cache->store($cacheKeyGroup,array('id_match_group' => $idMatchGroup,'id_match_group_data' => $idMatchGroupData),12000);                                
                 }
