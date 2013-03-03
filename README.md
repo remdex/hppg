@@ -1,8 +1,8 @@
 High Performance Photo Gallery
 ====
 
-Official site
-So gallery now has official site: http://hppgallery.com :) still needs a lot of updates etc.
+Official site: http://hppgallery.com
+This project was moved from: https://code.google.com/p/hppg/
 
 Overview
 ====
